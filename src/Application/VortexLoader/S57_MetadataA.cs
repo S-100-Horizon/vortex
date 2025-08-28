@@ -299,11 +299,11 @@ namespace S100Framework.Applications
                                 populated with value 6 (unassessed).
                             */
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1;
                             }
 
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
                                 instance.depthRangeMaximumValue = current.DRVAL2;
                             }
 
@@ -472,10 +472,10 @@ namespace S100Framework.Applications
                                 surveyDateRange = default,
                             };
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
                                 instance.depthRangeMaximumValue = current.DRVAL2.Value;
                             }
 
@@ -490,7 +490,7 @@ namespace S100Framework.Applications
                             // TODO: line spacing minimum
 
 
-                            if (current.SDISMX.HasValue && current.SDISMX.Value != -32767m) {
+                            if (current.SDISMX.HasValue && current.SDISMX.Value != -32767d) {
                                 if (current.SDISMX.Value % 1 == 0) {
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
                                 }
@@ -499,7 +499,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.SDISMN.HasValue && current.SDISMN.Value != -32767m) {
+                            if (current.SDISMN.HasValue && current.SDISMN.Value != -32767d) {
                                 if (current.SDISMN.Value % 1 == 0) {
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
                                 }

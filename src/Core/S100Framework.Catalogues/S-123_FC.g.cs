@@ -1798,10 +1798,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -1866,12 +1866,12 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			public double orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -1963,10 +1963,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
-			public decimal? sectorLineLength {get;set;} = default;
+			public double? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
@@ -1978,10 +1978,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
-			public decimal? sectorLineLength {get;set;} = default;
+			public double? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
@@ -2059,6 +2059,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -2136,10 +2137,10 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -2162,7 +2163,7 @@ namespace S100Framework.DomainModel.S123 {
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public decimal vesselsCharacteristicsValue {get;set;} = default;
+			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,9])]
@@ -2251,7 +2252,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class bearingInformation {
 			[XmlElement("distance")]
-			public decimal? distance {get;set;} = default;
+			public double? distance {get;set;} = default;
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
@@ -2663,6 +2664,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -2999,17 +3001,17 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializetypeOfConnectivityResource() { return typeOfConnectivityResource.Any(); }
 
 			[XmlElement("uplinkBandwidth")]
-			public decimal? uplinkBandwidth {get;set;} = default;
+			public double? uplinkBandwidth {get;set;} = default;
 
 			public bool ShouldSerializeuplinkBandwidth() { return uplinkBandwidth.HasValue; }
 
 			[XmlElement("downlinkBandwidth")]
-			public decimal? downlinkBandwidth {get;set;} = default;
+			public double? downlinkBandwidth {get;set;} = default;
 
 			public bool ShouldSerializedownlinkBandwidth() { return downlinkBandwidth.HasValue; }
 
 			[XmlElement("packetDelay")]
-			public decimal? packetDelay {get;set;} = default;
+			public double? packetDelay {get;set;} = default;
 
 			public bool ShouldSerializepacketDelay() { return packetDelay.HasValue; }
 
@@ -3506,6 +3508,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -3601,12 +3604,12 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecommunicationStandard() { return !string.IsNullOrEmpty(communicationStandard); }
 
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
 			[XmlElement("baseStationAntennaHeight")]
-			public decimal? baseStationAntennaHeight {get;set;} = default;
+			public double? baseStationAntennaHeight {get;set;} = default;
 
 			public bool ShouldSerializebaseStationAntennaHeight() { return baseStationAntennaHeight.HasValue; }
 
@@ -4190,7 +4193,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializelanguageInformation() { return !string.IsNullOrEmpty(languageInformation); }
 
 			[XmlElement("transmissionPower")]
-			public decimal? transmissionPower {get;set;} = default;
+			public double? transmissionPower {get;set;} = default;
 
 			public bool ShouldSerializetransmissionPower() { return transmissionPower.HasValue; }
 
@@ -4333,7 +4336,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecategoryOfRadioStation() { return categoryOfRadioStation.HasValue; }
 
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
@@ -4739,7 +4742,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
@@ -4749,7 +4752,7 @@ namespace S100Framework.DomainModel.S123 {
 			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
@@ -4812,6 +4815,7 @@ namespace S100Framework.DomainModel.S123 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("textOffsetBearing")]
+			[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 			public int textOffsetBearing {get;set;} = default;
 
 			[XmlElement("textOffsetDistance")]

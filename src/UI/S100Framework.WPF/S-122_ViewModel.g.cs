@@ -104,9 +104,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public cardinalDirection[] cardinalDirectionList => Enum.GetValues<cardinalDirection>();
-		private decimal? _distance  = default;
+		private double? _distance  = default;
 
-		public decimal? distance {
+		public double? distance {
 			get {
 				return _distance;
 			}
@@ -115,7 +115,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 		[Category("bearingInformation")]
-		public ObservableCollection<decimal> sectorBearing  { get; set; } = new ();
+		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
@@ -759,9 +759,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -769,10 +769,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1049,10 +1049,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1101,10 +1101,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1457,10 +1457,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
-		private decimal _vesselsCharacteristicsValue  = default;
+		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal vesselsCharacteristicsValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
 			}

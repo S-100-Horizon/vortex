@@ -155,9 +155,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
-		private decimal? _distance  = default;
+		private double? _distance  = default;
 
-		public decimal? distance {
+		public double? distance {
 			get {
 				return _distance;
 			}
@@ -166,7 +166,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("bearingInformation")]
-		public ObservableCollection<decimal> sectorBearing  { get; set; } = new ();
+		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
@@ -612,10 +612,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -742,7 +742,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class noticeTimeViewModel : ViewModelBase {
 		[Category("noticeTime")]
-		public ObservableCollection<decimal> noticeTimeHours  { get; set; } = new ();
+		public ObservableCollection<double> noticeTimeHours  { get; set; } = new ();
 		private String? _noticeTimeText  = default;
 
 		public String? noticeTimeText {
@@ -934,9 +934,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -944,10 +944,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1790,9 +1790,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class underKeelAllowanceViewModel : ViewModelBase {
-		private decimal? _underKeelAllowanceFixed  = default;
+		private double? _underKeelAllowanceFixed  = default;
 
-		public decimal? underKeelAllowanceFixed {
+		public double? underKeelAllowanceFixed {
 			get {
 				return _underKeelAllowanceFixed;
 			}
@@ -1800,9 +1800,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _underKeelAllowanceFixed, value);
 			}
 		}
-		private decimal? _underKeelAllowanceVariableBeamBased  = default;
+		private double? _underKeelAllowanceVariableBeamBased  = default;
 
-		public decimal? underKeelAllowanceVariableBeamBased {
+		public double? underKeelAllowanceVariableBeamBased {
 			get {
 				return _underKeelAllowanceVariableBeamBased;
 			}
@@ -1810,9 +1810,9 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _underKeelAllowanceVariableBeamBased, value);
 			}
 		}
-		private decimal? _underKeelAllowanceVariableDraughtBased  = default;
+		private double? _underKeelAllowanceVariableDraughtBased  = default;
 
-		public decimal? underKeelAllowanceVariableDraughtBased {
+		public double? underKeelAllowanceVariableDraughtBased {
 			get {
 				return _underKeelAllowanceVariableDraughtBased;
 			}
@@ -1902,10 +1902,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)5,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13,(vesselsCharacteristics)14];
-		private decimal _vesselsCharacteristicsValue  = default;
+		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal vesselsCharacteristicsValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
 			}
@@ -6317,7 +6317,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("RadioCallingInPoint")]
-		public ObservableCollection<decimal> orientationValue  { get; set; } = new ();
+		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -8116,10 +8116,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5];
 
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -8127,10 +8127,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -8244,10 +8244,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private decimal? _flipBearing  = default;
+		private double? _flipBearing  = default;
 
 		[Category("TextPlacement")]
-		public decimal? flipBearing {
+		public double? flipBearing {
 			get {
 				return _flipBearing;
 			}

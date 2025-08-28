@@ -111,11 +111,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -241,11 +241,11 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: interoperabilityidentifier                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             if (current.MARSYS.HasValue) {
@@ -361,11 +361,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -487,11 +487,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1487,11 +1487,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier

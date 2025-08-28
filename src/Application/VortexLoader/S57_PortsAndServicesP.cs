@@ -246,11 +246,11 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -261,8 +261,8 @@ namespace S100Framework.Applications
 
                             if (current.ORIENT.HasValue) {
                                 instance.orientation = new() {
-                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT : default(decimal?),
-                                    orientationUncertainty = default(decimal?)
+                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767d ? current.ORIENT : default(double?),
+                                    orientationUncertainty = default(double?)
                                 };
                             }
 
@@ -270,11 +270,11 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-                            if (current.RADIUS.HasValue && current.RADIUS.Value != -32767m) {
+                            if (current.RADIUS.HasValue && current.RADIUS.Value != -32767d) {
                                 instance.radius = current.RADIUS.Value;
                             }
                             else {
-                                instance.radius = default(decimal?);
+                                instance.radius = default(double?);
                             }
 
 
@@ -284,22 +284,22 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
                                 // TODO: verticalClearanceValue
-                                //verticalClearanceValue = default(decimal?)
-                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                //verticalClearanceValue = default(double?)
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
                             };
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
 
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
-                                instance.verticalLength = default(decimal?);
+                                instance.verticalLength = default(double?);
                             }
 
 
@@ -394,15 +394,15 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             instance.horizontalClearanceOpen = new horizontalClearanceOpen() {
-                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             // TODO: interoperabilityIdentifier
@@ -421,11 +421,11 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceOpen = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
-                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(decimal?),
-                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
+                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(double?),
+                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(double)) : null
                             };
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
@@ -722,11 +722,11 @@ namespace S100Framework.Applications
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
                                 }
-                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                     instance.height = current.HEIGHT.Value;
                                 }
                                 else {
-                                    instance.height = default(decimal?);
+                                    instance.height = default(double?);
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -898,11 +898,11 @@ namespace S100Framework.Applications
                                     instance.fixedDateRange = dateRange;
                                 }
 
-                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                     instance.height = current.HEIGHT.Value;
                                 }
                                 else {
-                                    instance.height = default(decimal?);
+                                    instance.height = default(double?);
                                 }
 
                                 var horclr = current.HORCLR ?? default;
@@ -1020,11 +1020,11 @@ namespace S100Framework.Applications
                                 }
 
 
-                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                     instance.height = current.HEIGHT.Value;
                                 }
                                 else {
-                                    instance.height = default(decimal?);
+                                    instance.height = default(double?);
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -1273,11 +1273,11 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier

@@ -2676,7 +2676,9 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.leSemiInterval)]
+			[PrecisionConstraint(1)]
+			public double uncertaintyFixed {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2721,7 +2723,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class noticeTime {
 			[XmlElement("noticeTimeHours")]
-			public List<decimal> noticeTimeHours {get;set;} = [];
+			public List<double> noticeTimeHours {get;set;} = [];
 
 			public bool ShouldSerializenoticeTimeHours() { return noticeTimeHours.Any(); }
 
@@ -2793,12 +2795,16 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(3)]
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(1)]
+			public double orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2978,17 +2984,22 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class underKeelAllowance {
 			[XmlElement("underKeelAllowanceFixed")]
-			public decimal? underKeelAllowanceFixed {get;set;} = default;
+			[PrecisionConstraint(1)]
+			public double? underKeelAllowanceFixed {get;set;} = default;
 
 			public bool ShouldSerializeunderKeelAllowanceFixed() { return underKeelAllowanceFixed.HasValue; }
 
 			[XmlElement("underKeelAllowanceVariableBeamBased")]
-			public decimal? underKeelAllowanceVariableBeamBased {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(0)]
+			public double? underKeelAllowanceVariableBeamBased {get;set;} = default;
 
 			public bool ShouldSerializeunderKeelAllowanceVariableBeamBased() { return underKeelAllowanceVariableBeamBased.HasValue; }
 
 			[XmlElement("underKeelAllowanceVariableDraughtBased")]
-			public decimal? underKeelAllowanceVariableDraughtBased {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(0)]
+			public double? underKeelAllowanceVariableDraughtBased {get;set;} = default;
 
 			public bool ShouldSerializeunderKeelAllowanceVariableDraughtBased() { return underKeelAllowanceVariableDraughtBased.HasValue; }
 
@@ -3029,7 +3040,7 @@ namespace S100Framework.DomainModel.S127 {
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public decimal vesselsCharacteristicsValue {get;set;} = default;
+			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
@@ -3057,13 +3068,15 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
 			[XmlElement("distance")]
-			public decimal? distance {get;set;} = default;
+			public double? distance {get;set;} = default;
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(2)]
 			[Upper(2)]
-			public List<decimal> sectorBearing {get;set;} = [];
+			public List<double> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
 
@@ -3186,6 +3199,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
 			[XmlElement("signalFrequency")]
+			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 			public List<int> signalFrequency {get;set;} = [];
 
 			public bool ShouldSerializesignalFrequency() { return signalFrequency.Any(); }
@@ -3728,6 +3742,8 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializelogicalConnectives() { return logicalConnectives.HasValue; }
 
 			[XmlElement("thicknessOfIceCapability")]
+			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(0)]
 			public int? thicknessOfIceCapability {get;set;} = default;
 
 			public bool ShouldSerializethicknessOfIceCapability() { return thicknessOfIceCapability.HasValue; }
@@ -3916,6 +3932,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("mMSICode")]
+			[StringLengthConstraint(9)]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
@@ -5301,8 +5318,10 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel.Any(); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(1)]
 			[Upper(2)]
-			public List<decimal> orientationValue {get;set;} = [];
+			public List<double> orientationValue {get;set;} = [];
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.Any(); }
 
@@ -6167,9 +6186,11 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			public int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
@@ -6211,12 +6232,14 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : QualityOfTemporalVariation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(3)]
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
@@ -6274,7 +6297,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("flipBearing")]
-			public decimal? flipBearing {get;set;} = default;
+			public double? flipBearing {get;set;} = default;
 
 			public bool ShouldSerializeflipBearing() { return flipBearing.HasValue; }
 

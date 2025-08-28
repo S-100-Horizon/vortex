@@ -89,15 +89,15 @@ namespace TestNisImporter
                 ImporterNIS.TryGetRadarWaveLengths("0.03-X,0.10-S", out var lengths);
                 Assert.True(lengths.Count == 2, "");
                 Assert.True(lengths[0].radarBand == "X");
-                Assert.True(lengths[0].waveLengthValue == 0.03m);
+                Assert.True(lengths[0].waveLengthValue == 0.03d);
                 Assert.True(lengths[1].radarBand == "S");
-                Assert.True(lengths[1].waveLengthValue == 0.10m);
+                Assert.True(lengths[1].waveLengthValue == 0.10d);
             }
             {
                 ImporterNIS.TryGetRadarWaveLengths("0.10-S", out var lengths);
                 Assert.True(lengths.Count == 1, "");
                 Assert.True(lengths[0].radarBand == "S");
-                Assert.True(lengths[0].waveLengthValue == 0.10m);
+                Assert.True(lengths[0].waveLengthValue == 0.10d);
             }
         }
 

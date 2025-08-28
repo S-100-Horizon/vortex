@@ -107,6 +107,42 @@ namespace S100Framework.DomainModel
         public int Upper = upper;
     }
 
+    public enum Closure : int
+    {
+        openInterval = 0,
+        geLtInterval = 1,
+        gtLeInterval = 2,
+        closedInterval = 3,
+        gtSemiInterval = 4,
+        geSemiInterval = 5,
+        ltSemiInterval = 6,
+        leSemiInterval = 7,
+    }
+
+    public abstract class ConstraintAttribute() : System.Attribute
+    {
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class RangeConstraintAttribute<TValue>(TValue lowerBound, TValue? upperBound, Closure closure) : ConstraintAttribute
+    {
+        public TValue LowerBound = lowerBound;
+        public TValue? UpperBound = upperBound;
+        public Closure Closure = closure;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class PrecisionConstraintAttribute(int precision) : ConstraintAttribute
+    {
+        public int Precision = precision;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class StringLengthConstraintAttribute(int stringLength) : ConstraintAttribute
+    {
+        public int StringLength = stringLength;
+    }
+
     #endregion
 
     public interface IInformationBindingDefinition

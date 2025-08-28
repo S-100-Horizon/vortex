@@ -158,9 +158,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
-		private decimal? _distance  = default;
+		private double? _distance  = default;
 
-		public decimal? distance {
+		public double? distance {
 			get {
 				return _distance;
 			}
@@ -169,7 +169,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("bearingInformation")]
-		public ObservableCollection<decimal> sectorBearing  { get; set; } = new ();
+		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
@@ -1026,10 +1026,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -1037,9 +1037,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -1492,9 +1492,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -1502,10 +1502,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -2226,10 +2226,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2237,9 +2237,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2308,10 +2308,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
-		private decimal _vesselsCharacteristicsValue  = default;
+		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal vesselsCharacteristicsValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
 			}
@@ -6058,10 +6058,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _availableBerthingLength  = default;
+		private double? _availableBerthingLength  = default;
 
 		[Category("Berth")]
-		public decimal? availableBerthingLength {
+		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
 			}
@@ -6080,10 +6080,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("Berth")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -6091,10 +6091,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardPull, value);
 			}
 		}
-		private decimal? _minimumBerthDepth  = default;
+		private double? _minimumBerthDepth  = default;
 
 		[Category("Berth")]
-		public decimal? minimumBerthDepth {
+		public double? minimumBerthDepth {
 			get {
 				return _minimumBerthDepth;
 			}
@@ -6102,10 +6102,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _minimumBerthDepth, value);
 			}
 		}
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Berth")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6492,10 +6492,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _availableBerthingLength  = default;
+		private double? _availableBerthingLength  = default;
 
 		[Category("BerthPosition")]
-		public decimal? availableBerthingLength {
+		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
 			}
@@ -6514,10 +6514,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("BerthPosition")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -7062,10 +7062,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7074,10 +7074,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("DryDock")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -7541,10 +7541,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7553,10 +7553,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -7760,10 +7760,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7772,10 +7772,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("Gridiron")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -8790,10 +8790,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -9052,10 +9052,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("MooringWarpingFacility")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -10878,10 +10878,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -10901,10 +10901,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -11136,11 +11136,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}

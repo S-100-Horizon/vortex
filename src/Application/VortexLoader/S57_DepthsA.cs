@@ -40,7 +40,7 @@ namespace S100Framework.Applications
                 var fcSubtype = current.FCSUBTYPE ?? default;
 
                 var drval1 = current.DRVAL1 ?? default;
-                var drval2 = current.DRVAL2 ?? default(decimal?);
+                var drval2 = current.DRVAL2 ?? default(double?);
                 var sordat = current.SORDAT ?? default;
 
                 var longname = current.LNAM ?? Strings.UNKNOWN;

@@ -888,10 +888,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}

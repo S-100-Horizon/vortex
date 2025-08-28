@@ -448,7 +448,7 @@ namespace S100Framework.Applications
 
                 foreach (Match match in matches) {
                     if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
-                        var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                        var duration = double.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
                         // Interval of light
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
@@ -456,7 +456,7 @@ namespace S100Framework.Applications
                         });
                     }
                     else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
-                        decimal duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                        var duration = double.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
                         // Eclipse
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,

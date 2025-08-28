@@ -2041,12 +2041,12 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			public double orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2091,7 +2091,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -2106,7 +2106,7 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -2207,7 +2207,7 @@ namespace S100Framework.DomainModel.S122 {
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public decimal vesselsCharacteristicsValue {get;set;} = default;
+			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,6,7,9])]
@@ -2273,13 +2273,13 @@ namespace S100Framework.DomainModel.S122 {
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
 			[XmlElement("distance")]
-			public decimal? distance {get;set;} = default;
+			public double? distance {get;set;} = default;
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
 			[Upper(2)]
-			public List<decimal> sectorBearing {get;set;} = [];
+			public List<double> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
 

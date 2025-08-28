@@ -69,11 +69,11 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             var horclr = current.HORCLR ?? default;

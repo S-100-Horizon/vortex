@@ -136,11 +136,11 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767m) {
+                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL2.Value;
                             }
 

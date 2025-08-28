@@ -202,9 +202,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class bearingInformationViewModel : ViewModelBase {
-		private decimal? _distance  = default;
+		private double? _distance  = default;
 
-		public decimal? distance {
+		public double? distance {
 			get {
 				return _distance;
 			}
@@ -931,10 +931,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -942,9 +942,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -1139,9 +1139,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -1149,10 +1149,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1572,10 +1572,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1583,9 +1583,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -1624,10 +1624,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1635,9 +1635,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -2143,10 +2143,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2154,9 +2154,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2210,10 +2210,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
-		private decimal _vesselsCharacteristicsValue  = default;
+		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal vesselsCharacteristicsValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
 			}
@@ -3567,10 +3567,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfConnectivityResource[] typeOfConnectivityResourceList => [(typeOfConnectivityResource)1,(typeOfConnectivityResource)2,(typeOfConnectivityResource)3,(typeOfConnectivityResource)4];
-		private decimal? _uplinkBandwidth  = default;
+		private double? _uplinkBandwidth  = default;
 
 		[Category("ConnectivityQualityOfService")]
-		public decimal? uplinkBandwidth {
+		public double? uplinkBandwidth {
 			get {
 				return _uplinkBandwidth;
 			}
@@ -3578,10 +3578,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uplinkBandwidth, value);
 			}
 		}
-		private decimal? _downlinkBandwidth  = default;
+		private double? _downlinkBandwidth  = default;
 
 		[Category("ConnectivityQualityOfService")]
-		public decimal? downlinkBandwidth {
+		public double? downlinkBandwidth {
 			get {
 				return _downlinkBandwidth;
 			}
@@ -3589,10 +3589,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _downlinkBandwidth, value);
 			}
 		}
-		private decimal? _packetDelay  = default;
+		private double? _packetDelay  = default;
 
 		[Category("ConnectivityQualityOfService")]
-		public decimal? packetDelay {
+		public double? packetDelay {
 			get {
 				return _packetDelay;
 			}
@@ -5348,10 +5348,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _communicationStandard, value);
 			}
 		}
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -5359,10 +5359,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _estimatedRangeOfTransmission, value);
 			}
 		}
-		private decimal? _baseStationAntennaHeight  = default;
+		private double? _baseStationAntennaHeight  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
-		public decimal? baseStationAntennaHeight {
+		public double? baseStationAntennaHeight {
 			get {
 				return _baseStationAntennaHeight;
 			}
@@ -6442,10 +6442,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _languageInformation, value);
 			}
 		}
-		private decimal? _transmissionPower  = default;
+		private double? _transmissionPower  = default;
 
 		[Category("RadioServiceArea")]
-		public decimal? transmissionPower {
+		public double? transmissionPower {
 			get {
 				return _transmissionPower;
 			}
@@ -6653,10 +6653,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -7273,10 +7273,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5];
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -7296,10 +7296,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}

@@ -5151,12 +5151,12 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			public double orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5182,7 +5182,7 @@ namespace S100Framework.DomainModel.S201 {
 			public String radarBand {get;set;} = string.Empty;
 
 			[XmlElement("waveLengthValue")]
-			public decimal waveLengthValue {get;set;} = default;
+			public double waveLengthValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5207,7 +5207,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -5222,7 +5222,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
-			public decimal sectorBearing {get;set;} = default;
+			public double sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
 			public int? sectorLineLength {get;set;} = default;
@@ -5255,7 +5255,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class signalSequence {
 			[XmlElement("signalDuration")]
-			public decimal signalDuration {get;set;} = default;
+			public double signalDuration {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
@@ -5276,7 +5276,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class CableDimensions {
 			[XmlElement("cableLength")]
-			public decimal cableLength {get;set;} = default;
+			public double cableLength {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
@@ -5287,7 +5287,7 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
 
 			[XmlElement("diameter")]
-			public decimal diameter {get;set;} = default;
+			public double diameter {get;set;} = default;
 		}
 
 		/// <summary>
@@ -5398,17 +5398,17 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 		}
@@ -5444,10 +5444,10 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -5510,10 +5510,10 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -5556,7 +5556,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -5669,7 +5669,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -5712,7 +5712,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -5723,7 +5723,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
 
 			[XmlElement("candela")]
-			public decimal? candela {get;set;} = default;
+			public double? candela {get;set;} = default;
 
 			public bool ShouldSerializecandela() { return candela.HasValue; }
 		}
@@ -6563,12 +6563,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -6608,7 +6608,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -6623,7 +6623,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -6727,12 +6727,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -6810,7 +6810,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -6835,17 +6835,17 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("effectiveIntensity")]
-			public decimal? effectiveIntensity {get;set;} = default;
+			public double? effectiveIntensity {get;set;} = default;
 
 			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
 
 			[XmlElement("peakIntensity")]
-			public decimal? peakIntensity {get;set;} = default;
+			public double? peakIntensity {get;set;} = default;
 
 			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
 
@@ -6964,12 +6964,12 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<visualProminence> visualProminenceElement { get { return visualProminence; } set { } }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -6979,12 +6979,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -7191,12 +7191,12 @@ namespace S100Framework.DomainModel.S201 {
 			public Boolean basedOnFixedMarks {get;set;} = false;
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
 			[XmlElement("maximalPermittedDraught")]
-			public decimal? maximalPermittedDraught {get;set;} = default;
+			public double? maximalPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximalPermittedDraught() { return maximalPermittedDraught.HasValue; }
 
@@ -7449,7 +7449,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -7527,17 +7527,17 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
 
 			[XmlElement("valueOfGeographicRange")]
-			public decimal? valueOfGeographicRange {get;set;} = default;
+			public double? valueOfGeographicRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
 
 			[XmlElement("valueOfLuminousRange")]
-			public decimal? valueOfLuminousRange {get;set;} = default;
+			public double? valueOfLuminousRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -7648,7 +7648,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarReflector : Equipment {
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -7673,7 +7673,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -7744,12 +7744,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[XmlElement("signalOutput")]
-			public decimal? signalOutput {get;set;} = default;
+			public double? signalOutput {get;set;} = default;
 
 			public bool ShouldSerializesignalOutput() { return signalOutput.HasValue; }
 
 			[XmlElement("signalPeriod")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -7764,7 +7764,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfMaximumRange")]
-			public decimal? valueOfMaximumRange {get;set;} = default;
+			public double? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
@@ -7812,7 +7812,7 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EnvironmentObservationEquipment : Equipment {
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -7879,7 +7879,7 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<categoryOfRadioStation> categoryOfRadioStationElement { get { return categoryOfRadioStation; } set { } }
 
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
@@ -7987,12 +7987,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -8007,7 +8007,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			[XmlElement("orientationValue")]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
@@ -8040,7 +8040,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -8141,12 +8141,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -8217,7 +8217,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -8855,12 +8855,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -8895,7 +8895,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -8910,12 +8910,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[XmlElement("horizontalAccuracy")]
-			public decimal? horizontalAccuracy {get;set;} = default;
+			public double? horizontalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
@@ -8979,12 +8979,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -9019,7 +9019,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9034,12 +9034,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[XmlElement("horizontalAccuracy")]
-			public decimal? horizontalAccuracy {get;set;} = default;
+			public double? horizontalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
 
@@ -9112,7 +9112,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -9167,7 +9167,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9182,7 +9182,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -9265,12 +9265,12 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -9310,7 +9310,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9325,7 +9325,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -9398,7 +9398,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -9413,7 +9413,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9428,7 +9428,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
-			public decimal? verticalAccuracy {get;set;} = default;
+			public double? verticalAccuracy {get;set;} = default;
 
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
@@ -9562,7 +9562,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
 
 			[XmlElement("weight")]
-			public decimal weight {get;set;} = default;
+			public double weight {get;set;} = default;
 
 			[XmlElement("sinkerType")]
 			public String? sinkerType {get;set;} = default;
@@ -9636,7 +9636,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializeShackleType() { return ShackleType.HasValue; }
 
 			[XmlElement("weight")]
-			public decimal? weight {get;set;} = default;
+			public double? weight {get;set;} = default;
 
 			public bool ShouldSerializeweight() { return weight.HasValue; }
 
@@ -9814,7 +9814,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			[XmlElement("weight")]
-			public decimal? weight {get;set;} = default;
+			public double? weight {get;set;} = default;
 
 			public bool ShouldSerializeweight() { return weight.HasValue; }
 
@@ -9976,7 +9976,7 @@ namespace S100Framework.DomainModel.S201 {
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
 
 			[XmlElement("weight")]
-			public decimal weight {get;set;} = default;
+			public double weight {get;set;} = default;
 
 			[XmlElement("counterWeightType")]
 			public String? counterWeightType {get;set;} = default;
@@ -10068,7 +10068,7 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -10460,12 +10460,12 @@ namespace S100Framework.DomainModel.S201 {
 			public SerializableEnumeration<categoryOfTemporalVariation> categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
 
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
