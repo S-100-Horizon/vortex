@@ -10991,6 +10991,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,7])]
+			[ConditionalDependencyAttribute<bool>("openingBridge", true)]
 			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
 
 			[JsonIgnore]

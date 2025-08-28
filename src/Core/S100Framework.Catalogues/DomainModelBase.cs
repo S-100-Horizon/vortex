@@ -77,10 +77,11 @@ namespace S100Framework.DomainModel
         public string PropertyName = propertyName;
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class ConditionalDependencyAttribute(string propertyName) : System.Attribute
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class ConditionalDependencyAttribute<T>(string propertyName, T value) : System.Attribute
     {
         public string PropertyName = propertyName;
+        public T Velue = value;
     }
 
     [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]

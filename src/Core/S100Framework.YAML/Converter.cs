@@ -93,6 +93,13 @@ namespace S100Framework.YAML
                         required = true;
                 }
 
+                // If the property (list) has a lowerAttribute, it should be required if lower > 1
+                var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
+                if (lowerAttr is not null) {
+                    if (lowerAttr.Lower > 0)
+                        required = true;
+                }
+
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
                 }
@@ -154,10 +161,12 @@ namespace S100Framework.YAML
                     attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                     break;
 
-                // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
-                //case Type t when t == typeof(Primitive):
-                //    System.Diagnostics.Debugger.Break();
-                //    break;
+                // Ensure doubles with point 2.0
+                case Type t when t == typeof(double):
+                    var parsedDouble = (double?)propertyValue!;
+
+                    attributes.Add(new(propertyName, parsedDouble?.ToString(CultureInfo.InvariantCulture), null, parentId));
+                    break;
 
                 case Type t when t.IsEnum:
                     var enumvalue = ToEnumString(propertyValue);
@@ -221,6 +230,14 @@ namespace S100Framework.YAML
                             var masterValue = properties.Single(p => p.Name == dependentAttr.PropertyName)?.GetValue(propertyValue);
 
                             if (masterValue is null)
+                                r = true;
+                        }
+
+                        // If the property (list) has a lowerAttribute, it should be required 
+                        var lowerAttr = propInfo.GetCustomAttribute<LowerAttribute>();
+
+                        if (lowerAttr is not null) {
+                            if (lowerAttr.Lower > 0)
                                 r = true;
                         }
 
@@ -885,6 +902,15 @@ namespace S100Framework.YAML
                                 break;
                             }
 
+                        case Type t when t == typeof(double): {
+                                if (attr.Value == null) continue;
+                                var doubleValue = double.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, doubleValue);
+                                break;
+                            }
+
+
+
                         case Type t when t.IsEnum: {
                                 if (attr.Value == null) continue;
                                 var enumValue = Enum.Parse(typed, attr.Value);
@@ -903,7 +929,7 @@ namespace S100Framework.YAML
                                 var list = (System.Collections.IList?)prop.GetValue(parentInstance);
                                 var elementType = typed.GetGenericArguments()[0];
 
-                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null) continue;
 
                                     var convertedItem = elementType.IsEnum
@@ -993,6 +1019,13 @@ namespace S100Framework.YAML
                                 break;
                             }
 
+                        case Type t when t == typeof(double): {
+                                if (attr.Value == null) continue;
+                                var doubleValue = double.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, doubleValue);
+                                break;
+                            }
+
                         case Type t when t.IsEnum: {
                                 if (attr.Value == null) continue;
                                 var enumValue = Enum.Parse(typed, attr.Value);
@@ -1011,7 +1044,7 @@ namespace S100Framework.YAML
                                 var list = (System.Collections.IList?)prop.GetValue(parentInstance);
                                 var elementType = typed.GetGenericArguments()[0];
 
-                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null) continue;
 
                                     var convertedItem = elementType.IsEnum
