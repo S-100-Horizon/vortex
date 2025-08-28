@@ -6196,6 +6196,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? language {get;set;} = default;
 
 			[XmlElement("name")]
+			[StringLengthConstraint(75)]
 			[UnknownValue]
 			public String? name {get;set;} = default;
 
@@ -6225,7 +6226,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? significantFeaturesDetected {get;set;} = default;
 
 			[XmlElement("sizeOfFeaturesDetected")]
-			public decimal? sizeOfFeaturesDetected {get;set;} = default;
+			public double? sizeOfFeaturesDetected {get;set;} = default;
 
 			public bool ShouldSerializesizeOfFeaturesDetected() { return sizeOfFeaturesDetected.HasValue; }
 		}
@@ -6271,10 +6272,10 @@ namespace S100Framework.DomainModel.S101 {
 		public class horizontalClearanceFixed {
 			[XmlElement("horizontalClearanceValue")]
 			[UnknownValue]
-			public decimal? horizontalClearanceValue {get;set;} = default;
+			public double? horizontalClearanceValue {get;set;} = default;
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 		}
@@ -6287,10 +6288,10 @@ namespace S100Framework.DomainModel.S101 {
 		public class horizontalClearanceOpen {
 			[XmlElement("horizontalClearanceValue")]
 			[UnknownValue]
-			public decimal? horizontalClearanceValue {get;set;} = default;
+			public double? horizontalClearanceValue {get;set;} = default;
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 		}
@@ -6303,10 +6304,10 @@ namespace S100Framework.DomainModel.S101 {
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
 			[UnknownValue]
-			public decimal? uncertaintyFixed {get;set;} = default;
+			public double? uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -6318,6 +6319,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information {
 			[XmlElement("fileLocator")]
+			[StringLengthConstraint(100)]
 			public String? fileLocator {get;set;} = default;
 
 			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
@@ -6328,6 +6330,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			[XmlElement("headline")]
+			[StringLengthConstraint(100)]
 			public String? headline {get;set;} = default;
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
@@ -6337,6 +6340,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? language {get;set;} = default;
 
 			[XmlElement("text")]
+			[StringLengthConstraint(300)]
 			public String? text {get;set;} = default;
 
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
@@ -6358,13 +6362,14 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<distanceUnitOfMeasurement>? distanceUnitOfMeasurementElement { get { return distanceUnitOfMeasurement.HasValue ? distanceUnitOfMeasurement : default; } set { } }
 
 			[XmlElement("referenceLocation")]
+			[StringLengthConstraint(75)]
 			public String? referenceLocation {get;set;} = default;
 
 			public bool ShouldSerializereferenceLocation() { return !string.IsNullOrEmpty(referenceLocation); }
 
 			[XmlElement("waterwayDistance")]
 			[UnknownValue]
-			public decimal? waterwayDistance {get;set;} = default;
+			public double? waterwayDistance {get;set;} = default;
 		}
 
 		/// <summary>
@@ -6390,6 +6395,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource {
 			[XmlElement("headline")]
+			[StringLengthConstraint(100)]
 			public String? headline {get;set;} = default;
 
 			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
@@ -6399,6 +6405,7 @@ namespace S100Framework.DomainModel.S101 {
 			public String? linkage {get;set;} = default;
 
 			[XmlElement("nameOfResource")]
+			[StringLengthConstraint(100)]
 			public String? nameOfResource {get;set;} = default;
 
 			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
@@ -6411,13 +6418,14 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -6447,7 +6455,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("waveLengthValue")]
 			[UnknownValue]
-			public decimal? waveLengthValue {get;set;} = default;
+			public double? waveLengthValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -6462,6 +6470,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("text")]
+			[StringLengthConstraint(300)]
 			[UnknownValue]
 			public String? text {get;set;} = default;
 		}
@@ -6473,11 +6482,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne {
 			[XmlElement("sectorBearing")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? sectorBearing {get;set;} = default;
+			public double? sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
-			public decimal? sectorLineLength {get;set;} = default;
+			public double? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
@@ -6489,11 +6499,12 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo {
 			[XmlElement("sectorBearing")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? sectorBearing {get;set;} = default;
+			public double? sectorBearing {get;set;} = default;
 
 			[XmlElement("sectorLineLength")]
-			public decimal? sectorLineLength {get;set;} = default;
+			public double? sectorLineLength {get;set;} = default;
 
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
 		}
@@ -6510,6 +6521,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("text")]
+			[StringLengthConstraint(300)]
 			[UnknownValue]
 			public String? text {get;set;} = default;
 		}
@@ -6522,7 +6534,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class signalSequence {
 			[XmlElement("signalDuration")]
 			[UnknownValue]
-			public decimal? signalDuration {get;set;} = default;
+			public double? signalDuration {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
@@ -6542,10 +6554,10 @@ namespace S100Framework.DomainModel.S101 {
 		public class speed {
 			[XmlElement("speedMaximum")]
 			[UnknownValue]
-			public decimal? speedMaximum {get;set;} = default;
+			public double? speedMaximum {get;set;} = default;
 
 			[XmlElement("speedMinimum")]
-			public decimal? speedMinimum {get;set;} = default;
+			public double? speedMinimum {get;set;} = default;
 
 			public bool ShouldSerializespeedMinimum() { return speedMinimum.HasValue; }
 		}
@@ -6606,11 +6618,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class telecommunications {
 			[XmlElement("contactInstructions")]
+			[StringLengthConstraint(300)]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[XmlElement("telecommunicationIdentifier")]
+			[StringLengthConstraint(50)]
 			[UnknownValue]
 			public String? telecommunicationIdentifier {get;set;} = default;
 
@@ -6638,11 +6652,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("speedMaximum")]
 			[UnknownValue]
-			public decimal? speedMaximum {get;set;} = default;
+			public double? speedMaximum {get;set;} = default;
 
 			[XmlElement("timeRelativeToTide")]
 			[UnknownValue]
-			public decimal? timeRelativeToTide {get;set;} = default;
+			public double? timeRelativeToTide {get;set;} = default;
 		}
 
 		/// <summary>
@@ -6726,8 +6740,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class valueOfLocalMagneticAnomaly {
 			[XmlElement("magneticAnomalyValue")]
+			[RangeConstraint<double>(0.1, 180, Closure.closedInterval)]
 			[UnknownValue]
-			public decimal? magneticAnomalyValue {get;set;} = default;
+			public double? magneticAnomalyValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([5,13])]
@@ -6748,10 +6763,10 @@ namespace S100Framework.DomainModel.S101 {
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
 			[UnknownValue]
-			public decimal? uncertaintyFixed {get;set;} = default;
+			public double? uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -6764,7 +6779,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class vesselSpeedLimit {
 			[XmlElement("speedLimit")]
 			[UnknownValue]
-			public decimal? speedLimit {get;set;} = default;
+			public double? speedLimit {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([2,3,4])]
@@ -6776,6 +6791,7 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<speedUnits>? speedUnitsElement { get { return speedUnits.HasValue ? speedUnits : default; } set { } }
 
 			[XmlElement("vesselClass")]
+			[StringLengthConstraint(50)]
 			public String? vesselClass {get;set;} = default;
 
 			public bool ShouldSerializevesselClass() { return !string.IsNullOrEmpty(vesselClass); }
@@ -6845,13 +6861,14 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<lightCharacteristic>? lightCharacteristicElement { get { return lightCharacteristic.HasValue ? lightCharacteristic : default; } set { } }
 
 			[XmlElement("signalGroup")]
+			[StringLengthConstraint(15)]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
 			[DependentUnknownValue("lightCharacteristic")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -6948,7 +6965,7 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<referenceTideType>? referenceTideTypeElement { get { return referenceTideType.HasValue ? referenceTideType : default; } set { } }
 
 			[XmlElement("streamDepth")]
-			public decimal? streamDepth {get;set;} = default;
+			public double? streamDepth {get;set;} = default;
 
 			public bool ShouldSerializestreamDepth() { return streamDepth.HasValue; }
 
@@ -6967,7 +6984,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class verticalClearanceClosed {
 			[XmlElement("verticalClearanceValue")]
 			[UnknownValue]
-			public decimal? verticalClearanceValue {get;set;} = default;
+			public double? verticalClearanceValue {get;set;} = default;
 
 			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -6983,7 +7000,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class verticalClearanceFixed {
 			[XmlElement("verticalClearanceValue")]
 			[UnknownValue]
-			public decimal? verticalClearanceValue {get;set;} = default;
+			public double? verticalClearanceValue {get;set;} = default;
 
 			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -7002,7 +7019,7 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? verticalClearanceUnlimited {get;set;} = default;
 
 			[XmlElement("verticalClearanceValue")]
-			public decimal? verticalClearanceValue {get;set;} = default;
+			public double? verticalClearanceValue {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 
@@ -7020,7 +7037,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class verticalClearanceSafe {
 			[XmlElement("verticalClearanceValue")]
 			[UnknownValue]
-			public decimal? verticalClearanceValue {get;set;} = default;
+			public double? verticalClearanceValue {get;set;} = default;
 
 			[XmlElement("verticalUncertainty")]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
@@ -7066,7 +7083,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -7103,13 +7120,14 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
 			[XmlElement("signalGroup")]
+			[StringLengthConstraint(15)]
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
 			[DependentUnknownValue("lightCharacteristic")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -7401,6 +7419,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationNode, IInformationBindingDefinition {
 			[XmlElement("callSign")]
+			[StringLengthConstraint(150)]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
@@ -7411,6 +7430,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
 			[XmlElement("contactInstructions")]
+			[StringLengthConstraint(300)]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
@@ -7426,6 +7446,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
 			[XmlElement("mMSICode")]
+			[StringLengthConstraint(9)]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
@@ -7503,6 +7524,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializedateFixed() { return dateFixed.Any(); }
 
 			[XmlElement("dateVariable")]
+			[StringLengthConstraint(150)]
 			public List<String> dateVariable {get;set;} = [];
 
 			public bool ShouldSerializedateVariable() { return dateVariable.Any(); }
@@ -7628,7 +7650,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
@@ -7643,7 +7665,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
@@ -7841,8 +7863,9 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf.HasValue ? marksNavigationalSystemOf : default; } set { } }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
@@ -7915,12 +7938,14 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<dataAssessment>? dataAssessmentElement { get { return dataAssessment.HasValue ? dataAssessment : default; } set { } }
 
 			[XmlElement("depthRangeMaximumValue")]
-			public decimal? depthRangeMaximumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -8129,12 +8154,14 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfSurvey : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMaximumValue")]
-			public decimal? depthRangeMaximumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -8204,6 +8231,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializescaleValueMinimum() { return scaleValueMinimum.HasValue; }
 
 			[XmlElement("surveyAuthority")]
+			[StringLengthConstraint(100)]
 			[UnknownValue]
 			public String? surveyAuthority {get;set;} = default;
 
@@ -8318,6 +8346,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -8413,11 +8442,11 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("valueOfAnnualChangeInMagneticVariation")]
 			[UnknownValue]
-			public decimal? valueOfAnnualChangeInMagneticVariation {get;set;} = default;
+			public double? valueOfAnnualChangeInMagneticVariation {get;set;} = default;
 
 			[XmlElement("valueOfMagneticVariation")]
 			[UnknownValue]
-			public decimal? valueOfMagneticVariation {get;set;} = default;
+			public double? valueOfMagneticVariation {get;set;} = default;
 
 			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
@@ -8610,7 +8639,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -8945,8 +8975,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LandElevation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("elevation")]
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
 			[UnknownValue]
-			public decimal? elevation {get;set;} = default;
+			public double? elevation {get;set;} = default;
 
 			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
@@ -9155,7 +9186,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9248,7 +9279,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9341,7 +9372,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Lake : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -9562,7 +9594,8 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<categoryOfVegetation>? categoryOfVegetationElement { get { return categoryOfVegetation.HasValue ? categoryOfVegetation : default; } set { } }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -9572,7 +9605,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -9582,7 +9615,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9684,7 +9717,8 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<categoryOfIce>? categoryOfIceElement { get { return categoryOfIce.HasValue ? categoryOfIce : default; } set { } }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -9694,7 +9728,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -9724,7 +9758,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -9961,7 +9995,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -10192,7 +10227,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -10350,7 +10385,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -10370,7 +10406,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefunction() { return function.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -10415,7 +10451,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -11004,7 +11040,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -11495,7 +11531,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -11505,7 +11541,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("liftingCapacity")]
-			public decimal? liftingCapacity {get;set;} = default;
+			public double? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
@@ -11560,7 +11596,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -11699,7 +11735,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("iceFactor")]
-			public decimal? iceFactor {get;set;} = default;
+			public double? iceFactor {get;set;} = default;
 
 			public bool ShouldSerializeiceFactor() { return iceFactor.HasValue; }
 
@@ -12093,7 +12129,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -12138,7 +12174,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -12318,7 +12354,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -12328,7 +12365,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -12368,7 +12405,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -12476,7 +12513,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -12901,7 +12938,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -12921,7 +12959,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefunction() { return function.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -12966,7 +13004,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -13150,7 +13188,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -13160,7 +13199,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -13215,7 +13254,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -13372,7 +13411,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -13387,7 +13427,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -13447,7 +13487,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -13601,7 +13641,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -13641,7 +13681,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -13787,7 +13827,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -13802,7 +13843,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -13842,7 +13883,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -14098,12 +14139,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -14128,7 +14169,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -14292,7 +14333,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -14322,7 +14363,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -14472,7 +14513,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -14502,7 +14543,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -14645,7 +14686,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -14655,12 +14696,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -14700,7 +14741,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -14869,7 +14910,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -14879,12 +14920,12 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -14954,7 +14995,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -15235,7 +15276,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -15469,7 +15510,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -15667,7 +15709,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -15702,7 +15744,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -15850,7 +15892,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -15860,7 +15902,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("liftingCapacity")]
-			public decimal? liftingCapacity {get;set;} = default;
+			public double? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
@@ -15875,7 +15917,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlElement("radius")]
-			public decimal? radius {get;set;} = default;
+			public double? radius {get;set;} = default;
 
 			public bool ShouldSerializeradius() { return radius.HasValue; }
 
@@ -15905,7 +15947,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -16045,12 +16087,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalClearanceLength")]
-			public decimal? horizontalClearanceLength {get;set;} = default;
+			public double? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
 			[XmlElement("horizontalClearanceWidth")]
-			public decimal? horizontalClearanceWidth {get;set;} = default;
+			public double? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
@@ -16060,12 +16102,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("minimumBerthDepth")]
-			public decimal? minimumBerthDepth {get;set;} = default;
+			public double? minimumBerthDepth {get;set;} = default;
 
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
@@ -16227,7 +16269,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -16242,7 +16285,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -16287,7 +16330,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -16555,12 +16598,14 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -16575,12 +16620,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalClearanceLength")]
-			public decimal? horizontalClearanceLength {get;set;} = default;
+			public double? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
 			[XmlElement("horizontalClearanceWidth")]
-			public decimal? horizontalClearanceWidth {get;set;} = default;
+			public double? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
@@ -16590,17 +16635,17 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -16729,7 +16774,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -16744,22 +16790,22 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalClearanceLength")]
-			public decimal? horizontalClearanceLength {get;set;} = default;
+			public double? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
 			[XmlElement("horizontalClearanceWidth")]
-			public decimal? horizontalClearanceWidth {get;set;} = default;
+			public double? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -16769,12 +16815,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("liftingCapacity")]
-			public decimal? liftingCapacity {get;set;} = default;
+			public double? liftingCapacity {get;set;} = default;
 
 			public bool ShouldSerializeliftingCapacity() { return liftingCapacity.HasValue; }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -16794,7 +16840,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -16953,7 +16999,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -17115,12 +17161,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
 			[XmlElement("horizontalClearanceLength")]
-			public decimal? horizontalClearanceLength {get;set;} = default;
+			public double? horizontalClearanceLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceLength() { return horizontalClearanceLength.HasValue; }
 
 			[XmlElement("horizontalClearanceWidth")]
-			public decimal? horizontalClearanceWidth {get;set;} = default;
+			public double? horizontalClearanceWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalClearanceWidth() { return horizontalClearanceWidth.HasValue; }
 
@@ -17130,7 +17176,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -17219,12 +17265,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -17254,7 +17300,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -17358,12 +17404,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializehorizontalClearanceFixed() { return horizontalClearanceFixed!=default; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -17979,10 +18025,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("stationName")]
+			[StringLengthConstraint(50)]
 			[UnknownValue]
 			public String? stationName {get;set;} = default;
 
 			[XmlElement("stationNumber")]
+			[StringLengthConstraint(15)]
 			public String? stationNumber {get;set;} = default;
 
 			public bool ShouldSerializestationNumber() { return !string.IsNullOrEmpty(stationNumber); }
@@ -18195,11 +18243,13 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DredgedArea : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMinimumValue")]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[UnknownValue]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlElement("depthRangeMaximumValue")]
-			public decimal? depthRangeMaximumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
@@ -18219,7 +18269,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -18336,8 +18386,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SweptArea : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMinimumValue")]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[UnknownValue]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -18433,7 +18484,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("valueOfDepthContour")]
 			[UnknownValue]
-			public decimal? valueOfDepthContour {get;set;} = default;
+			public double? valueOfDepthContour {get;set;} = default;
 
 			[XmlElement("scaleMinimum")]
 			public int? scaleMinimum {get;set;} = default;
@@ -18506,12 +18557,14 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DepthArea : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMinimumValue")]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[UnknownValue]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlElement("depthRangeMaximumValue")]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[UnknownValue]
-			public decimal? depthRangeMaximumValue {get;set;} = default;
+			public double? depthRangeMaximumValue {get;set;} = default;
 
 			[XmlElement("interoperabilityIdentifier")]
 			public String? interoperabilityIdentifier {get;set;} = default;
@@ -19016,7 +19069,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -19245,7 +19298,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("valueOfSounding")]
 			[UnknownValue]
-			public decimal? valueOfSounding {get;set;} = default;
+			public double? valueOfSounding {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5])]
@@ -19268,13 +19321,14 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			public decimal? defaultClearanceDepth {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
 			[XmlElement("surroundingDepth")]
 			[UnknownValue]
-			public decimal? surroundingDepth {get;set;} = default;
+			public double? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -19370,7 +19424,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -19420,7 +19474,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			public decimal? valueOfSounding {get;set;} = default;
+			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
@@ -19460,13 +19514,14 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			public decimal? defaultClearanceDepth {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
 			[XmlElement("surroundingDepth")]
 			[UnknownValue]
-			public decimal? surroundingDepth {get;set;} = default;
+			public double? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -19580,7 +19635,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -19590,7 +19645,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -19650,12 +19705,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			public decimal? valueOfSounding {get;set;} = default;
+			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -19680,13 +19735,14 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			public decimal? defaultClearanceDepth {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
 
 			[XmlElement("surroundingDepth")]
 			[UnknownValue]
-			public decimal? surroundingDepth {get;set;} = default;
+			public double? surroundingDepth {get;set;} = default;
 
 			[JsonIgnore]
 			[XmlIgnore]
@@ -19810,7 +19866,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			public decimal? valueOfSounding {get;set;} = default;
+			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
@@ -20028,7 +20084,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -20157,7 +20213,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -20202,12 +20258,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			public decimal? valueOfSounding {get;set;} = default;
+			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -20364,7 +20420,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeflareStack() { return flareStack.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -20404,7 +20460,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -20518,7 +20574,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class CableSubmarine : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("buriedDepth")]
-			public decimal? buriedDepth {get;set;} = default;
+			public double? buriedDepth {get;set;} = default;
 
 			public bool ShouldSerializeburiedDepth() { return buriedDepth.HasValue; }
 
@@ -20773,7 +20829,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PipelineSubmarineOnLand : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("buriedDepth")]
-			public decimal? buriedDepth {get;set;} = default;
+			public double? buriedDepth {get;set;} = default;
 
 			public bool ShouldSerializeburiedDepth() { return buriedDepth.HasValue; }
 
@@ -20798,12 +20854,14 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
 			[XmlElement("depthRangeMaximumValue")]
-			public decimal? depthRangeMaximumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMaximumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMaximumValue() { return depthRangeMaximumValue.HasValue; }
 
@@ -21114,7 +21172,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -21164,7 +21222,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -21389,7 +21447,8 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? basedOnFixedMarks {get;set;} = default;
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -21409,13 +21468,14 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlElement("periodicDateRange")]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
@@ -21576,7 +21636,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -21683,7 +21743,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Fairway : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -21703,12 +21764,13 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal? orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
+			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
@@ -21863,7 +21925,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -21962,7 +22024,8 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? basedOnFixedMarks {get;set;} = default;
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -21982,7 +22045,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			public decimal? orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
+			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
@@ -22136,7 +22200,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializebasedOnFixedMarks() { return basedOnFixedMarks.HasValue; }
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -22151,8 +22216,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6])]
@@ -22291,7 +22357,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -22399,8 +22465,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,6,9])]
@@ -22487,7 +22554,8 @@ namespace S100Framework.DomainModel.S101 {
 			public Boolean? basedOnFixedMarks {get;set;} = default;
 
 			[XmlElement("depthRangeMinimumValue")]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
 
@@ -22512,8 +22580,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7])]
@@ -22654,8 +22723,9 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DeepWaterRoutePart : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("depthRangeMinimumValue")]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			[UnknownValue]
-			public decimal? depthRangeMinimumValue {get;set;} = default;
+			public double? depthRangeMinimumValue {get;set;} = default;
 
 			[XmlElement("featureName")]
 			public List<featureName> featureName {get;set;} = [];
@@ -22678,8 +22748,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7])]
@@ -23185,7 +23256,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			public decimal? orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
+			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
@@ -23708,7 +23780,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
@@ -24149,8 +24221,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[Upper(2)]
-			public List<decimal> orientationValue {get;set;} = [];
+			public List<double> orientationValue {get;set;} = [];
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.Any(); }
 
@@ -24386,8 +24459,9 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
-			public decimal? orientationValue {get;set;} = default;
+			public double? orientationValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,7])]
@@ -24577,6 +24651,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadarStation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("callSign")]
+			[StringLengthConstraint(150)]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
@@ -24602,7 +24677,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -24627,7 +24702,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfMaximumRange")]
-			public decimal? valueOfMaximumRange {get;set;} = default;
+			public double? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
@@ -24878,12 +24953,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("maximumPermittedVesselLength")]
-			public decimal? maximumPermittedVesselLength {get;set;} = default;
+			public double? maximumPermittedVesselLength {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedVesselLength() { return maximumPermittedVesselLength.HasValue; }
 
@@ -25036,7 +25111,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
 			[XmlElement("radius")]
-			public decimal? radius {get;set;} = default;
+			public double? radius {get;set;} = default;
 
 			public bool ShouldSerializeradius() { return radius.HasValue; }
 
@@ -27330,6 +27405,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
 			[XmlElement("regulationCitation")]
+			[StringLengthConstraint(50)]
 			public String? regulationCitation {get;set;} = default;
 
 			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
@@ -27423,6 +27499,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("regulationCitation")]
+			[StringLengthConstraint(50)]
 			public String? regulationCitation {get;set;} = default;
 
 			public bool ShouldSerializeregulationCitation() { return !string.IsNullOrEmpty(regulationCitation); }
@@ -27684,7 +27761,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -27754,7 +27831,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -27769,7 +27846,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -27906,7 +27983,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -28099,7 +28176,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -28149,7 +28226,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -28280,7 +28357,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -28320,7 +28397,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfNominalRange")]
-			public decimal? valueOfNominalRange {get;set;} = default;
+			public double? valueOfNominalRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
@@ -28520,7 +28597,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -28731,7 +28808,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -28933,7 +29010,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -29135,7 +29212,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -29348,7 +29425,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -29535,7 +29612,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -29879,12 +29956,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("maximumPermittedDraught")]
-			public decimal? maximumPermittedDraught {get;set;} = default;
+			public double? maximumPermittedDraught {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("maximumPermittedVesselLength")]
-			public decimal? maximumPermittedVesselLength {get;set;} = default;
+			public double? maximumPermittedVesselLength {get;set;} = default;
 
 			public bool ShouldSerializemaximumPermittedVesselLength() { return maximumPermittedVesselLength.HasValue; }
 
@@ -29914,7 +29991,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -30080,7 +30157,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -30100,7 +30178,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -30155,7 +30233,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -30334,7 +30412,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -30349,7 +30428,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -30409,7 +30488,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -30579,7 +30658,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -30594,7 +30674,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -30654,7 +30734,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -30824,7 +30904,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -30839,7 +30920,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -30899,7 +30980,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -31080,7 +31161,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -31095,7 +31177,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -31155,7 +31237,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -31316,7 +31398,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -31331,7 +31414,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -31380,7 +31463,7 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<topmarkDaymarkShape>? topmarkDaymarkShapeElement { get { return topmarkDaymarkShape.HasValue ? topmarkDaymarkShape : default; } set { } }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -31544,12 +31627,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -31594,7 +31677,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -31747,12 +31830,12 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalLength")]
-			public decimal? horizontalLength {get;set;} = default;
+			public double? horizontalLength {get;set;} = default;
 
 			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
-			public decimal? horizontalWidth {get;set;} = default;
+			public double? horizontalWidth {get;set;} = default;
 
 			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
 
@@ -31792,7 +31875,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("verticalLength")]
-			public decimal? verticalLength {get;set;} = default;
+			public double? verticalLength {get;set;} = default;
 
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
@@ -31939,7 +32022,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -32047,7 +32130,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("height")]
-			public decimal? height {get;set;} = default;
+			public double? height {get;set;} = default;
 
 			public bool ShouldSerializeheight() { return height.HasValue; }
 
@@ -32194,13 +32277,14 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
 
 			[XmlElement("signalGroup")]
+			[StringLengthConstraint(15)]
 			public String? signalGroup {get;set;} = default;
 
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[XmlElement("signalPeriod")]
 			[DependentUnknownValue("lightCharacteristic")]
-			public decimal? signalPeriod {get;set;} = default;
+			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
@@ -32220,7 +32304,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfMaximumRange")]
-			public decimal? valueOfMaximumRange {get;set;} = default;
+			public double? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
@@ -32311,7 +32395,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
@@ -32331,6 +32416,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("mMSICode")]
+			[StringLengthConstraint(9)]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
@@ -32437,7 +32523,8 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VirtualAISAidToNavigation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
@@ -32457,6 +32544,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("mMSICode")]
+			[StringLengthConstraint(9)]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
@@ -32564,6 +32652,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RadioStation : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("callSign")]
+			[StringLengthConstraint(150)]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
@@ -32584,7 +32673,8 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
 			[XmlElement("estimatedRangeOfTransmission")]
-			public decimal? estimatedRangeOfTransmission {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			public double? estimatedRangeOfTransmission {get;set;} = default;
 
 			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
@@ -32742,6 +32832,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			[XmlElement("signalGroup")]
+			[StringLengthConstraint(15)]
 			public String? signalGroup {get;set;} = default;
 
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
@@ -32762,7 +32853,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfMaximumRange")]
-			public decimal? valueOfMaximumRange {get;set;} = default;
+			public double? valueOfMaximumRange {get;set;} = default;
 
 			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
@@ -32886,6 +32977,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
 			[XmlElement("destination")]
+			[StringLengthConstraint(100)]
 			public List<String> destination {get;set;} = [];
 
 			public bool ShouldSerializedestination() { return destination.Any(); }
@@ -33899,6 +33991,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("textOffsetBearing")]
+			[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public int? textOffsetBearing {get;set;} = default;
 

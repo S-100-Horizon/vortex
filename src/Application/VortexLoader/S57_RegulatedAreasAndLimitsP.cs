@@ -332,18 +332,18 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                instance.valueOfSounding = default(decimal?);
+                                instance.valueOfSounding = default(double?);
                             }
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
-                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
-                                instance.verticalLength = default(decimal?);
+                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
+                                instance.verticalLength = default(double?);
                             }
 
                             // TODO: VerticalUncertainty

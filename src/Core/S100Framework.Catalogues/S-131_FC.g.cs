@@ -2558,11 +2558,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class frequencyPair {
 			[XmlElement("frequencyShoreStationTransmits")]
+			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
 			public List<int> frequencyShoreStationTransmits {get;set;} = [];
 
 			public bool ShouldSerializefrequencyShoreStationTransmits() { return frequencyShoreStationTransmits.Any(); }
 
 			[XmlElement("frequencyShoreStationReceives")]
+			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
 			public List<int> frequencyShoreStationReceives {get;set;} = [];
 
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.Any(); }
@@ -2583,10 +2585,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class horizontalPositionUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			[PrecisionConstraint(1)]
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -2678,12 +2681,14 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation {
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(1)]
+			public double orientationValue {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2768,6 +2773,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -2844,10 +2850,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class verticalUncertainty {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			[PrecisionConstraint(1)]
+			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
-			public decimal? uncertaintyVariableFactor {get;set;} = default;
+			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
 		}
@@ -2878,7 +2885,7 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
-			public decimal vesselsCharacteristicsValue {get;set;} = default;
+			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,9])]
@@ -2933,13 +2940,15 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
 			[XmlElement("distance")]
-			public decimal? distance {get;set;} = default;
+			[PrecisionConstraint(1)]
+			public double? distance {get;set;} = default;
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
 			[Upper(2)]
-			public List<decimal> sectorBearing {get;set;} = [];
+			public List<double> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
 
@@ -3658,6 +3667,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -3818,6 +3828,8 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializelogicalConnectives() { return logicalConnectives.HasValue; }
 
 			[XmlElement("thicknessOfIceCapability")]
+			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(0)]
 			public int? thicknessOfIceCapability {get;set;} = default;
 
 			public bool ShouldSerializethicknessOfIceCapability() { return thicknessOfIceCapability.HasValue; }
@@ -4106,6 +4118,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[XmlElement("signalFrequency")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			public List<int> signalFrequency {get;set;} = [];
 
 			public bool ShouldSerializesignalFrequency() { return signalFrequency.Any(); }
@@ -4463,6 +4476,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializelocationMRN() { return !string.IsNullOrEmpty(locationMRN); }
 
 			[XmlElement("globalLocationNumber")]
+			[StringLengthConstraint(13)]
 			public String? globalLocationNumber {get;set;} = default;
 
 			public bool ShouldSerializeglobalLocationNumber() { return !string.IsNullOrEmpty(globalLocationNumber); }
@@ -4493,6 +4507,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
 			[XmlElement("source")]
+			[StringLengthConstraint(150)]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
@@ -4661,7 +4676,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class HarbourPhysicalInfrastructure : SupervisedArea {
 			[XmlElement("verticalClearanceValue")]
-			public decimal? verticalClearanceValue {get;set;} = default;
+			[RangeConstraint<double>(0.1, 100, Closure.closedInterval)]
+			public double? verticalClearanceValue {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 
@@ -4878,7 +4894,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : Layout {
 			[XmlElement("availableBerthingLength")]
-			public decimal? availableBerthingLength {get;set;} = default;
+			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
 
@@ -4888,17 +4905,20 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			public decimal? bollardPull {get;set;} = default;
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
 			[XmlElement("minimumBerthDepth")]
-			public decimal? minimumBerthDepth {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			public double? minimumBerthDepth {get;set;} = default;
 
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
 			[XmlElement("elevation")]
-			public decimal? elevation {get;set;} = default;
+			[RangeConstraint<double>(0, 8850, Closure.closedInterval)]
+			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
@@ -4966,6 +4986,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
 			[XmlElement("uNLocationCode")]
+			[StringLengthConstraint(20)]
 			public String uNLocationCode {get;set;} = string.Empty;
 
 			[XmlElement("terminalIdentifier")]
@@ -5046,7 +5067,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BerthPosition : Layout {
 			[XmlElement("availableBerthingLength")]
-			public decimal? availableBerthingLength {get;set;} = default;
+			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
 
@@ -5056,7 +5078,8 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			public decimal? bollardPull {get;set;} = default;
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
@@ -5237,7 +5260,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			public decimal? sillDepth {get;set;} = default;
+			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
@@ -5369,7 +5393,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			public decimal? sillDepth {get;set;} = default;
+			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
@@ -5421,7 +5446,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gridiron : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			public decimal? sillDepth {get;set;} = default;
+			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 
@@ -5473,6 +5499,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourAreaAdministrative : Layout {
 			[XmlElement("uNLocationCode")]
+			[StringLengthConstraint(20)]
 			public String? uNLocationCode {get;set;} = default;
 
 			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
@@ -5870,7 +5897,8 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			public decimal? bollardPull {get;set;} = default;
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
@@ -6234,6 +6262,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesMDGTerminalCode() { return !string.IsNullOrEmpty(sMDGTerminalCode); }
 
 			[XmlElement("uNLocationCode")]
+			[StringLengthConstraint(20)]
 			public String? uNLocationCode {get;set;} = default;
 
 			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
@@ -6477,9 +6506,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 			public int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
@@ -6531,7 +6562,9 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
 			[XmlElement("horizontalDistanceUncertainty")]
-			public decimal? horizontalDistanceUncertainty {get;set;} = default;
+			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
+			[PrecisionConstraint(1)]
+			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
@@ -6541,7 +6574,7 @@ namespace S100Framework.DomainModel.S131 {
 			};
 
 			[XmlElement("orientationUncertainty")]
-			public decimal? orientationUncertainty {get;set;} = default;
+			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
@@ -6701,7 +6734,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("orientationValue")]
-			public decimal orientationValue {get;set;} = default;
+			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[PrecisionConstraint(1)]
+			public double orientationValue {get;set;} = default;
 
 			[XmlElement("text")]
 			public String? text {get;set;} = default;

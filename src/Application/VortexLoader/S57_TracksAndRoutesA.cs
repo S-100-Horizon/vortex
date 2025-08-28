@@ -49,8 +49,8 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 1: { // DWRTPT_DeepWaterRoutePart
 
-                            var orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT!.Value : default(decimal?); 
-                            var depthValue = current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m ? current.DRVAL1!.Value : default(decimal?);
+                            var orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767d ? current.ORIENT!.Value : default(double?); 
+                            var depthValue = current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d ? current.DRVAL1!.Value : default(double?);
                             var trafficFlow = EnumHelper.GetEnumValue<DeepWaterRoutePart, trafficFlow>(current.TRAFIC!.Value);
 
                             var instance = new DeepWaterRoutePart {
@@ -72,7 +72,7 @@ namespace S100Framework.Applications
                             // TODO: InteroperabilityIdentifier
 
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = current.ORIENT.Value;
                             }
 
@@ -376,7 +376,7 @@ namespace S100Framework.Applications
 
                             // TODO: maximumPermittedDraught
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = current.ORIENT.Value;
                             }
 

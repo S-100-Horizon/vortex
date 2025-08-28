@@ -112,11 +112,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -242,11 +242,11 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: interoperabilityidentifier                            
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             if (current.MARSYS.HasValue) {
@@ -363,11 +363,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -490,11 +490,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1491,11 +1491,11 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1673,7 +1673,7 @@ namespace S100Framework.Applications
             foreach (var part in parts) {
                 string[] split = part.Split('-');
                 if (split.Length == 2) {
-                    if (decimal.TryParse(split[0], CultureInfo.InvariantCulture, out decimal waveLength)) {
+                    if (double.TryParse(split[0], CultureInfo.InvariantCulture, out double waveLength)) {
                         string band = split[1];
                         radarWaveLengths.Add(new radarWaveLength() {
                             radarBand = band,

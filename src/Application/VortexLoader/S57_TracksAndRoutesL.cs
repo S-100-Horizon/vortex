@@ -234,7 +234,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
@@ -247,7 +247,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = current.ORIENT.Value;
                             }
 
@@ -328,7 +328,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = new() { current.ORIENT.Value };
                             }
 
@@ -409,7 +409,7 @@ namespace S100Framework.Applications
 
                             // TODO: maximumPermittedDraught
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = current.ORIENT.Value;
                             }
 

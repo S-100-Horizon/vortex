@@ -91,7 +91,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal datum
@@ -197,7 +197,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -406,19 +406,19 @@ namespace S100Framework.Applications.S57.esri
         /// Value of local magnetic anomaly
         /// </summary>
         [Description("Value of local magnetic anomaly")]
-        internal decimal? VALLMA = default;
+        internal double? VALLMA = default;
 
         /// <summary>
         /// Value of annual change in magnetic variation
         /// </summary>
         [Description("Value of annual change in magnetic variation")]
-        internal decimal? VALACM = default;
+        internal double? VALACM = default;
 
         /// <summary>
         /// Value of magnetic variation
         /// </summary>
         [Description("Value of magnetic variation")]
-        internal decimal? VALMAG = default;
+        internal double? VALMAG = default;
 
         /// <summary>
         /// FCSubtype
@@ -436,13 +436,13 @@ namespace S100Framework.Applications.S57.esri
         /// Current velocity
         /// </summary>
         [Description("Current velocity")]
-        internal decimal? CURVEL = default;
+        internal double? CURVEL = default;
 
         /// <summary>
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -659,13 +659,13 @@ namespace S100Framework.Applications.S57.esri
                 RYRMGV = Convert.ToString(feature["RYRMGV"]);
             }
             if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-                VALLMA = Convert.ToDecimal(feature["VALLMA"]);
+                VALLMA = Convert.ToDouble(feature["VALLMA"]);
             }
             if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-                VALACM = Convert.ToDecimal(feature["VALACM"]);
+                VALACM = Convert.ToDouble(feature["VALACM"]);
             }
             if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-                VALMAG = Convert.ToDecimal(feature["VALMAG"]);
+                VALMAG = Convert.ToDouble(feature["VALMAG"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -675,10 +675,10 @@ namespace S100Framework.Applications.S57.esri
                 CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
             }
             if (DBNull.Value != feature["CURVEL"] && feature["CURVEL"] is not null) {
-                CURVEL = Convert.ToDecimal(feature["CURVEL"]);
+                CURVEL = Convert.ToDouble(feature["CURVEL"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -920,19 +920,19 @@ namespace S100Framework.Applications.S57.esri
         /// Value of local magnetic anomaly
         /// </summary>
         [Description("Value of local magnetic anomaly")]
-        internal decimal? VALLMA = default;
+        internal double? VALLMA = default;
 
         /// <summary>
         /// Value of annual change in magnetic variation
         /// </summary>
         [Description("Value of annual change in magnetic variation")]
-        internal decimal? VALACM = default;
+        internal double? VALACM = default;
 
         /// <summary>
         /// Value of magnetic variation
         /// </summary>
         [Description("Value of magnetic variation")]
-        internal decimal? VALMAG = default;
+        internal double? VALMAG = default;
 
         /// <summary>
         /// FCSubtype
@@ -1071,13 +1071,13 @@ namespace S100Framework.Applications.S57.esri
                 RYRMGV = Convert.ToString(feature["RYRMGV"]);
             }
             if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-                VALLMA = Convert.ToDecimal(feature["VALLMA"]);
+                VALLMA = Convert.ToDouble(feature["VALLMA"]);
             }
             if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-                VALACM = Convert.ToDecimal(feature["VALACM"]);
+                VALACM = Convert.ToDouble(feature["VALACM"]);
             }
             if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-                VALMAG = Convert.ToDecimal(feature["VALMAG"]);
+                VALMAG = Convert.ToDouble(feature["VALMAG"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -1281,19 +1281,19 @@ namespace S100Framework.Applications.S57.esri
         /// Value of local magnetic anomaly
         /// </summary>
         [Description("Value of local magnetic anomaly")]
-        internal decimal? VALLMA = default;
+        internal double? VALLMA = default;
 
         /// <summary>
         /// Value of annual change in magnetic variation
         /// </summary>
         [Description("Value of annual change in magnetic variation")]
-        internal decimal? VALACM = default;
+        internal double? VALACM = default;
 
         /// <summary>
         /// Value of magnetic variation
         /// </summary>
         [Description("Value of magnetic variation")]
-        internal decimal? VALMAG = default;
+        internal double? VALMAG = default;
 
         /// <summary>
         /// FCSubtype
@@ -1311,13 +1311,13 @@ namespace S100Framework.Applications.S57.esri
         /// Current velocity
         /// </summary>
         [Description("Current velocity")]
-        internal decimal? CURVEL = default;
+        internal double? CURVEL = default;
 
         /// <summary>
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -1419,7 +1419,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -1552,13 +1552,13 @@ namespace S100Framework.Applications.S57.esri
                 RYRMGV = Convert.ToString(feature["RYRMGV"]);
             }
             if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-                VALLMA = Convert.ToDecimal(feature["VALLMA"]);
+                VALLMA = Convert.ToDouble(feature["VALLMA"]);
             }
             if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-                VALACM = Convert.ToDecimal(feature["VALACM"]);
+                VALACM = Convert.ToDouble(feature["VALACM"]);
             }
             if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-                VALMAG = Convert.ToDecimal(feature["VALMAG"]);
+                VALMAG = Convert.ToDouble(feature["VALMAG"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -1568,10 +1568,10 @@ namespace S100Framework.Applications.S57.esri
                 CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
             }
             if (DBNull.Value != feature["CURVEL"] && feature["CURVEL"] is not null) {
-                CURVEL = Convert.ToDecimal(feature["CURVEL"]);
+                CURVEL = Convert.ToDouble(feature["CURVEL"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -1622,7 +1622,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -1822,13 +1822,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -1973,10 +1973,10 @@ namespace S100Framework.Applications.S57.esri
                 NATSUR = Convert.ToString(feature["NATSUR"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2183,13 +2183,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -2225,7 +2225,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -2358,10 +2358,10 @@ namespace S100Framework.Applications.S57.esri
                 NATSUR = Convert.ToString(feature["NATSUR"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2380,7 +2380,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -2580,13 +2580,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -2737,10 +2737,10 @@ namespace S100Framework.Applications.S57.esri
                 NATSUR = Convert.ToString(feature["NATSUR"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2974,7 +2974,7 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -3022,7 +3022,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -3040,13 +3040,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -3058,7 +3058,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -3221,7 +3221,7 @@ namespace S100Framework.Applications.S57.esri
                 EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -3245,7 +3245,7 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
@@ -3254,16 +3254,16 @@ namespace S100Framework.Applications.S57.esri
                 TECSOU = Convert.ToString(feature["TECSOU"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -3497,7 +3497,7 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -3545,7 +3545,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -3563,13 +3563,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -3581,7 +3581,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -3629,7 +3629,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -3774,7 +3774,7 @@ namespace S100Framework.Applications.S57.esri
                 EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -3798,7 +3798,7 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
@@ -3807,16 +3807,16 @@ namespace S100Framework.Applications.S57.esri
                 TECSOU = Convert.ToString(feature["TECSOU"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -3841,7 +3841,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -4065,7 +4065,7 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -4113,7 +4113,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -4131,13 +4131,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -4149,7 +4149,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -4324,7 +4324,7 @@ namespace S100Framework.Applications.S57.esri
                 EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -4348,7 +4348,7 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
@@ -4357,16 +4357,16 @@ namespace S100Framework.Applications.S57.esri
                 TECSOU = Convert.ToString(feature["TECSOU"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -4570,7 +4570,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -4582,13 +4582,13 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// FCSubtype
@@ -4600,7 +4600,7 @@ namespace S100Framework.Applications.S57.esri
         /// Value of depth contour
         /// </summary>
         [Description("Value of depth contour")]
-        internal decimal? VALDCO = default;
+        internal double? VALDCO = default;
 
         /// <summary>
         /// SCAMIN step
@@ -4727,23 +4727,23 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
                 base.FcSubtype = this.FCSUBTYPE.Value;
             }
             if (DBNull.Value != feature["VALDCO"] && feature["VALDCO"] is not null) {
-                VALDCO = Convert.ToDecimal(feature["VALDCO"]);
+                VALDCO = Convert.ToDouble(feature["VALDCO"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -4961,7 +4961,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -4973,25 +4973,25 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Buried depth
         /// </summary>
         [Description("Buried depth")]
-        internal decimal? BURDEP = default;
+        internal double? BURDEP = default;
 
         /// <summary>
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// FCSubtype
@@ -5145,22 +5145,22 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-                BURDEP = Convert.ToDecimal(feature["BURDEP"]);
+                BURDEP = Convert.ToDouble(feature["BURDEP"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -5385,7 +5385,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -5397,7 +5397,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -5451,7 +5451,7 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -5605,13 +5605,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -5639,7 +5639,7 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -5851,7 +5851,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -5982,7 +5982,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -6179,7 +6179,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -6233,13 +6233,13 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// Quality of sounding measurement
@@ -6251,7 +6251,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Technique of sounding measurement
@@ -6408,7 +6408,7 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -6435,16 +6435,16 @@ namespace S100Framework.Applications.S57.esri
                 CATTSS = Convert.ToInt32(feature["CATTSS"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["QUASOU"] && feature["QUASOU"] is not null) {
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["TECSOU"] && feature["TECSOU"] is not null) {
                 TECSOU = Convert.ToString(feature["TECSOU"]);
@@ -6657,7 +6657,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -6711,13 +6711,13 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// Quality of sounding measurement
@@ -6729,7 +6729,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Technique of sounding measurement
@@ -6880,7 +6880,7 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -6907,16 +6907,16 @@ namespace S100Framework.Applications.S57.esri
                 CATTSS = Convert.ToInt32(feature["CATTSS"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["QUASOU"] && feature["QUASOU"] is not null) {
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["TECSOU"] && feature["TECSOU"] is not null) {
                 TECSOU = Convert.ToString(feature["TECSOU"]);
@@ -7126,7 +7126,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -7180,7 +7180,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -7313,7 +7313,7 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -7341,7 +7341,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -7643,13 +7643,13 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Estimated range of transmission
         /// </summary>
         [Description("Estimated range of transmission")]
-        internal decimal? ESTRNG = default;
+        internal double? ESTRNG = default;
 
         /// <summary>
         /// Exhibition condition of light
@@ -7661,25 +7661,25 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Light characteristic
@@ -7715,7 +7715,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Periodic date end
@@ -7745,13 +7745,13 @@ namespace S100Framework.Applications.S57.esri
         /// Sector limit one
         /// </summary>
         [Description("Sector limit one")]
-        internal decimal? SECTR1 = default;
+        internal double? SECTR1 = default;
 
         /// <summary>
         /// Sector limit two
         /// </summary>
         [Description("Sector limit two")]
-        internal decimal? SECTR2 = default;
+        internal double? SECTR2 = default;
 
         /// <summary>
         /// Signal frequency
@@ -7775,7 +7775,7 @@ namespace S100Framework.Applications.S57.esri
         /// Signal period
         /// </summary>
         [Description("Signal period")]
-        internal decimal? SIGPER = default;
+        internal double? SIGPER = default;
 
         /// <summary>
         /// Signal sequence
@@ -7799,19 +7799,19 @@ namespace S100Framework.Applications.S57.esri
         /// Value of maximum range
         /// </summary>
         [Description("Value of maximum range")]
-        internal decimal? VALMXR = default;
+        internal double? VALMXR = default;
 
         /// <summary>
         /// Value of nominal range
         /// </summary>
         [Description("Value of nominal range")]
-        internal decimal? VALNMR = default;
+        internal double? VALNMR = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -7823,7 +7823,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -7847,7 +7847,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -8037,25 +8037,25 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["ESTRNG"] && feature["ESTRNG"] is not null) {
-                ESTRNG = Convert.ToDecimal(feature["ESTRNG"]);
+                ESTRNG = Convert.ToDouble(feature["ESTRNG"]);
             }
             if (DBNull.Value != feature["EXCLIT"] && feature["EXCLIT"] is not null) {
                 EXCLIT = Convert.ToInt32(feature["EXCLIT"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["LITCHR"] && feature["LITCHR"] is not null) {
                 LITCHR = Convert.ToInt32(feature["LITCHR"]);
@@ -8073,7 +8073,7 @@ namespace S100Framework.Applications.S57.esri
                 NATCON = Convert.ToString(feature["NATCON"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -8088,10 +8088,10 @@ namespace S100Framework.Applications.S57.esri
                 RADWAL = Convert.ToString(feature["RADWAL"]);
             }
             if (DBNull.Value != feature["SECTR1"] && feature["SECTR1"] is not null) {
-                SECTR1 = Convert.ToDecimal(feature["SECTR1"]);
+                SECTR1 = Convert.ToDouble(feature["SECTR1"]);
             }
             if (DBNull.Value != feature["SECTR2"] && feature["SECTR2"] is not null) {
-                SECTR2 = Convert.ToDecimal(feature["SECTR2"]);
+                SECTR2 = Convert.ToDouble(feature["SECTR2"]);
             }
             if (DBNull.Value != feature["SIGFRQ"] && feature["SIGFRQ"] is not null) {
                 SIGFRQ = Convert.ToInt32(feature["SIGFRQ"]);
@@ -8103,7 +8103,7 @@ namespace S100Framework.Applications.S57.esri
                 SIGGRP = Convert.ToString(feature["SIGGRP"]);
             }
             if (DBNull.Value != feature["SIGPER"] && feature["SIGPER"] is not null) {
-                SIGPER = Convert.ToDecimal(feature["SIGPER"]);
+                SIGPER = Convert.ToDouble(feature["SIGPER"]);
             }
             if (DBNull.Value != feature["SIGSEQ"] && feature["SIGSEQ"] is not null) {
                 SIGSEQ = Convert.ToString(feature["SIGSEQ"]);
@@ -8115,19 +8115,19 @@ namespace S100Framework.Applications.S57.esri
                 TOPSHP = Convert.ToInt32(feature["TOPSHP"]);
             }
             if (DBNull.Value != feature["VALMXR"] && feature["VALMXR"] is not null) {
-                VALMXR = Convert.ToDecimal(feature["VALMXR"]);
+                VALMXR = Convert.ToDouble(feature["VALMXR"]);
             }
             if (DBNull.Value != feature["VALNMR"] && feature["VALNMR"] is not null) {
-                VALNMR = Convert.ToDecimal(feature["VALNMR"]);
+                VALNMR = Convert.ToDouble(feature["VALNMR"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -8140,7 +8140,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -8339,13 +8339,13 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Periodic date end
@@ -8369,7 +8369,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -8381,7 +8381,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -8517,10 +8517,10 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
                 PEREND = Convert.ToString(feature["PEREND"]);
@@ -8532,13 +8532,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -9154,7 +9154,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -9309,7 +9309,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -10056,7 +10056,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -10238,7 +10238,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -10877,7 +10877,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -10889,13 +10889,13 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// FCSubtype
@@ -11040,16 +11040,16 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -11247,7 +11247,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -11265,7 +11265,7 @@ namespace S100Framework.Applications.S57.esri
         /// Depth
         /// </summary>
         [Description("Depth")]
-        internal decimal? DEPTH = default;
+        internal double? DEPTH = default;
 
         /// <summary>
         /// Exposition of sounding
@@ -11295,7 +11295,7 @@ namespace S100Framework.Applications.S57.esri
         /// Entry date
         /// </summary>
         [Description("Entry date")]
-        internal decimal? ENTRY_DATE = default;
+        internal double? ENTRY_DATE = default;
 
         /// <summary>
         /// SCAMIN step
@@ -11343,7 +11343,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -11434,7 +11434,7 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
@@ -11444,7 +11444,7 @@ namespace S100Framework.Applications.S57.esri
                 base.FcSubtype = this.FCSUBTYPE.Value;
             }
             if (DBNull.Value != feature["DEPTH"] && feature["DEPTH"] is not null) {
-                DEPTH = Convert.ToDecimal(feature["DEPTH"]);
+                DEPTH = Convert.ToDouble(feature["DEPTH"]);
             }
             if (DBNull.Value != feature["EXPSOU"] && feature["EXPSOU"] is not null) {
                 EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
@@ -11459,7 +11459,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["ENTRY_DATE"] && feature["ENTRY_DATE"] is not null) {
-                ENTRY_DATE = Convert.ToDecimal(feature["ENTRY_DATE"]);
+                ENTRY_DATE = Convert.ToDouble(feature["ENTRY_DATE"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -11483,7 +11483,7 @@ namespace S100Framework.Applications.S57.esri
                 NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -11707,43 +11707,43 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Lifting capacity
         /// </summary>
         [Description("Lifting capacity")]
-        internal decimal? LIFCAP = default;
+        internal double? LIFCAP = default;
 
         /// <summary>
         /// Nature of construction
@@ -11773,7 +11773,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -11785,13 +11785,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical datum
@@ -11803,7 +11803,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -11899,7 +11899,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Pilot district
@@ -11911,7 +11911,7 @@ namespace S100Framework.Applications.S57.esri
         /// Radius
         /// </summary>
         [Description("Radius")]
-        internal decimal? RADIUS = default;
+        internal double? RADIUS = default;
 
         /// <summary>
         /// SCAMIN step
@@ -11929,7 +11929,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -12083,25 +12083,25 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-                LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
+                LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -12116,22 +12116,22 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -12180,13 +12180,13 @@ namespace S100Framework.Applications.S57.esri
                 NPLDST = Convert.ToString(feature["NPLDST"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PILDST"] && feature["PILDST"] is not null) {
                 PILDST = Convert.ToString(feature["PILDST"]);
             }
             if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-                RADIUS = Convert.ToDecimal(feature["RADIUS"]);
+                RADIUS = Convert.ToDouble(feature["RADIUS"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -12195,7 +12195,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -12437,43 +12437,43 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Lifting capacity
         /// </summary>
         [Description("Lifting capacity")]
-        internal decimal? LIFCAP = default;
+        internal double? LIFCAP = default;
 
         /// <summary>
         /// Nature of construction
@@ -12503,7 +12503,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -12515,13 +12515,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical datum
@@ -12533,7 +12533,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -12705,25 +12705,25 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-                LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
+                LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -12738,22 +12738,22 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -13005,43 +13005,43 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Lifting capacity
         /// </summary>
         [Description("Lifting capacity")]
-        internal decimal? LIFCAP = default;
+        internal double? LIFCAP = default;
 
         /// <summary>
         /// Nature of construction
@@ -13071,7 +13071,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -13083,13 +13083,13 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical datum
@@ -13101,7 +13101,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -13179,7 +13179,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Pilot district
@@ -13191,7 +13191,7 @@ namespace S100Framework.Applications.S57.esri
         /// Radius
         /// </summary>
         [Description("Radius")]
-        internal decimal? RADIUS = default;
+        internal double? RADIUS = default;
 
         /// <summary>
         /// SCAMIN step
@@ -13345,25 +13345,25 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-                LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
+                LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -13378,22 +13378,22 @@ namespace S100Framework.Applications.S57.esri
                 QUASOU = Convert.ToString(feature["QUASOU"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -13433,13 +13433,13 @@ namespace S100Framework.Applications.S57.esri
                 NPLDST = Convert.ToString(feature["NPLDST"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PILDST"] && feature["PILDST"] is not null) {
                 PILDST = Convert.ToString(feature["PILDST"]);
             }
             if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-                RADIUS = Convert.ToDecimal(feature["RADIUS"]);
+                RADIUS = Convert.ToDouble(feature["RADIUS"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -13621,7 +13621,7 @@ namespace S100Framework.Applications.S57.esri
         /// Buried depth
         /// </summary>
         [Description("Buried depth")]
-        internal decimal? BURDEP = default;
+        internal double? BURDEP = default;
 
         /// <summary>
         /// Category of bridge
@@ -13705,7 +13705,7 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Function
@@ -13717,19 +13717,19 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Nature of construction
@@ -13765,25 +13765,25 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance, closed
         /// </summary>
         [Description("Vertical clearance, closed")]
-        internal decimal? VERCCL = default;
+        internal double? VERCCL = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical clearance, open
         /// </summary>
         [Description("Vertical clearance, open")]
-        internal decimal? VERCOP = default;
+        internal double? VERCOP = default;
 
         /// <summary>
         /// Vertical datum
@@ -13795,7 +13795,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -13849,7 +13849,7 @@ namespace S100Framework.Applications.S57.esri
         /// Lifting capacity
         /// </summary>
         [Description("Lifting capacity")]
-        internal decimal? LIFCAP = default;
+        internal double? LIFCAP = default;
 
         /// <summary>
         /// Water level effect
@@ -13979,7 +13979,7 @@ namespace S100Framework.Applications.S57.esri
                 IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
             }
             if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-                BURDEP = Convert.ToDecimal(feature["BURDEP"]);
+                BURDEP = Convert.ToDouble(feature["BURDEP"]);
             }
             if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
                 CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -14021,19 +14021,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
                 FUNCTN = Convert.ToString(feature["FUNCTN"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -14051,22 +14051,22 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-                VERCCL = Convert.ToDecimal(feature["VERCCL"]);
+                VERCCL = Convert.ToDouble(feature["VERCCL"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-                VERCOP = Convert.ToDecimal(feature["VERCOP"]);
+                VERCOP = Convert.ToDouble(feature["VERCOP"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -14094,7 +14094,7 @@ namespace S100Framework.Applications.S57.esri
                 CATSIL = Convert.ToInt32(feature["CATSIL"]);
             }
             if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-                LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
+                LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -14279,7 +14279,7 @@ namespace S100Framework.Applications.S57.esri
         /// Buried depth
         /// </summary>
         [Description("Buried depth")]
-        internal decimal? BURDEP = default;
+        internal double? BURDEP = default;
 
         /// <summary>
         /// Category of bridge
@@ -14363,7 +14363,7 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Function
@@ -14375,19 +14375,19 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Nature of construction
@@ -14423,25 +14423,25 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance, closed
         /// </summary>
         [Description("Vertical clearance, closed")]
-        internal decimal? VERCCL = default;
+        internal double? VERCCL = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical clearance, open
         /// </summary>
         [Description("Vertical clearance, open")]
-        internal decimal? VERCOP = default;
+        internal double? VERCOP = default;
 
         /// <summary>
         /// Vertical datum
@@ -14453,7 +14453,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -14489,19 +14489,19 @@ namespace S100Framework.Applications.S57.esri
         /// Ice factor
         /// </summary>
         [Description("Ice factor")]
-        internal decimal? ICEFAC = default;
+        internal double? ICEFAC = default;
 
         /// <summary>
         /// Lifting capacity
         /// </summary>
         [Description("Lifting capacity")]
-        internal decimal? LIFCAP = default;
+        internal double? LIFCAP = default;
 
         /// <summary>
         /// Vertical clearance, safe
         /// </summary>
         [Description("Vertical clearance, safe")]
-        internal decimal? VERCSA = default;
+        internal double? VERCSA = default;
 
         /// <summary>
         /// SCAMIN step
@@ -14625,7 +14625,7 @@ namespace S100Framework.Applications.S57.esri
                 IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
             }
             if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-                BURDEP = Convert.ToDecimal(feature["BURDEP"]);
+                BURDEP = Convert.ToDouble(feature["BURDEP"]);
             }
             if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
                 CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -14667,19 +14667,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
                 FUNCTN = Convert.ToString(feature["FUNCTN"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -14697,22 +14697,22 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-                VERCCL = Convert.ToDecimal(feature["VERCCL"]);
+                VERCCL = Convert.ToDouble(feature["VERCCL"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-                VERCOP = Convert.ToDecimal(feature["VERCOP"]);
+                VERCOP = Convert.ToDouble(feature["VERCOP"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -14731,13 +14731,13 @@ namespace S100Framework.Applications.S57.esri
                 CATPIP = Convert.ToString(feature["CATPIP"]);
             }
             if (DBNull.Value != feature["ICEFAC"] && feature["ICEFAC"] is not null) {
-                ICEFAC = Convert.ToDecimal(feature["ICEFAC"]);
+                ICEFAC = Convert.ToDouble(feature["ICEFAC"]);
             }
             if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-                LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
+                LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
             }
             if (DBNull.Value != feature["VERCSA"] && feature["VERCSA"] is not null) {
-                VERCSA = Convert.ToDecimal(feature["VERCSA"]);
+                VERCSA = Convert.ToDouble(feature["VERCSA"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -14919,7 +14919,7 @@ namespace S100Framework.Applications.S57.esri
         /// Buried depth
         /// </summary>
         [Description("Buried depth")]
-        internal decimal? BURDEP = default;
+        internal double? BURDEP = default;
 
         /// <summary>
         /// Category of bridge
@@ -15003,7 +15003,7 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Function
@@ -15015,19 +15015,19 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Nature of construction
@@ -15063,25 +15063,25 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical clearance, closed
         /// </summary>
         [Description("Vertical clearance, closed")]
-        internal decimal? VERCCL = default;
+        internal double? VERCCL = default;
 
         /// <summary>
         /// Vertical clearance
         /// </summary>
         [Description("Vertical clearance")]
-        internal decimal? VERCLR = default;
+        internal double? VERCLR = default;
 
         /// <summary>
         /// Vertical clearance, open
         /// </summary>
         [Description("Vertical clearance, open")]
-        internal decimal? VERCOP = default;
+        internal double? VERCOP = default;
 
         /// <summary>
         /// Vertical datum
@@ -15093,7 +15093,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -15165,7 +15165,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -15289,7 +15289,7 @@ namespace S100Framework.Applications.S57.esri
                 IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
             }
             if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-                BURDEP = Convert.ToDecimal(feature["BURDEP"]);
+                BURDEP = Convert.ToDouble(feature["BURDEP"]);
             }
             if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
                 CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -15331,19 +15331,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
                 FUNCTN = Convert.ToString(feature["FUNCTN"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -15361,22 +15361,22 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-                VERCCL = Convert.ToDecimal(feature["VERCCL"]);
+                VERCCL = Convert.ToDouble(feature["VERCCL"]);
             }
             if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-                VERCLR = Convert.ToDecimal(feature["VERCLR"]);
+                VERCLR = Convert.ToDouble(feature["VERCLR"]);
             }
             if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-                VERCOP = Convert.ToDecimal(feature["VERCOP"]);
+                VERCOP = Convert.ToDouble(feature["VERCOP"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -15413,7 +15413,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -15631,13 +15631,13 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -15667,7 +15667,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -15679,7 +15679,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -15721,7 +15721,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -15863,10 +15863,10 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -15881,13 +15881,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -15909,7 +15909,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -16127,13 +16127,13 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -16163,7 +16163,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -16175,7 +16175,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -16323,10 +16323,10 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -16341,13 +16341,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -16569,13 +16569,13 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -16605,7 +16605,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -16617,7 +16617,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// FCSubtype
@@ -16783,10 +16783,10 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -16801,13 +16801,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -17050,31 +17050,31 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Nature of construction
@@ -17092,7 +17092,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -17104,7 +17104,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -17128,7 +17128,7 @@ namespace S100Framework.Applications.S57.esri
         /// Elevation
         /// </summary>
         [Description("Elevation")]
-        internal decimal? ELEVAT = default;
+        internal double? ELEVAT = default;
 
         /// <summary>
         /// SCAMIN step
@@ -17276,19 +17276,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -17297,13 +17297,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -17316,7 +17316,7 @@ namespace S100Framework.Applications.S57.esri
                 CATCOA = Convert.ToInt32(feature["CATCOA"]);
             }
             if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-                ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
+                ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -17546,31 +17546,31 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Nature of construction
@@ -17588,7 +17588,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -17600,7 +17600,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -17630,7 +17630,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -17778,19 +17778,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -17799,13 +17799,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -17821,7 +17821,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -18051,31 +18051,31 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal clearance
         /// </summary>
         [Description("Horizontal clearance")]
-        internal decimal? HORCLR = default;
+        internal double? HORCLR = default;
 
         /// <summary>
         /// Horizontal length
         /// </summary>
         [Description("Horizontal length")]
-        internal decimal? HORLEN = default;
+        internal double? HORLEN = default;
 
         /// <summary>
         /// Horizontal width
         /// </summary>
         [Description("Horizontal width")]
-        internal decimal? HORWID = default;
+        internal double? HORWID = default;
 
         /// <summary>
         /// Nature of construction
@@ -18093,7 +18093,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -18105,7 +18105,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -18265,19 +18265,19 @@ namespace S100Framework.Applications.S57.esri
                 DATSTA = Convert.ToString(feature["DATSTA"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-                HORCLR = Convert.ToDecimal(feature["HORCLR"]);
+                HORCLR = Convert.ToDouble(feature["HORCLR"]);
             }
             if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-                HORLEN = Convert.ToDecimal(feature["HORLEN"]);
+                HORLEN = Convert.ToDouble(feature["HORLEN"]);
             }
             if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-                HORWID = Convert.ToDecimal(feature["HORWID"]);
+                HORWID = Convert.ToDouble(feature["HORWID"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -18286,13 +18286,13 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -18535,7 +18535,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -18547,13 +18547,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -18565,7 +18565,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -18728,22 +18728,22 @@ namespace S100Framework.Applications.S57.esri
                 RESTRN = Convert.ToString(feature["RESTRN"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -18986,7 +18986,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -18998,13 +18998,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -19016,7 +19016,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -19046,7 +19046,7 @@ namespace S100Framework.Applications.S57.esri
         /// Radius
         /// </summary>
         [Description("Radius")]
-        internal decimal? RADIUS = default;
+        internal double? RADIUS = default;
 
         /// <summary>
         /// SCAMIN step
@@ -19064,7 +19064,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -19215,22 +19215,22 @@ namespace S100Framework.Applications.S57.esri
                 RESTRN = Convert.ToString(feature["RESTRN"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -19246,7 +19246,7 @@ namespace S100Framework.Applications.S57.esri
                 CATDPG = Convert.ToString(feature["CATDPG"]);
             }
             if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-                RADIUS = Convert.ToDecimal(feature["RADIUS"]);
+                RADIUS = Convert.ToDouble(feature["RADIUS"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -19255,7 +19255,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -19491,7 +19491,7 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Status
@@ -19503,13 +19503,13 @@ namespace S100Framework.Applications.S57.esri
         /// Value of sounding
         /// </summary>
         [Description("Value of sounding")]
-        internal decimal? VALSOU = default;
+        internal double? VALSOU = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -19521,7 +19521,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Water level effect
@@ -19563,7 +19563,7 @@ namespace S100Framework.Applications.S57.esri
         /// Radius
         /// </summary>
         [Description("Radius")]
-        internal decimal? RADIUS = default;
+        internal double? RADIUS = default;
 
         /// <summary>
         /// SCAMIN step
@@ -19714,22 +19714,22 @@ namespace S100Framework.Applications.S57.esri
                 RESTRN = Convert.ToString(feature["RESTRN"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-                VALSOU = Convert.ToDecimal(feature["VALSOU"]);
+                VALSOU = Convert.ToDouble(feature["VALSOU"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
                 WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -19751,7 +19751,7 @@ namespace S100Framework.Applications.S57.esri
                 JRSDTN = Convert.ToInt32(feature["JRSDTN"]);
             }
             if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-                RADIUS = Convert.ToDecimal(feature["RADIUS"]);
+                RADIUS = Convert.ToDouble(feature["RADIUS"]);
             }
             if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
                 SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -19957,13 +19957,13 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding distance - minimum
         /// </summary>
         [Description("Sounding distance - minimum")]
-        internal decimal? SDISMN = default;
+        internal double? SDISMN = default;
 
         /// <summary>
         /// Sounding distance - maximum
         /// </summary>
         [Description("Sounding distance - maximum")]
-        internal decimal? SDISMX = default;
+        internal double? SDISMX = default;
 
         /// <summary>
         /// Survey authority
@@ -20023,19 +20023,19 @@ namespace S100Framework.Applications.S57.esri
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// Horizontal accuracy
         /// </summary>
         [Description("Horizontal accuracy")]
-        internal decimal? HORACC = default;
+        internal double? HORACC = default;
 
         /// <summary>
         /// Horizontal datum
@@ -20053,7 +20053,7 @@ namespace S100Framework.Applications.S57.esri
         /// Orientation
         /// </summary>
         [Description("Orientation")]
-        internal decimal? ORIENT = default;
+        internal double? ORIENT = default;
 
         /// <summary>
         /// Publication reference
@@ -20065,7 +20065,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? POSACC = default;
+        internal double? POSACC = default;
 
         /// <summary>
         /// Shift parameters
@@ -20077,13 +20077,13 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding accuracy
         /// </summary>
         [Description("Sounding accuracy")]
-        internal decimal? SOUACC = default;
+        internal double? SOUACC = default;
 
         /// <summary>
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -20225,10 +20225,10 @@ namespace S100Framework.Applications.S57.esri
                 SCVAL2 = Convert.ToInt32(feature["SCVAL2"]);
             }
             if (DBNull.Value != feature["SDISMN"] && feature["SDISMN"] is not null) {
-                SDISMN = Convert.ToDecimal(feature["SDISMN"]);
+                SDISMN = Convert.ToDouble(feature["SDISMN"]);
             }
             if (DBNull.Value != feature["SDISMX"] && feature["SDISMX"] is not null) {
-                SDISMX = Convert.ToDecimal(feature["SDISMX"]);
+                SDISMX = Convert.ToDouble(feature["SDISMX"]);
             }
             if (DBNull.Value != feature["SURATH"] && feature["SURATH"] is not null) {
                 SURATH = Convert.ToString(feature["SURATH"]);
@@ -20259,13 +20259,13 @@ namespace S100Framework.Applications.S57.esri
                 CSCALE = Convert.ToInt32(feature["CSCALE"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-                HORACC = Convert.ToDecimal(feature["HORACC"]);
+                HORACC = Convert.ToDouble(feature["HORACC"]);
             }
             if (DBNull.Value != feature["HORDAT"] && feature["HORDAT"] is not null) {
                 HORDAT = Convert.ToInt32(feature["HORDAT"]);
@@ -20274,22 +20274,22 @@ namespace S100Framework.Applications.S57.esri
                 MARSYS = Convert.ToInt32(feature["MARSYS"]);
             }
             if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-                ORIENT = Convert.ToDecimal(feature["ORIENT"]);
+                ORIENT = Convert.ToDouble(feature["ORIENT"]);
             }
             if (DBNull.Value != feature["PUBREF"] && feature["PUBREF"] is not null) {
                 PUBREF = Convert.ToString(feature["PUBREF"]);
             }
             if (DBNull.Value != feature["POSACC"] && feature["POSACC"] is not null) {
-                POSACC = Convert.ToDecimal(feature["POSACC"]);
+                POSACC = Convert.ToDouble(feature["POSACC"]);
             }
             if (DBNull.Value != feature["SHIPAM"] && feature["SHIPAM"] is not null) {
                 SHIPAM = Convert.ToString(feature["SHIPAM"]);
             }
             if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-                SOUACC = Convert.ToDecimal(feature["SOUACC"]);
+                SOUACC = Convert.ToDouble(feature["SOUACC"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
@@ -20498,13 +20498,13 @@ namespace S100Framework.Applications.S57.esri
         /// Sounding distance - minimum
         /// </summary>
         [Description("Sounding distance - minimum")]
-        internal decimal? SDISMN = default;
+        internal double? SDISMN = default;
 
         /// <summary>
         /// Sounding distance - maximum
         /// </summary>
         [Description("Sounding distance - maximum")]
-        internal decimal? SDISMX = default;
+        internal double? SDISMX = default;
 
         /// <summary>
         /// Survey authority
@@ -20676,10 +20676,10 @@ namespace S100Framework.Applications.S57.esri
                 SCVAL2 = Convert.ToInt32(feature["SCVAL2"]);
             }
             if (DBNull.Value != feature["SDISMN"] && feature["SDISMN"] is not null) {
-                SDISMN = Convert.ToDecimal(feature["SDISMN"]);
+                SDISMN = Convert.ToDouble(feature["SDISMN"]);
             }
             if (DBNull.Value != feature["SDISMX"] && feature["SDISMX"] is not null) {
-                SDISMX = Convert.ToDecimal(feature["SDISMX"]);
+                SDISMX = Convert.ToDouble(feature["SDISMX"]);
             }
             if (DBNull.Value != feature["SURATH"] && feature["SURATH"] is not null) {
                 SURATH = Convert.ToString(feature["SURATH"]);
@@ -20916,7 +20916,7 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical accuracy
         /// </summary>
         [Description("Vertical accuracy")]
-        internal decimal? VERACC = default;
+        internal double? VERACC = default;
 
         /// <summary>
         /// Vertical datum
@@ -20928,25 +20928,25 @@ namespace S100Framework.Applications.S57.esri
         /// Vertical length
         /// </summary>
         [Description("Vertical length")]
-        internal decimal? VERLEN = default;
+        internal double? VERLEN = default;
 
         /// <summary>
         /// Buried depth
         /// </summary>
         [Description("Buried depth")]
-        internal decimal? BURDEP = default;
+        internal double? BURDEP = default;
 
         /// <summary>
         /// Depth range value 1
         /// </summary>
         [Description("Depth range value 1")]
-        internal decimal? DRVAL1 = default;
+        internal double? DRVAL1 = default;
 
         /// <summary>
         /// Depth range value 2
         /// </summary>
         [Description("Depth range value 2")]
-        internal decimal? DRVAL2 = default;
+        internal double? DRVAL2 = default;
 
         /// <summary>
         /// FCSubtype
@@ -20988,7 +20988,7 @@ namespace S100Framework.Applications.S57.esri
         /// Height
         /// </summary>
         [Description("Height")]
-        internal decimal? HEIGHT = default;
+        internal double? HEIGHT = default;
 
         /// <summary>
         /// Nature of construction
@@ -21018,7 +21018,7 @@ namespace S100Framework.Applications.S57.esri
         /// Positional Accuracy
         /// </summary>
         [Description("Positional Accuracy")]
-        internal decimal? P_POSACC = default;
+        internal double? P_POSACC = default;
 
         /// <summary>
         /// Horizontal Datum
@@ -21160,22 +21160,22 @@ namespace S100Framework.Applications.S57.esri
                 STATUS = Convert.ToString(feature["STATUS"]);
             }
             if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-                VERACC = Convert.ToDecimal(feature["VERACC"]);
+                VERACC = Convert.ToDouble(feature["VERACC"]);
             }
             if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
                 VERDAT = Convert.ToInt32(feature["VERDAT"]);
             }
             if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-                VERLEN = Convert.ToDecimal(feature["VERLEN"]);
+                VERLEN = Convert.ToDouble(feature["VERLEN"]);
             }
             if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-                BURDEP = Convert.ToDecimal(feature["BURDEP"]);
+                BURDEP = Convert.ToDouble(feature["BURDEP"]);
             }
             if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-                DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
+                DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
             }
             if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-                DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
+                DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
             }
             if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
                 FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -21197,7 +21197,7 @@ namespace S100Framework.Applications.S57.esri
                 CONVIS = Convert.ToInt32(feature["CONVIS"]);
             }
             if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-                HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
+                HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
             }
             if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
                 NATCON = Convert.ToString(feature["NATCON"]);
@@ -21212,7 +21212,7 @@ namespace S100Framework.Applications.S57.esri
                 P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
             }
             if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-                P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
+                P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
             }
             if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
                 P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -22277,7 +22277,7 @@ namespace S100Framework.Applications.S57.esri
         /// Entry date
         /// </summary>
         [Description("Entry date")]
-        internal decimal? ENTRY_DATE = default;
+        internal double? ENTRY_DATE = default;
 
         /// <summary>
         /// Source universal ID
@@ -22384,7 +22384,7 @@ namespace S100Framework.Applications.S57.esri
                 DEST_UID = Convert.ToString(row["DEST_UID"]);
             }
             if (DBNull.Value != row["ENTRY_DATE"] && row["ENTRY_DATE"] is not null) {
-                ENTRY_DATE = Convert.ToDecimal(row["ENTRY_DATE"]);
+                ENTRY_DATE = Convert.ToDouble(row["ENTRY_DATE"]);
             }
             if (DBNull.Value != row["SRC_UID"] && row["SRC_UID"] is not null) {
                 SRC_UID = Convert.ToString(row["SRC_UID"]);

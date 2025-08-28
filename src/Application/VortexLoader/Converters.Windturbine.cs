@@ -35,11 +35,11 @@ namespace S100Framework.Applications
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
             // TODO: interoperabilityIdentifier
@@ -70,13 +70,13 @@ namespace S100Framework.Applications
 
             instance.verticalClearanceFixed = new() {
                 verticalUncertainty = new() {
-                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
-                    uncertaintyVariableFactor = default(decimal?)
+                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
+                    uncertaintyVariableFactor = default(double?)
                 },
-                //verticalClearanceValue = default(decimal?)
-                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
-                //verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                //verticalClearanceValue = default(double?)
+                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
+                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
+                //verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL.Value : default(double?),
             };
 
 

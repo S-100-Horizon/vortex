@@ -224,11 +224,11 @@ if (current.STATUS != default) {
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -239,8 +239,8 @@ if (current.STATUS != default) {
 
                             if (current.ORIENT.HasValue) {
                                 instance.orientation = new() {
-                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT : default(decimal?),
-                                    orientationUncertainty = default(decimal?)
+                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767d ? current.ORIENT : default(double?),
+                                    orientationUncertainty = default(double?)
                                 };
                             }
 
@@ -248,11 +248,11 @@ if (current.STATUS != default) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-                            if (current.RADIUS.HasValue && current.RADIUS.Value != -32767m) {
+                            if (current.RADIUS.HasValue && current.RADIUS.Value != -32767d) {
                                 instance.radius = current.RADIUS.Value;
                             }
                             else {
-                                instance.radius = default(decimal?);
+                                instance.radius = default(double?);
                             }
 
 
@@ -262,22 +262,22 @@ if (current.STATUS != default) {
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
                                 // TODO: verticalClearanceValue
-                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
-                                // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
+                                // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(double?),
                             };
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
 
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
-                                instance.verticalLength = default(decimal?);
+                                instance.verticalLength = default(double?);
                             }
 
 
@@ -347,8 +347,8 @@ if (current.STATUS != default) {
                             }
 
                             instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             // TODO: horizontalClearanceLength
@@ -402,7 +402,7 @@ if (current.STATUS != default) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
@@ -493,11 +493,11 @@ if (current.STATUS != default) {
                             }
 
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -517,11 +517,11 @@ if (current.STATUS != default) {
                                 }
                             }
 
-if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
-                                instance.verticalLength = default(decimal?);
+                                instance.verticalLength = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -573,7 +573,7 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
@@ -671,15 +671,15 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767m) {
+                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             instance.horizontalClearanceOpen = new horizontalClearanceOpen() {
-                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             // TODO: interoperabilityIdentifier
@@ -698,11 +698,11 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
 
                             instance.verticalClearanceOpen = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
-                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(decimal?),
-                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : null
+                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(double?),
+                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(double)) : null
                             };
 
 
@@ -949,8 +949,8 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                             }
 
                             instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             if (current.HORLEN.HasValue) {
@@ -1030,11 +1030,11 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
                                 }
-                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                     instance.height = current.HEIGHT.Value;
                                 }
                                 else {
-                                    instance.height = default(decimal?);
+                                    instance.height = default(double?);
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -1207,11 +1207,11 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                 if (dateRange != default) {
                                     instance.fixedDateRange = dateRange;
                                 }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                                 var horclr = current.HORCLR ?? default;
@@ -1325,11 +1325,11 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                     instance.fixedDateRange = dateRange;
                                 }
 
-                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                                if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                     instance.height = current.HEIGHT.Value;
                                 }
                                 else {
-                                    instance.height = default(decimal?);
+                                    instance.height = default(double?);
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -1526,11 +1526,11 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
 
-                                if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                                if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                     instance.verticalLength = current.VERLEN.Value;
                                 }
                                 else {
-                                    instance.verticalLength = default(decimal?);
+                                    instance.verticalLength = default(double?);
                                 }
 
                                 if (current.CONVIS.HasValue) {

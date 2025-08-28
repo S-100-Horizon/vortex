@@ -179,10 +179,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class customPaperSizeViewModel : ViewModelBase {
-		private decimal _paperWidth  = default;
+		private double _paperWidth  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal paperWidth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double paperWidth {
 			get {
 				return _paperWidth;
 			}
@@ -190,10 +190,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _paperWidth, value);
 			}
 		}
-		private decimal _paperLength  = default;
+		private double _paperLength  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal paperLength {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double paperLength {
 			get {
 				return _paperLength;
 			}
@@ -701,10 +701,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _currency, value);
 			}
 		}
-		private decimal _price  = default;
+		private double _price  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal price {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double price {
 			get {
 				return _price;
 			}
@@ -2583,7 +2583,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
-		public ObservableCollection<decimal> approximateGridResolution  { get; set; } = new ();
+		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
@@ -3131,7 +3131,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
-		public ObservableCollection<decimal> approximateGridResolution  { get; set; } = new ();
+		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;

@@ -23,11 +23,11 @@ namespace S100Framework.Applications
             }
 
             // flareBearing is not populated. New field.                            
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }
             else {
-                instance.height = default(decimal?);
+                instance.height = default(double?);
             }
 
             // DODO: Interoperability identifier
@@ -54,11 +54,11 @@ namespace S100Framework.Applications
                 instance.verticalLength = current.VERLEN.Value;
             }
             
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }
             else {
-                instance.height = default(decimal?);
+                instance.height = default(double?);
             }
 
             if (scaleMinimum.HasValue) {

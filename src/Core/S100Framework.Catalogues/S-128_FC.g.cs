@@ -1125,10 +1125,10 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class customPaperSize {
 			[XmlElement("paperWidth")]
-			public decimal paperWidth {get;set;} = default;
+			public double paperWidth {get;set;} = default;
 
 			[XmlElement("paperLength")]
-			public decimal paperLength {get;set;} = default;
+			public double paperLength {get;set;} = default;
 		}
 
 		/// <summary>
@@ -1268,7 +1268,7 @@ namespace S100Framework.DomainModel.S128 {
 			public String currency {get;set;} = string.Empty;
 
 			[XmlElement("price")]
-			public decimal price {get;set;} = default;
+			public double price {get;set;} = default;
 		}
 
 		/// <summary>
@@ -2264,7 +2264,7 @@ namespace S100Framework.DomainModel.S128 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class NavigationalProduct : CatalogueElement {
 			[XmlElement("approximateGridResolution")]
-			public List<decimal> approximateGridResolution {get;set;} = [];
+			public List<double> approximateGridResolution {get;set;} = [];
 
 			public bool ShouldSerializeapproximateGridResolution() { return approximateGridResolution.Any(); }
 

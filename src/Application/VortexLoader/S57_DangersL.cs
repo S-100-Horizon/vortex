@@ -84,11 +84,11 @@ if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
-                                instance.verticalLength = default(decimal?);
+                                instance.verticalLength = default(double?);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -154,11 +154,11 @@ if (current.STATUS != default) {
                                 }
 
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
                                 else {
-                                    instance.valueOfSounding = default(decimal?);
+                                    instance.valueOfSounding = default(double?);
                                 }
 
                                 if (current.SOUACC.HasValue) {
@@ -218,11 +218,11 @@ if (current.STATUS != default) {
                            //     }
 
                            //     instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);                            
-                           //if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           //if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                            //     instance.height = current.HEIGHT.Value;
                            // }
                            // else {
-                           //     instance.height = default(decimal?);
+                           //     instance.height = default(double?);
                            // }
 
                            //     // DODO: Interoperability identifier
@@ -258,11 +258,11 @@ if (current.STATUS != default) {
                            //     }
 
 
-                           //     if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                           //     if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                            //         instance.valueOfSounding = current.VALSOU.Value;
                            //     }
                            //     else {
-                           //         instance.valueOfSounding = default(decimal?);
+                           //         instance.valueOfSounding = default(double?);
                            //     }
 
 
@@ -270,8 +270,8 @@ if (current.STATUS != default) {
                            //     if (current.VERLEN.HasValue) {
                            //         instance.verticalLength = current.VERLEN.Value;
                            //     }
-                           //     else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
-                           //         instance.verticalLength = default(decimal?);
+                           //     else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
+                           //         instance.verticalLength = default(double?);
                            //     }
 
 

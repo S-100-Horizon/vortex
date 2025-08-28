@@ -155,11 +155,11 @@ namespace S100Framework.Applications
                                     instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround, techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
                                 else {
-                                    instance.valueOfSounding = default(decimal?);
+                                    instance.valueOfSounding = default(double?);
                                 }
 
                                 if (current.SOUACC.HasValue) {
@@ -287,11 +287,11 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                instance.valueOfSounding = default(decimal?);
+                                instance.valueOfSounding = default(double?);
                             }
 
                             //      S57
@@ -409,11 +409,11 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -447,11 +447,11 @@ namespace S100Framework.Applications
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck, techniqueOfVerticalMeasurement>(tecsou);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                instance.valueOfSounding = default(decimal?);
+                                instance.valueOfSounding = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {

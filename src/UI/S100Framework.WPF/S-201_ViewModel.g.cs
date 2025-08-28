@@ -475,9 +475,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -625,9 +625,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -635,10 +635,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -743,10 +743,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal _waveLengthValue  = default;
+		private double _waveLengthValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal waveLengthValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double waveLengthValue {
 			get {
 				return _waveLengthValue;
 			}
@@ -802,9 +802,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("rhythmOfLight")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -887,9 +887,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -899,9 +899,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
-		private decimal? _candela  = default;
+		private double? _candela  = default;
 
-		public decimal? candela {
+		public double? candela {
 			get {
 				return _candela;
 			}
@@ -1089,10 +1089,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1141,10 +1141,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1245,10 +1245,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal _signalDuration  = default;
+		private double _signalDuration  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal signalDuration {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double signalDuration {
 			get {
 				return _signalDuration;
 			}
@@ -1381,10 +1381,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableDimensionsViewModel : ViewModelBase {
-		private decimal _cableLength  = default;
+		private double _cableLength  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal cableLength {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double cableLength {
 			get {
 				return _cableLength;
 			}
@@ -1407,10 +1407,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
-		private decimal _diameter  = default;
+		private double _diameter  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal diameter {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double diameter {
 			get {
 				return _diameter;
 			}
@@ -1697,9 +1697,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -1707,9 +1707,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -1717,9 +1717,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -1821,10 +1821,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -1832,9 +1832,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2016,10 +2016,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2027,9 +2027,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -3235,10 +3235,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -3246,10 +3246,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -3268,10 +3268,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -3279,10 +3279,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -3708,10 +3708,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -3719,10 +3719,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -3771,10 +3771,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -3798,10 +3798,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -4279,10 +4279,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -4290,10 +4290,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -4924,10 +4924,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -4935,10 +4935,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _maximalPermittedDraught  = default;
+		private double? _maximalPermittedDraught  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? maximalPermittedDraught {
+		public double? maximalPermittedDraught {
 			get {
 				return _maximalPermittedDraught;
 			}
@@ -5322,10 +5322,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -5356,10 +5356,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -5367,10 +5367,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -5378,10 +5378,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -5773,10 +5773,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -5807,10 +5807,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -5818,10 +5818,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -5829,10 +5829,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -5914,10 +5914,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -6297,10 +6297,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6331,10 +6331,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6342,10 +6342,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -6353,10 +6353,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -6388,10 +6388,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
-		private decimal? _valueOfGeographicRange  = default;
+		private double? _valueOfGeographicRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfGeographicRange {
+		public double? valueOfGeographicRange {
 			get {
 				return _valueOfGeographicRange;
 			}
@@ -6399,10 +6399,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfGeographicRange, value);
 			}
 		}
-		private decimal? _valueOfLuminousRange  = default;
+		private double? _valueOfLuminousRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfLuminousRange {
+		public double? valueOfLuminousRange {
 			get {
 				return _valueOfLuminousRange;
 			}
@@ -6410,10 +6410,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfLuminousRange, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -6780,10 +6780,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6814,10 +6814,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6825,10 +6825,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -6836,10 +6836,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -7165,10 +7165,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarReflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7199,10 +7199,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("RadarReflector")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -7528,10 +7528,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
-		private decimal? _signalOutput  = default;
+		private double? _signalOutput  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalOutput {
+		public double? signalOutput {
 			get {
 				return _signalOutput;
 			}
@@ -7539,10 +7539,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalOutput, value);
 			}
 		}
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -7557,10 +7557,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("FogSignal")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -7862,10 +7862,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("EnvironmentObservationEquipment")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8166,10 +8166,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)1,(categoryOfRadioStation)2,(categoryOfRadioStation)3,(categoryOfRadioStation)4,(categoryOfRadioStation)5,(categoryOfRadioStation)6,(categoryOfRadioStation)7,(categoryOfRadioStation)8,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)12,(categoryOfRadioStation)13,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -8477,10 +8477,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Daymark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -8488,10 +8488,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Daymark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8506,10 +8506,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("Daymark")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -8556,10 +8556,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Daymark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -8959,10 +8959,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Retroreflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8970,10 +8970,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Retroreflector")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -9314,10 +9314,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("RadarTransponderBeacon")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -10941,10 +10941,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -10952,10 +10952,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11004,10 +11004,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11031,10 +11031,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -11441,10 +11441,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11452,10 +11452,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11504,10 +11504,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11531,10 +11531,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -12012,10 +12012,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12023,10 +12023,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -12479,10 +12479,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12490,10 +12490,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -12965,10 +12965,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12976,10 +12976,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -13451,10 +13451,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13462,10 +13462,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -13918,10 +13918,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13929,10 +13929,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14388,10 +14388,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -14399,10 +14399,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14421,10 +14421,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14432,10 +14432,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14846,10 +14846,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14857,10 +14857,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14904,10 +14904,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14931,10 +14931,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14942,10 +14942,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
-		private decimal? _horizontalAccuracy  = default;
+		private double? _horizontalAccuracy  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalAccuracy {
+		public double? horizontalAccuracy {
 			get {
 				return _horizontalAccuracy;
 			}
@@ -15335,10 +15335,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -15346,10 +15346,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -15393,10 +15393,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15420,10 +15420,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -15431,10 +15431,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
-		private decimal? _horizontalAccuracy  = default;
+		private double? _horizontalAccuracy  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalAccuracy {
+		public double? horizontalAccuracy {
 			get {
 				return _horizontalAccuracy;
 			}
@@ -15831,10 +15831,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15901,10 +15901,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15928,10 +15928,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -16370,10 +16370,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SiloTank")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16381,10 +16381,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SiloTank")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16433,10 +16433,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16460,10 +16460,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -16872,10 +16872,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Pile")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16899,10 +16899,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pile")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16926,10 +16926,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Pile")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -17858,11 +17858,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sinkerDimensions, value);
 			}
 		}
-		private decimal _weight  = default;
+		private double _weight  = default;
 
 		[Category("SinkerAnchor")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal weight {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double weight {
 			get {
 				return _weight;
 			}
@@ -18160,10 +18160,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public ShackleType[] ShackleTypeList => [(ShackleType)1,(ShackleType)2,(ShackleType)3,(ShackleType)4,(ShackleType)5,(ShackleType)6];
-		private decimal? _weight  = default;
+		private double? _weight  = default;
 
 		[Category("MooringShackle")]
-		public decimal? weight {
+		public double? weight {
 			get {
 				return _weight;
 			}
@@ -18714,10 +18714,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal? _weight  = default;
+		private double? _weight  = default;
 
 		[Category("Swivel")]
-		public decimal? weight {
+		public double? weight {
 			get {
 				return _weight;
 			}
@@ -19253,11 +19253,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal _weight  = default;
+		private double _weight  = default;
 
 		[Category("CounterWeight")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal weight {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double weight {
 			get {
 				return _weight;
 			}
@@ -19554,10 +19554,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Topmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -19920,10 +19920,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -19931,10 +19931,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -19983,10 +19983,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20010,10 +20010,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -20420,10 +20420,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -20431,10 +20431,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20483,10 +20483,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20510,10 +20510,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -20989,10 +20989,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21000,10 +21000,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -21456,10 +21456,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21467,10 +21467,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -21828,10 +21828,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -21839,10 +21839,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}

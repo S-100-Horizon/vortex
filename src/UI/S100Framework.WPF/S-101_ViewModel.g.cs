@@ -455,9 +455,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _significantFeaturesDetected, value);
 			}
 		}
-		private decimal? _sizeOfFeaturesDetected  = default;
+		private double? _sizeOfFeaturesDetected  = default;
 
-		public decimal? sizeOfFeaturesDetected {
+		public double? sizeOfFeaturesDetected {
 			get {
 				return _sizeOfFeaturesDetected;
 			}
@@ -604,10 +604,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceFixedViewModel : ViewModelBase {
-		private decimal? _horizontalClearanceValue  = default;
+		private double? _horizontalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? horizontalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -615,9 +615,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceValue, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -656,10 +656,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceOpenViewModel : ViewModelBase {
-		private decimal? _horizontalClearanceValue  = default;
+		private double? _horizontalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? horizontalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -667,9 +667,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceValue, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -708,10 +708,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal? _uncertaintyFixed  = default;
+		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -719,9 +719,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -889,9 +889,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -1012,10 +1012,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceLocation, value);
 			}
 		}
-		private decimal? _waterwayDistance  = default;
+		private double? _waterwayDistance  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? waterwayDistance {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? waterwayDistance {
 			get {
 				return _waterwayDistance;
 			}
@@ -1174,9 +1174,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -1184,10 +1184,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1292,10 +1292,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal? _waveLengthValue  = default;
+		private double? _waveLengthValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? waveLengthValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? waveLengthValue {
 			get {
 				return _waveLengthValue;
 			}
@@ -1351,9 +1351,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 		[Category("rhythmOfLight")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -1494,9 +1494,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -1683,10 +1683,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal? _sectorBearing  = default;
+		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1694,9 +1694,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -1735,10 +1735,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal? _sectorBearing  = default;
+		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1746,9 +1746,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -1839,10 +1839,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal? _signalDuration  = default;
+		private double? _signalDuration  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? signalDuration {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? signalDuration {
 			get {
 				return _signalDuration;
 			}
@@ -1975,10 +1975,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class speedViewModel : ViewModelBase {
-		private decimal? _speedMaximum  = default;
+		private double? _speedMaximum  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedMaximum {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -1986,9 +1986,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedMaximum, value);
 			}
 		}
-		private decimal? _speedMinimum  = default;
+		private double? _speedMinimum  = default;
 
-		public decimal? speedMinimum {
+		public double? speedMinimum {
 			get {
 				return _speedMinimum;
 			}
@@ -2257,9 +2257,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public referenceTideType[] referenceTideTypeList => [(referenceTideType)1,(referenceTideType)2,(referenceTideType)3];
-		private decimal? _streamDepth  = default;
+		private double? _streamDepth  = default;
 
-		public decimal? streamDepth {
+		public double? streamDepth {
 			get {
 				return _streamDepth;
 			}
@@ -2328,10 +2328,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientation, value);
 			}
 		}
-		private decimal? _speedMaximum  = default;
+		private double? _speedMaximum  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedMaximum {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -2339,10 +2339,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedMaximum, value);
 			}
 		}
-		private decimal? _timeRelativeToTide  = default;
+		private double? _timeRelativeToTide  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? timeRelativeToTide {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? timeRelativeToTide {
 			get {
 				return _timeRelativeToTide;
 			}
@@ -2562,10 +2562,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase {
-		private decimal? _magneticAnomalyValue  = default;
+		private double? _magneticAnomalyValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? magneticAnomalyValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? magneticAnomalyValue {
 			get {
 				return _magneticAnomalyValue;
 			}
@@ -2619,10 +2619,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceClosedViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2676,10 +2676,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceFixedViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2744,9 +2744,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _verticalClearanceUnlimited, value);
 			}
 		}
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2803,10 +2803,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceSafeViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2860,10 +2860,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal? _uncertaintyFixed  = default;
+		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2871,9 +2871,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2912,10 +2912,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselSpeedLimitViewModel : ViewModelBase {
-		private decimal? _speedLimit  = default;
+		private double? _speedLimit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedLimit {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedLimit {
 			get {
 				return _speedLimit;
 			}
@@ -4150,10 +4150,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)4];
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -4184,10 +4184,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -4517,11 +4517,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -4629,10 +4629,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public dataAssessment[] dataAssessmentList => [(dataAssessment)1,(dataAssessment)2,(dataAssessment)3];
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("QualityOfBathymetricData")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -4640,10 +4640,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMaximumValue, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("QualityOfBathymetricData")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -4941,10 +4941,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfSurveyViewModel : FeatureViewModel<QualityOfSurvey> {
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("QualityOfSurvey")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -4952,10 +4952,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMaximumValue, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("QualityOfSurvey")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -5410,11 +5410,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceYearForMagneticVariation, value);
 			}
 		}
-		private decimal? _valueOfAnnualChangeInMagneticVariation  = default;
+		private double? _valueOfAnnualChangeInMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfAnnualChangeInMagneticVariation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfAnnualChangeInMagneticVariation {
 			get {
 				return _valueOfAnnualChangeInMagneticVariation;
 			}
@@ -5422,11 +5422,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfAnnualChangeInMagneticVariation, value);
 			}
 		}
-		private decimal? _valueOfMagneticVariation  = default;
+		private double? _valueOfMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfMagneticVariation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfMagneticVariation {
 			get {
 				return _valueOfMagneticVariation;
 			}
@@ -5640,10 +5640,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Coastline")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6025,11 +6025,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandElevationViewModel : FeatureViewModel<LandElevation> {
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("LandElevation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? elevation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6261,10 +6261,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Rapids")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6360,10 +6360,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Waterfall")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6465,10 +6465,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LakeViewModel : FeatureViewModel<Lake> {
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Lake")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6737,10 +6737,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfVegetation[] categoryOfVegetationList => [(categoryOfVegetation)3,(categoryOfVegetation)4,(categoryOfVegetation)5,(categoryOfVegetation)6,(categoryOfVegetation)11,(categoryOfVegetation)13,(categoryOfVegetation)14,(categoryOfVegetation)15,(categoryOfVegetation)16,(categoryOfVegetation)17,(categoryOfVegetation)18,(categoryOfVegetation)19,(categoryOfVegetation)20,(categoryOfVegetation)22];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Vegetation")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6750,10 +6750,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("Vegetation")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Vegetation")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6772,10 +6772,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Vegetation")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6902,10 +6902,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfIce[] categoryOfIceList => [(categoryOfIce)1,(categoryOfIce)5,(categoryOfIce)8];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("IceArea")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6915,10 +6915,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("IceArea")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("IceArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6958,10 +6958,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IceArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -7289,10 +7289,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SlopeTopline")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -7570,10 +7570,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("BuiltUpArea")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("BuiltUpArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7804,10 +7804,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Building")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -7824,10 +7824,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)44,(function)45,(function)46,(function)47,(function)48];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Building")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7895,10 +7895,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)7,(status)8,(status)12,(status)13,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Building")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -8684,10 +8684,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Bridge")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -9336,10 +9336,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Conveyor")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -9358,10 +9358,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("Conveyor")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -9446,10 +9446,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Conveyor")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -9681,10 +9681,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _iceFactor  = default;
+		private double? _iceFactor  = default;
 
 		[Category("CableOverhead")]
-		public decimal? iceFactor {
+		public double? iceFactor {
 			get {
 				return _iceFactor;
 			}
@@ -10277,10 +10277,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("PylonBridgeSupport")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -10348,10 +10348,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("PylonBridgeSupport")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -10601,10 +10601,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("FenceWall")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -10614,10 +10614,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("FenceWall")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("FenceWall")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -10673,10 +10673,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)7,(status)12,(status)13];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FenceWall")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -10847,10 +10847,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("Railway")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Railway")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11409,10 +11409,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)4,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11429,10 +11429,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)44,(function)45,(function)46,(function)47,(function)48];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11500,10 +11500,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)13,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11788,10 +11788,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SiloTank")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11801,10 +11801,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("SiloTank")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SiloTank")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11879,10 +11879,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12,(status)13];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12121,10 +12121,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)4,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("WindTurbine")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -12146,10 +12146,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("WindTurbine")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12245,10 +12245,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("WindTurbine")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12500,10 +12500,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2];
 		[Category("FortifiedStructure")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("FortifiedStructure")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12559,10 +12559,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)7,(status)8,(status)12,(status)13,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FortifiedStructure")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12759,10 +12759,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -12784,10 +12784,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12843,10 +12843,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13187,10 +13187,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("Hulk")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -13198,10 +13198,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Hulk")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -13245,10 +13245,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Hulk")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13487,10 +13487,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Pile")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -13539,10 +13539,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)7,(status)8,(status)12,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pile")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13732,10 +13732,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dyke")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -13784,10 +13784,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dyke")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13986,10 +13986,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14009,10 +14009,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14020,10 +14020,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14079,10 +14079,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)6,(status)7,(status)8,(status)12,(status)13,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14329,10 +14329,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14352,10 +14352,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14363,10 +14363,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14468,10 +14468,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14912,10 +14912,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Canal")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -15227,10 +15227,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("Gate")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -15525,10 +15525,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dam")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15572,10 +15572,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)6,(status)7,(status)8,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dam")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15804,10 +15804,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("Crane")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Crane")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15826,10 +15826,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("Crane")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -15860,10 +15860,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
-		private decimal? _radius  = default;
+		private double? _radius  = default;
 
 		[Category("Crane")]
-		public decimal? radius {
+		public double? radius {
 			get {
 				return _radius;
 			}
@@ -15906,10 +15906,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Crane")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16116,10 +16116,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("Berth")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -16127,10 +16127,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("Berth")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -16149,10 +16149,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Berth")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -16160,10 +16160,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _minimumBerthDepth  = default;
+		private double? _minimumBerthDepth  = default;
 
 		[Category("Berth")]
-		public decimal? minimumBerthDepth {
+		public double? minimumBerthDepth {
 			get {
 				return _minimumBerthDepth;
 			}
@@ -16381,10 +16381,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Dolphin")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16406,10 +16406,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dolphin")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16467,10 +16467,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)14,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dolphin")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16856,10 +16856,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DryDock")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -16867,10 +16867,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("DryDock")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16892,10 +16892,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -16903,10 +16903,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -16925,10 +16925,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -16936,10 +16936,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -16947,10 +16947,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DryDock")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17151,10 +17151,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("FloatingDock")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -17176,10 +17176,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -17187,10 +17187,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -17198,10 +17198,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceWidth, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -17209,10 +17209,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -17231,10 +17231,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("FloatingDock")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -17242,10 +17242,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _liftingCapacity, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("FloatingDock")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17271,10 +17271,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)7,(status)8,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -17507,10 +17507,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pontoon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -17718,10 +17718,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("DockArea")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -17729,10 +17729,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("DockArea")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -17751,10 +17751,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DockArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17890,10 +17890,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class GridironViewModel : FeatureViewModel<Gridiron> {
 		[Category("Gridiron")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("Gridiron")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -17901,10 +17901,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Gridiron")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -17937,10 +17937,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)8,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Gridiron")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -18096,10 +18096,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LockBasin")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -18107,10 +18107,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LockBasin")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -19164,11 +19164,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19176,10 +19176,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("DredgedArea")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -19212,10 +19212,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DredgedArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -19376,11 +19376,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SweptAreaViewModel : FeatureViewModel<SweptArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("SweptArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19490,11 +19490,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _valueOfDepthContour  = default;
+		private double? _valueOfDepthContour  = default;
 
 		[Category("DepthContour")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfDepthContour {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfDepthContour {
 			get {
 				return _valueOfDepthContour;
 			}
@@ -19567,11 +19567,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19579,11 +19579,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMaximumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -20121,10 +20121,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Sandwave")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20369,11 +20369,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfSounding {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20410,10 +20410,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("UnderwaterAwashRock")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("UnderwaterAwashRock")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -20421,11 +20421,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20570,10 +20570,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 		[Category("Wreck")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Wreck")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20636,10 +20636,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("Wreck")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20703,10 +20703,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("Wreck")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -20714,11 +20714,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20898,10 +20898,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 		[Category("Obstruction")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Obstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20920,10 +20920,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Obstruction")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -20978,10 +20978,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("Obstruction")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20989,10 +20989,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfSounding, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Obstruction")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21029,10 +21029,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("Obstruction")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("Obstruction")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -21040,11 +21040,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -21240,10 +21240,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("FoulGround")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -21531,10 +21531,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)18,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FishingFacility")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21692,10 +21692,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -21737,10 +21737,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)14,(status)16,(status)17,(status)28];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -21748,10 +21748,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfSounding, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -22021,10 +22021,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareStack, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -22080,10 +22080,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7,(status)8,(status)12,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -22256,10 +22256,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
-		private decimal? _buriedDepth  = default;
+		private double? _buriedDepth  = default;
 
 		[Category("CableSubmarine")]
-		public decimal? buriedDepth {
+		public double? buriedDepth {
 			get {
 				return _buriedDepth;
 			}
@@ -22594,10 +22594,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PipelineSubmarineOnLandViewModel : FeatureViewModel<PipelineSubmarineOnLand> {
-		private decimal? _buriedDepth  = default;
+		private double? _buriedDepth  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? buriedDepth {
+		public double? buriedDepth {
 			get {
 				return _buriedDepth;
 			}
@@ -22628,10 +22628,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -22639,10 +22639,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -23102,10 +23102,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshoreProductionArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -23168,10 +23168,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)7,(status)8,(status)12,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshoreProductionArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -23538,10 +23538,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -23574,10 +23574,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23585,11 +23585,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -23812,10 +23812,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("RangeSystem")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23904,10 +23904,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FairwayViewModel : FeatureViewModel<Fairway> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("Fairway")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -23940,10 +23940,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Fairway")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23951,10 +23951,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("Fairway")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24174,10 +24174,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("FairwaySystem")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -24290,10 +24290,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedRouteCentreline")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -24326,10 +24326,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedRouteCentreline")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24535,10 +24535,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("TwoWayRoutePart")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -24569,11 +24569,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("TwoWayRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24771,10 +24771,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("TwoWayRoute")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -24886,11 +24886,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedTrafficLanePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24998,10 +24998,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -25045,11 +25045,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25235,11 +25235,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -25283,11 +25283,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25939,10 +25939,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("TrafficSeparationSchemeLanePart")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -26593,10 +26593,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("TrafficSeparationScheme")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -27068,7 +27068,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
-		public ObservableCollection<decimal> orientationValue  { get; set; } = new ();
+		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
@@ -27377,11 +27377,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RadarLine")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -27635,10 +27635,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadarStation")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarStation")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -27666,10 +27666,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7,(status)8];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("RadarStation")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -28025,10 +28025,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("MooringArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -28036,10 +28036,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _maximumPermittedVesselLength  = default;
+		private double? _maximumPermittedVesselLength  = default;
 
 		[Category("MooringArea")]
-		public decimal? maximumPermittedVesselLength {
+		public double? maximumPermittedVesselLength {
 			get {
 				return _maximumPermittedVesselLength;
 			}
@@ -28240,10 +28240,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("AnchorBerth")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		private decimal? _radius  = default;
+		private double? _radius  = default;
 
 		[Category("AnchorBerth")]
-		public decimal? radius {
+		public double? radius {
 			get {
 				return _radius;
 			}
@@ -31550,10 +31550,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareBearing, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightAllAround")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -31664,10 +31664,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)11,(status)14,(status)15,(status)16,(status)17];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -31691,10 +31691,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightAllAround")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -31899,10 +31899,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightSectored")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32163,10 +32163,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareBearing, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightFogDetector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32238,10 +32238,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFogDetector")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -32437,10 +32437,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32488,10 +32488,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)11,(status)14,(status)15,(status)16,(status)17];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -32795,10 +32795,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LateralBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33097,10 +33097,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("CardinalBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33383,10 +33383,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IsolatedDangerBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33666,10 +33666,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SafeWaterBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33956,10 +33956,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -34240,10 +34240,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("EmergencyWreckMarkingBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -34735,10 +34735,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -34746,10 +34746,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _maximumPermittedVesselLength  = default;
+		private double? _maximumPermittedVesselLength  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? maximumPermittedVesselLength {
+		public double? maximumPermittedVesselLength {
 			get {
 				return _maximumPermittedVesselLength;
 			}
@@ -34773,10 +34773,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -35016,10 +35016,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35052,10 +35052,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35130,10 +35130,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -35399,10 +35399,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35424,10 +35424,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35513,10 +35513,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -35766,10 +35766,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35791,10 +35791,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35880,10 +35880,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36130,10 +36130,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36155,10 +36155,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36244,10 +36244,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36501,10 +36501,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36526,10 +36526,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36615,10 +36615,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36850,10 +36850,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Daymark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36875,10 +36875,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Daymark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36940,10 +36940,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Daymark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37160,10 +37160,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -37171,10 +37171,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -37232,10 +37232,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37452,10 +37452,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -37463,10 +37463,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -37512,10 +37512,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37724,10 +37724,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Retroreflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -37871,10 +37871,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarReflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -38074,10 +38074,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -38094,10 +38094,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)15];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("FogSignal")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -38231,10 +38231,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel<PhysicalAISAidToNavigation> {
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("PhysicalAISAidToNavigation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38393,10 +38393,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel<VirtualAISAidToNavigation> {
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("VirtualAISAidToNavigation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38594,10 +38594,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 		[Category("RadioStation")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38858,10 +38858,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("RadarTransponderBeacon")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}

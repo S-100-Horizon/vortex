@@ -125,6 +125,8 @@ namespace S100Framework.Applications
 
             var editorBuilders = new Dictionary<string, Action<StringBuilder, int, int?>>();
 
+            var constraints = new Dictionary<string, string[]>();
+
             var shouldSerialize = new Dictionary<string, Func<string, string>> {
                 { "Boolean?", (code) => $"{code}.HasValue" },
                 { "bool?", (code) => $"{code}.HasValue" },
@@ -312,7 +314,7 @@ namespace S100Framework.Applications
                     var prefix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "Boolean",
                         "enumeration" => code,
-                        "real" => "decimal",
+                        "real" => "double",
                         "text" => "String",
                         //"s100_truncateddate" => "DateOnly",
                         "s100_truncateddate" => "String",
@@ -353,7 +355,7 @@ namespace S100Framework.Applications
                     var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "false",
                         //"enumeration" => code,
-                        //"real" => "decimal",
+                        //"real" => "double",
                         "text" => "string.Empty",
                         //"S100_TruncatedDate" => "DateOnly",
                         //"date" => "DateOnly",
@@ -368,6 +370,52 @@ namespace S100Framework.Applications
                     };
                     if (postfix != null) {
                         knowTypesPostfix.Add(code, postfix);
+                    }
+
+                    var c = e.Element(XName.Get("constraints", scope_S100));
+                    if (c != default) {
+                        if (c.Element(XName.Get("range", scopes["S100CD"])) != default) {
+                            var unit = prefix switch {
+                                "decimal" => "m",
+                                "double" => "",
+                                "int" => "",
+                                _ => "",
+                            };
+
+                            Func<string, string> converter = prefix switch {
+                                "double" => (v) => $"{double.Parse(v)}",
+                                "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
+                                _ => throw new InvalidOperationException()
+                            };
+
+                            var lowerBound = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("lowerBound", scopes["S100Base"]));
+                            var upperBound = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("upperBound", scopes["S100Base"]));
+                            var closure = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("closure", scopes["S100Base"]));
+
+                            if (!(lowerBound is null && upperBound is null)) {
+                                constraints.Add(code, []);
+                                if (upperBound is null)
+                                    constraints[code] = [.. constraints[code], $"[RangeConstraint<{prefix}>({converter(lowerBound!.Value)}{unit}, default, Closure.{closure!.Value})]"];
+                                else
+                                    constraints[code] = [.. constraints[code], $"[RangeConstraint<{prefix}>({converter(lowerBound!.Value)}{unit}, {converter(upperBound!.Value)}{unit}, Closure.{closure!.Value})]"];
+                                if (c.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                                    var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                                    constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
+                                }
+                            }                            
+                        }
+                        else if (c.Element(XName.Get("stringLength", scopes["S100CD"])) != default) {
+                            constraints.Add(code, []);
+                            var stringLength = c.Element(XName.Get("stringLength", scopes["S100CD"]))!.Value;
+                            constraints[code] = [.. constraints[code], $"[StringLengthConstraint({stringLength})]"];
+                        }
+                        else if (c.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                            constraints.Add(code, []);
+                            var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                            constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
+                        }
+                        else
+                            System.Diagnostics.Debugger.Break();
                     }
                 }
             }
@@ -455,6 +503,11 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
                             }
 
+                            if (constraints.ContainsKey(referenceCode)) {
+                                foreach (var constraint in constraints[referenceCode])
+                                    builderDomainModel.AppendLine($"\t\t\t{constraint}");
+                            }
+
                             //if (prefix.Equals("DateOnly")) {
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
@@ -505,7 +558,7 @@ namespace S100Framework.Applications
                             else {
                                 if (lower > 0)
                                     builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
-                                if(upper.HasValue)
+                                if (upper.HasValue)
                                     builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
 
                                 prefix = $"List<{prefix}>";
@@ -619,6 +672,7 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = knowTypesPostfix,
                         ComplexTypes = complexTypes,
                         ObjectConstructors = objectConstructors,
+                        Constraints = constraints,
                         InformationAssociationsLookup = informationAssociationsLookup,
                         FeatureAssociationsLookup = featureAssociationsLookup,
                         ShouldSerialize = shouldSerialize,
@@ -666,6 +720,7 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
@@ -748,6 +803,7 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
@@ -829,6 +885,7 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
@@ -1221,9 +1278,10 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required IReadOnlyDictionary<string, StringBuilder> ObjectConstructors { get; init; }
+            public required IReadOnlyDictionary<string, string[]> Constraints { get; init; }
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
-            public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
+            public required IReadOnlyDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
             public required bool SupportingSpatialAssociation { get; init; }
             public required ProductFormat ProductFormat { get; init; }
             public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
@@ -1306,6 +1364,11 @@ namespace S100Framework.Applications
 
                 foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
+                }
+
+                if (client.Constraints.ContainsKey(referenceCode)) {
+                    foreach(var constraint in client.Constraints[referenceCode])
+                        builder.AppendLine($"\t\t\t{constraint}");
                 }
 
                 //if (prefix.Equals("DateOnly")) {
