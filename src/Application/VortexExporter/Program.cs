@@ -139,9 +139,9 @@ namespace S100Framework.Applications
 
                 var directoryNotes = new IO.DirectoryInfo(@"\\nas.gst.dk\ncps\production\indigo\ENC\NotesAndPictures");
 
-                string pattern = "fileReference\":\"(?<filename>[^\"]+)";
+                var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
-                var regFilename = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);                
+                var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
                 foreach (var e in datasets) {
                     var supportFiles = new List<string>();
@@ -193,8 +193,22 @@ namespace S100Framework.Applications
                             informationTypes.Add(information);
                             //dataset.AddInformation(information);
 
-                            if (regFilename.IsMatch(json)) {
-                                var matches = regFilename.Matches(json);
+                            if (regFileReference.IsMatch(json)) {
+                                var matches = regFileReference.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
+                            if (regPictorialRepresentation.IsMatch(json)) {
+                                var matches = regPictorialRepresentation.Matches(json);
                                 foreach (Match m in matches) {
                                     var filename = m.Groups["filename"].Value;
 
@@ -246,8 +260,22 @@ namespace S100Framework.Applications
                                 feature.Attributes = (FeatureNode)instance!;
                             featureTypes.Add(feature);
 
-                            if (regFilename.IsMatch(json)) {
-                                var matches = regFilename.Matches(json);
+                            if (regFileReference.IsMatch(json)) {
+                                var matches = regFileReference.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
+                            if (regPictorialRepresentation.IsMatch(json)) {
+                                var matches = regPictorialRepresentation.Matches(json);
                                 foreach (Match m in matches) {
                                     var filename = m.Groups["filename"].Value;
 
@@ -323,8 +351,22 @@ namespace S100Framework.Applications
                                 var json = Convert.ToString(current["json"])!;
                                 var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                                if (regFilename.IsMatch(json)) {
-                                    var matches = regFilename.Matches(json);
+                                if (regFileReference.IsMatch(json)) {
+                                    var matches = regFileReference.Matches(json);
+                                    foreach (Match m in matches) {
+                                        var filename = m.Groups["filename"].Value;
+
+                                        if (!supportFiles.Contains(filename)) {
+                                            supportFiles.Add(filename);
+                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                            dataset?.Metadata.AddSupportFile(filename, base64);
+                                        }
+                                    }
+                                }
+                                if (regPictorialRepresentation.IsMatch(json)) {
+                                    var matches = regPictorialRepresentation.Matches(json);
                                     foreach (Match m in matches) {
                                         var filename = m.Groups["filename"].Value;
 
