@@ -7,6 +7,7 @@ using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -135,6 +136,12 @@ namespace S100Framework.Applications
                 }
 
                 //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
+                var directoryNotes = new IO.DirectoryInfo(@"\\nas.gst.dk\ncps\production\indigo\ENC\NotesAndPictures");
+
+                string pattern = "fileReference\":\"(?<filename>[^\"]+)";
+
+                var regFilename = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
                 foreach (var e in datasets) {
                     var dataset = e.Dataset;
@@ -281,7 +288,19 @@ namespace S100Framework.Applications
                                     continue;
                                 }
 
+                                var json = Convert.ToString(current["json"])!;
                                 var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                                if (regFilename.IsMatch(json)) {
+                                    var matches = regFilename.Matches(json);
+                                    foreach (Match m in matches) {
+                                        var filename = m.Groups["filename"].Value;
+
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    }                                    
+                                }
 
                                 // Surface Masks
                                 var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
