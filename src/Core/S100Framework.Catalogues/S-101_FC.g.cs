@@ -11299,7 +11299,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,7])]
-			[ConditionalUnknownDependency("openingBridgeRule")]
+			[ConditionalUnknownDependency("openingBridge")]
 			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
 
 			[JsonIgnore]
@@ -11505,6 +11505,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
 
 			private IReadOnlyDictionary<string, Func<Bridge, bool>> _conditionalDpendencies = new Dictionary<string,Func<Bridge, bool>> {
+				{ "openingBridge", (bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true },
 			};
 		}
 
