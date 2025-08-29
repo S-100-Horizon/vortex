@@ -120,11 +120,11 @@ namespace S100Framework.YAML
             }
 
             // If its conditional depencency is a boolean and true, this property is required
-            var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalDependencyAttribute<bool>>();
+            var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalUnknownDependencyAttribute>();
             if (conditionalDependencyAttr is not null) {
-                var dependentProperty = properties.FirstOrDefault(p => p.Name == conditionalDependencyAttr.PropertyName);
-                if (dependentProperty is not null && conditionalDependencyAttr.Value == true)
-                    return true;
+                var d = (IDependencies)obj;
+
+                return d.ConditionalUnknown(conditionalDependencyAttr.PropertyName);
             }
 
             return false;

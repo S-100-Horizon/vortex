@@ -147,7 +147,21 @@ namespace S100Framework.YAML
 
         public string Producer { get; set; } = "GST";
         public string ProducerCode { get; set; } = "DK00";
+        public ICollection<SupportFile>? SupportFiles => _supportFiles.Any() ? _supportFiles : null;
+        private ICollection<SupportFile> _supportFiles = [];
+
+        public void AddSupportFile(string name, string content) => _supportFiles.Add(new(name, content));
+        
     }
+
+    public class SupportFile(string Name, string Content)
+    {
+        [YamlMember(Order = 0)]
+        public string Name = Name;
+        [YamlMember(Order = 1)]
+        public string Content = Content;
+    }
+    
 
     public abstract class Geometry
     {

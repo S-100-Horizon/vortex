@@ -142,11 +142,14 @@ namespace TestS100Framework
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
                     new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("categoryOfOpeningBridge","[ConditionalDependencyAttribute<bool>(\"openingBridge\", true)]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
                 };
 
+                var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {
+                    new S100Framework.Applications.Roslyn.DependencyRule("openingBridge","(bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true"),
+                };
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true, attributeRules);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true, attributeRules, dependencyRule);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -273,7 +276,7 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false, []);
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false, [], []);
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 

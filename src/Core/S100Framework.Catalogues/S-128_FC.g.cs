@@ -1091,7 +1091,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class contactAddress {
+		public class contactAddress : ComplexType {
 			[XmlElement("administrativeDivision")]
 			public String? administrativeDivision {get;set;} = default;
 
@@ -1116,6 +1116,10 @@ namespace S100Framework.DomainModel.S128 {
 			public String? postalCode {get;set;} = default;
 
 			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalDpendencies = new Dictionary<string,Func<contactAddress, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1123,12 +1127,16 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class customPaperSize {
+		public class customPaperSize : ComplexType {
 			[XmlElement("paperWidth")]
 			public double paperWidth {get;set;} = default;
 
 			[XmlElement("paperLength")]
 			public double paperLength {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<customPaperSize, bool>> _conditionalDpendencies = new Dictionary<string,Func<customPaperSize, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1136,7 +1144,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class defaultLocale {
+		public class defaultLocale : ComplexType {
 			[XmlElement("characterEncoding")]
 			public String characterEncoding {get;set;} = string.Empty;
 
@@ -1147,6 +1155,10 @@ namespace S100Framework.DomainModel.S128 {
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<defaultLocale, bool>> _conditionalDpendencies = new Dictionary<string,Func<defaultLocale, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1154,7 +1166,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureName {
+		public class featureName : ComplexType {
 			[XmlElement("language")]
 			public String? language {get;set;} = default;
 
@@ -1171,6 +1183,10 @@ namespace S100Framework.DomainModel.S128 {
 			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalDpendencies = new Dictionary<string,Func<featureName, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1178,7 +1194,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class information {
+		public class information : ComplexType {
 			[XmlElement("fileLocator")]
 			public String? fileLocator {get;set;} = default;
 
@@ -1203,6 +1219,10 @@ namespace S100Framework.DomainModel.S128 {
 			public List<String> text {get;set;} = [];
 
 			public bool ShouldSerializetext() { return text.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalDpendencies = new Dictionary<string,Func<information, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1210,7 +1230,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class onlineResource {
+		public class onlineResource : ComplexType {
 			[XmlElement("applicationProfile")]
 			public String? applicationProfile {get;set;} = default;
 
@@ -1238,6 +1258,10 @@ namespace S100Framework.DomainModel.S128 {
 			public String? protocolRequest {get;set;} = default;
 
 			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalDpendencies = new Dictionary<string,Func<onlineResource, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1245,12 +1269,16 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class periodicDateRange {
+		public class periodicDateRange : ComplexType {
 			[XmlElement("dateEnd")]
 			public String dateEnd {get;set;} = string.Empty;
 
 			[XmlElement("dateStart")]
 			public String dateStart {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<periodicDateRange, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1258,7 +1286,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class pricing {
+		public class pricing : ComplexType {
 			[XmlElement("contractPeriod")]
 			public String? contractPeriod {get;set;} = default;
 
@@ -1269,6 +1297,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("price")]
 			public double price {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<pricing, bool>> _conditionalDpendencies = new Dictionary<string,Func<pricing, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1276,7 +1308,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class printSize {
+		public class printSize : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
 			public iSO216? iSO216 {get;set;} = default;
@@ -1291,6 +1323,10 @@ namespace S100Framework.DomainModel.S128 {
 			public customPaperSize? customPaperSize {get;set;} = default;
 
 			public bool ShouldSerializecustomPaperSize() { return customPaperSize!=default; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<printSize, bool>> _conditionalDpendencies = new Dictionary<string,Func<printSize, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1298,7 +1334,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class productSpecification {
+		public class productSpecification : ComplexType {
 			[XmlIgnore]
 			public DateOnly editionDate {get;set;} = default;
 
@@ -1320,6 +1356,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<productSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<productSpecification, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1327,7 +1367,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class supportFileSpecification {
+		public class supportFileSpecification : ComplexType {
 			[XmlIgnore]
 			public DateOnly editionDate {get;set;} = default;
 
@@ -1344,6 +1384,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<supportFileSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<supportFileSpecification, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1351,7 +1395,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class serviceSpecification {
+		public class serviceSpecification : ComplexType {
 			[XmlIgnore]
 			public DateOnly editionDate {get;set;} = default;
 
@@ -1368,6 +1412,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<serviceSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<serviceSpecification, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1375,7 +1423,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class sourceIndication {
+		public class sourceIndication : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
@@ -1415,6 +1463,10 @@ namespace S100Framework.DomainModel.S128 {
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<sourceIndication, bool>> _conditionalDpendencies = new Dictionary<string,Func<sourceIndication, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1422,7 +1474,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class telecommunications {
+		public class telecommunications : ComplexType {
 			[XmlElement("contactInstructions")]
 			public String contactInstructions {get;set;} = string.Empty;
 
@@ -1438,6 +1490,10 @@ namespace S100Framework.DomainModel.S128 {
 			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalDpendencies = new Dictionary<string,Func<telecommunications, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1445,7 +1501,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class timeIntervalOfCycle {
+		public class timeIntervalOfCycle : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Lower(1)]
@@ -1459,6 +1515,10 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("valueOfTime")]
 			public int valueOfTime {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<timeIntervalOfCycle, bool>> _conditionalDpendencies = new Dictionary<string,Func<timeIntervalOfCycle, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1466,12 +1526,16 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class weekOfYear {
+		public class weekOfYear : ComplexType {
 			[XmlElement("weekNumber")]
 			public int weekNumber {get;set;} = default;
 
 			[XmlElement("yearNumber")]
 			public int yearNumber {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<weekOfYear, bool>> _conditionalDpendencies = new Dictionary<string,Func<weekOfYear, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1479,7 +1543,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class issuanceCycle {
+		public class issuanceCycle : ComplexType {
 			[XmlElement("periodicDateRange")]
 			public periodicDateRange? periodicDateRange {get;set;} = default;
 
@@ -1489,6 +1553,10 @@ namespace S100Framework.DomainModel.S128 {
 			public timeIntervalOfCycle? timeIntervalOfCycle {get;set;} = default;
 
 			public bool ShouldSerializetimeIntervalOfCycle() { return timeIntervalOfCycle!=default; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<issuanceCycle, bool>> _conditionalDpendencies = new Dictionary<string,Func<issuanceCycle, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1496,7 +1564,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class printInformation {
+		public class printInformation : ComplexType {
 			[XmlElement("printAgency")]
 			public String? printAgency {get;set;} = default;
 
@@ -1520,6 +1588,10 @@ namespace S100Framework.DomainModel.S128 {
 			[XmlElement("printSize")]
 			public printSize printSize {get;set;} = new printSize {
 			};
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<printInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<printInformation, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1527,7 +1599,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class supportFile {
+		public class supportFile : ComplexType {
 			[XmlElement("comment")]
 			public String? comment {get;set;} = default;
 
@@ -1600,6 +1672,10 @@ namespace S100Framework.DomainModel.S128 {
 				name = string.Empty,
 				version = string.Empty,
 			};
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<supportFile, bool>> _conditionalDpendencies = new Dictionary<string,Func<supportFile, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1607,7 +1683,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class timeIntervalOfProduct {
+		public class timeIntervalOfProduct : ComplexType {
 			[XmlIgnore]
 			public DateOnly? expirationDate {get;set;} = default;
 
@@ -1628,6 +1704,10 @@ namespace S100Framework.DomainModel.S128 {
 			public issuanceCycle? issuanceCycle {get;set;} = default;
 
 			public bool ShouldSerializeissuanceCycle() { return issuanceCycle!=default; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<timeIntervalOfProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<timeIntervalOfProduct, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1635,7 +1715,7 @@ namespace S100Framework.DomainModel.S128 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class referenceToNM {
+		public class referenceToNM : ComplexType {
 			[XmlIgnore]
 			public DateOnly publicationDate {get;set;} = default;
 
@@ -1651,6 +1731,10 @@ namespace S100Framework.DomainModel.S128 {
 			public weekOfYear? weekOfYear {get;set;} = default;
 
 			public bool ShouldSerializeweekOfYear() { return weekOfYear!=default; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<referenceToNM, bool>> _conditionalDpendencies = new Dictionary<string,Func<referenceToNM, bool>> {
+			};
 		}
 
 	}
@@ -1875,6 +1959,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<CatalogueSectionHeader, bool>> _conditionalDpendencies = new Dictionary<string,Func<CatalogueSectionHeader, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1942,6 +2030,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<ContactDetails, bool>> _conditionalDpendencies = new Dictionary<string,Func<ContactDetails, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -1978,6 +2070,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<IndicationOfCarriageRequirement, bool>> _conditionalDpendencies = new Dictionary<string,Func<IndicationOfCarriageRequirement, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -2028,6 +2124,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<PriceInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<PriceInformation, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -2075,6 +2175,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<ProducerInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<ProducerInformation, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -2117,6 +2221,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<DistributorInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<DistributorInformation, bool>> {
+			};
 		}
 	}
 	namespace FeatureTypes {
@@ -2479,6 +2587,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<ElectronicProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<ElectronicProduct, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -2553,6 +2665,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<PhysicalProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<PhysicalProduct, bool>> {
+			};
 		}
 
 		/// <summary>
@@ -2629,6 +2745,10 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+
+			private IReadOnlyDictionary<string, Func<S100Service, bool>> _conditionalDpendencies = new Dictionary<string,Func<S100Service, bool>> {
+			};
 		}
 	}
 
