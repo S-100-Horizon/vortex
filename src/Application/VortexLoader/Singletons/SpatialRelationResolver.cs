@@ -58,7 +58,7 @@ namespace S100Framework.Applications.Singletons
             var featureclass = _featureClasses[typeof(T).Name];
 
             if (current.Shape != null) {
-                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Intersects, ImporterNIS._compilationScale)) {
+                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Intersects, ImporterNIS.QueryFilter)) {
                     yield return SpatialRelated;
                 }
             }
@@ -73,18 +73,18 @@ namespace S100Framework.Applications.Singletons
             var featureclass = _featureClasses[typeof(T).Name];
 
             if (current.Shape != null) {
-                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Touches, ImporterNIS._compilationScale)) {
+                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Touches, ImporterNIS.QueryFilter)) {
                     yield return SpatialRelated;
                 }
             }
         }
 
 
-        private static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, int compilationScale) where T : class {
+        private static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass, SpatialRelationship spatialRelationship, QueryFilter queryFilter) where T : class {
             var spatialQueryFilter = new SpatialQueryFilter {
                 FilterGeometry = geometry,
                 SpatialRelationship = spatialRelationship,
-                WhereClause = $"plts_comp_scale = {compilationScale}"
+                WhereClause = queryFilter.WhereClause
             };
 
             using (var spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {

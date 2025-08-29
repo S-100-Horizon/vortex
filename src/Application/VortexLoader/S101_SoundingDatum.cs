@@ -10,8 +10,6 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-
-
         private static void S101_SoundingDatum(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
             var metadataATableName = "MetaDataA";
@@ -27,15 +25,18 @@ namespace S100Framework.Applications
 
             var whereClause = filter.WhereClause.Clone();
 
-            var M_Qual_WhereFilter = new QueryFilter() {
-                WhereClause = $"({whereClause}) AND (fcsubtype = 40)"
-            };
+            var m_qual_filter = "(fcsubtype = 40)";
+            var cat_cov_filter = "CATCOV = 1";
+            var m_sdat_filter = "(fcsubtype = 45)";
 
+            var M_Qual_WhereFilter = new QueryFilter() {
+                WhereClause = $"({whereClause}) AND {m_qual_filter}"
+            };
             var productCoverageFilter = new QueryFilter() {
-                WhereClause = $"({whereClause}) AND CATCOV = 1"
+                WhereClause = $"({whereClause}) AND {cat_cov_filter}"
             };
             var M_SDAT_WhereFilter = new QueryFilter() {
-                WhereClause = $"({whereClause}) AND (fcsubtype = 45)"
+                WhereClause = $"({whereClause}) AND {m_sdat_filter}"
             };
 
             int dissolved_M_QUAL_Count = 0;
@@ -46,59 +47,87 @@ namespace S100Framework.Applications
             //var all_M_QUAL = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter);
             //var all_M_SDAT = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter);
 
-            var all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat"]);
-            var all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat"]);
-            var all_M_QUAL_dissolved = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
+            var all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat", "plts_comp_scale"]);
+            var all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat", "plts_comp_scale"]);
 
-            var all_dissolved_M_QUALs_without_M_SDATs = Geometries.EraseTouchingParts(all_M_QUAL_dissolved, [.. all_M_SDAT_geometries.Select(e => e.Geometry)]);
+            var uniqueComscalesMQuals = all_M_QUAL_geometries.Select(e => Convert.ToInt32(e.FieldName_FieldValue!["plts_comp_scale"])).Distinct().ToList();
+            var uniqueComscalesMSdats = all_M_SDAT_geometries.Select(e => Convert.ToInt32(e.FieldName_FieldValue!["plts_comp_scale"])).Distinct().ToList();
 
-            // Store all dissolved m_quals
-            foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
+            //if (uniqueComscalesMQuals.Count() > 1) {
+            //    throw new NotSupportedException("Multiple scales not supported.");
+            //}
+            //if (uniqueComscalesMSdats.Count() > 1) {
+            //    throw new NotSupportedException("Multiple scales not supported.");
+            //}
 
-                if (item.IsEmpty) {
-                    continue;
-                }
-
-                var instance = new SoundingDatum {
-                    verticalDatum = default,
+            foreach (var scale in uniqueComscalesMQuals) {
+                M_Qual_WhereFilter = new QueryFilter() {
+                    WhereClause = $"(plts_comp_scale = {scale}) AND {m_qual_filter}"
+                };
+                productCoverageFilter = new QueryFilter() {
+                    WhereClause = $"(plts_comp_scale = {scale}) AND {cat_cov_filter}"
+                };
+                M_SDAT_WhereFilter = new QueryFilter() {
+                    WhereClause = $"(plts_comp_scale = {scale}) AND {m_sdat_filter}"
                 };
 
-                instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+                all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat", "plts_comp_scale"]);
+                all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat", "plts_comp_scale"]);
 
-                buffer["ps"] = ps101;
-                buffer["code"] = instance.GetType().Name;
-                buffer["edition"] = ImporterNIS.s101version;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                SetShape(buffer, item);
-                ImporterNIS.SetUsageBand(buffer, _compilationScale);
-                dissolved_M_QUAL_Count++;
-                var featureN = featureClass.CreateRow(buffer);
-                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-            }
 
-            // Add all M_SDATs
-            foreach (var item in all_M_SDAT_geometries) {
-                if (item.Geometry!.IsEmpty) {
-                    continue;
+                var all_M_QUAL_dissolved = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
+
+                var all_dissolved_M_QUALs_without_M_SDATs = Geometries.EraseTouchingParts(all_M_QUAL_dissolved, [.. all_M_SDAT_geometries.Select(e => e.Geometry)]);
+
+                // Store all dissolved m_quals
+                foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
+
+                    if (item.IsEmpty) {
+                        continue;
+                    }
+
+                    var instance = new SoundingDatum {
+                        verticalDatum = default,
+                    };
+
+                    instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+
+                    buffer["ps"] = ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    SetShape(buffer, item);
+                    ImporterNIS.SetUsageBand(buffer, uniqueComscalesMQuals[0]);
+                    dissolved_M_QUAL_Count++;
+                    var featureN = featureClass.CreateRow(buffer);
+                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                 }
 
-                var instance = new SoundingDatum {
-                    verticalDatum = default,
-                };
+                // Add all M_SDATs
+                foreach (var item in all_M_SDAT_geometries) {
+                    if (item.Geometry!.IsEmpty) {
+                        continue;
+                    }
 
-                instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum,DomainModel.S101.verticalDatum>(item.FieldName_FieldValue!["verdat"]);
+                    var instance = new SoundingDatum {
+                        verticalDatum = default,
+                    };
 
-                buffer["ps"] = ps101;
-                buffer["code"] = instance.GetType().Name;
-                buffer["edition"] = ImporterNIS.s101version;
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                SetShape(buffer, item.Geometry);
-                ImporterNIS.SetUsageBand(buffer, _compilationScale);
+                    instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum, DomainModel.S101.verticalDatum>(item.FieldName_FieldValue!["verdat"]);
 
-                var featureN = featureClass.CreateRow(buffer);
-                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-                M_SDAT_Count++;
+                    buffer["ps"] = ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    SetShape(buffer, item.Geometry);
+                    ImporterNIS.SetUsageBand(buffer, uniqueComscalesMSdats[0]);
+
+                    var featureN = featureClass.CreateRow(buffer);
+                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                    M_SDAT_Count++;
+                }
             }
+
             Logger.Current.DataTotalCount("M_SDAT", M_SDAT_Count, M_SDAT_Count);
             Logger.Current.DataTotalCount("M_QUAL", dissolved_M_QUAL_Count, dissolved_M_QUAL_Count);
         }

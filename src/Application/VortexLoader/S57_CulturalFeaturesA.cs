@@ -187,6 +187,7 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "4") {
                                 openingBridge = true;
+
                             }
                             else if (current.CATBRG != default && current.CATBRG == "5") {
                                 openingBridge = true;
@@ -311,7 +312,6 @@ namespace S100Framework.Applications
 
                                 instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
 
-
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = instance.GetType().Name;
@@ -325,8 +325,7 @@ namespace S100Framework.Applications
 
 
                                 if (createBridgesAndRelations) {
-                                    Bridges.Instance.AddRelation(relatedBridge.Name, name, typeof(SpanOpening), current.OBJNAM,current.NOBJNM);
-
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM,current.NOBJNM);
 
                                     // Create link to bridge
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
@@ -408,6 +407,7 @@ namespace S100Framework.Applications
 
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed),current.OBJNAM,current.NOBJNM);
+
                                     // Create link to bridge
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                     bindings.Add(new() {

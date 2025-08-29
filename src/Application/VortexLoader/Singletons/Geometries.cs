@@ -130,7 +130,6 @@ namespace VortexLoader.Singletons
             foreach (var fieldName in fieldsToReturn) {
                 indices.Add(cursor.FindField(fieldName));
             }
-
             
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;

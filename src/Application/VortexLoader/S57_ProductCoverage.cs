@@ -128,6 +128,8 @@ namespace S100Framework.Applications
 
                 var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
 
+                int polygonsCompScale = 0;
+
                 while (cursorCoverage.MoveNext()) {
                     var productCoverage = new ProductCoverage((Feature)cursorCoverage.Current);
                     var catcov = productCoverage.CATCOV ?? default;
@@ -152,6 +154,7 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("Multiple coverages after M_SCL cut");
                     }
 
+                    polygonsCompScale = productCoverage.PLTS_COMP_SCALE!.Value;
                     polygons.Add((ArcGIS.Core.Geometry.Polygon)productCoverage.SHAPE!);
 
                     switch (catcov) {
@@ -225,7 +228,7 @@ namespace S100Framework.Applications
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
-                    ImporterNIS.SetUsageBand(buffer,_compilationScale);
+                    ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
                     var featureN = featureClass.CreateRow(buffer);
                     var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
                     // TODO: Create relations

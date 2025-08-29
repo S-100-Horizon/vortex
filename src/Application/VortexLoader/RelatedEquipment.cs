@@ -175,7 +175,7 @@ namespace S100Framework.Applications
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, shape);
-                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -195,7 +195,7 @@ namespace S100Framework.Applications
 
                     // Add relation between s57master polygon and slave equipment
 
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(lightSectored.GetType(), equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
 
                 }
                 // 

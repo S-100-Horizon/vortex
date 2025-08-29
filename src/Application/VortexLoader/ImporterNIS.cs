@@ -28,7 +28,7 @@ namespace S100Framework.Applications
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
-        internal static int _compilationScale = -1;
+        //internal static int _compilationScale = -1;
         internal static string _scaminFilesPath = "";
 
         internal static string ps101 = S100Framework.DomainModel.S101.Summary.ProductId;
@@ -42,18 +42,19 @@ namespace S100Framework.Applications
 
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
+        public static QueryFilter QueryFilter { get; internal set; } = new();
+
+
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
 
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
-            var filter = new QueryFilter {
-                WhereClause = "PLTS_COMP_SCALE = 22000",
-            };
 
-            // default value - overwritten by args
-            var skinOfEarthOnly = false;
+
+        // default value - overwritten by args
+        var skinOfEarthOnly = false;
             var append = false;
 
             arguments.WithParsed<Options>(o => {
@@ -69,25 +70,12 @@ namespace S100Framework.Applications
                     throw new System.ArgumentOutOfRangeException(nameof(source));
 
                 if (!string.IsNullOrEmpty(o.Query)) {
-                    filter.WhereClause = o.Query!.Trim();
+                    QueryFilter.WhereClause = o.Query!.Trim();
 
-                    string pattern = @"PLTS_COMP_SCALE\s*[=<>]{1,2}\s*(\d+)";
 
-                    Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
-
-                    if (match.Success) {
-                        string value = match.Groups[1].Value;
-                        if (!int.TryParse(value, out _compilationScale)) {
-                            throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-                        }
-                    }
-                    else {
-                        throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-                    }
                 }
                 else {
-                    _compilationScale = 22000;
-                    filter.WhereClause = "PLTS_COMP_SCALE = 22000";
+                    throw new NotSupportedException("whereclause must be supplied.");
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -192,24 +180,24 @@ namespace S100Framework.Applications
                 SpatialRelationResolver.Initialize(source);
 
                 Logger.Current.Information($"Initializing SpatialAssociations");
-                SpatialAssociations.Initialize(source, filter);
+                SpatialAssociations.Initialize(source, QueryFilter);
 
                 relatedEquipment = new RelatedEquipment(source, destination);
 
                 if (skinOfEarthOnly) {
-                    Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
+                    Logger.Current.Information($"Converting skin of earth only Filter: {QueryFilter.WhereClause}");
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
-                    var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
-                    Store(() => S57_DepthsA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (40,60,80)";
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (40)";
-                    Store(() => S57_MetadataA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
-                    Store(() => S57_ProductCoverage(source, destination, filter));
+                    var whereClause = QueryFilter.WhereClause.Clone();
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
+                    Store(() => S57_DepthsA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (5)";
+                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40,60,80)";
+                    Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40)";
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1)";
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
                 }
@@ -219,95 +207,95 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause}";
                     */
 
-                    Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
+                    Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, QueryFilter));
+
+
                     Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter)); 
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                    Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter)); 
+                    Store(() => S57_CulturalFeaturesL(source, destination, QueryFilter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, filter));
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Contours");
-                    Store(() => S57_DepthsL(source, destination, filter));
+                    Store(() => S57_DepthsL(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Dangers");
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
+                    Store(() => S57_DangersA(source, destination, QueryFilter));
+                    Store(() => S57_DangersL(source, destination, QueryFilter));
+                    Store(() => S57_DangersP(source, destination, QueryFilter));
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
-                    //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
+                    //Store(() => S101_RecommendedTracksAndRoutes(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-                    Store(() => S57_PortsAndServicesL(source, destination, filter));
-                    Store(() => S57_PortsAndServicesP(source, destination, filter));
+                    Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
+                    Store(() => S57_PortsAndServicesL(source, destination, QueryFilter));
+                    Store(() => S57_PortsAndServicesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Soundings");
-                    Store(() => S57_SoundingsP(source, destination, filter));
+                    Store(() => S57_SoundingsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Tides And Variations");
-                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsA(source, destination, QueryFilter));
+                    Store(() => S57_TidesAndVariationsL(source, destination, QueryFilter));
+                    Store(() => S57_TidesAndVariationsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Areas And Limits");
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Seabeds");
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
+                    Store(() => S57_SeabedA(source, destination, QueryFilter));
+                    Store(() => S57_SeabedL(source, destination, QueryFilter));
+                    Store(() => S57_SeabedP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting CoastLines");
-                    Store(() => S57_CoastlineA(source, destination, filter));
-                    Store(() => S57_CoastlineL(source, destination, filter));
-                    Store(() => S57_CoastlineP(source, destination, filter));
+                    Store(() => S57_CoastlineA(source, destination, QueryFilter));
+                    Store(() => S57_CoastlineL(source, destination, QueryFilter));
+                    Store(() => S57_CoastlineP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Depth Areas");
-                    Store(() => S57_DepthsA(source, destination, filter));
+                    Store(() => S57_DepthsA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Ice features");
-                    Store(() => S57_IcefeaturesA(source, destination, filter));
+                    Store(() => S57_IcefeaturesA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Metadata"); 
-                    Store(() => S57_MetadataA(source, destination, filter));
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Military Features");
-                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+                    Store(() => S57_MilitaryFeatureA(source, destination, QueryFilter));
+                    Store(() => S57_MilitaryFeaturesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Natural Features");
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
+                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Offshore Installations");
-                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
+                    Store(() => S57_OffshoreInstallationsA(source, destination, QueryFilter));
+                    Store(() => S57_OffshoreInstallationsL(source, destination, QueryFilter));
+                    Store(() => S57_OffshoreInstallationsP(source, destination, QueryFilter));
 
 
                     Logger.Current.Information($"Converting Tracks And Routes");
-                    Store(() => S57_TracksAndRoutesA(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesL(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesP(source, destination, filter));
-
-
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesA(source, destination, QueryFilter));
+                    Store(() => S57_TracksAndRoutesL(source, destination, QueryFilter));
+                    Store(() => S57_TracksAndRoutesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Aids to Navigation");
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+                    Store(() => S57_AidsToNavigationP(source, destination, QueryFilter));
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
@@ -354,8 +342,9 @@ namespace S100Framework.Applications
                 buffer["shape"] = shape;
             }
         }
-        internal static void SetUsageBand(RowBuffer buffer, int comp_scale) {
-            _ = comp_scale switch {
+
+        internal static void SetUsageBand(RowBuffer buffer, int scale) {
+            _ = scale switch {
                 -1 => throw new InvalidOperationException("compilation scale isn't initialized!"),
                 < 22000 => buffer["usageband"] = 5,
                 < 90000 => buffer["usageband"] = 4,
@@ -363,7 +352,6 @@ namespace S100Framework.Applications
                 < 700000 => buffer["usageband"] = 2,
                 _ => buffer["usageband"] = 1
             };
-
 
             //_ = shape.GeometryType switch {
             //    GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),

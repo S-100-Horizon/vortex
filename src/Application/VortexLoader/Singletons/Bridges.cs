@@ -34,14 +34,14 @@ namespace S100Framework.Applications.Singletons
 
     class FeatureGrouper
     {
-        internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses, int plts_comp_scale) {
+        internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses, QueryFilter filter) {
             var groups = new List<List<string>>();
 
             var features = new List<(string ObjectID, Geometry Geometry)>();
 
             foreach (var featureclass in featureclasses) {
                 var tableName = featureclass.GetName().ToLower();
-                using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = $"fcsubtype in (5,45) and plts_comp_scale = {plts_comp_scale}" })) {
+                using (var cursor = featureclass.Search(new QueryFilter() { WhereClause = $"{filter.WhereClause} and fcsubtype in (5,45)" })) {
                     while (cursor.MoveNext()) {
                         using (var row = (Feature)cursor.Current) {
                             long oid = row.GetObjectID();
@@ -51,6 +51,7 @@ namespace S100Framework.Applications.Singletons
                         }
                     }
                 }
+
             }
 
 
@@ -155,6 +156,11 @@ namespace S100Framework.Applications.Singletons
         private static Dictionary<string, List<BridgeRelation>> _bindings = new();
 
         internal List<BridgeRelation> GetBindings(string bridgeName) {
+            if (!_bindings.ContainsKey(bridgeName)) {
+                return new();
+            }
+
+
             return _bindings[bridgeName];
         }
 
@@ -195,7 +201,7 @@ namespace S100Framework.Applications.Singletons
         private static Geodatabase _source;
         private static Geodatabase _destination;
 
-        private Bridges(Geodatabase source, Geodatabase destination, int plts_comp_scale) {
+        private Bridges(Geodatabase source, Geodatabase destination, QueryFilter whereClause) {
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _destination = destination ?? throw new ArgumentNullException(nameof(destination));
 
@@ -206,7 +212,7 @@ namespace S100Framework.Applications.Singletons
             using var portsAndServicesA = _source.OpenDataset<FeatureClass>(_source.GetName(portsAndServicesTableName));
 
             var featureGrouper = new FeatureGrouper();
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, plts_comp_scale);
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, ImporterNIS.QueryFilter);
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase destination) {
@@ -216,7 +222,7 @@ namespace S100Framework.Applications.Singletons
 
             lock (_lock) {
                 if (_instance == null) {
-                    _instance = new Bridges(source, destination, ImporterNIS._compilationScale);
+                    _instance = new Bridges(source, destination,ImporterNIS.QueryFilter);
                 }
             }
         }
@@ -235,7 +241,9 @@ namespace S100Framework.Applications.Singletons
                     using (var row = cursor.Current) {
                         long oid = row.GetObjectID();
                         //var shape = row.GetShape();
-                        //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+                        S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+
+
 
                         var bindings = _instance!.GetBindings(row["name"].ToString()!);
 
@@ -265,7 +273,7 @@ namespace S100Framework.Applications.Singletons
                         var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
 
 
-                        S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
+                        //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 
                         bridge.openingBridge = canOpen;
                         bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
