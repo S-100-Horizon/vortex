@@ -62,6 +62,9 @@ namespace S100Framework.Applications
                     var association = featureAssociation.CreateRow(featureAssociationBuffer);
                     string featureAssociationName = (string)association["name"];
                     bridge.BridgeAggregationName = featureAssociationName;
+
+                    ConversionAnalytics.Instance.AddConverted("DerivedBridgeElement", Guid.Empty, name);
+
                 }
             }
 
@@ -187,7 +190,6 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "4") {
                                 openingBridge = true;
-
                             }
                             else if (current.CATBRG != default && current.CATBRG == "5") {
                                 openingBridge = true;
@@ -1261,6 +1263,7 @@ namespace S100Framework.Applications
                             if (createBridgesAndRelations) {
 
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
+
                                 // Create link to bridge
                                 List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                 bindings.Add(new() {
@@ -1273,6 +1276,7 @@ namespace S100Framework.Applications
 
                                 featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
                                 featureN.Store();
+
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

@@ -212,7 +212,8 @@ namespace S100Framework.Applications.Singletons
             using var portsAndServicesA = _source.OpenDataset<FeatureClass>(_source.GetName(portsAndServicesTableName));
 
             var featureGrouper = new FeatureGrouper();
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, ImporterNIS.QueryFilter);
+            //_groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, ImporterNIS.QueryFilter);
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA}, ImporterNIS.QueryFilter);
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase destination) {
@@ -243,8 +244,6 @@ namespace S100Framework.Applications.Singletons
                         //var shape = row.GetShape();
                         S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
 
-
-
                         var bindings = _instance!.GetBindings(row["name"].ToString()!);
 
                         var featureBindings = new List<featureBinding>();
@@ -271,7 +270,6 @@ namespace S100Framework.Applications.Singletons
 
                         var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
                         var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
-
 
                         //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 

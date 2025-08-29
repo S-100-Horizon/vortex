@@ -677,23 +677,20 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = ntxtds;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-                    }
-                    else {
+                    if (!File.Exists(filePath)) {
                         Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
                     }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = ntxtds;
+                    string language = "eng";
 
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        fileReference = FixFilename(fileReference) ?? default,
+                        language = language,
+                    };
+                    information.Add(instance);
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
@@ -710,23 +707,21 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
-                    if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = txtdsc;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-
-                    }
-                    else {
+                    if (!File.Exists(filePath)) {
                         Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
                     }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        fileReference = FixFilename(fileReference) ?? default,
+                        language = language,
+                    };
+                    information.Add(instance);
+
                 }
                 else if (!string.IsNullOrEmpty(txtdsc)) {
                     string? fileLocator = default;
@@ -834,7 +829,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
+                        //var note = new Note(filePath);
                         string? fileLocator = default;
                         string fileReference = ntxtds;
                         string language = "eng";
@@ -867,7 +862,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
+                        //var note = new Note(filePath);
                         string? fileLocator = default;
                         string fileReference = txtdsc;
                         string language = "eng";
