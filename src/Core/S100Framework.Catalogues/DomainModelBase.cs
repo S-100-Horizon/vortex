@@ -78,10 +78,9 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class ConditionalDependencyAttribute<T>(string propertyName, T value) : System.Attribute
+    public class ConditionalUnknownDependencyAttribute(string propertyName) : System.Attribute
     {
         public string PropertyName = propertyName;
-        public T Value = value;
     }
 
     [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
@@ -160,11 +159,24 @@ namespace S100Framework.DomainModel
         Primitives[] primitives { get; }
     }
 
+    public interface IDependencies
+    {
+        bool ConditionalUnknown(string name);
+    }
+
     [System.SerializableAttribute()]
-    public abstract class Node
+    public abstract class ComplexType : IDependencies
+    {
+        public abstract bool ConditionalUnknown(string name);
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class Node : IDependencies
     {
         [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
+
+        public abstract bool ConditionalUnknown(string name);
     }
 
     [System.SerializableAttribute()]

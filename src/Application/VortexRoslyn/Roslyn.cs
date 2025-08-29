@@ -28,11 +28,13 @@ namespace S100Framework.Applications
 
         public record AttributeRule(string Name, string Rule);
 
+        public record DependencyRule(string Name, string Rule);
+
         public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat) {
-            return Build(productSpecification, productFormat, false, []);
+            return Build(productSpecification, productFormat, false, [], []);
         }
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules) {
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules, DependencyRule[] dependencyRules) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -402,7 +404,7 @@ namespace S100Framework.Applications
                                     var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
                                     constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
                                 }
-                            }                            
+                            }
                         }
                         else if (c.Element(XName.Get("stringLength", scopes["S100CD"])) != default) {
                             constraints.Add(code, []);
@@ -468,7 +470,7 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\t[System.Serializable()]");
                         builderDomainModel.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
 
-                        builderDomainModel.AppendLine($"\t\tpublic class {code} {{");
+                        builderDomainModel.AppendLine($"\t\tpublic class {code} : ComplexType {{");
 
                         var constructor = new StringBuilder();
                         constructor.AppendLine($"new {code} {{");
@@ -603,6 +605,17 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                        builderDomainModel.AppendLine();
+                        builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
+                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                            foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
+                                builderDomainModel.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                        }
+                        builderDomainModel.AppendLine("\t\t\t};");
+
                         builderDomainModel.AppendLine("\t\t}");
                         builderDomainModel.AppendLine();
 
@@ -679,6 +692,7 @@ namespace S100Framework.Applications
                         SupportingSpatialAssociation = supportingSpatialAssociation,
                         ProductFormat = productFormat,
                         AttributeRules = attributeRules,
+                        DependencyRules = dependencyRules,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -727,6 +741,7 @@ namespace S100Framework.Applications
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -810,12 +825,26 @@ namespace S100Framework.Applications
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         }, (builder) => {
                             builder.AppendLine();
-                            if (productFormat == ProductFormat.GML) {
-                                builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
+                                if (productFormat == ProductFormat.GML) {
+                                    builder.AppendLine("\t\t\t[JsonIgnore]");
+                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                                builder.AppendLine();
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                                }
+                                builder.AppendLine("\t\t\t};");
                             }
                         });
 
@@ -892,6 +921,7 @@ namespace S100Framework.Applications
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         }, (builder) => {
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
                                 if (productFormat == ProductFormat.GML) {
@@ -905,6 +935,17 @@ namespace S100Framework.Applications
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
                                 builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
+
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                                builder.AppendLine();
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                                    foreach(var d in dependencyRules.Where(e=>e.Name.Equals(referenceCode)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                                }
+                                builder.AppendLine("\t\t\t};");
                             }
 
                             //if (superType == null) {
@@ -1285,6 +1326,7 @@ namespace S100Framework.Applications
             public required bool SupportingSpatialAssociation { get; init; }
             public required ProductFormat ProductFormat { get; init; }
             public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
+            public required IReadOnlyCollection<DependencyRule> DependencyRules { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
@@ -1367,7 +1409,7 @@ namespace S100Framework.Applications
                 }
 
                 if (client.Constraints.ContainsKey(referenceCode)) {
-                    foreach(var constraint in client.Constraints[referenceCode])
+                    foreach (var constraint in client.Constraints[referenceCode])
                         builder.AppendLine($"\t\t\t{constraint}");
                 }
 
