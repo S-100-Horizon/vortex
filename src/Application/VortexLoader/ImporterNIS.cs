@@ -213,6 +213,13 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+
+                    Logger.Current.Information($"Converting Metadata");
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
+                    Store(() => S57_MetadataP(source, destination, QueryFilter));
+
+
+
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
@@ -270,8 +277,6 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Ice features");
                     Store(() => S57_IcefeaturesA(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Metadata"); 
-                    Store(() => S57_MetadataA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Military Features");
                     Store(() => S57_MilitaryFeatureA(source, destination, QueryFilter));

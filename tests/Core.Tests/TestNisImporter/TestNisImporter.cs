@@ -239,7 +239,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("TidesAndVariationsP");
+            var featureClass = source.OpenDataset<FeatureClass>("MetadataP");
             string shapeType = "Point"; // Area | Point | Line
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
