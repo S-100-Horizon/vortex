@@ -143,6 +143,8 @@ namespace S100Framework.Applications
 
                 var regFilename = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
+                var supportFiles = new List<string>();
+
                 foreach (var e in datasets) {
                     var dataset = e.Dataset;
                     var filter = e.Filter;
@@ -190,6 +192,21 @@ namespace S100Framework.Applications
                                 information.Attributes = (InformationNode)instance!;
                             informationTypes.Add(information);
                             //dataset.AddInformation(information);
+
+                            if (regFilename.IsMatch(json)) {
+                                var matches = regFilename.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -228,6 +245,21 @@ namespace S100Framework.Applications
                             if (!S100Framework.YAML.Converter.IsDefault(instance!))
                                 feature.Attributes = (FeatureNode)instance!;
                             featureTypes.Add(feature);
+
+                            if (regFilename.IsMatch(json)) {
+                                var matches = regFilename.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -296,10 +328,14 @@ namespace S100Framework.Applications
                                     foreach (Match m in matches) {
                                         var filename = m.Groups["filename"].Value;
 
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                        if (!supportFiles.Contains(filename)) {
+                                            supportFiles.Add(filename);
+                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
 
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    }                                    
+                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                            dataset?.Metadata.AddSupportFile(filename, base64);
+                                        }
+                                    }
                                 }
 
                                 // Surface Masks
