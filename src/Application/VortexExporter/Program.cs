@@ -141,11 +141,11 @@ namespace S100Framework.Applications
 
                 string pattern = "fileReference\":\"(?<filename>[^\"]+)";
 
-                var regFilename = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
-
-                var supportFiles = new List<string>();
+                var regFilename = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);                
 
                 foreach (var e in datasets) {
+                    var supportFiles = new List<string>();
+
                     var dataset = e.Dataset;
                     var filter = e.Filter;
 
