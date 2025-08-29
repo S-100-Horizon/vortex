@@ -392,6 +392,8 @@ namespace S100Framework.Applications
                         curve?.AddAssociation(sa.Value);
                     }
 
+                    dataset?.Metadata.AddSupportFile("test1.txt", "d76f5dsf576as765sda65sd");
+
                     // Serialize to YAML
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
 
