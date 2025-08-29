@@ -180,14 +180,11 @@ namespace S100Framework.Applications
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
                             var instance = new DepthNoBottomFound();
 
-
                             // TODO: interoperabilityIdentifier
 
                             if (current.TECSOU != null) {
                                 instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DepthNoBottomFound, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
-
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
