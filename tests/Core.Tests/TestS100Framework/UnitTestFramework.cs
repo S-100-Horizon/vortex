@@ -3,6 +3,7 @@ using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.Text.Json;
 
 using System.Globalization;
 using System.IO;
@@ -39,6 +40,39 @@ namespace TestS100Framework
 
 
             System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_AttributeRules() {
+            FastZip fastZip = new();
+
+            var output = new DirectoryInfo("s100ed8.gdb");
+
+            if (output.Exists)
+                output.Delete(true);
+
+            fastZip.ExtractZip("s100ed8.gdb.zip", output.FullName, null);
+
+            using Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(output.FullName)));
+
+            using var points = geodatabase.OpenDataset<FeatureClass>("point");
+
+            using var buffer = points.CreateRowBuffer();
+
+            using var cursor = points.CreateInsertCursor();
+
+            buffer["ps"] = "S-XXX";
+            buffer["code"] = "test";
+            
+            var id = cursor.Insert(buffer);
+
+            var name = buffer["name"];
+            Assert.Null(name);
+            
+            cursor.Flush();            
+
+            System.Diagnostics.Debugger.Break();
+
         }
     }
 }
