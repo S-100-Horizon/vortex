@@ -2714,7 +2714,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 3600, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double orientationValue {get;set;} = default;
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
@@ -4850,7 +4850,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class HarbourPhysicalInfrastructure : SupervisedArea {
 			[XmlElement("verticalClearanceValue")]
-			[RangeConstraint<double>(0.1, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(1, 1000, Closure.closedInterval)]
 			public double? verticalClearanceValue {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
@@ -5076,7 +5076,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : Layout {
 			[XmlElement("availableBerthingLength")]
-			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 100000, Closure.closedInterval)]
 			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
@@ -5087,7 +5087,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
@@ -5099,7 +5099,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(0, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 88500, Closure.closedInterval)]
 			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
@@ -5253,7 +5253,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BerthPosition : Layout {
 			[XmlElement("availableBerthingLength")]
-			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 100000, Closure.closedInterval)]
 			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
@@ -5264,7 +5264,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
@@ -5454,7 +5454,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -5595,7 +5595,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -5652,7 +5652,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gridiron : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -6123,7 +6123,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
@@ -7004,7 +7004,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 3600, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double orientationValue {get;set;} = default;
 

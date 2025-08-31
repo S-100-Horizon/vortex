@@ -2827,14 +2827,14 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation : ComplexType {
 			[XmlElement("orientationUncertainty")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 360000, Closure.closedInterval)]
 			[PrecisionConstraint(3)]
 			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 3600, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double orientationValue {get;set;} = default;
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
@@ -3141,7 +3141,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 36000, Closure.closedInterval)]
 			[PrecisionConstraint(2)]
 			[Upper(2)]
 			public List<double> sectorBearing {get;set;} = [];
@@ -5506,7 +5506,7 @@ namespace S100Framework.DomainModel.S127 {
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel.Any(); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 3600, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			[Upper(2)]
 			public List<double> orientationValue {get;set;} = [];
@@ -6468,7 +6468,7 @@ namespace S100Framework.DomainModel.S127 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class QualityOfNonBathymetricData : QualityOfTemporalVariation {
 			[XmlElement("orientationUncertainty")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0, 360000, Closure.closedInterval)]
 			[PrecisionConstraint(3)]
 			public double? orientationUncertainty {get;set;} = default;
 

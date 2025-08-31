@@ -157,7 +157,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Affected Chart Publications";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Name or number of affected national paper chart or ENC.
 	/// </summary>
@@ -236,7 +241,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Chart Affected";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -315,7 +325,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).
 	/// </summary>
@@ -363,12 +378,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"General Area";
 
+		protected override void Validate() {
+			if (locationName.Count < 1)
+				base.AddError("locationName", $"locationName must have at least 1 value.");
+		}
+
 		public generalAreaViewModel() : base() {
 			locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(locationName));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -421,7 +443,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Name and/or identifier of an area locality.
 	/// </summary>
@@ -469,12 +496,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"Locality";
 
+		protected override void Validate() {
+			if (locationName.Count < 1)
+				base.AddError("locationName", $"locationName must have at least 1 value.");
+		}
+
 		public localityViewModel() : base() {
 			locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(locationName));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Name of an area locality as defined by a competent authority.
 	/// </summary>
@@ -527,7 +561,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Location Name";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Message series identification of the warning or notice.
 	/// </summary>
@@ -652,7 +691,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Message Series Identifier";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Title of the navigational warning.
 	/// </summary>
@@ -705,7 +749,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"NAVWARN Title";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Detailed information about a warning.
 	/// </summary>
@@ -749,6 +798,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"Warning Information";
 
+		protected override void Validate() {
+		}
+
 		public warningInformationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -758,6 +810,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Reference to an object or feature that is external to the dataset.
 	/// </summary>
@@ -801,6 +855,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"Feature Reference";
 
+		protected override void Validate() {
+		}
+
 		public featureReferenceViewModel() : base() {
 			atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(atoNNumber));
@@ -810,6 +867,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -880,7 +939,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Feature Name";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -919,7 +983,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -962,7 +1031,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Spatial Accuracy";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The binding between a navigational warning preamble and the body.
@@ -990,7 +1064,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"navwarnPreambleContent";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The relationship between a navigational warning and previous information relevant to its purpose.
@@ -1018,7 +1097,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"navwarnReferences";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// a feature association for the binding between a geo feature and the cartographically positioned location for text.
@@ -1046,7 +1130,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Text association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Association between a warning and the area impacted.
@@ -1074,7 +1163,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Area Affected";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// References to for example a navigational warning, nautical publication or chart.
@@ -1145,12 +1239,17 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"References";
 
+		protected override void Validate() {
+		}
+
 		public ReferencesViewModel() : base() {
 			messageSeriesIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(messageSeriesIdentifier));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
@@ -1294,6 +1393,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"NAVWARN Preamble";
 
+		protected override void Validate() {
+			if (generalArea.Count < 1)
+				base.AddError("generalArea", $"generalArea must have at least 1 value.");
+		}
+
 		public NavwarnPreambleViewModel() : base() {
 			affectedChartPublications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(affectedChartPublications));
@@ -1309,6 +1413,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
@@ -1372,7 +1478,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
 		public override string? ToString() => $"Spatial Quality";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Navigational warning information that may be geo-located.
@@ -1467,6 +1578,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"NAVWARN Part";
 
+		protected override void Validate() {
+		}
+
 		public NavwarnPartViewModel() : base() {
 			fixedDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(fixedDateRange));
@@ -1479,6 +1593,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area affected by some event marked by a navigational warning.
@@ -1510,7 +1626,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
 		public override string? ToString() => $"NAVWARN Area Affected";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
@@ -1614,6 +1735,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public override string? ToString() => $"Text Placement";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 }

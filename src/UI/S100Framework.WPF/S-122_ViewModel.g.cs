@@ -174,6 +174,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Bearing Information";
 
+		protected override void Validate() {
+			if (sectorBearing.Count > 2)
+				base.AddError("sectorBearing", $"sectorBearing must have no more than 2 value.");
+		}
+
 		public bearingInformationViewModel() : base() {
 			sectorBearing.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sectorBearing));
@@ -183,6 +188,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
@@ -272,7 +279,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Contact Address";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -338,7 +350,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Feature Name";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -391,7 +408,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -442,7 +464,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Frequency Pair";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
@@ -534,12 +561,19 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Graphic";
 
+		protected override void Validate() {
+			if (pictorialRepresentation.Count < 1)
+				base.AddError("pictorialRepresentation", $"pictorialRepresentation must have at least 1 value.");
+		}
+
 		public graphicViewModel() : base() {
 			pictorialRepresentation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(pictorialRepresentation));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -629,7 +663,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -751,7 +790,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Online Resource";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -803,7 +847,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Orientation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -858,7 +907,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Periodic Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
@@ -922,7 +976,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"RxN Code";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -975,12 +1034,21 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Schedule by Day of Week";
 
+		protected override void Validate() {
+			if (timeIntervalsByDayOfWeek.Count < 1)
+				base.AddError("timeIntervalsByDayOfWeek", $"timeIntervalsByDayOfWeek must have at least 1 value.");
+			if (timeIntervalsByDayOfWeek.Count > 10)
+				base.AddError("timeIntervalsByDayOfWeek", $"timeIntervalsByDayOfWeek must have no more than 10 value.");
+		}
+
 		public scheduleByDayOfWeekViewModel() : base() {
 			timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1041,7 +1109,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Sector Limit";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1093,7 +1166,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Sector Limit One";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1145,7 +1223,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Sector Limit Two";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1264,7 +1347,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Telecommunications";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
@@ -1352,7 +1440,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Text Content";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -1423,6 +1516,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Time Intervals by Day of Week";
 
+		protected override void Validate() {
+			if (dayOfWeek.Count > 7)
+				base.AddError("dayOfWeek", $"dayOfWeek must have no more than 7 value.");
+			if (timeOfDayEnd.Count > 99)
+				base.AddError("timeOfDayEnd", $"timeOfDayEnd must have no more than 99 value.");
+			if (timeOfDayStart.Count > 99)
+				base.AddError("timeOfDayStart", $"timeOfDayStart must have no more than 99 value.");
+		}
+
 		public timeIntervalsByDayOfWeekViewModel() : base() {
 			dayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(dayOfWeek));
@@ -1435,6 +1537,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Values, discovered by measuring, that correspond to vessels characteristics.
 	/// </summary>
@@ -1527,7 +1631,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Vessels Measurements";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// An official name, title or description. This can be an identifier itself, or an identifier which is an instance of a named designation scheme.
 	/// </summary>
@@ -1609,7 +1718,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"designation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
@@ -1637,7 +1751,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Associated RxN";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Exception to the usual working day
@@ -1665,7 +1784,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Exceptional workday";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// There may be more than one such authority depending on how responsibilities are divided
@@ -1693,7 +1817,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Protected area authority";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The controlling authority for a service area
@@ -1721,7 +1850,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Service control";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Related organisation
@@ -1749,7 +1883,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Related organisation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit, enter, or use a feature.
@@ -1794,7 +1933,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Permission Type";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
@@ -1839,7 +1983,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Inclusion Type";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// -
@@ -1867,7 +2016,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Authority Contact";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// -
@@ -1895,7 +2049,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Authority Hours";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// -
@@ -1923,7 +2082,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		};
 
 		public override string? ToString() => $"Additional Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 
 	/// <summary>
@@ -2045,6 +2209,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Information Type";
 
+		protected override void Validate() {
+		}
+
 		public InformationTypeViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2057,6 +2224,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
@@ -2224,6 +2393,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"AbstractRxN";
 
+		protected override void Validate() {
+		}
+
 		public AbstractRxNViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2239,6 +2411,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Nautical information about a related area or facility.
@@ -2407,6 +2581,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Nautical Information";
 
+		protected override void Validate() {
+		}
+
 		public NauticalInformationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2422,6 +2599,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Regulations for a related area or facility.
@@ -2590,6 +2769,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Regulations";
 
+		protected override void Validate() {
+		}
+
 		public RegulationsViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2605,6 +2787,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Restrictions for a related area or facility.
@@ -2773,6 +2957,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Restrictions";
 
+		protected override void Validate() {
+		}
+
 		public RestrictionsViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2788,6 +2975,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Recommendations for a related area or facility.
@@ -2956,6 +3145,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Recommendations";
 
+		protected override void Validate() {
+		}
+
 		public RecommendationsViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2971,6 +3163,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
@@ -3120,6 +3314,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Authority";
 
+		protected override void Validate() {
+		}
+
 		public AuthorityViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3135,6 +3332,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3441,6 +3640,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Contact Details";
 
+		protected override void Validate() {
+		}
+
 		public ContactDetailsViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3477,6 +3679,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
@@ -3626,6 +3830,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Non-Standard Working Day";
 
+		protected override void Validate() {
+		}
+
 		public NonStandardWorkingDayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3647,6 +3854,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The time when a service is available and known exceptions.
@@ -3795,6 +4004,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Service Hours";
 
+		protected override void Validate() {
+			if (scheduleByDayOfWeek.Count < 1)
+				base.AddError("scheduleByDayOfWeek", $"scheduleByDayOfWeek must have at least 1 value.");
+		}
+
 		public ServiceHoursViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3810,6 +4024,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
@@ -4074,6 +4290,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Applicability";
 
+		protected override void Validate() {
+		}
+
 		public ApplicabilityViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -4098,6 +4317,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
@@ -4279,6 +4500,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Restricted Area";
 
+		protected override void Validate() {
+			if (restriction.Count < 1)
+				base.AddError("restriction", $"restriction must have at least 1 value.");
+		}
+
 		public RestrictedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -4300,6 +4526,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any area of the intertidal or sub-tidal terrain, together with its overlying water and associated flora, fauna, historical and cultural features, which has been reserved by law or other effective means to protect part or all of the enclosed environment.
@@ -4527,6 +4755,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Marine Protected Area";
 
+		protected override void Validate() {
+		}
+
 		public MarineProtectedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -4551,6 +4782,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
@@ -4709,6 +4942,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Vessel Traffic Service Area";
 
+		protected override void Validate() {
+		}
+
 		public VesselTrafficServiceAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -4721,6 +4957,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
@@ -4752,7 +4990,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
 		public override string? ToString() => $"Data Coverage";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
@@ -4784,6 +5027,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public override string? ToString() => $"Text Placement";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 }

@@ -354,7 +354,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Directional Character";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -425,7 +430,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Feature Name";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The uniform assessment of detected features.
 	/// </summary>
@@ -491,7 +501,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Features Detected";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -544,7 +559,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -596,7 +616,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Frequency Pair";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The horizontal clearance measured between two points for a fixed span.
 	/// </summary>
@@ -648,7 +673,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Horizontal Clearance Fixed";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The horizontal clearance measured between two points for an opening span.
 	/// </summary>
@@ -700,7 +730,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Horizontal Clearance Open";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -752,7 +787,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -843,7 +883,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
@@ -968,6 +1013,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Sector";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public lightSectorViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -980,6 +1030,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The distance value indicated on a distance mark, or the distance between two measured distance marks.
 	/// </summary>
@@ -1049,7 +1101,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Measured Distance Value";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group.
 	/// </summary>
@@ -1101,7 +1158,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Multiplicity of Features";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -1166,7 +1228,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Online Resource";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
@@ -1218,7 +1285,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Orientation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -1273,7 +1345,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Periodic Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
@@ -1326,7 +1403,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Radar Wave Length";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
@@ -1401,6 +1483,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Rhythm of Light";
 
+		protected override void Validate() {
+		}
+
 		public rhythmOfLightViewModel() : base() {
 			signalGroup.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(signalGroup));
@@ -1410,6 +1495,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -1462,12 +1549,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Schedule by Day of Week";
 
+		protected override void Validate() {
+			if (timeIntervalsByDayOfWeek.Count < 1)
+				base.AddError("timeIntervalsByDayOfWeek", $"timeIntervalsByDayOfWeek must have at least 1 value.");
+		}
+
 		public scheduleByDayOfWeekViewModel() : base() {
 			timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
@@ -1551,6 +1645,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sector Characteristics";
 
+		protected override void Validate() {
+			if (lightSector.Count < 1)
+				base.AddError("lightSector", $"lightSector must have at least 1 value.");
+		}
+
 		public sectorCharacteristicsViewModel() : base() {
 			lightSector.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(lightSector));
@@ -1563,6 +1662,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
@@ -1614,7 +1715,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Sector Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1675,7 +1781,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Sector Limit";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1727,7 +1838,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Sector Limit One";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1779,7 +1895,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Sector Limit Two";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
@@ -1831,7 +1952,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Shape Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.
 	/// </summary>
@@ -1888,7 +2014,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Signal Sequence";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -1967,7 +2098,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Spatial Accuracy";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.
 	/// </summary>
@@ -2019,7 +2155,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Speed";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The general nature of the material of which the land surface or the seabed is composed.
 	/// </summary>
@@ -2090,12 +2231,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Surface Characteristics";
 
+		protected override void Validate() {
+			if (natureOfSurfaceQualifyingTerms.Count > 3)
+				base.AddError("natureOfSurfaceQualifyingTerms", $"natureOfSurfaceQualifyingTerms must have no more than 3 value.");
+		}
+
 		public surfaceCharacteristicsViewModel() : base() {
 			natureOfSurfaceQualifyingTerms.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(natureOfSurfaceQualifyingTerms));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
@@ -2149,7 +2297,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Survey Date Range";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -2219,7 +2372,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Telecommunications";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.
 	/// </summary>
@@ -2303,12 +2461,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tidal Stream Panel Values";
 
+		protected override void Validate() {
+			if (tidalStreamValue.Count < 1)
+				base.AddError("tidalStreamValue", $"tidalStreamValue must have at least 1 value.");
+		}
+
 		public tidalStreamPanelValuesViewModel() : base() {
 			tidalStreamValue.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(tidalStreamValue));
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.
 	/// </summary>
@@ -2379,7 +2544,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Tidal Stream Value";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -2450,6 +2620,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Time Intervals by Day of Week";
 
+		protected override void Validate() {
+			if (dayOfWeek.Count > 7)
+				base.AddError("dayOfWeek", $"dayOfWeek must have no more than 7 value.");
+		}
+
 		public timeIntervalsByDayOfWeekViewModel() : base() {
 			dayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(dayOfWeek));
@@ -2462,6 +2637,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
 	/// </summary>
@@ -2546,6 +2723,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Topmark";
 
+		protected override void Validate() {
+		}
+
 		public topmarkViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -2555,6 +2735,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation and where required its direction.
 	/// </summary>
@@ -2611,7 +2793,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Value of Local Magnetic Anomaly";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2668,7 +2855,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Closed";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.
 	/// </summary>
@@ -2725,7 +2917,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Fixed";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2795,7 +2992,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Open";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2852,7 +3054,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Safe";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
@@ -2904,7 +3111,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vertical Uncertainty";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The maximum allowed rate of travel for a vessel in an area in knots.
 	/// </summary>
@@ -2974,7 +3186,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Vessel Speed Limit";
+
+		protected override void Validate() {
+		}
 	}
+
+
 	/// <summary>
 	/// The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.
 	/// </summary>
@@ -3071,7 +3288,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Zone of Confidence";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
@@ -3099,7 +3321,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Additional information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
@@ -3127,7 +3354,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Quality of bathymetric data composition";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// An association for the binding between a spatial type and its spatial quality information.
@@ -3155,7 +3387,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Spatial Association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between navigational aids and the traffic systems (such as routeing measures) that they define.
@@ -3183,7 +3420,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Aids to navigation association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between an Archipelagic Sea Lane and its component features.
@@ -3211,7 +3453,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"ASL aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a bridge and its component features.
@@ -3239,7 +3486,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Bridge aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a caution area and the traffic systems (such as routeing measures) to which the cautionary information applies.
@@ -3267,7 +3519,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Caution area association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a Deep Water route and its component features.
@@ -3295,7 +3552,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Deep Water route aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between related fairways comprising a fairway system.
@@ -3323,7 +3585,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Fairway aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a fairway and related features auxiliary to the fairway.
@@ -3351,7 +3618,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Fairway auxiliary";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a named group of islands.
@@ -3379,7 +3651,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Island aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a mooring trot and its component parts.
@@ -3407,7 +3684,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Mooring trot aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a pilotage district and its component pilot boarding places.
@@ -3435,7 +3717,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Pilotage District Association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between navigational tracks and the navigational aids that define the tracks.
@@ -3463,7 +3750,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Range system aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a roofed structure over navigable water and its supporting features.
@@ -3491,7 +3783,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Roofed Structure Aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a navigation aid equipment feature and the structure that supports it.
@@ -3519,7 +3816,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Structure/equipment";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
@@ -3547,7 +3849,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Text association";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a Traffic Separation Scheme or a Traffic Separation Scheme System and its component features.
@@ -3575,7 +3882,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Traffic Separation Scheme aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a two-way route and its component features.
@@ -3603,7 +3915,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Two-way route aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between an Update Information feature and its component Update Information features.
@@ -3631,7 +3948,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Update Aggregation";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between an update information metadata feature and updated feature(s) that it identifies.
@@ -3659,7 +3981,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		};
 
 		public override string? ToString() => $"Updated Information";
+
+		protected override void Validate() {
+		}
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3783,6 +4110,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Contact Details";
 
+		protected override void Validate() {
+		}
+
 		public ContactDetailsViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -3798,6 +4128,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The time when a service is available and known exceptions.
@@ -3870,6 +4202,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Service Hours";
 
+		protected override void Validate() {
+			if (scheduleByDayOfWeek.Count < 1)
+				base.AddError("scheduleByDayOfWeek", $"scheduleByDayOfWeek must have at least 1 value.");
+		}
+
 		public ServiceHoursViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -3882,6 +4219,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
@@ -3964,6 +4303,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Non-Standard Working Day";
 
+		protected override void Validate() {
+		}
+
 		public NonStandardWorkingDayViewModel() : base() {
 			dateFixed.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(dateFixed));
@@ -3979,6 +4321,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Nautical information about a related area or facility.
@@ -4056,6 +4400,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Nautical Information";
 
+		protected override void Validate() {
+		}
+
 		public NauticalInformationViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -4065,6 +4412,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
@@ -4120,12 +4469,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Spatial Quality";
 
+		protected override void Validate() {
+		}
+
 		public SpatialQualityViewModel() : base() {
 			spatialAccuracy.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(spatialAccuracy));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
@@ -4280,12 +4634,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
+		protected override void Validate() {
+		}
+
 		public QualityOfNonBathymetricDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
@@ -4398,12 +4757,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Data Coverage";
 
+		protected override void Validate() {
+		}
+
 		public DataCoverageViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
@@ -4476,12 +4840,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Navigational System of Marks";
 
+		protected override void Validate() {
+		}
+
 		public NavigationalSystemOfMarksViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
@@ -4583,12 +4952,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Local Direction of Buoyage";
 
+		protected override void Validate() {
+		}
+
 		public LocalDirectionOfBuoyageViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the bathymetric data exists.
@@ -4768,15 +5142,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Quality of Bathymetric Data";
 
+		protected override void Validate() {
+			if (zoneOfConfidence.Count < 1)
+				base.AddError("zoneOfConfidence", $"zoneOfConfidence must have at least 1 value.");
+
+            var properties = typeof(QualityOfBathymetricData).GetProperties();
+            foreach(var p in properties) {
+                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                if (attribute != default) {
+                    var value = properties.Single(p => p.Name == attribute.PropertyName)?.GetValue(this);
+                    if(value is null) {
+                        base.AddError(attribute.PropertyName, $"{p.Name} is required when {attribute.PropertyName} is not known!");
+                    }
+                }
+            }
+        }
+
 		public QualityOfBathymetricDataViewModel() : base() {
 			zoneOfConfidence.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(zoneOfConfidence));
-			};
+                //base.Validation();    
+            };
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
-			};
+                //base.Validation();
+            };
 		}
 	}
+
+
 
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
@@ -4849,12 +5243,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sounding Datum";
 
+		protected override void Validate() {
+		}
+
 		public SoundingDatumViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
@@ -4927,12 +5326,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Datum of Data";
 
+		protected override void Validate() {
+		}
+
 		public VerticalDatumOfDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which a uniform assessment of the reliability of source survey information exists.
@@ -5224,6 +5628,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Quality of Survey";
 
+		protected override void Validate() {
+			if (surveyType.Count < 1)
+				base.AddError("surveyType", $"surveyType must have at least 1 value.");
+		}
+
 		public QualityOfSurveyViewModel() : base() {
 			qualityOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(qualityOfVerticalMeasurement));
@@ -5239,6 +5648,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The Update Information metadata feature is used to represent a change to the information shown.
@@ -5372,12 +5783,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Update Information";
 
+		protected override void Validate() {
+		}
+
 		public UpdateInformationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.
@@ -5491,12 +5907,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Magnetic Variation";
 
+		protected override void Validate() {
+		}
+
 		public MagneticVariationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.
@@ -5597,6 +6018,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Local Magnetic Anomaly";
 
+		protected override void Validate() {
+			if (valueOfLocalMagneticAnomaly.Count < 1)
+				base.AddError("valueOfLocalMagneticAnomaly", $"valueOfLocalMagneticAnomaly must have at least 1 value.");
+			if (valueOfLocalMagneticAnomaly.Count > 2)
+				base.AddError("valueOfLocalMagneticAnomaly", $"valueOfLocalMagneticAnomaly must have no more than 2 value.");
+		}
+
 		public LocalMagneticAnomalyViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -5609,6 +6037,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
@@ -5779,6 +6209,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Coastline";
 
+		protected override void Validate() {
+		}
+
 		public CoastlineViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -5794,6 +6227,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The solid portion of the Earth's surface, as opposed to sea, water.
@@ -5923,6 +6358,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Land Area";
 
+		protected override void Validate() {
+		}
+
 		public LandAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -5932,6 +6370,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A named group of islands, including archipelagos.
@@ -6008,6 +6448,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Island Group";
 
+		protected override void Validate() {
+			if (featureName.Count < 1)
+				base.AddError("featureName", $"featureName must have at least 1 value.");
+		}
+
 		public IslandGroupViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6017,6 +6462,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.
@@ -6127,6 +6574,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Land Elevation";
 
+		protected override void Validate() {
+		}
+
 		public LandElevationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6136,6 +6586,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A relatively large natural stream of water.
@@ -6231,6 +6683,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"River";
 
+		protected override void Validate() {
+		}
+
 		public RiverViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6240,6 +6695,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.
@@ -6330,6 +6787,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Rapids";
 
+		protected override void Validate() {
+		}
+
 		public RapidsViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6339,6 +6799,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.
@@ -6448,6 +6910,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Waterfall";
 
+		protected override void Validate() {
+		}
+
 		public WaterfallViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6457,6 +6922,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A large body of water entirely surrounded by land.
@@ -6566,6 +7033,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Lake";
 
+		protected override void Validate() {
+		}
+
 		public LakeViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6575,6 +7045,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.
@@ -6698,6 +7170,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Land Region";
 
+		protected override void Validate() {
+		}
+
 		public LandRegionViewModel() : base() {
 			categoryOfLandRegion.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLandRegion));
@@ -6713,6 +7188,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Plants collectively or individually, especially those dominating a particular area or habitat.
@@ -6869,6 +7346,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vegetation";
 
+		protected override void Validate() {
+		}
+
 		public VegetationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6878,6 +7358,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of ice over land or water.
@@ -7072,6 +7554,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Ice Area";
 
+		protected override void Validate() {
+		}
+
 		public IceAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -7087,6 +7572,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An inclined surface.
@@ -7243,6 +7730,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sloping Ground";
 
+		protected override void Validate() {
+		}
+
 		public SlopingGroundViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -7258,6 +7748,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The upper marking of a slope, for example the ridge line or the separation line between two different gradients.
@@ -7428,6 +7920,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Slope Topline";
 
+		protected override void Validate() {
+		}
+
 		public SlopeToplineViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -7443,6 +7938,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A channel through which a tidal current runs.
@@ -7519,6 +8016,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tideway";
 
+		protected override void Validate() {
+		}
+
 		public TidewayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -7528,6 +8028,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of land or construction over the water containing a concentration of buildings and/or other structures.
@@ -7732,6 +8234,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Built-Up Area";
 
+		protected override void Validate() {
+		}
+
 		public BuiltUpAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -7741,6 +8246,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
@@ -8066,6 +8573,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Building";
 
+		protected override void Validate() {
+		}
+
 		public BuildingViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -8087,6 +8597,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
@@ -8239,6 +8751,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Airport/Airfield";
 
+		protected override void Validate() {
+		}
+
 		public AirportAirfieldViewModel() : base() {
 			categoryOfAirportAirfield.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfAirportAirfield));
@@ -8254,6 +8769,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.
@@ -8401,6 +8918,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Runway";
 
+		protected override void Validate() {
+		}
+
 		public RunwayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -8419,6 +8939,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A site on which helicopters may land and take off.
@@ -8566,6 +9088,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Helipad";
 
+		protected override void Validate() {
+		}
+
 		public HelipadViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -8584,6 +9109,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
@@ -8900,6 +9427,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Bridge";
 
+		protected override void Validate() {
+		}
+
 		public BridgeViewModel() : base() {
 			bridgeFunction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(bridgeFunction));
@@ -8921,6 +9451,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A fixed component of the deck of a bridge spanning successive bridge piers.
@@ -9075,12 +9607,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Span Fixed";
 
+		protected override void Validate() {
+		}
+
 		public SpanFixedViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An opening component of the deck of a bridge spanning successive bridge piers.
@@ -9253,12 +9790,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Span Opening";
 
+		protected override void Validate() {
+		}
+
 		public SpanOpeningViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
@@ -9611,6 +10153,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Conveyor";
 
+		protected override void Validate() {
+		}
+
 		public ConveyorViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -9629,6 +10174,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
@@ -9910,6 +10457,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cable Overhead";
 
+		protected override void Validate() {
+		}
+
 		public CableOverheadViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -9922,6 +10472,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.
@@ -10185,6 +10737,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pipeline Overhead";
 
+		protected override void Validate() {
+		}
+
 		public PipelineOverheadViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -10200,6 +10755,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.
@@ -10520,6 +11077,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pylon/Bridge Support";
 
+		protected override void Validate() {
+		}
+
 		public PylonBridgeSupportViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -10538,6 +11098,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A man-made barrier used as an enclosure or boundary or for protection.
@@ -10803,6 +11365,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fence/Wall";
 
+		protected override void Validate() {
+		}
+
 		public FenceWallViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -10821,6 +11386,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A rail or set of parallel rails on which a train, tram, or rail wagon runs.
@@ -10959,6 +11526,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Railway";
 
+		protected override void Validate() {
+		}
+
 		public RailwayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -10971,6 +11541,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
@@ -11128,6 +11700,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Road";
 
+		protected override void Validate() {
+		}
+
 		public RoadViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -11143,6 +11718,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.
@@ -11336,6 +11913,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tunnel";
 
+		protected override void Validate() {
+		}
+
 		public TunnelViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -11348,6 +11928,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
@@ -11682,6 +12264,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Landmark";
 
+		protected override void Validate() {
+			if (categoryOfLandmark.Count < 1)
+				base.AddError("categoryOfLandmark", $"categoryOfLandmark must have at least 1 value.");
+		}
+
 		public LandmarkViewModel() : base() {
 			categoryOfLandmark.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLandmark));
@@ -11709,6 +12296,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
@@ -12053,6 +12642,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Silo/Tank";
 
+		protected override void Validate() {
+		}
+
 		public SiloTankViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -12074,6 +12666,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
@@ -12440,6 +13034,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Wind Turbine";
 
+		protected override void Validate() {
+		}
+
 		public WindTurbineViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -12458,6 +13055,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A structure that is specifically designed or reinforced to provide for defence from armed attack.
@@ -12704,6 +13303,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fortified Structure";
 
+		protected override void Validate() {
+		}
+
 		public FortifiedStructureViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -12719,6 +13321,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area on land for the exploitation or storage of natural resources.
@@ -12983,6 +13587,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Production/Storage Area";
 
+		protected override void Validate() {
+		}
+
 		public ProductionStorageAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -12998,6 +13605,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An official location at which to register, declare and/or inspect goods and/or people.
@@ -13107,6 +13716,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Checkpoint";
 
+		protected override void Validate() {
+		}
+
 		public CheckpointViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -13119,6 +13731,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.
@@ -13392,6 +14006,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Hulk";
 
+		protected override void Validate() {
+		}
+
 		public HulkViewModel() : base() {
 			categoryOfHulk.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfHulk));
@@ -13410,6 +14027,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
@@ -13679,6 +14298,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pile";
 
+		protected override void Validate() {
+		}
+
 		public PileViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -13694,6 +14316,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A dyke (or dike) is an artificial embankment to contain or hold back water.
@@ -13897,6 +14521,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dyke";
 
+		protected override void Validate() {
+		}
+
 		public DykeViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -13909,6 +14536,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
@@ -14243,6 +14872,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Shoreline Construction";
 
+		protected override void Validate() {
+		}
+
 		public ShorelineConstructionViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -14261,6 +14893,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.
@@ -14650,6 +15284,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Structure Over Navigable Water";
 
+		protected override void Validate() {
+		}
+
 		public StructureOverNavigableWaterViewModel() : base() {
 			categoryOfStructure.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfStructure));
@@ -14674,6 +15311,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A raised way across low or wet ground or water.
@@ -14831,6 +15470,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Causeway";
 
+		protected override void Validate() {
+		}
+
 		public CausewayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -14846,6 +15488,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).
@@ -15039,6 +15683,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Canal";
 
+		protected override void Validate() {
+		}
+
 		public CanalViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -15051,6 +15698,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.
@@ -15178,6 +15827,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Distance Mark";
 
+		protected override void Validate() {
+		}
+
 		public DistanceMarkViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -15187,6 +15839,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.
@@ -15430,6 +16084,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Gate";
 
+		protected override void Validate() {
+		}
+
 		public GateViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -15448,6 +16105,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.
@@ -15721,6 +16380,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dam";
 
+		protected override void Validate() {
+		}
+
 		public DamViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -15739,6 +16401,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.
@@ -16072,6 +16736,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Crane";
 
+		protected override void Validate() {
+		}
+
 		public CraneViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -16087,6 +16754,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
@@ -16306,6 +16975,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Berth";
 
+		protected override void Validate() {
+			if (featureName.Count < 1)
+				base.AddError("featureName", $"featureName must have at least 1 value.");
+		}
+
 		public BerthViewModel() : base() {
 			categoryOfCargo.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfCargo));
@@ -16327,6 +17001,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
@@ -16628,6 +17304,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dolphin";
 
+		protected override void Validate() {
+			if (categoryOfDolphin.Count < 1)
+				base.AddError("categoryOfDolphin", $"categoryOfDolphin must have at least 1 value.");
+		}
+
 		public DolphinViewModel() : base() {
 			categoryOfDolphin.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfDolphin));
@@ -16652,6 +17333,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
@@ -16817,6 +17500,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Bollard";
 
+		protected override void Validate() {
+		}
+
 		public BollardViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -16832,6 +17518,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
@@ -17089,6 +17777,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dry Dock";
 
+		protected override void Validate() {
+		}
+
 		public DryDockViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -17104,6 +17795,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
@@ -17423,6 +18116,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Floating Dock";
 
+		protected override void Validate() {
+		}
+
 		public FloatingDockViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -17438,6 +18134,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.
@@ -17635,6 +18333,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pontoon";
 
+		protected override void Validate() {
+		}
+
 		public PontoonViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -17650,6 +18351,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
@@ -17865,6 +18568,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dock Area";
 
+		protected override void Validate() {
+		}
+
 		public DockAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -17880,6 +18586,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
@@ -18045,6 +18753,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Gridiron";
 
+		protected override void Validate() {
+		}
+
 		public GridironViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18060,6 +18771,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
@@ -18223,6 +18936,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Lock Basin";
 
+		protected override void Validate() {
+		}
+
 		public LockBasinViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18238,6 +18954,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.
@@ -18332,6 +19050,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Mooring Trot";
 
+		protected override void Validate() {
+		}
+
 		public MooringTrotViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18341,6 +19062,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
@@ -18436,6 +19159,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sea Area/Named Water Area";
 
+		protected override void Validate() {
+		}
+
 		public SeaAreaNamedWaterAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18445,6 +19171,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.
@@ -18594,6 +19322,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tidal Stream - Flood/Ebb";
 
+		protected override void Validate() {
+		}
+
 		public TidalStreamFloodEbbViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18603,6 +19334,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any current that is caused by other than tide producing forces.
@@ -18761,6 +19494,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Current - Non-Gravitational";
 
+		protected override void Validate() {
+		}
+
 		public CurrentNonGravitationalViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18773,6 +19509,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.
@@ -18868,6 +19606,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Water Turbulence";
 
+		protected override void Validate() {
+		}
+
 		public WaterTurbulenceViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18877,6 +19618,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.
@@ -18991,6 +19734,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tidal Stream Panel Data";
 
+		protected override void Validate() {
+			if (tidalStreamPanelValues.Count < 1)
+				base.AddError("tidalStreamPanelValues", $"tidalStreamPanelValues must have at least 1 value.");
+		}
+
 		public TidalStreamPanelDataViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -19003,6 +19751,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
@@ -19141,6 +19891,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sounding";
 
+		protected override void Validate() {
+		}
+
 		public SoundingViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -19156,6 +19909,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of the bottom of a body of water which has been deepened by dredging.
@@ -19350,6 +20105,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dredged Area";
 
+		protected override void Validate() {
+		}
+
 		public DredgedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -19368,6 +20126,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area that has been determined to be clear of navigational dangers to a specified depth.
@@ -19465,12 +20225,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Swept Area";
 
+		protected override void Validate() {
+		}
+
 		public SweptAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
@@ -19553,12 +20318,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Depth Contour";
 
+		protected override void Validate() {
+		}
+
 		public DepthContourViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A water area whose depth is within a defined range of values.
@@ -19642,12 +20412,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Depth Area";
 
+		protected override void Validate() {
+		}
+
 		public DepthAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Upon investigation the bottom was not found at this depth.
@@ -19729,6 +20504,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Depth - No Bottom Found";
 
+		protected override void Validate() {
+		}
+
 		public DepthNoBottomFoundViewModel() : base() {
 			techniqueOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(techniqueOfVerticalMeasurement));
@@ -19738,6 +20516,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area where hydrographic survey data is non-existent.
@@ -19791,12 +20571,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Unsurveyed Area";
 
+		protected override void Validate() {
+		}
+
 		public UnsurveyedAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
@@ -19901,6 +20686,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Seabed Area";
 
+		protected override void Validate() {
+			if (surfaceCharacteristics.Count < 1)
+				base.AddError("surfaceCharacteristics", $"surfaceCharacteristics must have at least 1 value.");
+		}
+
 		public SeabedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -19913,6 +20703,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any macroscopic marine alga.
@@ -20008,6 +20800,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Weed/Kelp";
 
+		protected override void Validate() {
+		}
+
 		public WeedKelpViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -20017,6 +20812,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.
@@ -20093,6 +20890,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Seagrass";
 
+		protected override void Validate() {
+		}
+
 		public SeagrassViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -20102,6 +20902,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.
@@ -20183,12 +20985,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sandwave";
 
+		protected override void Validate() {
+		}
+
 		public SandwaveViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.
@@ -20265,6 +21072,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Spring";
 
+		protected override void Validate() {
+		}
+
 		public SpringViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -20274,6 +21084,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
@@ -20513,6 +21325,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Underwater/Awash Rock";
 
+		protected override void Validate() {
+            var viewmodel = this.GetType().GetProperties();
+
+            var properties = typeof(UnderwaterAwashRock).GetProperties();
+            foreach (var p in properties) {
+                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                if (attribute != default) {
+                    var value = viewmodel.Single(e => e.Name == p.Name)?.GetValue(this);
+                    if (value is null) {
+                        var dependentValue = viewmodel.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
+                        if (dependentValue is null) {
+                            base.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
+                        }
+                    }
+                }
+            }
+        }
+
 		public UnderwaterAwashRockViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -20528,6 +21358,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
@@ -20822,6 +21654,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Wreck";
 
+		protected override void Validate() {
+		}
+
 		public WreckViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -20840,6 +21675,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
@@ -21162,6 +21999,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Obstruction";
 
+		protected override void Validate() {
+		}
+
 		public ObstructionViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -21186,6 +22026,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
@@ -21351,6 +22193,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Foul Ground";
 
+		protected override void Validate() {
+		}
+
 		public FoulGroundViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -21369,6 +22214,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
@@ -21451,12 +22298,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Discoloured Water";
 
+		protected override void Validate() {
+		}
+
 		public DiscolouredWaterViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
@@ -21623,6 +22475,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fishing Facility";
 
+		protected override void Validate() {
+		}
+
 		public FishingFacilityViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -21638,6 +22493,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.
@@ -21909,6 +22766,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Marine Farm/Culture";
 
+		protected override void Validate() {
+		}
+
 		public MarineFarmCultureViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -21933,6 +22793,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
@@ -22230,6 +23092,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Offshore Platform";
 
+		protected override void Validate() {
+		}
+
 		public OffshorePlatformViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -22248,6 +23113,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
@@ -22408,6 +23275,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cable Submarine";
 
+		protected override void Validate() {
+		}
+
 		public CableSubmarineViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -22420,6 +23290,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area which contains one or more submarine cables.
@@ -22565,6 +23437,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cable Area";
 
+		protected override void Validate() {
+		}
+
 		public CableAreaViewModel() : base() {
 			categoryOfCable.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfCable));
@@ -22586,6 +23461,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A connected set of pipes for conveying liquids, slurries, or gases.
@@ -22844,6 +23721,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pipeline Submarine/On Land";
 
+		protected override void Validate() {
+		}
+
 		public PipelineSubmarineOnLandViewModel() : base() {
 			categoryOfPipelinePipe.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfPipelinePipe));
@@ -22865,6 +23745,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area containing one or more submarine pipelines.
@@ -23024,6 +23906,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Submarine Pipeline Area";
 
+		protected override void Validate() {
+		}
+
 		public SubmarinePipelineAreaViewModel() : base() {
 			categoryOfPipelinePipe.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfPipelinePipe));
@@ -23048,6 +23933,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area at sea within which there are production facilities.
@@ -23326,6 +24213,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Offshore Production Area";
 
+		protected override void Validate() {
+		}
+
 		public OffshoreProductionAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -23347,6 +24237,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
@@ -23506,6 +24398,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Navigation Line";
 
+		protected override void Validate() {
+		}
+
 		public NavigationLineViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -23518,6 +24413,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
@@ -23758,6 +24655,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Recommended Track";
 
+		protected override void Validate() {
+		}
+
 		public RecommendedTrackViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -23779,6 +24679,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
@@ -23887,6 +24789,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Range System";
 
+		protected override void Validate() {
+		}
+
 		public RangeSystemViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -23896,6 +24801,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.
@@ -24120,6 +25027,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fairway";
 
+		protected override void Validate() {
+		}
+
 		public FairwayViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -24141,6 +25051,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.
@@ -24258,6 +25170,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fairway System";
 
+		protected override void Validate() {
+		}
+
 		public FairwaySystemViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -24270,6 +25185,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The recommended route centreline indicates the 'centreline' of a recommended route.
@@ -24495,6 +25412,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Recommended Route Centreline";
 
+		protected override void Validate() {
+		}
+
 		public RecommendedRouteCentrelineViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -24516,6 +25436,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).
@@ -24723,6 +25645,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Two-Way Route Part";
 
+		protected override void Validate() {
+		}
+
 		public TwoWayRoutePartViewModel() : base() {
 			qualityOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(qualityOfVerticalMeasurement));
@@ -24738,6 +25663,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.
@@ -24846,6 +25773,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Two-Way Route";
 
+		protected override void Validate() {
+		}
+
 		public TwoWayRouteViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -24855,6 +25785,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.
@@ -24969,6 +25901,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Recommended Traffic Lane Part";
 
+		protected override void Validate() {
+		}
+
 		public RecommendedTrafficLanePartViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -24978,6 +25913,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
@@ -25209,6 +26146,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Deep Water Route Centreline";
 
+		protected override void Validate() {
+		}
+
 		public DeepWaterRouteCentrelineViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -25227,6 +26167,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of a deep water route within which ships proceed in the same direction.
@@ -25467,6 +26409,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Deep Water Route Part";
 
+		protected override void Validate() {
+		}
+
 		public DeepWaterRoutePartViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -25491,6 +26436,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.
@@ -25599,6 +26546,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Deep Water Route";
 
+		protected override void Validate() {
+		}
+
 		public DeepWaterRouteViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -25608,6 +26558,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.
@@ -25730,6 +26682,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Inshore Traffic Zone";
 
+		protected override void Validate() {
+		}
+
 		public InshoreTrafficZoneViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(restriction));
@@ -25745,6 +26700,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.
@@ -25890,6 +26847,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Precautionary Area";
 
+		protected override void Validate() {
+			if (information.Count < 1)
+				base.AddError("information", $"information must have at least 1 value.");
+		}
+
 		public PrecautionaryAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -25908,6 +26870,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
@@ -26044,6 +27008,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Traffic Separation Scheme Lane Part";
 
+		protected override void Validate() {
+		}
+
 		public TrafficSeparationSchemeLanePartViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(restriction));
@@ -26059,6 +27026,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
@@ -26158,6 +27127,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Separation Zone or Line";
 
+		protected override void Validate() {
+		}
+
 		public SeparationZoneOrLineViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -26167,6 +27139,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
@@ -26266,6 +27240,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Traffic Separation Scheme Boundary";
 
+		protected override void Validate() {
+		}
+
 		public TrafficSeparationSchemeBoundaryViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -26275,6 +27252,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A defined area where traffic lanes cross.
@@ -26397,6 +27376,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Traffic Separation Scheme Crossing";
 
+		protected override void Validate() {
+		}
+
 		public TrafficSeparationSchemeCrossingViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(restriction));
@@ -26412,6 +27394,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
@@ -26534,6 +27518,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Traffic Separation Scheme Roundabout";
 
+		protected override void Validate() {
+		}
+
 		public TrafficSeparationSchemeRoundaboutViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(restriction));
@@ -26549,6 +27536,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.
@@ -26671,6 +27660,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Traffic Separation Scheme";
 
+		protected override void Validate() {
+		}
+
 		public TrafficSeparationSchemeViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -26680,6 +27672,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft.
@@ -26788,6 +27782,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Archipelagic Sea Lane Area";
 
+		protected override void Validate() {
+		}
+
 		public ArchipelagicSeaLaneAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -26797,6 +27794,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.
@@ -26905,6 +27904,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Archipelagic Sea Lane Axis";
 
+		protected override void Validate() {
+		}
+
 		public ArchipelagicSeaLaneAxisViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -26914,6 +27916,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.
@@ -27023,6 +28027,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Archipelagic Sea Lane";
 
+		protected override void Validate() {
+		}
+
 		public ArchipelagicSeaLaneViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -27032,6 +28039,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
@@ -27186,6 +28195,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radio Calling-In Point";
 
+		protected override void Validate() {
+			if (orientationValue.Count > 2)
+				base.AddError("orientationValue", $"orientationValue must have no more than 2 value.");
+		}
+
 		public RadioCallingInPointViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -27207,6 +28221,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route in a body of water where a ferry crosses from one shoreline to another.
@@ -27338,6 +28354,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Ferry Route";
 
+		protected override void Validate() {
+			if (categoryOfFerry.Count < 1)
+				base.AddError("categoryOfFerry", $"categoryOfFerry must have at least 1 value.");
+		}
+
 		public FerryRouteViewModel() : base() {
 			categoryOfFerry.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfFerry));
@@ -27356,6 +28377,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.
@@ -27461,6 +28484,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Line";
 
+		protected override void Validate() {
+		}
+
 		public RadarLineViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -27473,6 +28499,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
@@ -27590,6 +28618,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Range";
 
+		protected override void Validate() {
+		}
+
 		public RadarRangeViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -27605,6 +28636,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
@@ -27769,6 +28802,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Station";
 
+		protected override void Validate() {
+		}
+
 		public RadarStationViewModel() : base() {
 			categoryOfRadarStation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfRadarStation));
@@ -27790,6 +28826,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
@@ -27958,6 +28996,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Anchorage Area";
 
+		protected override void Validate() {
+		}
+
 		public AnchorageAreaViewModel() : base() {
 			categoryOfAnchorage.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfAnchorage));
@@ -27985,6 +29026,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which vessels may be secured to mooring buoys
@@ -28167,6 +29210,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Mooring Area";
 
+		protected override void Validate() {
+		}
+
 		public MooringAreaViewModel() : base() {
 			categoryOfMooringArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfMooringArea));
@@ -28191,6 +29237,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated area of water where a vessel, seaplane, etc., may anchor.
@@ -28350,6 +29398,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Anchor Berth";
 
+		protected override void Validate() {
+		}
+
 		public AnchorBerthViewModel() : base() {
 			categoryOfAnchorage.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfAnchorage));
@@ -28371,6 +29422,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
@@ -28493,6 +29546,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Seaplane Landing Area";
 
+		protected override void Validate() {
+		}
+
 		public SeaplaneLandingAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -28514,6 +29570,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
@@ -28656,6 +29714,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Dumping Ground";
 
+		protected override void Validate() {
+		}
+
 		public DumpingGroundViewModel() : base() {
 			categoryOfDumpingGround.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfDumpingGround));
@@ -28677,6 +29738,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out.
@@ -28845,6 +29908,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Military Practice Area";
 
+		protected override void Validate() {
+		}
+
 		public MilitaryPracticeAreaViewModel() : base() {
 			categoryOfMilitaryPracticeArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfMilitaryPracticeArea));
@@ -28869,6 +29935,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A defined area within which a jurisdiction applies. It may or may not be named.
@@ -29001,6 +30069,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Administration Area";
 
+		protected override void Validate() {
+		}
+
 		public AdministrationAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -29013,6 +30084,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.
@@ -29153,6 +30226,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cargo Transhipment Area";
 
+		protected override void Validate() {
+		}
+
 		public CargoTranshipmentAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -29174,6 +30250,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
@@ -29335,6 +30413,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Caution Area";
 
+		protected override void Validate() {
+		}
+
 		public CautionAreaViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -29344,6 +30425,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
@@ -29476,6 +30559,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Information Area";
 
+		protected override void Validate() {
+		}
+
 		public InformationAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -29488,6 +30574,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
@@ -29596,6 +30684,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Contiguous Zone";
 
+		protected override void Validate() {
+			if (nationality.Count < 1)
+				base.AddError("nationality", $"nationality must have at least 1 value.");
+		}
+
 		public ContiguousZoneViewModel() : base() {
 			nationality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(nationality));
@@ -29605,6 +30698,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
@@ -29690,6 +30785,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Continental Shelf Area";
 
+		protected override void Validate() {
+			if (nationality.Count < 1)
+				base.AddError("nationality", $"nationality must have at least 1 value.");
+		}
+
 		public ContinentalShelfAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -29702,6 +30802,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area within which national custom regulations are in force.
@@ -29784,12 +30886,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Custom Zone";
 
+		protected override void Validate() {
+		}
+
 		public CustomZoneViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
@@ -29880,6 +30987,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Exclusive Economic Zone";
 
+		protected override void Validate() {
+			if (nationality.Count < 1)
+				base.AddError("nationality", $"nationality must have at least 1 value.");
+		}
+
 		public ExclusiveEconomicZoneViewModel() : base() {
 			nationality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(nationality));
@@ -29889,6 +31001,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
@@ -29994,6 +31108,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fishery Zone";
 
+		protected override void Validate() {
+		}
+
 		public FisheryZoneViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30006,6 +31123,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A water area in which fishing is frequently carried on.
@@ -30128,6 +31247,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fishing Ground";
 
+		protected override void Validate() {
+		}
+
 		public FishingGroundViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30149,6 +31271,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.
@@ -30239,6 +31363,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Free Port Area";
 
+		protected override void Validate() {
+		}
+
 		public FreePortAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30251,6 +31378,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
@@ -30341,6 +31470,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Harbour Area (Administrative)";
 
+		protected override void Validate() {
+		}
+
 		public HarbourAreaAdministrativeViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30353,6 +31485,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.
@@ -30452,6 +31586,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Log Pond";
 
+		protected override void Validate() {
+		}
+
 		public LogPondViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30467,6 +31604,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A floating barrier to stop and contain the spread of oil on a water body surface.
@@ -30628,6 +31767,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Oil Barrier";
 
+		protected override void Validate() {
+		}
+
 		public OilBarrierViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30640,6 +31782,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
@@ -30722,12 +31866,17 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Straight Territorial Sea Baseline";
 
+		protected override void Validate() {
+		}
+
 		public StraightTerritorialSeaBaselineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
@@ -30841,6 +31990,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Territorial Sea Area";
 
+		protected override void Validate() {
+			if (nationality.Count < 1)
+				base.AddError("nationality", $"nationality must have at least 1 value.");
+		}
+
 		public TerritorialSeaAreaViewModel() : base() {
 			nationality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(nationality));
@@ -30856,6 +32010,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A lane where submarines may navigate under water or at the surface.
@@ -30969,6 +32125,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Submarine Transit Lane";
 
+		protected override void Validate() {
+		}
+
 		public SubmarineTransitLaneViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -30984,6 +32143,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
@@ -31069,6 +32230,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pilotage District";
 
+		protected override void Validate() {
+		}
+
 		public PilotageDistrictViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -31081,6 +32245,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.
@@ -31198,6 +32364,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Collision Regulations Limit";
 
+		protected override void Validate() {
+		}
+
 		public CollisionRegulationsLimitViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -31210,6 +32379,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.
@@ -31300,6 +32471,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Marine Pollution Regulations Area";
 
+		protected override void Validate() {
+		}
+
 		public MarinePollutionRegulationsAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -31309,6 +32483,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.
@@ -31463,6 +32639,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Restricted Area";
 
+		protected override void Validate() {
+			if (restriction.Count < 1)
+				base.AddError("restriction", $"restriction must have at least 1 value.");
+		}
+
 		public RestrictedAreaViewModel() : base() {
 			categoryOfRestrictedArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfRestrictedArea));
@@ -31487,6 +32668,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
@@ -31833,6 +33016,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light All Around";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public LightAllAroundViewModel() : base() {
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
@@ -31854,6 +33042,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
@@ -32102,6 +33292,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Sectored";
 
+		protected override void Validate() {
+			if (sectorCharacteristics.Count < 1)
+				base.AddError("sectorCharacteristics", $"sectorCharacteristics must have at least 1 value.");
+		}
+
 		public LightSectoredViewModel() : base() {
 			categoryOfLight.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfLight));
@@ -32123,6 +33318,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
@@ -32352,6 +33549,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Fog Detector";
 
+		protected override void Validate() {
+		}
+
 		public LightFogDetectorViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -32370,6 +33570,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
@@ -32631,6 +33833,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Air Obstruction";
 
+		protected override void Validate() {
+		}
+
 		public LightAirObstructionViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -32652,6 +33857,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
@@ -32933,6 +34140,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Lateral Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public LateralBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -32954,6 +34166,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
@@ -33235,6 +34449,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cardinal Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public CardinalBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -33256,6 +34475,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
@@ -33518,6 +34739,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Isolated Danger Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public IsolatedDangerBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -33539,6 +34765,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
@@ -33801,6 +35029,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Safe Water Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public SafeWaterBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -33822,6 +35055,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
@@ -34098,6 +35333,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Special Purpose/General Buoy";
 
+		protected override void Validate() {
+			if (categoryOfSpecialPurposeMark.Count < 1)
+				base.AddError("categoryOfSpecialPurposeMark", $"categoryOfSpecialPurposeMark must have at least 1 value.");
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public SpecialPurposeGeneralBuoyViewModel() : base() {
 			categoryOfSpecialPurposeMark.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSpecialPurposeMark));
@@ -34122,6 +35364,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.
@@ -34361,6 +35605,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Emergency Wreck Marking Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public EmergencyWreckMarkingBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -34376,6 +35625,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An installation buoy is a buoy used for loading tankers with gas or oil.
@@ -34639,6 +35890,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Installation Buoy";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public InstallationBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -34663,6 +35919,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
@@ -34916,6 +36174,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Mooring Buoy";
 
+		protected override void Validate() {
+		}
+
 		public MooringBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -34937,6 +36198,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
@@ -35299,6 +36562,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Lateral Beacon";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public LateralBeaconViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -35320,6 +36588,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
@@ -35682,6 +36952,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Cardinal Beacon";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public CardinalBeaconViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -35703,6 +36978,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
@@ -36046,6 +37323,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Isolated Danger Beacon";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public IsolatedDangerBeaconViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -36067,6 +37349,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
@@ -36410,6 +37694,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Safe Water Beacon";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public SafeWaterBeaconViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -36431,6 +37720,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
@@ -36788,6 +38079,13 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Special Purpose/General Beacon";
 
+		protected override void Validate() {
+			if (categoryOfSpecialPurposeMark.Count < 1)
+				base.AddError("categoryOfSpecialPurposeMark", $"categoryOfSpecialPurposeMark must have at least 1 value.");
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public SpecialPurposeGeneralBeaconViewModel() : base() {
 			categoryOfSpecialPurposeMark.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSpecialPurposeMark));
@@ -36812,6 +38110,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
@@ -37088,6 +38388,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Daymark";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public DaymarkViewModel() : base() {
 			categoryOfSpecialPurposeMark.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSpecialPurposeMark));
@@ -37115,6 +38420,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
@@ -37386,6 +38693,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Float";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public LightFloatViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -37407,6 +38719,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
@@ -37660,6 +38974,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Light Vessel";
 
+		protected override void Validate() {
+			if (colour.Count < 1)
+				base.AddError("colour", $"colour must have at least 1 value.");
+		}
+
 		public LightVesselViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -37681,6 +39000,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
@@ -37836,6 +39157,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Retroreflector";
 
+		protected override void Validate() {
+		}
+
 		public RetroreflectorViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -37851,6 +39175,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
@@ -37973,6 +39299,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Reflector";
 
+		protected override void Validate() {
+		}
+
 		public RadarReflectorViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -37985,6 +39314,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
@@ -38205,6 +39536,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fog Signal";
 
+		protected override void Validate() {
+		}
+
 		public FogSignalViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -38223,6 +39557,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
@@ -38373,6 +39709,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Physical AIS Aid to Navigation";
 
+		protected override void Validate() {
+		}
+
 		public PhysicalAISAidToNavigationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -38385,6 +39724,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
@@ -38554,6 +39895,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Virtual AIS Aid to Navigation";
 
+		protected override void Validate() {
+		}
+
 		public VirtualAISAidToNavigationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -38566,6 +39910,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
@@ -38752,6 +40098,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radio Station";
 
+		protected override void Validate() {
+		}
+
 		public RadioStationViewModel() : base() {
 			categoryOfRadioStation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfRadioStation));
@@ -38773,6 +40122,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
@@ -38973,6 +40324,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Transponder Beacon";
 
+		protected override void Validate() {
+			if (radarWaveLength.Count > 2)
+				base.AddError("radarWaveLength", $"radarWaveLength must have no more than 2 value.");
+		}
+
 		public RadarTransponderBeaconViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -38994,6 +40350,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
@@ -39181,6 +40539,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pilot Boarding Place";
 
+		protected override void Validate() {
+		}
+
 		public PilotBoardingPlaceViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -39205,6 +40566,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
@@ -39281,6 +40644,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vessel Traffic Service Area";
 
+		protected override void Validate() {
+		}
+
 		public VesselTrafficServiceAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -39290,6 +40656,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
@@ -39430,6 +40798,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Coast Guard Station";
 
+		protected override void Validate() {
+		}
+
 		public CoastGuardStationViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
@@ -39448,6 +40819,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
@@ -39588,6 +40961,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Signal Station Warning";
 
+		protected override void Validate() {
+			if (categoryOfSignalStationWarning.Count < 1)
+				base.AddError("categoryOfSignalStationWarning", $"categoryOfSignalStationWarning must have at least 1 value.");
+		}
+
 		public SignalStationWarningViewModel() : base() {
 			categoryOfSignalStationWarning.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSignalStationWarning));
@@ -39609,6 +40987,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
@@ -39749,6 +41129,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Signal Station Traffic";
 
+		protected override void Validate() {
+			if (categoryOfSignalStationTraffic.Count < 1)
+				base.AddError("categoryOfSignalStationTraffic", $"categoryOfSignalStationTraffic must have at least 1 value.");
+		}
+
 		public SignalStationTrafficViewModel() : base() {
 			categoryOfSignalStationTraffic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSignalStationTraffic));
@@ -39770,6 +41155,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place where equipment for saving life at sea is maintained.
@@ -39910,6 +41297,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Rescue Station";
 
+		protected override void Validate() {
+		}
+
 		public RescueStationViewModel() : base() {
 			categoryOfRescueStation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfRescueStation));
@@ -39931,6 +41321,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
@@ -40175,6 +41567,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Harbour Facility";
 
+		protected override void Validate() {
+			if (categoryOfHarbourFacility.Count < 1)
+				base.AddError("categoryOfHarbourFacility", $"categoryOfHarbourFacility must have at least 1 value.");
+		}
+
 		public HarbourFacilityViewModel() : base() {
 			categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfHarbourFacility));
@@ -40205,6 +41602,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place at which a service generally of interest to small craft or pleasure boats is available.
@@ -40332,6 +41731,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Small Craft Facility";
 
+		protected override void Validate() {
+			if (categoryOfSmallCraftFacility.Count < 1)
+				base.AddError("categoryOfSmallCraftFacility", $"categoryOfSmallCraftFacility must have at least 1 value.");
+		}
+
 		public SmallCraftFacilityViewModel() : base() {
 			categoryOfSmallCraftFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfSmallCraftFacility));
@@ -40350,6 +41754,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
@@ -40452,12 +41858,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Text Placement";
 
+		protected override void Validate() {
+			if (textType.Count < 1)
+				base.AddError("textType", $"textType must have at least 1 value.");
+			if (textType.Count > 2)
+				base.AddError("textType", $"textType must have no more than 2 value.");
+		}
+
 		public TextPlacementViewModel() : base() {
 			textType.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textType));
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.
@@ -40506,6 +41921,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Chart 1 Feature";
 
+		protected override void Validate() {
+		}
+
 		public Chart1FeatureViewModel() : base() {
 			drawingInstruction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(drawingInstruction));
@@ -40515,5 +41933,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 }
