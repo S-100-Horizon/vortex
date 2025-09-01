@@ -640,9 +640,9 @@ if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

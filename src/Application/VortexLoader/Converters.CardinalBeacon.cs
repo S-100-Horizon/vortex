@@ -115,7 +115,6 @@ namespace S100Framework.Applications
 
             ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-
             return instance;
         }
     }

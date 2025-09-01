@@ -149,6 +149,7 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -170,8 +171,6 @@ namespace S100Framework.Applications
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
-
-
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;

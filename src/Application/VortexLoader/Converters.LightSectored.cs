@@ -133,7 +133,7 @@ namespace S100Framework.Applications
             if (current.EXCLIT.HasValue) {
                 instance.exhibitionConditionOfLight = EnumHelper.GetEnumValue<LightSectored,exhibitionConditionOfLight>(current.EXCLIT.Value);
             }
-
+            
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -173,6 +173,8 @@ namespace S100Framework.Applications
             else {
                 instance.sectorCharacteristics = (ImporterNIS.GetSectorCharacteristics<LightSectored>(lights));
             }
+
+            
 
             if (current.SIGGEN != null) {
                 instance.signalGeneration = EnumHelper.GetEnumValue<LightSectored,signalGeneration>(current.SIGGEN.Value);
