@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Desktop.Internal.Mapping;
+using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -41,6 +42,10 @@ namespace S100Framework.Applications
                 var globalid = current.GLOBALID;
 
                 _ids.Add(globalid);
+
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
+                    continue;
+                }
 
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
                     continue;
@@ -932,16 +937,18 @@ namespace S100Framework.Applications
 
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                }                           
+                                
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
 
-if (current.STATUS != default) {
+                                if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
                                 }
 

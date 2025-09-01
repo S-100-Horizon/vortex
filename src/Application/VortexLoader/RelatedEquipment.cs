@@ -301,9 +301,13 @@ namespace S100Framework.Applications
 
             // IF NOT SECTORED LIGHTS
             foreach (PltsSlave relatedObject in relatedNonSectoredEquipment) {
-                if (relatedObject.S101Type == typeof(topmark))
+                if (relatedObject.S101Type == typeof(topmark)) {
                     continue;
+                }
 
+                //if (ConversionAnalytics.Instance.IsConverted(relatedObject.GlobalId)) { 
+                //    continue; 
+                //}
 
                 if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
                     var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);

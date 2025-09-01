@@ -218,11 +218,8 @@ namespace S100Framework.Applications
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     Store(() => S57_MetadataP(source, destination, QueryFilter));
 
-
-
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
-
 
                     Logger.Current.Information($"Converting Cultural Features");
                     Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter)); 
@@ -277,7 +274,6 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Ice features");
                     Store(() => S57_IcefeaturesA(source, destination, QueryFilter));
 
-
                     Logger.Current.Information($"Converting Military Features");
                     Store(() => S57_MilitaryFeatureA(source, destination, QueryFilter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, QueryFilter));
@@ -291,7 +287,6 @@ namespace S100Framework.Applications
                     Store(() => S57_OffshoreInstallationsA(source, destination, QueryFilter));
                     Store(() => S57_OffshoreInstallationsL(source, destination, QueryFilter));
                     Store(() => S57_OffshoreInstallationsP(source, destination, QueryFilter));
-
 
                     Logger.Current.Information($"Converting Tracks And Routes");
                     Store(() => S57_TracksAndRoutesA(source, destination, QueryFilter));
