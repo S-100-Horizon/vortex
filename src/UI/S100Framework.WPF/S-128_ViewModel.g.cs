@@ -166,9 +166,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Contact Address";
 
-		protected override void Validate() {
-		}
-
 		public contactAddressViewModel() : base() {
 			deliveryPoint.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(deliveryPoint));
@@ -229,9 +226,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Custom Paper Size";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -300,9 +294,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Default Locale";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -375,9 +366,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Feature Name";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -467,9 +455,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Information";
 
-		protected override void Validate() {
-		}
-
 		public informationViewModel() : base() {
 			text.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(text));
@@ -538,9 +523,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Issuance Cycle";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -647,9 +629,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Online Resource";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -707,9 +686,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Periodic Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -778,9 +754,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Pricing";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -878,9 +851,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Print Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -944,9 +914,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Print Size";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1029,9 +996,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Product Specification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1247,9 +1211,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Support File";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1319,9 +1280,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Support File Specification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1391,9 +1349,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Service Specification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1506,9 +1461,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Source Indication";
 
-		protected override void Validate() {
-		}
-
 		public sourceIndicationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -1583,9 +1535,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Telecommunications";
-
-		protected override void Validate() {
-		}
 
 		public telecommunicationsViewModel() : base() {
 			telecommunicationService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1664,9 +1613,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Time Interval Of Product";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1722,11 +1668,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Time Interval Of Cycle";
-
-		protected override void Validate() {
-			if (typeOfTimeIntervalUnit.Count < 1)
-				base.AddError("typeOfTimeIntervalUnit", $"typeOfTimeIntervalUnit must have at least 1 value.");
-		}
 
 		public timeIntervalOfCycleViewModel() : base() {
 			typeOfTimeIntervalUnit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1792,9 +1733,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Reference To NM";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1850,9 +1788,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Week Of Year";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1883,9 +1818,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Carriage Requirement";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1916,9 +1848,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Distribution Details";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1949,9 +1878,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Distributor Contact";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1982,9 +1908,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Price of Element";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2015,9 +1938,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Price of Nautical Product";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2048,9 +1968,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Producer Contact";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2081,9 +1998,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Production Details";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2114,9 +2028,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Product Package";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2164,9 +2075,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Product Mapping";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2198,9 +2106,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		};
 
 		public override string? ToString() => $"Correlated";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2277,9 +2182,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 
 		public override string? ToString() => $"Catalogue Section Header";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2370,9 +2272,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Contact Details";
 
-		protected override void Validate() {
-		}
-
 		public ContactDetailsViewModel() : base() {
 			contactAddress.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(contactAddress));
@@ -2457,9 +2356,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Indication of Carriage Requirement";
 
-		protected override void Validate() {
-		}
-
 		public IndicationOfCarriageRequirementViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -2530,9 +2426,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 
 		public override string? ToString() => $"Price Information";
-
-		protected override void Validate() {
-		}
 
 		public PriceInformationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -2606,9 +2499,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 
 		public override string? ToString() => $"Producer Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2653,9 +2543,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 
 		public override string? ToString() => $"Distributor Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3179,13 +3066,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
 		public override string? ToString() => $"Electronic Product";
-
-		protected override void Validate() {
-			if (catalogueElementClassification.Count < 1)
-				base.AddError("catalogueElementClassification", $"catalogueElementClassification must have at least 1 value.");
-			if (navigationPurpose.Count > 3)
-				base.AddError("navigationPurpose", $"navigationPurpose must have no more than 3 value.");
-		}
 
 		public ElectronicProductViewModel() : base() {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3736,13 +3616,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Physical Product";
 
-		protected override void Validate() {
-			if (catalogueElementClassification.Count < 1)
-				base.AddError("catalogueElementClassification", $"catalogueElementClassification must have at least 1 value.");
-			if (navigationPurpose.Count > 3)
-				base.AddError("navigationPurpose", $"navigationPurpose must have no more than 3 value.");
-		}
-
 		public PhysicalProductViewModel() : base() {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(catalogueElementClassification));
@@ -4070,11 +3943,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 
 		public override string? ToString() => $"S100 Service";
-
-		protected override void Validate() {
-			if (catalogueElementClassification.Count < 1)
-				base.AddError("catalogueElementClassification", $"catalogueElementClassification must have at least 1 value.");
-		}
 
 		public S100ServiceViewModel() : base() {
 			catalogueElementClassification.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {

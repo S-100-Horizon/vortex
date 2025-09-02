@@ -40,7 +40,7 @@ namespace S100Framework.WPF.ViewModel
                 if (string.IsNullOrEmpty(e.PropertyName)) return;
                 if (e.PropertyName == nameof(HasErrors)) return; // Prevent recursive validation call
 
-                Validation();
+                this.Validate();
             };
         }
 
@@ -98,43 +98,28 @@ namespace S100Framework.WPF.ViewModel
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         [Browsable(false)]
-        public bool HasErrors => _errors.Any();
+        public bool HasErrors => this._errors.Any();
 
         public IEnumerable GetErrors(string? propertyName) {
-            if (string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
+            if (string.IsNullOrEmpty(propertyName) || !_errors.ContainsKey(propertyName)) {
+                return Enumerable.Empty<string>();
+            }
+            return _errors[propertyName];
+        }
 
-            return _errors.ContainsKey(propertyName) ? _errors[propertyName] : Enumerable.Empty<string>();
+        public IEnumerable<string> GetErrors() {
+            return _errors.Keys;
         }
 
         protected void OnErrorsChanged(string propertyName) {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
-        protected void AddError(string propertyName, string error) {
-            if (!_errors.ContainsKey(propertyName)) {
-                _errors[propertyName] = new List<string>();
-            }
-
-            if (!_errors[propertyName].Contains(error)) {
-                _errors[propertyName].Add(error);
-                OnErrorsChanged(propertyName);
-                OnPropertyChanged(nameof(HasErrors));
-            }
-        }
-
-        protected void ClearErrors(string propertyName) {
-            if (_errors.ContainsKey(propertyName)) {
-                _errors.Remove(propertyName);
-                OnErrorsChanged(propertyName);
-                OnPropertyChanged(nameof(HasErrors));
-            }
-        }
-
         #endregion
 
-        #region Validation
+        #region Validate
 
-        protected virtual void Validation() {
+        protected virtual void Validate() {
             this._errors.Clear(); // Clear previous errors
 
             var context = new NullabilityInfoContext();
@@ -167,11 +152,34 @@ namespace S100Framework.WPF.ViewModel
                         this.AddError(p.Name, $"{p.Name} is required.");
                     }
                 });
-
-            this.Validate();
         }
 
-        protected abstract void Validate();
+        protected void AddError(string propertyName, string errorMessage) {
+            if (!_errors.ContainsKey(propertyName)) {
+                _errors[propertyName] = new List<string>();
+            }
+            if (!_errors[propertyName].Contains(errorMessage)) {
+                _errors[propertyName].Add(errorMessage);
+                OnErrorsChanged(propertyName);
+            }
+        }
+
+        protected void RemoveError(string propertyName, string errorMessage) {
+            if (_errors.ContainsKey(propertyName) && _errors[propertyName].Contains(errorMessage)) {
+                _errors[propertyName].Remove(errorMessage);
+                if (_errors[propertyName].Count == 0) {
+                    _errors.Remove(propertyName);
+                }
+                OnErrorsChanged(propertyName);
+            }
+        }
+
+        protected void ClearErrors(string propertyName) {
+            if (_errors.ContainsKey(propertyName)) {
+                _errors.Remove(propertyName);
+                OnErrorsChanged(propertyName);
+            }
+        }
 
         #endregion
 
@@ -304,6 +312,31 @@ namespace S100Framework.WPF.ViewModel
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
         public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
+
+        protected override void Validate() {
+            var errors = base.GetErrors();
+
+            base.Validate();
+
+            var viewmodelProperties = this.GetType().GetProperties();
+
+            var properties = typeof(TFeatureType).GetProperties();
+            foreach (var p in properties) {
+                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                if (attribute != default) {
+                    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
+                    if (value is null) {
+                        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
+                        if (dependentValue is null) {
+                            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
+                        }
+                    }
+                }
+            }
+
+            foreach (var e in base.GetErrors().Where(e => !errors.Contains(e)))
+                base.OnErrorsChanged(e);
+        }
     }
 
     public class InformationBindingViewModel : INotifyPropertyChanged

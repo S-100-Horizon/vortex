@@ -157,9 +157,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Affected Chart Publications";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -241,9 +238,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Chart Affected";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -325,9 +319,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -377,11 +368,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"General Area";
-
-		protected override void Validate() {
-			if (locationName.Count < 1)
-				base.AddError("locationName", $"locationName must have at least 1 value.");
-		}
 
 		public generalAreaViewModel() : base() {
 			locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -443,9 +429,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -495,11 +478,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Locality";
-
-		protected override void Validate() {
-			if (locationName.Count < 1)
-				base.AddError("locationName", $"locationName must have at least 1 value.");
-		}
 
 		public localityViewModel() : base() {
 			locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -561,9 +539,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Location Name";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -691,9 +666,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Message Series Identifier";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -749,9 +721,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"NAVWARN Title";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -797,9 +766,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Warning Information";
-
-		protected override void Validate() {
-		}
 
 		public warningInformationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -854,9 +820,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Feature Reference";
-
-		protected override void Validate() {
-		}
 
 		public featureReferenceViewModel() : base() {
 			atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -939,9 +902,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Feature Name";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -983,9 +943,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1031,9 +988,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Spatial Accuracy";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1064,9 +1018,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"navwarnPreambleContent";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1097,9 +1048,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"navwarnReferences";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1130,9 +1078,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Text association";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1163,9 +1108,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		};
 
 		public override string? ToString() => $"Area Affected";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1238,9 +1180,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 
 		public override string? ToString() => $"References";
-
-		protected override void Validate() {
-		}
 
 		public ReferencesViewModel() : base() {
 			messageSeriesIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1393,11 +1332,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"NAVWARN Preamble";
 
-		protected override void Validate() {
-			if (generalArea.Count < 1)
-				base.AddError("generalArea", $"generalArea must have at least 1 value.");
-		}
-
 		public NavwarnPreambleViewModel() : base() {
 			affectedChartPublications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(affectedChartPublications));
@@ -1478,9 +1412,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
 		public override string? ToString() => $"Spatial Quality";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1578,9 +1509,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override string? ToString() => $"NAVWARN Part";
 
-		protected override void Validate() {
-		}
-
 		public NavwarnPartViewModel() : base() {
 			fixedDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(fixedDateRange));
@@ -1626,9 +1554,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
 		public override string? ToString() => $"NAVWARN Area Affected";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1735,9 +1660,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public override string? ToString() => $"Text Placement";
-
-		protected override void Validate() {
-		}
 	}
 
 

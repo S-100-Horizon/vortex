@@ -6467,7 +6467,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
@@ -6542,7 +6542,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitOne : ComplexType {
 			[XmlElement("sectorBearing")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? sectorBearing {get;set;} = default;
 
@@ -6563,7 +6563,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class sectorLimitTwo : ComplexType {
 			[XmlElement("sectorBearing")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? sectorBearing {get;set;} = default;
 
@@ -6844,7 +6844,7 @@ namespace S100Framework.DomainModel.S101 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class valueOfLocalMagneticAnomaly : ComplexType {
 			[XmlElement("magneticAnomalyValue")]
-			[RangeConstraint<double>(1, 1800, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 180, Closure.closedInterval)]
 			[UnknownValue]
 			public double? magneticAnomalyValue {get;set;} = default;
 
@@ -8063,7 +8063,7 @@ namespace S100Framework.DomainModel.S101 {
 			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf.HasValue ? marksNavigationalSystemOf : default; } set { } }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -19851,7 +19851,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			[RangeConstraint<double>(-300, 125000, Closure.openInterval)]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
@@ -20048,7 +20048,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			[RangeConstraint<double>(-300, 125000, Closure.openInterval)]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
@@ -20273,7 +20273,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlElement("defaultClearanceDepth")]
 			[DependentUnknownValue("valueOfSounding")]
-			[RangeConstraint<double>(-300, 125000, Closure.openInterval)]
+			[RangeConstraint<double>(-30, 12500, Closure.openInterval)]
 			public double? defaultClearanceDepth {get;set;} = default;
 
 			public bool ShouldSerializedefaultClearanceDepth() { return defaultClearanceDepth.HasValue; }
@@ -22059,7 +22059,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -22363,7 +22363,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
@@ -22647,7 +22647,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
@@ -22822,7 +22822,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -23079,7 +23079,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -23198,7 +23198,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -23370,7 +23370,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 
@@ -23894,7 +23894,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			public double? orientationValue {get;set;} = default;
 
 			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
@@ -24895,7 +24895,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[Upper(2)]
 			public List<double> orientationValue {get;set;} = [];
 
@@ -25141,7 +25141,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeinteroperabilityIdentifier() { return !string.IsNullOrEmpty(interoperabilityIdentifier); }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 3600, Closure.geLtInterval)]
+			[RangeConstraint<double>(0, 360, Closure.geLtInterval)]
 			[UnknownValue]
 			public double? orientationValue {get;set;} = default;
 

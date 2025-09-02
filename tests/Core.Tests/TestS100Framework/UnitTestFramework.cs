@@ -27,6 +27,16 @@ namespace TestS100Framework
         }
 
         [Fact]
+        public void Test_ModelNames() {
+            using Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(@".\..\..\..\..\..\..\artifacts\Workspaces\s100ed8.gdb")));
+
+            var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
+            foreach(var d in definitions) {
+                using var fc = geodatabase.OpenDataset<FeatureClass>(d.GetName());
+            }
+        }
+
+        [Fact]
         public void Test_GetEnumValues() {
             var instance = new Landmark();
 

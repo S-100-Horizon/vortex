@@ -189,11 +189,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Area A3 Service Description";
 
-		protected override void Validate() {
-			if (servingMobileSatelliteService.Count < 1)
-				base.AddError("servingMobileSatelliteService", $"servingMobileSatelliteService must have at least 1 value.");
-		}
-
 		public areaA3ServiceDescriptionViewModel() : base() {
 			servingMobileSatelliteService.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(servingMobileSatelliteService));
@@ -293,9 +288,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Bearing Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -395,11 +387,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Broadcast Content";
 
-		protected override void Validate() {
-			if (typeOfBroadcastContent.Count < 1)
-				base.AddError("typeOfBroadcastContent", $"typeOfBroadcastContent must have at least 1 value.");
-		}
-
 		public broadcastContentViewModel() : base() {
 			typeOfBroadcastContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(typeOfBroadcastContent));
@@ -497,9 +484,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Contact Address";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -590,9 +574,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Coverage Indication";
 
-		protected override void Validate() {
-		}
-
 		public coverageIndicationViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -674,9 +655,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Feature Name";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -758,9 +736,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -815,9 +790,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Frequency Pair";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -871,9 +843,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Frequency Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -972,9 +941,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Graphic";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1029,9 +995,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1125,9 +1088,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1195,9 +1155,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Online Resource";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1252,9 +1209,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Orientation";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1312,9 +1266,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Periodic Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1387,9 +1338,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Radio Channel Details";
-
-		protected override void Validate() {
-		}
 
 		public radioChannelDetailsViewModel() : base() {
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1465,9 +1413,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Radiocommunication Identifier";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1534,9 +1479,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"RxN Code";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1591,13 +1533,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Schedule by Day of Week";
-
-		protected override void Validate() {
-			if (timeIntervalsByDayOfWeek.Count < 1)
-				base.AddError("timeIntervalsByDayOfWeek", $"timeIntervalsByDayOfWeek must have at least 1 value.");
-			if (timeIntervalsByDayOfWeek.Count > 10)
-				base.AddError("timeIntervalsByDayOfWeek", $"timeIntervalsByDayOfWeek must have no more than 10 value.");
-		}
 
 		public scheduleByDayOfWeekViewModel() : base() {
 			timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1667,9 +1602,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Sector Limit";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1724,9 +1656,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Sector Limit One";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1781,9 +1710,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Sector Limit Two";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1865,9 +1791,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Spatial Accuracy";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1924,9 +1847,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Survey Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1999,9 +1919,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Telecommunications";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2102,9 +2019,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Text Content";
 
-		protected override void Validate() {
-		}
-
 		public textContentViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -2182,11 +2096,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Time Intervals by Day of Week";
-
-		protected override void Validate() {
-			if (dayOfWeek.Count > 7)
-				base.AddError("dayOfWeek", $"dayOfWeek must have no more than 7 value.");
-		}
 
 		public timeIntervalsByDayOfWeekViewModel() : base() {
 			dayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -2275,9 +2184,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Times of Transmission";
 
-		protected override void Validate() {
-		}
-
 		public timesOfTransmissionViewModel() : base() {
 			transmissionTime.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(transmissionTime));
@@ -2337,9 +2243,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Vertical Uncertainty";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2435,9 +2338,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Vessel Measurements Specification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2468,9 +2368,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Additional information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2501,9 +2398,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Associated RxN";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2534,9 +2428,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Authority contact";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2567,9 +2458,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Authority hours";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2600,9 +2488,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Available Quality of Service";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2633,9 +2518,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Broadcast Service";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2666,9 +2548,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Broadcast Transmission";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2699,9 +2578,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Connectivity Service";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2732,9 +2608,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Exceptional workday";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2782,9 +2655,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"InclusionType";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2815,9 +2685,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Location hours";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2865,9 +2732,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Permission Type";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2898,9 +2762,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Radio Service Control";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2931,9 +2792,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Related organisation";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2964,9 +2822,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Service contact";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2997,9 +2852,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Service Coordination";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3030,9 +2882,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Spatial Association";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3063,9 +2912,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Transmission Service";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3096,9 +2942,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Core aggregation";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3129,9 +2972,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Fuzzy zone aggregation";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3162,9 +3002,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Service provision area";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3195,9 +3032,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Text association";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -3432,9 +3266,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Applicability";
 
-		protected override void Validate() {
-		}
-
 		public ApplicabilityViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -3590,9 +3421,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
 		public override string? ToString() => $"Authority";
-
-		protected override void Validate() {
-		}
 
 		public AuthorityViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3770,11 +3598,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => BroadcastDetails._informationBindingDefinitions;
 
 		public override string? ToString() => $"Broadcast Details";
-
-		protected override void Validate() {
-			if (broadcastContent.Count < 1)
-				base.AddError("broadcastContent", $"broadcastContent must have at least 1 value.");
-		}
 
 		public BroadcastDetailsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3984,9 +3807,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ConnectivityQualityOfService._informationBindingDefinitions;
 
 		public override string? ToString() => $"Connectivity Quality of Service";
-
-		protected override void Validate() {
-		}
 
 		public ConnectivityQualityOfServiceViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4234,9 +4054,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Contact Details";
 
-		protected override void Validate() {
-		}
-
 		public ContactDetailsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -4403,11 +4220,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Nautical Information";
 
-		protected override void Validate() {
-			if (textContent.Count < 1)
-				base.AddError("textContent", $"textContent must have at least 1 value.");
-		}
-
 		public NauticalInformationViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -4548,9 +4360,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
 		public override string? ToString() => $"Non-Standard Working Day";
-
-		protected override void Validate() {
-		}
 
 		public NonStandardWorkingDayViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4716,9 +4525,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Radio Control Centre";
 
-		protected override void Validate() {
-		}
-
 		public RadioControlCentreViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -4872,11 +4678,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
 		public override string? ToString() => $"Recommendations";
-
-		protected override void Validate() {
-			if (textContent.Count < 1)
-				base.AddError("textContent", $"textContent must have at least 1 value.");
-		}
 
 		public RecommendationsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5038,11 +4839,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Regulations";
 
-		protected override void Validate() {
-			if (textContent.Count < 1)
-				base.AddError("textContent", $"textContent must have at least 1 value.");
-		}
-
 		public RegulationsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -5203,11 +4999,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Restrictions";
 
-		protected override void Validate() {
-			if (textContent.Count < 1)
-				base.AddError("textContent", $"textContent must have at least 1 value.");
-		}
-
 		public RestrictionsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -5339,11 +5130,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Service Hours";
 
-		protected override void Validate() {
-			if (scheduleByDayOfWeek.Count < 1)
-				base.AddError("scheduleByDayOfWeek", $"scheduleByDayOfWeek must have at least 1 value.");
-		}
-
 		public ServiceHoursViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -5415,9 +5201,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
 		public override string? ToString() => $"Spatial Quality";
-
-		protected override void Validate() {
-		}
 
 		public SpatialQualityViewModel() : base() {
 			spatialAccuracy.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5594,11 +5377,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override informationBindingDefinition[] informationBindingDefinitions => TransmissionDetails._informationBindingDefinitions;
 
 		public override string? ToString() => $"Transmission Details";
-
-		protected override void Validate() {
-			if (radioChannelDetails.Count < 1)
-				base.AddError("radioChannelDetails", $"radioChannelDetails must have at least 1 value.");
-		}
 
 		public TransmissionDetailsViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5830,9 +5608,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Connectivity Subscription Area";
 
-		protected override void Validate() {
-		}
-
 		public ConnectivitySubscriptionAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -6038,9 +5813,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"GMDSS Area";
 
-		protected override void Validate() {
-		}
-
 		public GMDSSAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -6192,9 +5964,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => IndeterminateZone._featureBindingDefinitions;
 
 		public override string? ToString() => $"Indeterminate Zone";
-
-		protected override void Validate() {
-		}
 
 		public IndeterminateZoneViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6352,9 +6121,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MetArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"METAREA";
-
-		protected override void Validate() {
-		}
 
 		public MetAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6515,9 +6281,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"NAVAREA";
-
-		protected override void Validate() {
-		}
 
 		public NavAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6737,9 +6500,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"NAVTEX Service Area";
 
-		protected override void Validate() {
-		}
-
 		public NavtexServiceAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -6947,9 +6707,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioServiceArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Radio Service Area";
-
-		protected override void Validate() {
-		}
 
 		public RadioServiceAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7205,9 +6962,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Radio Station";
 
-		protected override void Validate() {
-		}
-
 		public RadioStationViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -7410,9 +7164,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Weather Forecast and Warning Area";
 
-		protected override void Validate() {
-		}
-
 		public WeatherForecastAndWarningAreaViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -7547,9 +7298,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Radio Service Area Aggregate";
 
-		protected override void Validate() {
-		}
-
 		public RadioServiceAreaAggregateViewModel() : base() {
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
@@ -7646,9 +7394,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
 		public override string? ToString() => $"Data Coverage";
-
-		protected override void Validate() {
-		}
 
 		public DataCoverageViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7812,9 +7557,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
-		protected override void Validate() {
-		}
-
 		public QualityOfNonBathymetricDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -7924,13 +7666,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public override string? ToString() => $"Text Placement";
-
-		protected override void Validate() {
-			if (textType.Count < 1)
-				base.AddError("textType", $"textType must have at least 1 value.");
-			if (textType.Count > 2)
-				base.AddError("textType", $"textType must have no more than 2 value.");
-		}
 
 		public TextPlacementViewModel() : base() {
 			textType.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {

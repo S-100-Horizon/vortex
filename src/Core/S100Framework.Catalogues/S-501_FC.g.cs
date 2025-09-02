@@ -8755,7 +8755,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -8808,7 +8808,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -9008,7 +9008,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -9045,7 +9045,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -9888,7 +9888,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecontrollingAuthority() { return !string.IsNullOrEmpty(controllingAuthority); }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -10139,7 +10139,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -11024,7 +11024,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -11808,7 +11808,7 @@ namespace S100Framework.DomainModel.S501 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class LateralBeacon : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -11935,7 +11935,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializetopmark() { return topmark!=default; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -12515,7 +12515,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecategoryOfRadarStation() { return categoryOfRadarStation.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -13065,7 +13065,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -13539,7 +13539,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -13589,7 +13589,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -14266,7 +14266,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecolourPattern() { return colourPattern.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -15019,7 +15019,7 @@ namespace S100Framework.DomainModel.S501 {
 			public String? pictorialRepresentation {get;set;} = default;
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -15892,7 +15892,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -16048,7 +16048,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializecategoryOfCoastline() { return categoryOfCoastline.HasValue; }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -16330,7 +16330,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -16645,7 +16645,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 
@@ -16658,7 +16658,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -16870,7 +16870,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlElement("height")]
-			[RangeConstraint<double>(1, 8850, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.gtSemiInterval)]
 			[PrecisionConstraint(1)]
 			public double? height {get;set;} = default;
 
@@ -16893,7 +16893,7 @@ namespace S100Framework.DomainModel.S501 {
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(1, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 8850, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
 			public double? elevation {get;set;} = default;
 

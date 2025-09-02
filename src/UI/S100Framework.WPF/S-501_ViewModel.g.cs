@@ -172,9 +172,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Q-Route Channel Width";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -230,9 +227,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Detection Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -287,9 +281,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Multiplicity of Features";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -357,9 +348,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Online Resource";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -451,9 +439,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Topmark";
 
-		protected override void Validate() {
-		}
-
 		public topmarkViewModel() : base() {
 			shapeInformation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(shapeInformation));
@@ -532,9 +517,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Feature Name";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -590,9 +572,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Fixed Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -648,9 +627,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Altitude Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -706,9 +682,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Altitude";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -786,9 +759,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"rythmOfLight (missing name)";
 
-		protected override void Validate() {
-		}
-
 		public rythmOfLightViewModel() : base() {
 			signalSequence.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(signalSequence));
@@ -856,9 +826,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Safe";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -931,9 +898,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Last Source Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1027,9 +991,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1102,9 +1063,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"First Source Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1159,9 +1117,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Horizontal Clearance Fixed";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1216,9 +1171,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Vertical Uncertainty";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1273,9 +1225,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Frequency Pair";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1371,9 +1320,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Vessel Measurements Specification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1446,11 +1392,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Surface Characteristics";
-
-		protected override void Validate() {
-			if (natureOfSurfaceQualifyingTerms.Count > 3)
-				base.AddError("natureOfSurfaceQualifyingTerms", $"natureOfSurfaceQualifyingTerms must have no more than 3 value.");
-		}
 
 		public surfaceCharacteristicsViewModel() : base() {
 			natureOfSurfaceQualifyingTerms.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -1533,9 +1474,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Magnetic Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1590,9 +1528,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Speed";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1652,9 +1587,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Vertical Clearance Fixed";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1735,9 +1667,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Source Identification";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1792,9 +1721,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -1881,11 +1807,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Sector Characteristics";
 
-		protected override void Validate() {
-			if (lightSector.Count < 1)
-				base.AddError("lightSector", $"lightSector must have at least 1 value.");
-		}
-
 		public sectorCharacteristicsViewModel() : base() {
 			signalSequence.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(signalSequence));
@@ -1951,9 +1872,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Orientation";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2009,9 +1927,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Direction Heading";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2067,9 +1982,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Flight Level ";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2142,9 +2054,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Vessel Speed Limit";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2232,9 +2141,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Periodic Date Range";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2289,9 +2195,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Shape Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2419,11 +2322,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Light Sector";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public lightSectorViewModel() : base() {
 			sectorInformation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sectorInformation));
@@ -2494,9 +2392,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Signal Sequence";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2551,9 +2446,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Sector Information";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2612,9 +2504,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Directional Character";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2678,9 +2567,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Sector Limit";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2735,9 +2621,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Sector Limit Two";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2792,9 +2675,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		};
 
 		public override string? ToString() => $"Sector Limit One";
-
-		protected override void Validate() {
-		}
 	}
 
 
@@ -2873,9 +2753,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
 
 		public override string? ToString() => $"ReferenceToAPublication (missing Name)";
-
-		protected override void Validate() {
-		}
 
 		public ReferenceToAPublicationViewModel() : base() {
 			onlineResource.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3151,11 +3028,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Installation Buoy";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public InstallationBuoyViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3282,9 +3154,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Depth Area";
-
-		protected override void Validate() {
-		}
 
 		public DepthAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -3467,11 +3336,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Radio Calling-In Point";
 
-		protected override void Validate() {
-			if (orientationValue.Count > 2)
-				base.AddError("orientationValue", $"orientationValue must have no more than 2 value.");
-		}
-
 		public RadioCallingInPointViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -3651,9 +3515,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Patrol Area";
 
-		protected override void Validate() {
-		}
-
 		public PatrolAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -3804,9 +3665,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
 		public override string? ToString() => $"Checkpoint";
-
-		protected override void Validate() {
-		}
 
 		public CheckpointViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4067,11 +3925,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Marine Management Area";
 
-		protected override void Validate() {
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
-
 		public MarineManagementAreaViewModel() : base() {
 			speciesGrouping.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(speciesGrouping));
@@ -4227,9 +4080,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Depth Contour";
 
-		protected override void Validate() {
-		}
-
 		public DepthContourViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -4299,9 +4149,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Environmentally Sensitive Sea Area";
-
-		protected override void Validate() {
-		}
 
 		public EnvironmentallySensitiveSeaAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4485,9 +4332,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Road";
 
-		protected override void Validate() {
-		}
-
 		public RoadViewModel() : base() {
 			natureOfConstruction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(natureOfConstruction));
@@ -4594,9 +4438,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
 		public override string? ToString() => $"River";
-
-		protected override void Validate() {
-		}
 
 		public RiverViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -4978,9 +4819,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Military Practice Area";
 
-		protected override void Validate() {
-		}
-
 		public MilitaryPracticeAreaViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -5074,9 +4912,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
 		public override string? ToString() => $"Discoloured Water";
-
-		protected override void Validate() {
-		}
 
 		public DiscolouredWaterViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -5400,11 +5235,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Cardinal Buoy";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public CardinalBuoyViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -5723,11 +5553,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Safe Water Buoy";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public SafeWaterBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -5975,9 +5800,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Radio Station";
 
-		protected override void Validate() {
-		}
-
 		public RadioStationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -6137,9 +5959,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
 
 		public override string? ToString() => $"Military Exercise Airspace";
-
-		protected override void Validate() {
-		}
 
 		public MilitaryExerciseAirspaceViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6316,13 +6135,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Contiguous Zone";
 
-		protected override void Validate() {
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
-
 		public ContiguousZoneViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -6473,9 +6285,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
 
 		public override string? ToString() => $"Normal Baseline";
-
-		protected override void Validate() {
-		}
 
 		public NormalBaselineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -6663,9 +6472,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Cable Area";
 
-		protected override void Validate() {
-		}
-
 		public CableAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -6833,13 +6639,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Continental Shelf Area";
-
-		protected override void Validate() {
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-		}
 
 		public ContinentalShelfAreaViewModel() : base() {
 			nationalMaritimeAuthority.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7009,13 +6808,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Internal Waters";
 
-		protected override void Validate() {
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
-
 		public InternalWatersViewModel() : base() {
 			nationality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(nationality));
@@ -7147,9 +6939,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Administration Area";
-
-		protected override void Validate() {
-		}
 
 		public AdministrationAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7315,9 +7104,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
 		public override string? ToString() => $"Bollard";
-
-		protected override void Validate() {
-		}
 
 		public BollardViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -7628,9 +7414,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Dolphin";
 
-		protected override void Validate() {
-		}
-
 		public DolphinViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -7770,9 +7553,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
 		public override string? ToString() => $"Radar Range";
-
-		protected override void Validate() {
-		}
 
 		public RadarRangeViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8166,11 +7946,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Isolated Danger Beacon";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public IsolatedDangerBeaconViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -8456,11 +8231,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Isolated Danger Buoy";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public IsolatedDangerBuoyViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -8653,9 +8423,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Submarine Transit Lane";
 
-		protected override void Validate() {
-		}
-
 		public SubmarineTransitLaneViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -8767,9 +8534,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"MaritimeSafetyInformationArea (missing Name)";
-
-		protected override void Validate() {
-		}
 
 		public MaritimeSafetyInformationAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -8984,9 +8748,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Airspace Restriction";
 
-		protected override void Validate() {
-		}
-
 		public AirspaceRestrictionViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -9154,9 +8915,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Sounding";
 
-		protected override void Validate() {
-		}
-
 		public SoundingViewModel() : base() {
 			techniqueOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(techniqueOfVerticalMeasurement));
@@ -9306,9 +9064,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Traffic Separation Scheme Boundary";
 
-		protected override void Validate() {
-		}
-
 		public TrafficSeparationSchemeBoundaryViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -9438,9 +9193,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
 		public override string? ToString() => $"Dumping Ground";
-
-		protected override void Validate() {
-		}
 
 		public DumpingGroundViewModel() : base() {
 			categoryOfDumpingGround.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -9749,9 +9501,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Airport/Airfield";
 
-		protected override void Validate() {
-		}
-
 		public AirportAirfieldViewModel() : base() {
 			categoryOfAirportAirfield.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfAirportAirfield));
@@ -9922,9 +9671,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
 		public override string? ToString() => $"Foul Ground";
-
-		protected override void Validate() {
-		}
 
 		public FoulGroundViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10302,9 +10048,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Light Air Obstruction";
 
-		protected override void Validate() {
-		}
-
 		public LightAirObstructionViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
@@ -10580,9 +10323,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
 		public override string? ToString() => $"Mooring Buoy";
-
-		protected override void Validate() {
-		}
 
 		public MooringBuoyViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -10959,9 +10699,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Underwater/Awash Rock";
 
-		protected override void Validate() {
-		}
-
 		public UnderwaterAwashRockViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -11246,9 +10983,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Cable Overhead";
 
-		protected override void Validate() {
-		}
-
 		public CableOverheadViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -11483,9 +11217,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
 
 		public override string? ToString() => $"Controlled Airspace";
-
-		protected override void Validate() {
-		}
 
 		public ControlledAirspaceViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -12239,9 +11970,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Obstruction";
 
-		protected override void Validate() {
-		}
-
 		public ObstructionViewModel() : base() {
 			natureOfConstruction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(natureOfConstruction));
@@ -12425,9 +12153,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
 		public override string? ToString() => $"Fishing Ground";
-
-		protected override void Validate() {
-		}
 
 		public FishingGroundViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -12618,9 +12343,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Fishing Facility";
 
-		protected override void Validate() {
-		}
-
 		public FishingFacilityViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -12794,9 +12516,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Navigation System";
 
-		protected override void Validate() {
-		}
-
 		public NavigationSystemViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -12962,9 +12681,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
 		public override string? ToString() => $"Traffic Separation Scheme Crossing";
-
-		protected override void Validate() {
-		}
 
 		public TrafficSeparationSchemeCrossingViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -13151,9 +12867,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
 		public override string? ToString() => $"Traffic Separation Scheme Lane Part";
-
-		protected override void Validate() {
-		}
 
 		public TrafficSeparationSchemeLanePartViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -13354,13 +13067,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Territorial Sea Area";
-
-		protected override void Validate() {
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
 
 		public TerritorialSeaAreaViewModel() : base() {
 			nationality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -13765,11 +13471,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Lateral Beacon";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public LateralBeaconViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -13918,9 +13619,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
 		public override string? ToString() => $"Coast Guard Station";
-
-		protected override void Validate() {
-		}
 
 		public CoastGuardStationViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -14074,9 +13772,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Separation Zone or Line";
 
-		protected override void Validate() {
-		}
-
 		public SeparationZoneOrLineViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -14211,9 +13906,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
 
 		public override string? ToString() => $"Bottom Feature";
-
-		protected override void Validate() {
-		}
 
 		public BottomFeatureViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -14374,9 +14066,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Archipelagic Baseline";
 
-		protected override void Validate() {
-		}
-
 		public ArchipelagicBaselineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -14480,9 +14169,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
 
 		public override string? ToString() => $"Small Bottom Object ";
-
-		protected override void Validate() {
-		}
 
 		public SmallBottomObjectViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -14635,13 +14321,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
 		public override string? ToString() => $"Exclusive Economic Zone";
-
-		protected override void Validate() {
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-		}
 
 		public ExclusiveEconomicZoneViewModel() : base() {
 			nationalMaritimeAuthority.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -14829,9 +14508,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Radar Station";
 
-		protected override void Validate() {
-		}
-
 		public RadarStationViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -14923,9 +14599,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
 
 		public override string? ToString() => $"Diving Location";
-
-		protected override void Validate() {
-		}
 
 		public DivingLocationViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -15116,11 +14789,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Restricted Area";
-
-		protected override void Validate() {
-			if (restriction.Count < 1)
-				base.AddError("restriction", $"restriction must have at least 1 value.");
-		}
 
 		public RestrictedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -15368,9 +15036,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
 		public override string? ToString() => $"Cable Submarine";
-
-		protected override void Validate() {
-		}
 
 		public CableSubmarineViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -16037,11 +15702,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Wreck";
 
-		protected override void Validate() {
-			if (nationality.Count < 1)
-				base.AddError("nationality", $"nationality must have at least 1 value.");
-		}
-
 		public WreckViewModel() : base() {
 			techniqueOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(techniqueOfVerticalMeasurement));
@@ -16197,9 +15857,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Q-Route";
 
-		protected override void Validate() {
-		}
-
 		public QRouteViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -16332,9 +15989,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
 
 		public override string? ToString() => $"CompletenessOfProductSpecification (missing Name)";
-
-		protected override void Validate() {
-		}
 
 		public CompletenessOfProductSpecificationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -16483,9 +16137,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
 		public override string? ToString() => $"Rescue Station";
-
-		protected override void Validate() {
-		}
 
 		public RescueStationViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -16872,11 +16523,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Cardinal Beacon";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public CardinalBeaconViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -17153,11 +16799,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Light Vessel";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public LightVesselViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -17326,11 +16967,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
 		public override string? ToString() => $"Fishery Zone";
-
-		protected override void Validate() {
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
 
 		public FisheryZoneViewModel() : base() {
 			nationalMaritimeAuthority.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -17519,9 +17155,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Dredged Area";
-
-		protected override void Validate() {
-		}
 
 		public DredgedAreaViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -17731,11 +17364,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
 		public override string? ToString() => $"Ferry Route";
-
-		protected override void Validate() {
-			if (categoryOfFerry.Count < 1)
-				base.AddError("categoryOfFerry", $"categoryOfFerry must have at least 1 value.");
-		}
 
 		public FerryRouteViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -18110,9 +17738,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Shoreline Construction";
 
-		protected override void Validate() {
-		}
-
 		public ShorelineConstructionViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18279,9 +17904,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Caution Area";
-
-		protected override void Validate() {
-		}
 
 		public CautionAreaViewModel() : base() {
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -18534,9 +18156,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Deep Water Route Part";
 
-		protected override void Validate() {
-		}
-
 		public DeepWaterRoutePartViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -18707,9 +18326,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Current - Non-Gravitational";
 
-		protected override void Validate() {
-		}
-
 		public CurrentNonGravitationalViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -18855,9 +18471,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Data Coverage";
 
-		protected override void Validate() {
-		}
-
 		public DataCoverageViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -18983,11 +18596,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Seabed Area";
-
-		protected override void Validate() {
-			if (surfaceCharacteristics.Count < 1)
-				base.AddError("surfaceCharacteristics", $"surfaceCharacteristics must have at least 1 value.");
-		}
 
 		public SeabedAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -19287,13 +18895,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
 		public override string? ToString() => $"Special Purpose/General Buoy";
-
-		protected override void Validate() {
-			if (categoryOfSpecialPurposeMark.Count < 1)
-				base.AddError("categoryOfSpecialPurposeMark", $"categoryOfSpecialPurposeMark must have at least 1 value.");
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
 
 		public SpecialPurposeGeneralBuoyViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -19649,11 +19250,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Light Sectored";
 
-		protected override void Validate() {
-			if (sectorCharacteristics.Count < 1)
-				base.AddError("sectorCharacteristics", $"sectorCharacteristics must have at least 1 value.");
-		}
-
 		public LightSectoredViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -19724,9 +19320,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
 
 		public override string? ToString() => $"Ice Line";
-
-		protected override void Validate() {
-		}
 
 		public IceLineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -19892,9 +19485,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
 		public override string? ToString() => $"Anchorage Area";
-
-		protected override void Validate() {
-		}
 
 		public AnchorageAreaViewModel() : base() {
 			restriction.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -20218,11 +19808,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Lateral Buoy";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public LateralBuoyViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -20400,9 +19985,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
 		public override string? ToString() => $"Traffic Separation Scheme Roundabout";
-
-		protected override void Validate() {
-		}
 
 		public TrafficSeparationSchemeRoundaboutViewModel() : base() {
 			vesselSpeedLimit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -20651,9 +20233,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
 		public override string? ToString() => $"Deep Water Route Centreline";
-
-		protected override void Validate() {
-		}
 
 		public DeepWaterRouteCentrelineViewModel() : base() {
 			qualityOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -20945,11 +20524,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
 		public override string? ToString() => $"Light Float";
-
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
 
 		public LightFloatViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -21353,11 +20927,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Light All Around";
 
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
-
 		public LightAllAroundViewModel() : base() {
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
@@ -21584,9 +21153,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Coastline";
 
-		protected override void Validate() {
-		}
-
 		public CoastlineViewModel() : base() {
 			colour.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(colour));
@@ -21738,9 +21304,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Sea Area/Named Water Area";
 
-		protected override void Validate() {
-		}
-
 		public SeaAreaNamedWaterAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
@@ -21790,9 +21353,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
 
 		public override string? ToString() => $"Drop Zone";
-
-		protected override void Validate() {
-		}
 
 		public DropZoneViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -22140,9 +21700,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Conveyor";
 
-		protected override void Validate() {
-		}
-
 		public ConveyorViewModel() : base() {
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
@@ -22315,11 +21872,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override string? ToString() => $"Line of Delimitation";
 
-		protected override void Validate() {
-			if (nationalMaritimeAuthority.Count < 1)
-				base.AddError("nationalMaritimeAuthority", $"nationalMaritimeAuthority must have at least 1 value.");
-		}
-
 		public LineOfDelimitationViewModel() : base() {
 			nationalMaritimeAuthority.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(nationalMaritimeAuthority));
@@ -22478,9 +22030,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
 		public override string? ToString() => $"Straight Territorial Sea Baseline";
-
-		protected override void Validate() {
-		}
 
 		public StraightTerritorialSeaBaselineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -22850,11 +22399,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
 		public override string? ToString() => $"Safe Water Beacon";
-
-		protected override void Validate() {
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
 
 		public SafeWaterBeaconViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
@@ -23253,13 +22797,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
 		public override string? ToString() => $"Special Purpose/General Beacon";
-
-		protected override void Validate() {
-			if (categoryOfSpecialPurposeMark.Count < 1)
-				base.AddError("categoryOfSpecialPurposeMark", $"categoryOfSpecialPurposeMark must have at least 1 value.");
-			if (colour.Count < 1)
-				base.AddError("colour", $"colour must have at least 1 value.");
-		}
 
 		public SpecialPurposeGeneralBeaconViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {

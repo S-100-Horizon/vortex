@@ -1,6 +1,7 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -385,7 +386,7 @@ namespace S100Framework.Applications
                             };
 
                             Func<string, string> converter = prefix switch {
-                                "double" => (v) => $"{double.Parse(v)}",
+                                "double" => (v) => $"{double.Parse(v, CultureInfo.InvariantCulture)}",
                                 "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
                                 _ => throw new InvalidOperationException()
                             };
@@ -1697,7 +1698,7 @@ namespace S100Framework.Applications
 
             var modelBuilder = new StringBuilder();
 
-            var validationBuilder = new StringBuilder();
+            //var validationBuilder = new StringBuilder();
 
             BuildViewModelClassAttribute(code, e, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, new BuildViewModelClassAttributeClient {
                 BuildViewModelClassClient = client,
@@ -1705,16 +1706,16 @@ namespace S100Framework.Applications
                 XPathNavigator = navigator,
                 ProductFormat = client.ProductFormat,
             }, (attribute, lower, upper, isCollection) => {
-                if (isCollection) {
-                    if (lower > 0) {
-                        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count < {lower})");
-                        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have at least {lower} value.\");");
-                    }
-                    if (upper.HasValue) {
-                        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count > {upper.Value})");
-                        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have no more than {upper.Value} value.\");");
-                    }
-                }
+                //if (isCollection) {
+                //    if (lower > 0) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count < {lower})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have at least {lower} value.\");");
+                //    }
+                //    if (upper.HasValue) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count > {upper.Value})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have no more than {upper.Value} value.\");");
+                //    }
+                //}
             });
 
             serializeBuilder.AppendLine("\t\t\t};");
@@ -1742,12 +1743,12 @@ namespace S100Framework.Applications
             builder.AppendLine();
             builder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
-            builder.AppendLine();
-            builder.AppendLine($"\t\tprotected override void Validate() {{");
-            {
-                builder.Append(validationBuilder.ToString());
-            }
-            builder.AppendLine($"\t\t}}");
+            //builder.AppendLine();
+            //builder.AppendLine($"\t\tprotected override void Validate() {{");
+            //{
+            //    builder.Append(validationBuilder.ToString());
+            //}
+            //builder.AppendLine($"\t\t}}");
 
             if (constructorBuilder.Length > 0) {
                 builder.AppendLine();

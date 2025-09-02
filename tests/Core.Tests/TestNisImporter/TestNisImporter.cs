@@ -722,6 +722,8 @@ namespace TestNisImporter
         public void BuildImportS57ToGeodatabaseScripts() {
             var root = new IO.DirectoryInfo(@"c:\temp\ENC");
 
+            root = new IO.DirectoryInfo(@"\\nas.gst.dk\ncps\production\indigo\ENC\Approved\DK\DK4");
+
             var python = new StringBuilder();
 
             foreach (var enc in root.EnumerateDirectories()) {
