@@ -190,7 +190,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
                         ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
-                        Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
+                        Logger.Current.DataObject(-1, $"{relatedObject.PLTS_Frel.DEST_FC}::{relatedObject.PLTS_Frel.SRC_UID}::{relatedObject.PLTS_Frel.DEST_UID}", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
 
                     // Add relation between s57master polygon and slave equipment
@@ -301,9 +301,13 @@ namespace S100Framework.Applications
 
             // IF NOT SECTORED LIGHTS
             foreach (PltsSlave relatedObject in relatedNonSectoredEquipment) {
-                if (relatedObject.S101Type == typeof(topmark))
+                if (relatedObject.S101Type == typeof(topmark)) {
                     continue;
+                }
 
+                //if (ConversionAnalytics.Instance.IsConverted(relatedObject.GlobalId)) { 
+                //    continue; 
+                //}
 
                 if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
                     var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);

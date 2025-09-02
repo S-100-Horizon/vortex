@@ -1742,7 +1742,7 @@ namespace S100Framework.Applications
             //else {
             foreach (var light in lights) {
                 var rhythmofLightValue = GetRythmOfLight<TType>(light);
-                if (light.SECTR1 != null && light.SECTR2 != null) {
+                if ((light.SECTR1 != null && light.SECTR2 != null) || light.CATLIT == "1") {
                     {
                         List<lightVisibility> visibility = new List<lightVisibility>();
 
@@ -1755,6 +1755,8 @@ namespace S100Framework.Applications
                             colours = GetColours<lightSector>(light.COLOUR);
                         }
 
+
+                        //if (light.SECTR1 != null && light.SECTR2 != null) { 
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLightValue.lightCharacteristic,
                             signalGroup = rhythmofLightValue.signalGroup,
@@ -1765,19 +1767,26 @@ namespace S100Framework.Applications
                                     lightVisibility = visibility,
                                     valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
                                     colour = colours,
-                                    sectorLimit = new sectorLimit() {
-                                        sectorLimitOne = new sectorLimitOne() {
-                                            sectorBearing = light.SECTR1.Value,
-                                        },
-                                        sectorLimitTwo = new sectorLimitTwo() {
-                                            sectorBearing = light.SECTR2.Value,
-                                        }
-                                    }
+                                    sectorLimit = null
                                 },
                             }
                         };
 
+                        if (light.SECTR1 != null && light.SECTR2 != null) {
+                            sectorCharacteristic.lightSector[0].sectorLimit = new sectorLimit() {
+                                sectorLimitOne = new sectorLimitOne() {
+                                    sectorBearing = light.SECTR1.Value,
+                                },
+                                sectorLimitTwo = new sectorLimitTwo() {
+                                    sectorBearing = light.SECTR2.Value,
+                                }
+                            };
+                        }
+
                         sectorCharacteristics.Add(sectorCharacteristic);
+
+                    //}
+
                     }
                     ;
                 }

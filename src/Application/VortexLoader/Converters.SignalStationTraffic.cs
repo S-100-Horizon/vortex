@@ -13,6 +13,12 @@ namespace S100Framework.Applications
 
             var instance = new SignalStationTraffic();
 
+            if (ConversionAnalytics.Instance.IsConverted(current.GlobalId)) {
+                ;
+            }
+
+
+
             if (current.CATSIT != default) {
                 instance.categoryOfSignalStationTraffic = EnumHelper.GetEnumValues<SignalStationTraffic,categoryOfSignalStationTraffic>(current.CATSIT);
             }
