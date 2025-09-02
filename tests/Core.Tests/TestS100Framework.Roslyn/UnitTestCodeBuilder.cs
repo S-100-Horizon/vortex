@@ -143,6 +143,7 @@ namespace TestS100Framework
                     new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("valueOfSounding","[DependentUnknownValue(\"height\")]"),
                 };
 
                 var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {
