@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -80,7 +79,8 @@ namespace S100Framework.Applications
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -144,14 +144,15 @@ namespace S100Framework.Applications
 
                                 if (current.QUASOU != default) {
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround, qualityOfVerticalMeasurement>(current.QUASOU);
-                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
-                            }
 
                                 if (current.STATUS != default) {
                                     instance.status = GetStatus(current.STATUS);
@@ -325,16 +326,85 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            // TODO: defaultClearanceDepth
-
-                            //instance.defaultClearanceDepth = current.
+                            bool coveredByUnsurveyedArea = false;
+                            bool coveredByDredgedArea = false;
 
                             if (current.SHAPE != null) {
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    var drval1 = depthArea.DRVAL1 ?? default;
-                                    instance.surroundingDepth = drval1;
+                                    double? drval1 = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+
+                                    if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
+                                        coveredByUnsurveyedArea = true;
+
+                                        break;
+                                    }
+                                    if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
+                                        coveredByDredgedArea = true;
+                                        instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
+                                    }
+                                    if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
+                                        instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
+                                    }
+
+                                    instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
                                 }
                             }
+
+
+                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth.HasValue;
+
+                            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
+
+                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = instance.surroundingDepth.HasValue;
+
+                            if (allCoveringDepthRangeMinimumValuesAreKnown && !(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {
+                                if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
+                                    (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+
+                                    instance.defaultClearanceDepth = instance.surroundingDepth;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+
+                                    instance.defaultClearanceDepth = 0.1d;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
+
+                                    instance.defaultClearanceDepth = 0d;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+
+                                    instance.defaultClearanceDepth = -15d;
+                                }
+                                else {
+                                    ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
+                                }
+                            }
+                            else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
+                                if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+                                    instance.defaultClearanceDepth = 0.1d;
+                                }
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
+                                    instance.defaultClearanceDepth = 0d;
+                                }
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+                                    instance.defaultClearanceDepth = -15d;
+                                }
+                                else {
+                                    ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
+                                }
+
+                            }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -430,7 +500,8 @@ namespace S100Framework.Applications
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }

@@ -52,8 +52,8 @@ namespace S100Framework.Applications
             // default value - overwritten by args
 
 
-        // default value - overwritten by args
-        var skinOfEarthOnly = false;
+            // default value - overwritten by args
+            var skinOfEarthOnly = false;
             var append = false;
 
             arguments.WithParsed<Options>(o => {
@@ -112,7 +112,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
             _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
-            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction); 
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<DangersA, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<DangersL, Obstruction>(Converters.CreateObstruction);
 
@@ -222,7 +222,7 @@ namespace S100Framework.Applications
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter)); 
+                    Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter));
                     Store(() => S57_CulturalFeaturesL(source, destination, QueryFilter));
                     Store(() => S57_CulturalFeaturesP(source, destination, QueryFilter));
 
@@ -419,7 +419,7 @@ namespace S100Framework.Applications
             }
             */
             if (value != 3) {
-                return EnumHelper.GetEnumValue<TType,verticalDatum>(value);
+                return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
             }
 
             return verticalDatum.BalticSeaChartDatum2000;
@@ -462,7 +462,7 @@ namespace S100Framework.Applications
             if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
-            return EnumHelper.GetEnumValues<TType,colour>(color);
+            return EnumHelper.GetEnumValues<TType, colour>(color);
 
 
             //List<colour> colours = new List<colour>();
@@ -773,7 +773,7 @@ namespace S100Framework.Applications
                     }
                 }
             }
-            
+
 
             if (!string.IsNullOrEmpty(ninform)) {
                 // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis

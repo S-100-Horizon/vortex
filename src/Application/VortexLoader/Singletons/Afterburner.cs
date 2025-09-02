@@ -110,22 +110,22 @@ namespace S100Framework.Applications.Singletons
             var spatialRef = polyline.SpatialReference;
 
             double totalLength = GeometryEngine.Instance.Length(polyline);
-            
-            var locationResult = GeometryEngine.Instance.QueryPoint(polyline, SegmentExtensionType.NoExtension, totalLength / 2,AsRatioOrLength.AsLength);
+
+            var locationResult = GeometryEngine.Instance.QueryPoint(polyline, SegmentExtensionType.NoExtension, totalLength / 2, AsRatioOrLength.AsLength);
 
             if (locationResult == null) {
                 return null;
             }
 
-            MapPoint midpoint = MapPointBuilder.CreateMapPoint(locationResult.X, locationResult.Y, locationResult.Z,polyline.SpatialReference);
-            
-            double offset = 0.0001; 
+            MapPoint midpoint = MapPointBuilder.CreateMapPoint(locationResult.X, locationResult.Y, locationResult.Z, polyline.SpatialReference);
+
+            double offset = 0.0001;
 
             var pt1 = MapPointBuilder.CreateMapPoint(midpoint.X, midpoint.Y - offset, spatialRef);
             var pt2 = MapPointBuilder.CreateMapPoint(midpoint.X, midpoint.Y + offset, spatialRef);
             var cutter = PolylineBuilder.CreatePolyline(new[] { pt1, pt2 }, spatialRef);
 
-            
+
             var cutResult = GeometryEngine.Instance.Cut(polyline, cutter);
 
             if (cutResult == null || cutResult.Count != 2)

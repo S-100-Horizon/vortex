@@ -74,10 +74,10 @@ namespace S100Framework.Applications
                                     instance.categoryOfCable = categoryOfCable.TelecommunicationsCable;
                                 }
                                 else {
-                                    instance.categoryOfCable = EnumHelper.GetEnumValue<CableSubmarine,categoryOfCable>(current.CATCBL.Value);
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue<CableSubmarine, categoryOfCable>(current.CATCBL.Value);
                                 }
                             }
-                            
+
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
@@ -104,12 +104,12 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -135,7 +135,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,categoryOfPipelinePipe>(current.CATPIP);
+                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues<PipelineSubmarineOnLand, categoryOfPipelinePipe>(current.CATPIP);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -147,7 +147,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL2.Value;
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -162,8 +162,9 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<PipelineSubmarineOnLand,product>(current.PRODCT);
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                instance.product = EnumHelper.GetEnumValues<PipelineSubmarineOnLand, product>(current.PRODCT);
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -172,7 +173,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-// TODO: restriction
+                            // TODO: restriction
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -185,7 +186,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;

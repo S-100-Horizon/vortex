@@ -132,12 +132,12 @@ namespace S100Framework.Applications
                             //    }
                             //}
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -219,7 +219,7 @@ namespace S100Framework.Applications
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
 
-            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<SpatialQuality,qualityOfHorizontalMeasurement>(4);
+            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<SpatialQuality, qualityOfHorizontalMeasurement>(4);
 
             bufferInformationType["ps"] = ps101;
             bufferInformationType["code"] = spatialQuality101.Code;
