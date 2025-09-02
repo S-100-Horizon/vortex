@@ -94,12 +94,12 @@ namespace S100Framework.Applications
                                 };
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -167,8 +167,8 @@ namespace S100Framework.Applications
 
                             if (current.PUBREF != default) {
                                 ;
-                            }                           
-                            
+                            }
+
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
@@ -184,7 +184,7 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -216,7 +216,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.MARSYS.HasValue) {
-                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LocalDirectionOfBuoyage,marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LocalDirectionOfBuoyage, marksNavigationalSystemOf>(current.MARSYS.Value);
                                 }
                                 //else {
                                 //    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
@@ -254,13 +254,13 @@ namespace S100Framework.Applications
                                 };
 
                                 if (current.MARSYS.HasValue) {
-                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<NavigationalSystemOfMarks,marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<NavigationalSystemOfMarks, marksNavigationalSystemOf>(current.MARSYS.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -455,9 +455,9 @@ namespace S100Framework.Applications
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -493,7 +493,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             // TODO: line spacing maximum
-                            
+
                             // TODO: line spacing minimum
 
                             if (current.SDISMX.HasValue && current.SDISMX.Value != -32767d) {
@@ -501,7 +501,7 @@ namespace S100Framework.Applications
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX}");
+                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX} and cannot be converted to an integer");
                                 }
                             }
 
@@ -510,16 +510,16 @@ namespace S100Framework.Applications
                                     instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMN on M_SREL: value is {current.SDISMN}");
+                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMN on M_SREL: value is {current.SDISMN} and cannot be converted to an integer");
                                 }
                             }
 
                             if (current.QUAPOS.HasValue) {
-                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<QualityOfSurvey,qualityOfHorizontalMeasurement>(current.QUAPOS);
+                                instance.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<QualityOfSurvey, qualityOfHorizontalMeasurement>(current.QUAPOS);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey,qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.SCVAL1.HasValue && current.SCVAL1 != -32767) {
@@ -537,21 +537,21 @@ namespace S100Framework.Applications
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
                                 instance.surveyDateRange = surveyDateRange;
                             }
-                            
+
                             if (current.SURTYP != default) {
-                                instance.surveyType = EnumHelper.GetEnumValues<QualityOfSurvey,surveyType>(current.SURTYP);
+                                instance.surveyType = EnumHelper.GetEnumValues<QualityOfSurvey, surveyType>(current.SURTYP);
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -577,11 +577,11 @@ namespace S100Framework.Applications
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

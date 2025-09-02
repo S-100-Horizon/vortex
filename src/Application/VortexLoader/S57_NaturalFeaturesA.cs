@@ -79,7 +79,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -137,7 +137,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -165,7 +165,7 @@ namespace S100Framework.Applications
                             var instance = new LandRegion();
 
                             if (current.CATLND != default) {
-                                instance.categoryOfLandRegion = EnumHelper.GetEnumValues<LandRegion,categoryOfLandRegion>(current.CATLND);
+                                instance.categoryOfLandRegion = EnumHelper.GetEnumValues<LandRegion, categoryOfLandRegion>(current.CATLND);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -173,11 +173,11 @@ namespace S100Framework.Applications
                             // TODO: Interoperabilityidentifier
 
                             if (current.NATSUR != default) {
-                                instance.natureOfSurface = EnumHelper.GetEnumValues<LandRegion,natureOfSurface>(current.NATSUR);
+                                instance.natureOfSurface = EnumHelper.GetEnumValues<LandRegion, natureOfSurface>(current.NATSUR);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<LandRegion,waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<LandRegion, waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -189,7 +189,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -234,7 +234,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -275,7 +275,7 @@ namespace S100Framework.Applications
                             var instance = new SeaAreaNamedWaterArea();
 
                             if (current.CATSEA.HasValue) {
-                                instance.categoryOfSeaArea = EnumHelper.GetEnumValue<SeaAreaNamedWaterArea,categoryOfSeaArea>(current.CATSEA.Value);
+                                instance.categoryOfSeaArea = EnumHelper.GetEnumValue<SeaAreaNamedWaterArea, categoryOfSeaArea>(current.CATSEA.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -289,7 +289,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -378,16 +378,16 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATVEG != default) {
-                                instance.categoryOfVegetation = EnumHelper.GetEnumValue<Vegetation,categoryOfVegetation>(current.CATVEG);
+                                instance.categoryOfVegetation = EnumHelper.GetEnumValue<Vegetation, categoryOfVegetation>(current.CATVEG);
                             }
 
                             if (current.ELEVAT.HasValue) {
                                 instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);       
-                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
@@ -401,7 +401,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Vegetation,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Vegetation, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -411,7 +411,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;

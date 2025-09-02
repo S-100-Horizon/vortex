@@ -34,7 +34,7 @@ namespace S100Framework.Applications
 
             // Bridges - Store an aggregation per bridge
             if (createBridgesAndRelations) {
-                Bridges.Initialize(source,target);
+                Bridges.Initialize(source, target);
 
                 foreach (var bridge in Bridges.Instance.BridgeElements()) {
                     var instance = new Bridge();
@@ -321,7 +321,7 @@ namespace S100Framework.Applications
 
                                 instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
 
-                                
+
 
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                                 bufferSurface["ps"] = ps101;
@@ -336,7 +336,7 @@ namespace S100Framework.Applications
 
 
                                 if (createBridgesAndRelations) {
-                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM,current.NOBJNM);
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
@@ -417,7 +417,7 @@ namespace S100Framework.Applications
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
                                 if (createBridgesAndRelations) {
-                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed),current.OBJNAM,current.NOBJNM);
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
@@ -1172,7 +1172,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATPYL.HasValue) {
-                                instance.categoryOfPylon = EnumHelper.GetEnumValue<PylonBridgeSupport,categoryOfPylon>(current.CATPYL.Value);
+                                instance.categoryOfPylon = EnumHelper.GetEnumValue<PylonBridgeSupport, categoryOfPylon>(current.CATPYL.Value);
                             }
 
                             if (current.COLOUR != default) {

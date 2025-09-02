@@ -65,7 +65,7 @@ namespace S100Framework.Applications
 
             return true;
         }
-        
+
 
 
 

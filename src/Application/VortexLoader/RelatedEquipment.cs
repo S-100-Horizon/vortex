@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedDaymark.TOPSHP.HasValue) {
-                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType,topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType, topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
@@ -205,7 +205,7 @@ namespace S100Framework.Applications
 
 
                     if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
-                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type,scaleMinimum);
+                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);
 
                         if (instance == null)
                             return;
@@ -381,8 +381,8 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-             //                   buffer["edition"] = ImporterNIS.s101version;
-                                //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //                   buffer["edition"] = ImporterNIS.s101version;
+            //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
@@ -422,7 +422,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            var featureN = featureClass.CreateRow(buffer);
@@ -484,7 +484,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
@@ -517,7 +517,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -555,7 +555,7 @@ namespace S100Framework.Applications
             //
             // buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -592,7 +592,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, radarTransponder.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -628,7 +628,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, daymark.SHAPE);
 
             //            culturalFeaturesPConverted = true;

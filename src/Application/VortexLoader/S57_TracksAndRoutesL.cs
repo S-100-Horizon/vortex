@@ -60,7 +60,7 @@ namespace S100Framework.Applications
                             var instance = new FerryRoute();
 
                             if (current.CATFRY.HasValue) {
-                                instance.categoryOfFerry = EnumHelper.GetEnumValues<FerryRoute,categoryOfFerry>(current.CATFRY.Value);
+                                instance.categoryOfFerry = EnumHelper.GetEnumValues<FerryRoute, categoryOfFerry>(current.CATFRY.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -90,11 +90,11 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -118,7 +118,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATNAV.HasValue) {
-                                instance.categoryOfNavigationLine = EnumHelper.GetEnumValue<NavigationLine,categoryOfNavigationLine>(current.CATNAV.Value);
+                                instance.categoryOfNavigationLine = EnumHelper.GetEnumValue<NavigationLine, categoryOfNavigationLine>(current.CATNAV.Value);
                             }
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -154,7 +154,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -201,11 +201,11 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -263,7 +263,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedRouteCentreline,qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedRouteCentreline, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -271,12 +271,12 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedRouteCentreline,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedRouteCentreline, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<RecommendedRouteCentreline,trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue<RecommendedRouteCentreline, trafficFlow>(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
@@ -348,7 +348,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<RadioCallingInPoint,trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue<RadioCallingInPoint, trafficFlow>(current.TRAFIC.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -358,7 +358,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -425,7 +425,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack,qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -433,11 +433,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<RecommendedTrack,trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue<RecommendedTrack, trafficFlow>(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
@@ -495,7 +495,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
