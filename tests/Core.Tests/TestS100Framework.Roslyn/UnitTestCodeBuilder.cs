@@ -140,10 +140,12 @@ namespace TestS100Framework
 
 
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
-                    new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("valueOfSounding","[DependentUnknownValue(\"height\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("UnderwaterAwashRock.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("rhythmOfLight.signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Bridge.categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
                 };
 
                 var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {

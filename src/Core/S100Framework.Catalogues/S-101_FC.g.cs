@@ -7290,7 +7290,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
-			[DependentUnknownValue("lightCharacteristic")]
 			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
@@ -19827,7 +19826,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			[DependentUnknownValue("height")]
 			[UnknownValue]
 			public double? valueOfSounding {get;set;} = default;
 
@@ -20009,7 +20007,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			[DependentUnknownValue("height")]
 			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
@@ -20411,7 +20408,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			[DependentUnknownValue("height")]
 			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
@@ -20816,7 +20812,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			[DependentUnknownValue("height")]
 			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }
@@ -33178,7 +33173,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[XmlElement("signalPeriod")]
-			[DependentUnknownValue("lightCharacteristic")]
 			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }

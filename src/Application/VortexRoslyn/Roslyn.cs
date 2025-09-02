@@ -502,7 +502,7 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
-                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
                                 builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
                             }
 
@@ -1405,7 +1405,7 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
-                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
                 }
 
