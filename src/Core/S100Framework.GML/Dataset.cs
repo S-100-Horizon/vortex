@@ -68,22 +68,26 @@ namespace S100Framework.GML
 
             public string Identifier => _element.Attribute(XName.Get("id", _element.GetNamespaceOfPrefix("gml")!.NamespaceName))!.Value;
             public string? GeometryIdentifier;
-            public string GeometryType => Geometry?.Elements().FirstOrDefault()?.Name.LocalName.ToLower() ?? throw new InvalidDataException("No geometry type found for the element.");  // e.g. pointproperty, curveproperty, surfaceproperty
+            public string? GeometryType => Geometry?.Elements().FirstOrDefault()?.Name.LocalName.ToLower();  // e.g. pointproperty, curveproperty, surfaceproperty
             public object Value {
                 get {
                     var type = _featureCatalogue.Assembly!.GetType($"{_featureCatalogue.DefaultNamespace}.FeatureTypes.{_element.Name.LocalName}")!;
-           
+
                     var deserialized = GML.Converter.Deserialize(_element, type);
-                    
+
                     return deserialized;
                 }
             }
-           
+
             public XElement? Geometry => _element.Elements().FirstOrDefault(e => e.Name.LocalName == "geometry");
         }
 
         public static Dataset Load(string uri) {
             return new Dataset(XDocument.Load(uri));
+        }
+
+        public static Dataset Parse(string gml) {
+            return new Dataset(XDocument.Parse(gml));
         }
 
         protected Dataset(XDocument document) {
@@ -100,6 +104,16 @@ namespace S100Framework.GML
             this._namespace = navigator.GetNamespace(_prefix);
 
             var prefix = _substitute.Replace(navigator.Prefix, @"S-${number}");
+
+
+            if (!_substitute.IsMatch(prefix)) {
+                var match = Regex.Match(navigator.NamespaceURI.ToString(), @"S-?(\d{3})");
+
+                if (match.Success) {
+                    var digits = match.Groups[1].Value; // "124"
+                    prefix = $"S-{digits}";
+                }
+            }
 
             _featureCatalogue = Catalogues.FeatureCatalogue.Catalogues.SingleOrDefault(e => e.ProductID.Equals(prefix, StringComparison.OrdinalIgnoreCase))!;
         }
