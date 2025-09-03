@@ -10,7 +10,6 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
 
-
         private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
             var tableName = "MilitaryFeaturesA";

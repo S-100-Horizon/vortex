@@ -328,34 +328,33 @@ namespace S100Framework.Applications
 
                             bool coveredByUnsurveyedArea = false;
                             bool coveredByDredgedArea = false;
+                            double? leastDepth = null;
 
                             if (current.SHAPE != null) {
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    double? drval1 = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
-
+                                    leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
                                     if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
                                         coveredByUnsurveyedArea = true;
-
                                         break;
                                     }
                                     if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
                                         coveredByDredgedArea = true;
-                                        instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
+                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                                     }
                                     if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
-                                        instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
+                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                                     }
 
-                                    instance.surroundingDepth = drval1 != -32767d ? drval1 : null;
+                                    instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                                 }
                             }
 
-
+                            
                             bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth.HasValue;
 
                             bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
 
-                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = instance.surroundingDepth.HasValue;
+                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !instance.surroundingDepth.HasValue;
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown && !(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {
                                 if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
@@ -403,7 +402,9 @@ namespace S100Framework.Applications
                                     ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
                                 }
 
-                            }
+                            } else {
+                                Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot set default clearance depth. Check loader.");
+                            }               
 
 
                             buffer["ps"] = ps101;

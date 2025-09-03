@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Internal.Mapping;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -213,7 +214,6 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
-
                     Logger.Current.Information($"Converting Metadata");
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     Store(() => S57_MetadataP(source, destination, QueryFilter));
@@ -319,6 +319,121 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information("Done");
                 return true;
+            }
+        }
+
+
+        internal static double? GetDefaultClearanceDepthObstruction(DangersA current) {
+
+            bool coveredByUnsurveyedArea = false;
+            bool coveredByDredgedArea = false;
+            double? surroundingDepth = null;
+            double? leastDepth = null;
+
+            if (current.SHAPE != null) {
+                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                    leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+
+                    if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
+                        coveredByUnsurveyedArea = true;
+                        break;
+                    }
+                    if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
+                        coveredByDredgedArea = true;
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+                    if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+
+                    surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                }
+            }
+
+            bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
+
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
+
+            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
+
+            bool valsouIsKnown = current.VALSOU.HasValue && current.VALSOU.Value != -32767d;
+            bool valsouIsUnknown = current.VALSOU.HasValue && current.VALSOU.Value == -32767d;
+            bool heightIsKnown = current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d;
+            bool heightIsUnknown = current.HEIGHT.HasValue && current.HEIGHT.Value == -32767d;
+            bool expositionOfSoundingIs1Or3 = current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3);
+
+
+            if (allCoveringDepthRangeMinimumValuesAreKnown) {
+                if (heightIsKnown &&
+                    (current.WATLEV.HasValue && (current.WATLEV.Value == 1 || current.WATLEV.Value == 2))) {
+                    return null;
+                }
+                else if (heightIsUnknown &&
+                    (current.WATLEV.HasValue && (current.WATLEV.Value == 1 || current.WATLEV.Value == 2 || current.WATLEV.Value == 7))) {
+                    return null;
+                }
+                else if (valsouIsKnown &&
+                    (current.WATLEV.HasValue &&
+                    (current.WATLEV.Value == 3 || current.WATLEV.Value == 4 || current.WATLEV.Value == 5 || current.WATLEV.Value == -32767d))) {
+                    return null;
+                }
+                else if (expositionOfSoundingIs1Or3 && valsouIsUnknown &&
+                    (current.WATLEV.HasValue && current.WATLEV.Value == 3)) {
+                    return leastDepth;
+                }
+                else if ((current.CATOBS.HasValue && (current.CATOBS.Value == 6)) &&
+                    ((current.EXPSOU.HasValue && (current.EXPSOU.Value == 2 || current.EXPSOU.Value == -32767))) &&
+                    valsouIsUnknown) {
+                    return 0.1d;
+                }
+                else if (((current.EXPSOU.HasValue && (current.EXPSOU.Value == 2 || current.EXPSOU.Value == -32767))) &&
+                    valsouIsUnknown &&
+                    (current.WATLEV.HasValue && current.WATLEV.Value == 3)) {
+                    return 0.1d;
+                }
+                else if ((current.CATOBS.HasValue && (current.CATOBS.Value != 6)) &&
+                    ((current.EXPSOU.HasValue && (current.EXPSOU.Value == 2 || current.EXPSOU.Value == -32767))) &&
+                    valsouIsUnknown &&
+                    (current.WATLEV.HasValue && current.WATLEV.Value == 5)) {
+                    return 0d;
+                }
+                else if ((current.CATOBS.HasValue && (current.CATOBS.Value != 6)) &&
+                    ((current.EXPSOU.HasValue && (current.EXPSOU.Value == 2 || current.EXPSOU.Value == -32767))) &&
+                    valsouIsUnknown &&
+                    (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV == -32767d))) {
+                    return -15d;
+                } else {
+                    Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"1:Cannot set default clearance depth. Check loader.");
+                    return null;
+
+                }
+            }
+            else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
+                
+                if ((current.CATOBS.HasValue && (current.CATOBS.Value == 6)) &&
+                    valsouIsUnknown) { 
+                    return 0.1d;
+                }
+                else if (valsouIsUnknown && 
+                    (current.WATLEV.HasValue && current.WATLEV.Value == 3)) {
+                    return 0.1d;
+                }
+                else if ((current.CATOBS.HasValue && (current.CATOBS.Value != 6)) &&
+                    valsouIsUnknown &&
+                    (current.WATLEV.HasValue && current.WATLEV.Value == 5)) {
+                    return 0d;
+                }
+                else if ((current.CATOBS.HasValue && (current.CATOBS.Value != 6)) &&
+                    valsouIsUnknown &&
+                    (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+                    return -15d;
+                } else {
+                    Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"2:Cannot set default clearance depth. Check loader.");
+                    return null;
+                }
+            } else {
+                Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"3:Cannot set default clearance depth. Check loader.");
+                return null;
             }
         }
 

@@ -202,6 +202,8 @@ namespace S100Framework.Applications
             }
 
             // TODO: default clearance depth
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
+            
 
             foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
