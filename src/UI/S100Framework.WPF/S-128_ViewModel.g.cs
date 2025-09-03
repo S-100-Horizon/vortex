@@ -172,6 +172,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// User specified paper size width x, height y
 	/// </summary>
@@ -225,6 +227,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Custom Paper Size";
 	}
+
+
 	/// <summary>
 	/// Locale of an option that is selected automatically unless an alternative is specified.
 	/// </summary>
@@ -291,6 +295,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Default Locale";
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -361,6 +367,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -453,6 +461,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The cycle of issuing a product or service.
 	/// </summary>
@@ -514,6 +524,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Issuance Cycle";
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -618,6 +630,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -673,6 +687,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// A decision or establishment of a price.
 	/// </summary>
@@ -739,6 +755,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Pricing";
 	}
+
+
 	/// <summary>
 	/// Information on the printing of nautical paper charts.
 	/// </summary>
@@ -834,6 +852,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Print Information";
 	}
+
+
 	/// <summary>
 	/// Size of nautical paper charts.
 	/// </summary>
@@ -895,6 +915,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Print Size";
 	}
+
+
 	/// <summary>
 	/// The name of the product specification to which a nautical product adheres.
 	/// </summary>
@@ -975,6 +997,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Product Specification";
 	}
+
+
 	/// <summary>
 	/// Information on additional files used in addition to nautical products.
 	/// </summary>
@@ -1188,6 +1212,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Support File";
 	}
+
+
 	/// <summary>
 	/// The name of the product specification to which a support file adheres.
 	/// </summary>
@@ -1255,6 +1281,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Support File Specification";
 	}
+
+
 	/// <summary>
 	/// The name of the (product) specification to which a nautical service adheres.
 	/// </summary>
@@ -1322,6 +1350,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Service Specification";
 	}
+
+
 	/// <summary>
 	/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
 	/// </summary>
@@ -1437,6 +1467,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1510,6 +1542,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The temporal interval over which the product is updated or renewed.
 	/// </summary>
@@ -1580,6 +1614,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Time Interval Of Product";
 	}
+
+
 	/// <summary>
 	/// The temporal interval of the cycle over which data is produced.
 	/// </summary>
@@ -1639,6 +1675,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A reference to a of specific Notice to Mariners.
 	/// </summary>
@@ -1696,6 +1734,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Reference To NM";
 	}
+
+
 	/// <summary>
 	/// The indication of a specific week within a specific year.
 	/// </summary>
@@ -1750,6 +1790,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Week Of Year";
 	}
 
+
+
 	/// <summary>
 	/// A carriage requirement required by SOLAS or other regulation.
 	/// </summary>
@@ -1777,6 +1819,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Carriage Requirement";
 	}
+
+
 
 	/// <summary>
 	/// Details related to distribution.
@@ -1806,6 +1850,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Distribution Details";
 	}
 
+
+
 	/// <summary>
 	/// Contact information of distributor.
 	/// </summary>
@@ -1833,6 +1879,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Distributor Contact";
 	}
+
+
 
 	/// <summary>
 	/// An association of price information to a catalogue element.
@@ -1862,6 +1910,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Price of Element";
 	}
 
+
+
 	/// <summary>
 	/// The price of a nautical product.
 	/// </summary>
@@ -1889,6 +1939,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Price of Nautical Product";
 	}
+
+
 
 	/// <summary>
 	/// Contact information of producer.
@@ -1918,6 +1970,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Producer Contact";
 	}
 
+
+
 	/// <summary>
 	/// Contact information of a producing organization.
 	/// </summary>
@@ -1946,6 +2000,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Production Details";
 	}
 
+
+
 	/// <summary>
 	/// A package or distinct set of products.
 	/// </summary>
@@ -1973,6 +2029,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Product Package";
 	}
+
+
 
 	/// <summary>
 	/// Mapping between traditional products and S-100 Products.
@@ -2019,6 +2077,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Product Mapping";
 	}
 
+
+
 	/// <summary>
 	/// A supplementary or secondary part of the product, which may appear multiple times, offering control or display functionalities depending on its configuration.
 			
@@ -2047,6 +2107,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Correlated";
 	}
+
+
 
 	/// <summary>
 	/// A header identifying a section within a catalogue.
@@ -2121,6 +2183,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Catalogue Section Header";
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -2227,6 +2291,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An indication of the type or justification of a carriage requirement.
 	/// </summary>
@@ -2296,6 +2362,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Pricing information of nautical products.
@@ -2375,6 +2443,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Information about the authority responsible for production.
 	/// </summary>
@@ -2431,6 +2501,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override string? ToString() => $"Producer Information";
 	}
 
+
+
 	/// <summary>
 	/// Information related to a distributor.
 	/// </summary>
@@ -2472,6 +2544,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override string? ToString() => $"Distributor Information";
 	}
+
+
 
 	/// <summary>
 	/// Electronic navigation product.
@@ -3021,6 +3095,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A product printed on paper.
 	/// </summary>
@@ -3568,6 +3644,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A service that makes use of S-100 based product specifications to support data transfer.
 	/// </summary>
@@ -3884,5 +3962,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 		}
 	}
+
+
 
 }

@@ -205,6 +205,9 @@ namespace S100Framework.Applications
 
                     var geometryType = featureType.GeometryType;
 
+                    if (geometryType == null)
+                        continue;
+
                     var rowbuffer = geometryType switch {
                         "pointproperty" => bufferPoint,
                         "curveproperty" => bufferCurve,

@@ -234,6 +234,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
@@ -326,6 +328,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -391,6 +395,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -444,6 +450,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -508,6 +516,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
@@ -605,6 +615,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -644,6 +656,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -734,6 +748,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Information";
 	}
+
+
 	/// <summary>
 	/// Span of time, prior to the time the service is needed, for preparations to be made to fulfill the requirement.
 	/// </summary>
@@ -805,6 +821,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -927,6 +945,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -979,6 +999,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -1037,6 +1059,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -1092,6 +1116,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// Detailed radiocommunications description with channels, frequencies, preferences and time schedules.
 	/// </summary>
@@ -1246,6 +1272,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
@@ -1316,6 +1344,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"RxN Code";
 	}
+
+
 	/// <summary>
 	/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
 	/// </summary>
@@ -1432,6 +1462,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
@@ -1486,6 +1518,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Survey Date Range";
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1607,6 +1641,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
@@ -1701,6 +1737,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -1783,6 +1821,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// 	A fixed figure, or a figure derived by calculation, which is added to draught in order to maintain the minimum under keel clearance taking into account the vessel's static and dynamic characteristics, sea state and weather forecast, the reliability of the chart and variance from predicted height of tide or water level.
 	/// </summary>
@@ -1865,6 +1905,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Under Keel Allowance";
 	}
+
+
 	/// <summary>
 	/// Values, discovered by measuring, that correspond to vessels characteristics.
 	/// </summary>
@@ -1959,6 +2001,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Vessels Measurements";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
@@ -1986,6 +2030,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Additional Information";
 	}
+
+
 
 	/// <summary>
 	/// Contact information for an authority
@@ -2015,6 +2061,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Authority Contact";
 	}
 
+
+
 	/// <summary>
 	/// Service hours for an authority
 	/// </summary>
@@ -2042,6 +2090,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Authority Hours";
 	}
+
+
 
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
@@ -2071,6 +2121,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Associated RxN";
 	}
 
+
+
 	/// <summary>
 	/// Exception to the usual working day
 	/// </summary>
@@ -2098,6 +2150,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Exceptional Workday";
 	}
+
+
 
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
@@ -2144,6 +2198,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Inclusion Type";
 	}
 
+
+
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
 	/// </summary>
@@ -2189,6 +2245,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Permission Type";
 	}
 
+
+
 	/// <summary>
 	/// Related organisation
 	/// </summary>
@@ -2216,6 +2274,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Related Organisation";
 	}
+
+
 
 	/// <summary>
 	/// The authority with which a report must be filed
@@ -2245,6 +2305,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Reporting Authority";
 	}
 
+
+
 	/// <summary>
 	/// Association between types of reports and classes of vessels which must file report of the type described
 	/// </summary>
@@ -2272,6 +2334,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Reporting Requirement";
 	}
+
+
 
 	/// <summary>
 	/// Contact details for a service or facility
@@ -2301,6 +2365,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Service Contact";
 	}
 
+
+
 	/// <summary>
 	/// Association between a geographically located service and the organisation that controls it
 	/// </summary>
@@ -2328,6 +2394,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Service Control";
 	}
+
+
 
 	/// <summary>
 	/// Association for linking spatial quality to spatial objects.
@@ -2357,6 +2425,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Spatial Association";
 	}
 
+
+
 	/// <summary>
 	/// Working hours for a service or facility described by a geographic location
 	/// </summary>
@@ -2384,6 +2454,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Location Hours";
 	}
+
+
 
 	/// <summary>
 	/// Association between traffic control service and reports required of vessels pertaining to that area
@@ -2413,6 +2485,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Traffic Service Report";
 	}
 
+
+
 	/// <summary>
 	/// Association linking the location from which a service is provided and the area(s) served.
 	/// </summary>
@@ -2440,6 +2514,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Service provision area";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a pilotage district and its component pilot boarding places.
@@ -2469,6 +2545,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Pilotage District Association";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
@@ -2497,6 +2575,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public override string? ToString() => $"Text Association";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a traffic control service and auxiliary features.
 	/// </summary>
@@ -2524,6 +2604,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Traffic Control Service Aggregation";
 	}
+
+
 
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
@@ -2608,6 +2690,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
@@ -2748,6 +2832,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
@@ -2989,6 +3075,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
@@ -3110,6 +3198,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3369,6 +3459,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
@@ -3510,6 +3602,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
@@ -3632,6 +3726,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
@@ -3740,6 +3836,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Description of how a ship should report to a maritime authority, including when to report, what to report and whether the format conforms to the IMO standard.
@@ -3888,6 +3986,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
@@ -4028,6 +4128,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Regulations for a related area or facility.
@@ -4170,6 +4272,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
@@ -4311,6 +4415,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
@@ -4393,6 +4499,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Spatial Quality";
 	}
+
+
 
 	/// <summary>
 	/// Spatial quality points.
@@ -4477,6 +4585,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Spatial Quality Points";
 	}
+
+
 
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
@@ -4628,6 +4738,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area where hazards, caused by concentrations of shipping, may occur. Hazards are risks to shipping, which stem from sources other than shoal water or obstructions.
 	/// </summary>
@@ -4774,6 +4886,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area to which an International Ship and Port Facility Security (ISPS) level applies. The ISPS Code is a comprehensive set of measures to enhance the security of ships and port facilities, developed in response to the perceived threats to ships and port facilities in the wake of the 9/11 attacks in the United States.
 	/// </summary>
@@ -4905,6 +5019,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A service established to provide port information without interaction between the customer and the service provider. This information could be inter alia berthing information, availability of port services, shipping schedules, meteorological and hydrological data.
@@ -5049,6 +5165,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out. Also called an 'exercise area'.
@@ -5228,6 +5346,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
@@ -5487,6 +5607,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The service provided by a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area.
 	/// </summary>
@@ -5685,6 +5807,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
@@ -5808,6 +5932,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area where there is a raised risk of piracy or armed robbery.
@@ -5958,6 +6084,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place where a ship in need of assistance can take action to enable it to stabilize its condition and reduce the hazards to navigation, and to protect human life and the environment.
 	/// </summary>
@@ -6102,6 +6230,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
 	/// </summary>
@@ -6242,6 +6372,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
@@ -6461,6 +6593,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions. A navigational restricted area is an area where the restrictions have a direct impact on the navigation of a vessel in the area.
 	/// </summary>
@@ -6626,6 +6760,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions. A regulatory restricted area is an area where the restrictions have no direct impact on the navigation of a vessel in the area, but impact on the activities that can take place within the area.
 	/// </summary>
@@ -6790,6 +6926,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area or line designating the limits or central line of a routeing measure (or part of a routeing measure). Routeing measures include traffic separation schemes, deep-water routes, two-way routes, archipelagic sea lanes, and fairway systems.
@@ -6960,6 +7098,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A service established by a relevant authority consisting of one or more reporting points or lines at which ships are required to report their identity, course, speed and other data to the monitoring authority.
 	/// </summary>
@@ -7103,6 +7243,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
@@ -7261,6 +7403,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
@@ -7421,6 +7565,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area for which an authority has stated under keel allowance requirements.
 	/// </summary>
@@ -7570,6 +7716,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area for which an authority permits use of dynamic under keel clearance information or provides dynamic information related to under keel clearances.
 	/// </summary>
@@ -7703,6 +7851,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
@@ -7864,6 +8014,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which uniform general information of the waterway exists.
@@ -8029,6 +8181,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
@@ -8088,6 +8242,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Data Coverage";
 	}
+
+
 
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
@@ -8237,6 +8393,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
@@ -8346,5 +8504,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string? ToString() => $"Text Placement";
 	}
+
+
 
 }

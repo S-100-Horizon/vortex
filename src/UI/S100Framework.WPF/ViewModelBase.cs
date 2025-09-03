@@ -40,7 +40,7 @@ namespace S100Framework.WPF.ViewModel
                 if (string.IsNullOrEmpty(e.PropertyName)) return;
                 if (e.PropertyName == nameof(HasErrors)) return; // Prevent recursive validation call
 
-                Validate();
+                this.Validate();
             };
         }
 
@@ -48,44 +48,6 @@ namespace S100Framework.WPF.ViewModel
         public Guid? UID { get; set; } = default;
 
         public abstract string Serialize();
-
-        protected virtual void Validate() {
-            this._errors.Clear(); // Clear previous errors
-
-            var context = new NullabilityInfoContext();
-
-            bool IsNuallable(PropertyInfo property) {
-                var info = context.Create(property);
-                return info.ReadState == NullabilityState.Nullable;
-            }
-
-            var t = this.GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
-                .ToList();
-
-            this.GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
-                .ToList()
-                .ForEach(p => {
-                    var value = p.GetValue(this);
-                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
-                        this.AddError(p.Name, $"{p.Name} is required.");
-                    }
-                });
-
-            var tt = this.GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<S100TruncatedDateAttribute>() != null);
-
-            this.GetType().GetProperties()
-                .Where(p => p.GetCustomAttribute<S100TruncatedDateAttribute>() != null)
-                .ToList()
-                .ForEach(p => {
-                    var value = p.GetValue(this);
-                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
-                        this.AddError(p.Name, $"{p.Name} is required.");
-                    }
-                });
-        }
 
         #region INotifyPropertyChanged
 
@@ -136,27 +98,79 @@ namespace S100Framework.WPF.ViewModel
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         [Browsable(false)]
-        public bool HasErrors => _errors.Any();
+        public bool HasErrors => this._errors.Any();
 
         public IEnumerable GetErrors(string? propertyName) {
-            if (string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
+            if (string.IsNullOrEmpty(propertyName) || !_errors.ContainsKey(propertyName)) {
+                return Enumerable.Empty<string>();
+            }
+            return _errors[propertyName];
+        }
 
-            return _errors.ContainsKey(propertyName) ? _errors[propertyName] : Enumerable.Empty<string>();
+        public IEnumerable<string> GetErrors() {
+            return _errors.Keys;
         }
 
         protected void OnErrorsChanged(string propertyName) {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
-        protected void AddError(string propertyName, string error) {
+        #endregion
+
+        #region Validate
+
+        protected virtual void Validate() {
+            this._errors.Clear(); // Clear previous errors
+
+            var context = new NullabilityInfoContext();
+
+            bool IsNuallable(PropertyInfo property) {
+                var info = context.Create(property);
+                return info.ReadState == NullabilityState.Nullable;
+            }
+
+            var t = this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
+                .ToList();
+
+            this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<BrowsableAttribute>() == null && !IsNuallable(p))
+                .ToList()
+                .ForEach(p => {
+                    var value = p.GetValue(this);
+                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                        this.AddError(p.Name, $"{p.Name} is required.");
+                    }
+                });
+
+            this.GetType().GetProperties()
+                .Where(p => p.GetCustomAttribute<S100TruncatedDateAttribute>() != null)
+                .ToList()
+                .ForEach(p => {
+                    var value = p.GetValue(this);
+                    if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                        this.AddError(p.Name, $"{p.Name} is required.");
+                    }
+                });           
+        }
+
+        protected void AddError(string propertyName, string errorMessage) {
             if (!_errors.ContainsKey(propertyName)) {
                 _errors[propertyName] = new List<string>();
             }
-
-            if (!_errors[propertyName].Contains(error)) {
-                _errors[propertyName].Add(error);
+            if (!_errors[propertyName].Contains(errorMessage)) {
+                _errors[propertyName].Add(errorMessage);
                 OnErrorsChanged(propertyName);
-                OnPropertyChanged(nameof(HasErrors));
+            }
+        }
+
+        protected void RemoveError(string propertyName, string errorMessage) {
+            if (_errors.ContainsKey(propertyName) && _errors[propertyName].Contains(errorMessage)) {
+                _errors[propertyName].Remove(errorMessage);
+                if (_errors[propertyName].Count == 0) {
+                    _errors.Remove(propertyName);
+                }
+                OnErrorsChanged(propertyName);
             }
         }
 
@@ -164,12 +178,10 @@ namespace S100Framework.WPF.ViewModel
             if (_errors.ContainsKey(propertyName)) {
                 _errors.Remove(propertyName);
                 OnErrorsChanged(propertyName);
-                OnPropertyChanged(nameof(HasErrors));
             }
         }
 
         #endregion
-
 
         #region IDisposable
 
@@ -300,6 +312,31 @@ namespace S100Framework.WPF.ViewModel
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
         public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
+
+        protected override void Validate() {
+            var errors = base.GetErrors();
+
+            base.Validate();
+
+            var viewmodelProperties = this.GetType().GetProperties();
+
+            var properties = typeof(TFeatureType).GetProperties();
+            foreach (var p in properties) {
+                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                if (attribute != default) {
+                    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
+                    if (value is null) {
+                        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
+                        if (dependentValue is null) {
+                            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
+                        }
+                    }
+                }
+            }
+
+            foreach (var e in base.GetErrors().Where(e => !errors.Contains(e)))
+                base.OnErrorsChanged(e);
+        }
     }
 
     public class InformationBindingViewModel : INotifyPropertyChanged
@@ -422,34 +459,34 @@ namespace S100Framework.WPF.ViewModel
         //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
     }
 
-    public class TristateViewModel<T> : ViewModelBase
-    {
-        private T? _value;
+    //    public class TristateViewModel<T> : ViewModelBase
+    //    {
+    //        private T? _value;
 
-        public T? value {
-            get { return _value; }
-            set {
-                SetValue(ref _value, value);
-            }
-        }
+    //        public T? value {
+    //            get { return _value; }
+    //            set {
+    //                SetValue(ref _value, value);
+    //            }
+    //        }
 
-        private TristateStatus _status = TristateStatus.Null;
+    //        private TristateStatus _status = TristateStatus.Null;
 
-        public TristateStatus status {
-            get { return _status; }
-            set {
-                SetValue(ref _status, value);
-            }
-        }
+    //        public TristateStatus status {
+    //            get { return _status; }
+    //            set {
+    //                SetValue(ref _status, value);
+    //            }
+    //        }
 
-        public TristateViewModel<T> Load(Tristate<T> instance) {
-            value = instance.Value;
-            status = instance.Status;
-            return this;
-        }
+    //        public TristateViewModel<T> Load(Tristate<T> instance) {
+    //            value = instance.Value;
+    //            status = instance.Status;
+    //            return this;
+    //        }
 
-        public override string Serialize() {
-            throw new NotImplementedException();
-        }
-    }
+    //        public override string Serialize() {
+    //            throw new NotImplementedException();
+    //        }
+    //    }
 }

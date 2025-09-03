@@ -140,9 +140,12 @@ namespace TestS100Framework
 
 
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
-                    new S100Framework.Applications.Roslyn.AttributeRule("defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("UnderwaterAwashRock.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("rhythmOfLight.signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Bridge.categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
                 };
 
                 var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {
@@ -206,6 +209,23 @@ namespace TestS100Framework
 
                 File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
                 File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+            }
+
+            [Fact]
+            public void Build_S125() {
+                var type1 = typeof(Test.NullableTest);
+                var type2 = typeof(bool?);
+
+                var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
+
+                var s100 = XDocument.Load(@".\Artifacts\S125FC.xml");
+
+                Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
+
+                File.WriteAllText(@".\..\..\..\S-125_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\S-125_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]

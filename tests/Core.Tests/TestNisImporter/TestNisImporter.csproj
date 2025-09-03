@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Application\VortexLoader\VortexLoader.csproj" />
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.GML\S100Framework.GML.csproj" />
   </ItemGroup>
 
   <ItemGroup>

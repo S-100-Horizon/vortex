@@ -1,6 +1,7 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -385,7 +386,7 @@ namespace S100Framework.Applications
                             };
 
                             Func<string, string> converter = prefix switch {
-                                "double" => (v) => $"{double.Parse(v)}",
+                                "double" => (v) => $"{double.Parse(v, CultureInfo.InvariantCulture)}",
                                 "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
                                 _ => throw new InvalidOperationException()
                             };
@@ -501,7 +502,7 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
-                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
                                 builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
                             }
 
@@ -942,7 +943,7 @@ namespace S100Framework.Applications
                                 foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                     var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
-                                    foreach(var d in dependencyRules.Where(e=>e.Name.Equals(referenceCode)))
+                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
                                         builder.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
                                 }
                                 builder.AppendLine("\t\t\t};");
@@ -1404,7 +1405,7 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
-                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
                 }
 
@@ -1697,11 +1698,24 @@ namespace S100Framework.Applications
 
             var modelBuilder = new StringBuilder();
 
+            //var validationBuilder = new StringBuilder();
+
             BuildViewModelClassAttribute(code, e, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, new BuildViewModelClassAttributeClient {
                 BuildViewModelClassClient = client,
                 XmlNamespaceManager = xmlNamespaceManager,
                 XPathNavigator = navigator,
                 ProductFormat = client.ProductFormat,
+            }, (attribute, lower, upper, isCollection) => {
+                //if (isCollection) {
+                //    if (lower > 0) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count < {lower})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have at least {lower} value.\");");
+                //    }
+                //    if (upper.HasValue) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count > {upper.Value})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have no more than {upper.Value} value.\");");
+                //    }
+                //}
             });
 
             serializeBuilder.AppendLine("\t\t\t};");
@@ -1729,6 +1743,13 @@ namespace S100Framework.Applications
             builder.AppendLine();
             builder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
+            //builder.AppendLine();
+            //builder.AppendLine($"\t\tprotected override void Validate() {{");
+            //{
+            //    builder.Append(validationBuilder.ToString());
+            //}
+            //builder.AppendLine($"\t\t}}");
+
             if (constructorBuilder.Length > 0) {
                 builder.AppendLine();
                 builder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
@@ -1739,7 +1760,7 @@ namespace S100Framework.Applications
             builder.AppendLine("\t}");
             builder.AppendLine();
 
-            return builder.ToString().TrimEnd([.. Environment.NewLine]);
+            return builder.ToString();//.TrimEnd([.. Environment.NewLine]);
         }
 
         struct BuildViewModelClassAttributeClient
@@ -1750,7 +1771,7 @@ namespace S100Framework.Applications
             public required ProductFormat ProductFormat { get; init; }
         }
 
-        private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client) {
+        private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client, Action<string, int, int?, bool> callback) {
             var scopes = client.XPathNavigator.GetNamespacesInScope(XmlNamespaceScope.All);
 
             var xmlNamespaceManager = client.XmlNamespaceManager;
@@ -1761,7 +1782,7 @@ namespace S100Framework.Applications
             if (superType != null) {
                 var super = client.BuildViewModelClassClient.ProductSpecification.XPathSelectElement($"//*[S100FC:code = '{superType.Value}']", xmlNamespaceManager)!;
 
-                BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
+                BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client, callback);
             }
 
             var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
@@ -1893,6 +1914,8 @@ namespace S100Framework.Applications
                     builder.AppendLine("\t\t[Browsable(false)]");
                     builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => Enum.GetValues<{referenceCode}>();");
                 }
+
+                callback(referenceCode, lower, upper, isCollection);
             }
             builder.AppendLine();
         }
