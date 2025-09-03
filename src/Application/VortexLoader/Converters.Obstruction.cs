@@ -101,6 +101,7 @@ namespace S100Framework.Applications
             }
 
             // TODO: default clearance depth
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
 
             foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
@@ -201,9 +202,7 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            // TODO: default clearance depth
             instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
-            
 
             foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
@@ -305,6 +304,7 @@ namespace S100Framework.Applications
             }
 
             // TODO: default clearance depth
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
 
             foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
