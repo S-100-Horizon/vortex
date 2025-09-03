@@ -168,9 +168,9 @@ namespace VortexConceptApplication
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
-            var viewModel = new TestQualityOfBathymetricDataViewModel() {
+            var viewModel = new TestViewModel() {
                 Name = "S202600",
-            }.Load(model);
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock());
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);

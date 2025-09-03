@@ -57,7 +57,7 @@ namespace S100Framework.Applications
                             var instance = new OffshorePlatform();
 
                             if (current.CATOFP != default) {
-                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<OffshorePlatform,categoryOfOffshorePlatform>(current.CATOFP);
+                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue<OffshorePlatform, categoryOfOffshorePlatform>(current.CATOFP);
                             }
 
                             if (current.COLOUR != default) {
@@ -89,12 +89,13 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<OffshorePlatform,product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<OffshorePlatform, product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -103,7 +104,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-if (current.STATUS != default) {
+                            if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
@@ -115,7 +116,7 @@ if (current.STATUS != default) {
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<OffshorePlatform,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<OffshorePlatform, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -125,15 +126,15 @@ if (current.STATUS != default) {
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

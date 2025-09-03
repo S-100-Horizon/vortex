@@ -108,7 +108,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Berth,qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Berth, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -168,11 +168,11 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -208,11 +208,11 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -233,7 +233,7 @@ namespace S100Framework.Applications
                             var instance = new Crane();
 
                             if (current.CATCRN.HasValue) {
-                                instance.categoryOfCrane = EnumHelper.GetEnumValue<Crane,categoryOfCrane>(current.CATCRN.Value);
+                                instance.categoryOfCrane = EnumHelper.GetEnumValue<Crane, categoryOfCrane>(current.CATCRN.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -309,7 +309,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Crane,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Crane, visualProminence>(current.CONVIS.Value);
                             }
 
 
@@ -321,7 +321,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -329,9 +329,9 @@ namespace S100Framework.Applications
 
                             //TODO: inTheWater
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -367,11 +367,11 @@ namespace S100Framework.Applications
 
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -392,7 +392,7 @@ namespace S100Framework.Applications
                             var instance = new Gate();
 
                             if (current.CATGAT.HasValue) {
-                                instance.categoryOfGate = EnumHelper.GetEnumValue<Gate,categoryOfGate>(current.CATGAT.Value);
+                                instance.categoryOfGate = EnumHelper.GetEnumValue<Gate, categoryOfGate>(current.CATGAT.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -413,11 +413,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Gate,natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Gate, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Gate,qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Gate, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
@@ -447,11 +447,11 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -486,11 +486,11 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -511,7 +511,7 @@ namespace S100Framework.Applications
                             var instance = new HarbourFacility();
 
                             if (current.CATHAF != default) {
-                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<HarbourFacility,categoryOfHarbourFacility>(current.CATHAF);
+                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues<HarbourFacility, categoryOfHarbourFacility>(current.CATHAF);
                             }
 
                             if (current.COMCHA != default) {
@@ -532,7 +532,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<HarbourFacility,natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<HarbourFacility, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -550,7 +550,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-// TODO: restriction
+                            // TODO: restriction
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
@@ -568,11 +568,11 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -594,13 +594,13 @@ namespace S100Framework.Applications
 
 
                             if (current.CATHLK != default) {
-                                instance.categoryOfHulk = EnumHelper.GetEnumValues<Hulk,categoryOfHulk>(current.CATHLK);
+                                instance.categoryOfHulk = EnumHelper.GetEnumValues<Hulk, categoryOfHulk>(current.CATHLK);
                             }
                             ;
 
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours< Hulk>(current.COLOUR);
+                                instance.colour = GetColours<Hulk>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -635,7 +635,8 @@ namespace S100Framework.Applications
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -665,16 +666,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -739,7 +740,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<Dolphin,natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<Dolphin, natureOfConstruction>(current.NATCON);
                                 }
 
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -749,14 +750,15 @@ namespace S100Framework.Applications
 
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
-                            }
 
 
 
@@ -769,7 +771,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<Dolphin,visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Dolphin, visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -782,7 +784,7 @@ namespace S100Framework.Applications
                                 }
 
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
@@ -828,14 +830,15 @@ namespace S100Framework.Applications
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                                 if (periodicDateRange != default) {
                                     instance.periodicDateRange = periodicDateRange;
-                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
-                            }
 
 
 
@@ -852,7 +855,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
@@ -932,13 +935,13 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction,natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction, natureOfConstruction>(current.NATCON);
                                 }
 
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                                }                           
-                                
+                                }
+
                                 if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                         instance.reportedDate = result;
@@ -957,7 +960,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction,visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction, visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.WATLEV.HasValue) {
@@ -977,7 +980,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1037,14 +1040,15 @@ namespace S100Framework.Applications
 
                                 if (current.CONRAD.HasValue) {
                                     instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                                }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
                                 }
-                            }
 
 
 
@@ -1057,7 +1061,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                    instance.visualProminence = EnumHelper.GetEnumValue<Pile,visualProminence>(current.CONVIS.Value);
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Pile, visualProminence>(current.CONVIS.Value);
                                 }
 
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1069,7 +1073,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
@@ -1111,7 +1115,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.COLOUR != default) {
-                                    instance.colour = GetColours< MooringBuoy>(current.COLOUR);
+                                    instance.colour = GetColours<MooringBuoy>(current.COLOUR);
                                 }
 
                                 if (current.COLPAT != default) {
@@ -1135,7 +1139,7 @@ namespace S100Framework.Applications
 
 
                                 if (current.NATCON != default) {
-                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<MooringBuoy,natureOfConstruction>(current.NATCON);
+                                    instance.natureOfConstruction = EnumHelper.GetEnumValues<MooringBuoy, natureOfConstruction>(current.NATCON);
                                 }
 
                                 DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1162,7 +1166,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
@@ -1193,7 +1197,7 @@ namespace S100Framework.Applications
                             var instance = new PilotBoardingPlace();
 
                             if (current.CATPIL.HasValue) {
-                                instance.categoryOfPilotBoardingPlace = EnumHelper.GetEnumValue<PilotBoardingPlace,categoryOfPilotBoardingPlace>(current.CATPIL);
+                                instance.categoryOfPilotBoardingPlace = EnumHelper.GetEnumValue<PilotBoardingPlace, categoryOfPilotBoardingPlace>(current.CATPIL);
                             }
 
                             // TODO: CategoryOfPrecense - new S-101 att.
@@ -1231,7 +1235,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1290,7 +1294,8 @@ namespace S100Framework.Applications
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
                                 }
@@ -1310,7 +1315,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Pile,visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Pile, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1322,7 +1327,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = current.PICREP;
@@ -1352,7 +1357,7 @@ namespace S100Framework.Applications
                             var instance = new RescueStation();
 
                             if (current.CATRSC != null) {
-                                instance.categoryOfRescueStation = EnumHelper.GetEnumValues<RescueStation,categoryOfRescueStation>(current.CATRSC);
+                                instance.categoryOfRescueStation = EnumHelper.GetEnumValues<RescueStation, categoryOfRescueStation>(current.CATRSC);
                             }
 
                             if (current.COMCHA != default) {
@@ -1386,7 +1391,7 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1456,7 +1461,7 @@ namespace S100Framework.Applications
                             var instance = new SmallCraftFacility();
 
                             if (current.CATSCF != default) {
-                                instance.categoryOfSmallCraftFacility = EnumHelper.GetEnumValues<SmallCraftFacility,categoryOfSmallCraftFacility>(current.CATSCF);
+                                instance.categoryOfSmallCraftFacility = EnumHelper.GetEnumValues<SmallCraftFacility, categoryOfSmallCraftFacility>(current.CATSCF);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -1474,7 +1479,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
 
                             if (current.PICREP != default) {

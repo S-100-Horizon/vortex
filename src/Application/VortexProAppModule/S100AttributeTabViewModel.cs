@@ -73,7 +73,7 @@ namespace VortexProAppModule
             },
         };
 
-        private InspectorHandle _inspectorHandleInformation => new() {
+        private InspectorHandle _inspectorHandleInformationType => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (fc, p) => fc.InformationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
@@ -81,14 +81,13 @@ namespace VortexProAppModule
             },
         };
 
-        private InspectorHandle _inspectorHandleFeature => new() {
+        private InspectorHandle _inspectorHandleFeatureType => new() {
             TypeSelector = this.FeatureTypeSelector,
             Types = (fc, p) => fc.FeatureTypesByPrimivive(p.Value).Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
                 return S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
             },
         };
-
 
 
         private SelectedTemplate _selectedTemplate = SelectedTemplate.Empty;
@@ -434,7 +433,7 @@ namespace VortexProAppModule
                                     types = _inspectorHandle.Types(featureCatalogue, primitive);
                                 }
                                 else {
-                                    types = _inspectorHandle.Types(featureCatalogue, default);
+                                    types = _inspectorHandle.Types(featureCatalogue, Primitives.noGeometry);
                                 }
 
                                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
@@ -500,12 +499,12 @@ namespace VortexProAppModule
                     var tableNames = syntax.ParseTableName(fc.GetName());
 
                     this._inspectorHandle = tableNames.Item3.ToLowerInvariant() switch {
-                        "point" => _inspectorHandleFeature,
-                        "pointset" => _inspectorHandleFeature,
-                        "curve" => _inspectorHandleFeature,
-                        "surface" => _inspectorHandleFeature,
-                        "informationtype" => _inspectorHandleInformation,
-                        //"associationbinding" => null,
+                        "point" => _inspectorHandleFeatureType,
+                        "pointset" => _inspectorHandleFeatureType,
+                        "curve" => _inspectorHandleFeatureType,
+                        "surface" => _inspectorHandleFeatureType,
+                        "informationtype" => _inspectorHandleInformationType,
+                        "featuretype" => _inspectorHandleFeatureType,
                         "featureassociation" => _inspectorHandleFeatureAssociation,
                         "informationassociation" => _inspectorHandleInformationAssociation,
 
@@ -610,11 +609,12 @@ namespace VortexProAppModule
                         selectedObjectViewModel = this.SelectedInformationProperty;
                     }
                     if (instance is IFeatureBindingDefinition) {
-                        var primitive = inspector.Shape.GeometryType switch {
+                        var primitive = inspector.Shape?.GeometryType switch {
                             ArcGIS.Core.Geometry.GeometryType.Point => Primitives.point,
                             ArcGIS.Core.Geometry.GeometryType.Multipoint => Primitives.pointSet,
                             ArcGIS.Core.Geometry.GeometryType.Polyline => Primitives.curve,
                             ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
+                            null => Primitives.noGeometry,
                             _ => throw new InvalidOperationException()
                         };
 

@@ -183,6 +183,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
@@ -273,6 +275,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Contact Address";
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -339,6 +343,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -392,6 +398,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -443,6 +451,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Frequency Pair";
 	}
+
+
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
@@ -540,6 +550,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -630,6 +642,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Information";
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -752,6 +766,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -804,6 +820,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -859,6 +877,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
@@ -923,6 +943,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"RxN Code";
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -981,6 +1003,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1042,6 +1066,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Sector Limit";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1094,6 +1120,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Sector Limit One";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1146,6 +1174,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1265,6 +1295,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Telecommunications";
 	}
+
+
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
@@ -1353,6 +1385,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Text Content";
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -1435,6 +1469,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Values, discovered by measuring, that correspond to vessels characteristics.
 	/// </summary>
@@ -1528,6 +1564,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Vessels Measurements";
 	}
+
+
 	/// <summary>
 	/// An official name, title or description. This can be an identifier itself, or an identifier which is an instance of a named designation scheme.
 	/// </summary>
@@ -1611,6 +1649,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"designation";
 	}
 
+
+
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
 	/// </summary>
@@ -1638,6 +1678,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Associated RxN";
 	}
+
+
 
 	/// <summary>
 	/// Exception to the usual working day
@@ -1667,6 +1709,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Exceptional workday";
 	}
 
+
+
 	/// <summary>
 	/// There may be more than one such authority depending on how responsibilities are divided
 	/// </summary>
@@ -1694,6 +1738,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Protected area authority";
 	}
+
+
 
 	/// <summary>
 	/// The controlling authority for a service area
@@ -1723,6 +1769,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Service control";
 	}
 
+
+
 	/// <summary>
 	/// Related organisation
 	/// </summary>
@@ -1750,6 +1798,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Related organisation";
 	}
+
+
 
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit, enter, or use a feature.
@@ -1796,6 +1846,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Permission Type";
 	}
 
+
+
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
 	/// </summary>
@@ -1841,6 +1893,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Inclusion Type";
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -1868,6 +1922,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Authority Contact";
 	}
+
+
 
 	/// <summary>
 	/// -
@@ -1897,6 +1953,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Authority Hours";
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -1924,6 +1982,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Additional Information";
 	}
+
+
 
 
 	/// <summary>
@@ -2057,6 +2117,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
@@ -2239,6 +2301,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Nautical information about a related area or facility.
@@ -2423,6 +2487,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
@@ -2605,6 +2671,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Restrictions for a related area or facility.
@@ -2789,6 +2857,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
@@ -2972,6 +3042,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
@@ -3135,6 +3207,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3478,6 +3552,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
@@ -3648,6 +3724,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
@@ -3810,6 +3888,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
@@ -4099,6 +4179,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
@@ -4300,6 +4382,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any area of the intertidal or sub-tidal terrain, together with its overlying water and associated flora, fauna, historical and cultural features, which has been reserved by law or other effective means to protect part or all of the enclosed environment.
@@ -4552,6 +4636,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
@@ -4722,6 +4808,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
@@ -4754,6 +4842,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override string? ToString() => $"Data Coverage";
 	}
 
+
+
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
@@ -4785,5 +4875,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override string? ToString() => $"Text Placement";
 	}
+
+
 
 }

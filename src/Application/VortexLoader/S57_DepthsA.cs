@@ -65,12 +65,12 @@ namespace S100Framework.Applications
 
                             // TODO: InteroperabilityIdentifier
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -107,7 +107,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea,restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea, restriction>(current.RESTRN);
                             }
 
                             // TODO: InteroperabilityIdentifier
@@ -122,11 +122,11 @@ namespace S100Framework.Applications
                             //}
 
                             if (!string.IsNullOrEmpty(restrn)) {
-                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea,restriction>(restrn);
+                                instance.restriction = EnumHelper.GetEnumValues<DredgedArea, restriction>(restrn);
                             }
 
                             if (!string.IsNullOrEmpty(tecsou)) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DredgedArea,techniqueOfVerticalMeasurement>(tecsou);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DredgedArea, techniqueOfVerticalMeasurement>(tecsou);
                             }
 
                             //TODO: verticalUncertainty - Not converted
@@ -137,16 +137,16 @@ namespace S100Framework.Applications
                             //}
 
                             if (current.INFORM != null) {
-	instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
-}
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -172,14 +172,14 @@ namespace S100Framework.Applications
                     case 15: {    // UNSARE  // SKIN OF EARTH
                             var instance = new UnsurveyedArea();
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             // TODO: InteroperabilityIdentifier
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

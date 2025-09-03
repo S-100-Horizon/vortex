@@ -195,6 +195,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A bearing is the direction one object is from another object.
 	/// </summary>
@@ -287,6 +289,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Bearing Information";
 	}
+
+
 	/// <summary>
 	/// Details related to the content of the broadcast.
 	/// </summary>
@@ -389,6 +393,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
@@ -479,6 +485,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Contact Address";
 	}
+
+
 	/// <summary>
 	/// Details related to the indication of the radio coverage.
 	/// </summary>
@@ -575,6 +583,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -646,6 +656,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -725,6 +737,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -777,6 +791,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Frequency Pair";
 	}
+
+
 	/// <summary>
 	/// Frequency range of the electromagnetic spectrum in which the transmission is provided.
 	/// </summary>
@@ -828,6 +844,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Frequency Range";
 	}
+
+
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
@@ -924,6 +942,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Graphic";
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -976,6 +996,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -1067,6 +1089,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Information";
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -1132,6 +1156,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -1184,6 +1210,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -1239,6 +1267,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// Details related to the radio channel used in the radio service.
 	/// </summary>
@@ -1318,6 +1348,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Identifiers of the radio station in various maritime radiocommunication services.
 	/// </summary>
@@ -1382,6 +1414,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Radiocommunication Identifier";
 	}
+
+
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
@@ -1446,6 +1480,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"RxN Code";
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -1504,6 +1540,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1565,6 +1603,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Sector Limit";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1617,6 +1657,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Sector Limit One";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1669,6 +1711,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -1748,6 +1792,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
+
+
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
@@ -1802,6 +1848,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Survey Date Range";
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1872,6 +1920,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Telecommunications";
 	}
+
+
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
@@ -1975,6 +2025,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -2057,6 +2109,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// One or more times in the day when the radio station starts a routine transmission, normally expressed in UTC or local time.
 	/// </summary>
@@ -2136,6 +2190,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
@@ -2188,6 +2244,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.
 	/// </summary>
@@ -2282,6 +2340,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Vessel Measurements Specification";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
@@ -2309,6 +2369,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Additional information";
 	}
+
+
 
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
@@ -2338,6 +2400,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Associated RxN";
 	}
 
+
+
 	/// <summary>
 	/// Contact information for an authority
 	/// </summary>
@@ -2365,6 +2429,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Authority contact";
 	}
+
+
 
 	/// <summary>
 	/// Service hours for an authority
@@ -2394,6 +2460,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Authority hours";
 	}
 
+
+
 	/// <summary>
 	/// Available Quality of Service (QoS) within the area.
 	/// </summary>
@@ -2421,6 +2489,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Available Quality of Service";
 	}
+
+
 
 	/// <summary>
 	/// The broadcast content and schedule of a service area or facility
@@ -2450,6 +2520,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Broadcast Service";
 	}
 
+
+
 	/// <summary>
 	/// The transmission details for the broadcast or the broadcast details available from the transmission
 	/// </summary>
@@ -2477,6 +2549,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Broadcast Transmission";
 	}
+
+
 
 	/// <summary>
 	/// The service that allows users to connect to the internet.
@@ -2506,6 +2580,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Connectivity Service";
 	}
 
+
+
 	/// <summary>
 	/// Exception to the usual working day
 	/// </summary>
@@ -2533,6 +2609,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Exceptional workday";
 	}
+
+
 
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
@@ -2579,6 +2657,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"InclusionType";
 	}
 
+
+
 	/// <summary>
 	/// Working hours for a service or facility described by a geographic location
 	/// </summary>
@@ -2606,6 +2686,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Location hours";
 	}
+
+
 
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
@@ -2652,6 +2734,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Permission Type";
 	}
 
+
+
 	/// <summary>
 	/// The radio control centre for a marine radio service
 	/// </summary>
@@ -2679,6 +2763,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Radio Service Control";
 	}
+
+
 
 	/// <summary>
 	/// Related organisation
@@ -2708,6 +2794,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Related organisation";
 	}
 
+
+
 	/// <summary>
 	/// Contact details for a service or facility
 	/// </summary>
@@ -2735,6 +2823,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Service contact";
 	}
+
+
 
 	/// <summary>
 	/// The coordinating authority for a service area
@@ -2764,6 +2854,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Service Coordination";
 	}
 
+
+
 	/// <summary>
 	/// An association for the binding between a spatial type and its spatial quality information.
 	/// </summary>
@@ -2791,6 +2883,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Spatial Association";
 	}
+
+
 
 	/// <summary>
 	/// The radio transmission of a service area or facility
@@ -2820,6 +2914,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Transmission Service";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between an aggregation feature that describes areas of varying uncertainty about a service or phenomenon and a geographic feature describing the service or phenomenon.
 	/// </summary>
@@ -2847,6 +2943,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Core aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between an aggregation feature that describes areas of varying uncertainty about a service or phenomenon and zones of uncertainty about the service or phenomenon.
@@ -2876,6 +2974,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Fuzzy zone aggregation";
 	}
 
+
+
 	/// <summary>
 	/// Association linking the location from which a service is provided and the area(s) served.
 	/// </summary>
@@ -2904,6 +3004,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string? ToString() => $"Service provision area";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
@@ -2931,6 +3033,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override string? ToString() => $"Text association";
 	}
+
+
 
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
@@ -3187,6 +3291,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
@@ -3325,6 +3431,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Description of the content and schedule of a service using broadcast technology of radiocommunications to deliver information (to every receiver within a direct range). Online resource to access the content may also be included.
@@ -3512,6 +3620,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Information related to the Quality of Service (QoS) of the connectivity.
@@ -3716,6 +3826,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3967,6 +4079,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
@@ -4125,6 +4239,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
@@ -4263,6 +4379,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The control centre of the radio service or radio stations
@@ -4419,6 +4537,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Recommendations for a related area or facility.
@@ -4578,6 +4698,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
@@ -4735,6 +4857,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Restrictions for a related area or facility.
@@ -4894,6 +5018,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
@@ -5020,6 +5146,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
@@ -5080,6 +5208,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Description of the radiocommunication service with respect to the radio method and radio channels for the transfer of information by means of signals.
@@ -5260,6 +5390,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of connectivity coverage available for the subscription of connectivity service.
@@ -5495,6 +5627,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area defined for a global communications service based upon automated systems, both satellite based and terrestrial, to provide distress alerting and promulgation of maritime safety information for mariners.
 	/// </summary>
@@ -5692,6 +5826,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A region in which the perception of a phenomenon or the availability of a service is known only to a specified level of confidence.
 	/// </summary>
@@ -5841,6 +5977,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of marine meteorological information.
@@ -6000,6 +6138,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of navigational warnings.
 	/// </summary>
@@ -6157,6 +6297,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A unique and precisely defined sea area, wholly contained within the NAVTEX coverage area, for which maritime safety information is provided from a particular NAVTEX transmitter.
@@ -6371,6 +6513,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area where a radio service can be obtained and the characteristics of the radio transmission.
 	/// </summary>
@@ -6576,6 +6720,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
@@ -6832,6 +6978,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area for which weather forecasts and warnings are provided for specified periods.
 	/// </summary>
@@ -7029,6 +7177,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Aggregation of areas where radio services from a single radio service are available to different levels of reliability.
 	/// </summary>
@@ -7161,6 +7311,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
@@ -7249,6 +7401,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
@@ -7410,6 +7564,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
@@ -7517,5 +7673,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 		}
 	}
+
+
 
 }

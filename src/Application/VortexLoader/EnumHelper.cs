@@ -2,7 +2,7 @@
 {
     public static class EnumHelper
     {
-        public static TEnum? GetEnumValue<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class {
+        public static TEnum? GetEnumValue<TType, TEnum>(object value) where TEnum : struct, Enum where TType : class {
 
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
 
@@ -33,7 +33,7 @@
                 else if (Enum.IsDefined(typeof(TEnum), intValue)) {
                     if (!validEnumValues!.Contains<int>(intValue)) {
                         //throw new ArgumentException($"Invalid integer value for enum {typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues)}");
-                        Logger.Current.DataError(-1,string.Empty,"enumvalue",$"Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues!)}");
+                        Logger.Current.DataError(-1, string.Empty, "enumvalue", $"Invalid integer value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {intValue} not in validEnumValues:{string.Join(",", validEnumValues!)}");
                     }
                     return (TEnum)(object)intValue;
                 }
@@ -46,7 +46,7 @@
             }
         }
 
-        public static List<TEnum> GetEnumValues<TType,TEnum>(object value) where TEnum : struct, Enum where TType : class { //DomainModel.FeatureNode {
+        public static List<TEnum> GetEnumValues<TType, TEnum>(object value) where TEnum : struct, Enum where TType : class { //DomainModel.FeatureNode {
             var validEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(TType), typeof(TEnum).Name);
 
             List<TEnum> result = new List<TEnum>();
@@ -77,7 +77,7 @@
                     else {
                         throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {item.Trim()}");
                     }
-                }            
+                }
             }
             else if (value is int intValue) {
                 if (intValue == -32767) {

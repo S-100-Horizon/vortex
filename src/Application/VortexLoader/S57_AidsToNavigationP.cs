@@ -1785,7 +1785,7 @@ namespace S100Framework.Applications
 
                         sectorCharacteristics.Add(sectorCharacteristic);
 
-                    //}
+                        //}
 
                     }
                     ;

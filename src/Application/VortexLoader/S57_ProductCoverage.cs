@@ -158,7 +158,7 @@ namespace S100Framework.Applications
                     polygons.Add((ArcGIS.Core.Geometry.Polygon)productCoverage.SHAPE!);
 
                     switch (catcov) {
-                        case 1: {                                
+                        case 1: {
                                 //buffer["ps"] = ps128;
                                 //buffer["code"] = instance.GetType().Name;
                                 //buffer["version"] = ImporterNIS.s101version;

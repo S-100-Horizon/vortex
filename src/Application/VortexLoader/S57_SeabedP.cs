@@ -90,7 +90,7 @@ namespace S100Framework.Applications
 
                             if (naturOfSurfaceCount > 0) {
                                 for (int i = 0; i < list1.Count(); i++) {
-                                    var natureOfSurface = EnumHelper.GetEnumValue<SeabedArea,natureOfSurface>(list1[i]);
+                                    var natureOfSurface = EnumHelper.GetEnumValue<SeabedArea, natureOfSurface>(list1[i]);
 
                                     if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
                                         instance.surfaceCharacteristics.Add(new() {
@@ -155,7 +155,7 @@ namespace S100Framework.Applications
                             //}
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<SeabedArea,waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<SeabedArea, waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -165,12 +165,12 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -236,7 +236,7 @@ namespace S100Framework.Applications
 
                                 var instance = new WeedKelp();
                                 if (current.CATWED.HasValue) {
-                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue<WeedKelp,categoryOfWeedKelp>(current.CATWED.Value);
+                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue<WeedKelp, categoryOfWeedKelp>(current.CATWED.Value);
                                 }
 
                                 instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -252,7 +252,7 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
