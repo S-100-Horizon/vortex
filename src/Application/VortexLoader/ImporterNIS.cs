@@ -388,19 +388,17 @@ namespace S100Framework.Applications
                     return leastDepth;
                 }
                 else if ((catwrk.HasValue && (catwrk is  1)) &&
-                    (watlev.HasValue && (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767))) {
+                    ( (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767))) {
 
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if (catwrk is  1 &&
                     (expsou is not null || (expsou is  2))) {
-
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
-                else if ((!expsou.HasValue || (expsou.HasValue && (expsou is  2))) &&
+                else if ((expsou is null || (expsou is  2)) &&
                     valsouIsUnknown &&
-                    (watlev.HasValue && (watlev is  3 || watlev is  5))) {
-
+                    (watlev is  3 || watlev is  5)) {
                     return 0d;
                 }
                 else if ((expsou is null || (expsou is  2)) &&
@@ -425,28 +423,28 @@ namespace S100Framework.Applications
             }
             else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
 
-                if ((catwrk.HasValue && (catwrk is  1)) &&
-                    (watlev.HasValue && (watlev is  3 || watlev is  -32767))) {
+                if (catwrk is 1 &&
+                    (watlev is  3 || watlev is  -32767)) {
                     return 20.1d;
                 }
                 else if (valsouIsUnknown &&
-                    (watlev.HasValue && (watlev is  3 || watlev is  5))) {
+                    (watlev is  3 || watlev is  5)) {
                     return 0d;
                 }
                 else if (valsouIsUnknown &&
-                    (watlev.HasValue && (watlev is  4 || watlev is  -32767))) {
+                    (watlev is  4 || watlev is  -32767)) {
                     return -15d;
                 }
                 else if (catwrkIsUnknown &&
-                    (watlev.HasValue && (watlev is  3 || watlev is  5))) {
+                    (watlev is  3 || watlev is  5)) {
                     return 0d;
                 }
-                else if ((catwrk.HasValue && (catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5)) &&
-                    (watlev.HasValue && (watlev is  3 || watlev is  5))) {
+                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5) &&
+                    (watlev is  3 || watlev is  5)) {
                     return -15d;
                 }
-                else if ((catwrk.HasValue && (catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767)) &&
-                    (watlev.HasValue && (watlev is  4 || watlev is  -32767))) {
+                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767) &&
+                    (watlev is  4 || watlev is  -32767)) {
                     return -15d;
                 }
                 else {

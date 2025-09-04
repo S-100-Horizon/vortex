@@ -190,7 +190,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
                         ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
-                        Logger.Current.DataObject(-1, $"{relatedObject.PLTS_Frel.DEST_FC}::{relatedObject.PLTS_Frel.SRC_UID}::{relatedObject.PLTS_Frel.DEST_UID}", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
+                        Logger.Current.DataObject(-1, relatedObject.S57Object!.TableName!, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
 
                     // Add relation between s57master polygon and slave equipment

@@ -154,8 +154,8 @@ namespace S100Framework.Applications.Singletons
                 while (cursor.MoveNext()) {
                     recordCount++;
                     var feature = cursor.Current;
-                    var edition = feature["edition"];
-                    if (edition == null || edition == DBNull.Value || string.IsNullOrEmpty(edition.ToString()))
+                    var json = feature["json"].ToString();
+                    if (json.Contains("defaultClearanceValue"))
                         errorCount++;
                 }
             }

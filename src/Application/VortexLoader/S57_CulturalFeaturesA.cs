@@ -351,10 +351,9 @@ namespace S100Framework.Applications
                                     featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
                                     featureN.Store();
                                 }
-                                else {
-                                    if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                        relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                                    }
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -433,11 +432,11 @@ namespace S100Framework.Applications
                                     featureN.Store();
 
                                 }
-                                else {
-                                    if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                        relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                                    }
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
+
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -1263,12 +1262,6 @@ namespace S100Framework.Applications
                             var featureN = surface.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
 
-                            //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
-
-                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                            //    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                            //}
-
                             if (createBridgesAndRelations) {
 
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
@@ -1286,6 +1279,11 @@ namespace S100Framework.Applications
                                 featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
                                 featureN.Store();
 
+                            }
+
+                            //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
