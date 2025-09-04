@@ -465,7 +465,7 @@ namespace S100Framework.Applications
                                 instance.surroundingDepth = drval1;
                             }
 
-                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.CATOBS, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
+                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
 
 
                             buffer["ps"] = ps101;

@@ -154,7 +154,7 @@ namespace S100Framework.Applications.Singletons
                 while (cursor.MoveNext()) {
                     recordCount++;
                     var feature = cursor.Current;
-                    var json = feature["json"].ToString().ToLower();
+                    var json = feature["json"].ToString()!.ToLower();
 
                     if (json.Contains("\"defaultclearancedepth\":null") && json.Contains("\"valueofsounding\":null"))
                         errorCount++;

@@ -326,7 +326,7 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, int? catobs, long objectid, string tablename, string lnam) {
+        internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
 
             bool coveredByUnsurveyedArea = false;
             bool coveredByDredgedArea = false;
@@ -335,7 +335,13 @@ namespace S100Framework.Applications
 
             if (shape != null) {
                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
-                    leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                    if (leastDepth is null) {
+                        leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                    } else if (leastDepth > depthArea.DRVAL1) {
+                        leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                    }
+
+                    
 
                     if (depthArea.FcSubtype! is  15) {  // UNSARE
                         coveredByUnsurveyedArea = true;
@@ -359,18 +365,18 @@ namespace S100Framework.Applications
 
             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
 
-            bool valsouIsKnown = valsou is not -32767d;
-            bool valsouIsUnknown = valsou is  -32767d;
+            bool valsouIsKnown = valsou is not null && valsou is not -32767d;
+            bool valsouIsUnknown = valsou is -32767d;
 
             bool catwrkIsUnknown = catwrk is  -32767;
 
-            bool heightIsKnown = height is not -32767d;
+            bool heightIsKnown = height is not null && height is not -32767d;
             bool heightIsUnknown = height is  -32767d;
             bool expositionOfSoundingIs1Or3 = expsou is  1 || expsou is  3;
 
 
             if (allCoveringDepthRangeMinimumValuesAreKnown) {
-                if ((catobs is 4 || catobs is 5) &&
+                if ((catwrk is 4 || catwrk is 5) &&
                     heightIsKnown &&
                     (watlev is 1 || watlev is 2 || watlev is -32767)) {
                     return null;
@@ -388,13 +394,13 @@ namespace S100Framework.Applications
                     (watlev.HasValue && (watlev is  3))) {
                     return leastDepth;
                 }
-                else if ((catwrk.HasValue && (catwrk is  1)) &&
+                else if ((catwrk is  1) &&
                     ( (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767))) {
 
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if (catwrk is  1 &&
-                    (expsou is not null || (expsou is  2))) {
+                    (expsou is null || (expsou is  2))) {
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if ((expsou is null || (expsou is  2)) &&
