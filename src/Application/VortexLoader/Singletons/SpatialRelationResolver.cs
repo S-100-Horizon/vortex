@@ -49,7 +49,7 @@ namespace S100Framework.Applications.Singletons
             }
         }
 
-        internal IEnumerable<T> GetSpatialRelatedValueFrom<T>(S57Object current) where T : class {
+        internal IEnumerable<T> GetSpatialRelatedValueFrom<T>(Geometry shape) where T : class {
             //return new List<T>() { (T)(object)current.GlobalId };
 
             if (!_featureClasses.ContainsKey(typeof(T).Name)) {
@@ -57,8 +57,8 @@ namespace S100Framework.Applications.Singletons
             }
             var featureclass = _featureClasses[typeof(T).Name];
 
-            if (current.Shape != null) {
-                foreach (var SpatialRelated in SelectIn<T>(current.Shape, featureclass, SpatialRelationship.Intersects, ImporterNIS.QueryFilter)) {
+            if (shape != null) {
+                foreach (var SpatialRelated in SelectIn<T>(shape, featureclass, SpatialRelationship.Intersects, ImporterNIS.QueryFilter)) {
                     yield return SpatialRelated;
                 }
             }

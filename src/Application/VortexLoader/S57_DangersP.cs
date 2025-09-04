@@ -206,28 +206,6 @@ namespace S100Framework.Applications
                                 break;
                             }
 
-
-                            //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
-
-                            //var obstruction = new Obstruction {
-                            //    surroundingDepth = default,
-                            //    waterLevelEffect = default,
-                            //};
-
-                            ////if (current.CATOBS categoryOfObstruction
-
-                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                            //    string subtype = "";
-
-                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                            //    obstruction.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            //}
-
-                            //AddInformation(obstruction.information, feature);
-
-                            //// TODO: defaultClearanceDepth
                             var obstruction = ImporterNIS._converterRegistry.Convert<Obstruction>(current); // new List<DangersP>() { current });
 
                             buffer["ps"] = ps101;
@@ -331,7 +309,7 @@ namespace S100Framework.Applications
                             double? leastDepth = null;
 
                             if (current.SHAPE != null) {
-                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
                                     leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
                                     if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
                                         coveredByUnsurveyedArea = true;
@@ -349,7 +327,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            
+
                             bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth.HasValue;
 
                             bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
@@ -402,9 +380,10 @@ namespace S100Framework.Applications
                                     ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
                                 }
 
-                            } else {
+                            }
+                            else {
                                 Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot set default clearance depth. Check loader.");
-                            }               
+                            }
 
 
                             buffer["ps"] = ps101;
@@ -551,11 +530,12 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
                                 var drval1 = depthArea.DRVAL1 ?? default;
                                 instance.surroundingDepth = drval1;
                             }
 
+                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU,current.HEIGHT,current.WATLEV,current.CATWRK,current.CATOBS,current.OBJECTID!.Value,current.TableName!,current.LNAM!);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

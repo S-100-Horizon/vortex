@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Desktop.Internal.Mapping;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -100,13 +101,12 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            // TODO: default clearance depth
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
-
-            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.Shape!)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
                 instance.surroundingDepth = drval1;
             }
+
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU,current.EXPSOU,current.HEIGHT,current.WATLEV,current.CATOBS,current.OBJECTID ?? -1,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown long name");
 
             return instance;
         }
@@ -202,12 +202,14 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
 
-            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
                 instance.surroundingDepth = drval1;
             }
+
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+
 
             return instance;
         }
@@ -303,13 +305,12 @@ namespace S100Framework.Applications
                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            // TODO: default clearance depth
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current);
-
-            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE)) {
                 var drval1 = depthArea.DRVAL1 ?? default;
                 instance.surroundingDepth = drval1;
             }
+
+            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
 
             ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
