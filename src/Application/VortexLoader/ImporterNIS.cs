@@ -129,7 +129,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
 
             using (Geodatabase source = createGeodatabase()) {
-
+//#if null
                 Store(() => {
                     if (!append) {
                         var query = new QueryFilter {
@@ -214,6 +214,11 @@ namespace S100Framework.Applications
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
+                    Logger.Current.Information($"Converting Dangers");
+                    Store(() => S57_DangersA(source, destination, QueryFilter));
+                    Store(() => S57_DangersL(source, destination, QueryFilter));
+                    Store(() => S57_DangersP(source, destination, QueryFilter));
+
                     Logger.Current.Information($"Converting Metadata");
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     Store(() => S57_MetadataP(source, destination, QueryFilter));
@@ -232,10 +237,6 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Contours");
                     Store(() => S57_DepthsL(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Dangers");
-                    Store(() => S57_DangersA(source, destination, QueryFilter));
-                    Store(() => S57_DangersL(source, destination, QueryFilter));
-                    Store(() => S57_DangersP(source, destination, QueryFilter));
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, QueryFilter));
@@ -298,7 +299,7 @@ namespace S100Framework.Applications
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
-
+//#endif
                 //Logger.Current.Information($"Igniting afterburner");
                 //Afterburner.Initialize(destination);
                 //Afterburner.Instance.CutClosedRoadLines();
@@ -521,19 +522,19 @@ namespace S100Framework.Applications
                     valsouIsUnknown) {
                     return 0.1d;
                 }
-                else if ((expsou is 2 || expsou is -32767) &&
+                else if ((expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     watlev is 3) {
                     return 0.1d;
                 }
                 else if ((catobs is not 6) &&
-                    (expsou is 2 || expsou is -32767) &&
+                    (expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     (watlev is 5)) {
                     return 0d;
                 }
                 else if ((catobs is not 6) &&
-                    (expsou is 2 || expsou is -32767) &&
+                    (expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
                     return -15d;
