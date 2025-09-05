@@ -175,7 +175,7 @@ namespace S100Framework.ProductCatalogue
                 var curves = new List<S100Framework.Topology.Polyline>();
                 var singletons = new List<S100Framework.Topology.Polyline>();
 
-                var singletonsFeatures = "'ROAD'";  //'NAVIGATIONLINE','RECOMMENDEDTRACK'
+                var singletonsFeatures = "'ROAD','RAILWAY'";  //'NAVIGATIONLINE','RECOMMENDEDTRACK'
 
                 using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
                     queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION')) AND (upper(code) NOT IN ({singletonsFeatures}))"; //,'NAVIGATIONLINE','RECOMMENDEDTRACK'
