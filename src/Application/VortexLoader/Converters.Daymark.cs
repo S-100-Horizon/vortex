@@ -73,7 +73,7 @@ namespace S100Framework.Applications
             // TODO: shapeInformation
 
             if (current.PICREP != default) {
-                instance.pictorialRepresentation = current.PICREP;
+                instance.pictorialRepresentation = ImporterNIS.FixFilename(current.PICREP);
             }
 
             if (scaleMinimum.HasValue) {

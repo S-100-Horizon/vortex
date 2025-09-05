@@ -209,6 +209,13 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
+                    Logger.Current.Information($"Converting Metadata");
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
+                    Store(() => S57_MetadataP(source, destination, QueryFilter));
+                    Logger.Current.Information($"Converting Product Coverages");
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+
+
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
@@ -219,9 +226,6 @@ namespace S100Framework.Applications
                     Store(() => S57_DangersL(source, destination, QueryFilter));
                     Store(() => S57_DangersP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Metadata");
-                    Store(() => S57_MetadataA(source, destination, QueryFilter));
-                    Store(() => S57_MetadataP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
@@ -231,8 +235,6 @@ namespace S100Framework.Applications
                     Store(() => S57_CulturalFeaturesL(source, destination, QueryFilter));
                     Store(() => S57_CulturalFeaturesP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Contours");
                     Store(() => S57_DepthsL(source, destination, QueryFilter));
@@ -1275,7 +1277,7 @@ namespace S100Framework.Applications
             return result;
         }
 
-        private static string? FixFilename(string fileReference) {
+        internal static string? FixFilename(string fileReference) {
             if (fileReference == default) {
                 return default;
             }
@@ -1298,7 +1300,7 @@ namespace S100Framework.Applications
         internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
             NauticalInformation nobj = new NauticalInformation();
             if (picrep != default) {
-                nobj.pictorialRepresentation = picrep;
+                nobj.pictorialRepresentation = ImporterNIS.FixFilename(picrep) ?? default;
             }
 
             nobj.information = information;

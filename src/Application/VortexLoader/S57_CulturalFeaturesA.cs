@@ -6,6 +6,7 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.ComponentModel;
+using VortexLoader.Singletons;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.Applications
@@ -321,7 +322,12 @@ namespace S100Framework.Applications
 
                                 instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
 
-
+                                // Clear vdat if covered by a metadata object with same vdat
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2 == instance.verticalDatum) {
+                                        instance.verticalDatum = null;
+                                    }
+                                }
 
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                                 bufferSurface["ps"] = ps101;
@@ -404,6 +410,15 @@ namespace S100Framework.Applications
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation = current.PICREP;
                                 }
+                                
+                                instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
+                                // Clear vdat if covered by a metadata object with same vdat
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2 == instance.verticalDatum) {
+                                        instance.verticalDatum = null;
+                                    } 
+                                }
+
 
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = instance.GetType().Name;
@@ -1562,6 +1577,13 @@ namespace S100Framework.Applications
 
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<Tunnel>(current.VERDAT ?? 3);
+
+                            // Clear vdat if covered by a metadata object with same vdat
+                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                if (elm.Item2 == instance.verticalDatum) {
+                                    instance.verticalDatum = null;
+                                }
+                            }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

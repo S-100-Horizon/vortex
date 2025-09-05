@@ -98,7 +98,7 @@ namespace S100Framework.Applications
 
 
             if (current.PICREP != default) {
-                instance.pictorialRepresentation = current.PICREP;
+                instance.pictorialRepresentation = ImporterNIS.FixFilename(current.PICREP) ?? default;
             }
 
             if (scaleMinimum.HasValue) {

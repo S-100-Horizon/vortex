@@ -217,6 +217,9 @@ namespace S100Framework.Applications
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum!.Value);
+
                             }
                             break;
                     }

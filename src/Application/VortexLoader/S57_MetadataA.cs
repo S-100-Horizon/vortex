@@ -596,6 +596,7 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
+                            VerticalDatums.Instance.Add(current.SHAPE!.Clone(), instance.verticalDatum!.Value);
 
                             // if (current.VERDAT.HasValue) {
                             //var verdat = Convert.ToInt32(current.VERDAT);
