@@ -230,6 +230,12 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
+                    Logger.Current.Information($"Converting Natural Features");
+                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, QueryFilter));
+
+
                     Logger.Current.Information($"Converting Cultural Features");
                     Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter));
                     Store(() => S57_CulturalFeaturesL(source, destination, QueryFilter));
@@ -281,10 +287,6 @@ namespace S100Framework.Applications
                     Store(() => S57_MilitaryFeatureA(source, destination, QueryFilter));
                     Store(() => S57_MilitaryFeaturesP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Natural Features");
-                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
-                    Store(() => S57_NaturalFeaturesL(source, destination, QueryFilter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Offshore Installations");
                     Store(() => S57_OffshoreInstallationsA(source, destination, QueryFilter));

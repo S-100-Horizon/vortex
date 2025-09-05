@@ -523,8 +523,11 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            if ( LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) { 
+                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
                                 instance.inTheWater = false;
+                            }
+                            else {
+                                instance.inTheWater = true;
                             }
 
                             bufferSurface["ps"] = ps101;
