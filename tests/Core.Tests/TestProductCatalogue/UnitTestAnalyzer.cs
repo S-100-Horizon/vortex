@@ -3,6 +3,7 @@ using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.YAML;
 using System.Diagnostics;
+using System.IO;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -263,6 +264,48 @@ namespace TestProductCatalogue
             }
 
             System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_AttachmentExport() {
+            var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
+            Assert.False(string.IsNullOrEmpty(s101));
+
+            s101 = @"g:\vortex\connections\s100ed8.sde";
+
+            Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
+
+            if (IO.File.Exists(s101) && ".sde".Equals(IO.Path.GetExtension(s101), StringComparison.InvariantCultureIgnoreCase)) {
+                createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(s101)))); };
+            }
+            else if (IO.Directory.Exists(s101) && ".gdb".Equals(IO.Path.GetExtension(s101), StringComparison.InvariantCultureIgnoreCase)) {
+                createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(s101)))); };
+            }
+            else
+                throw new System.ArgumentOutOfRangeException(nameof(s101));
+
+
+            if (IO.Directory.Exists(@"c:\temp\AttachmentExport"))
+                IO.Directory.Delete(@"c:\temp\AttachmentExport");
+            IO.Directory.CreateDirectory(@"c:\temp\AttachmentExport");
+
+            using var geodatabase = createGeodatabase();
+
+            var definitions = geodatabase.GetDefinitions<TableDefinition>();
+
+            using var attachment = geodatabase.OpenDataset<Table>(definitions.Single(e => e.GetName().EndsWith("attachment")).GetName());
+
+            using var cursor = attachment.Search(null, true);
+
+            while (cursor.MoveNext()) {
+                var dataset = System.Text.Json.JsonSerializer.Deserialize<S100Framework.ProductCatalogue.Dataset>(Convert.ToString(cursor.Current["json"])!)!;
+
+                using var memoryStream = (MemoryStream)cursor.Current["data"];
+
+                using (FileStream file = new FileStream($@"c:\temp\AttachmentExport\{dataset.DatasetName}.yaml", FileMode.Create, FileAccess.Write)) {
+                    memoryStream.CopyTo(file);
+                }
+            }
         }
     }
 }
