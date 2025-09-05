@@ -146,6 +146,7 @@ namespace TestS100Framework
                     new S100Framework.Applications.Roslyn.AttributeRule("rhythmOfLight.signalPeriod","[DependentUnknownValue(\"lightCharacteristic\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("Bridge.categoryOfOpeningBridge","[ConditionalUnknownDependency(\"openingBridge\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("MarineFarmCulture.valueOfSounding","[DependentUnknownValue(\"height\")]"),
                 };
 
                 var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {

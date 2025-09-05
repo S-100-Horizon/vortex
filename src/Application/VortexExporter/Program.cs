@@ -493,7 +493,7 @@ namespace S100Framework.Applications
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
+ 
                     File.WriteAllText(IO.Path.Combine(output, $"{datasetName}.yaml"), yaml);
                     File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 
@@ -522,6 +522,7 @@ namespace S100Framework.Applications
                             p.WaitForExit();
 
                             if (p.ExitCode != 0) {
+                                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
                                 return p.ExitCode;
                             }
                         }
@@ -544,6 +545,7 @@ namespace S100Framework.Applications
                             p.WaitForExit();
 
                             if (p.ExitCode != 0) {
+                                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
                                 return p.ExitCode;
                             }
                         }
