@@ -176,7 +176,7 @@ namespace S100Framework.Topology
         public const string DE9IM = "T*****FF*";
 
         protected Matrix() {
-            //  Default protected constructor
+            //  Default protected constructor            
         }
 
         private Action<ICollection<LineString>>? _interceptor = default;
@@ -189,15 +189,15 @@ namespace S100Framework.Topology
 
         private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-        private IDictionary<string, List<LineString>> _featureToEdges;
+        private IDictionary<string, List<LineString>>? _featureToEdges = default;
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology;
-        private ICollection<S100Framework.Topology.Polyline> _curvesTopology;
+        private ICollection<S100Framework.Topology.Polygon>? _surfacesTopology = default;
+        private ICollection<S100Framework.Topology.Polyline>? _curvesTopology = default;
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational;
-        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational;
+        private ICollection<S100Framework.Topology.Polygon>? _surfacesNavigational = default;
+        private ICollection<S100Framework.Topology.Polyline>? _curvesNavigational = default;
 
-        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton;
+        private ICollection<S100Framework.Topology.Polyline>? _curvesSingleton = default;
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
