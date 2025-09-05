@@ -1,6 +1,9 @@
 ﻿using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.LinearReferencing;
 using NetTopologySuite.Operation.Linemerge;
+using NetTopologySuite.Triangulate;
+using System;
 using System.Collections.Concurrent;
 using IO = System.IO;
 
@@ -270,23 +273,75 @@ namespace S100Framework.Topology
             this.BuildSharedEdges([.. surfaces], [.. curves]);
 
             if (null != this._curvesSingleton) {
+                var endpoints = this._bagPolylines.SelectMany(e => e.LineStrings.Select(f => new Point[] { f.StartPoint, f.EndPoint })).SelectMany(e => e);
+
+                endpoints = endpoints.Union(this._curvesSingleton.SelectMany(e => new Point[] { e.LineString.StartPoint, e.LineString.EndPoint }));
+
+                endpoints = endpoints.Distinct();
+
                 foreach (var curve in this._curvesSingleton) {
-                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+                    var points = curve.LineString.Factory.CreateMultiPoint([.. endpoints.Except([curve.LineString.StartPoint, curve.LineString.EndPoint])]);
 
-                    var f = new CurveFeature(curve.LineString);
-                    this._hashing.GetOrAdd(hash, (new FeatureRef {
-                        Id = f.Id,
-                        Reverse = false,
-                    }, f));
-                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
-                    this._hashing.GetOrAdd(hash, (new FeatureRef {
-                        Id = f.Id,
-                        Reverse = true,
-                    }, f));
+                    var intersection = curve.LineString.Intersection(points);
 
-                    var featureRef = this._hashing[hash];
+                    if (intersection.IsEmpty) {
+                        this._bagPolylines.Add((curve.Name, [curve.LineString]));
+                    }
+                    else if (intersection is Point point) {
+                        var locator = new LocationIndexedLine(curve.LineString);
 
-                    this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
+                        var index = locator.Project(point.Coordinate);
+
+                        var segment1 = (LineString)locator.ExtractLine(locator.StartIndex, index);
+                        var segment2 = (LineString)locator.ExtractLine(index, locator.EndIndex);
+
+                        this._bagPolylines.Add((curve.Name, [segment1, segment2]));
+                    }
+                    else {
+                        var intersectionPoints = (MultiPoint)intersection;
+
+                        var locator = new LocationIndexedLine(curve.LineString);
+                        LinearLocation[] index = [];
+
+                        LineString[] segments = [];
+                        foreach (Point p in intersectionPoints) {
+                            index = [.. index, locator.Project(p.Coordinate)];
+                        }
+
+                        var start = locator.StartIndex;
+
+                        foreach (var i in index.OrderBy(e => e.SegmentIndex)) {
+                            var segment = (LineString)locator.ExtractLine(start, i);
+                            segments = [.. segments, segment];
+                            start = i;
+                        }
+                        if (start != locator.EndIndex) {
+                            var segment = (LineString)locator.ExtractLine(start, locator.EndIndex);
+                            segments = [.. segments, segment];
+                        }
+                        this._bagPolylines.Add((curve.Name, [.. segments]));
+                    }
+
+                    //this._bagPolylines.Add((curve.Name, [curve.LineString]));
+
+
+
+                    //var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+
+                    //var f = new CurveFeature(curve.LineString);
+                    //this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    //    Id = f.Id,
+                    //    Reverse = false,
+                    //}, f));
+                    //hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    //this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    //    Id = f.Id,
+                    //    Reverse = true,
+                    //}, f));
+
+                    //var featureRef = this._hashing[hash];
+
+                    //this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
                 }
             }
 
@@ -458,7 +513,7 @@ namespace S100Framework.Topology
                                 masks1.Add(hash.curve);
 
                             //sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                            sortedList.Add(Matrix.IndexOfSegment(lineStringText,text), hash.fetureRef);
+                            sortedList.Add(Matrix.IndexOfSegment(lineStringText, text), hash.fetureRef);
                         }
                         else {
                             var reverse = lineStrings.ElementAt(i).Reverse();
@@ -518,9 +573,11 @@ namespace S100Framework.Topology
             });
 
             //ParallelOptions.MaxDegreeOfParallelism = 1;
+
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
-                //if (polyline.Name.Equals("C1775043")) System.Diagnostics.Debugger.Break();
+                //if (polyline.Name.Equals("C1320049")) System.Diagnostics.Debugger.Break();
+
                 var curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
 
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.featureRef.Id}");
