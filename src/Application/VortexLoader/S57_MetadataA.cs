@@ -179,7 +179,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

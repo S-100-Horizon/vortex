@@ -147,6 +147,7 @@ namespace S100Framework.Applications
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
+                            LandAreas.Instance.Add(current.SHAPE!.Clone());
 
                             var featureN = featureClass.CreateRow(bufferSurface);
                             var name = Convert.ToString(featureN["name"]) ?? "Unknown name";

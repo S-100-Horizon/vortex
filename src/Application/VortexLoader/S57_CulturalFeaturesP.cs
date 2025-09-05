@@ -89,7 +89,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -211,7 +211,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             /*
@@ -222,7 +222,13 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            // TODO: InTheWater
+                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
+                                instance.inTheWater = false;
+                            }
+                            else {
+                                instance.inTheWater = true;
+                            }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -323,10 +329,16 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            // TODO: InTheWater
+                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
+                                instance.inTheWater = false;
+                            }
+                            else {
+                                instance.inTheWater = true;
+                            }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -521,10 +533,16 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            //TODO: inTheWater
+                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
+                                instance.inTheWater = false;
+                            }
+                            else {
+                                instance.inTheWater = true;
+                            }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -619,7 +637,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -723,7 +741,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -841,7 +859,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);

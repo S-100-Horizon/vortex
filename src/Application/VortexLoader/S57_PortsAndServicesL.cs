@@ -364,7 +364,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -563,7 +563,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
-                                    instance.pictorialRepresentation = current.PICREP;
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -634,7 +634,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
-                                    instance.pictorialRepresentation = current.PICREP;
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
 
 
@@ -852,7 +852,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
-                                    instance.pictorialRepresentation = current.PICREP;
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -999,7 +999,7 @@ namespace S100Framework.Applications
                                 AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                                 if (current.PICREP != default) {
-                                    instance.pictorialRepresentation = current.PICREP;
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
@@ -1071,7 +1071,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
