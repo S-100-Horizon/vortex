@@ -609,11 +609,11 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
                         builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
-                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
-                            foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
-                                builderDomainModel.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                            foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
+                                builderDomainModel.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
                         }
                         builderDomainModel.AppendLine("\t\t\t};");
 
@@ -842,8 +842,8 @@ namespace S100Framework.Applications
                                 foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                     var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
-                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
-                                        builder.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
                                 }
                                 builder.AppendLine("\t\t\t};");
                             }
@@ -943,8 +943,8 @@ namespace S100Framework.Applications
                                 foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                                     var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
-                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals(referenceCode)))
-                                        builder.AppendLine($"\t\t\t\t{{ \"{referenceCode}\", {d.Rule} }},");
+                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
                                 }
                                 builder.AppendLine("\t\t\t};");
                             }

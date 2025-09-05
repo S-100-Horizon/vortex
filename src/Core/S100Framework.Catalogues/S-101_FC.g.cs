@@ -6991,7 +6991,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
-			[DependentUnknownValue("lightCharacteristic")]
+			[ConditionalUnknownDependency("rhythmOfLight.signalPeriod")]
 			public double? signalPeriod {get;set;} = default;
 
 			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
@@ -7003,6 +7003,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
 
 			private IReadOnlyDictionary<string, Func<rhythmOfLight, bool>> _conditionalDpendencies = new Dictionary<string,Func<rhythmOfLight, bool>> {
+				{ "rhythmOfLight.signalPeriod", (rhythmOfLight) => !rhythmOfLight.lightCharacteristic.HasValue || (rhythmOfLight.lightCharacteristic.HasValue && rhythmOfLight.lightCharacteristic.Value != (lightCharacteristic)1) },
 			};
 		}
 
@@ -7223,6 +7224,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlElement("directionalCharacter")]
+			[ConditionalUnknownDependency("lightSector.directionalCharacter")]
 			public directionalCharacter? directionalCharacter {get;set;} = default;
 
 			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
@@ -7259,6 +7261,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
 
 			private IReadOnlyDictionary<string, Func<lightSector, bool>> _conditionalDpendencies = new Dictionary<string,Func<lightSector, bool>> {
+				{ "lightSector.directionalCharacter", (lightSector) => false },
 			};
 		}
 
@@ -11298,7 +11301,7 @@ namespace S100Framework.DomainModel.S101 {
 
 			[XmlIgnore]
 			[EnumerationValue([3,4,5,7])]
-			[ConditionalUnknownDependency("openingBridge")]
+			[ConditionalUnknownDependency("Bridge.categoryOfOpeningBridge")]
 			public categoryOfOpeningBridge? categoryOfOpeningBridge {get;set;} = default;
 
 			[JsonIgnore]
@@ -11368,6 +11371,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
 
 			[XmlElement("openingBridge")]
+			[ConditionalUnknownDependency("Bridge.openingBridge")]
 			public Boolean? openingBridge {get;set;} = default;
 
 			public bool ShouldSerializeopeningBridge() { return openingBridge.HasValue; }
@@ -11504,7 +11508,8 @@ namespace S100Framework.DomainModel.S101 {
 			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
 
 			private IReadOnlyDictionary<string, Func<Bridge, bool>> _conditionalDpendencies = new Dictionary<string,Func<Bridge, bool>> {
-				{ "openingBridge", (bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true },
+				{ "Bridge.categoryOfOpeningBridge", (bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true },
+				{ "Bridge.openingBridge", (bridge) => !bridge.openingBridge.HasValue },
 			};
 		}
 
@@ -12105,6 +12110,7 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
 			[XmlElement("verticalClearanceSafe")]
+			[DependentUnknownValue("verticalClearanceFixed")]
 			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceSafe() { return verticalClearanceSafe!=default; }
