@@ -870,11 +870,27 @@ namespace S100Framework.Applications.Singletons
                 foreignBindings.Add(featureBindingForeign);
             }
 
-            s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
-            s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings);
+            if (s101SlaveFeature["featurebindings"] is null) {
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
+                s101SlaveFeature.Store();
+            } else {
+                ; // TODO: merge featurebindings
+                Logger.Current.DataError(s101SlaveFeature.GetObjectID(), "Relations", s101SlaveFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept foreign bindings: {s101SlaveFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(foreignBindings)}");
+            }
 
-            s101SlaveFeature.Store();
-            s101MasterFeature.Store();
+            if (s101MasterFeature["featurebindings"] is null) {
+                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings);
+                s101MasterFeature.Store();
+            }
+            else {
+                ; // TODO: merge featurebindings
+                Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", s101MasterFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
+            }
+
+
+
+
+
         }
 
         internal bool IsCircular(S57Master master, S57Slave slave) {

@@ -195,7 +195,7 @@ namespace S100Framework.Applications
 
                     // Add relation between s57master polygon and slave equipment
 
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
+                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
 
                 }
                 // 
@@ -223,6 +223,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
+                        // TODO: ENABLE THIS 
                         FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
 
 
@@ -234,6 +235,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
+                        // TODO: ENABLE THIS 
                         //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));

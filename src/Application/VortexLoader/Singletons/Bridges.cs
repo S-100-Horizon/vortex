@@ -31,7 +31,6 @@ namespace S100Framework.Applications.Singletons
         }
     }
 
-
     class FeatureGrouper
     {
         internal List<BridgeElement> GroupAndDissolveToBridgeElements(List<FeatureClass> featureclasses, QueryFilter filter) {
@@ -51,9 +50,7 @@ namespace S100Framework.Applications.Singletons
                         }
                     }
                 }
-
             }
-
 
             int FindGroupIndex(string oid) {
                 for (int i = 0; i < groups.Count; i++) {
