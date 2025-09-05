@@ -5,6 +5,7 @@ using NetTopologySuite.Operation.Linemerge;
 using NetTopologySuite.Triangulate;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
 using IO = System.IO;
 
 namespace S100Framework.Topology
@@ -189,15 +190,15 @@ namespace S100Framework.Topology
 
         private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-        private IDictionary<string, List<LineString>>? _featureToEdges = default;
+        private IDictionary<string, List<LineString>>? _featureToEdges = new Dictionary<string, List<LineString>>();
 
-        private ICollection<S100Framework.Topology.Polygon>? _surfacesTopology = default;
-        private ICollection<S100Framework.Topology.Polyline>? _curvesTopology = default;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology = new Collection<S100Framework.Topology.Polygon>();
+        private ICollection<S100Framework.Topology.Polyline> _curvesTopology = new Collection<S100Framework.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polygon>? _surfacesNavigational = default;
-        private ICollection<S100Framework.Topology.Polyline>? _curvesNavigational = default;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational = new Collection<S100Framework.Topology.Polygon>();
+        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational = new Collection<S100Framework.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polyline>? _curvesSingleton = default;
+        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton = new Collection<S100Framework.Topology.Polyline>();
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
