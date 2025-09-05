@@ -175,8 +175,10 @@ namespace S100Framework.ProductCatalogue
                 var curves = new List<S100Framework.Topology.Polyline>();
                 var singletons = new List<S100Framework.Topology.Polyline>();
 
+                var singletonsFeatures = "'ROAD'";  //'NAVIGATIONLINE','RECOMMENDEDTRACK'
+
                 using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))"; //,'NAVIGATIONLINE','RECOMMENDEDTRACK'
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION')) AND (upper(code) NOT IN ({singletonsFeatures}))"; //,'NAVIGATIONLINE','RECOMMENDEDTRACK'
                     using (var cursor = curve.Search(queryFilter)) {
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
@@ -196,10 +198,12 @@ namespace S100Framework.ProductCatalogue
                         }
                     }
 
-                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('NAVIGATIONLINE','RECOMMENDEDTRACK'))";
+                    queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ({singletonsFeatures}))";
                     using (var cursor = curve.Search(queryFilter)) {
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
+
+                            //if (f.GetObjectID() == 44) System.Diagnostics.Debugger.Break();
 
                             var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
@@ -217,7 +221,7 @@ namespace S100Framework.ProductCatalogue
                     }
                 }
 
-                builder = matrix.AddNavigationalFeatures(polygons, curves); //.AddSingletonFeatures(singletons);
+                builder = matrix.AddNavigationalFeatures(polygons, curves).AddSingletonFeatures(singletons);
             }
 
             var result = builder.BuildTopology();

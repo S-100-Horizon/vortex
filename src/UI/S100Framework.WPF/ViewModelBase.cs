@@ -40,12 +40,15 @@ namespace S100Framework.WPF.ViewModel
                 if (string.IsNullOrEmpty(e.PropertyName)) return;
                 if (e.PropertyName == nameof(HasErrors)) return; // Prevent recursive validation call
 
-                this.Validate();
+                this.Validate(e.PropertyName);
             };
         }
 
         [Browsable(false)]
         public Guid? UID { get; set; } = default;
+
+        [Browsable(false)]
+        protected NullabilityInfoContext Context => new NullabilityInfoContext();
 
         public abstract string Serialize();
 
@@ -89,7 +92,6 @@ namespace S100Framework.WPF.ViewModel
         }
 
         #endregion
-
 
         #region INotifyDataErrorInfo
 
@@ -151,7 +153,13 @@ namespace S100Framework.WPF.ViewModel
                     if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
                         this.AddError(p.Name, $"{p.Name} is required.");
                     }
-                });           
+                });
+        }
+
+        protected virtual void Validate(string propertyName) {
+            this.ClearErrors(propertyName);
+
+            var context = new NullabilityInfoContext();
         }
 
         protected void AddError(string propertyName, string errorMessage) {
@@ -306,11 +314,15 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
+        protected PropertyInfo[] properties => typeof(TInformationType).GetProperties();
+
         public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
     }
 
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
+        protected PropertyInfo[] properties => typeof(TFeatureType).GetProperties();
+
         public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
 
         protected override void Validate() {
@@ -336,6 +348,43 @@ namespace S100Framework.WPF.ViewModel
 
             foreach (var e in base.GetErrors().Where(e => !errors.Contains(e)))
                 base.OnErrorsChanged(e);
+        }
+
+        protected override void Validate(string propertyName) {
+            base.Validate(propertyName);
+
+            bool IsNuallable(PropertyInfo property) {
+                var info = base.Context.Create(property);
+                return info.ReadState == NullabilityState.Nullable;
+            }
+
+            var p = this.properties.Single(e => e.Name == propertyName);
+
+            if (IsNuallable(p)) {
+                var value = p.GetValue(this);
+                if (value == null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                    this.AddError(p.Name, $"{p.Name} is required.");
+                }
+            }
+
+            var attributeS100TruncatedDate = p.GetCustomAttribute<S100TruncatedDateAttribute>();
+            if (attributeS100TruncatedDate != default) {
+                var value = p.GetValue(this);
+                if (value is null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                    this.AddError(p.Name, $"{p.Name} is required.");
+                }
+            }
+
+            var attributeDependentUnknownValue = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+            if (attributeDependentUnknownValue != default) {
+                var value = p.GetValue(this);
+                if (value is null) {
+                    var dependentValue = typeof(TFeatureType).GetProperty(attributeDependentUnknownValue.PropertyName)?.GetValue(this);
+                    if (dependentValue is null) {
+                        this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attributeDependentUnknownValue.PropertyName} is populated with an empty (null) value!");
+                    }
+                }
+            }
         }
     }
 
