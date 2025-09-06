@@ -502,7 +502,7 @@ namespace S100Framework.Topology
                             lineStringText = merged.ToText();
                         }
                         else {
-                            Debug.Assert(mergedLineStrings.Count > 1);
+                            Debug.Assert(mergedLineStrings.Count == 1);
 
                             var merged = (LineString)mergedLineStrings[0];
 

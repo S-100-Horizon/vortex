@@ -162,7 +162,7 @@ namespace TestS100Framework
                     new S100Framework.Applications.Roslyn.DependencyRule("Bridge.categoryOfOpeningBridge","(bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true"),
                     new S100Framework.Applications.Roslyn.DependencyRule("Bridge.openingBridge","(bridge) => !bridge.openingBridge.HasValue"),
                     new S100Framework.Applications.Roslyn.DependencyRule("rhythmOfLight.signalPeriod","(rhythmOfLight) => !rhythmOfLight.lightCharacteristic.HasValue || (rhythmOfLight.lightCharacteristic.HasValue && rhythmOfLight.lightCharacteristic.Value != (lightCharacteristic)1)"),
-                    new S100Framework.Applications.Roslyn.DependencyRule("lightSector.directionalCharacter","(lightSector) => false"),
+                    new S100Framework.Applications.Roslyn.DependencyRule("lightSector.directionalCharacter","(lightSector) => false /*lightSector.directionalCharacter is null && lightSector.sectorLimit is null*/"),
                 };
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true, attributeRules, dependencyRule);
