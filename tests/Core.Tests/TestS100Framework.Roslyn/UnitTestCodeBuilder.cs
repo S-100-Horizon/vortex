@@ -152,7 +152,7 @@ namespace TestS100Framework
                     //new S100Framework.Applications.Roslyn.AttributeRule("Bridge.categoryOfOpeningBridge","[ConditionalUnknownDependency(\"Bridge.openingBridge\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("MarineFarmCulture.valueOfSounding","[DependentUnknownValue(\"height\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("CableOverhead.verticalClearanceSafe","[DependentUnknownValue(\"verticalClearanceFixed\")]"),
+                    //new S100Framework.Applications.Roslyn.AttributeRule("CableOverhead.verticalClearanceSafe","[DependentUnknownValue(\"verticalClearanceFixed\")]"),
 
                     new S100Framework.Applications.Roslyn.AttributeRule("lightSector.directionalCharacter","[ConditionalUnknownDependency(\"lightSector.directionalCharacter\")]"),
                     

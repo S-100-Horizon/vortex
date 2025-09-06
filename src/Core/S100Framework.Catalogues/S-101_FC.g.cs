@@ -12110,7 +12110,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializeverticalClearanceFixed() { return verticalClearanceFixed!=default; }
 
 			[XmlElement("verticalClearanceSafe")]
-			[DependentUnknownValue("verticalClearanceFixed")]
 			public verticalClearanceSafe? verticalClearanceSafe {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceSafe() { return verticalClearanceSafe!=default; }
