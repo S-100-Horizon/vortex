@@ -391,7 +391,7 @@ namespace S100Framework.Applications
                             };
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
-                            if (current.CATWRK.HasValue && !instance.valueOfSounding.HasValue) {
+                            if (current.CATWRK.HasValue && !current.VALSOU.HasValue) {
                                 instance.categoryOfWreck = EnumHelper.GetEnumValue<Wreck, categoryOfWreck>(current.CATWRK.Value);
                             }
 
