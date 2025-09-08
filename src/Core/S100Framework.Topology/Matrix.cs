@@ -32,6 +32,8 @@ namespace S100Framework.Topology
 
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
+
+            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(LineString.ToBinary());
         }
 
         public LineString LineString { get; set; }
@@ -66,7 +68,7 @@ namespace S100Framework.Topology
         }
     }
 
-    public class CompositeCurveFeature : FeatureType
+    public class CompositeCurveFeature : FeatureType        
     {
         public FeatureRef[] Curves { get; init; } = [];
     }
