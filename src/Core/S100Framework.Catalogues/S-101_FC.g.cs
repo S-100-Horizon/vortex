@@ -20337,6 +20337,7 @@ namespace S100Framework.DomainModel.S101 {
 		public partial class Wreck : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
+			[DependentUnknownValue("valueOfSounding")]
 			public categoryOfWreck? categoryOfWreck {get;set;} = default;
 
 			[JsonIgnore]
@@ -20411,7 +20412,6 @@ namespace S100Framework.DomainModel.S101 {
 			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
 
 			[XmlElement("valueOfSounding")]
-			[DependentUnknownValue("categoryOfWreck")]
 			public double? valueOfSounding {get;set;} = default;
 
 			public bool ShouldSerializevalueOfSounding() { return valueOfSounding.HasValue; }

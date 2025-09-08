@@ -149,7 +149,7 @@ namespace TestS100Framework
                     new S100Framework.Applications.Roslyn.AttributeRule("Bridge.openingBridge","[ConditionalUnknownDependency(\"Bridge.openingBridge\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("MarineFarmCulture.valueOfSounding","[DependentUnknownValue(\"height\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.valueOfSounding","[DependentUnknownValue(\"categoryOfWreck\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.categoryOfWreck","[DependentUnknownValue(\"valueOfSounding\")]"),
                 };
 
                 var dependencyRule = new S100Framework.Applications.Roslyn.DependencyRule[] {
