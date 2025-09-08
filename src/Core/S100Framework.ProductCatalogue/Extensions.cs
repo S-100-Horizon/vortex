@@ -51,7 +51,7 @@ namespace S100Framework.ProductCatalogue
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
 
-            var matrix = S100Framework.Topology.Matrix.CreateMatrix();
+            var matrix = S100Framework.Topology.Matrix.CreateMatrix(interceptor);
 
             S100Framework.Topology.ITopologyBuilder? builder = default;
 

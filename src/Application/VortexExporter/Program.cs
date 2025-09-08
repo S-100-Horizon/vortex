@@ -143,6 +143,9 @@ namespace S100Framework.Applications
 
                 var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
+                //  TEST, TEST, TEST, TEST, TEST, 
+                Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
                 foreach (var e in datasets) {
                     var supportFiles = new List<string>();
 
