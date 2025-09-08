@@ -27,15 +27,17 @@ namespace S100Framework.Applications
             ISO8211 = 8211
         }
 
-        public record AttributeRule(string Name, string Rule);
+        public record AttributeRule(string PropertyName, string Rule);
 
-        public record DependencyRule(string Name, string Rule);
+        public record DependencyRule(string Code, string RuleName, string Rule, Type AttributeType);
+
+        public record ValidationCheck(string Code, string Check);
 
         public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat) {
-            return Build(productSpecification, productFormat, false, [], []);
+            return Build(productSpecification, productFormat, false, [], [], []);
         }
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules, DependencyRule[] dependencyRules) {
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules, DependencyRule[] dependencyRules, ValidationCheck[] validationChecks) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -502,7 +504,7 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
-                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
+                            foreach (var attributeRule in attributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
                                 builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
                             }
 
@@ -606,16 +608,20 @@ namespace S100Framework.Applications
                             }
                         }
 
-                        builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                        builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                         builderDomainModel.AppendLine();
-                        builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
-                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-
-                            foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
-                                builderDomainModel.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
-                        }
+                        builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                        foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                            builderDomainModel.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
                         builderDomainModel.AppendLine("\t\t\t};");
+
+                        builderDomainModel.AppendLine();
+
+                        builderDomainModel.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                        foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                            builderDomainModel.AppendLine($"\t\t\t\t{d.Check}");
+                        builderDomainModel.AppendLine("\t\t\t}");
+
 
                         builderDomainModel.AppendLine("\t\t}");
                         builderDomainModel.AppendLine();
@@ -836,16 +842,19 @@ namespace S100Framework.Applications
                                     builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                 builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-
-                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
-                                        builder.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
-                                }
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
                                 builder.AppendLine("\t\t\t};");
+
+                                builder.AppendLine();
+
+                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{d.Check}");
+                                builder.AppendLine("\t\t\t}");
                             }
                         });
 
@@ -937,16 +946,19 @@ namespace S100Framework.Applications
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
                                 builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
 
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);");
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                 builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalDpendencies = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
-
-                                    foreach (var d in dependencyRules.Where(e => e.Name.Equals($"{code}.{referenceCode}")))
-                                        builder.AppendLine($"\t\t\t\t{{ \"{d.Name}\", {d.Rule} }},");
-                                }
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
                                 builder.AppendLine("\t\t\t};");
+
+                                builder.AppendLine();
+
+                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{d.Check}");
+                                builder.AppendLine("\t\t\t}");
                             }
 
                             //if (superType == null) {
@@ -1405,7 +1417,7 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
-                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals($"{code}.{referenceCode}"))) {
+                foreach (var attributeRule in client.AttributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
                 }
 

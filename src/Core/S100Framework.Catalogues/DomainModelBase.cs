@@ -162,12 +162,16 @@ namespace S100Framework.DomainModel
     public interface IDependencies
     {
         bool ConditionalUnknown(string name);
+
+        void RunValidationChecks();
     }
 
     [System.SerializableAttribute()]
     public abstract class ComplexType : IDependencies
     {
         public abstract bool ConditionalUnknown(string name);
+
+        public abstract void RunValidationChecks();
     }
 
     [System.SerializableAttribute()]
@@ -177,6 +181,8 @@ namespace S100Framework.DomainModel
         public virtual string Code { get; set; } = string.Empty;
 
         public abstract bool ConditionalUnknown(string name);
+
+        public abstract void RunValidationChecks();
     }
 
     [System.SerializableAttribute()]
