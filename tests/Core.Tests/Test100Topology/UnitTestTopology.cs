@@ -30,99 +30,17 @@ namespace Test100Topology
 
             FastZip fastZip = new();
 
-            var geodatabase = new IO.DirectoryInfo(@"s100ed7.gdb");
-            if (!geodatabase.Exists) {
-                fastZip.ExtractZip("s100ed7.gdb.zip", geodatabase.FullName, null);
+            var geodatabase_ed7 = new IO.DirectoryInfo(@"s100ed7.gdb");
+            if (!geodatabase_ed7.Exists) {
+                fastZip.ExtractZip("s100ed7.gdb.zip", geodatabase_ed7.FullName, null);
+            }
+
+            var geodatabase_ed8 = new IO.DirectoryInfo(@"s100ed8.gdb");
+            if (!geodatabase_ed8.Exists) {
+                fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase_ed8.FullName, null);
             }
         }
 
-
-        [Fact]
-        public void Test_DK40347E() {
-            //  Overlapping segments: S2557775
-
-            var replicaPath = Environment.GetEnvironmentVariable("S100FrameworkDatabase") ?? throw new System.ArgumentNullException();
-
-            var connection = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(replicaPath)));
-
-            using var geodatabase = new Geodatabase(connection);
-
-
-            using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
-
-            using var cursor = surface.Search(new QueryFilter {
-                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"DK40347E\"%'",
-            }, true);
-
-            cursor.MoveNext();
-
-            var current = (Feature)cursor.Current;
-
-            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
-
-            var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
-            var json = polygon.ToJson();
-
-            var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
-
-            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
-
-            //whereClause += " AND name = 'S2557165'";
-            //whereClause += " AND name = 'S2557775'";
-
-
-            var filter = new SpatialQueryFilter {
-                WhereClause = whereClause,
-                FilterGeometry = shape,
-                SpatialRelationship = SpatialRelationship.Relation,
-                SpatialRelationshipDescription = "T*****FF*",
-            };
-
-
-            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
-
-
-            var topology = geodatabase.BuildTopology(filter, (collection) => {
-                var lineStrings = collection.ToArray();
-                //start:
-                //    int count = 0;
-                //    for (int i = 0; i < lineStrings.Length; i++) {
-                //        var boundary1 = lineStrings[i];
-
-                //        for (int j = 0; j < lineStrings.Length; j++) {
-                //            if (j == i) continue;
-                //            var boundary2 = lineStrings[j];
-                //            if (boundary1.Contains(boundary2)) {
-                //                count += 1;
-                //                output.WriteLine($"boundary{i} contains boundary{j}");
-
-                //                var geometry = boundary1.SymmetricDifference(boundary2);
-                //                if (geometry is LineString lineString) {
-                //                    lineStrings[i] = lineString;
-                //                    boundary1 = lineString;
-                //                }
-                //                if (geometry is MultiLineString multiLineString) {
-                //                    lineStrings[i] = (LineString)multiLineString[0];
-                //                    lineStrings = [.. lineStrings, (LineString)multiLineString[1]];
-                //                    goto start;
-                //                }
-                //            }
-                //        }
-                //    }
-
-                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                    PersistTopology(target, lineStrings);
-                }
-                //throw new NotImplementedException();
-            });
-
-            using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
-                if (topology is not null)
-                    PersistTopology(target, topology);
-            }
-
-            System.Diagnostics.Debugger.Break();
-        }
 
         [Fact]
         public void Test_DK40349E() {
@@ -547,6 +465,90 @@ namespace Test100Topology
 
             System.Diagnostics.Debugger.Break();
         }
+
+
+        [Fact]
+        public void Test_DK40347E() {
+            //  The Skin of the Earth boundary curve is not coincident with the data limit.
+            //  Related Objects: S1452235
+
+            var replicaPath = Environment.GetEnvironmentVariable("S100FrameworkDatabase") ?? throw new System.ArgumentNullException();
+
+            replicaPath = @"\\nas.gst.dk\public\projektdata\projekter\S-101_Conversion\All\s100ed8_balticsea.gdb";
+
+            var connection = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(replicaPath)));
+
+            using var geodatabase = new Geodatabase(connection);
+
+
+            using var surface = geodatabase.OpenDataset<FeatureClass>("surface");
+
+            using var cursor = surface.Search(new QueryFilter {
+                WhereClause = $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"101DK0040347E\"%'",
+            }, true);
+
+            cursor.MoveNext();
+
+            var current = (Feature)cursor.Current;
+
+            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+
+            var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+            var json = polygon.ToJson();
+
+            var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
+
+            var whereClause = $"upper(ps) = 'S-101' AND usageband = {Convert.ToInt32(current["usageband"])}";
+
+            var filter = new SpatialQueryFilter {
+                WhereClause = whereClause,
+                FilterGeometry = shape,
+                SpatialRelationship = SpatialRelationship.Relation,
+                SpatialRelationshipDescription = "T*****FF*",
+            };
+
+
+            S100Framework.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
+
+            var topology = geodatabase.BuildTopology(filter, (collection) => {
+                var lineStrings = collection.ToArray();
+
+                using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                    PersistTopology(target, lineStrings);
+                }
+            });
+
+            var s1452182 = topology!.Surfaces.Single(e => e.Ref!.Equals("S1452182"))!;
+            var s1452235 = topology!.Surfaces.Single(e => e.Ref!.Equals("S1452235"))!;
+
+            var curve = topology.Curves.SingleOrDefault(e => e.Id == 8984)!;
+
+            var composite = topology.CompositeCurves.Where(e => e.Curves.Any(f => f.Id == curve!.Id)).ToArray();
+
+            var e1452182 = composite.SingleOrDefault(e => e.Id == s1452182.Exterior.Id);
+            var e1452235 = composite.SingleOrDefault(e => e.Id == s1452235.Exterior.Id);
+
+
+            var iMatch = e1452182!.Curves.Any(e => e1452235!.Curves.Select(f=>f.Id)!.Contains(e.Id));
+
+            var hit1452182 = e1452182!.Curves.Where(e => e1452235!.Curves.Select(f => f.Id)!.Contains(e.Id)).Select(e=>e.Id).ToArray();
+            var hit1452235 = e1452235!.Curves.Where(e => e1452182!.Curves.Select(f => f.Id)!.Contains(e.Id)).Select(e => e.Id).ToArray();
+
+            using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
+                if (topology is not null)
+                    PersistTopology(target, topology);
+            }
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+
+
+
+
+
 
         static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 

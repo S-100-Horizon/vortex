@@ -566,7 +566,8 @@ namespace S100Framework.Topology
             };
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
-                //if (polygon.Name.Equals("S1650280")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452182")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452235")) System.Diagnostics.Debugger.Break();
 
                 if (!polygon.ExteriorRing.Any()) return;
 
@@ -594,6 +595,17 @@ namespace S100Framework.Topology
                 }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
+
+                //if (polygon.Name.Equals("S1452182")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
+                //if (polygon.Name.Equals("S1452235")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
             });
 
             //ParallelOptions.MaxDegreeOfParallelism = 1;
