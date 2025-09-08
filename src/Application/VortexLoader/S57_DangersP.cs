@@ -44,8 +44,6 @@ namespace S100Framework.Applications
                 }
 
 
-
-
                 var fcSubtype = current.FCSUBTYPE ?? default;
 
                 var longname = current.LNAM ?? Strings.UNKNOWN;

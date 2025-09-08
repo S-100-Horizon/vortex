@@ -148,25 +148,25 @@ namespace S100Framework.Applications
                         using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
 
                         Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
-                        featureType.DeleteRows(query);
+                        DeleteAll(featureType);//featureType.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
-                        point.DeleteRows(query);
+                        DeleteAll(point); // point.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
-                        pointset.DeleteRows(query);
+                        DeleteAll(pointset); // pointset.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
-                        curve.DeleteRows(query);
+                        DeleteAll(curve); // curve.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
-                        surface.DeleteRows(query);
+                        DeleteAll(surface); // surface.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
                         //attributeBinding.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
-                        featureAssociation.DeleteRows(query);
+                        DeleteAll(featureAssociation); // featureAssociation.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
-                        informationAssociation.DeleteRows(query);
+                        DeleteAll(informationAssociation); // informationAssociation.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
-                        informationtype.DeleteRows(query);
+                        DeleteAll(informationtype); // informationtype.DeleteRows(query);
                     }
                 });
 
@@ -209,6 +209,10 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, QueryFilter));
+
+
                     Logger.Current.Information($"Converting Metadata");
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     Store(() => S57_MetadataP(source, destination, QueryFilter));
@@ -227,8 +231,6 @@ namespace S100Framework.Applications
                     Store(() => S57_DangersP(source, destination, QueryFilter));
 
 
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Natural Features");
                     Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
@@ -327,6 +329,20 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information("Done");
                 return true;
+            }
+        }
+
+        private static void DeleteAll(Table table) {
+            QueryFilter queryFilter = new QueryFilter {
+                WhereClause = "1=1" // Gets all rows
+            };
+
+            using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
+                while (rowCursor.MoveNext()) {
+                    using (Row row = rowCursor.Current) {
+                        row.Delete();
+                    }
+                }
             }
         }
 
