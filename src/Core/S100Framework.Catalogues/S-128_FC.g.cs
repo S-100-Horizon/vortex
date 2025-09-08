@@ -1116,10 +1116,13 @@ namespace S100Framework.DomainModel.S128 {
 			public String? postalCode {get;set;} = default;
 
 			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalDpendencies = new Dictionary<string,Func<contactAddress, bool>> {
+			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalUnknown = new Dictionary<string,Func<contactAddress, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1133,10 +1136,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("paperLength")]
 			public double paperLength {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<customPaperSize, bool>> _conditionalDpendencies = new Dictionary<string,Func<customPaperSize, bool>> {
+			private IReadOnlyDictionary<string, Func<customPaperSize, bool>> _conditionalUnknown = new Dictionary<string,Func<customPaperSize, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1155,10 +1161,13 @@ namespace S100Framework.DomainModel.S128 {
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<defaultLocale, bool>> _conditionalDpendencies = new Dictionary<string,Func<defaultLocale, bool>> {
+			private IReadOnlyDictionary<string, Func<defaultLocale, bool>> _conditionalUnknown = new Dictionary<string,Func<defaultLocale, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1183,10 +1192,13 @@ namespace S100Framework.DomainModel.S128 {
 			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalDpendencies = new Dictionary<string,Func<featureName, bool>> {
+			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1219,10 +1231,13 @@ namespace S100Framework.DomainModel.S128 {
 			public List<String> text {get;set;} = [];
 
 			public bool ShouldSerializetext() { return text.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalDpendencies = new Dictionary<string,Func<information, bool>> {
+			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalUnknown = new Dictionary<string,Func<information, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1258,10 +1273,13 @@ namespace S100Framework.DomainModel.S128 {
 			public String? protocolRequest {get;set;} = default;
 
 			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalDpendencies = new Dictionary<string,Func<onlineResource, bool>> {
+			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalUnknown = new Dictionary<string,Func<onlineResource, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1275,10 +1293,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("dateStart")]
 			public String dateStart {get;set;} = string.Empty;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<periodicDateRange, bool>> {
+			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<periodicDateRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1297,10 +1318,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("price")]
 			public double price {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<pricing, bool>> _conditionalDpendencies = new Dictionary<string,Func<pricing, bool>> {
+			private IReadOnlyDictionary<string, Func<pricing, bool>> _conditionalUnknown = new Dictionary<string,Func<pricing, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1323,10 +1347,13 @@ namespace S100Framework.DomainModel.S128 {
 			public customPaperSize? customPaperSize {get;set;} = default;
 
 			public bool ShouldSerializecustomPaperSize() { return customPaperSize!=default; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<printSize, bool>> _conditionalDpendencies = new Dictionary<string,Func<printSize, bool>> {
+			private IReadOnlyDictionary<string, Func<printSize, bool>> _conditionalUnknown = new Dictionary<string,Func<printSize, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1356,10 +1383,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<productSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<productSpecification, bool>> {
+			private IReadOnlyDictionary<string, Func<productSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<productSpecification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1384,10 +1414,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<supportFileSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<supportFileSpecification, bool>> {
+			private IReadOnlyDictionary<string, Func<supportFileSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<supportFileSpecification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1412,10 +1445,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("version")]
 			public String version {get;set;} = string.Empty;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<serviceSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<serviceSpecification, bool>> {
+			private IReadOnlyDictionary<string, Func<serviceSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<serviceSpecification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1463,10 +1499,13 @@ namespace S100Framework.DomainModel.S128 {
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sourceIndication, bool>> _conditionalDpendencies = new Dictionary<string,Func<sourceIndication, bool>> {
+			private IReadOnlyDictionary<string, Func<sourceIndication, bool>> _conditionalUnknown = new Dictionary<string,Func<sourceIndication, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1490,10 +1529,13 @@ namespace S100Framework.DomainModel.S128 {
 			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
 
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalDpendencies = new Dictionary<string,Func<telecommunications, bool>> {
+			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalUnknown = new Dictionary<string,Func<telecommunications, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1515,10 +1557,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("valueOfTime")]
 			public int valueOfTime {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<timeIntervalOfCycle, bool>> _conditionalDpendencies = new Dictionary<string,Func<timeIntervalOfCycle, bool>> {
+			private IReadOnlyDictionary<string, Func<timeIntervalOfCycle, bool>> _conditionalUnknown = new Dictionary<string,Func<timeIntervalOfCycle, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1532,10 +1577,13 @@ namespace S100Framework.DomainModel.S128 {
 
 			[XmlElement("yearNumber")]
 			public int yearNumber {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<weekOfYear, bool>> _conditionalDpendencies = new Dictionary<string,Func<weekOfYear, bool>> {
+			private IReadOnlyDictionary<string, Func<weekOfYear, bool>> _conditionalUnknown = new Dictionary<string,Func<weekOfYear, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1553,10 +1601,13 @@ namespace S100Framework.DomainModel.S128 {
 			public timeIntervalOfCycle? timeIntervalOfCycle {get;set;} = default;
 
 			public bool ShouldSerializetimeIntervalOfCycle() { return timeIntervalOfCycle!=default; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<issuanceCycle, bool>> _conditionalDpendencies = new Dictionary<string,Func<issuanceCycle, bool>> {
+			private IReadOnlyDictionary<string, Func<issuanceCycle, bool>> _conditionalUnknown = new Dictionary<string,Func<issuanceCycle, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1588,10 +1639,13 @@ namespace S100Framework.DomainModel.S128 {
 			[XmlElement("printSize")]
 			public printSize printSize {get;set;} = new printSize {
 			};
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<printInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<printInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<printInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<printInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1672,10 +1726,13 @@ namespace S100Framework.DomainModel.S128 {
 				name = string.Empty,
 				version = string.Empty,
 			};
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<supportFile, bool>> _conditionalDpendencies = new Dictionary<string,Func<supportFile, bool>> {
+			private IReadOnlyDictionary<string, Func<supportFile, bool>> _conditionalUnknown = new Dictionary<string,Func<supportFile, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1704,10 +1761,13 @@ namespace S100Framework.DomainModel.S128 {
 			public issuanceCycle? issuanceCycle {get;set;} = default;
 
 			public bool ShouldSerializeissuanceCycle() { return issuanceCycle!=default; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<timeIntervalOfProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<timeIntervalOfProduct, bool>> {
+			private IReadOnlyDictionary<string, Func<timeIntervalOfProduct, bool>> _conditionalUnknown = new Dictionary<string,Func<timeIntervalOfProduct, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1731,10 +1791,13 @@ namespace S100Framework.DomainModel.S128 {
 			public weekOfYear? weekOfYear {get;set;} = default;
 
 			public bool ShouldSerializeweekOfYear() { return weekOfYear!=default; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<referenceToNM, bool>> _conditionalDpendencies = new Dictionary<string,Func<referenceToNM, bool>> {
+			private IReadOnlyDictionary<string, Func<referenceToNM, bool>> _conditionalUnknown = new Dictionary<string,Func<referenceToNM, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 	}
@@ -1959,10 +2022,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CatalogueSectionHeader, bool>> _conditionalDpendencies = new Dictionary<string,Func<CatalogueSectionHeader, bool>> {
+			private IReadOnlyDictionary<string, Func<CatalogueSectionHeader, bool>> _conditionalUnknown = new Dictionary<string,Func<CatalogueSectionHeader, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2030,10 +2096,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ContactDetails, bool>> _conditionalDpendencies = new Dictionary<string,Func<ContactDetails, bool>> {
+			private IReadOnlyDictionary<string, Func<ContactDetails, bool>> _conditionalUnknown = new Dictionary<string,Func<ContactDetails, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2070,10 +2139,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<IndicationOfCarriageRequirement, bool>> _conditionalDpendencies = new Dictionary<string,Func<IndicationOfCarriageRequirement, bool>> {
+			private IReadOnlyDictionary<string, Func<IndicationOfCarriageRequirement, bool>> _conditionalUnknown = new Dictionary<string,Func<IndicationOfCarriageRequirement, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2124,10 +2196,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<PriceInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<PriceInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<PriceInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<PriceInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2175,10 +2250,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ProducerInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<ProducerInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<ProducerInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<ProducerInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2221,10 +2299,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DistributorInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<DistributorInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<DistributorInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<DistributorInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 	namespace FeatureTypes {
@@ -2587,10 +2668,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ElectronicProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<ElectronicProduct, bool>> {
+			private IReadOnlyDictionary<string, Func<ElectronicProduct, bool>> _conditionalUnknown = new Dictionary<string,Func<ElectronicProduct, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2665,10 +2749,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<PhysicalProduct, bool>> _conditionalDpendencies = new Dictionary<string,Func<PhysicalProduct, bool>> {
+			private IReadOnlyDictionary<string, Func<PhysicalProduct, bool>> _conditionalUnknown = new Dictionary<string,Func<PhysicalProduct, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2745,10 +2832,13 @@ namespace S100Framework.DomainModel.S128 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<S100Service, bool>> _conditionalDpendencies = new Dictionary<string,Func<S100Service, bool>> {
+			private IReadOnlyDictionary<string, Func<S100Service, bool>> _conditionalUnknown = new Dictionary<string,Func<S100Service, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 

@@ -70,6 +70,9 @@ namespace S100Framework.YAML
             var type = obj.GetType();
             var properties = type.GetProperties();
 
+            if (obj is IDependencies dependencies)
+                dependencies.RunValidationChecks();
+
             foreach (var property in properties) {
                 if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
                     continue;
@@ -130,7 +133,7 @@ namespace S100Framework.YAML
             return false;
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {            
             // If the attribute is not required and the value is null, omit from yaml
             if (!required && propertyValue == null)
                 return;
@@ -223,6 +226,9 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when t.IsClass:
+                    if (propertyValue is IDependencies dependencies)
+                        dependencies.RunValidationChecks();
+
                     // If the property is a nullable object, but still required, add it with null value
                     if (propertyValue == null) {
                         attributes.Add(new(propertyName, null, null, parentId));

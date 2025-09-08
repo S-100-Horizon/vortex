@@ -5237,10 +5237,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? rightQRouteWidth {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<qRouteChannelWidth, bool>> _conditionalDpendencies = new Dictionary<string,Func<qRouteChannelWidth, bool>> {
+			private IReadOnlyDictionary<string, Func<qRouteChannelWidth, bool>> _conditionalUnknown = new Dictionary<string,Func<qRouteChannelWidth, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5258,10 +5261,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? firstDetectionYear {get;set;} = default;
 
 			public bool ShouldSerializefirstDetectionYear() { return !string.IsNullOrEmpty(firstDetectionYear); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<detectionDateRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<detectionDateRange, bool>> {
+			private IReadOnlyDictionary<string, Func<detectionDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<detectionDateRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5279,10 +5285,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("multiplicityKnown")]
 			[UnknownValue]
 			public Boolean? multiplicityKnown {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<multiplicityOfFeatures, bool>> _conditionalDpendencies = new Dictionary<string,Func<multiplicityOfFeatures, bool>> {
+			private IReadOnlyDictionary<string, Func<multiplicityOfFeatures, bool>> _conditionalUnknown = new Dictionary<string,Func<multiplicityOfFeatures, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5304,10 +5313,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? nameOfResource {get;set;} = default;
 
 			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalDpendencies = new Dictionary<string,Func<onlineResource, bool>> {
+			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalUnknown = new Dictionary<string,Func<onlineResource, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5333,10 +5345,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("language")]
 			[UnknownValue]
 			public String? language {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalDpendencies = new Dictionary<string,Func<featureName, bool>> {
+			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5354,10 +5369,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? dateEnd {get;set;} = default;
 
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<fixedDateRange, bool>> {
+			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5377,10 +5395,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public int? maximumAltitude {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<altitudeRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<altitudeRange, bool>> {
+			private IReadOnlyDictionary<string, Func<altitudeRange, bool>> _conditionalUnknown = new Dictionary<string,Func<altitudeRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5400,10 +5421,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public int? maximumAltitude {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<altitude, bool>> _conditionalDpendencies = new Dictionary<string,Func<altitude, bool>> {
+			private IReadOnlyDictionary<string, Func<altitude, bool>> _conditionalUnknown = new Dictionary<string,Func<altitude, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5431,10 +5455,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<lastSourceInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<lastSourceInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<lastSourceInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<lastSourceInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5466,10 +5493,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? fileReference {get;set;} = default;
 
 			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalDpendencies = new Dictionary<string,Func<information, bool>> {
+			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalUnknown = new Dictionary<string,Func<information, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5496,10 +5526,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<firstSourceInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<firstSourceInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<firstSourceInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<firstSourceInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5518,10 +5551,13 @@ namespace S100Framework.DomainModel.S501 {
 			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<horizontalClearanceFixed, bool>> _conditionalDpendencies = new Dictionary<string,Func<horizontalClearanceFixed, bool>> {
+			private IReadOnlyDictionary<string, Func<horizontalClearanceFixed, bool>> _conditionalUnknown = new Dictionary<string,Func<horizontalClearanceFixed, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5542,10 +5578,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? uncertaintyFixed {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalDpendencies = new Dictionary<string,Func<verticalUncertainty, bool>> {
+			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalUncertainty, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5564,10 +5603,13 @@ namespace S100Framework.DomainModel.S501 {
 			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 			[UnknownValue]
 			public int? frequencyShoreStationTransmits {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<frequencyPair, bool>> _conditionalDpendencies = new Dictionary<string,Func<frequencyPair, bool>> {
+			private IReadOnlyDictionary<string, Func<frequencyPair, bool>> _conditionalUnknown = new Dictionary<string,Func<frequencyPair, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5607,10 +5649,13 @@ namespace S100Framework.DomainModel.S501 {
 			public SerializableEnumeration<comparisonOperator>? comparisonOperatorElement { get { return comparisonOperator; } set { } }
 
 			public bool ShouldSerializecomparisonOperator() { return comparisonOperator.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<vesselMeasurementsSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<vesselMeasurementsSpecification, bool>> {
+			private IReadOnlyDictionary<string, Func<vesselMeasurementsSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<vesselMeasurementsSpecification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5644,10 +5689,13 @@ namespace S100Framework.DomainModel.S501 {
 			public SerializableEnumeration<natureOfSurface>? natureOfSurfaceElement { get { return natureOfSurface; } set { } }
 
 			public bool ShouldSerializenatureOfSurface() { return natureOfSurface.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<surfaceCharacteristics, bool>> _conditionalDpendencies = new Dictionary<string,Func<surfaceCharacteristics, bool>> {
+			private IReadOnlyDictionary<string, Func<surfaceCharacteristics, bool>> _conditionalUnknown = new Dictionary<string,Func<surfaceCharacteristics, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5679,10 +5727,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlElement("magneticAnomalyDetectorSignature")]
 			public SerializableEnumeration<magneticAnomalyDetectorSignature>? magneticAnomalyDetectorSignatureElement { get { return magneticAnomalyDetectorSignature.HasValue ? magneticAnomalyDetectorSignature : default; } set { } }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<magneticInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<magneticInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<magneticInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<magneticInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5703,10 +5754,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? speedMaximum {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<speed, bool>> _conditionalDpendencies = new Dictionary<string,Func<speed, bool>> {
+			private IReadOnlyDictionary<string, Func<speed, bool>> _conditionalUnknown = new Dictionary<string,Func<speed, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5725,10 +5779,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? verticalClearanceValue {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<verticalClearanceFixed, bool>> _conditionalDpendencies = new Dictionary<string,Func<verticalClearanceFixed, bool>> {
+			private IReadOnlyDictionary<string, Func<verticalClearanceFixed, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalClearanceFixed, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5755,10 +5812,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("sourceID")]
 			[UnknownValue]
 			public String? sourceID {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sourceIdentification, bool>> _conditionalDpendencies = new Dictionary<string,Func<sourceIdentification, bool>> {
+			private IReadOnlyDictionary<string, Func<sourceIdentification, bool>> _conditionalUnknown = new Dictionary<string,Func<sourceIdentification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5779,10 +5839,13 @@ namespace S100Framework.DomainModel.S501 {
 			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<horizontalPositionUncertainty, bool>> _conditionalDpendencies = new Dictionary<string,Func<horizontalPositionUncertainty, bool>> {
+			private IReadOnlyDictionary<string, Func<horizontalPositionUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<horizontalPositionUncertainty, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5803,10 +5866,13 @@ namespace S100Framework.DomainModel.S501 {
 			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<orientation, bool>> _conditionalDpendencies = new Dictionary<string,Func<orientation, bool>> {
+			private IReadOnlyDictionary<string, Func<orientation, bool>> _conditionalUnknown = new Dictionary<string,Func<orientation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5826,10 +5892,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? headingUpBearing {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<directionHeading, bool>> _conditionalDpendencies = new Dictionary<string,Func<directionHeading, bool>> {
+			private IReadOnlyDictionary<string, Func<directionHeading, bool>> _conditionalUnknown = new Dictionary<string,Func<directionHeading, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5849,10 +5918,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public int? maximumFlightLevel {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<flightLevel, bool>> _conditionalDpendencies = new Dictionary<string,Func<flightLevel, bool>> {
+			private IReadOnlyDictionary<string, Func<flightLevel, bool>> _conditionalUnknown = new Dictionary<string,Func<flightLevel, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5880,10 +5952,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? speedLimit {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<vesselSpeedLimit, bool>> _conditionalDpendencies = new Dictionary<string,Func<vesselSpeedLimit, bool>> {
+			private IReadOnlyDictionary<string, Func<vesselSpeedLimit, bool>> _conditionalUnknown = new Dictionary<string,Func<vesselSpeedLimit, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5907,10 +5982,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("periodicDateStart")]
 			[UnknownValue]
 			public String? periodicDateStart {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<periodicDateRange, bool>> {
+			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<periodicDateRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5927,10 +6005,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<shapeInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<shapeInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<shapeInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<shapeInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5951,10 +6032,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("signalDuration")]
 			[UnknownValue]
 			public double? signalDuration {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<signalSequence, bool>> _conditionalDpendencies = new Dictionary<string,Func<signalSequence, bool>> {
+			private IReadOnlyDictionary<string, Func<signalSequence, bool>> _conditionalUnknown = new Dictionary<string,Func<signalSequence, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5971,10 +6055,13 @@ namespace S100Framework.DomainModel.S501 {
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sectorInformation, bool>> _conditionalDpendencies = new Dictionary<string,Func<sectorInformation, bool>> {
+			private IReadOnlyDictionary<string, Func<sectorInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorInformation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -5992,10 +6079,13 @@ namespace S100Framework.DomainModel.S501 {
 			public Boolean? moireEffect {get;set;} = default;
 
 			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<directionalCharacter, bool>> _conditionalDpendencies = new Dictionary<string,Func<directionalCharacter, bool>> {
+			private IReadOnlyDictionary<string, Func<directionalCharacter, bool>> _conditionalUnknown = new Dictionary<string,Func<directionalCharacter, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6012,10 +6102,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("sectorBearing")]
 			[UnknownValue]
 			public double? sectorBearing {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sectorLimitTwo, bool>> _conditionalDpendencies = new Dictionary<string,Func<sectorLimitTwo, bool>> {
+			private IReadOnlyDictionary<string, Func<sectorLimitTwo, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimitTwo, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6032,10 +6125,13 @@ namespace S100Framework.DomainModel.S501 {
 			[XmlElement("sectorBearing")]
 			[UnknownValue]
 			public double? sectorBearing {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sectorLimitOne, bool>> _conditionalDpendencies = new Dictionary<string,Func<sectorLimitOne, bool>> {
+			private IReadOnlyDictionary<string, Func<sectorLimitOne, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimitOne, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6077,10 +6173,13 @@ namespace S100Framework.DomainModel.S501 {
 			public List<shapeInformation> shapeInformation {get;set;} = [];
 
 			public bool ShouldSerializeshapeInformation() { return shapeInformation.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<topmark, bool>> _conditionalDpendencies = new Dictionary<string,Func<topmark, bool>> {
+			private IReadOnlyDictionary<string, Func<topmark, bool>> _conditionalUnknown = new Dictionary<string,Func<topmark, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6112,10 +6211,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlElement("lightCharacteristic")]
 			public SerializableEnumeration<lightCharacteristic>? lightCharacteristicElement { get { return lightCharacteristic.HasValue ? lightCharacteristic : default; } set { } }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<rythmOfLight, bool>> _conditionalDpendencies = new Dictionary<string,Func<rythmOfLight, bool>> {
+			private IReadOnlyDictionary<string, Func<rythmOfLight, bool>> _conditionalUnknown = new Dictionary<string,Func<rythmOfLight, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6134,10 +6236,13 @@ namespace S100Framework.DomainModel.S501 {
 			[PrecisionConstraint(1)]
 			[UnknownValue]
 			public double? verticalClearanceValue {get;set;} = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<verticalClearanceSafe, bool>> _conditionalDpendencies = new Dictionary<string,Func<verticalClearanceSafe, bool>> {
+			private IReadOnlyDictionary<string, Func<verticalClearanceSafe, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalClearanceSafe, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6155,10 +6260,13 @@ namespace S100Framework.DomainModel.S501 {
 			public sectorLimitTwo sectorLimitTwo {get;set;} = new sectorLimitTwo {
 				sectorBearing = default,
 			};
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sectorLimit, bool>> _conditionalDpendencies = new Dictionary<string,Func<sectorLimit, bool>> {
+			private IReadOnlyDictionary<string, Func<sectorLimit, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimit, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6212,10 +6320,13 @@ namespace S100Framework.DomainModel.S501 {
 			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
 
 			public bool ShouldSerializecolour() { return colour.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<lightSector, bool>> _conditionalDpendencies = new Dictionary<string,Func<lightSector, bool>> {
+			private IReadOnlyDictionary<string, Func<lightSector, bool>> _conditionalUnknown = new Dictionary<string,Func<lightSector, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6253,10 +6364,13 @@ namespace S100Framework.DomainModel.S501 {
 			public List<String> signalGroup {get;set;} = [];
 
 			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<sectorCharacteristics, bool>> _conditionalDpendencies = new Dictionary<string,Func<sectorCharacteristics, bool>> {
+			private IReadOnlyDictionary<string, Func<sectorCharacteristics, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorCharacteristics, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 	}
@@ -6303,10 +6417,13 @@ namespace S100Framework.DomainModel.S501 {
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ReferenceToAPublication, bool>> _conditionalDpendencies = new Dictionary<string,Func<ReferenceToAPublication, bool>> {
+			private IReadOnlyDictionary<string, Func<ReferenceToAPublication, bool>> _conditionalUnknown = new Dictionary<string,Func<ReferenceToAPublication, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 	namespace FeatureTypes {
@@ -6466,10 +6583,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<InstallationBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<InstallationBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<InstallationBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<InstallationBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6531,10 +6651,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DepthArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<DepthArea, bool>> {
+			private IReadOnlyDictionary<string, Func<DepthArea, bool>> _conditionalUnknown = new Dictionary<string,Func<DepthArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6643,10 +6766,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RadioCallingInPoint, bool>> _conditionalDpendencies = new Dictionary<string,Func<RadioCallingInPoint, bool>> {
+			private IReadOnlyDictionary<string, Func<RadioCallingInPoint, bool>> _conditionalUnknown = new Dictionary<string,Func<RadioCallingInPoint, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6735,10 +6861,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<PatrolArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<PatrolArea, bool>> {
+			private IReadOnlyDictionary<string, Func<PatrolArea, bool>> _conditionalUnknown = new Dictionary<string,Func<PatrolArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6824,10 +6953,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Checkpoint, bool>> _conditionalDpendencies = new Dictionary<string,Func<Checkpoint, bool>> {
+			private IReadOnlyDictionary<string, Func<Checkpoint, bool>> _conditionalUnknown = new Dictionary<string,Func<Checkpoint, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -6967,10 +7099,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MarineManagementArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<MarineManagementArea, bool>> {
+			private IReadOnlyDictionary<string, Func<MarineManagementArea, bool>> _conditionalUnknown = new Dictionary<string,Func<MarineManagementArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7042,10 +7177,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DepthContour, bool>> _conditionalDpendencies = new Dictionary<string,Func<DepthContour, bool>> {
+			private IReadOnlyDictionary<string, Func<DepthContour, bool>> _conditionalUnknown = new Dictionary<string,Func<DepthContour, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7095,10 +7233,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<EnvironmentallySensitiveSeaArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<EnvironmentallySensitiveSeaArea, bool>> {
+			private IReadOnlyDictionary<string, Func<EnvironmentallySensitiveSeaArea, bool>> _conditionalUnknown = new Dictionary<string,Func<EnvironmentallySensitiveSeaArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7204,10 +7345,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Road, bool>> _conditionalDpendencies = new Dictionary<string,Func<Road, bool>> {
+			private IReadOnlyDictionary<string, Func<Road, bool>> _conditionalUnknown = new Dictionary<string,Func<Road, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7273,10 +7417,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<River, bool>> _conditionalDpendencies = new Dictionary<string,Func<River, bool>> {
+			private IReadOnlyDictionary<string, Func<River, bool>> _conditionalUnknown = new Dictionary<string,Func<River, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7463,10 +7610,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MilitaryPracticeArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<MilitaryPracticeArea, bool>> {
+			private IReadOnlyDictionary<string, Func<MilitaryPracticeArea, bool>> _conditionalUnknown = new Dictionary<string,Func<MilitaryPracticeArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7517,10 +7667,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DiscolouredWater, bool>> _conditionalDpendencies = new Dictionary<string,Func<DiscolouredWater, bool>> {
+			private IReadOnlyDictionary<string, Func<DiscolouredWater, bool>> _conditionalUnknown = new Dictionary<string,Func<DiscolouredWater, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7686,10 +7839,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CardinalBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<CardinalBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<CardinalBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7846,10 +8002,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SafeWaterBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<SafeWaterBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<SafeWaterBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -7968,10 +8127,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RadioStation, bool>> _conditionalDpendencies = new Dictionary<string,Func<RadioStation, bool>> {
+			private IReadOnlyDictionary<string, Func<RadioStation, bool>> _conditionalUnknown = new Dictionary<string,Func<RadioStation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8046,10 +8208,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MilitaryExerciseAirspace, bool>> _conditionalDpendencies = new Dictionary<string,Func<MilitaryExerciseAirspace, bool>> {
+			private IReadOnlyDictionary<string, Func<MilitaryExerciseAirspace, bool>> _conditionalUnknown = new Dictionary<string,Func<MilitaryExerciseAirspace, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8142,10 +8307,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ContiguousZone, bool>> _conditionalDpendencies = new Dictionary<string,Func<ContiguousZone, bool>> {
+			private IReadOnlyDictionary<string, Func<ContiguousZone, bool>> _conditionalUnknown = new Dictionary<string,Func<ContiguousZone, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8220,10 +8388,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<NormalBaseline, bool>> _conditionalDpendencies = new Dictionary<string,Func<NormalBaseline, bool>> {
+			private IReadOnlyDictionary<string, Func<NormalBaseline, bool>> _conditionalUnknown = new Dictionary<string,Func<NormalBaseline, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8329,10 +8500,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CableArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<CableArea, bool>> {
+			private IReadOnlyDictionary<string, Func<CableArea, bool>> _conditionalUnknown = new Dictionary<string,Func<CableArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8420,10 +8594,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ContinentalShelfArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<ContinentalShelfArea, bool>> {
+			private IReadOnlyDictionary<string, Func<ContinentalShelfArea, bool>> _conditionalUnknown = new Dictionary<string,Func<ContinentalShelfArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8510,10 +8687,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<InternalWaters, bool>> _conditionalDpendencies = new Dictionary<string,Func<InternalWaters, bool>> {
+			private IReadOnlyDictionary<string, Func<InternalWaters, bool>> _conditionalUnknown = new Dictionary<string,Func<InternalWaters, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8588,10 +8768,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<AdministrationArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<AdministrationArea, bool>> {
+			private IReadOnlyDictionary<string, Func<AdministrationArea, bool>> _conditionalUnknown = new Dictionary<string,Func<AdministrationArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8682,10 +8865,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Bollard, bool>> _conditionalDpendencies = new Dictionary<string,Func<Bollard, bool>> {
+			private IReadOnlyDictionary<string, Func<Bollard, bool>> _conditionalUnknown = new Dictionary<string,Func<Bollard, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8850,10 +9036,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Dolphin, bool>> _conditionalDpendencies = new Dictionary<string,Func<Dolphin, bool>> {
+			private IReadOnlyDictionary<string, Func<Dolphin, bool>> _conditionalUnknown = new Dictionary<string,Func<Dolphin, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -8930,10 +9119,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RadarRange, bool>> _conditionalDpendencies = new Dictionary<string,Func<RadarRange, bool>> {
+			private IReadOnlyDictionary<string, Func<RadarRange, bool>> _conditionalUnknown = new Dictionary<string,Func<RadarRange, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9129,10 +9321,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<IsolatedDangerBeacon, bool>> _conditionalDpendencies = new Dictionary<string,Func<IsolatedDangerBeacon, bool>> {
+			private IReadOnlyDictionary<string, Func<IsolatedDangerBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBeacon, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9279,10 +9474,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<IsolatedDangerBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<IsolatedDangerBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<IsolatedDangerBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9380,10 +9578,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SubmarineTransitLane, bool>> _conditionalDpendencies = new Dictionary<string,Func<SubmarineTransitLane, bool>> {
+			private IReadOnlyDictionary<string, Func<SubmarineTransitLane, bool>> _conditionalUnknown = new Dictionary<string,Func<SubmarineTransitLane, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9443,10 +9644,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MaritimeSafetyInformationArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<MaritimeSafetyInformationArea, bool>> {
+			private IReadOnlyDictionary<string, Func<MaritimeSafetyInformationArea, bool>> _conditionalUnknown = new Dictionary<string,Func<MaritimeSafetyInformationArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9551,10 +9755,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<AirspaceRestriction, bool>> _conditionalDpendencies = new Dictionary<string,Func<AirspaceRestriction, bool>> {
+			private IReadOnlyDictionary<string, Func<AirspaceRestriction, bool>> _conditionalUnknown = new Dictionary<string,Func<AirspaceRestriction, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9650,10 +9857,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Sounding, bool>> _conditionalDpendencies = new Dictionary<string,Func<Sounding, bool>> {
+			private IReadOnlyDictionary<string, Func<Sounding, bool>> _conditionalUnknown = new Dictionary<string,Func<Sounding, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9729,10 +9939,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeBoundary, bool>> _conditionalDpendencies = new Dictionary<string,Func<TrafficSeparationSchemeBoundary, bool>> {
+			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeBoundary, bool>> _conditionalUnknown = new Dictionary<string,Func<TrafficSeparationSchemeBoundary, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9818,10 +10031,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DumpingGround, bool>> _conditionalDpendencies = new Dictionary<string,Func<DumpingGround, bool>> {
+			private IReadOnlyDictionary<string, Func<DumpingGround, bool>> _conditionalUnknown = new Dictionary<string,Func<DumpingGround, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -9975,10 +10191,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<AirportAirfield, bool>> _conditionalDpendencies = new Dictionary<string,Func<AirportAirfield, bool>> {
+			private IReadOnlyDictionary<string, Func<AirportAirfield, bool>> _conditionalUnknown = new Dictionary<string,Func<AirportAirfield, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10076,10 +10295,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<FoulGround, bool>> _conditionalDpendencies = new Dictionary<string,Func<FoulGround, bool>> {
+			private IReadOnlyDictionary<string, Func<FoulGround, bool>> _conditionalUnknown = new Dictionary<string,Func<FoulGround, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10256,10 +10478,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LightAirObstruction, bool>> _conditionalDpendencies = new Dictionary<string,Func<LightAirObstruction, bool>> {
+			private IReadOnlyDictionary<string, Func<LightAirObstruction, bool>> _conditionalUnknown = new Dictionary<string,Func<LightAirObstruction, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10404,10 +10629,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<MooringBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<MooringBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<MooringBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10583,10 +10811,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<UnderwaterAwashRock, bool>> _conditionalDpendencies = new Dictionary<string,Func<UnderwaterAwashRock, bool>> {
+			private IReadOnlyDictionary<string, Func<UnderwaterAwashRock, bool>> _conditionalUnknown = new Dictionary<string,Func<UnderwaterAwashRock, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10722,10 +10953,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CableOverhead, bool>> _conditionalDpendencies = new Dictionary<string,Func<CableOverhead, bool>> {
+			private IReadOnlyDictionary<string, Func<CableOverhead, bool>> _conditionalUnknown = new Dictionary<string,Func<CableOverhead, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -10840,10 +11074,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ControlledAirspace, bool>> _conditionalDpendencies = new Dictionary<string,Func<ControlledAirspace, bool>> {
+			private IReadOnlyDictionary<string, Func<ControlledAirspace, bool>> _conditionalUnknown = new Dictionary<string,Func<ControlledAirspace, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11196,10 +11433,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Obstruction, bool>> _conditionalDpendencies = new Dictionary<string,Func<Obstruction, bool>> {
+			private IReadOnlyDictionary<string, Func<Obstruction, bool>> _conditionalUnknown = new Dictionary<string,Func<Obstruction, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11295,10 +11535,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<FishingGround, bool>> _conditionalDpendencies = new Dictionary<string,Func<FishingGround, bool>> {
+			private IReadOnlyDictionary<string, Func<FishingGround, bool>> _conditionalUnknown = new Dictionary<string,Func<FishingGround, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11400,10 +11643,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<FishingFacility, bool>> _conditionalDpendencies = new Dictionary<string,Func<FishingFacility, bool>> {
+			private IReadOnlyDictionary<string, Func<FishingFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<FishingFacility, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11489,10 +11735,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<NavigationSystem, bool>> _conditionalDpendencies = new Dictionary<string,Func<NavigationSystem, bool>> {
+			private IReadOnlyDictionary<string, Func<NavigationSystem, bool>> _conditionalUnknown = new Dictionary<string,Func<NavigationSystem, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11583,10 +11832,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeCrossing, bool>> _conditionalDpendencies = new Dictionary<string,Func<TrafficSeparationSchemeCrossing, bool>> {
+			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeCrossing, bool>> _conditionalUnknown = new Dictionary<string,Func<TrafficSeparationSchemeCrossing, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11684,10 +11936,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeLanePart, bool>> _conditionalDpendencies = new Dictionary<string,Func<TrafficSeparationSchemeLanePart, bool>> {
+			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeLanePart, bool>> _conditionalUnknown = new Dictionary<string,Func<TrafficSeparationSchemeLanePart, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11795,10 +12050,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<TerritorialSeaArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<TerritorialSeaArea, bool>> {
+			private IReadOnlyDictionary<string, Func<TerritorialSeaArea, bool>> _conditionalUnknown = new Dictionary<string,Func<TerritorialSeaArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -11998,10 +12256,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LateralBeacon, bool>> _conditionalDpendencies = new Dictionary<string,Func<LateralBeacon, bool>> {
+			private IReadOnlyDictionary<string, Func<LateralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBeacon, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12082,10 +12343,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CoastGuardStation, bool>> _conditionalDpendencies = new Dictionary<string,Func<CoastGuardStation, bool>> {
+			private IReadOnlyDictionary<string, Func<CoastGuardStation, bool>> _conditionalUnknown = new Dictionary<string,Func<CoastGuardStation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12161,10 +12425,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SeparationZoneOrLine, bool>> _conditionalDpendencies = new Dictionary<string,Func<SeparationZoneOrLine, bool>> {
+			private IReadOnlyDictionary<string, Func<SeparationZoneOrLine, bool>> _conditionalUnknown = new Dictionary<string,Func<SeparationZoneOrLine, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12244,10 +12511,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<BottomFeature, bool>> _conditionalDpendencies = new Dictionary<string,Func<BottomFeature, bool>> {
+			private IReadOnlyDictionary<string, Func<BottomFeature, bool>> _conditionalUnknown = new Dictionary<string,Func<BottomFeature, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12327,10 +12597,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ArchipelagicBaseline, bool>> _conditionalDpendencies = new Dictionary<string,Func<ArchipelagicBaseline, bool>> {
+			private IReadOnlyDictionary<string, Func<ArchipelagicBaseline, bool>> _conditionalUnknown = new Dictionary<string,Func<ArchipelagicBaseline, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12396,10 +12669,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SmallBottomObject, bool>> _conditionalDpendencies = new Dictionary<string,Func<SmallBottomObject, bool>> {
+			private IReadOnlyDictionary<string, Func<SmallBottomObject, bool>> _conditionalUnknown = new Dictionary<string,Func<SmallBottomObject, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12482,10 +12758,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ExclusiveEconomicZone, bool>> _conditionalDpendencies = new Dictionary<string,Func<ExclusiveEconomicZone, bool>> {
+			private IReadOnlyDictionary<string, Func<ExclusiveEconomicZone, bool>> _conditionalUnknown = new Dictionary<string,Func<ExclusiveEconomicZone, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12591,10 +12870,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RadarStation, bool>> _conditionalDpendencies = new Dictionary<string,Func<RadarStation, bool>> {
+			private IReadOnlyDictionary<string, Func<RadarStation, bool>> _conditionalUnknown = new Dictionary<string,Func<RadarStation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12650,10 +12932,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DivingLocation, bool>> _conditionalDpendencies = new Dictionary<string,Func<DivingLocation, bool>> {
+			private IReadOnlyDictionary<string, Func<DivingLocation, bool>> _conditionalUnknown = new Dictionary<string,Func<DivingLocation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12765,10 +13050,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RestrictedArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<RestrictedArea, bool>> {
+			private IReadOnlyDictionary<string, Func<RestrictedArea, bool>> _conditionalUnknown = new Dictionary<string,Func<RestrictedArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -12888,10 +13176,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CableSubmarine, bool>> _conditionalDpendencies = new Dictionary<string,Func<CableSubmarine, bool>> {
+			private IReadOnlyDictionary<string, Func<CableSubmarine, bool>> _conditionalUnknown = new Dictionary<string,Func<CableSubmarine, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13208,10 +13499,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Wreck, bool>> _conditionalDpendencies = new Dictionary<string,Func<Wreck, bool>> {
+			private IReadOnlyDictionary<string, Func<Wreck, bool>> _conditionalUnknown = new Dictionary<string,Func<Wreck, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13286,10 +13580,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<QRoute, bool>> _conditionalDpendencies = new Dictionary<string,Func<QRoute, bool>> {
+			private IReadOnlyDictionary<string, Func<QRoute, bool>> _conditionalUnknown = new Dictionary<string,Func<QRoute, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13358,10 +13655,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CompletenessOfProductSpecification, bool>> _conditionalDpendencies = new Dictionary<string,Func<CompletenessOfProductSpecification, bool>> {
+			private IReadOnlyDictionary<string, Func<CompletenessOfProductSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<CompletenessOfProductSpecification, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13453,10 +13753,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<RescueStation, bool>> _conditionalDpendencies = new Dictionary<string,Func<RescueStation, bool>> {
+			private IReadOnlyDictionary<string, Func<RescueStation, bool>> _conditionalUnknown = new Dictionary<string,Func<RescueStation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13651,10 +13954,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CardinalBeacon, bool>> _conditionalDpendencies = new Dictionary<string,Func<CardinalBeacon, bool>> {
+			private IReadOnlyDictionary<string, Func<CardinalBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBeacon, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13801,10 +14107,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LightVessel, bool>> _conditionalDpendencies = new Dictionary<string,Func<LightVessel, bool>> {
+			private IReadOnlyDictionary<string, Func<LightVessel, bool>> _conditionalUnknown = new Dictionary<string,Func<LightVessel, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13890,10 +14199,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<FisheryZone, bool>> _conditionalDpendencies = new Dictionary<string,Func<FisheryZone, bool>> {
+			private IReadOnlyDictionary<string, Func<FisheryZone, bool>> _conditionalUnknown = new Dictionary<string,Func<FisheryZone, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -13998,10 +14310,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DredgedArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<DredgedArea, bool>> {
+			private IReadOnlyDictionary<string, Func<DredgedArea, bool>> _conditionalUnknown = new Dictionary<string,Func<DredgedArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14108,10 +14423,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<FerryRoute, bool>> _conditionalDpendencies = new Dictionary<string,Func<FerryRoute, bool>> {
+			private IReadOnlyDictionary<string, Func<FerryRoute, bool>> _conditionalUnknown = new Dictionary<string,Func<FerryRoute, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14303,10 +14621,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<ShorelineConstruction, bool>> _conditionalDpendencies = new Dictionary<string,Func<ShorelineConstruction, bool>> {
+			private IReadOnlyDictionary<string, Func<ShorelineConstruction, bool>> _conditionalUnknown = new Dictionary<string,Func<ShorelineConstruction, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14392,10 +14713,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CautionArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<CautionArea, bool>> {
+			private IReadOnlyDictionary<string, Func<CautionArea, bool>> _conditionalUnknown = new Dictionary<string,Func<CautionArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14532,10 +14856,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DeepWaterRoutePart, bool>> _conditionalDpendencies = new Dictionary<string,Func<DeepWaterRoutePart, bool>> {
+			private IReadOnlyDictionary<string, Func<DeepWaterRoutePart, bool>> _conditionalUnknown = new Dictionary<string,Func<DeepWaterRoutePart, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14616,10 +14943,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<CurrentNonGravitational, bool>> _conditionalDpendencies = new Dictionary<string,Func<CurrentNonGravitational, bool>> {
+			private IReadOnlyDictionary<string, Func<CurrentNonGravitational, bool>> _conditionalUnknown = new Dictionary<string,Func<CurrentNonGravitational, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14691,10 +15021,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DataCoverage, bool>> _conditionalDpendencies = new Dictionary<string,Func<DataCoverage, bool>> {
+			private IReadOnlyDictionary<string, Func<DataCoverage, bool>> _conditionalUnknown = new Dictionary<string,Func<DataCoverage, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14770,10 +15103,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SeabedArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<SeabedArea, bool>> {
+			private IReadOnlyDictionary<string, Func<SeabedArea, bool>> _conditionalUnknown = new Dictionary<string,Func<SeabedArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -14936,10 +15272,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<SpecialPurposeGeneralBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15112,10 +15451,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LightSectored, bool>> _conditionalDpendencies = new Dictionary<string,Func<LightSectored, bool>> {
+			private IReadOnlyDictionary<string, Func<LightSectored, bool>> _conditionalUnknown = new Dictionary<string,Func<LightSectored, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15160,10 +15502,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<IceLine, bool>> _conditionalDpendencies = new Dictionary<string,Func<IceLine, bool>> {
+			private IReadOnlyDictionary<string, Func<IceLine, bool>> _conditionalUnknown = new Dictionary<string,Func<IceLine, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15264,10 +15609,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<AnchorageArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<AnchorageArea, bool>> {
+			private IReadOnlyDictionary<string, Func<AnchorageArea, bool>> _conditionalUnknown = new Dictionary<string,Func<AnchorageArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15428,10 +15776,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LateralBuoy, bool>> _conditionalDpendencies = new Dictionary<string,Func<LateralBuoy, bool>> {
+			private IReadOnlyDictionary<string, Func<LateralBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBuoy, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15522,10 +15873,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeRoundabout, bool>> _conditionalDpendencies = new Dictionary<string,Func<TrafficSeparationSchemeRoundabout, bool>> {
+			private IReadOnlyDictionary<string, Func<TrafficSeparationSchemeRoundabout, bool>> _conditionalUnknown = new Dictionary<string,Func<TrafficSeparationSchemeRoundabout, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15652,10 +16006,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DeepWaterRouteCentreline, bool>> _conditionalDpendencies = new Dictionary<string,Func<DeepWaterRouteCentreline, bool>> {
+			private IReadOnlyDictionary<string, Func<DeepWaterRouteCentreline, bool>> _conditionalUnknown = new Dictionary<string,Func<DeepWaterRouteCentreline, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -15807,10 +16164,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LightFloat, bool>> _conditionalDpendencies = new Dictionary<string,Func<LightFloat, bool>> {
+			private IReadOnlyDictionary<string, Func<LightFloat, bool>> _conditionalUnknown = new Dictionary<string,Func<LightFloat, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16010,10 +16370,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LightAllAround, bool>> _conditionalDpendencies = new Dictionary<string,Func<LightAllAround, bool>> {
+			private IReadOnlyDictionary<string, Func<LightAllAround, bool>> _conditionalUnknown = new Dictionary<string,Func<LightAllAround, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16130,10 +16493,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Coastline, bool>> _conditionalDpendencies = new Dictionary<string,Func<Coastline, bool>> {
+			private IReadOnlyDictionary<string, Func<Coastline, bool>> _conditionalUnknown = new Dictionary<string,Func<Coastline, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16219,10 +16585,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SeaAreaNamedWaterArea, bool>> _conditionalDpendencies = new Dictionary<string,Func<SeaAreaNamedWaterArea, bool>> {
+			private IReadOnlyDictionary<string, Func<SeaAreaNamedWaterArea, bool>> _conditionalUnknown = new Dictionary<string,Func<SeaAreaNamedWaterArea, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16262,10 +16631,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<DropZone, bool>> _conditionalDpendencies = new Dictionary<string,Func<DropZone, bool>> {
+			private IReadOnlyDictionary<string, Func<DropZone, bool>> _conditionalUnknown = new Dictionary<string,Func<DropZone, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16445,10 +16817,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<Conveyor, bool>> _conditionalDpendencies = new Dictionary<string,Func<Conveyor, bool>> {
+			private IReadOnlyDictionary<string, Func<Conveyor, bool>> _conditionalUnknown = new Dictionary<string,Func<Conveyor, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16539,10 +16914,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<LineOfDelimitation, bool>> _conditionalDpendencies = new Dictionary<string,Func<LineOfDelimitation, bool>> {
+			private IReadOnlyDictionary<string, Func<LineOfDelimitation, bool>> _conditionalUnknown = new Dictionary<string,Func<LineOfDelimitation, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16622,10 +17000,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<StraightTerritorialSeaBaseline, bool>> _conditionalDpendencies = new Dictionary<string,Func<StraightTerritorialSeaBaseline, bool>> {
+			private IReadOnlyDictionary<string, Func<StraightTerritorialSeaBaseline, bool>> _conditionalUnknown = new Dictionary<string,Func<StraightTerritorialSeaBaseline, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -16816,10 +17197,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SafeWaterBeacon, bool>> _conditionalDpendencies = new Dictionary<string,Func<SafeWaterBeacon, bool>> {
+			private IReadOnlyDictionary<string, Func<SafeWaterBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBeacon, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -17021,10 +17405,13 @@ namespace S100Framework.DomainModel.S501 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
-			public override bool ConditionalUnknown(string name) => _conditionalDpendencies[name](this);
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBeacon, bool>> _conditionalDpendencies = new Dictionary<string,Func<SpecialPurposeGeneralBeacon, bool>> {
+			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBeacon, bool>> {
 			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 
