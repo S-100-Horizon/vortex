@@ -7,6 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text;
 using IO = System.IO;
 
 namespace S100Framework.Topology
@@ -70,6 +71,12 @@ namespace S100Framework.Topology
 
     public class CompositeCurveFeature : FeatureType        
     {
+        public CompositeCurveFeature(FeatureRef[] curves) {
+            Curves = curves;
+
+            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
+        }
+
         public FeatureRef[] Curves { get; init; } = [];
     }
 
@@ -130,8 +137,7 @@ namespace S100Framework.Topology
             var keyStraight = string.Join(',', sortedList.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
             var keyReverse = string.Join(',', sortedList.Reverse().Select(e => !e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
 
-            var compositeCurve = new CompositeCurveFeature {
-                Curves = [.. sortedList],
+            var compositeCurve = new CompositeCurveFeature([.. sortedList]) {
             };
 
             lock (this) {
