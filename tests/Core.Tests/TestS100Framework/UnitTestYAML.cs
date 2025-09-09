@@ -464,7 +464,7 @@ Features:
                 Prim = S100Framework.YAML.Primitive.Surface,
                 Attributes = new SpecialPurposeGeneralBeacon {
                     beaconShape = default,
-                    verticalLength = 4.5m
+                    verticalLength = 4.5d
                 }
             };
 

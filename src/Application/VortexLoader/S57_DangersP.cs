@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -36,8 +35,12 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
+                }
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    throw new Exception("Ups. Not supported");
                 }
 
 
@@ -75,13 +78,12 @@ namespace S100Framework.Applications
                             if (periodicDateRange != default) {
                                 instance.periodicDateRange = periodicDateRange;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -96,17 +98,17 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -125,72 +127,6 @@ namespace S100Framework.Applications
 
                     case 10: { // FSHFAC Fishing facilities
                             throw new NotImplementedException($"No FSHFAC in DK or GL. {tableName}");
-
-                            var instance = new FishingFacility();
-
-                            if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue<categoryOfFishingFacility>(current.CATFIF.Value);
-                            }
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            // TODO: interoperabilityIdentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
-                                instance.verticalLength = current.VERLEN.Value;
-                            }
-                            else {
-                                instance.verticalLength = default(decimal?);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-
-                            buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
 
@@ -205,15 +141,14 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround, qualityOfVerticalMeasurement>(current.QUASOU);
                                 }
-
-                                if (current.SORDAT != default) {
-                                    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                        instance.reportedDate = current.SORDAT;
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
                                     }
                                     else {
-                                        Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                     }
                                 }
 
@@ -222,14 +157,14 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.TECSOU != null) {
-                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<FoulGround, techniqueOfVerticalMeasurement>(current.TECSOU);
                                 }
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                     instance.valueOfSounding = current.VALSOU.Value;
                                 }
                                 else {
-                                    instance.valueOfSounding = default(decimal?);
+                                    instance.valueOfSounding = default(double?);
                                 }
 
                                 if (current.SOUACC.HasValue) {
@@ -247,8 +182,8 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-                                
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -269,30 +204,8 @@ namespace S100Framework.Applications
                                 break;
                             }
 
-
-                            //CONDTN, EXPSOU, NATCON, NATQUA, NATSUR, PRODCT, VERLEN, WATLEV
-
-                            //var obstruction = new Obstruction {
-                            //    surroundingDepth = default,
-                            //    waterLevelEffect = default,
-                            //};
-
-                            ////if (current.CATOBS categoryOfObstruction
-
-                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                            //    string subtype = "";
-
-                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                            //    obstruction.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            //}
-
-                            //AddInformation(obstruction.information, feature);
-
-                            //// TODO: defaultClearanceDepth
                             var obstruction = ImporterNIS._converterRegistry.Convert<Obstruction>(current); // new List<DangersP>() { current });
-                            
+
                             buffer["ps"] = ps101;
                             buffer["code"] = obstruction.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -323,29 +236,29 @@ namespace S100Framework.Applications
                             };
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<UnderwaterAwashRock, expositionOfSounding>(current.EXPSOU.Value);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             // TODO: interoperabilityIdentifier
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.NATSUR != null) {
-                                instance.natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(current.NATSUR);
+                                instance.natureOfSurface = EnumHelper.GetEnumValue<UnderwaterAwashRock, natureOfSurface>(current.NATSUR);
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -354,14 +267,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TECSOU != default) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(current.TECSOU);
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<UnderwaterAwashRock, techniqueOfVerticalMeasurement>(current.TECSOU);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                instance.valueOfSounding = default(decimal?);
+                                instance.valueOfSounding = default(double?);
                             }
 
                             //      S57
@@ -375,7 +288,7 @@ namespace S100Framework.Applications
                             // 7   floating
                             // -1  Unknown
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV.Value);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<UnderwaterAwashRock, waterLevelEffect>(current.WATLEV.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -387,23 +300,94 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            // TODO: defaultClearanceDepth
-
-                            //instance.defaultClearanceDepth = current.
+                            bool coveredByUnsurveyedArea = false;
+                            bool coveredByDredgedArea = false;
+                            double? leastDepth = null;
 
                             if (current.SHAPE != null) {
-                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
-                                    var drval1 = depthArea.DRVAL1 ?? default;
-                                    instance.surroundingDepth = drval1;
+                                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
+                                    leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                                    if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
+                                        coveredByUnsurveyedArea = true;
+                                        break;
+                                    }
+                                    if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
+                                        coveredByDredgedArea = true;
+                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                                    }
+                                    if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
+                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                                    }
+
+                                    instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                                 }
                             }
 
+
+                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth.HasValue;
+
+                            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
+
+                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !instance.surroundingDepth.HasValue;
+
+                            if (allCoveringDepthRangeMinimumValuesAreKnown && !(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {
+                                if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
+                                    (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+
+                                    instance.defaultClearanceDepth = instance.surroundingDepth;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+
+                                    instance.defaultClearanceDepth = 0.1d;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
+
+                                    instance.defaultClearanceDepth = 0d;
+                                }
+                                else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                   (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+
+                                    instance.defaultClearanceDepth = -15d;
+                                }
+                                else {
+                                    ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
+                                }
+                            }
+                            else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
+                                if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
+                                    instance.defaultClearanceDepth = 0.1d;
+                                }
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                   (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
+                                    instance.defaultClearanceDepth = 0d;
+                                }
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+                                    instance.defaultClearanceDepth = -15d;
+                                }
+                                else {
+                                    ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
+                                }
+
+                            }
+                            else {
+                                Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot set default clearance depth. Check loader.");
+                            }
+
+
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -426,7 +410,7 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATWAT.HasValue) {
-                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<categoryOfWaterTurbulence>(current.CATWAT);
+                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<WaterTurbulence, categoryOfWaterTurbulence>(current.CATWAT);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -440,7 +424,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -469,39 +453,38 @@ namespace S100Framework.Applications
                             };
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
-                            if (current.CATWRK.HasValue && !instance.valueOfSounding.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue<categoryOfWreck>(current.CATWRK.Value);
+                            if (current.CATWRK.HasValue && !current.VALSOU.HasValue) {
+                                instance.categoryOfWreck = EnumHelper.GetEnumValue<Wreck, categoryOfWreck>(current.CATWRK.Value);
                             }
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding = EnumHelper.GetEnumValue<expositionOfSounding>(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue<Wreck, expositionOfSounding>(current.EXPSOU.Value);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck, qualityOfVerticalMeasurement>(current.QUASOU);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -515,23 +498,23 @@ namespace S100Framework.Applications
                                     This value has been replaced by the technique of vertical measurement value 18 (mechanically swept). 
                                     During the automated conversion process, all instances of TECSOU = 6 will be converted to technique of vertical measurement = 18.
                                  */
-                                var tecsou = !string.IsNullOrEmpty(current.TECSOU) && int.Parse(current.TECSOU)==6 ? "18" : current.TECSOU;
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<techniqueOfVerticalMeasurement>(tecsou);
+                                var tecsou = !string.IsNullOrEmpty(current.TECSOU) && int.Parse(current.TECSOU) == 6 ? "18" : current.TECSOU;
+                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Wreck, techniqueOfVerticalMeasurement>(tecsou);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767m) {
+                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                instance.valueOfSounding = default(decimal?);
+                                instance.valueOfSounding = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Wreck, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<Wreck, waterLevelEffect>(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -543,18 +526,19 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current)) {
+                            foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
                                 var drval1 = depthArea.DRVAL1 ?? default;
                                 instance.surroundingDepth = drval1;
                             }
 
+                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU,current.HEIGHT,current.WATLEV,current.CATWRK,current.OBJECTID!.Value,current.TableName!,current.LNAM!);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

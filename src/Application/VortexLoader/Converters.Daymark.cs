@@ -15,11 +15,11 @@ namespace S100Framework.Applications
             };
 
             if (current.CATSPM != default) {
-                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<Daymark,categoryOfSpecialPurposeMark>(current.CATSPM);
             }
 
             if (current.COLOUR != default) {
-                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                instance.colour = EnumHelper.GetEnumValues<Daymark,colour>(current.COLOUR);
             }
 
             if (current.COLPAT != default) {
@@ -36,17 +36,17 @@ namespace S100Framework.Applications
             if (dateRange != default) {
                 instance.fixedDateRange = dateRange;
             }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
             // TODO: interoperabilityidentifier
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                instance.natureOfConstruction = EnumHelper.GetEnumValues<Daymark,natureOfConstruction>(current.NATCON);
             }
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -63,7 +63,7 @@ namespace S100Framework.Applications
             }
 
             if (current.TOPSHP.HasValue) {
-                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(current.TOPSHP.Value);
+                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue<Daymark,topmarkDaymarkShape>(current.TOPSHP.Value);
             }
 
             if (current.VERLEN.HasValue) {
@@ -73,7 +73,7 @@ namespace S100Framework.Applications
             // TODO: shapeInformation
 
             if (current.PICREP != default) {
-                instance.pictorialRepresentation = current.PICREP;
+                instance.pictorialRepresentation = ImporterNIS.FixFilename(current.PICREP);
             }
 
             if (scaleMinimum.HasValue) {

@@ -33,9 +33,15 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
                 }
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    throw new Exception("Ups. Not supported");
+                }
+
+
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var watlev = current.WATLEV ?? default;
@@ -74,7 +80,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Coastline>(current.COLOUR);
                             }
 
                             if (current.ELEVAT.HasValue) {
@@ -114,10 +120,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Coastline, visualProminence>(current.CONVIS.Value);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -148,11 +154,11 @@ namespace S100Framework.Applications
                             var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
-                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<categoryOfShorelineConstruction>(current.CATSLC.Value);
+                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<ShorelineConstruction, categoryOfShorelineConstruction>(current.CATSLC.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<ShorelineConstruction>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -170,11 +176,11 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             var horclr = current.HORCLR ?? default;
@@ -198,19 +204,18 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -223,14 +228,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(-1);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(-1);
                                 else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<waterLevelEffect>(current.WATLEV);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(current.WATLEV);
                                 }
                             }
 
@@ -243,7 +248,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
 
                             buffer["ps"] = ps101;

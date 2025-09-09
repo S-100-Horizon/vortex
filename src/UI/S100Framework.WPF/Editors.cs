@@ -423,7 +423,7 @@ namespace S100Framework.WPF.Editors
                     //OnPropertyChanged(nameof(instance));
                 };
 
-                if (propertyType == typeof(decimal) || propertyType == typeof(Decimal)) {
+                if (propertyType == typeof(double)) {
                     var editor = new PropertyGridEditorDecimalUpDown();
                     editor.ValueChanged += (s, e) => {
                         radioButtonUnknown.IsChecked = !editor.Value.HasValue;
@@ -433,7 +433,7 @@ namespace S100Framework.WPF.Editors
                         radioButtonUnknown.IsChecked = true;
                     };
                     var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+                    BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
                     panel.Children.Add(editor);
 
                     panel.Children.Add(radioButtonUnknown);

@@ -355,6 +355,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Directional Character";
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -426,6 +428,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// The uniform assessment of detected features.
 	/// </summary>
@@ -455,9 +459,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _significantFeaturesDetected, value);
 			}
 		}
-		private decimal? _sizeOfFeaturesDetected  = default;
+		private double? _sizeOfFeaturesDetected  = default;
 
-		public decimal? sizeOfFeaturesDetected {
+		public double? sizeOfFeaturesDetected {
 			get {
 				return _sizeOfFeaturesDetected;
 			}
@@ -492,6 +496,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Features Detected";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -545,6 +551,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -597,6 +605,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Frequency Pair";
 	}
+
+
 	/// <summary>
 	/// The horizontal clearance measured between two points for a fixed span.
 	/// </summary>
@@ -604,10 +614,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceFixedViewModel : ViewModelBase {
-		private decimal? _horizontalClearanceValue  = default;
+		private double? _horizontalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? horizontalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -615,9 +625,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceValue, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -649,6 +659,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Horizontal Clearance Fixed";
 	}
+
+
 	/// <summary>
 	/// The horizontal clearance measured between two points for an opening span.
 	/// </summary>
@@ -656,10 +668,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalClearanceOpenViewModel : ViewModelBase {
-		private decimal? _horizontalClearanceValue  = default;
+		private double? _horizontalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? horizontalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? horizontalClearanceValue {
 			get {
 				return _horizontalClearanceValue;
 			}
@@ -667,9 +679,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceValue, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -701,6 +713,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Horizontal Clearance Open";
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -708,10 +722,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal? _uncertaintyFixed  = default;
+		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -719,9 +733,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -753,6 +767,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -844,6 +860,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Information";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
@@ -889,9 +907,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -980,6 +998,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The distance value indicated on a distance mark, or the distance between two measured distance marks.
 	/// </summary>
@@ -1012,10 +1032,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceLocation, value);
 			}
 		}
-		private decimal? _waterwayDistance  = default;
+		private double? _waterwayDistance  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? waterwayDistance {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? waterwayDistance {
 			get {
 				return _waterwayDistance;
 			}
@@ -1050,6 +1070,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Measured Distance Value";
 	}
+
+
 	/// <summary>
 	/// The number of features of identical character that exist as a co-located group.
 	/// </summary>
@@ -1102,6 +1124,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Multiplicity of Features";
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -1167,6 +1191,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
@@ -1174,9 +1200,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -1184,10 +1210,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1219,6 +1245,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -1274,6 +1302,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
@@ -1292,10 +1322,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal? _waveLengthValue  = default;
+		private double? _waveLengthValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? waveLengthValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? waveLengthValue {
 			get {
 				return _waveLengthValue;
 			}
@@ -1327,6 +1357,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Radar Wave Length";
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
@@ -1351,9 +1383,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 		[Category("rhythmOfLight")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -1410,6 +1442,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -1468,6 +1502,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
@@ -1494,9 +1530,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -1563,6 +1599,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
@@ -1615,6 +1653,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sector Information";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1676,6 +1716,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sector Limit";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1683,10 +1725,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal? _sectorBearing  = default;
+		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1694,9 +1736,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -1728,6 +1770,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sector Limit One";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1735,10 +1779,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal? _sectorBearing  = default;
+		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1746,9 +1790,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
-		private decimal? _sectorLineLength  = default;
+		private double? _sectorLineLength  = default;
 
-		public decimal? sectorLineLength {
+		public double? sectorLineLength {
 			get {
 				return _sectorLineLength;
 			}
@@ -1780,6 +1824,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
+
+
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
@@ -1832,6 +1878,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Shape Information";
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all “light characteristics” or sound signals.
 	/// </summary>
@@ -1839,10 +1887,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal? _signalDuration  = default;
+		private double? _signalDuration  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? signalDuration {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? signalDuration {
 			get {
 				return _signalDuration;
 			}
@@ -1889,6 +1937,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Signal Sequence";
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -1968,6 +2018,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
+
+
 	/// <summary>
 	/// Rate of motion. The terms speed and velocity are often used interchangeably, but speed is a scalar, having magnitude only, while velocity is a vector quantity, having both magnitude and direction.
 	/// </summary>
@@ -1975,10 +2027,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class speedViewModel : ViewModelBase {
-		private decimal? _speedMaximum  = default;
+		private double? _speedMaximum  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedMaximum {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -1986,9 +2038,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedMaximum, value);
 			}
 		}
-		private decimal? _speedMinimum  = default;
+		private double? _speedMinimum  = default;
 
-		public decimal? speedMinimum {
+		public double? speedMinimum {
 			get {
 				return _speedMinimum;
 			}
@@ -2020,6 +2072,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Speed";
 	}
+
+
 	/// <summary>
 	/// The general nature of the material of which the land surface or the seabed is composed.
 	/// </summary>
@@ -2096,6 +2150,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
@@ -2150,6 +2206,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Survey Date Range";
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -2220,6 +2278,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Telecommunications";
 	}
+
+
 	/// <summary>
 	/// The direction of the flow and the tidal current rate from 6 hours before to 6 hours after high water (HW) or low water (LW) at the reference tide station, at hourly or sub-hourly intervals.
 	/// </summary>
@@ -2257,9 +2317,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public referenceTideType[] referenceTideTypeList => [(referenceTideType)1,(referenceTideType)2,(referenceTideType)3];
-		private decimal? _streamDepth  = default;
+		private double? _streamDepth  = default;
 
-		public decimal? streamDepth {
+		public double? streamDepth {
 			get {
 				return _streamDepth;
 			}
@@ -2309,6 +2369,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A measurement of the direction and speed of a tidal stream at a given time relative to the reference tide.
 	/// </summary>
@@ -2328,10 +2390,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _orientation, value);
 			}
 		}
-		private decimal? _speedMaximum  = default;
+		private double? _speedMaximum  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedMaximum {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedMaximum {
 			get {
 				return _speedMaximum;
 			}
@@ -2339,10 +2401,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _speedMaximum, value);
 			}
 		}
-		private decimal? _timeRelativeToTide  = default;
+		private double? _timeRelativeToTide  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? timeRelativeToTide {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? timeRelativeToTide {
 			get {
 				return _timeRelativeToTide;
 			}
@@ -2380,6 +2442,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Tidal Stream Value";
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -2462,6 +2526,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
 	/// </summary>
@@ -2555,6 +2621,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation and where required its direction.
 	/// </summary>
@@ -2562,10 +2630,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase {
-		private decimal? _magneticAnomalyValue  = default;
+		private double? _magneticAnomalyValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? magneticAnomalyValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? magneticAnomalyValue {
 			get {
 				return _magneticAnomalyValue;
 			}
@@ -2612,6 +2680,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Value of Local Magnetic Anomaly";
 	}
+
+
 	/// <summary>
 	/// The vertical clearance of a feature in closed condition (for example a closed lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2619,10 +2689,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceClosedViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2669,6 +2739,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Clearance Closed";
 	}
+
+
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards a fixed (non-opening) feature overhead.
 	/// </summary>
@@ -2676,10 +2748,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceFixedViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2726,6 +2798,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Clearance Fixed";
 	}
+
+
 	/// <summary>
 	/// The vertical clearance of a feature in opened condition (for example an open lifting bridge) measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2744,9 +2818,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _verticalClearanceUnlimited, value);
 			}
 		}
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2796,6 +2870,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Clearance Open";
 	}
+
+
 	/// <summary>
 	/// The safe vertical clearance of a feature measured from the horizontal plane towards the feature overhead.
 	/// </summary>
@@ -2803,10 +2879,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalClearanceSafeViewModel : ViewModelBase {
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? verticalClearanceValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -2853,6 +2929,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Clearance Safe";
 	}
+
+
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
@@ -2860,10 +2938,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal? _uncertaintyFixed  = default;
+		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2871,9 +2949,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2905,6 +2983,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
+
+
 	/// <summary>
 	/// The maximum allowed rate of travel for a vessel in an area in knots.
 	/// </summary>
@@ -2912,10 +2992,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class vesselSpeedLimitViewModel : ViewModelBase {
-		private decimal? _speedLimit  = default;
+		private double? _speedLimit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? speedLimit {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? speedLimit {
 			get {
 				return _speedLimit;
 			}
@@ -2975,6 +3055,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Vessel Speed Limit";
 	}
+
+
 	/// <summary>
 	/// The overall indication of the quality of bathymetric data within an area based on the positional accuracy, survey equipment and coverage; optionally within a specified data range.
 	/// </summary>
@@ -3073,6 +3155,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Zone of Confidence";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
@@ -3100,6 +3184,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Additional information";
 	}
+
+
 
 	/// <summary>
 	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
@@ -3129,6 +3215,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Quality of bathymetric data composition";
 	}
 
+
+
 	/// <summary>
 	/// An association for the binding between a spatial type and its spatial quality information.
 	/// </summary>
@@ -3156,6 +3244,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Spatial Association";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between navigational aids and the traffic systems (such as routeing measures) that they define.
@@ -3185,6 +3275,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Aids to navigation association";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between an Archipelagic Sea Lane and its component features.
 	/// </summary>
@@ -3212,6 +3304,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"ASL aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a bridge and its component features.
@@ -3241,6 +3335,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Bridge aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a caution area and the traffic systems (such as routeing measures) to which the cautionary information applies.
 	/// </summary>
@@ -3268,6 +3364,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Caution area association";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a Deep Water route and its component features.
@@ -3297,6 +3395,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Deep Water route aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between related fairways comprising a fairway system.
 	/// </summary>
@@ -3324,6 +3424,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Fairway aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a fairway and related features auxiliary to the fairway.
@@ -3353,6 +3455,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Fairway auxiliary";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a named group of islands.
 	/// </summary>
@@ -3380,6 +3484,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Island aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a mooring trot and its component parts.
@@ -3409,6 +3515,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Mooring trot aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a pilotage district and its component pilot boarding places.
 	/// </summary>
@@ -3436,6 +3544,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Pilotage District Association";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between navigational tracks and the navigational aids that define the tracks.
@@ -3465,6 +3575,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Range system aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a roofed structure over navigable water and its supporting features.
 	/// </summary>
@@ -3492,6 +3604,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Roofed Structure Aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a navigation aid equipment feature and the structure that supports it.
@@ -3521,6 +3635,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Structure/equipment";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
 	/// </summary>
@@ -3548,6 +3664,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Text association";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a Traffic Separation Scheme or a Traffic Separation Scheme System and its component features.
@@ -3577,6 +3695,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Traffic Separation Scheme aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between a two-way route and its component features.
 	/// </summary>
@@ -3604,6 +3724,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Two-way route aggregation";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between an Update Information feature and its component Update Information features.
@@ -3633,6 +3755,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Update Aggregation";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between an update information metadata feature and updated feature(s) that it identifies.
 	/// </summary>
@@ -3660,6 +3784,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		public override string? ToString() => $"Updated Information";
 	}
+
+
 
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
@@ -3799,6 +3925,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
@@ -3882,6 +4010,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
@@ -3980,6 +4110,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
@@ -4066,6 +4198,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
@@ -4127,6 +4261,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
@@ -4150,10 +4286,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)4];
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -4184,10 +4320,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -4286,6 +4422,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
@@ -4405,6 +4543,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
@@ -4483,6 +4623,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
@@ -4517,11 +4659,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -4590,6 +4732,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the bathymetric data exists.
 	/// </summary>
@@ -4629,10 +4773,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public dataAssessment[] dataAssessmentList => [(dataAssessment)1,(dataAssessment)2,(dataAssessment)3];
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("QualityOfBathymetricData")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -4640,10 +4784,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMaximumValue, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("QualityOfBathymetricData")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -4778,6 +4922,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
@@ -4855,6 +5001,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
@@ -4934,6 +5082,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which a uniform assessment of the reliability of source survey information exists.
 	/// </summary>
@@ -4941,10 +5091,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfSurveyViewModel : FeatureViewModel<QualityOfSurvey> {
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("QualityOfSurvey")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -4952,10 +5102,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMaximumValue, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("QualityOfSurvey")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -5240,6 +5390,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Update Information metadata feature is used to represent a change to the information shown.
 	/// </summary>
@@ -5379,6 +5531,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.
 	/// </summary>
@@ -5410,11 +5564,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _referenceYearForMagneticVariation, value);
 			}
 		}
-		private decimal? _valueOfAnnualChangeInMagneticVariation  = default;
+		private double? _valueOfAnnualChangeInMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfAnnualChangeInMagneticVariation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfAnnualChangeInMagneticVariation {
 			get {
 				return _valueOfAnnualChangeInMagneticVariation;
 			}
@@ -5422,11 +5576,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfAnnualChangeInMagneticVariation, value);
 			}
 		}
-		private decimal? _valueOfMagneticVariation  = default;
+		private double? _valueOfMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfMagneticVariation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfMagneticVariation {
 			get {
 				return _valueOfMagneticVariation;
 			}
@@ -5497,6 +5651,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.
@@ -5610,6 +5766,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
 	/// </summary>
@@ -5640,10 +5798,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Coastline")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -5795,6 +5953,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The solid portion of the Earth's surface, as opposed to sea, water.
 	/// </summary>
@@ -5933,6 +6093,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A named group of islands, including archipelagos.
 	/// </summary>
@@ -6018,6 +6180,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.
 	/// </summary>
@@ -6025,11 +6189,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LandElevationViewModel : FeatureViewModel<LandElevation> {
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("LandElevation")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? elevation {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6137,6 +6301,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A relatively large natural stream of water.
 	/// </summary>
@@ -6241,6 +6407,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.
 	/// </summary>
@@ -6261,10 +6429,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Rapids")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6340,6 +6508,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.
 	/// </summary>
@@ -6360,10 +6530,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Waterfall")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6458,6 +6628,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A large body of water entirely surrounded by land.
 	/// </summary>
@@ -6465,10 +6637,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LakeViewModel : FeatureViewModel<Lake> {
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Lake")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6575,6 +6747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.
@@ -6714,6 +6888,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Plants collectively or individually, especially those dominating a particular area or habitat.
 	/// </summary>
@@ -6737,10 +6913,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfVegetation[] categoryOfVegetationList => [(categoryOfVegetation)3,(categoryOfVegetation)4,(categoryOfVegetation)5,(categoryOfVegetation)6,(categoryOfVegetation)11,(categoryOfVegetation)13,(categoryOfVegetation)14,(categoryOfVegetation)15,(categoryOfVegetation)16,(categoryOfVegetation)17,(categoryOfVegetation)18,(categoryOfVegetation)19,(categoryOfVegetation)20,(categoryOfVegetation)22];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Vegetation")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6750,10 +6926,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("Vegetation")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Vegetation")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6772,10 +6948,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Vegetation")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6879,6 +7055,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of ice over land or water.
 	/// </summary>
@@ -6902,10 +7080,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public categoryOfIce[] categoryOfIceList => [(categoryOfIce)1,(categoryOfIce)5,(categoryOfIce)8];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("IceArea")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6915,10 +7093,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("IceArea")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("IceArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6958,10 +7136,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IceArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -7087,6 +7265,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An inclined surface.
@@ -7259,6 +7439,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The upper marking of a slope, for example the ridge line or the separation line between two different gradients.
 	/// </summary>
@@ -7289,10 +7471,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SlopeTopline")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -7444,6 +7626,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A channel through which a tidal current runs.
 	/// </summary>
@@ -7529,6 +7713,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of land or construction over the water containing a concentration of buildings and/or other structures.
 	/// </summary>
@@ -7570,10 +7756,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("BuiltUpArea")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("BuiltUpArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7742,6 +7928,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
 	/// </summary>
@@ -7804,10 +7992,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Building")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -7824,10 +8012,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)44,(function)45,(function)46,(function)47,(function)48];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Building")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7895,10 +8083,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)7,(status)8,(status)12,(status)13,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Building")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -8088,6 +8276,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
 	/// </summary>
@@ -8255,6 +8445,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.
 	/// </summary>
@@ -8419,6 +8611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A site on which helicopters may land and take off.
@@ -8585,6 +8779,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
@@ -8684,10 +8880,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Bridge")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8922,6 +9118,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A fixed component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
@@ -9081,6 +9279,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An opening component of the deck of a bridge spanning successive bridge piers.
@@ -9260,6 +9460,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
 	/// </summary>
@@ -9336,10 +9538,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Conveyor")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -9358,10 +9560,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("Conveyor")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -9446,10 +9648,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Conveyor")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -9630,6 +9832,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
 	/// </summary>
@@ -9681,10 +9885,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _iceFactor  = default;
+		private double? _iceFactor  = default;
 
 		[Category("CableOverhead")]
-		public decimal? iceFactor {
+		public double? iceFactor {
 			get {
 				return _iceFactor;
 			}
@@ -9922,6 +10126,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.
@@ -10201,6 +10407,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.
 	/// </summary>
@@ -10277,10 +10485,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("PylonBridgeSupport")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -10348,10 +10556,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("PylonBridgeSupport")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -10539,6 +10747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A man-made barrier used as an enclosure or boundary or for protection.
 	/// </summary>
@@ -10601,10 +10811,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("FenceWall")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -10614,10 +10824,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("FenceWall")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("FenceWall")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -10673,10 +10883,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)7,(status)12,(status)13];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FenceWall")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -10822,6 +11032,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A rail or set of parallel rails on which a train, tram, or rail wagon runs.
 	/// </summary>
@@ -10847,10 +11059,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("Railway")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Railway")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -10971,6 +11183,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
@@ -11143,6 +11357,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.
@@ -11349,6 +11565,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
 	/// </summary>
@@ -11409,10 +11627,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)4,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11429,10 +11647,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)44,(function)45,(function)46,(function)47,(function)48];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11500,10 +11718,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)13,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11710,6 +11928,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
 	/// </summary>
@@ -11788,10 +12008,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SiloTank")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11801,10 +12021,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("SiloTank")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SiloTank")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11879,10 +12099,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12,(status)13];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12075,6 +12295,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
 	/// </summary>
@@ -12121,10 +12343,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)4,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("WindTurbine")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -12146,10 +12368,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("WindTurbine")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12245,10 +12467,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("WindTurbine")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12459,6 +12681,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure that is specifically designed or reinforced to provide for defence from armed attack.
 	/// </summary>
@@ -12500,10 +12724,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2];
 		[Category("FortifiedStructure")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("FortifiedStructure")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12559,10 +12783,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)7,(status)8,(status)12,(status)13,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FortifiedStructure")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12720,6 +12944,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area on land for the exploitation or storage of natural resources.
 	/// </summary>
@@ -12759,10 +12985,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -12784,10 +13010,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -12843,10 +13069,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)4,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("ProductionStorageArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12999,6 +13225,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An official location at which to register, declare and/or inspect goods and/or people.
 	/// </summary>
@@ -13120,6 +13348,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.
 	/// </summary>
@@ -13187,10 +13417,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("Hulk")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -13198,10 +13428,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Hulk")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -13245,10 +13475,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Hulk")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13411,6 +13641,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 	/// </summary>
@@ -13487,10 +13719,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Pile")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -13539,10 +13771,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)7,(status)8,(status)12,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pile")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13695,6 +13927,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A dyke (or dike) is an artificial embankment to contain or hold back water.
 	/// </summary>
@@ -13732,10 +13966,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dyke")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -13784,10 +14018,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dyke")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13910,6 +14144,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
 	/// </summary>
@@ -13986,10 +14222,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14009,10 +14245,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14020,10 +14256,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14079,10 +14315,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)6,(status)7,(status)8,(status)12,(status)13,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("ShorelineConstruction")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14262,6 +14498,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.
 	/// </summary>
@@ -14329,10 +14567,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14352,10 +14590,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14363,10 +14601,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14468,10 +14706,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("StructureOverNavigableWater")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14675,6 +14913,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A raised way across low or wet ground or water.
 	/// </summary>
@@ -14847,6 +15087,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).
 	/// </summary>
@@ -14912,10 +15154,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Canal")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -15051,6 +15293,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.
@@ -15188,6 +15432,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.
 	/// </summary>
@@ -15227,10 +15473,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("Gate")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -15449,6 +15695,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.
 	/// </summary>
@@ -15525,10 +15773,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dam")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15572,10 +15820,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)6,(status)7,(status)8,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dam")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15740,6 +15988,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.
 	/// </summary>
@@ -15804,10 +16054,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("Crane")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Crane")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15826,10 +16076,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("Crane")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -15860,10 +16110,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
-		private decimal? _radius  = default;
+		private double? _radius  = default;
 
 		[Category("Crane")]
-		public decimal? radius {
+		public double? radius {
 			get {
 				return _radius;
 			}
@@ -15906,10 +16156,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Crane")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16088,6 +16338,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
@@ -16116,10 +16368,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("Berth")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -16127,10 +16379,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("Berth")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -16149,10 +16401,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Berth")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -16160,10 +16412,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _minimumBerthDepth  = default;
+		private double? _minimumBerthDepth  = default;
 
 		[Category("Berth")]
-		public decimal? minimumBerthDepth {
+		public double? minimumBerthDepth {
 			get {
 				return _minimumBerthDepth;
 			}
@@ -16328,6 +16580,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
@@ -16381,10 +16635,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Dolphin")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16406,10 +16660,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Dolphin")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16467,10 +16721,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)14,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Dolphin")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16653,6 +16907,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
@@ -16833,6 +17089,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
@@ -16856,10 +17114,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DryDock")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -16867,10 +17125,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("DryDock")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16892,10 +17150,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -16903,10 +17161,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -16925,10 +17183,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -16936,10 +17194,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("DryDock")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -16947,10 +17205,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DryDock")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17105,6 +17363,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
@@ -17151,10 +17411,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("FloatingDock")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -17176,10 +17436,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -17187,10 +17447,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -17198,10 +17458,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceWidth, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -17209,10 +17469,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -17231,10 +17491,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _liftingCapacity  = default;
+		private double? _liftingCapacity  = default;
 
 		[Category("FloatingDock")]
-		public decimal? liftingCapacity {
+		public double? liftingCapacity {
 			get {
 				return _liftingCapacity;
 			}
@@ -17242,10 +17502,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _liftingCapacity, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("FloatingDock")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17271,10 +17531,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)7,(status)8,(status)12];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FloatingDock")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -17439,6 +17699,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.
 	/// </summary>
@@ -17507,10 +17769,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)14];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pontoon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -17651,6 +17913,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
@@ -17718,10 +17982,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalClearanceLength  = default;
+		private double? _horizontalClearanceLength  = default;
 
 		[Category("DockArea")]
-		public decimal? horizontalClearanceLength {
+		public double? horizontalClearanceLength {
 			get {
 				return _horizontalClearanceLength;
 			}
@@ -17729,10 +17993,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceLength, value);
 			}
 		}
-		private decimal? _horizontalClearanceWidth  = default;
+		private double? _horizontalClearanceWidth  = default;
 
 		[Category("DockArea")]
-		public decimal? horizontalClearanceWidth {
+		public double? horizontalClearanceWidth {
 			get {
 				return _horizontalClearanceWidth;
 			}
@@ -17751,10 +18015,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DockArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -17881,6 +18145,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
@@ -17890,10 +18156,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class GridironViewModel : FeatureViewModel<Gridiron> {
 		[Category("Gridiron")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("Gridiron")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -17901,10 +18167,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("Gridiron")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -17937,10 +18203,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)6,(status)8,(status)14,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Gridiron")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -18061,6 +18327,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 	/// </summary>
@@ -18096,10 +18364,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalClearanceFixed, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LockBasin")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -18107,10 +18375,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LockBasin")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -18239,6 +18507,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.
 	/// </summary>
@@ -18341,6 +18611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
@@ -18445,6 +18717,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.
@@ -18603,6 +18877,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any current that is caused by other than tide producing forces.
@@ -18774,6 +19050,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.
 	/// </summary>
@@ -18877,6 +19155,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.
@@ -19003,6 +19283,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
@@ -19157,6 +19439,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of the bottom of a body of water which has been deepened by dredging.
 	/// </summary>
@@ -19164,11 +19448,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DredgedAreaViewModel : FeatureViewModel<DredgedArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19176,10 +19460,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("DredgedArea")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -19212,10 +19496,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("DredgedArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -19369,6 +19653,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area that has been determined to be clear of navigational dangers to a specified depth.
 	/// </summary>
@@ -19376,11 +19662,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SweptAreaViewModel : FeatureViewModel<SweptArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("SweptArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19472,6 +19758,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
 	/// </summary>
@@ -19490,11 +19778,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _valueOfDepthContour  = default;
+		private double? _valueOfDepthContour  = default;
 
 		[Category("DepthContour")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfDepthContour {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfDepthContour {
 			get {
 				return _valueOfDepthContour;
 			}
@@ -19560,6 +19848,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A water area whose depth is within a defined range of values.
 	/// </summary>
@@ -19567,11 +19857,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthAreaViewModel : FeatureViewModel<DepthArea> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -19579,11 +19869,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMaximumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -19648,6 +19938,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Upon investigation the bottom was not found at this depth.
@@ -19739,6 +20031,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area where hydrographic survey data is non-existent.
 	/// </summary>
@@ -19797,6 +20091,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
@@ -19914,6 +20210,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Any macroscopic marine alga.
 	/// </summary>
@@ -20018,6 +20316,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.
 	/// </summary>
@@ -20103,6 +20403,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.
 	/// </summary>
@@ -20121,10 +20423,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Sandwave")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20189,6 +20491,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.
@@ -20274,6 +20578,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
@@ -20369,11 +20675,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? valueOfSounding {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20410,10 +20716,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("UnderwaterAwashRock")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("UnderwaterAwashRock")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -20421,11 +20727,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20529,6 +20835,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
 	/// </summary>
@@ -20570,10 +20878,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 		[Category("Wreck")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Wreck")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20636,10 +20944,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("Wreck")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20703,10 +21011,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("Wreck")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -20714,11 +21022,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -20841,6 +21149,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
 	/// </summary>
@@ -20898,10 +21208,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 		[Category("Obstruction")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Obstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20920,10 +21230,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Obstruction")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -20978,10 +21288,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("Obstruction")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -20989,10 +21299,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfSounding, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Obstruction")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21029,10 +21339,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("Obstruction")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private decimal? _defaultClearanceDepth  = default;
+		private double? _defaultClearanceDepth  = default;
 
 		[Category("Obstruction")]
-		public decimal? defaultClearanceDepth {
+		public double? defaultClearanceDepth {
 			get {
 				return _defaultClearanceDepth;
 			}
@@ -21040,11 +21350,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _defaultClearanceDepth, value);
 			}
 		}
-		private decimal? _surroundingDepth  = default;
+		private double? _surroundingDepth  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? surroundingDepth {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? surroundingDepth {
 			get {
 				return _surroundingDepth;
 			}
@@ -21187,6 +21497,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
 	/// </summary>
@@ -21240,10 +21552,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("FoulGround")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -21370,6 +21682,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
 	/// </summary>
@@ -21458,6 +21772,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
 	/// </summary>
@@ -21531,10 +21847,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)18,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("FishingFacility")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21639,6 +21955,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.
 	/// </summary>
@@ -21692,10 +22010,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -21737,10 +22055,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)14,(status)16,(status)17,(status)28];
-		private decimal? _valueOfSounding  = default;
+		private double? _valueOfSounding  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? valueOfSounding {
+		public double? valueOfSounding {
 			get {
 				return _valueOfSounding;
 			}
@@ -21748,10 +22066,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _valueOfSounding, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("MarineFarmCulture")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21934,6 +22252,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
 	/// </summary>
@@ -22021,10 +22341,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareStack, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -22080,10 +22400,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7,(status)8,(status)12,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -22249,6 +22569,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
 	/// </summary>
@@ -22256,10 +22578,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
-		private decimal? _buriedDepth  = default;
+		private double? _buriedDepth  = default;
 
 		[Category("CableSubmarine")]
-		public decimal? buriedDepth {
+		public double? buriedDepth {
 			get {
 				return _buriedDepth;
 			}
@@ -22420,6 +22742,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area which contains one or more submarine cables.
@@ -22587,6 +22911,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A connected set of pipes for conveying liquids, slurries, or gases.
 	/// </summary>
@@ -22594,10 +22920,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PipelineSubmarineOnLandViewModel : FeatureViewModel<PipelineSubmarineOnLand> {
-		private decimal? _buriedDepth  = default;
+		private double? _buriedDepth  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? buriedDepth {
+		public double? buriedDepth {
 			get {
 				return _buriedDepth;
 			}
@@ -22628,10 +22954,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -22639,10 +22965,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _depthRangeMaximumValue  = default;
+		private double? _depthRangeMaximumValue  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		public decimal? depthRangeMaximumValue {
+		public double? depthRangeMaximumValue {
 			get {
 				return _depthRangeMaximumValue;
 			}
@@ -22866,6 +23192,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area containing one or more submarine pipelines.
 	/// </summary>
@@ -23049,6 +23377,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area at sea within which there are production facilities.
 	/// </summary>
@@ -23102,10 +23432,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshoreProductionArea")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -23168,10 +23498,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)4,(status)7,(status)8,(status)12,(status)28];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshoreProductionArea")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -23348,6 +23678,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 	/// </summary>
@@ -23519,6 +23851,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
@@ -23538,10 +23872,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -23574,10 +23908,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23585,11 +23919,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -23780,6 +24114,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
 	/// </summary>
@@ -23812,10 +24148,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("RangeSystem")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23897,6 +24233,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.
 	/// </summary>
@@ -23904,10 +24242,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FairwayViewModel : FeatureViewModel<Fairway> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("Fairway")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -23940,10 +24278,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("Fairway")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -23951,10 +24289,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("Fairway")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24142,6 +24480,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.
 	/// </summary>
@@ -24174,10 +24514,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("FairwaySystem")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -24271,6 +24611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The recommended route centreline indicates the 'centreline' of a recommended route.
 	/// </summary>
@@ -24290,10 +24632,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedRouteCentreline")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -24326,10 +24668,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedRouteCentreline")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24517,6 +24859,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).
 	/// </summary>
@@ -24535,10 +24879,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("TwoWayRoutePart")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -24569,11 +24913,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("TwoWayRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24739,6 +25083,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.
 	/// </summary>
@@ -24771,10 +25117,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("TwoWayRoute")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -24856,6 +25202,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.
 	/// </summary>
@@ -24886,11 +25234,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RecommendedTrafficLanePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -24979,6 +25327,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
 	/// </summary>
@@ -24998,10 +25348,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -25045,11 +25395,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25228,6 +25578,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of a deep water route within which ships proceed in the same direction.
 	/// </summary>
@@ -25235,11 +25587,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRoutePartViewModel : FeatureViewModel<DeepWaterRoutePart> {
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? depthRangeMinimumValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -25283,11 +25635,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -25492,6 +25844,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.
 	/// </summary>
@@ -25608,6 +25962,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.
@@ -25745,6 +26101,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.
@@ -25909,6 +26267,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
 	/// </summary>
@@ -25939,10 +26299,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("TrafficSeparationSchemeLanePart")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -26060,6 +26420,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
 	/// </summary>
@@ -26168,6 +26530,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
 	/// </summary>
@@ -26275,6 +26639,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A defined area where traffic lanes cross.
@@ -26413,6 +26779,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
 	/// </summary>
@@ -26550,6 +26918,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.
 	/// </summary>
@@ -26593,10 +26963,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("TrafficSeparationScheme")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -26680,6 +27050,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft.
@@ -26798,6 +27170,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.
 	/// </summary>
@@ -26914,6 +27288,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.
@@ -27033,6 +27409,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
 	/// </summary>
@@ -27068,7 +27446,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
-		public ObservableCollection<decimal> orientationValue  { get; set; } = new ();
+		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
@@ -27207,6 +27585,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A route in a body of water where a ferry crosses from one shoreline to another.
@@ -27357,6 +27737,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.
 	/// </summary>
@@ -27377,11 +27759,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("RadarLine")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal? orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -27473,6 +27855,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
@@ -27606,6 +27990,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
 	/// </summary>
@@ -27635,10 +28021,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadarStation")]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarStation")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -27666,10 +28052,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7,(status)8];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("RadarStation")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -27790,6 +28176,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
@@ -27986,6 +28374,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area in which vessels may be secured to mooring buoys
 	/// </summary>
@@ -28025,10 +28415,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("MooringArea")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -28036,10 +28426,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _maximumPermittedVesselLength  = default;
+		private double? _maximumPermittedVesselLength  = default;
 
 		[Category("MooringArea")]
-		public decimal? maximumPermittedVesselLength {
+		public double? maximumPermittedVesselLength {
 			get {
 				return _maximumPermittedVesselLength;
 			}
@@ -28192,6 +28582,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A designated area of water where a vessel, seaplane, etc., may anchor.
 	/// </summary>
@@ -28240,10 +28632,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 		[Category("AnchorBerth")]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
-		private decimal? _radius  = default;
+		private double? _radius  = default;
 
 		[Category("AnchorBerth")]
-		public decimal? radius {
+		public double? radius {
 			get {
 				return _radius;
 			}
@@ -28371,6 +28763,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
@@ -28514,6 +28908,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
@@ -28677,6 +29073,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out.
@@ -28870,6 +29268,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A defined area within which a jurisdiction applies. It may or may not be named.
 	/// </summary>
@@ -29013,6 +29413,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.
@@ -29174,6 +29576,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
@@ -29345,6 +29749,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
 	/// </summary>
@@ -29489,6 +29895,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
 	/// </summary>
@@ -29606,6 +30014,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
 	/// </summary>
@@ -29703,6 +30113,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area within which national custom regulations are in force.
 	/// </summary>
@@ -29790,6 +30202,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
@@ -29889,6 +30303,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
@@ -30006,6 +30422,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A water area in which fishing is frequently carried on.
@@ -30150,6 +30568,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.
 	/// </summary>
@@ -30252,6 +30672,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
@@ -30353,6 +30775,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.
@@ -30467,6 +30891,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A floating barrier to stop and contain the spread of oil on a water body surface.
@@ -30641,6 +31067,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
 	/// </summary>
@@ -30728,6 +31156,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
@@ -30857,6 +31287,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A lane where submarines may navigate under water or at the surface.
 	/// </summary>
@@ -30985,6 +31417,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
@@ -31081,6 +31515,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.
@@ -31211,6 +31647,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.
 	/// </summary>
@@ -31309,6 +31747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.
@@ -31488,6 +31928,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
@@ -31550,10 +31992,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareBearing, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightAllAround")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -31664,10 +32106,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)11,(status)14,(status)15,(status)16,(status)17];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -31691,10 +32133,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightAllAround")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -31855,6 +32297,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
@@ -31899,10 +32343,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightSectored")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32124,6 +32568,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
@@ -32163,10 +32609,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _flareBearing, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightFogDetector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32238,10 +32684,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)13,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFogDetector")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -32371,6 +32817,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
@@ -32437,10 +32885,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -32488,10 +32936,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)6,(status)7,(status)8,(status)11,(status)14,(status)15,(status)16,(status)17];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -32653,6 +33101,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
@@ -32795,10 +33245,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LateralBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -32955,6 +33405,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
@@ -33097,10 +33549,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("CardinalBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33257,6 +33709,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
@@ -33383,10 +33837,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IsolatedDangerBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33540,6 +33994,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
@@ -33666,10 +34122,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SafeWaterBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -33823,6 +34279,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
@@ -33956,10 +34414,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -34123,6 +34581,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.
 	/// </summary>
@@ -34240,10 +34700,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("EmergencyWreckMarkingBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -34376,6 +34836,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An installation buoy is a buoy used for loading tankers with gas or oil.
@@ -34664,6 +35126,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
@@ -34735,10 +35199,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _maximumPermittedDraught  = default;
+		private double? _maximumPermittedDraught  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? maximumPermittedDraught {
+		public double? maximumPermittedDraught {
 			get {
 				return _maximumPermittedDraught;
 			}
@@ -34746,10 +35210,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _maximumPermittedDraught, value);
 			}
 		}
-		private decimal? _maximumPermittedVesselLength  = default;
+		private double? _maximumPermittedVesselLength  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? maximumPermittedVesselLength {
+		public double? maximumPermittedVesselLength {
 			get {
 				return _maximumPermittedVesselLength;
 			}
@@ -34773,10 +35237,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)18];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("MooringBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -34938,6 +35402,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
@@ -35016,10 +35482,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35052,10 +35518,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35130,10 +35596,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LateralBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -35321,6 +35787,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
@@ -35399,10 +35867,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35424,10 +35892,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35513,10 +35981,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("CardinalBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -35704,6 +36172,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
@@ -35766,10 +36236,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -35791,10 +36261,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -35880,10 +36350,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36068,6 +36538,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
@@ -36130,10 +36602,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36155,10 +36627,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36244,10 +36716,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SafeWaterBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36432,6 +36904,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
@@ -36501,10 +36975,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36526,10 +37000,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36615,10 +37089,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -36813,6 +37287,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
 	/// </summary>
@@ -36850,10 +37326,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Daymark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -36875,10 +37351,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Daymark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -36940,10 +37416,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Daymark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37116,6 +37592,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 	/// </summary>
@@ -37160,10 +37638,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -37171,10 +37649,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -37232,10 +37710,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _topmark, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37408,6 +37886,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 	/// </summary>
@@ -37452,10 +37932,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -37463,10 +37943,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -37512,10 +37992,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -37682,6 +38162,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
@@ -37724,10 +38206,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Retroreflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -37852,6 +38334,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
@@ -37871,10 +38355,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarReflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -37986,6 +38470,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
 	/// </summary>
@@ -38074,10 +38560,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -38094,10 +38580,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)15];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("FogSignal")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -38224,6 +38710,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
@@ -38231,10 +38719,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PhysicalAISAidToNavigationViewModel : FeatureViewModel<PhysicalAISAidToNavigation> {
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("PhysicalAISAidToNavigation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38386,6 +38874,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
 	/// </summary>
@@ -38393,10 +38883,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class VirtualAISAidToNavigationViewModel : FeatureViewModel<VirtualAISAidToNavigation> {
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("VirtualAISAidToNavigation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38567,6 +39057,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
@@ -38594,10 +39086,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 		[Category("RadioStation")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -38774,6 +39266,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
 	/// </summary>
@@ -38858,10 +39352,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("RadarTransponderBeacon")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -38994,6 +39488,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
@@ -39206,6 +39702,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
@@ -39290,6 +39788,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
@@ -39448,6 +39948,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
@@ -39610,6 +40112,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
 	/// </summary>
@@ -39771,6 +40275,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place where equipment for saving life at sea is maintained.
 	/// </summary>
@@ -39931,6 +40437,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
@@ -40206,6 +40714,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place at which a service generally of interest to small craft or pleasure boats is available.
 	/// </summary>
@@ -40351,6 +40861,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
@@ -40459,6 +40971,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.
 	/// </summary>
@@ -40515,5 +41029,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 		}
 	}
+
+
 
 }

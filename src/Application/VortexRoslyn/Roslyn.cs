@@ -1,6 +1,7 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,13 +27,17 @@ namespace S100Framework.Applications
             ISO8211 = 8211
         }
 
-        public record AttributeRule(string Name, string Rule);
+        public record AttributeRule(string PropertyName, string Rule);
+
+        public record DependencyRule(string Code, string RuleName, string Rule, Type AttributeType);
+
+        public record ValidationCheck(string Code, string Check);
 
         public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat) {
-            return Build(productSpecification, productFormat, false, []);
+            return Build(productSpecification, productFormat, false, [], [], []);
         }
 
-        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules) {
+        public static (string DomainModel, string ViewModel) Build(XDocument productSpecification, ProductFormat productFormat, bool supportingSpatialAssociation, AttributeRule[] attributeRules, DependencyRule[] dependencyRules, ValidationCheck[] validationChecks) {
             var navigator = productSpecification.CreateNavigator();
             navigator.MoveToFollowing(XPathNodeType.Element);
             var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -124,6 +129,8 @@ namespace S100Framework.Applications
             var featureAssociationsLookup = new Dictionary<string, ICollection<string>>();
 
             var editorBuilders = new Dictionary<string, Action<StringBuilder, int, int?>>();
+
+            var constraints = new Dictionary<string, string[]>();
 
             var shouldSerialize = new Dictionary<string, Func<string, string>> {
                 { "Boolean?", (code) => $"{code}.HasValue" },
@@ -312,7 +319,7 @@ namespace S100Framework.Applications
                     var prefix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "Boolean",
                         "enumeration" => code,
-                        "real" => "decimal",
+                        "real" => "double",
                         "text" => "String",
                         //"s100_truncateddate" => "DateOnly",
                         "s100_truncateddate" => "String",
@@ -353,7 +360,7 @@ namespace S100Framework.Applications
                     var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
                         "boolean" => "false",
                         //"enumeration" => code,
-                        //"real" => "decimal",
+                        //"real" => "double",
                         "text" => "string.Empty",
                         //"S100_TruncatedDate" => "DateOnly",
                         //"date" => "DateOnly",
@@ -368,6 +375,52 @@ namespace S100Framework.Applications
                     };
                     if (postfix != null) {
                         knowTypesPostfix.Add(code, postfix);
+                    }
+
+                    var c = e.Element(XName.Get("constraints", scope_S100));
+                    if (c != default) {
+                        if (c.Element(XName.Get("range", scopes["S100CD"])) != default) {
+                            var unit = prefix switch {
+                                "decimal" => "m",
+                                "double" => "",
+                                "int" => "",
+                                _ => "",
+                            };
+
+                            Func<string, string> converter = prefix switch {
+                                "double" => (v) => $"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
+                                _ => throw new InvalidOperationException()
+                            };
+
+                            var lowerBound = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("lowerBound", scopes["S100Base"]));
+                            var upperBound = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("upperBound", scopes["S100Base"]));
+                            var closure = c.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("closure", scopes["S100Base"]));
+
+                            if (!(lowerBound is null && upperBound is null)) {
+                                constraints.Add(code, []);
+                                if (upperBound is null)
+                                    constraints[code] = [.. constraints[code], $"[RangeConstraint<{prefix}>({converter(lowerBound!.Value)}{unit}, default, Closure.{closure!.Value})]"];
+                                else
+                                    constraints[code] = [.. constraints[code], $"[RangeConstraint<{prefix}>({converter(lowerBound!.Value)}{unit}, {converter(upperBound!.Value)}{unit}, Closure.{closure!.Value})]"];
+                                if (c.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                                    var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                                    constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
+                                }
+                            }
+                        }
+                        else if (c.Element(XName.Get("stringLength", scopes["S100CD"])) != default) {
+                            constraints.Add(code, []);
+                            var stringLength = c.Element(XName.Get("stringLength", scopes["S100CD"]))!.Value;
+                            constraints[code] = [.. constraints[code], $"[StringLengthConstraint({stringLength})]"];
+                        }
+                        else if (c.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                            constraints.Add(code, []);
+                            var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                            constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
+                        }
+                        else
+                            System.Diagnostics.Debugger.Break();
                     }
                 }
             }
@@ -420,7 +473,7 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine("\t\t[System.Serializable()]");
                         builderDomainModel.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
 
-                        builderDomainModel.AppendLine($"\t\tpublic class {code} {{");
+                        builderDomainModel.AppendLine($"\t\tpublic class {code} : ComplexType {{");
 
                         var constructor = new StringBuilder();
                         constructor.AppendLine($"new {code} {{");
@@ -451,8 +504,13 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                             }
 
-                            foreach (var attributeRule in attributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                            foreach (var attributeRule in attributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
                                 builderDomainModel.AppendLine($"\t\t\t{attributeRule.Rule}");
+                            }
+
+                            if (constraints.ContainsKey(referenceCode)) {
+                                foreach (var constraint in constraints[referenceCode])
+                                    builderDomainModel.AppendLine($"\t\t\t{constraint}");
                             }
 
                             //if (prefix.Equals("DateOnly")) {
@@ -503,6 +561,11 @@ namespace S100Framework.Applications
                                 }
                             }
                             else {
+                                if (lower > 0)
+                                    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
+                                if (upper.HasValue)
+                                    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                                 prefix = $"List<{prefix}>";
                                 postfix = " = [];";
                             }
@@ -544,6 +607,21 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
                             }
                         }
+
+                        builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                        builderDomainModel.AppendLine();
+                        builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                        foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                            builderDomainModel.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                        builderDomainModel.AppendLine("\t\t\t};");
+
+                        builderDomainModel.AppendLine();
+
+                        builderDomainModel.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                        foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                            builderDomainModel.AppendLine($"\t\t\t\t{d.Check}");
+                        builderDomainModel.AppendLine("\t\t\t}");
+
 
                         builderDomainModel.AppendLine("\t\t}");
                         builderDomainModel.AppendLine();
@@ -614,12 +692,14 @@ namespace S100Framework.Applications
                         KnowTypesPostfix = knowTypesPostfix,
                         ComplexTypes = complexTypes,
                         ObjectConstructors = objectConstructors,
+                        Constraints = constraints,
                         InformationAssociationsLookup = informationAssociationsLookup,
                         FeatureAssociationsLookup = featureAssociationsLookup,
                         ShouldSerialize = shouldSerialize,
                         SupportingSpatialAssociation = supportingSpatialAssociation,
                         ProductFormat = productFormat,
                         AttributeRules = attributeRules,
+                        DependencyRules = dependencyRules,
                     });
 
                     builderDomainModel.AppendLine(s);
@@ -661,12 +741,14 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         });
 
                         builderDomainModel.AppendLine(s);
@@ -743,18 +825,36 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         }, (builder) => {
                             builder.AppendLine();
-                            if (productFormat == ProductFormat.GML) {
-                                builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                            if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
+                                if (productFormat == ProductFormat.GML) {
+                                    builder.AppendLine("\t\t\t[JsonIgnore]");
+                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                builder.AppendLine();
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                builder.AppendLine("\t\t\t};");
+
+                                builder.AppendLine();
+
+                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{d.Check}");
+                                builder.AppendLine("\t\t\t}");
                             }
                         });
 
@@ -824,12 +924,14 @@ namespace S100Framework.Applications
                             KnowTypesPostfix = knowTypesPostfix,
                             ComplexTypes = complexTypes,
                             ObjectConstructors = objectConstructors,
+                            Constraints = constraints,
                             InformationAssociationsLookup = informationAssociationsLookup,
                             FeatureAssociationsLookup = featureAssociationsLookup,
                             ShouldSerialize = shouldSerialize,
                             SupportingSpatialAssociation = supportingSpatialAssociation,
                             ProductFormat = productFormat,
                             AttributeRules = attributeRules,
+                            DependencyRules = dependencyRules,
                         }, (builder) => {
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
                                 if (productFormat == ProductFormat.GML) {
@@ -843,6 +945,20 @@ namespace S100Framework.Applications
                                 builder.AppendLine("\t\t\t[JsonIgnore]");
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
                                 builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
+
+                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                builder.AppendLine();
+                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                builder.AppendLine("\t\t\t};");
+
+                                builder.AppendLine();
+
+                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                    builder.AppendLine($"\t\t\t\t{d.Check}");
+                                builder.AppendLine("\t\t\t}");
                             }
 
                             //if (superType == null) {
@@ -1216,12 +1332,14 @@ namespace S100Framework.Applications
             public required IReadOnlyDictionary<string, string> KnowTypesPostfix { get; init; }
             public required IReadOnlyCollection<string> ComplexTypes { get; init; }
             public required IReadOnlyDictionary<string, StringBuilder> ObjectConstructors { get; init; }
+            public required IReadOnlyDictionary<string, string[]> Constraints { get; init; }
             public required IDictionary<string, ICollection<string>> InformationAssociationsLookup { get; init; }
             public required IDictionary<string, ICollection<string>> FeatureAssociationsLookup { get; init; }
-            public required IDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
+            public required IReadOnlyDictionary<string, Func<string, string>> ShouldSerialize { get; init; }
             public required bool SupportingSpatialAssociation { get; init; }
             public required ProductFormat ProductFormat { get; init; }
             public required IReadOnlyCollection<AttributeRule> AttributeRules { get; init; }
+            public required IReadOnlyCollection<DependencyRule> DependencyRules { get; init; }
         }
 
         private static string BuildClass(XElement e, BuildClassClient client, Action<StringBuilder>? postBuilder = default) {
@@ -1299,9 +1417,15 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\t\t[EnumerationValue([{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => e.Value))}])]");
                 }
 
-                foreach (var attributeRule in client.AttributeRules.Where(e => e.Name.Equals(referenceCode))) {
+                foreach (var attributeRule in client.AttributeRules.Where(e => e.PropertyName.Equals($"{code}.{referenceCode}"))) {
                     builder.AppendLine($"\t\t\t{attributeRule.Rule}");
                 }
+
+                if (client.Constraints.ContainsKey(referenceCode)) {
+                    foreach (var constraint in client.Constraints[referenceCode])
+                        builder.AppendLine($"\t\t\t{constraint}");
+                }
+
                 //if (prefix.Equals("DateOnly")) {
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
@@ -1333,6 +1457,11 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
+                    if (lower > 0)
+                        builder.AppendLine($"\t\t\t[Lower({lower})]");
+                    if (upper.HasValue)
+                        builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                     prefix = $"List<{prefix}>";
                     postfix = " = [];";
                 }
@@ -1581,11 +1710,24 @@ namespace S100Framework.Applications
 
             var modelBuilder = new StringBuilder();
 
+            //var validationBuilder = new StringBuilder();
+
             BuildViewModelClassAttribute(code, e, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, new BuildViewModelClassAttributeClient {
                 BuildViewModelClassClient = client,
                 XmlNamespaceManager = xmlNamespaceManager,
                 XPathNavigator = navigator,
                 ProductFormat = client.ProductFormat,
+            }, (attribute, lower, upper, isCollection) => {
+                //if (isCollection) {
+                //    if (lower > 0) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count < {lower})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have at least {lower} value.\");");
+                //    }
+                //    if (upper.HasValue) {
+                //        validationBuilder.AppendLine($"\t\t\tif ({attribute}.Count > {upper.Value})");
+                //        validationBuilder.AppendLine($"\t\t\t\tbase.AddError(\"{attribute}\", $\"{attribute} must have no more than {upper.Value} value.\");");
+                //    }
+                //}
             });
 
             serializeBuilder.AppendLine("\t\t\t};");
@@ -1613,6 +1755,13 @@ namespace S100Framework.Applications
             builder.AppendLine();
             builder.AppendLine($"\t\tpublic override string? ToString() => $\"{name}\";");
 
+            //builder.AppendLine();
+            //builder.AppendLine($"\t\tprotected override void Validate() {{");
+            //{
+            //    builder.Append(validationBuilder.ToString());
+            //}
+            //builder.AppendLine($"\t\t}}");
+
             if (constructorBuilder.Length > 0) {
                 builder.AppendLine();
                 builder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
@@ -1623,7 +1772,7 @@ namespace S100Framework.Applications
             builder.AppendLine("\t}");
             builder.AppendLine();
 
-            return builder.ToString().TrimEnd([.. Environment.NewLine]);
+            return builder.ToString();//.TrimEnd([.. Environment.NewLine]);
         }
 
         struct BuildViewModelClassAttributeClient
@@ -1634,7 +1783,7 @@ namespace S100Framework.Applications
             public required ProductFormat ProductFormat { get; init; }
         }
 
-        private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client) {
+        private static void BuildViewModelClassAttribute(string code, XElement e, StringBuilder builder, StringBuilder loadBuilder, StringBuilder serializeBuilder, StringBuilder modelBuilder, StringBuilder constructorBuilder, BuildViewModelClassAttributeClient client, Action<string, int, int?, bool> callback) {
             var scopes = client.XPathNavigator.GetNamespacesInScope(XmlNamespaceScope.All);
 
             var xmlNamespaceManager = client.XmlNamespaceManager;
@@ -1645,7 +1794,7 @@ namespace S100Framework.Applications
             if (superType != null) {
                 var super = client.BuildViewModelClassClient.ProductSpecification.XPathSelectElement($"//*[S100FC:code = '{superType.Value}']", xmlNamespaceManager)!;
 
-                BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client);
+                BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client, callback);
             }
 
             var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
@@ -1777,6 +1926,8 @@ namespace S100Framework.Applications
                     builder.AppendLine("\t\t[Browsable(false)]");
                     builder.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode}List => Enum.GetValues<{referenceCode}>();");
                 }
+
+                callback(referenceCode, lower, upper, isCollection);
             }
             builder.AppendLine();
         }

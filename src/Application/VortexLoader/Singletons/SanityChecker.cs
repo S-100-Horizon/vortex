@@ -18,7 +18,7 @@ namespace S100Framework.Applications.Singletons
 
         internal static void Initialize(Geodatabase geodatabase) {
             if (_instance != null) {
-                throw new InvalidOperationException("SpatialAssociations has already been initialized.");
+                throw new InvalidOperationException("SanityChecker has already been initialized.");
             }
 
             lock (_lock) {
@@ -31,7 +31,7 @@ namespace S100Framework.Applications.Singletons
         internal static SanityChecker Instance {
             get {
                 if (_instance == null) {
-                    throw new InvalidOperationException("SpatialAssociations must be initialized before use.");
+                    throw new InvalidOperationException("SanityChecker must be initialized before use.");
                 }
 
                 return _instance;
@@ -108,7 +108,7 @@ namespace S100Framework.Applications.Singletons
             return errorCount;
         }
 
-        internal int Check_Editions() {
+        internal int Check_GetEditionsErrorCount() {
             Int32 errorCount = 0;
 
             var featureClasses = new List<string>() {
@@ -134,6 +134,38 @@ namespace S100Framework.Applications.Singletons
             }
             return errorCount;
         }
+
+        internal int Check_GetDefaultClearanceViolationCount() {
+            Int32 errorCount = 0;
+
+            var featureClasses = new List<string>() {
+                "curve",
+                "point",
+                "surface",
+                "pointset"
+            };
+            int recordCount = 0;
+
+            foreach (var featureclassName in featureClasses) {
+                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+
+                using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
+
+                while (cursor.MoveNext()) {
+                    recordCount++;
+                    var feature = cursor.Current;
+                    var json = feature["json"].ToString()!.ToLower();
+
+                    if (json.Contains("\"defaultclearancedepth\":null") && json.Contains("\"valueofsounding\":null"))
+                        errorCount++;
+                }
+            }
+             return errorCount;
+
+        }
+
+
+
     }
 
 

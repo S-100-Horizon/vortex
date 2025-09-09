@@ -32,9 +32,15 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
                 }
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    throw new Exception("Ups. Not supported");
+                }
+
+
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -44,58 +50,7 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 1: { // PRCARE_PrecautionaryArea
                             throw new NotImplementedException($"No PRCARE_PrecautionaryArea in DK or GL. {tableName}");
-
-                            var instance = new PrecautionaryArea();
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: imoAdopted
-                            instance.iMOAdopted = null;
-
-                            // TODO: interoperabilityIdentifier
-
-                            if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            // TODO: vesselspeedlimit
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-                            
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            // TODO: Create relations
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
-                        break;
                     case 5: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart {
                                 orientationValue = default,
@@ -162,7 +117,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
                                 instance.orientationValue = new() { current.ORIENT.Value };
                             }
 
@@ -176,7 +131,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue<RadioCallingInPoint, trafficFlow>(current.TRAFIC.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -186,7 +141,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

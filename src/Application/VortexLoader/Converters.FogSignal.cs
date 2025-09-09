@@ -21,7 +21,7 @@ namespace S100Framework.Applications
             }
 
             if (current.CATFOG.HasValue != default) {
-                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<categoryOfFogSignal>(current.CATFOG.Value);
+                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<FogSignal,categoryOfFogSignal>(current.CATFOG.Value);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -42,14 +42,14 @@ namespace S100Framework.Applications
                 instance.signalFrequency = current.SIGFRQ.Value;
             }
             if (current.SIGGEN.HasValue) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<FogSignal,signalGeneration>(current.SIGGEN.Value);
             }
             if (current.SIGGRP != default) {
                 instance.signalGroup = current.SIGGRP;
             }
 
             if (current.SIGPER != default) {
-                instance.signalPeriod = current.SIGPER == -32767 ? null : current.SIGPER;
+                instance.signalPeriod = current.SIGPER == -32767d ? null : current.SIGPER;
             }
 
             if (current.SIGSEQ != default) {

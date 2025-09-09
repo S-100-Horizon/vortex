@@ -33,9 +33,15 @@ namespace S100Framework.Applications
                 var globalid = current.GLOBALID;
 
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
                 }
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    throw new Exception("Ups. Not supported");
+                }
+
+
 
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
@@ -57,7 +63,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Bridge>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -116,7 +122,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<CableOverhead>(current.VERDAT ?? 3);
 
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -149,10 +155,10 @@ namespace S100Framework.Applications
                             var instance = new Conveyor();
 
                             if (current.CATCON.HasValue) {
-                                instance.categoryOfConveyor = EnumHelper.GetEnumValue<categoryOfConveyor>(current.CATCON.Value);
+                                instance.categoryOfConveyor = EnumHelper.GetEnumValue<Conveyor, categoryOfConveyor>(current.CATCON.Value);
                             }
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Conveyor>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -170,11 +176,11 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -186,19 +192,18 @@ namespace S100Framework.Applications
                             //TODO: multiplicityOfFeatures
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<Conveyor, product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -209,22 +214,22 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
-                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
                             };
 
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3);
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Conveyor, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -239,7 +244,7 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -266,11 +271,11 @@ namespace S100Framework.Applications
                             var instance = new Dam();
 
                             if (current.CATDAM.HasValue) {
-                                instance.categoryOfDam = EnumHelper.GetEnumValue<categoryOfDam>(current.CATDAM.Value);
+                                instance.categoryOfDam = EnumHelper.GetEnumValue<Dam, categoryOfDam>(current.CATDAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<Dam>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -287,17 +292,17 @@ namespace S100Framework.Applications
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Dam, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -309,15 +314,15 @@ namespace S100Framework.Applications
                             }
 
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767m) {
+                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
-                                instance.verticalLength = default(decimal?);
+                                instance.verticalLength = default(double?);
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<Dam, visualProminence>(current.CONVIS.Value);
                             }
 
 
@@ -407,7 +412,7 @@ namespace S100Framework.Applications
                             var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
-                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<categoryOfFortifiedStructure>(current.CATFOR.Value);
+                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue<FortifiedStructure, categoryOfFortifiedStructure>(current.CATFOR.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -416,29 +421,29 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<FortifiedStructure, natureOfConstruction>(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
 
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -451,7 +456,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<FortifiedStructure, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -466,10 +471,18 @@ namespace S100Framework.Applications
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            //TODO: inTheWater
+                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
+                                instance.inTheWater = false;
+                            }
+                            else {
+                                instance.inTheWater = true;
+                            }
+
+
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -493,13 +506,12 @@ namespace S100Framework.Applications
                     case 30: { // LNDMRK_Landmark
                             throw new NotImplementedException($"No LNDMRK_Landmark in DK | GL. {tableName}");
                         }
-                        break;
 
                     case 35: { // PIPOHD_PipelineOverhead
                             var instance = new PipelineOverhead();
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValue<categoryOfPipelinePipe>(current.CATPIP);
+                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValue<PipelineOverhead, categoryOfPipelinePipe>(current.CATPIP);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -518,19 +530,19 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.PRODCT != null) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<PipelineOverhead, product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -540,17 +552,17 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
-                                    uncertaintyVariableFactor = default(decimal?)
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
+                                    uncertaintyVariableFactor = default(double?)
                                 },
-                                //verticalClearanceValue = default(decimal?)
-                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                                //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
-                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                                //verticalClearanceValue = default(double?)
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
+                                //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
+                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL.Value : default(double?),
                             };
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<PipelineOverhead, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -591,21 +603,20 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityIdentifier
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -646,7 +657,7 @@ namespace S100Framework.Applications
                             var instance = new Road();
 
                             if (current.CATROD.HasValue) {
-                                instance.categoryOfRoad = EnumHelper.GetEnumValue<categoryOfRoad>(current.CATROD.Value);
+                                instance.categoryOfRoad = EnumHelper.GetEnumValue<Road, categoryOfRoad>(current.CATROD.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -658,15 +669,15 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<Road, natureOfConstruction>(current.NATCON);
                             }
 
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID.GetValueOrDefault(), tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
 
@@ -757,13 +768,13 @@ namespace S100Framework.Applications
                             //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             //instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                            //    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
-                            //    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                            //    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
+                            //    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             //};
 
                             //// TODO: interoperabilityIdentifier
 
-                            //if (current.SORDAT != default) {
+                            //if (!string.IsNullOrEmpty(current.SORDAT)) {
                             //    if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
                             //        instance.reportedDate = current.SORDAT;
                             //    }
@@ -778,13 +789,13 @@ namespace S100Framework.Applications
 
                             //instance.verticalClearanceFixed = new() {
                             //    verticalUncertainty = new() {
-                            //        uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
-                            //        uncertaintyVariableFactor = default(decimal?)
+                            //        uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
+                            //        uncertaintyVariableFactor = default(double?)
                             //    },
-                            //    //verticalClearanceValue = default(decimal?)
-                            //    //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
-                            //    //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
-                            //    verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                            //    //verticalClearanceValue = default(double?)
+                            //    //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
+                            //    //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
+                            //    verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL.Value : default(double?),
                             //};
 
                             //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
@@ -799,7 +810,7 @@ namespace S100Framework.Applications
                             //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
 
                             //if (current.PICREP != default) {
-                            //    instance.pictorialRepresentation = current.PICREP;
+                            //    instance.pictorialRepresentation = FixFilename(current.PICREP);
                             //}
                             //buffer["ps"] = ps101;
                             //buffer["code"] = instance.GetType().Name;

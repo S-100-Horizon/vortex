@@ -14,7 +14,7 @@ namespace S100Framework.Applications
             var instance = new SignalStationWarning();
 
             if (current.CATSIW != default) {
-                instance.categoryOfSignalStationWarning = EnumHelper.GetEnumValues<categoryOfSignalStationWarning>(current.CATSIW);
+                instance.categoryOfSignalStationWarning = EnumHelper.GetEnumValues<SignalStationWarning,categoryOfSignalStationWarning>(current.CATSIW);
             }
 
             if (current.COMCHA != default) {

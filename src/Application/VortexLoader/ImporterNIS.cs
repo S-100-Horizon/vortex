@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Desktop.Internal.Mapping;
 using CommandLine;
-using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -28,7 +28,7 @@ namespace S100Framework.Applications
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
-        internal static int _compilationScale = -1;
+        //internal static int _compilationScale = -1;
         internal static string _scaminFilesPath = "";
 
         internal static string ps101 = S100Framework.DomainModel.S101.Summary.ProductId;
@@ -42,15 +42,16 @@ namespace S100Framework.Applications
 
         internal static ConverterRegistry _converterRegistry = new ConverterRegistry();
 
+        public static QueryFilter QueryFilter { get; internal set; } = new();
+
+
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
 
             Logger.Current.Information("Starting");
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
-            var filter = new QueryFilter {
-                WhereClause = "PLTS_COMP_SCALE = 22000",
-            };
+
 
             // default value - overwritten by args
             var skinOfEarthOnly = false;
@@ -69,25 +70,12 @@ namespace S100Framework.Applications
                     throw new System.ArgumentOutOfRangeException(nameof(source));
 
                 if (!string.IsNullOrEmpty(o.Query)) {
-                    filter.WhereClause = o.Query!.Trim();
+                    QueryFilter.WhereClause = o.Query!.Trim();
 
-                    string pattern = @"PLTS_COMP_SCALE\s*[=<>]{1,2}\s*(\d+)";
 
-                    Match match = Regex.Match((string)o.Query, pattern, RegexOptions.IgnoreCase);
-
-                    if (match.Success) {
-                        string value = match.Groups[1].Value;
-                        if (!int.TryParse(value, out _compilationScale)) {
-                            throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-                        }
-                    }
-                    else {
-                        throw new NotSupportedException("PLTS_COMP_SCALE must be part of whereclause! Fix your arguments.");
-                    }
                 }
                 else {
-                    _compilationScale = 22000;
-                    filter.WhereClause = "PLTS_COMP_SCALE = 22000";
+                    throw new NotSupportedException("whereclause must be supplied.");
                 }
 
                 if (!string.IsNullOrEmpty(o.NotesPath)) {
@@ -125,7 +113,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, LightAirObstruction>(Converters.CreateLightAirObstruction);
             _converterRegistry.Register<AidsToNavigationP, LightFogDetector>(Converters.CreateLightFogDetector);
             _converterRegistry.Register<AidsToNavigationP, Daymark>(Converters.CreateDaymark);
-            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction); 
+            _converterRegistry.Register<DangersP, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<DangersA, Obstruction>(Converters.CreateObstruction);
             _converterRegistry.Register<DangersL, Obstruction>(Converters.CreateObstruction);
 
@@ -141,7 +129,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
 
             using (Geodatabase source = createGeodatabase()) {
-
+//#if null
                 Store(() => {
                     if (!append) {
                         var query = new QueryFilter {
@@ -157,25 +145,28 @@ namespace S100Framework.Applications
                         using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
                         using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+                        using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
 
+                        Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
+                        DeleteAll(featureType);//featureType.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
-                        point.DeleteRows(query);
+                        DeleteAll(point); // point.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
-                        pointset.DeleteRows(query);
+                        DeleteAll(pointset); // pointset.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
-                        curve.DeleteRows(query);
+                        DeleteAll(curve); // curve.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
-                        surface.DeleteRows(query);
+                        DeleteAll(surface); // surface.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
                         //attributeBinding.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
-                        featureAssociation.DeleteRows(query);
+                        DeleteAll(featureAssociation); // featureAssociation.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
-                        informationAssociation.DeleteRows(query);
+                        DeleteAll(informationAssociation); // informationAssociation.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
-                        informationtype.DeleteRows(query);
+                        DeleteAll(informationtype); // informationtype.DeleteRows(query);
                     }
                 });
 
@@ -189,24 +180,24 @@ namespace S100Framework.Applications
                 SpatialRelationResolver.Initialize(source);
 
                 Logger.Current.Information($"Initializing SpatialAssociations");
-                SpatialAssociations.Initialize(source, filter);
+                SpatialAssociations.Initialize(source, QueryFilter);
 
                 relatedEquipment = new RelatedEquipment(source, destination);
 
                 if (skinOfEarthOnly) {
-                    Logger.Current.Information($"Converting skin of earth only Filter: {filter.WhereClause}");
+                    Logger.Current.Information($"Converting skin of earth only Filter: {QueryFilter.WhereClause}");
                     // All "SKIN OF EARTH" cases / subtypes are marked with a "skin of earth" comment
-                    var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
-                    Store(() => S57_DepthsA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (5)";
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (40,60,80)";
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (40)";
-                    Store(() => S57_MetadataA(source, destination, filter));
-                    filter.WhereClause = $"{whereClause} and fcsubtype in (1)";
-                    Store(() => S57_ProductCoverage(source, destination, filter));
+                    var whereClause = QueryFilter.WhereClause.Clone();
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1,5,15)";
+                    Store(() => S57_DepthsA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (5)";
+                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40,60,80)";
+                    Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40)";
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
+                    QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1)";
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
                 }
@@ -215,102 +206,109 @@ namespace S100Framework.Applications
                     filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
                     filter.WhereClause = $"{whereClause}";
                     */
-                    Logger.Current.Information($"Converting all tables: {filter.WhereClause}");
+
+                    Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
+
+                    Logger.Current.Information($"Converting Sounding Datums");
+                    Store(() => S101_SoundingDatum(source, destination, QueryFilter));
+
+
+                    Logger.Current.Information($"Converting Metadata");
+                    Store(() => S57_MetadataA(source, destination, QueryFilter));
+                    Store(() => S57_MetadataP(source, destination, QueryFilter));
+                    Logger.Current.Information($"Converting Product Coverages");
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+
 
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
                     //filter.WhereClause = "globalid = '{855B900E-760C-4D68-AE02-8F3CA6FE60DD}'";
                     //filter.WhereClause = "globalid = '{BAFFC1F3-A89C-4E13-982F-B577E50A06DC}'";
-
                     //filter.WhereClause = "globalid = '{1F1D8B58-4959-4202-80F5-6CA4DD47D209}'";
 
-                    Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, filter));
-
                     Logger.Current.Information($"Converting Dangers");
-                    Store(() => S57_DangersA(source, destination, filter));
-                    Store(() => S57_DangersL(source, destination, filter));
-                    Store(() => S57_DangersP(source, destination, filter));
+                    Store(() => S57_DangersA(source, destination, QueryFilter));
+                    Store(() => S57_DangersL(source, destination, QueryFilter));
+                    Store(() => S57_DangersP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Sounding Datums");
-                    Store(() => S101_SoundingDatum(source, destination, filter));
+
+
+                    Logger.Current.Information($"Converting Natural Features");
+                    Store(() => S57_NaturalFeaturesA(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesL(source, destination, QueryFilter));
+                    Store(() => S57_NaturalFeaturesP(source, destination, QueryFilter));
+
+
+                    Logger.Current.Information($"Converting Cultural Features");
+                    Store(() => S57_CulturalFeaturesA(source, destination, QueryFilter));
+                    Store(() => S57_CulturalFeaturesL(source, destination, QueryFilter));
+                    Store(() => S57_CulturalFeaturesP(source, destination, QueryFilter));
+
+
+                    Logger.Current.Information($"Converting Contours");
+                    Store(() => S57_DepthsL(source, destination, QueryFilter));
 
 
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
-                    //Store(() => S101_RecommendedTracksAndRoutes(source, destination, filter));
-                    Logger.Current.Information($"Converting Cultural Features");
-                    Store(() => S57_CulturalFeaturesA(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesL(source, destination, filter));
-                    Store(() => S57_CulturalFeaturesP(source, destination, filter));
+                    //Store(() => S101_RecommendedTracksAndRoutes(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting PortsAndServices");
-                    Store(() => S57_PortsAndServicesA(source, destination, filter));
-                    Store(() => S57_PortsAndServicesL(source, destination, filter));
-                    Store(() => S57_PortsAndServicesP(source, destination, filter));
+                    Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
+                    Store(() => S57_PortsAndServicesL(source, destination, QueryFilter));
+                    Store(() => S57_PortsAndServicesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Soundings");
-                    Store(() => S57_SoundingsP(source, destination, filter));
-
-                    Logger.Current.Information($"Converting Contours");
-                    Store(() => S57_DepthsL(source, destination, filter));
+                    Store(() => S57_SoundingsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Tides And Variations");
-                    Store(() => S57_TidesAndVariationsA(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsL(source, destination, filter));
-                    Store(() => S57_TidesAndVariationsP(source, destination, filter));
+                    Store(() => S57_TidesAndVariationsA(source, destination, QueryFilter));
+                    Store(() => S57_TidesAndVariationsL(source, destination, QueryFilter));
+                    Store(() => S57_TidesAndVariationsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Areas And Limits");
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, filter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, filter));
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Seabeds");
-                    Store(() => S57_SeabedA(source, destination, filter));
-                    Store(() => S57_SeabedL(source, destination, filter));
-                    Store(() => S57_SeabedP(source, destination, filter));
-
+                    Store(() => S57_SeabedA(source, destination, QueryFilter));
+                    Store(() => S57_SeabedL(source, destination, QueryFilter));
+                    Store(() => S57_SeabedP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting CoastLines");
-                    Store(() => S57_CoastlineA(source, destination, filter));
-                    Store(() => S57_CoastlineL(source, destination, filter));
-                    Store(() => S57_CoastlineP(source, destination, filter));
-
+                    Store(() => S57_CoastlineA(source, destination, QueryFilter));
+                    Store(() => S57_CoastlineL(source, destination, QueryFilter));
+                    Store(() => S57_CoastlineP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Depth Areas");
-                    Store(() => S57_DepthsA(source, destination, filter));
+                    Store(() => S57_DepthsA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Ice features");
-                    Store(() => S57_IcefeaturesA(source, destination, filter));
-
-                    Logger.Current.Information($"Converting Metadata"); 
-                    Store(() => S57_MetadataA(source, destination, filter));
+                    Store(() => S57_IcefeaturesA(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Military Features");
-                    Store(() => S57_MilitaryFeatureA(source, destination, filter));
-                    Store(() => S57_MilitaryFeaturesP(source, destination, filter));
+                    Store(() => S57_MilitaryFeatureA(source, destination, QueryFilter));
+                    Store(() => S57_MilitaryFeaturesP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Natural Features");
-                    Store(() => S57_NaturalFeaturesA(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesL(source, destination, filter));
-                    Store(() => S57_NaturalFeaturesP(source, destination, filter));
 
                     Logger.Current.Information($"Converting Offshore Installations");
-                    Store(() => S57_OffshoreInstallationsA(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsL(source, destination, filter));
-                    Store(() => S57_OffshoreInstallationsP(source, destination, filter));
-
+                    Store(() => S57_OffshoreInstallationsA(source, destination, QueryFilter));
+                    Store(() => S57_OffshoreInstallationsL(source, destination, QueryFilter));
+                    Store(() => S57_OffshoreInstallationsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Tracks And Routes");
-                    Store(() => S57_TracksAndRoutesA(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesL(source, destination, filter));
-                    Store(() => S57_TracksAndRoutesP(source, destination, filter));
+                    Store(() => S57_TracksAndRoutesA(source, destination, QueryFilter));
+                    Store(() => S57_TracksAndRoutesL(source, destination, QueryFilter));
+                    Store(() => S57_TracksAndRoutesP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Aids to Navigation");
-                    Store(() => S57_AidsToNavigationP(source, destination, filter));
+                    Store(() => S57_AidsToNavigationP(source, destination, QueryFilter));
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
-
                 }
-
+//#endif
+                //Logger.Current.Information($"Igniting afterburner");
+                //Afterburner.Initialize(destination);
+                //Afterburner.Instance.CutClosedRoadLines();
 
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
@@ -321,13 +319,286 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
 
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
-                Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
+                Logger.Current.Information($"No ESRI unknown values (-32767) in S-101: {status}");
 
-                status = SanityChecker.Instance.Check_Editions() == 0 ? "PASSED" : "FAILED";
-                Logger.Current.Information($"No ESRI unknown values (-31767) in S-101: {status}");
+                status = SanityChecker.Instance.Check_GetEditionsErrorCount() == 0 ? "PASSED" : "FAILED";
+                Logger.Current.Information($"No missing edition-info in S-101: {status}");
+
+                status = SanityChecker.Instance.Check_GetDefaultClearanceViolationCount() == 0 ? "PASSED" : "FAILED";
+                Logger.Current.Information($"No defaultClearanceViolation in S-101: {status}");
 
                 Logger.Current.Information("Done");
                 return true;
+            }
+        }
+
+        private static void DeleteAll(Table table) {
+            QueryFilter queryFilter = new QueryFilter {
+                WhereClause = "1=1" // Gets all rows
+            };
+
+            using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
+                while (rowCursor.MoveNext()) {
+                    using (Row row = rowCursor.Current) {
+                        row.Delete();
+                    }
+                }
+            }
+        }
+
+        internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
+
+            bool coveredByUnsurveyedArea = false;
+            bool coveredByDredgedArea = false;
+            double? surroundingDepth = null;
+            double? leastDepth = null;
+
+            if (shape != null) {
+                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
+                    if (leastDepth is null) {
+                        leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                    } else if (leastDepth > depthArea.DRVAL1) {
+                        leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+                    }
+
+                    
+
+                    if (depthArea.FcSubtype! is  15) {  // UNSARE
+                        coveredByUnsurveyedArea = true;
+                        break;
+                    }
+                    if (depthArea.FcSubtype! is  5) {  // DRGARE
+                        coveredByDredgedArea = true;
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+                    if (depthArea.FcSubtype! is  1) {  // DEPARE
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+
+                    surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                }
+            }
+
+            bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
+
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou is  -32767d);
+
+            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
+
+            bool valsouIsKnown = valsou is not null && valsou is not -32767d;
+            bool valsouIsUnknown = valsou is -32767d;
+
+            bool catwrkIsUnknown = catwrk is  -32767;
+
+            bool heightIsKnown = height is not null && height is not -32767d;
+            bool heightIsUnknown = height is  -32767d;
+            bool expositionOfSoundingIs1Or3 = expsou is  1 || expsou is  3;
+
+
+            if (allCoveringDepthRangeMinimumValuesAreKnown) {
+                if ((catwrk is 4 || catwrk is 5) &&
+                    heightIsKnown &&
+                    (watlev is 1 || watlev is 2 || watlev is -32767)) {
+                    return null;
+                }
+                else if (valsouIsKnown &&
+                    (watlev is 3 || watlev is  4 || watlev is  5 || watlev is -32767)) {
+                    return null;
+                }
+                else if (expositionOfSoundingIs1Or3 &&
+                    valsouIsUnknown &&
+                    (watlev.HasValue && (watlev is  3))) {
+                    return leastDepth;
+                }
+                else if (expositionOfSoundingIs1Or3 &&
+                    (watlev.HasValue && (watlev is  3))) {
+                    return leastDepth;
+                }
+                else if ((catwrk is  1) &&
+                    ( (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767))) {
+
+                    return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
+                }
+                else if (catwrk is  1 &&
+                    (expsou is null || (expsou is  2))) {
+                    return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
+                }
+                else if ((expsou is null || (expsou is  2)) &&
+                    valsouIsUnknown &&
+                    (watlev is  3 || watlev is  5)) {
+                    return 0d;
+                }
+                else if ((expsou is null || (expsou is  2)) &&
+                    valsouIsUnknown &&
+                    (watlev is  4 || watlev is  -32767)) {
+
+                    return -15d;
+                }
+                else if (((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767)) &&
+                    (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767)) {
+                    return -15d;
+                }
+                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767) &&
+                    (expsou is null || (expsou is 2))) {
+                    return -15d;
+                }
+                else {
+                    Logger.Current.DataError(objectid, tablename, lnam, $"1:Cannot set default clearance depth. Check loader.");
+                    return null;
+
+                }
+            }
+            else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
+
+                if (catwrk is 1 &&
+                    (watlev is  3 || watlev is  -32767)) {
+                    return 20.1d;
+                }
+                else if (valsouIsUnknown &&
+                    (watlev is  3 || watlev is  5)) {
+                    return 0d;
+                }
+                else if (valsouIsUnknown &&
+                    (watlev is  4 || watlev is  -32767)) {
+                    return -15d;
+                }
+                else if (catwrkIsUnknown &&
+                    (watlev is  3 || watlev is  5)) {
+                    return 0d;
+                }
+                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5) &&
+                    (watlev is  3 || watlev is  5)) {
+                    return -15d;
+                }
+                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767) &&
+                    (watlev is  4 || watlev is  -32767)) {
+                    return -15d;
+                }
+                else {
+                    Logger.Current.DataError(objectid, tablename, lnam, $"2:Cannot set default clearance depth. Check loader.");
+                    return null;
+                }
+            }
+            else {
+                Logger.Current.DataError(objectid, tablename, lnam, $"3:Cannot set default clearance depth. Check loader.");
+                return null;
+            }
+        }
+
+        internal static double? GetDefaultClearanceDepthObstruction(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catobs, long objectid, string tablename, string lnam) {
+
+            bool coveredByUnsurveyedArea = false;
+            bool coveredByDredgedArea = false;
+            double? surroundingDepth = null;
+            double? leastDepth = null;
+
+            if (shape != null) {
+                foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
+                    leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
+
+                    if (depthArea.FcSubtype!.Value == 15) {  // UNSARE
+                        coveredByUnsurveyedArea = true;
+                        break;
+                    }
+                    if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
+                        coveredByDredgedArea = true;
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+                    if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
+                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    }
+
+                    surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                }
+            }
+
+            bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
+
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou.Value == -32767d);
+
+            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
+
+            bool valsouIsKnown = valsou.HasValue && valsou.Value != -32767d;
+            bool valsouIsUnknown = valsou.HasValue && valsou.Value == -32767d;
+            bool heightIsKnown = height.HasValue && height.Value != -32767d;
+            bool heightIsUnknown = height.HasValue && height.Value == -32767d;
+            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3;
+
+
+            if (allCoveringDepthRangeMinimumValuesAreKnown) {
+                if (heightIsKnown &&
+                    (watlev is 1 || watlev is 2)) {
+                    return null;
+                }
+                else if (heightIsUnknown &&
+                    (watlev is 1 || watlev is 2 || watlev is 7)) {
+                    return null;
+                }
+                else if (valsouIsKnown &&
+                    (watlev is 3 || watlev is 4 || watlev is 5 || watlev is -32767)) {
+                    return null;
+                }
+                else if (expositionOfSoundingIs1Or3 && 
+                    valsouIsUnknown &&
+                    (watlev is 3)) {
+                    return leastDepth;
+                }
+                else if ((catobs is 6) &&
+                    (expsou is null || (expsou is 2 || expsou is -32767)) &&
+                    valsouIsUnknown) {
+                    return 0.1d;
+                }
+                else if ((expsou is null || (expsou is 2 || expsou is -32767)) &&
+                    valsouIsUnknown &&
+                    watlev is 3) {
+                    return 0.1d;
+                }
+                else if ((catobs is not 6) &&
+                    (expsou is null || (expsou is 2 || expsou is -32767)) &&
+                    valsouIsUnknown &&
+                    (watlev is 5)) {
+                    return 0d;
+                }
+                else if ((catobs is not 6) &&
+                    (expsou is null || (expsou is 2 || expsou is -32767)) &&
+                    valsouIsUnknown &&
+                    (watlev is 4 || watlev is -32767)) {
+                    return -15d;
+                }
+                else {
+                    Logger.Current.DataError(objectid, tablename, lnam, $"1:Cannot set default clearance depth. Check loader.");
+                    return null;
+
+                }
+            }
+            else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
+
+                if ((catobs is 6) &&
+                    valsouIsUnknown) {
+                    return 0.1d;
+                }
+                else if (valsouIsUnknown &&
+                    (watlev is 3)) {
+                    return 0.1d;
+                }
+                else if ((catobs is 6) &&
+                    valsouIsUnknown &&
+                    (watlev is 5)) {
+                    return 0d;
+                }
+                else if ((catobs is not 6) &&
+                    valsouIsUnknown &&
+                    (watlev is 4 || watlev is -32767)) {
+                    return -15d;
+                }
+                else {
+                    Logger.Current.DataError(objectid, tablename, lnam, $"2:Cannot set default clearance depth. Check loader.");
+                    return null;
+                }
+            }
+            else {
+                Logger.Current.DataError(objectid, tablename, lnam, $"3:Cannot set default clearance depth. Check loader.");
+                return null;
             }
         }
 
@@ -350,8 +621,9 @@ namespace S100Framework.Applications
                 buffer["shape"] = shape;
             }
         }
-        internal static void SetUsageBand(RowBuffer buffer, int comp_scale) {
-            _ = comp_scale switch {
+
+        internal static void SetUsageBand(RowBuffer buffer, int scale) {
+            _ = scale switch {
                 -1 => throw new InvalidOperationException("compilation scale isn't initialized!"),
                 < 22000 => buffer["usageband"] = 5,
                 < 90000 => buffer["usageband"] = 4,
@@ -359,7 +631,6 @@ namespace S100Framework.Applications
                 < 700000 => buffer["usageband"] = 2,
                 _ => buffer["usageband"] = 1
             };
-
 
             //_ = shape.GeometryType switch {
             //    GeometryType.Unknown => throw new NotSupportedException("Geometry type: unknown "),
@@ -379,8 +650,7 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        internal static rhythmOfLight GetRythmOfLight(AidsToNavigationP current) {
-
+        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : DomainModel.FeatureNode {
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
@@ -405,10 +675,10 @@ namespace S100Framework.Applications
 
             var sigseq = current.SIGSEQ;
 
-            lightCharacteristic lightCharacteristicsValue = default;
+            lightCharacteristic? lightCharacteristicsValue = default;
 
             if (current.LITCHR.HasValue) {
-                lightCharacteristicsValue = EnumHelper.GetEnumValue<lightCharacteristic>(current.LITCHR.Value);
+                lightCharacteristicsValue = EnumHelper.GetEnumValue<rhythmOfLight, lightCharacteristic>(current.LITCHR.Value);
             }
 
             var signalSequences = GetSignalSequences(current.SIGSEQ);
@@ -422,14 +692,14 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        internal static verticalDatum GetVerticalDatum(int value) {
+        internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
             if (value != 3) {
-                return EnumHelper.GetEnumValue<verticalDatum>(value);
+                return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
             }
 
             return verticalDatum.BalticSeaChartDatum2000;
@@ -448,7 +718,7 @@ namespace S100Framework.Applications
 
                 foreach (Match match in matches) {
                     if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
-                        var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                        var duration = double.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
                         // Interval of light
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
@@ -456,7 +726,7 @@ namespace S100Framework.Applications
                         });
                     }
                     else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
-                        decimal duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                        var duration = double.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
                         // Eclipse
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
@@ -468,11 +738,11 @@ namespace S100Framework.Applications
             return signalSequences;
         }
 
-        internal static List<colour> GetColours(string color) {
+        internal static List<colour> GetColours<TType>(string color) where TType : class {//DomainModel.FeatureNode{
             if (color == "-32767") {
                 return new List<colour>() { (colour)(-1) };
             }
-            return EnumHelper.GetEnumValues<colour>(color);
+            return EnumHelper.GetEnumValues<TType, colour>(color);
 
 
             //List<colour> colours = new List<colour>();
@@ -686,23 +956,20 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = ntxtds;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-                    }
-                    else {
+                    if (!File.Exists(filePath)) {
                         Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
                     }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = ntxtds;
+                    string language = "eng";
 
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        fileReference = FixFilename(fileReference) ?? default,
+                        language = language,
+                    };
+                    information.Add(instance);
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
@@ -719,23 +986,21 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
-                    if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = txtdsc;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-
-                    }
-                    else {
+                    if (!File.Exists(filePath)) {
                         Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
                     }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        fileReference = FixFilename(fileReference) ?? default,
+                        language = language,
+                    };
+                    information.Add(instance);
+
                 }
                 else if (!string.IsNullOrEmpty(txtdsc)) {
                     string? fileLocator = default;
@@ -788,7 +1053,7 @@ namespace S100Framework.Applications
                     }
                 }
             }
-            
+
 
             if (!string.IsNullOrEmpty(ninform)) {
                 // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
@@ -843,7 +1108,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
+                        //var note = new Note(filePath);
                         string? fileLocator = default;
                         string fileReference = ntxtds;
                         string language = "eng";
@@ -876,7 +1141,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (File.Exists(filePath)) {
-                        var note = new Note(filePath);
+                        //var note = new Note(filePath);
                         string? fileLocator = default;
                         string fileReference = txtdsc;
                         string language = "eng";
@@ -1030,7 +1295,7 @@ namespace S100Framework.Applications
             return result;
         }
 
-        private static string? FixFilename(string fileReference) {
+        internal static string? FixFilename(string fileReference) {
             if (fileReference == default) {
                 return default;
             }
@@ -1053,7 +1318,7 @@ namespace S100Framework.Applications
         internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
             NauticalInformation nobj = new NauticalInformation();
             if (picrep != default) {
-                nobj.pictorialRepresentation = picrep;
+                nobj.pictorialRepresentation = ImporterNIS.FixFilename(picrep) ?? default;
             }
 
             nobj.information = information;

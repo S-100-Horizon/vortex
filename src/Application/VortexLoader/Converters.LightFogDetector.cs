@@ -12,7 +12,7 @@ namespace S100Framework.Applications
             var instance = new LightFogDetector();
             
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours< LightFogDetector>(current.COLOUR);
             }
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -23,11 +23,11 @@ namespace S100Framework.Applications
             }
 
             // flareBearing is not populated. New field.                            
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }
             else {
-                instance.height = default(decimal?);
+                instance.height = default(double?);
             }
 
             // DODO: Interoperability identifier
@@ -37,10 +37,10 @@ namespace S100Framework.Applications
                 instance.periodicDateRange = periodicDateRange;
             }
 
-            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight(current);
+            instance.rhythmOfLight = ImporterNIS.GetRythmOfLight<LightFogDetector>(current);
 
             if (current.SIGGEN != null) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration = EnumHelper.GetEnumValue<LightFogDetector,signalGeneration>(current.SIGGEN.Value);
             }
 
             if (current.STATUS != default) {
@@ -54,11 +54,11 @@ namespace S100Framework.Applications
                 instance.verticalLength = current.VERLEN.Value;
             }
             
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }
             else {
-                instance.height = default(decimal?);
+                instance.height = default(double?);
             }
 
             if (scaleMinimum.HasValue) {

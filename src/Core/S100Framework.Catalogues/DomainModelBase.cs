@@ -5,7 +5,8 @@ using System.Xml.Serialization;
 
 namespace S100Framework.DomainModel
 {
-    public interface ISummary {
+    public interface ISummary
+    {
         public static string Name => string.Empty;
         public static string Scope => string.Empty;
         public static string ProductId => string.Empty;
@@ -20,6 +21,8 @@ namespace S100Framework.DomainModel
 
         public static Primitives[] FeaturePrimitives(string featureType) => throw new NotImplementedException();
     }
+
+    #region Attribute
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
@@ -74,8 +77,8 @@ namespace S100Framework.DomainModel
         public string PropertyName = propertyName;
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class ConditionalDependencyAttribute(string propertyName) : System.Attribute
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class ConditionalUnknownDependencyAttribute(string propertyName) : System.Attribute
     {
         public string PropertyName = propertyName;
     }
@@ -92,6 +95,56 @@ namespace S100Framework.DomainModel
     {
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class LowerAttribute(int lower) : System.Attribute
+    {
+        public int Lower = lower;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class UpperAttribute(int upper) : System.Attribute
+    {
+        public int Upper = upper;
+    }
+
+    public enum Closure : int
+    {
+        openInterval = 0,
+        geLtInterval = 1,
+        gtLeInterval = 2,
+        closedInterval = 3,
+        gtSemiInterval = 4,
+        geSemiInterval = 5,
+        ltSemiInterval = 6,
+        leSemiInterval = 7,
+    }
+
+    public abstract class ConstraintAttribute() : System.Attribute
+    {
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class RangeConstraintAttribute<TValue>(TValue lowerBound, TValue? upperBound, Closure closure) : ConstraintAttribute
+    {
+        public TValue LowerBound = lowerBound;
+        public TValue? UpperBound = upperBound;
+        public Closure Closure = closure;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class PrecisionConstraintAttribute(int precision) : ConstraintAttribute
+    {
+        public int Precision = precision;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class StringLengthConstraintAttribute(int stringLength) : ConstraintAttribute
+    {
+        public int StringLength = stringLength;
+    }
+
+    #endregion
+
     public interface IInformationBindingDefinition
     {
         informationBindingDefinition[] informationBindingDefinitions { get; }
@@ -106,11 +159,30 @@ namespace S100Framework.DomainModel
         Primitives[] primitives { get; }
     }
 
+    public interface IDependencies
+    {
+        bool ConditionalUnknown(string name);
+
+        void RunValidationChecks();
+    }
+
     [System.SerializableAttribute()]
-    public abstract class Node
+    public abstract class ComplexType : IDependencies
+    {
+        public abstract bool ConditionalUnknown(string name);
+
+        public abstract void RunValidationChecks();
+    }
+
+    [System.SerializableAttribute()]
+    public abstract class Node : IDependencies
     {
         [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
+
+        public abstract bool ConditionalUnknown(string name);
+
+        public abstract void RunValidationChecks();
     }
 
     [System.SerializableAttribute()]

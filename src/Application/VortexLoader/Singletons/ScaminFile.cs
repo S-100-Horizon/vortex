@@ -1,5 +1,8 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
+using NetTopologySuite.Mathematics;
 using System.Xml.Linq;
+using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -58,6 +61,22 @@ namespace S100Framework.Applications.Singletons
                 new(-71.8371442, 72.7315264),
                 new(-79.7941045, 84.8437883),
                 new(-22.4155794, 84.4901456)
+            }, sr);
+
+            // TODO: Add US scamin file...
+            AddPolygon("SCAMIN_GST_Grønland.xml", new List<Coordinate2D> 
+            { 
+                new(-138.5403112, 53.7017463),
+                new(-122.5440356, 61.2520361),
+                new(-55.9168726,  62.1953461),
+                new(-49.1210053,  59.9472275),
+                new(-33.6216590,  54.2626086),
+                new(-34.6946907,  35.0262922),
+                new(-56.2745498,  36.1894478),
+                new(-70.5816387,  24.9270265),
+                new(-94.4267869,  9.1413510),
+                new(-112.1914224, 7.1350314),
+                new(-133.7712815, 28.5463887)
             }, sr);
 
             foreach (var filePath in Directory.GetFiles(pathToScaminFiles, "*.xml")) {

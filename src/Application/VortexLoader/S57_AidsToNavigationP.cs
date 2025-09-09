@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using System.ComponentModel;
 using System.Globalization;
 
 namespace S100Framework.Applications
@@ -86,11 +87,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<IsolatedDangerBeacon, beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<IsolatedDangerBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -110,22 +111,22 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<IsolatedDangerBeacon, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<IsolatedDangerBeacon, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -136,21 +137,21 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<IsolatedDangerBeacon>(current);
 
 
                             if (topmark != null) {
@@ -162,7 +163,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<IsolatedDangerBeacon, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -174,9 +175,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            instance.pictorialRepresentation = FixFilename(current.PICREP);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -210,15 +211,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<LateralBeacon, beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<LateralBeacon, categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<LateralBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -241,19 +242,19 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: interoperabilityidentifier                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LateralBeacon, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LateralBeacon, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -264,21 +265,22 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
+
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<LateralBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -288,7 +290,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LateralBeacon, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -301,10 +303,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -336,11 +338,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<SafeWaterBeacon, beaconShape>(current.BCNSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<SafeWaterBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -360,22 +362,22 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SafeWaterBeacon, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SafeWaterBeacon, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -386,21 +388,22 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
+
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<SafeWaterBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -410,7 +413,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<SafeWaterBeacon, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -423,10 +426,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
@@ -458,15 +461,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BCNSHP.HasValue) {
-                                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                                instance.beaconShape = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon, beaconShape>(current.BCNSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<SpecialPurposeGeneralBeacon, categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<SpecialPurposeGeneralBeacon>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -486,22 +489,22 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SpecialPurposeGeneralBeacon, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -512,21 +515,22 @@ namespace S100Framework.Applications
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
-
-                            if (current.SORDAT != default) {
-                                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                                    instance.reportedDate = current.SORDAT;
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
                                 }
                             }
+
+
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<SpecialPurposeGeneralBeacon>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -536,7 +540,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<SpecialPurposeGeneralBeacon, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -549,16 +553,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -585,15 +589,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<CardinalBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATCAM.HasValue) {
-                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
+                                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<CardinalBuoy, categoryOfCardinalMark>(current.CATCAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<CardinalBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -610,11 +614,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<CardinalBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<CardinalBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -630,7 +634,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<CardinalBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -649,16 +653,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -684,15 +688,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<InstallationBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATINB.HasValue) {
-                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<categoryOfInstallationBuoy>(current.CATINB.Value);
+                                instance.categoryOfInstallationBuoy = EnumHelper.GetEnumValue<InstallationBuoy, categoryOfInstallationBuoy>(current.CATINB.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<InstallationBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -709,7 +713,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<InstallationBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -718,7 +722,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PRODCT != default) {
-                                instance.product = EnumHelper.GetEnumValues<product>(current.PRODCT);
+                                instance.product = EnumHelper.GetEnumValues<InstallationBuoy, product>(current.PRODCT);
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -730,7 +734,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<InstallationBuoy, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -743,16 +747,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -778,11 +782,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<IsolatedDangerBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<IsolatedDangerBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -799,11 +803,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<IsolatedDangerBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<IsolatedDangerBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -819,7 +823,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<IsolatedDangerBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -838,16 +842,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -874,15 +878,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<LateralBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATLAM.HasValue) {
-                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<categoryOfLateralMark>(current.CATLAM.Value);
+                                instance.categoryOfLateralMark = EnumHelper.GetEnumValue<LateralBuoy, categoryOfLateralMark>(current.CATLAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<LateralBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -899,11 +903,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LateralBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LateralBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -919,7 +923,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<LateralBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -938,16 +942,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -973,11 +977,11 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<SafeWaterBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                instance.colour = GetColours<SafeWaterBuoy>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -994,11 +998,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SafeWaterBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SafeWaterBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1014,7 +1018,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<SafeWaterBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1033,16 +1037,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1068,15 +1072,15 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.BOYSHP.HasValue) {
-                                instance.buoyShape = EnumHelper.GetEnumValue<buoyShape>(current.BOYSHP);
+                                instance.buoyShape = EnumHelper.GetEnumValue<SpecialPurposeGeneralBuoy, buoyShape>(current.BOYSHP);
                             }
 
                             if (current.CATSPM != default) {
-                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<categoryOfSpecialPurposeMark>(current.CATSPM);
+                                instance.categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy, categoryOfSpecialPurposeMark>(current.CATSPM);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy, colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1093,11 +1097,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.MARSYS.HasValue) {
-                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<SpecialPurposeGeneralBuoy, marksNavigationalSystemOf>(current.MARSYS.Value);
                             }
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<SpecialPurposeGeneralBuoy, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1117,7 +1121,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength = current.VERLEN.Value;
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<SpecialPurposeGeneralBuoy>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1132,14 +1136,14 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            instance.pictorialRepresentation = current.PICREP;
+                            instance.pictorialRepresentation = FixFilename(current.PICREP);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1159,11 +1163,11 @@ namespace S100Framework.Applications
 
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
                             var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1186,12 +1190,12 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
                             var instance = _converterRegistry.Convert<FogSignal>(current);
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1295,7 +1299,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<LightFloat, colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1320,7 +1324,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LightFloat, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1336,7 +1340,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            var topmark = relatedEquipment?.GetTopMark(current);
+                            var topmark = relatedEquipment?.GetTopMark<LightFloat>(current);
                             if (topmark != null) {
                                 instance.topmark = topmark;
                             }
@@ -1346,7 +1350,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LightFloat, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1359,16 +1363,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1392,7 +1396,7 @@ namespace S100Framework.Applications
                             #region aidstonavigation
 
                             if (current.COLOUR != default) {
-                                instance.colour = EnumHelper.GetEnumValues<colour>(current.COLOUR);
+                                instance.colour = EnumHelper.GetEnumValues<LightVessel, colour>(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
@@ -1417,7 +1421,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityidentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<LightVessel, natureOfConstruction>(current.NATCON);
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -1438,7 +1442,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue<LightVessel, visualProminence>(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1451,16 +1455,16 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = current.PICREP;
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1486,12 +1490,12 @@ namespace S100Framework.Applications
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
-                            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+                            }
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                instance.height = default(double?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1515,12 +1519,12 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1585,7 +1589,7 @@ namespace S100Framework.Applications
 
                     case 100: { // RETRFL_RetroReflector // SLAVE RIND: 2
                             var instance = _converterRegistry.Convert<Retroreflector>(current);
-                            
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -1621,7 +1625,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1669,7 +1673,7 @@ namespace S100Framework.Applications
             foreach (var part in parts) {
                 string[] split = part.Split('-');
                 if (split.Length == 2) {
-                    if (decimal.TryParse(split[0], CultureInfo.InvariantCulture, out decimal waveLength)) {
+                    if (double.TryParse(split[0], CultureInfo.InvariantCulture, out double waveLength)) {
                         string band = split[1];
                         radarWaveLengths.Add(new radarWaveLength() {
                             radarBand = band,
@@ -1705,7 +1709,7 @@ namespace S100Framework.Applications
         /// <param _s101name="current"></param>
         /// <param _s101name="sectors"></param>
         /// <returns>List of sectorCharacteristics</returns>
-        internal static List<sectorCharacteristics> GetSectorCharacteristics(IList<AidsToNavigationP> lights) {
+        internal static List<sectorCharacteristics> GetSectorCharacteristics<TType>(IList<AidsToNavigationP> lights) where TType : DomainModel.FeatureNode {
             var sectorCharacteristics = new List<sectorCharacteristics>();
 
             //if (sectors == null || sectors.Count == 0) {
@@ -1737,43 +1741,52 @@ namespace S100Framework.Applications
             //}
             //else {
             foreach (var light in lights) {
-                var rhythmofLight = GetRythmOfLight(light);
-                if (light.SECTR1 != null && light.SECTR2 != null) {
+                var rhythmofLightValue = GetRythmOfLight<TType>(light);
+                if ((light.SECTR1 != null && light.SECTR2 != null) || light.CATLIT == "1") {
                     {
                         List<lightVisibility> visibility = new List<lightVisibility>();
 
                         if (light.LITVIS != null) {
-                            visibility = EnumHelper.GetEnumValues<lightVisibility>(light.LITVIS);
+                            visibility = EnumHelper.GetEnumValues<lightSector, lightVisibility>(light.LITVIS);
                         }
 
                         List<colour> colours = new();
                         if (light.COLOUR != default) {
-                            colours = GetColours(light.COLOUR);
+                            colours = GetColours<lightSector>(light.COLOUR);
                         }
 
+
+                        //if (light.SECTR1 != null && light.SECTR2 != null) { 
                         var sectorCharacteristic = new sectorCharacteristics() {
-                            lightCharacteristic = rhythmofLight.lightCharacteristic,
-                            signalGroup = rhythmofLight.signalGroup,
-                            signalPeriod = rhythmofLight.signalPeriod,
-                            signalSequence = rhythmofLight.signalSequence,
+                            lightCharacteristic = rhythmofLightValue.lightCharacteristic,
+                            signalGroup = rhythmofLightValue.signalGroup,
+                            signalPeriod = rhythmofLightValue.signalPeriod,
+                            signalSequence = rhythmofLightValue.signalSequence,
                             lightSector = new List<lightSector>() {
                                 new lightSector() {
                                     lightVisibility = visibility,
                                     valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
                                     colour = colours,
-                                    sectorLimit = new sectorLimit() {
-                                        sectorLimitOne = new sectorLimitOne() {
-                                            sectorBearing = light.SECTR1.Value,
-                                        },
-                                        sectorLimitTwo = new sectorLimitTwo() {
-                                            sectorBearing = light.SECTR2.Value,
-                                        }
-                                    }
+                                    sectorLimit = null
                                 },
                             }
                         };
 
+                        if (light.SECTR1 != null && light.SECTR2 != null) {
+                            sectorCharacteristic.lightSector[0].sectorLimit = new sectorLimit() {
+                                sectorLimitOne = new sectorLimitOne() {
+                                    sectorBearing = light.SECTR1.Value,
+                                },
+                                sectorLimitTwo = new sectorLimitTwo() {
+                                    sectorBearing = light.SECTR2.Value,
+                                }
+                            };
+                        }
+
                         sectorCharacteristics.Add(sectorCharacteristic);
+
+                        //}
+
                     }
                     ;
                 }

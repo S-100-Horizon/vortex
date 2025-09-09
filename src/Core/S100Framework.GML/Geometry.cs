@@ -8,7 +8,9 @@ namespace S100Framework.GML
 {
     public static class Extensions
     {
-        private static readonly XNamespace xlink = "http://www.w3.org/1999/xlink";
+        private static readonly XNamespace xlinkNs = "http://www.w3.org/1999/xlink";
+        private static readonly XNamespace gmlNs = "http://www.opengis.net/gml/3.2";
+        private static readonly XNamespace s100Ns = "http://www.iho.int/s100gml/5.0";
 
         public static string[][]? Coordinates(this S100Framework.GML.Dataset.FeatureType element) {
             var geometry = element.Geometry;
@@ -25,24 +27,25 @@ namespace S100Framework.GML
             switch (property.Name.LocalName.ToLowerInvariant()) {
                 case "pointproperty": {
                         string[] coordinate = [];
+
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
-                                if (reader.IsStartElement("S100:Point")) {
-                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                if (reader.IsStartElement("Point", s100Ns.NamespaceName)) {
+                                    element.GeometryIdentifier = reader.GetAttribute("id", gmlNs.NamespaceName);
                                 }
 
                                 //  gml
-                                if (reader.IsStartElement("gml:coord")) {
+                                if (reader.IsStartElement("coord", gmlNs.NamespaceName)) {
                                     var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
                                     coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                                     break;
                                 }
-                                else if (reader.IsStartElement("gml:pos")) {
+                                else if (reader.IsStartElement("pos", gmlNs.NamespaceName)) {
                                     var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
                                     coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                                 }
-                                else if (reader.IsStartElement("gml:coordinates")) {
+                                else if (reader.IsStartElement("coordinates", gmlNs.NamespaceName)) {
                                     var content = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ');
                                     coordinate = content.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                                 }
@@ -59,11 +62,12 @@ namespace S100Framework.GML
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
-                                if (reader.IsStartElement("S100:Curve")) {
-                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                if (reader.IsStartElement("Curve", s100Ns.NamespaceName)) {
+                                    element.GeometryIdentifier = reader.GetAttribute("id", gmlNs.NamespaceName);
                                 }
 
-                                if (reader.IsStartElement("gml:posList")) {
+                                //  gml
+                                if (reader.IsStartElement("posList", gmlNs.NamespaceName)) {
                                     var segment = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
                                     segments.Add(segment);
                                 }
@@ -81,23 +85,23 @@ namespace S100Framework.GML
                         while (reader.Read()) {
                             if (reader.NodeType == System.Xml.XmlNodeType.Element) {
                                 //  s100
-                                if (reader.IsStartElement("S100:Surface") || reader.IsStartElement("S100:Polygon")) {
+                                if (reader.IsStartElement("Surface", s100Ns.NamespaceName) || reader.IsStartElement("Polygon", s100Ns.NamespaceName)) {
                                     var srsName = reader.GetAttribute("srsName");
 
-                                    element.GeometryIdentifier = reader.GetAttribute("gml:id");
+                                    element.GeometryIdentifier = reader.GetAttribute("id", gmlNs.NamespaceName);
                                 }
 
                                 //  gml
-                                if (reader.IsStartElement("gml:exterior")) {
+                                if (reader.IsStartElement("exterior", gmlNs.NamespaceName)) {
                                     var ring = ReadLinearRing(reader);
                                     exterior = ring;
                                 }
-                                else if (reader.IsStartElement("gml:interior")) {
+                                else if (reader.IsStartElement("interior", gmlNs.NamespaceName)) {
                                     var ring = ReadLinearRing(reader);
                                     interior.Add(ring);
                                 }
-                                else if (property.Attribute(xlink + "href") != null) {
-                                    var referenceId = property.Attribute(xlink + "href")?.Value.Replace("#", "");
+                                else if (property.Attribute(xlinkNs + "href") != null) {
+                                    var referenceId = property.Attribute(xlinkNs + "href")?.Value.Replace("#", "");
 
                                     element.GeometryIdentifier = referenceId;
                                 }
@@ -129,7 +133,7 @@ namespace S100Framework.GML
             string[] coords = [];
             while (reader.Read()) {
                 if (reader.NodeType == System.Xml.XmlNodeType.Element) {
-                    if (reader.IsStartElement("gml:posList")) {
+                    if (reader.IsStartElement("posList", gmlNs.NamespaceName)) {
                         coords = reader.ReadElementContentAsString().Replace('\n', ' ').Replace('\t', ' ').Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     }
                 }

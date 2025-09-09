@@ -9,6 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
+
         private static void S57_MilitaryFeatureA(Geodatabase source, Geodatabase target, QueryFilter filter) {
 
             var tableName = "MilitaryFeaturesA";
@@ -35,9 +36,15 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
 
-                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
                 }
+
+                if (ConversionAnalytics.Instance.IsConverted(globalid)) {
+                    throw new Exception("Ups. Not supported");
+                }
+
+
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
 
@@ -50,7 +57,7 @@ namespace S100Framework.Applications
                             var instance = new MilitaryPracticeArea();
 
                             if (current.CATMPA != default) {
-                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues<categoryOfMilitaryPracticeArea>(current.CATMPA);
+                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues<MilitaryPracticeArea, categoryOfMilitaryPracticeArea>(current.CATMPA);
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -70,14 +77,17 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues<MilitaryPracticeArea, restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            // TODO: vesselspeedlimit
+                            if (current.INFORM != null) {
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            }
+
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -85,7 +95,7 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-                            AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
+                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

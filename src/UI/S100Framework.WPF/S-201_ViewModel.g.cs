@@ -256,6 +256,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Contact Address";
 	}
+
+
 	/// <summary>
 	/// A directional light is a light illuminating a sector of very narrow angle and intended to mark a direction to follow.
 	/// </summary>
@@ -312,6 +314,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Directional Character";
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -377,6 +381,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -430,6 +436,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference.
 	/// </summary>
@@ -475,9 +483,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -566,6 +574,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The number of features of identical character that exist as a colocated group.
 	/// </summary>
@@ -618,6 +628,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Multiplicity of Features";
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -625,9 +637,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -635,10 +647,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -670,6 +682,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -725,6 +739,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// The distance between two successive peaks (or other points of identical phase) on an electromagnetic wave in the radar band of the electromagnetic spectrum.
 	/// </summary>
@@ -743,10 +759,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarBand, value);
 			}
 		}
-		private decimal _waveLengthValue  = default;
+		private double _waveLengthValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal waveLengthValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double waveLengthValue {
 			get {
 				return _waveLengthValue;
 			}
@@ -778,6 +794,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Radar Wave Length";
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
@@ -802,9 +820,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("rhythmOfLight")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -861,6 +879,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Describes the characteristics of a light sector.
 	/// </summary>
@@ -887,9 +907,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -899,9 +919,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 		[Category("sectorCharacteristics")]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
-		private decimal? _candela  = default;
+		private double? _candela  = default;
 
-		public decimal? candela {
+		public double? candela {
 			get {
 				return _candela;
 			}
@@ -969,6 +989,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Additional textual information about a light sector.
 	/// </summary>
@@ -1021,6 +1043,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Sector Information";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. The sector limit specifies the limits of the sector In a clockwise direction around the central feature (for example a light).
 	/// </summary>
@@ -1082,6 +1106,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Sector Limit";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit one specifies the first limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1089,10 +1115,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitOneViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1134,6 +1160,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Sector Limit One";
 	}
+
+
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector limit two specifies the second limit of the sector. The order of sector limit one and sector limit two is clockwise around the central feature (for example a light).
 	/// </summary>
@@ -1141,10 +1169,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorLimitTwoViewModel : ViewModelBase {
-		private decimal _sectorBearing  = default;
+		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal sectorBearing {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double sectorBearing {
 			get {
 				return _sectorBearing;
 			}
@@ -1186,6 +1214,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
+
+
 	/// <summary>
 	/// Textual information about the shape of a non-standard topmark.
 	/// </summary>
@@ -1238,6 +1268,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Shape Information";
 	}
+
+
 	/// <summary>
 	/// The sequence of times occupied by intervals of light and eclipse for all light characteristics.
 	/// </summary>
@@ -1245,10 +1277,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class signalSequenceViewModel : ViewModelBase {
-		private decimal _signalDuration  = default;
+		private double _signalDuration  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal signalDuration {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double signalDuration {
 			get {
 				return _signalDuration;
 			}
@@ -1295,6 +1327,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Signal Sequence";
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -1374,6 +1408,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
+
+
 	/// <summary>
 	/// The dimensions of a cable to give its length and diameter.
 	/// </summary>
@@ -1381,10 +1417,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableDimensionsViewModel : ViewModelBase {
-		private decimal _cableLength  = default;
+		private double _cableLength  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal cableLength {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double cableLength {
 			get {
 				return _cableLength;
 			}
@@ -1407,10 +1443,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
-		private decimal _diameter  = default;
+		private double _diameter  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal diameter {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double diameter {
 			get {
 				return _diameter;
 			}
@@ -1445,6 +1481,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Cable Dimensions";
 	}
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -1614,6 +1652,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Change Details";
 	}
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -1675,6 +1715,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Obscured Sector";
 	}
+
+
 	/// <summary>
 	/// The dimensions of a sinker/anchor to give its three dimensional shape measurements.
 	/// </summary>
@@ -1697,9 +1739,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -1707,9 +1749,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -1717,9 +1759,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -1757,6 +1799,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Sinker Dimensions";
 	}
+
+
 	/// <summary>
 	/// A description of the method used to obtain a position.(proposed by CCG)
 	/// </summary>
@@ -1814,6 +1858,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Positioning Method";
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -1821,10 +1867,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -1832,9 +1878,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -1866,6 +1912,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -1957,6 +2005,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Information";
 	}
+
+
 	/// <summary>
 	/// Encodes the file name of a single external text file that contains the text in a defined language, which provides additional textual information that cannot be provided using other allowable attributes for the feature.
 	/// </summary>
@@ -2009,6 +2059,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Textual Description";
 	}
+
+
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
@@ -2016,10 +2068,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2027,9 +2079,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2062,6 +2114,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2089,6 +2143,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Aton Status";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2118,6 +2174,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Aton Fixing Method Association";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2145,6 +2203,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Aton Positioning Information Association";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2174,6 +2234,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Buoy Topmark";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2201,6 +2263,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Structure Equipment";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2230,6 +2294,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Physical AIS";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2257,6 +2323,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Synthetic AIS";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2286,6 +2354,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Virtual AIS";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2313,6 +2383,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Buoy Counter Weight";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2342,6 +2414,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Bridle Connection";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2369,6 +2443,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Shackle Connection";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2398,6 +2474,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Shackle Connection From Cable";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2425,6 +2503,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Swivel Cable Connection";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2454,6 +2534,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Bridle Cable Connection";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2481,6 +2563,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Shackle To Bridle Connection";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2510,6 +2594,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Shackle To Swivel Connection";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2537,6 +2623,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"ShackleToAnchorConnection";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2566,6 +2654,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Swivel Connection";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2593,6 +2683,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Aton Aggregations";
 	}
+
+
 
 	/// <summary>
 	/// 
@@ -2622,6 +2714,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Aton Associations";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2650,6 +2744,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Range System";
 	}
 
+
+
 	/// <summary>
 	/// 
 	/// </summary>
@@ -2677,6 +2773,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Dangerous Feature Association";
 	}
+
+
 
 	/// <summary>
 	/// Method used for fixing the position of an aid to navigation.
@@ -2768,6 +2866,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"AtoN Fixing Method";
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -2832,6 +2932,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Aton Status Information";
 	}
 
+
+
 	/// <summary>
 	/// Information about how a position was obtained. (proposed by CCG)
 	/// </summary>
@@ -2891,6 +2993,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Positioning Information";
 	}
+
+
 
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
@@ -2955,6 +3059,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Spatial Quality";
 	}
+
+
 
 	/// <summary>
 	/// A prominent object at a fixed location on land which can be used in determining a location or a direction.
@@ -3235,10 +3341,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -3246,10 +3352,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -3268,10 +3374,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -3279,10 +3385,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -3483,6 +3589,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
@@ -3708,10 +3816,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -3719,10 +3827,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -3771,10 +3879,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -3798,10 +3906,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -4002,6 +4110,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage. (UKHO NP 735, 5th Edition)
@@ -4279,10 +4389,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -4290,10 +4400,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -4488,6 +4598,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
@@ -4775,6 +4887,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
@@ -4924,10 +5038,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
-		private decimal? _depthRangeMinimumValue  = default;
+		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? depthRangeMinimumValue {
+		public double? depthRangeMinimumValue {
 			get {
 				return _depthRangeMinimumValue;
 			}
@@ -4935,10 +5049,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
-		private decimal? _maximalPermittedDraught  = default;
+		private double? _maximalPermittedDraught  = default;
 
 		[Category("RecommendedTrack")]
-		public decimal? maximalPermittedDraught {
+		public double? maximalPermittedDraught {
 			get {
 				return _maximalPermittedDraught;
 			}
@@ -5175,6 +5289,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
@@ -5322,10 +5438,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -5356,10 +5472,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -5367,10 +5483,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -5378,10 +5494,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -5626,6 +5742,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
@@ -5773,10 +5891,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -5807,10 +5925,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -5818,10 +5936,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -5829,10 +5947,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -5914,10 +6032,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -6150,6 +6268,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
@@ -6297,10 +6417,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6331,10 +6451,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6342,10 +6462,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -6353,10 +6473,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -6388,10 +6508,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
-		private decimal? _valueOfGeographicRange  = default;
+		private double? _valueOfGeographicRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfGeographicRange {
+		public double? valueOfGeographicRange {
 			get {
 				return _valueOfGeographicRange;
 			}
@@ -6399,10 +6519,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfGeographicRange, value);
 			}
 		}
-		private decimal? _valueOfLuminousRange  = default;
+		private double? _valueOfLuminousRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfLuminousRange {
+		public double? valueOfLuminousRange {
 			get {
 				return _valueOfLuminousRange;
 			}
@@ -6410,10 +6530,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfLuminousRange, value);
 			}
 		}
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAirObstruction")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -6633,6 +6753,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
@@ -6780,10 +6902,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericLight")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -6814,10 +6936,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -6825,10 +6947,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _effectiveIntensity  = default;
+		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? effectiveIntensity {
+		public double? effectiveIntensity {
 			get {
 				return _effectiveIntensity;
 			}
@@ -6836,10 +6958,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
-		private decimal? _peakIntensity  = default;
+		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
-		public decimal? peakIntensity {
+		public double? peakIntensity {
 			get {
 				return _peakIntensity;
 			}
@@ -7025,6 +7147,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
@@ -7165,10 +7289,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("RadarReflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -7199,10 +7323,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("RadarReflector")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -7333,6 +7457,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
@@ -7528,10 +7654,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
-		private decimal? _signalOutput  = default;
+		private double? _signalOutput  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalOutput {
+		public double? signalOutput {
 			get {
 				return _signalOutput;
 			}
@@ -7539,10 +7665,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalOutput, value);
 			}
 		}
-		private decimal? _signalPeriod  = default;
+		private double? _signalPeriod  = default;
 
 		[Category("FogSignal")]
-		public decimal? signalPeriod {
+		public double? signalPeriod {
 			get {
 				return _signalPeriod;
 			}
@@ -7557,10 +7683,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _valueOfMaximumRange  = default;
+		private double? _valueOfMaximumRange  = default;
 
 		[Category("FogSignal")]
-		public decimal? valueOfMaximumRange {
+		public double? valueOfMaximumRange {
 			get {
 				return _valueOfMaximumRange;
 			}
@@ -7722,6 +7848,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A sensor used to observe the environment.
 	/// </summary>
@@ -7862,10 +7990,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Category("Equipment")]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("EnvironmentObservationEquipment")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8009,6 +8137,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
@@ -8166,10 +8296,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)1,(categoryOfRadioStation)2,(categoryOfRadioStation)3,(categoryOfRadioStation)4,(categoryOfRadioStation)5,(categoryOfRadioStation)6,(categoryOfRadioStation)7,(categoryOfRadioStation)8,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)12,(categoryOfRadioStation)13,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
-		private decimal? _estimatedRangeOfTransmission  = default;
+		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
-		public decimal? estimatedRangeOfTransmission {
+		public double? estimatedRangeOfTransmission {
 			get {
 				return _estimatedRangeOfTransmission;
 			}
@@ -8306,6 +8436,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// (1) The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid. (2) An unlighted navigational mark.
@@ -8477,10 +8609,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Daymark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -8488,10 +8620,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Daymark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8506,10 +8638,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal? _orientationValue  = default;
+		private double? _orientationValue  = default;
 
 		[Category("Daymark")]
-		public decimal? orientationValue {
+		public double? orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -8556,10 +8688,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Daymark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -8766,6 +8898,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retro-reflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
@@ -8959,10 +9093,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Retroreflector")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -8970,10 +9104,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Retroreflector")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -9127,6 +9261,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
@@ -9314,10 +9450,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _valueOfNominalRange  = default;
+		private double? _valueOfNominalRange  = default;
 
 		[Category("RadarTransponderBeacon")]
-		public decimal? valueOfNominalRange {
+		public double? valueOfNominalRange {
 			get {
 				return _valueOfNominalRange;
 			}
@@ -9522,6 +9658,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
@@ -9821,6 +9959,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
@@ -10118,6 +10258,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// -
@@ -10436,6 +10578,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -10717,6 +10861,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
 	/// </summary>
@@ -10941,10 +11087,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -10952,10 +11098,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11004,10 +11150,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11031,10 +11177,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -11216,6 +11362,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
@@ -11441,10 +11589,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -11452,10 +11600,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -11504,10 +11652,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -11531,10 +11679,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -11735,6 +11883,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it. (UKHO NP735, 5th Edition)
@@ -12012,10 +12162,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12023,10 +12173,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -12202,6 +12352,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
@@ -12479,10 +12631,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12490,10 +12642,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -12688,6 +12840,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). An installation buoy is a buoy used for loading tankers with gas or oil. (IHO Chart Specifications, M-4)
@@ -12965,10 +13119,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -12976,10 +13130,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -13174,6 +13328,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The equipment or structure used to secure a vessel. (IHO Registry)
@@ -13451,10 +13607,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13462,10 +13618,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -13641,6 +13797,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary (24-72 hours) first response. (IHO Registry)
@@ -13918,10 +14076,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -13929,10 +14087,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14108,6 +14266,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A distinctive structure on or off a coast exhibiting a major light designed to serve as an aid to navigation.
@@ -14388,10 +14548,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Landmark")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -14399,10 +14559,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Landmark")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -14421,10 +14581,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14432,10 +14592,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14637,6 +14797,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
@@ -14846,10 +15008,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -14857,10 +15019,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -14904,10 +15066,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -14931,10 +15093,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("LightFloat")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -14942,10 +15104,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
-		private decimal? _horizontalAccuracy  = default;
+		private double? _horizontalAccuracy  = default;
 
 		[Category("LightFloat")]
-		public decimal? horizontalAccuracy {
+		public double? horizontalAccuracy {
 			get {
 				return _horizontalAccuracy;
 			}
@@ -15126,6 +15288,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
@@ -15335,10 +15499,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _horizontalLength  = default;
+		private double? _horizontalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalLength {
+		public double? horizontalLength {
 			get {
 				return _horizontalLength;
 			}
@@ -15346,10 +15510,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
-		private decimal? _horizontalWidth  = default;
+		private double? _horizontalWidth  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalWidth {
+		public double? horizontalWidth {
 			get {
 				return _horizontalWidth;
 			}
@@ -15393,10 +15557,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15420,10 +15584,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("LightVessel")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -15431,10 +15595,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
-		private decimal? _horizontalAccuracy  = default;
+		private double? _horizontalAccuracy  = default;
 
 		[Category("LightVessel")]
-		public decimal? horizontalAccuracy {
+		public double? horizontalAccuracy {
 			get {
 				return _horizontalAccuracy;
 			}
@@ -15615,6 +15779,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
@@ -15831,10 +15997,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -15901,10 +16067,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -15928,10 +16094,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("OffshorePlatform")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -16129,6 +16295,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
@@ -16370,10 +16538,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("SiloTank")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -16381,10 +16549,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("SiloTank")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16433,10 +16601,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16460,10 +16628,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("SiloTank")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -16647,6 +16815,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or sea floor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
@@ -16872,10 +17042,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("Pile")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -16899,10 +17069,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Pile")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -16926,10 +17096,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("Pile")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -17084,6 +17254,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
@@ -17389,6 +17561,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// (1) An elevated structure extending across or over the weather deck of a vessel, or part of such a structure. The term is sometimes modified to indicate the intended use, such as navigating bridge or signal bridge.  (2) A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
@@ -17693,6 +17867,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A heavy weight (of concrete, cast-iron, etc..) that rests on the sea bed and to which a mooring line can be attached. (IALA Dictionary, 8-5-025)
 	/// </summary>
@@ -17858,11 +18034,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sinkerDimensions, value);
 			}
 		}
-		private decimal _weight  = default;
+		private double _weight  = default;
 
 		[Category("SinkerAnchor")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal weight {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double weight {
 			get {
 				return _weight;
 			}
@@ -17990,6 +18166,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A shackle at the lower end of a mooring chain, for attachment to an anchor or sinker. (IALA Dictionary, 8-5-150)
@@ -18160,10 +18338,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public ShackleType[] ShackleTypeList => [(ShackleType)1,(ShackleType)2,(ShackleType)3,(ShackleType)4,(ShackleType)5,(ShackleType)6];
-		private decimal? _weight  = default;
+		private double? _weight  = default;
 
 		[Category("MooringShackle")]
-		public decimal? weight {
+		public double? weight {
 			get {
 				return _weight;
 			}
@@ -18274,6 +18452,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the sea floor.
@@ -18561,6 +18741,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A chain link that provides for rotary motion between the lengths of chain that it connects. (IALA Dictionary, 8-5-165)
 	/// </summary>
@@ -18714,10 +18896,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal? _weight  = default;
+		private double? _weight  = default;
 
 		[Category("Swivel")]
-		public decimal? weight {
+		public double? weight {
 			get {
 				return _weight;
 			}
@@ -18839,6 +19021,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Two lengths of chain connected by a central ring and used for lifting wide loads. (IALA Dictionary,8-3-195)
@@ -19100,6 +19284,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -19253,11 +19439,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
-		private decimal _weight  = default;
+		private double _weight  = default;
 
 		[Category("CounterWeight")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal weight {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double weight {
 			get {
 				return _weight;
 			}
@@ -19379,6 +19565,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification. (IHO Dictionary, S-32, 5th Edition, 5548)
@@ -19554,10 +19742,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("Topmark")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -19695,6 +19883,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A safe water beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A safe water beacon may be used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
@@ -19920,10 +20110,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -19931,10 +20121,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -19983,10 +20173,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20010,10 +20200,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -20195,6 +20385,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A beacon is a prominent specially constructed object forming a conspicuous mark as a fixed aid to navigation or for use in hydrographic survey (IHO Dictionary, S-32, 5th Edition, 420). A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Beacon in general: A beacon whose appearance or purpose is not adequately known.
@@ -20420,10 +20612,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -20431,10 +20623,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
-		private decimal? _height  = default;
+		private double? _height  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? height {
+		public double? height {
 			get {
 				return _height;
 			}
@@ -20483,10 +20675,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -20510,10 +20702,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -20712,6 +20904,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A safe water buoy is used to indicate that there is navigable water around the mark. (UKHO NP735, 5th Edition)
@@ -20989,10 +21183,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21000,10 +21194,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -21179,6 +21373,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A buoy is a floating object moored to the bottom in a particular place, as an aid to navigation or for other specific purposes. (IHO Dictionary, S-32, 5th Edition, 565). A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners. (UKHO NP 735, 5th Edition) Buoy in general: A buoy whose appearance or purpose is not adequately known.
@@ -21456,10 +21652,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
-		private decimal? _verticalLength  = default;
+		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalLength {
+		public double? verticalLength {
 			get {
 				return _verticalLength;
 			}
@@ -21467,10 +21663,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
-		private decimal? _verticalAccuracy  = default;
+		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
-		public decimal? verticalAccuracy {
+		public double? verticalAccuracy {
 			get {
 				return _verticalAccuracy;
 			}
@@ -21664,6 +21860,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// -
 	/// </summary>
@@ -21708,6 +21906,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
@@ -21757,6 +21957,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Aton Aggregation";
 	}
 
+
+
 	/// <summary>
 	/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
 	/// </summary>
@@ -21805,6 +22007,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Aton Association";
 	}
 
+
+
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
@@ -21828,10 +22032,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -21839,10 +22043,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -21968,6 +22172,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 	}
 
+
+
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
@@ -22028,6 +22234,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Data Coverage";
 	}
 
+
+
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
@@ -22075,6 +22283,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Local Direction of Buoyage";
 	}
+
+
 
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
@@ -22125,6 +22335,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Navigational System of Marks";
 	}
 
+
+
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
@@ -22174,6 +22386,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public override string? ToString() => $"Sounding Datum";
 	}
 
+
+
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
@@ -22222,5 +22436,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		public override string? ToString() => $"Vertical Datum of Data";
 	}
+
+
 
 }

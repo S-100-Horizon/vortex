@@ -64,7 +64,7 @@ namespace S100Framework.Catalogues
 
         public ImmutableArray<AssociationType> InformationAssociationTypes { get; set; } = ImmutableArray<AssociationType>.Empty;
 
-        public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimivive { get; set; }
+        public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimivive { get; set; } = (p) => ImmutableArray<FeatureType>.Empty;
 
         public string DefaultNamespace => $"S100Framework.DomainModel.{ProductID.Remove(1, 1)}";
 

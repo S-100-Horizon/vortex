@@ -1873,7 +1873,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class chartAffected {
+		public class chartAffected : ComplexType {
 			[XmlElement("chartNumber")]
 			public String chartNumber {get;set;} = string.Empty;
 
@@ -1897,6 +1897,13 @@ namespace S100Framework.DomainModel.S124 {
 			public DateOnly? lastNoticeDate {get;set;} = default;
 
 			public bool ShouldSerializelastNoticeDate() { return lastNoticeDate.HasValue; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<chartAffected, bool>> _conditionalUnknown = new Dictionary<string,Func<chartAffected, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1907,7 +1914,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class fixedDateRange {
+		public class fixedDateRange : ComplexType {
 			[XmlElement("dateEnd")]
 			public String? dateEnd {get;set;} = default;
 
@@ -1927,6 +1934,13 @@ namespace S100Framework.DomainModel.S124 {
 			public S100Framework.DomainModel.S100.Time? timeOfDayStart {get;set;} = default;
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.HasValue; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1937,12 +1951,19 @@ namespace S100Framework.DomainModel.S124 {
 		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class information {
+		public class information : ComplexType {
 			[XmlElement("language")]
 			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
 			public String text {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalUnknown = new Dictionary<string,Func<information, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1950,12 +1971,19 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class locationName {
+		public class locationName : ComplexType {
 			[XmlElement("language")]
 			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
 			public String text {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<locationName, bool>> _conditionalUnknown = new Dictionary<string,Func<locationName, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -1963,7 +1991,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class messageSeriesIdentifier {
+		public class messageSeriesIdentifier : ComplexType {
 			[XmlElement("agencyResponsibleForProduction")]
 			public String agencyResponsibleForProduction {get;set;} = string.Empty;
 
@@ -1993,6 +2021,13 @@ namespace S100Framework.DomainModel.S124 {
 
 			[XmlElement("year")]
 			public int year {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<messageSeriesIdentifier, bool>> _conditionalUnknown = new Dictionary<string,Func<messageSeriesIdentifier, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2000,12 +2035,19 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class navwarnTitle {
+		public class navwarnTitle : ComplexType {
 			[XmlElement("language")]
 			public String language {get;set;} = string.Empty;
 
 			[XmlElement("text")]
 			public String text {get;set;} = string.Empty;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<navwarnTitle, bool>> _conditionalUnknown = new Dictionary<string,Func<navwarnTitle, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2013,7 +2055,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class warningInformation {
+		public class warningInformation : ComplexType {
 			[XmlElement("information")]
 			public List<information> information {get;set;} = [];
 
@@ -2023,6 +2065,13 @@ namespace S100Framework.DomainModel.S124 {
 			public List<navwarnTypeDetails> navwarnTypeDetails {get;set;} = [];
 
 			public bool ShouldSerializenavwarnTypeDetails() { return navwarnTypeDetails.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<warningInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<warningInformation, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2030,7 +2079,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureReference {
+		public class featureReference : ComplexType {
 			[XmlElement("atoNNumber")]
 			public List<String> atoNNumber {get;set;} = [];
 
@@ -2040,6 +2089,13 @@ namespace S100Framework.DomainModel.S124 {
 			public List<String> interoperabilityIdentifier {get;set;} = [];
 
 			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<featureReference, bool>> _conditionalUnknown = new Dictionary<string,Func<featureReference, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2047,7 +2103,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class featureName {
+		public class featureName : ComplexType {
 			[XmlElement("language")]
 			public String language {get;set;} = string.Empty;
 
@@ -2063,6 +2119,13 @@ namespace S100Framework.DomainModel.S124 {
 			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 
 			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2070,9 +2133,16 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class horizontalPositionUncertainty {
+		public class horizontalPositionUncertainty : ComplexType {
 			[XmlElement("uncertaintyFixed")]
-			public decimal uncertaintyFixed {get;set;} = default;
+			public double uncertaintyFixed {get;set;} = default;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<horizontalPositionUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<horizontalPositionUncertainty, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2080,11 +2150,18 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class spatialAccuracy {
+		public class spatialAccuracy : ComplexType {
 			[XmlElement("horizontalPositionUncertainty")]
 			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
 				uncertaintyFixed = default,
 			};
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<spatialAccuracy, bool>> _conditionalUnknown = new Dictionary<string,Func<spatialAccuracy, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2092,7 +2169,7 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class affectedChartPublications {
+		public class affectedChartPublications : ComplexType {
 			[XmlElement("chartAffected")]
 			public chartAffected? chartAffected {get;set;} = default;
 
@@ -2115,6 +2192,13 @@ namespace S100Framework.DomainModel.S124 {
 			public String? publicationAffected {get;set;} = default;
 
 			public bool ShouldSerializepublicationAffected() { return !string.IsNullOrEmpty(publicationAffected); }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<affectedChartPublications, bool>> _conditionalUnknown = new Dictionary<string,Func<affectedChartPublications, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2122,16 +2206,24 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class generalArea {
+		public class generalArea : ComplexType {
 			[XmlElement("localityIdentifier")]
 			public String? localityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			[XmlElement("locationName")]
+			[Lower(1)]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<generalArea, bool>> _conditionalUnknown = new Dictionary<string,Func<generalArea, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2139,16 +2231,24 @@ namespace S100Framework.DomainModel.S124 {
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class locality {
+		public class locality : ComplexType {
 			[XmlElement("localityIdentifier")]
 			public String? localityIdentifier {get;set;} = default;
 
 			public bool ShouldSerializelocalityIdentifier() { return !string.IsNullOrEmpty(localityIdentifier); }
 
 			[XmlElement("locationName")]
+			[Lower(1)]
 			public List<locationName> locationName {get;set;} = [];
 
 			public bool ShouldSerializelocationName() { return locationName.Any(); }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<locality, bool>> _conditionalUnknown = new Dictionary<string,Func<locality, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 	}
@@ -2271,6 +2371,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<References, bool>> _conditionalUnknown = new Dictionary<string,Func<References, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2285,6 +2392,7 @@ namespace S100Framework.DomainModel.S124 {
 			public bool ShouldSerializeaffectedChartPublications() { return affectedChartPublications.Any(); }
 
 			[XmlElement("generalArea")]
+			[Lower(1)]
 			public List<generalArea> generalArea {get;set;} = [];
 
 			public bool ShouldSerializegeneralArea() { return generalArea.Any(); }
@@ -2345,6 +2453,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<NavwarnPreamble, bool>> _conditionalUnknown = new Dictionary<string,Func<NavwarnPreamble, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2381,6 +2496,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<SpatialQuality, bool>> _conditionalUnknown = new Dictionary<string,Func<SpatialQuality, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 	namespace FeatureTypes {
@@ -2479,6 +2601,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<NavwarnPart, bool>> _conditionalUnknown = new Dictionary<string,Func<NavwarnPart, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2525,6 +2654,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<NavwarnAreaAffected, bool>> _conditionalUnknown = new Dictionary<string,Func<NavwarnAreaAffected, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 
 		/// <summary>
@@ -2588,6 +2724,13 @@ namespace S100Framework.DomainModel.S124 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<TextPlacement, bool>> _conditionalUnknown = new Dictionary<string,Func<TextPlacement, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
 		}
 	}
 

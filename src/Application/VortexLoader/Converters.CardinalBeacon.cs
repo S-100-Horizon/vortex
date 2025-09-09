@@ -15,15 +15,15 @@ namespace S100Framework.Applications
             };
 
             if (current.BCNSHP.HasValue) {
-                instance.beaconShape = EnumHelper.GetEnumValue<beaconShape>(current.BCNSHP);
+                instance.beaconShape = EnumHelper.GetEnumValue<CardinalBeacon, beaconShape>(current.BCNSHP);
             }
 
             if (current.CATCAM.HasValue) {
-                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<categoryOfCardinalMark>(current.CATCAM.Value);
+                instance.categoryOfCardinalMark = EnumHelper.GetEnumValue<CardinalBeacon, categoryOfCardinalMark>(current.CATCAM.Value);
             }
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours<CardinalBeacon>(current.COLOUR);
             }
 
             if (current.COLPAT != default) {
@@ -45,21 +45,21 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767m) {
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }
             else {
-                instance.height = default(decimal?);
+                instance.height = default(double?);
             }
 
             // TODO: interoperabilityidentifier
 
             if (current.MARSYS.HasValue) {
-                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<marksNavigationalSystemOf>(current.MARSYS.Value);
+                instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<CardinalBeacon, marksNavigationalSystemOf>(current.MARSYS.Value);
             }
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<natureOfConstruction>(current.NATCON);
+                instance.natureOfConstruction = EnumHelper.GetEnumValues<CardinalBeacon, natureOfConstruction>(current.NATCON);
             }
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -70,10 +70,9 @@ namespace S100Framework.Applications
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
             }
-
-            if (current.SORDAT != default) {
-                if (DateHelper.regexTruncatedDateValidation.IsMatch(current.SORDAT)) {
-                    instance.reportedDate = current.SORDAT;
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                    instance.reportedDate = result;
                 }
                 else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -84,7 +83,7 @@ namespace S100Framework.Applications
                 instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            var topmark = ImporterNIS.relatedEquipment?.GetTopMark(current);
+            var topmark = ImporterNIS.relatedEquipment?.GetTopMark<CardinalBeacon>(current);
             if (topmark != null) {
                 instance.topmark = topmark;
             }
@@ -94,17 +93,17 @@ namespace S100Framework.Applications
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                instance.visualProminence = EnumHelper.GetEnumValue<visualProminence>(current.CONVIS.Value);
+                instance.visualProminence = EnumHelper.GetEnumValue<CardinalBeacon, visualProminence>(current.CONVIS.Value);
             }
 
 
             if (current.PICREP != default) {
-                instance.pictorialRepresentation = current.PICREP;
+                instance.pictorialRepresentation = ImporterNIS.FixFilename(current.PICREP) ?? default;
             }
 
             if (scaleMinimum.HasValue) {
                 instance.scaleMinimum = scaleMinimum;
-            } 
+            }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
 
@@ -115,7 +114,6 @@ namespace S100Framework.Applications
             }
 
             ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-
 
             return instance;
         }

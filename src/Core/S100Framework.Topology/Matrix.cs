@@ -1,7 +1,12 @@
 ﻿using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.LinearReferencing;
 using NetTopologySuite.Operation.Linemerge;
+using NetTopologySuite.Triangulate;
+using System;
 using System.Collections.Concurrent;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using IO = System.IO;
 
 namespace S100Framework.Topology
@@ -173,28 +178,28 @@ namespace S100Framework.Topology
         public const string DE9IM = "T*****FF*";
 
         protected Matrix() {
-            //  Default protected constructor
+            //  Default protected constructor            
         }
 
         private Action<ICollection<LineString>>? _interceptor = default;
 
         private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)>();
 
-        private ConcurrentBag<(string Name, IEnumerable<LineString> LineStrings)> _bagPolylines = new ConcurrentBag<(string Name, IEnumerable<LineString> LineStrings)>();
+        private ConcurrentBag<(string Name, LineString LineString, IEnumerable<LineString> LineStrings)> _bagPolylines = new ConcurrentBag<(string Name, LineString, IEnumerable<LineString> LineStrings)>();
 
         private ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
 
         private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
 
-        private IDictionary<string, List<LineString>> _featureToEdges;
+        private IDictionary<string, List<LineString>>? _featureToEdges = new Dictionary<string, List<LineString>>();
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology;
-        private ICollection<S100Framework.Topology.Polyline> _curvesTopology;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology = new Collection<S100Framework.Topology.Polygon>();
+        private ICollection<S100Framework.Topology.Polyline> _curvesTopology = new Collection<S100Framework.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational;
-        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational;
+        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational = new Collection<S100Framework.Topology.Polygon>();
+        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational = new Collection<S100Framework.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton;
+        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton = new Collection<S100Framework.Topology.Polyline>();
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
@@ -270,23 +275,92 @@ namespace S100Framework.Topology
             this.BuildSharedEdges([.. surfaces], [.. curves]);
 
             if (null != this._curvesSingleton) {
+                var endpoints = this._bagPolylines.SelectMany(e => e.LineStrings.Select(f => new Point[] { f.StartPoint, f.EndPoint })).SelectMany(e => e);
+
+                endpoints = endpoints.Union(this._curvesSingleton.SelectMany(e => new Point[] { e.LineString.StartPoint, e.LineString.EndPoint }));
+
+                endpoints = endpoints.Distinct();
+
                 foreach (var curve in this._curvesSingleton) {
-                    var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+                    var points = curve.LineString.Factory.CreateMultiPoint([.. endpoints]);
 
-                    var f = new CurveFeature(curve.LineString);
-                    this._hashing.GetOrAdd(hash, (new FeatureRef {
-                        Id = f.Id,
-                        Reverse = false,
-                    }, f));
-                    hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
-                    this._hashing.GetOrAdd(hash, (new FeatureRef {
-                        Id = f.Id,
-                        Reverse = true,
-                    }, f));
+                    //if (curve.Name.Equals("C1371117")) System.Diagnostics.Debugger.Break();
 
-                    var featureRef = this._hashing[hash];
+                    //var points = curve.LineString.Factory.CreateMultiPoint([.. endpoints.Except([curve.LineString.StartPoint, curve.LineString.EndPoint])]);                    
 
-                    this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
+                    //curve.LineString.Normalize();
+
+                    var intersection = curve.LineString.Intersection(points);
+
+                    if (intersection.IsEmpty) {
+                        this._bagPolylines.Add((curve.Name, curve.LineString, [curve.LineString]));
+                    }
+                    else if (intersection is Point point) {
+                        var locator = new LocationIndexedLine(curve.LineString);
+
+                        var index = locator.Project(point.Coordinate);
+
+                        var segment1 = (LineString)locator.ExtractLine(locator.StartIndex, index);
+                        var segment2 = (LineString)locator.ExtractLine(index, locator.EndIndex);
+
+                        this._bagPolylines.Add((curve.Name, curve.LineString, [segment1, segment2]));
+                    }
+                    else {
+                        var intersectionPoints = (MultiPoint)intersection;
+
+                        var locator = new LocationIndexedLine(curve.LineString);
+                        LinearLocation[] index = [];
+
+                        LineString[] segments = [];
+                        foreach (Point p in intersectionPoints) {
+                            index = [.. index, locator.Project(p.Coordinate)];
+                        }
+
+                        if (index.Length == 2 && index[0].SegmentIndex == locator.StartIndex.SegmentIndex && index[1].SegmentIndex == locator.EndIndex.SegmentIndex) {
+                            this._bagPolylines.Add((curve.Name, curve.LineString, [curve.LineString]));
+                        }
+                        else if (index.Length == 2 && index[0].SegmentIndex == locator.EndIndex.SegmentIndex && index[1].SegmentIndex == locator.StartIndex.SegmentIndex) {
+                            this._bagPolylines.Add((curve.Name, curve.LineString, [curve.LineString]));
+                        }
+                        else {
+                            var start = locator.StartIndex;
+
+                            foreach (var i in index.OrderBy(e => e.SegmentIndex)) {
+                                if (i.SegmentIndex == start.SegmentIndex)
+                                    continue;
+
+                                var segment = (LineString)locator.ExtractLine(start, i);
+                                segments = [.. segments, segment];
+                                start = i;
+                            }
+                            if (start.SegmentIndex != locator.EndIndex.SegmentIndex) {
+                                var segment = (LineString)locator.ExtractLine(start, locator.EndIndex);
+                                segments = [.. segments, segment];
+                            }
+                            this._bagPolylines.Add((curve.Name, curve.LineString, [.. segments]));
+                        }
+                    }
+
+                    //this._bagPolylines.Add((curve.Name, [curve.LineString]));
+
+
+
+                    //var hash = System.IO.Hashing.XxHash3.HashToUInt64(curve.LineString.AsBinary());
+
+                    //var f = new CurveFeature(curve.LineString);
+                    //this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    //    Id = f.Id,
+                    //    Reverse = false,
+                    //}, f));
+                    //hash = System.IO.Hashing.XxHash3.HashToUInt64(f.LineString.Reverse().AsBinary());
+                    //this._hashing.GetOrAdd(hash, (new FeatureRef {
+                    //    Id = f.Id,
+                    //    Reverse = true,
+                    //}, f));
+
+                    //var featureRef = this._hashing[hash];
+
+                    //this._mapping.GetOrAdd(curve.Name, $"C{featureRef.fetureRef.Id}");
                 }
             }
 
@@ -385,7 +459,7 @@ namespace S100Framework.Topology
 
             //_interceptor?.Invoke(this._hashing.Where(e => !e.Value.fetureRef.Reverse).Select(e => e.Value.curve.LineString).ToList());
 
-            Func<IEnumerable<LineString>, LinearRingOrientation, bool, (FeatureRef featureRef, ICollection<CurveFeature> masks1)> action = (lineStrings, orientation, allowMultiLineString) => {
+            Func<IEnumerable<LineString>, LinearRingOrientation, bool, Func<string>, (FeatureRef featureRef, ICollection<CurveFeature> masks1)> action = (lineStrings, orientation, allowMultiLineString, lineString) => {
                 FeatureRef featureRef;
                 var masks1 = new List<CurveFeature>();
                 var masks2 = new List<CurveFeature>();
@@ -419,28 +493,30 @@ namespace S100Framework.Topology
 
                     var mergedLineStrings = lineMerger.GetMergedLineStrings();
 
-                    string lineStringText = string.Empty;
+                    string lineStringText = lineString();// string.Empty;
 
-                    if (allowMultiLineString && mergedLineStrings.Count > 1) {
-                        var merged = Matrix.Factory.CreateMultiLineString([.. mergedLineStrings.OfType<LineString>()]);
+                    if (string.IsNullOrEmpty(lineStringText)) {
+                        if (allowMultiLineString && mergedLineStrings.Count > 1) {
+                            var merged = Matrix.Factory.CreateMultiLineString([.. mergedLineStrings.OfType<LineString>()]);
 
-                        lineStringText = merged.ToText();
-                    }
-                    else {
-                        if (mergedLineStrings.Count > 1) System.Diagnostics.Debugger.Break();
-
-                        var merged = (LineString)mergedLineStrings[0];
-
-                        if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
-                            var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
-
-                            merged = ring.IsCCW switch {
-                                true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
-                                false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
-                            };
+                            lineStringText = merged.ToText();
                         }
+                        else {
+                            Debug.Assert(mergedLineStrings.Count == 1);
 
-                        lineStringText = merged.ToText();
+                            var merged = (LineString)mergedLineStrings[0];
+
+                            if (merged.IsRing && orientation != LinearRingOrientation.DontCare) {
+                                var ring = merged.Factory.CreateLinearRing(merged.Coordinates);
+
+                                merged = ring.IsCCW switch {
+                                    true => orientation == LinearRingOrientation.CCW ? merged : (LineString)merged.Reverse(),
+                                    false => orientation == LinearRingOrientation.CW ? merged : (LineString)merged.Reverse(),
+                                };
+                            }
+
+                            lineStringText = merged.ToText();
+                        }
                     }
 
                     var sortedList = new SortedList<int, FeatureRef>();
@@ -457,8 +533,10 @@ namespace S100Framework.Topology
                             if (mask1Hashes.Contains(hash.curve.Id))
                                 masks1.Add(hash.curve);
 
+                            var index = Matrix.IndexOfSegment(lineStringText, text);
+                            Debug.Assert(index >= 0);
                             //sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                            sortedList.Add(Matrix.IndexOfSegment(lineStringText,text), hash.fetureRef);
+                            sortedList.Add(index, hash.fetureRef);
                         }
                         else {
                             var reverse = lineStrings.ElementAt(i).Reverse();
@@ -469,9 +547,10 @@ namespace S100Framework.Topology
                             if (mask1Hashes.Contains(hash.curve.Id))
                                 masks1.Add(hash.curve);
 
-                            var index = lineStringText.IndexOf(text);
+                            var index = Matrix.IndexOfSegment(lineStringText, text);
+                            Debug.Assert(index >= 0);
                             //sortedList.Add(lineStringText.IndexOf(text), hash.fetureRef);
-                            sortedList.Add(Matrix.IndexOfSegment(lineStringText, text), hash.fetureRef);
+                            sortedList.Add(index, hash.fetureRef);
                         }
                     }
 
@@ -487,11 +566,12 @@ namespace S100Framework.Topology
             };
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
-                //if (polygon.Name.Equals("S1650280")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452182")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452235")) System.Diagnostics.Debugger.Break();
 
                 if (!polygon.ExteriorRing.Any()) return;
 
-                var exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false);
+                var exteriorId = action(polygon.ExteriorRing, LinearRingOrientation.Clockwise, false, () => string.Empty);
                 var surface = new SurfaceFeature() {
                     Ref = polygon.Name,
                     Exterior = exteriorId.featureRef,
@@ -501,7 +581,7 @@ namespace S100Framework.Topology
                     surface.Masks1 = [.. exteriorId.masks1.Select(e => e.Id)];
                 //}
                 if (polygon.InteriorRings.Any()) {
-                    var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false));
+                    var interiorRings = polygon.InteriorRings.Select(e => action(e, LinearRingOrientation.CounterClockwise, false, () => string.Empty));
                     surface.Interior = [.. interiorRings.Select(e => e.featureRef)];
 
                     //  interior ring can't touch bondary!
@@ -515,13 +595,46 @@ namespace S100Framework.Topology
                 }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
+
+                //if (polygon.Name.Equals("S1452182")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
+                //if (polygon.Name.Equals("S1452235")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
             });
 
             //ParallelOptions.MaxDegreeOfParallelism = 1;
+
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
-                //if (polyline.Name.Equals("C1775043")) System.Diagnostics.Debugger.Break();
-                var curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true);
+                //if (polyline.Name.Equals("C1371117")) System.Diagnostics.Debugger.Break();
+                
+                var text = polyline.LineString.ToText();
+
+                //if (polyline.Name.Equals("C1373970")) {
+                //    System.Diagnostics.Debugger.Break();
+
+                //    var locator = new LocationIndexedLine(polyline.LineString);
+
+                //    foreach (var e in polyline.LineStrings) {
+                //        var l = locator.IndicesOf(e);
+                //    }
+                //}
+
+                text = text.Substring("LINESTRING (".Length).TrimEnd(')');
+
+                if (polyline.LineString.StartPoint == polyline.LineString.EndPoint) {
+                    text = text += ", " + string.Join(", ", text.Split(", ").Skip(1));
+                }
+                else
+                    text = text + ", " + text;
+
+                var curveId = action(polyline.LineStrings, LinearRingOrientation.DontCare, true, () => text);
 
                 this._mapping.GetOrAdd(polyline.Name, $"C{curveId.featureRef.Id}");
             });
@@ -597,7 +710,28 @@ namespace S100Framework.Topology
 
                 IEnumerable<LineString> lineStrings = this._featureToEdges[curve.Name];
 
-                this._bagPolylines.Add((curve.Name, lineStrings));
+                //if (curve.Name.Equals("C1371117")) System.Diagnostics.Debugger.Break();
+
+                if (lineStrings.Any(e => e.IsRing)) {
+                    LineString[] array = [];
+                    foreach(var l in lineStrings) {
+                        if(!l.IsRing)
+                            array = [.. array,l];
+                        else {
+                            var locator = new LocationIndexedLine(l);
+
+                            var index = locator.Project(l.GetPointN(l.NumPoints/2).Coordinate);
+
+                            var segment1 = (LineString)locator.ExtractLine(locator.StartIndex, index);
+                            var segment2 = (LineString)locator.ExtractLine(index, locator.EndIndex);
+
+                            array = [.. array, segment1,segment2];
+                        }
+                    }
+                    lineStrings= array;
+                }
+
+                this._bagPolylines.Add((curve.Name, curve.LineString, lineStrings));
             });
         }
 
@@ -618,6 +752,7 @@ namespace S100Framework.Topology
 
             //  MultiLineString
             if (lineString.Contains(segment + ")")) return true;
+            if (lineString.Contains(segment + "),")) return true;
             if (lineString.Contains("), " + segment)) return true;
 
             return false;
@@ -630,7 +765,8 @@ namespace S100Framework.Topology
             if (lineString.Contains(", " + segment)) return lineString.IndexOf(", " + segment);
 
             //  MultiLineString
-            if (lineString.Contains(segment + ")")) return lineString.IndexOf(segment + "),");
+            if (lineString.Contains(segment + ")")) return lineString.IndexOf(segment + ")");
+            if (lineString.Contains(segment + "),")) return lineString.IndexOf(segment + "),");
             if (lineString.Contains("), " + segment)) return lineString.IndexOf("), " + segment);
 
             throw new IndexOutOfRangeException();

@@ -158,9 +158,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
-		private decimal? _distance  = default;
+		private double? _distance  = default;
 
-		public decimal? distance {
+		public double? distance {
 			get {
 				return _distance;
 			}
@@ -169,7 +169,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("bearingInformation")]
-		public ObservableCollection<decimal> sectorBearing  { get; set; } = new ();
+		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
@@ -237,6 +237,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Description of services related to the goods or items carried by vessels.
 	/// </summary>
@@ -277,6 +279,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A description of construction or other development in a location where the work will affect vessel operations such as navigation, maneuvering or docking/berthing.
 	/// </summary>
@@ -380,6 +384,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Direction or superscription of a letter, package, etc., specifying the name of the place to which it is directed, and optionally a contact person or organisation who should receive it.
 	/// </summary>
@@ -472,6 +478,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual description of the characteristics and notable matters pertaining to depths in an area.
 	/// </summary>
@@ -530,6 +538,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual description of the layout of port facilities.
 	/// </summary>
@@ -570,6 +580,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.
 	/// </summary>
@@ -635,6 +647,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Feature Name";
 	}
+
+
 	/// <summary>
 	/// An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.
 	/// </summary>
@@ -688,6 +702,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
+
+
 	/// <summary>
 	/// A pair of frequencies for transmitting and receiving radio signals. The shore station transmits and receives on the frequencies indicated.
 	/// </summary>
@@ -752,6 +768,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// General information about the port or harbour area.
 	/// </summary>
@@ -882,6 +900,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// General, introductory information about the port.
 	/// </summary>
@@ -922,6 +942,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Pictorial information such as a photograph, sketch or other graphic, optionally accompanied by descriptive information about the graphic and the location relative to its subject from which it was made.
 	/// </summary>
@@ -1019,6 +1041,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the accuracy of a position.
 	/// </summary>
@@ -1026,10 +1050,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -1037,9 +1061,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -1071,6 +1095,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.
 	/// </summary>
@@ -1163,6 +1189,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual description of selected landmarks that have significance in an area.
 	/// </summary>
@@ -1203,6 +1231,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Description of the area covered by the information specified.
 	/// </summary>
@@ -1243,6 +1273,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// A description of navigationally significant lights essential for marking landfalls, offshore dangers, shipping routes, port access channels or protection of the marine environment.
 	/// </summary>
@@ -1283,6 +1315,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Description of the aids to navigation used to mark an area or object.
 	/// </summary>
@@ -1323,6 +1357,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Description of aids to navigation or prominent marks located away from the shore.
 	/// </summary>
@@ -1363,6 +1399,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Information about online sources from which a resource or data can be obtained.
 	/// </summary>
@@ -1485,6 +1523,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Online Resource";
 	}
+
+
 	/// <summary>
 	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
 	/// </summary>
@@ -1492,9 +1532,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class orientationViewModel : ViewModelBase {
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -1502,10 +1542,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -1537,6 +1577,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Orientation";
 	}
+
+
 	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
@@ -1592,6 +1634,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
+
+
 	/// <summary>
 	/// A summary of the impact of the most common types of regulation, restriction, recommendation and nautical information on a vessel.
 	/// </summary>
@@ -1664,6 +1708,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The nature and timings of a daily schedule by days of the week.
 	/// </summary>
@@ -1722,6 +1768,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Provides an indication of the vertical and horizontal positional uncertainty of bathymetric data, optionally within a specified date range.
 	/// </summary>
@@ -1801,6 +1849,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
+
+
 	/// <summary>
 	/// The complex attribute describes the period of the hydrographic survey, as the time between its sub-attributes.
 	/// </summary>
@@ -1855,6 +1905,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Survey Date Range";
 	}
+
+
 	/// <summary>
 	/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
 	/// </summary>
@@ -1976,6 +2028,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 	/// </summary>
@@ -2097,6 +2151,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The regular weekly operation times of a service or schedule.
 	/// </summary>
@@ -2179,6 +2235,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// Description of Aids to Navigation or prominent marks which are usually clearly visible and identifiable enough to be used in determining location or direction.
 	/// </summary>
@@ -2219,6 +2277,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 	/// <summary>
 	/// The best estimate of the vertical accuracy of depths, heights, vertical distances and vertical clearances.
 	/// </summary>
@@ -2226,10 +2286,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class verticalUncertaintyViewModel : ViewModelBase {
-		private decimal _uncertaintyFixed  = default;
+		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal uncertaintyFixed {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
 			}
@@ -2237,9 +2297,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
-		private decimal? _uncertaintyVariableFactor  = default;
+		private double? _uncertaintyVariableFactor  = default;
 
-		public decimal? uncertaintyVariableFactor {
+		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
 			}
@@ -2271,6 +2331,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
+
+
 	/// <summary>
 	/// Values, discovered by measuring, that correspond to vessels characteristics.
 	/// </summary>
@@ -2308,10 +2370,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
-		private decimal _vesselsCharacteristicsValue  = default;
+		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal vesselsCharacteristicsValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
 			}
@@ -2364,6 +2426,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Vessels Measurements";
 	}
+
+
 	/// <summary>
 	/// Links for relevant weather related information.
 	/// </summary>
@@ -2444,6 +2508,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Weather Resource";
 	}
 
+
+
 	/// <summary>
 	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
 	/// </summary>
@@ -2471,6 +2537,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Additional information";
 	}
+
+
 
 	/// <summary>
 	/// Contact information for an authority
@@ -2500,6 +2568,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Authority contact";
 	}
 
+
+
 	/// <summary>
 	/// Service hours for an authority
 	/// </summary>
@@ -2527,6 +2597,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Authority hours";
 	}
+
+
 
 	/// <summary>
 	/// Association between a geographic location and a regulation, restriction, recommendation, or nautical information
@@ -2556,6 +2628,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Associated RxN";
 	}
 
+
+
 	/// <summary>
 	/// Exception to the usual working day
 	/// </summary>
@@ -2583,6 +2657,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Exceptional workday";
 	}
+
+
 
 	/// <summary>
 	/// The controlling authority for a service area
@@ -2612,6 +2688,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Service control";
 	}
 
+
+
 	/// <summary>
 	/// Contact details for a service or facility
 	/// </summary>
@@ -2639,6 +2717,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Service contact";
 	}
+
+
 
 	/// <summary>
 	/// Working hours for a service or facility described by a geographic location
@@ -2668,6 +2748,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Location hours";
 	}
 
+
+
 	/// <summary>
 	/// Related organisation
 	/// </summary>
@@ -2695,6 +2777,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Related organisation";
 	}
+
+
 
 	/// <summary>
 	/// Association class specifying the relationship between the subset of vessels described by an APPLIC data object and a regulation (restriction, recommendation, or nautical information).
@@ -2741,6 +2825,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"InclusionType";
 	}
 
+
+
 	/// <summary>
 	/// Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit,  enter, or use  a feature.
 	/// </summary>
@@ -2786,6 +2872,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Permission Type";
 	}
 
+
+
 	/// <summary>
 	/// Association for linking spatial quality to spatial objects.
 	/// </summary>
@@ -2813,6 +2901,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Spatial Association";
 	}
+
+
 
 	/// <summary>
 	/// Association between a limit feature and the entrance for the limit.
@@ -2842,6 +2932,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Limit Entrance";
 	}
 
+
+
 	/// <summary>
 	/// The services available within a location.
 	/// </summary>
@@ -2869,6 +2961,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Service Availability";
 	}
+
+
 
 	/// <summary>
 	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
@@ -2898,6 +2992,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Text association";
 	}
 
+
+
 	/// <summary>
 	/// A division of a feature into parts of the same type as the whole.
 	/// </summary>
@@ -2925,6 +3021,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Subsection";
 	}
+
+
 
 	/// <summary>
 	/// The infrastructure facilities in an area.
@@ -2954,6 +3052,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Infrastructure";
 	}
 
+
+
 	/// <summary>
 	/// Describes the relationship between a primary feature and a feature that plays a supporting role in the use of the primary facility by a vessel.
 	/// </summary>
@@ -2981,6 +3081,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Primary/Auxiliary Facility";
 	}
+
+
 
 	/// <summary>
 	/// Demarcation of location(s) within a feature by relation to another feature or features
@@ -3010,6 +3112,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Demarcation";
 	}
 
+
+
 	/// <summary>
 	/// The limit(s) of a jurisdiction claimed by a coastal State.
 	/// </summary>
@@ -3038,6 +3142,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Jurisdictional Limit";
 	}
 
+
+
 	/// <summary>
 	/// A division of a feature into parts of type(s) different from the type of the whole.
 	/// </summary>
@@ -3065,6 +3171,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Layout Division";
 	}
+
+
 
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
@@ -3354,6 +3462,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
@@ -3523,6 +3633,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Services that are available for a given port.
@@ -3866,6 +3978,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
@@ -4158,6 +4272,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The seaward end of a channel, harbour, dock, etc.
 	/// </summary>
@@ -4417,6 +4533,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
@@ -4594,6 +4712,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
@@ -4763,6 +4883,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Recommendations for a related area or facility.
@@ -4941,6 +5063,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
@@ -5117,6 +5241,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Restrictions for a related area or facility.
@@ -5295,6 +5421,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
@@ -5452,6 +5580,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
@@ -5512,6 +5642,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A designated area of water where a vessel, sea plane, etc., may anchor.
@@ -5703,6 +5835,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
@@ -5964,6 +6098,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
@@ -6058,10 +6194,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _availableBerthingLength  = default;
+		private double? _availableBerthingLength  = default;
 
 		[Category("Berth")]
-		public decimal? availableBerthingLength {
+		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
 			}
@@ -6080,10 +6216,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("Berth")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -6091,10 +6227,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardPull, value);
 			}
 		}
-		private decimal? _minimumBerthDepth  = default;
+		private double? _minimumBerthDepth  = default;
 
 		[Category("Berth")]
-		public decimal? minimumBerthDepth {
+		public double? minimumBerthDepth {
 			get {
 				return _minimumBerthDepth;
 			}
@@ -6102,10 +6238,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _minimumBerthDepth, value);
 			}
 		}
-		private decimal? _elevation  = default;
+		private double? _elevation  = default;
 
 		[Category("Berth")]
-		public decimal? elevation {
+		public double? elevation {
 			get {
 				return _elevation;
 			}
@@ -6398,6 +6534,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A specific position within a berth where a vessel may be moored or anchored.
 	/// </summary>
@@ -6492,10 +6630,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _availableBerthingLength  = default;
+		private double? _availableBerthingLength  = default;
 
 		[Category("BerthPosition")]
-		public decimal? availableBerthingLength {
+		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
 			}
@@ -6514,10 +6652,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("BerthPosition")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -6708,6 +6846,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
@@ -6969,6 +7109,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
@@ -7062,10 +7204,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7074,10 +7216,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("DryDock")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -7187,6 +7329,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
@@ -7448,6 +7592,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
@@ -7541,10 +7687,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7553,10 +7699,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("FloatingDock")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -7667,6 +7813,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
@@ -7760,10 +7908,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -7772,10 +7920,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		private decimal? _sillDepth  = default;
+		private double? _sillDepth  = default;
 
 		[Category("Gridiron")]
-		public decimal? sillDepth {
+		public double? sillDepth {
 			get {
 				return _sillDepth;
 			}
@@ -7885,6 +8033,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
@@ -8173,6 +8323,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
 	/// </summary>
@@ -8437,6 +8589,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
 	/// </summary>
@@ -8697,6 +8851,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
@@ -8790,10 +8946,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
-		private decimal? _verticalClearanceValue  = default;
+		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
-		public decimal? verticalClearanceValue {
+		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
 			}
@@ -8918,6 +9074,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The equipment or structure used to secure a vessel.
@@ -9052,10 +9210,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _bollardDescription, value);
 			}
 		}
-		private decimal? _bollardPull  = default;
+		private double? _bollardPull  = default;
 
 		[Category("MooringWarpingFacility")]
-		public decimal? bollardPull {
+		public double? bollardPull {
 			get {
 				return _bollardPull;
 			}
@@ -9185,6 +9343,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
@@ -9455,6 +9615,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
@@ -9715,6 +9877,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
@@ -9974,6 +10138,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
@@ -10275,6 +10441,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// An area of water or enlargement of a channel used for turning vessels.
 	/// </summary>
@@ -10534,6 +10702,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// An area in which uniform general information of the waterway exists.
@@ -10795,6 +10965,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
@@ -10855,6 +11027,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public override string? ToString() => $"Data Coverage";
 	}
 
+
+
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
@@ -10878,10 +11052,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
-		private decimal? _horizontalDistanceUncertainty  = default;
+		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? horizontalDistanceUncertainty {
+		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
 			}
@@ -10901,10 +11075,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
-		private decimal? _orientationUncertainty  = default;
+		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		public decimal? orientationUncertainty {
+		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
 			}
@@ -11001,6 +11175,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
@@ -11064,6 +11240,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 		}
 	}
+
+
 
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
@@ -11129,6 +11307,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 	}
 
+
+
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
@@ -11136,11 +11316,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private decimal _orientationValue  = default;
+		private double _orientationValue  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<decimal?>), typeof(Editors.UnknownEditor<decimal?>))]
-		public decimal orientationValue {
+		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		public double orientationValue {
 			get {
 				return _orientationValue;
 			}
@@ -11235,5 +11415,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		public override string? ToString() => $"Text Placement";
 	}
+
+
 
 }

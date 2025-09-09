@@ -1,11 +1,13 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
+using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -135,7 +137,18 @@ namespace S100Framework.Applications
 
                 //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
+                var directoryNotes = new IO.DirectoryInfo(@"\\nas.gst.dk\ncps\production\indigo\ENC\NotesAndPictures");
+
+                var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
+                var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
+                //  TEST, TEST, TEST, TEST, TEST, 
+                Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+
                 foreach (var e in datasets) {
+                    var supportFiles = new List<string>();
+
                     var dataset = e.Dataset;
                     var filter = e.Filter;
 
@@ -156,6 +169,9 @@ namespace S100Framework.Applications
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
 
                     // InformationTypes
+                    var informationTypes = new List<YAML.Information>();
+                    var informationsTypesAdded = new List<string>();
+
                     try {
                         using var informationType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("informationtype")).GetName());
                         using var informationCursor = informationType.Search();
@@ -173,10 +189,41 @@ namespace S100Framework.Applications
                             var information = new YAML.Information {
                                 Name = code,
                                 ID = name,
-                                Attributes = (InformationNode)instance!,
                             };
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                information.Attributes = (InformationNode)instance!;
+                            informationTypes.Add(information);
+                            //dataset.AddInformation(information);
 
-                            dataset.AddInformation(information);
+                            if (regFileReference.IsMatch(json)) {
+                                var matches = regFileReference.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
+                            if (regPictorialRepresentation.IsMatch(json)) {
+                                var matches = regPictorialRepresentation.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -184,7 +231,73 @@ namespace S100Framework.Applications
                         Logger.Current.Error("Exception: {ex}", ex);
                     }
 
-                    Log.Information("InformationTypes found: #{count}", dataset.InformationTypes?.Count ?? 0);
+
+
+                    // FeatureTypes
+                    var featureTypes = new List<YAML.Feature>();
+                    var featureTypesAdded = new List<string>();
+
+                    try {
+                        using var featureType = source.OpenDataset<Table>(definitionTables.Single(e => e.GetAliasName().Equals("featuretype")).GetName());
+                        using var featureCursor = featureType.Search();
+                        while (featureCursor.MoveNext()) {
+                            var current = featureCursor.Current;
+
+                            var name = current["name"].ToString()!;
+                            var code = current["code"].ToString()!;
+                            var json = current["json"].ToString()!;
+
+                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+
+                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                            var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
+
+                            var feature = new YAML.Feature {
+                                Prim = Primitive.NoGeometry,
+                                Name = code,
+                                Foid = foid,
+                            };
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                feature.Attributes = (FeatureNode)instance!;
+                            featureTypes.Add(feature);
+
+                            if (regFileReference.IsMatch(json)) {
+                                var matches = regFileReference.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
+                            if (regPictorialRepresentation.IsMatch(json)) {
+                                var matches = regPictorialRepresentation.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex) {
+                        Log.Information("Table: featuretype: {message} ", ex.Message);
+                        Logger.Current.Error("Exception: {ex}", ex);
+                    }
+
 
                     // Features
                     foreach (var def in source.GetDefinitions<FeatureClassDefinition>()) {
@@ -238,7 +351,37 @@ namespace S100Framework.Applications
                                     continue;
                                 }
 
+                                var json = Convert.ToString(current["json"])!;
                                 var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                                if (regFileReference.IsMatch(json)) {
+                                    var matches = regFileReference.Matches(json);
+                                    foreach (Match m in matches) {
+                                        var filename = m.Groups["filename"].Value;
+
+                                        if (!supportFiles.Contains(filename)) {
+                                            supportFiles.Add(filename);
+                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                            dataset?.Metadata.AddSupportFile(filename, base64);
+                                        }
+                                    }
+                                }
+                                if (regPictorialRepresentation.IsMatch(json)) {
+                                    var matches = regPictorialRepresentation.Matches(json);
+                                    foreach (Match m in matches) {
+                                        var filename = m.Groups["filename"].Value;
+
+                                        if (!supportFiles.Contains(filename)) {
+                                            supportFiles.Add(filename);
+                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                            dataset?.Metadata.AddSupportFile(filename, base64);
+                                        }
+                                    }
+                                }
 
                                 // Surface Masks
                                 var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
@@ -278,6 +421,11 @@ namespace S100Framework.Applications
                                                 spatialAssociations.TryAdd(geometry, asso);
                                             else
                                                 feature?.AddAssociation(asso);
+
+                                            if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                                informationsTypesAdded.Add(binding.informationId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
+                                            }
                                         }
                                     }
                                 }
@@ -301,6 +449,12 @@ namespace S100Framework.Applications
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
+
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId![1..]}:1"));
+                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                                featureTypesAdded.Add(binding.featureId);
+                                                dataset?.AddFeature(noGeometry);
+                                            }
                                         }
                                     }
                                 }
@@ -316,6 +470,9 @@ namespace S100Framework.Applications
                             }
                         }
                     }
+
+                    Log.Information("FeatureTypes (noGeometry) found: #{count}", featureTypesAdded.Count);
+                    Log.Information("InformationTypes found: #{count}", informationsTypesAdded.Count);
 
                     // Geometries
                     foreach (var (geometry, name) in geometries.OrderBy(e => e.geometry.GeometryType)) {
@@ -339,7 +496,7 @@ namespace S100Framework.Applications
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
+ 
                     File.WriteAllText(IO.Path.Combine(output, $"{datasetName}.yaml"), yaml);
                     File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 
@@ -368,6 +525,7 @@ namespace S100Framework.Applications
                             p.WaitForExit();
 
                             if (p.ExitCode != 0) {
+                                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
                                 return p.ExitCode;
                             }
                         }
@@ -390,6 +548,7 @@ namespace S100Framework.Applications
                             p.WaitForExit();
 
                             if (p.ExitCode != 0) {
+                                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
                                 return p.ExitCode;
                             }
                         }

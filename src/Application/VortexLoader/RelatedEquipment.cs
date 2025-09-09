@@ -28,7 +28,7 @@ namespace S100Framework.Applications
             this._featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
         }
 
-        internal topmark? GetTopMark(AidsToNavigationP structure) {
+        internal topmark? GetTopMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
             var topmarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(topmark), structure.GLOBALID);
 
             if (topmarks == null || topmarks.Count() == 0) {
@@ -48,7 +48,7 @@ namespace S100Framework.Applications
                 colourPattern? topmarkColourPattern = null;
 
                 if (relatedTopmark.COLOUR != default) {
-                    topmarkColours = ImporterNIS.GetColours(relatedTopmark.COLOUR);
+                    topmarkColours = ImporterNIS.GetColours<TType>(relatedTopmark.COLOUR);
                 }
 
                 if (relatedTopmark.COLPAT != default) {
@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedTopmark.TOPSHP.HasValue) {
-                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
+                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmark, topmarkDaymarkShape>(relatedTopmark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
@@ -86,7 +86,7 @@ namespace S100Framework.Applications
 
 
 
-        internal Daymark? GetDayMark(AidsToNavigationP structure) {
+        internal Daymark? GetDayMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
             var daymarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
 
             if (daymarks == null || daymarks.Count() == 0) {
@@ -106,7 +106,7 @@ namespace S100Framework.Applications
                 colourPattern? daymarkColourPattern = null;
 
                 if (relatedDaymark.COLOUR != default) {
-                    daymarkColours = ImporterNIS.GetColours(relatedDaymark.COLOUR);
+                    daymarkColours = ImporterNIS.GetColours<TType>(relatedDaymark.COLOUR);
                 }
 
                 if (relatedDaymark.COLPAT != default) {
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                 }
 
                 if (relatedDaymark.TOPSHP.HasValue) {
-                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType, topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
@@ -175,7 +175,7 @@ namespace S100Framework.Applications
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, shape);
-                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -190,12 +190,12 @@ namespace S100Framework.Applications
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
                         ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
-                        Logger.Current.DataObject(-1, relatedObject.PLTS_Frel.DEST_FC, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
+                        Logger.Current.DataObject(-1, relatedObject.S57Object!.TableName!, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
                     }
 
                     // Add relation between s57master polygon and slave equipment
 
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(lightSectored.GetType(), equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
 
                 }
                 // 
@@ -205,7 +205,7 @@ namespace S100Framework.Applications
 
 
                     if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
-                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type,scaleMinimum);
+                        var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);
 
                         if (instance == null)
                             return;
@@ -223,6 +223,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
+                        // TODO: ENABLE THIS 
                         FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
 
 
@@ -234,6 +235,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
+                        // TODO: ENABLE THIS 
                         //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), name));
 
                         Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
@@ -301,9 +303,13 @@ namespace S100Framework.Applications
 
             // IF NOT SECTORED LIGHTS
             foreach (PltsSlave relatedObject in relatedNonSectoredEquipment) {
-                if (relatedObject.S101Type == typeof(topmark))
+                if (relatedObject.S101Type == typeof(topmark)) {
                     continue;
+                }
 
+                //if (ConversionAnalytics.Instance.IsConverted(relatedObject.GlobalId)) { 
+                //    continue; 
+                //}
 
                 if (relatedObject.S57Object != null && relatedObject.S101Type != null) {
                     var instance = ImporterNIS._converterRegistry.Convert(relatedObject.S57Object, relatedObject.S101Type, scaleMinimum);
@@ -377,8 +383,8 @@ namespace S100Framework.Applications
             //        buffer["ps"] = ImporterNIS.ps101;
             //
             //                    buffer["code"] = instance.GetType().Name;
-             //                   buffer["edition"] = ImporterNIS.s101version;
-                                //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //                   buffer["edition"] = ImporterNIS.s101version;
+            //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
@@ -418,7 +424,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            var featureN = featureClass.CreateRow(buffer);
@@ -480,7 +486,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //        SetShape(buffer, s57master.SHAPE);
 
             //        var featureN = featureClass.CreateRow(buffer);
@@ -513,7 +519,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -551,7 +557,7 @@ namespace S100Framework.Applications
             //
             // buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, light.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -588,7 +594,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, radarTransponder.SHAPE);
 
             //            culturalFeaturesPConverted = true;
@@ -624,7 +630,7 @@ namespace S100Framework.Applications
             //
             //                    buffer["code"] = instance.GetType().Name;
             //                    buffer["edition"] = ImporterNIS.s101version;
-                                //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+            //            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
             //            SetShape(buffer, daymark.SHAPE);
 
             //            culturalFeaturesPConverted = true;

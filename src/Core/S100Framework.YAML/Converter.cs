@@ -70,6 +70,9 @@ namespace S100Framework.YAML
             var type = obj.GetType();
             var properties = type.GetProperties();
 
+            if (obj is IDependencies dependencies)
+                dependencies.RunValidationChecks();
+
             foreach (var property in properties) {
                 if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
                     continue;
@@ -82,16 +85,7 @@ namespace S100Framework.YAML
 
                 var propertyValue = property.GetValue(obj, null);
 
-                var required = property.GetCustomAttribute<UnknownValueAttribute>() != null;
-
-                // If the property is a dependent property, it should be required IF the master property is null.
-                //var dependentAttr = property.GetCustomAttribute<DependentAttribute>();
-                //if (dependentAttr is not null) {
-                //    var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
-
-                //    if (masterValue is null)
-                //        required = true;
-                //}
+                var required = IsRequired(obj, property);
 
                 try {
                     attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
@@ -103,7 +97,43 @@ namespace S100Framework.YAML
             return attributes;
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
+        private static bool IsRequired(object obj, PropertyInfo property) {
+            var type = obj.GetType();
+            var properties = type.GetProperties();
+
+            // If property should be unknown, its required
+            var unknownValueAttr = property.GetCustomAttribute<UnknownValueAttribute>();
+            if (unknownValueAttr is not null)
+                return true;
+
+            // If the property (list) has a lowerAttribute, it should be required if lower > 1
+            var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
+            if (lowerAttr is not null) {
+                if (lowerAttr.Lower > 0)
+                    return true;
+            }
+
+            // If the property is a dependent property, it should be required IF the master property is null.
+            var dependentAttr = property.GetCustomAttribute<DependentUnknownValueAttribute>();
+            if (dependentAttr is not null) {
+                var dependentValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
+
+                if (dependentValue is null)
+                    return true;
+            }
+
+            // If its conditional depencency is a boolean and true, this property is required
+            var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalUnknownDependencyAttribute>();
+            if (conditionalDependencyAttr is not null) {
+                var d = (IDependencies)obj;
+
+                return d.ConditionalUnknown(conditionalDependencyAttr.PropertyName);
+            }
+
+            return false;
+        }
+
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {            
             // If the attribute is not required and the value is null, omit from yaml
             if (!required && propertyValue == null)
                 return;
@@ -154,7 +184,13 @@ namespace S100Framework.YAML
                     attributes.Add(new(propertyName, parsed?.ToString(CultureInfo.InvariantCulture), null, parentId));
                     break;
 
-                // Ensure enum value comes 'EnumMemberAttribute' and no enums are sat to 0, -1 or "unknown".
+                // Ensure doubles with point 2.0
+                case Type t when t == typeof(double):
+                    var parsedDouble = (double?)propertyValue!;
+
+                    attributes.Add(new(propertyName, parsedDouble?.ToString(CultureInfo.InvariantCulture), null, parentId));
+                    break;
+
                 case Type t when t.IsEnum:
                     var enumvalue = ToEnumString(propertyValue);
 
@@ -172,7 +208,13 @@ namespace S100Framework.YAML
                         break;
                     }
 
-                    if (propertyValue is not IEnumerable collection) break;
+                    if (propertyValue is not IEnumerable collection)
+                        break;
+
+                    // If collection is required but empty
+                    if (required && !collection.GetEnumerator().MoveNext()) {
+                        attributes.Add(new(propertyName, null, null, parentId));
+                    }
 
                     foreach (var item in collection!) {
                         var type = item.GetType();
@@ -184,6 +226,9 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when t.IsClass:
+                    if (propertyValue is IDependencies dependencies)
+                        dependencies.RunValidationChecks();
+
                     // If the property is a nullable object, but still required, add it with null value
                     if (propertyValue == null) {
                         attributes.Add(new(propertyName, null, null, parentId));
@@ -209,16 +254,7 @@ namespace S100Framework.YAML
                         var propType = propInfo.PropertyType;
                         propType = Nullable.GetUnderlyingType(propType) ?? propType;
 
-                        var r = propInfo.GetCustomAttribute<UnknownValueAttribute>() != null;
-
-                        //If the property is a dependent property, it should be required IF the master property is null.
-                        //var dependentAttr = propInfo.GetCustomAttribute<DependentAttribute>();
-                        //if (dependentAttr is not null) {
-                        //    var masterValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(t);
-
-                        //    if (masterValue is null)
-                        //        r = true;
-                        //}
+                        var r = IsRequired(propertyValue, propInfo);
 
                         attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId, r);
                     }
@@ -685,7 +721,7 @@ namespace S100Framework.YAML
                                 feature.Name = value;
                                 break;
                             case "Prim":
-                                feature.Prim = Enum.Parse<Primitive>(value);
+                                feature.Prim = string.IsNullOrEmpty(value) ? Primitive.NoGeometry : Enum.Parse<Primitive>(value);
                                 break;
                             case "Foid":
                                 feature.Foid = value;
@@ -881,6 +917,15 @@ namespace S100Framework.YAML
                                 break;
                             }
 
+                        case Type t when t == typeof(double): {
+                                if (attr.Value == null) continue;
+                                var doubleValue = double.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, doubleValue);
+                                break;
+                            }
+
+
+
                         case Type t when t.IsEnum: {
                                 if (attr.Value == null) continue;
                                 var enumValue = Enum.Parse(typed, attr.Value);
@@ -899,7 +944,7 @@ namespace S100Framework.YAML
                                 var list = (System.Collections.IList?)prop.GetValue(parentInstance);
                                 var elementType = typed.GetGenericArguments()[0];
 
-                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null) continue;
 
                                     var convertedItem = elementType.IsEnum
@@ -989,6 +1034,13 @@ namespace S100Framework.YAML
                                 break;
                             }
 
+                        case Type t when t == typeof(double): {
+                                if (attr.Value == null) continue;
+                                var doubleValue = double.Parse(attr.Value, CultureInfo.InvariantCulture);
+                                prop.SetValue(parentInstance, doubleValue);
+                                break;
+                            }
+
                         case Type t when t.IsEnum: {
                                 if (attr.Value == null) continue;
                                 var enumValue = Enum.Parse(typed, attr.Value);
@@ -1007,7 +1059,7 @@ namespace S100Framework.YAML
                                 var list = (System.Collections.IList?)prop.GetValue(parentInstance);
                                 var elementType = typed.GetGenericArguments()[0];
 
-                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal)) {
+                                if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null) continue;
 
                                     var convertedItem = elementType.IsEnum
