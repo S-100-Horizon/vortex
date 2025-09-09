@@ -58,19 +58,20 @@ namespace ArcGIS.Core.Geometry
                              "{0:0.#######},{1:0.#######}", point.X, point.Y
                          );
 
-                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Location == pointLocation);
+                        var hashId = System.IO.Hashing.XxHash64.HashToUInt64(new NetTopologySuite.Geometries.Point(point.X, point.Y).ToBinary());
+
+                        var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Name == $"P{hashId}");
 
                         // Create point if not exist
                         if (datasetPoint == default) {
                             var p = new Point(point.X, point.Y) {
-                                Name = $"{name}"
+                                Name = $"P{hashId}"
                             };
 
                             dataset?.AddPoint(p);
                         }
-                        else {
-                            dataset?.UpdateFeatureReferences(name, datasetPoint.Name!);
-                        }
+
+                        dataset?.UpdateFeatureReferences(name, $"P{hashId}"!);
                         break;
                     }
                 case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
@@ -78,7 +79,9 @@ namespace ArcGIS.Core.Geometry
 
                         var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
 
-                        var pointSet = new PointSet(points, depths) { Name = name };
+                        var hashId = System.IO.Hashing.XxHash64.HashToUInt64(new NetTopologySuite.Geometries.MultiPoint([.. multiPoint.Points.Select(e => new NetTopologySuite.Geometries.Point(e.X, e.Y, e.Z))]).ToBinary());
+
+                        var pointSet = new PointSet(points, depths) { Name = $"P{hashId}" };
                         dataset.AddPointSet(pointSet);
                         break;
                     }
