@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.YAML;
 using System.Collections;
 using System.Text;
 using System.Text.Json;
@@ -10,9 +11,9 @@ using Xunit.Abstractions;
 
 namespace TestS100Framework
 {
-    public class UnitTestYAML
+    public class UnitTestYAML(ITestOutputHelper output)
     {
-        private readonly ITestOutputHelper output;
+        private readonly ITestOutputHelper output = output;
 
         private static readonly JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = true,
@@ -20,10 +21,16 @@ namespace TestS100Framework
             PropertyNameCaseInsensitive = true,
         };
 
-        public UnitTestYAML(ITestOutputHelper output) {
-            this.output = output;
+        [Fact]
+        public void Test_Dateset_Update() {
+            var DSNM = "101DK0040347E";
 
-            //ArcGIS.Core.Hosting.Host.Initialize();
+            var updateDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", "update", $"{DSNM}.yaml"));
+            var rootDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", "root", $"{DSNM}.yaml"));
+
+            var datasetUpdate = new DatasetUpdate(rootDataset, updateDataset);
+
+            System.Diagnostics.Debugger.Break();
         }
 
         [Fact]
