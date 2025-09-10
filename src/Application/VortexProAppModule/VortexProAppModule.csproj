@@ -7,8 +7,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <NoWarn>CA1416</NoWarn>
     <RootNamespace>VortexProAppModule</RootNamespace>
-    <AssemblyVersion>1.0.554.0</AssemblyVersion>
-    <FileVersion>1.0.554.0</FileVersion>
+    <AssemblyVersion>1.0.556.0</AssemblyVersion>
+    <FileVersion>1.0.556.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <ShouldCreateLogs>True</ShouldCreateLogs>
@@ -51,7 +51,7 @@
     <None Include="Properties\launchSettings.json" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.7.25104.5739" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Enrichers.ExceptionData" Version="1.0.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.6" />

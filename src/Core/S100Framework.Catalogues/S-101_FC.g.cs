@@ -6710,6 +6710,7 @@ namespace S100Framework.DomainModel.S101 {
 		public class surfaceCharacteristics : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,14,17,18])]
+			[ConditionalUnknownDependency("surfaceCharacteristics.natureOfSurface")]
 			public natureOfSurface? natureOfSurface {get;set;} = default;
 
 			[JsonIgnore]
@@ -6736,6 +6737,7 @@ namespace S100Framework.DomainModel.S101 {
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<surfaceCharacteristics, bool>> _conditionalUnknown = new Dictionary<string,Func<surfaceCharacteristics, bool>> {
+				{ "surfaceCharacteristics.natureOfSurface", (surfaceCharacteristics) => surfaceCharacteristics.natureOfSurface is null && !surfaceCharacteristics.natureOfSurfaceQualifyingTerms.Any() },
 			};
 
 			public override void RunValidationChecks() {
