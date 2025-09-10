@@ -9,12 +9,14 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 
+[assembly: InternalsVisibleTo("TestNisImporter")]
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
@@ -209,6 +211,12 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
+                    Logger.Current.Information($"Converting Areas And Limits");
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
+
+
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
@@ -251,6 +259,8 @@ namespace S100Framework.Applications
                     //Logger.Current.Information($"Converting S101_RecommendedTracksAndRoutes");
                     //Store(() => S101_RecommendedTracksAndRoutes(source, destination, QueryFilter));
 
+
+
                     Logger.Current.Information($"Converting PortsAndServices");
                     Store(() => S57_PortsAndServicesA(source, destination, QueryFilter));
                     Store(() => S57_PortsAndServicesL(source, destination, QueryFilter));
@@ -264,10 +274,6 @@ namespace S100Framework.Applications
                     Store(() => S57_TidesAndVariationsL(source, destination, QueryFilter));
                     Store(() => S57_TidesAndVariationsP(source, destination, QueryFilter));
 
-                    Logger.Current.Information($"Converting Areas And Limits");
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
 
                     Logger.Current.Information($"Converting Seabeds");
                     Store(() => S57_SeabedA(source, destination, QueryFilter));

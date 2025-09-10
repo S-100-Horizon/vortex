@@ -560,14 +560,10 @@ namespace S100Framework.Applications
 
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.INFORM != null) {
+                            }                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");

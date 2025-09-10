@@ -78,10 +78,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
@@ -282,12 +281,11 @@ namespace S100Framework.Applications
                             else {
                                 instance.verticalLength = default(double?);
                             }
-
-                            if (current.INFORM != null) {
+                            
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
-
+                            
                             if (current.CONVIS.HasValue) {
                                 instance.visualProminence = EnumHelper.GetEnumValue<OffshoreProductionArea, visualProminence>(current.CONVIS.Value);
                             }
@@ -352,12 +350,11 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
-
-                            if (current.INFORM != null) {
+                            
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
-
+                            
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
@@ -399,10 +396,12 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-        private static List<vesselSpeedLimit> GetVesselSpeedLimit(string value) {
+        internal static List<vesselSpeedLimit> GetVesselSpeedLimit(string value) {
             string pattern = @"\bspeed\s*limit(?: is)?\s+(\d+(?:\.\d+)?)\s+(knots?)\b";
+            string patternFaster = @"faster than.*?\b(\d+)\s+(knot[s]?)\b"; ;
 
             var match = Regex.Match(value, pattern, RegexOptions.IgnoreCase);
+            var matchFaster = Regex.Match(value, patternFaster, RegexOptions.IgnoreCase);
             if (match.Success) {
                 string speed = match.Groups[1].Value;
                 string unit = match.Groups[2].Value;
@@ -418,6 +417,23 @@ namespace S100Framework.Applications
                     speedUnits = units
                 }];
             }
+            else if (matchFaster.Success) {
+                string speed = matchFaster.Groups[1].Value;
+                string unit = matchFaster.Groups[2].Value;
+
+
+                var units = unit.ToLower() switch {
+                    "knots" => speedUnits.Knots,
+                    _ => throw new NotImplementedException($"Vessel speed limit: Units {unit}")
+                };
+
+                return [new vesselSpeedLimit() {
+                    speedLimit = Convert.ToDouble(speed),
+                    speedUnits = units
+                }];
+
+            }
+
             else {
                 return [];
             }

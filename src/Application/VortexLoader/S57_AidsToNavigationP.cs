@@ -1755,7 +1755,6 @@ namespace S100Framework.Applications
                             colours = GetColours<lightSector>(light.COLOUR);
                         }
 
-
                         //if (light.SECTR1 != null && light.SECTR2 != null) { 
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLightValue.lightCharacteristic,
