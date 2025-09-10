@@ -83,6 +83,8 @@ namespace ArcGIS.Core.Geometry
 
                         var pointSet = new PointSet(points, depths) { Name = $"P{hashId}" };
                         dataset.AddPointSet(pointSet);
+
+                        dataset?.UpdateFeatureReferences(name, $"P{hashId}"!);
                         break;
                     }
                 case ArcGIS.Core.Geometry.Polyline polyline:        // Curves are handled in Topology
