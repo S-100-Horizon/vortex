@@ -720,24 +720,24 @@ namespace S100Framework.Topology
 
                 //if (curve.Name.Equals("C1371117")) System.Diagnostics.Debugger.Break();
 
-                if (lineStrings.Any(e => e.IsRing)) {
-                    LineString[] array = [];
-                    foreach(var l in lineStrings) {
-                        if(!l.IsRing)
-                            array = [.. array,l];
-                        else {
-                            var locator = new LocationIndexedLine(l);
+                //if (lineStrings.Any(e => e.IsRing)) {
+                //    LineString[] array = [];
+                //    foreach(var l in lineStrings) {
+                //        if(!l.IsRing)
+                //            array = [.. array,l];
+                //        else {
+                //            var locator = new LocationIndexedLine(l);
 
-                            var index = locator.Project(l.GetPointN(l.NumPoints/2).Coordinate);
+                //            var index = locator.Project(l.GetPointN(l.NumPoints/2).Coordinate);
 
-                            var segment1 = (LineString)locator.ExtractLine(locator.StartIndex, index);
-                            var segment2 = (LineString)locator.ExtractLine(index, locator.EndIndex);
+                //            var segment1 = (LineString)locator.ExtractLine(locator.StartIndex, index);
+                //            var segment2 = (LineString)locator.ExtractLine(index, locator.EndIndex);
 
-                            array = [.. array, segment1,segment2];
-                        }
-                    }
-                    lineStrings= array;
-                }
+                //            array = [.. array, segment1,segment2];
+                //        }
+                //    }
+                //    lineStrings= array;
+                //}
 
                 this._bagPolylines.Add((curve.Name, curve.LineString, lineStrings));
             });

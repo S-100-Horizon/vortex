@@ -19772,6 +19772,7 @@ namespace S100Framework.DomainModel.S101 {
 			};
 
 			public override void RunValidationChecks() {
+				if (!surfaceCharacteristics.Any()) surfaceCharacteristics = [new()];
 			}
 		}
 

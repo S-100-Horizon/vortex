@@ -164,6 +164,7 @@ namespace TestS100Framework
                 var validationChecks = new S100Framework.Applications.Roslyn.ValidationCheck[] {
                     new S100Framework.Applications.Roslyn.ValidationCheck("lightSector", "if (directionalCharacter is null && sectorLimit is null) directionalCharacter = new();"),
                     new S100Framework.Applications.Roslyn.ValidationCheck("CableOverhead", "if (verticalClearanceFixed is null && verticalClearanceSafe is null) verticalClearanceSafe = new();"),
+                    new S100Framework.Applications.Roslyn.ValidationCheck("SeabedArea", "if (!surfaceCharacteristics.Any()) surfaceCharacteristics = [new()];")
                 };
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, true, attributeRules, dependencyRule, validationChecks);
