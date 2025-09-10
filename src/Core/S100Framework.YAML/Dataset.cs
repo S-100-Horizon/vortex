@@ -1,10 +1,6 @@
-﻿using NetTopologySuite.Geometries;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S128.ComplexAttributes;
+﻿using S100Framework.DomainModel;
 using S100Framework.Topology;
 using System.Globalization;
-using System.Security.Cryptography;
-using System.Threading.Channels;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
@@ -137,14 +133,43 @@ namespace S100Framework.YAML
         }
     }
 
-    public class DatasetUpdate
-    {
-        public DatasetUpdate(string root, string update) {
-            _rootDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(root);
-            _updateDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(update);
+    public record FeatureDiff(
+        Dictionary<string, string> Added,
+        Dictionary<string, string> Deleted,
+        Dictionary<string, string> Updated
+    );
 
-            // CellName
-            if (!DatasetEquals())
+    public record InformationTypeDiff(
+        Dictionary<string, string> Added,
+        Dictionary<string, string> Deleted,
+        Dictionary<string, string> Updated
+    );
+
+    public record GeometryDiff(
+        Dictionary<string, Geometry> Added,
+        Dictionary<string, Geometry> Deleted,
+        Dictionary<string, Geometry> Updated
+    );
+
+    public class DatasetDiff
+    {
+        public FeatureDiff? Features { get; init; }
+        public InformationTypeDiff? InformationTypes { get; init; }
+        public GeometryDiff? Points { get; init; }
+        public GeometryDiff? Depths { get; init; }
+        public GeometryDiff? Curves { get; init; }
+        public GeometryDiff? CompositeCurves { get; init; }
+        public GeometryDiff? Surfaces { get; init; }
+        public string? MetadataUpdated { get; init; }
+    }
+
+    public static class DatasetComparer
+    {
+        public static DatasetDiff Compare(string root, string update) {
+            var _rootDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(root);
+            var _updateDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(update);
+
+            if (_rootDataset.CellName != _updateDataset.CellName)
                 throw new InvalidOperationException("The two datasets are not of the same cell.");
 
             // Deserialize to Dictionary
@@ -156,14 +181,14 @@ namespace S100Framework.YAML
             var temp_root_information = temp_root_raw["InformationTypes"] as List<object>;
             var temp_update_information = temp_update_raw["InformationTypes"] as List<object>;
 
-            _rootInformationTypes = temp_root_information!
+            var _rootInformationTypes = temp_root_information!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["ID"]!.ToString()!,
                     dict => Converter.Serialize(dict)
                 );
 
-            _updateInformationTypes = temp_update_information!
+            var _updateInformationTypes = temp_update_information!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["ID"].ToString()!,
@@ -174,14 +199,14 @@ namespace S100Framework.YAML
             var temp_root_feature = temp_root_raw["Features"] as List<object>;
             var temp_update_feature = temp_update_raw["Features"] as List<object>;
 
-            _rootFeatures = temp_root_feature!
+            var _rootFeatures = temp_root_feature!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["Foid"].ToString()!,
                     dict => Converter.Serialize(dict)
                 );
 
-            _updateFeatures = temp_update_feature!
+            var _updateFeatures = temp_update_feature!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["Foid"].ToString()!,
@@ -193,139 +218,138 @@ namespace S100Framework.YAML
             var temp_root_metadata = temp_root_raw["Metadata"];
             var temp_update_metadata = temp_update_raw["Metadata"];
 
-            _rootMetadata = Converter.Serialize(temp_root_metadata);
-            _updateMetadata = Converter.Serialize(temp_update_metadata);
+            var _rootMetadata = Converter.Serialize(temp_root_metadata);
+            var _updateMetadata = Converter.Serialize(temp_update_metadata);
 
             // Compare Metadata
-            MetadataEquals();
+            var metadataDiff = MetadataEquals(_rootMetadata, _updateMetadata);
 
             // Compare InformationTypes
-            InformationTypeEquals();
+            var informationTypeDiff = InformationTypeEquals(_rootInformationTypes, _updateInformationTypes);
 
             // Compare Features
-            FeatureEquals();
+            var featureDiff = FeatureEquals(_rootFeatures, _updateFeatures);
 
             // Compare Points
-            GeometryEquals(_rootDataset.Points!, _updateDataset.Points!);
+            var pointDiff = GeometryEquals(_rootDataset.Points!, _updateDataset.Points!);
 
             // Compare Depths
-            GeometryEquals(_rootDataset.Depths!, _updateDataset.Depths!);
+            var depthDiff = GeometryEquals(_rootDataset.Depths!, _updateDataset.Depths!);
 
             // Compare Curves
-            GeometryEquals(_rootDataset.Curves!, _updateDataset.Curves!);
+            var curveDiff = GeometryEquals(_rootDataset.Curves!, _updateDataset.Curves!);
 
             // Compare Composite Curves
-            GeometryEquals(_rootDataset.CompositeCurves!, _updateDataset.CompositeCurves!);
+            var compositeCurveDiff = GeometryEquals(_rootDataset.CompositeCurves!, _updateDataset.CompositeCurves!);
 
             // Compare Surfaces
-            GeometryEquals(_rootDataset.Surfaces!, _updateDataset.Surfaces!);
+            var surfaceDiff = GeometryEquals(_rootDataset.Surfaces!, _updateDataset.Surfaces!);
+
+
+            // Build result return it
+            var result = new DatasetDiff() {
+                MetadataUpdated = metadataDiff,
+                Features = featureDiff,
+                InformationTypes = informationTypeDiff,
+                Points = pointDiff,
+                Depths = depthDiff,
+                Curves = curveDiff,
+                CompositeCurves = compositeCurveDiff,
+                Surfaces = surfaceDiff,
+            };
+
+
+            return result;
         }
 
-        private readonly Dictionary<string, string> _rootFeatures = [];
-        private readonly Dictionary<string, string> _updateFeatures = [];
+        private static FeatureDiff FeatureEquals(Dictionary<string, string> rootFeatures, Dictionary<string, string> updateFeatures) {
+            var featureDiff = new FeatureDiff(
+                // Added
+                updateFeatures.Keys
+                    .Except(rootFeatures.Keys)
+                    .ToDictionary(k => k!, k => updateFeatures[k]),
 
-        private readonly Dictionary<string, string> _rootInformationTypes = [];
-        private readonly Dictionary<string, string> _updateInformationTypes = [];
+                // Deleted
+                rootFeatures.Keys
+                    .Except(updateFeatures.Keys)
+                    .ToDictionary(k => k!, k => rootFeatures[k]),
 
-        private readonly string _rootMetadata = string.Empty;
-        private readonly string _updateMetadata = string.Empty;
+                // Updates
+                rootFeatures.Keys
+                    .Intersect(updateFeatures.Keys)
+                    .Where(k => !rootFeatures[k].Equals(updateFeatures[k]))
+                    .ToDictionary(k => k!, k => updateFeatures[k])
+            );
 
-        private readonly Dataset _rootDataset;
-        private readonly Dataset _updateDataset;
+            return featureDiff;
+        }
+        private static string MetadataEquals(string rootMetadata, string updateMetadata) {
+            if (rootMetadata.Equals(updateMetadata))
+                return string.Empty;
 
-        public Dictionary<string, string> FeaturesAdded { get; internal set; } = [];
-        public Dictionary<string, string> FeaturesDeleted { get; internal set; } = [];
-        public Dictionary<string, string> FeaturesUpdated { get; internal set; } = [];
+            return updateMetadata;
+        }
+        private static InformationTypeDiff InformationTypeEquals(Dictionary<string, string> rootInformationTypes, Dictionary<string, string> updateInformationTypes) {
+            var informationTypeDiff = new InformationTypeDiff(
+                // Added
+                updateInformationTypes.Keys
+                    .Except(rootInformationTypes.Keys)
+                    .ToDictionary(k => k!, k => updateInformationTypes[k]),
 
-        public Dictionary<string, string> InformationTypesAdded { get; internal set; } = [];
-        public Dictionary<string, string> InformationTypesDeleted { get; internal set; } = [];
-        public Dictionary<string, string> InformationTypesUpdated { get; internal set; } = [];
+                // Deleted
+                rootInformationTypes.Keys
+                    .Except(updateInformationTypes.Keys)
+                    .ToDictionary(k => k!, k => rootInformationTypes[k]),
 
-        public Dictionary<string, Geometry> GeometriesAdded { get; internal set; } = [];
-        public Dictionary<string, Geometry> GeometriesDeleted { get; internal set; } = [];
-        public Dictionary<string, Geometry> GeometriesUpdated { get; internal set; } = [];
+                // Updated
+                rootInformationTypes.Keys
+                    .Intersect(updateInformationTypes.Keys)
+                    .Where(k => !rootInformationTypes[k].Equals(updateInformationTypes[k]))
+                    .ToDictionary(k => k!, k => updateInformationTypes[k])
+            );
 
-        public string? MetadataUpdated { get; internal set; }
+            return informationTypeDiff;
 
-        private void FeatureEquals() {
             // Added
-            FeaturesAdded = _updateFeatures.Keys
-                .Except(_rootFeatures.Keys)
-                .ToDictionary(k => k!, k => _updateFeatures[k]);
+            //InformationTypesAdded = _updateInformationTypes.Keys
+            //    .Except(_rootInformationTypes.Keys)
+            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
 
-            // Deleted
-            FeaturesDeleted = _rootFeatures.Keys
-                .Except(_updateFeatures.Keys)
-                .ToDictionary(k => k!, k => _rootFeatures[k]);
+            //// Deleted
+            //InformationTypesDeleted = _rootInformationTypes.Keys
+            //    .Except(_updateInformationTypes.Keys)
+            //    .ToDictionary(k => k!, k => _rootInformationTypes[k]);
 
-            // Updates
-            FeaturesUpdated = _rootFeatures.Keys
-                .Intersect(_updateFeatures.Keys)
-                .Where(k => !_rootFeatures[k].Equals(_updateFeatures[k]))
-                .ToDictionary(k => k!, k => _updateFeatures[k]);
+            //// Updates
+            //InformationTypesUpdated = _rootInformationTypes.Keys
+            //    .Intersect(_updateInformationTypes.Keys)
+            //    .Where(k => !_rootInformationTypes[k].Equals(_updateInformationTypes[k]))
+            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
         }
-
-        private bool DatasetEquals() {
-            return _rootDataset.CellName == _updateDataset.CellName;
-        }
-
-        private void MetadataEquals() {
-            if (_rootMetadata.Equals(_updateMetadata))
-                return;
-
-            MetadataUpdated = _updateMetadata ?? string.Empty;
-        }
-
-        private void InformationTypeEquals() {
-            // Added
-            InformationTypesAdded = _updateInformationTypes.Keys
-                .Except(_rootInformationTypes.Keys)
-                .ToDictionary(k => k!, k => _updateInformationTypes[k]);
-
-            // Deleted
-            InformationTypesDeleted = _rootInformationTypes.Keys
-                .Except(_updateInformationTypes.Keys)
-                .ToDictionary(k => k!, k => _rootInformationTypes[k]);
-
-            // Updates
-            InformationTypesUpdated = _rootInformationTypes.Keys
-                .Intersect(_updateInformationTypes.Keys)
-                .Where(k => !_rootInformationTypes[k].Equals(_updateInformationTypes[k]))
-                .ToDictionary(k => k!, k => _updateInformationTypes[k]);
-        }
-
-        private void GeometryEquals(IEnumerable<Geometry> original, IEnumerable<Geometry> update) {
+        private static GeometryDiff GeometryEquals(IEnumerable<Geometry> original, IEnumerable<Geometry> update) {
             // Use Name as unique key
             var originalDict = original.ToDictionary(c => c.Name!);
             var updatedDict = update.ToDictionary(c => c.Name!);
 
-            // Added
-            var added = updatedDict.Keys
-                .Except(originalDict.Keys)
-                .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k]);
+            var geometryDiff = new GeometryDiff(
+                // Added
+                updatedDict.Keys
+                    .Except(originalDict.Keys)
+                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k]),
 
-            foreach (var item in added) {
-                GeometriesAdded.TryAdd(item.Key, item.Value);
-            }
+                // Deleted
+                originalDict.Keys
+                    .Except(updatedDict.Keys)
+                    .ToDictionary(k => originalDict[k].Name!, k => originalDict[k]),
 
-            // Deleted
-            var deleted = originalDict.Keys
-                .Except(updatedDict.Keys)
-                .ToDictionary(k => originalDict[k].Name!, k => originalDict[k]);
+                // Updated
+                originalDict.Keys
+                    .Intersect(updatedDict.Keys)
+                    .Where(k => !originalDict[k].Equals(updatedDict[k]))
+                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k])
+            );
 
-            foreach (var item in deleted) {
-                GeometriesDeleted.TryAdd(item.Key, item.Value);
-            }
-
-            // Updates
-            var updated = originalDict.Keys
-                .Intersect(updatedDict.Keys)
-                .Where(k => !originalDict[k].Equals(updatedDict[k]))
-                .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k]);
-
-            foreach (var item in updated) {
-                GeometriesUpdated.TryAdd(item.Key, item.Value);
-            }
+            return geometryDiff;
         }
     }
 
@@ -441,7 +465,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location;
+            return Name == other.Name && Location == other.Location && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -472,7 +496,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location && Z == other.Z;
+            return Name == other.Name && Location == other.Location && Z == other.Z && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -519,7 +543,7 @@ namespace S100Framework.YAML
                 return false;
 
             //return Name == other.Name && Vertices == other.Vertices;
-            return Vertices == other.Vertices;
+            return Vertices == other.Vertices && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -550,7 +574,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Components == other.Components;
+            return Name == other.Name && Components == other.Components && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -577,16 +601,14 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            // Use a more robust comparison for strings
             var nameEquals = string.Equals(Name, other.Name, StringComparison.Ordinal);
             var exteriorEquals = string.Equals(Exterior, other.Exterior, StringComparison.Ordinal);
 
-            // Compare the InteriorRings arrays for value equality
             var interiorRingsEquals = (InteriorRings is null && other.InteriorRings is null) ||
                                       (InteriorRings is not null && other.InteriorRings is not null &&
                                        Enumerable.SequenceEqual(InteriorRings, other.InteriorRings));
 
-            return nameEquals && exteriorEquals && interiorRingsEquals;
+            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -594,7 +616,6 @@ namespace S100Framework.YAML
             hash.Add(Name);
             hash.Add(Exterior);
 
-            // Include the hash codes of all elements in the array
             if (InteriorRings != null) {
                 foreach (var ring in InteriorRings) {
                     hash.Add(ring);
@@ -679,5 +700,20 @@ namespace S100Framework.YAML
         public string To { get; set; } = default!;
         public string Name { get; set; } = default!;
         public string Role { get; set; } = default!;
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as Association);
+        }
+
+        public bool Equals(Association? other) {
+            if (other is null)
+                return false;
+
+            return Name == other.Name && To == other.To && Role == other.Role;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, To, Role);
+        }
     }
 }

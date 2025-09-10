@@ -28,7 +28,7 @@ namespace TestS100Framework
             var updateDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", "update", $"{DSNM}.yaml"));
             var rootDataset = System.IO.File.ReadAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", "root", $"{DSNM}.yaml"));
 
-            var datasetUpdate = new DatasetUpdate(rootDataset, updateDataset);
+            var datasetDiff = DatasetComparer.Compare(rootDataset, updateDataset);
 
             System.Diagnostics.Debugger.Break();
         }
