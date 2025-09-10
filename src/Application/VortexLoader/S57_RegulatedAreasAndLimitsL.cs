@@ -141,10 +141,9 @@ namespace S100Framework.Applications
 
                             // TODO: VerticalUncertainty
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.WATLEV.HasValue) {
                                 instance.waterLevelEffect = EnumHelper.GetEnumValue<MarineFarmCulture, waterLevelEffect>(current.WATLEV);

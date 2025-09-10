@@ -110,10 +110,9 @@ namespace S100Framework.Applications
                                 };
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -169,10 +168,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -226,10 +224,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -579,10 +576,9 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -627,15 +623,14 @@ namespace S100Framework.Applications
                             if (current.RESTRN != default) {
                                 instance.restriction = EnumHelper.GetEnumValues<TrafficSeparationSchemeRoundabout, restriction>(current.RESTRN);
                             }
-
+                            
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

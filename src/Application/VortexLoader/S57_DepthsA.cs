@@ -135,12 +135,11 @@ namespace S100Framework.Applications
                             //        uncertaintyFixed = current.SOUACC.Value
                             //    };
                             //}
+                            //
 
-                            if (current.INFORM != null) {
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
-
-
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             buffer["ps"] = ps101;
