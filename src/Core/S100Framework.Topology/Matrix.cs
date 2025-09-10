@@ -7,6 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text;
 using IO = System.IO;
 
 namespace S100Framework.Topology
@@ -32,6 +33,8 @@ namespace S100Framework.Topology
 
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
+
+            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(LineString.ToBinary());
         }
 
         public LineString LineString { get; set; }
@@ -66,8 +69,14 @@ namespace S100Framework.Topology
         }
     }
 
-    public class CompositeCurveFeature : FeatureType
+    public class CompositeCurveFeature : FeatureType        
     {
+        public CompositeCurveFeature(FeatureRef[] curves) {
+            Curves = curves;
+
+            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
+        }
+
         public FeatureRef[] Curves { get; init; } = [];
     }
 
@@ -128,8 +137,7 @@ namespace S100Framework.Topology
             var keyStraight = string.Join(',', sortedList.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
             var keyReverse = string.Join(',', sortedList.Reverse().Select(e => !e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
 
-            var compositeCurve = new CompositeCurveFeature {
-                Curves = [.. sortedList],
+            var compositeCurve = new CompositeCurveFeature([.. sortedList]) {
             };
 
             lock (this) {
@@ -566,7 +574,8 @@ namespace S100Framework.Topology
             };
 
             Parallel.ForEach(this._bagPolygons, ParallelOptions, (polygon) => {
-                //if (polygon.Name.Equals("S1650280")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452182")) System.Diagnostics.Debugger.Break();
+                //if (polygon.Name.Equals("S1452235")) System.Diagnostics.Debugger.Break();
 
                 if (!polygon.ExteriorRing.Any()) return;
 
@@ -594,6 +603,17 @@ namespace S100Framework.Topology
                 }
                 this._bagSurfaces.Add(surface);
                 this._mapping.GetOrAdd(polygon.Name, $"S{surface.Id}");
+
+                //if (polygon.Name.Equals("S1452182")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
+                //if (polygon.Name.Equals("S1452235")) {
+                //    System.Diagnostics.Debugger.Break();
+                //    LineString[] lineStrings = [.. polygon.ExteriorRing, .. polygon.InteriorRings.SelectMany(e => e.ToArray()).ToArray()];
+                //    _interceptor?.Invoke(lineStrings);
+                //}
             });
 
             //ParallelOptions.MaxDegreeOfParallelism = 1;

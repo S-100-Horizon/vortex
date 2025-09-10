@@ -18,7 +18,7 @@ namespace S100Framework.YAML
     {
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
         public static T Deserialize<T>(string yaml) => Deserializer.Deserialize<T>(yaml);
-
+        public static object Deserialize(string yaml) => Deserializer.Deserialize(yaml);
         public static bool IsDefault(object? node) {
             if (node is not Node) return true;
 
