@@ -237,7 +237,7 @@ namespace TestNisImporter
             var featureClass = source.OpenDataset<FeatureClass>("MetadataP");
             string shapeType = "Point"; // Area | Point | Line
 
-            var subtypes = featureClass.GetDefinition().GetSubtypes();
+            var subtypes = featureClass.GetDefinition().GetSubtypes(); 
 
             var sortedDict = new SortedDictionary<int, string>();
 

@@ -85,7 +85,15 @@ namespace S100Framework.Applications
             // todo: mean sea level til baltic.
             instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
 
-
+            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                if (elm.Item2 == instance.verticalDatum) {
+                    instance.verticalDatum = null;
+                }
+            }
+            if (System.Diagnostics.Debugger.IsAttached && instance.verticalDatum != null) {
+                System.Diagnostics.Debugger.Break();
+            }
+                
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";

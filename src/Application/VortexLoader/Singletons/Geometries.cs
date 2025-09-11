@@ -14,6 +14,20 @@ namespace VortexLoader.Singletons
     internal class Geometries
     {
 
+        internal static List<GeometryResult> GetTouchingOrIntersectingGeometries(
+                List<GeometryResult> geometries,
+                Geometry polygon) {
+            if (polygon == null)
+                throw new ArgumentNullException(nameof(polygon));
+
+            return geometries
+                .Where(gr =>
+                    gr.Geometry != null &&
+                    (GeometryEngine.Instance.Touches(gr.Geometry, polygon) ||
+                     GeometryEngine.Instance.Intersects(gr.Geometry, polygon)))
+                .ToList();
+        }
+
         internal static List<Geometry> EraseTouchingParts(
             List<Geometry> inputPolygons,
             List<Geometry> clipPolygons) {

@@ -48,12 +48,11 @@ namespace S100Framework.Applications
             }
 
             // covered by meta feature hence not to be set
-            //instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
-
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightFogDetector>(current.VERDAT ?? 3);
             }
-            
+
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height = current.HEIGHT.Value;
             }

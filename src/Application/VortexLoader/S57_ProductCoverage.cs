@@ -82,12 +82,13 @@ namespace S100Framework.Applications
                     continue;
                 }
 
-
                 var dsnm = current.DSNM ?? default;
                 var edtn = current.EDTN ?? default;
                 var updn = current.UPDN ?? default;
                 var isdt = current.ISDT ?? default;
                 var serie = current.SERIES ?? default;
+                
+
 
                 if (serie == default) {
                     serie = dsnm!.Substring(0, 3);
@@ -205,6 +206,8 @@ namespace S100Framework.Applications
 
                                 vdat.verticalDatum = GetVerticalDatum<VerticalDatumOfData>(current.VDAT ?? 3);
 
+                                
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -214,6 +217,11 @@ namespace S100Framework.Applications
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                // Registering vertical datum information for all areas
+                                VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.Value);
+
+                                SoundingDatums.Instance.Add(productCoverage!.SHAPE!, GetSoundingDatum<VerticalDatumOfData>(current.SDAT!.Value)!.Value);
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

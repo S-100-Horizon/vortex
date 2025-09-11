@@ -211,21 +211,22 @@ namespace S100Framework.Applications
 
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
-                    Logger.Current.Information($"Converting Areas And Limits");
-                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
-                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
-                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
+                    Logger.Current.Information($"Converting Product Coverages");
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
 
 
                     Logger.Current.Information($"Converting Sounding Datums");
                     Store(() => S101_SoundingDatum(source, destination, QueryFilter));
 
-
                     Logger.Current.Information($"Converting Metadata");
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     Store(() => S57_MetadataP(source, destination, QueryFilter));
-                    Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+
+                    Logger.Current.Information($"Converting Areas And Limits");
+                    Store(() => S57_RegulatedAreasAndLimitsA(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsL(source, destination, QueryFilter));
+                    Store(() => S57_RegulatedAreasAndLimitsP(source, destination, QueryFilter));
+
 
 
                     //filter.WhereClause = "globalid = '{D7DE9631-CF20-4143-B3F4-47BB4A2AE541}'";
@@ -710,6 +711,13 @@ namespace S100Framework.Applications
 
             return verticalDatum.BalticSeaChartDatum2000;
         }
+        internal static verticalDatum? GetSoundingDatum<TType>(int value) where TType : DomainModel.FeatureNode {
+            return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+        }
+
+        //internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
+        //    return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+        //}
 
 
         internal static List<signalSequence> GetSignalSequences(string? sigseq) {

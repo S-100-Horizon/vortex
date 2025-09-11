@@ -41,8 +41,6 @@ namespace S100Framework.Applications
                     throw new Exception("Ups. Not supported");
                 }
 
-
-
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
@@ -449,10 +447,10 @@ namespace S100Framework.Applications
                                 instance.surveyDateRange = dateRange;
                             }
 
-
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
                                 instance.surveyDateRange = surveyDateRange;
                             }
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -470,7 +468,10 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 45: { // M_SDAT_SoundingDatum
-                            // Handled by S101_SoundingDatum
+                               // Handled by S101_SoundingDatum
+                            //var verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
+                            //VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.Value);
+
                         }
                         break;
                     case 50: { // M_SREL_SurveyReliability
@@ -576,6 +577,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                if (elm.Item2 == instance.verticalDatum) {
+                                    instance.verticalDatum = null;
+                                }
+                            }
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             buffer["ps"] = ps101;

@@ -99,8 +99,9 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
-                instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
+                instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAllAround>(current.VERDAT ?? 3);
             }
+
 
             //if (plts_comp_scale != default) {
             //  instance.scaleMinimum = plts_comp_scale;

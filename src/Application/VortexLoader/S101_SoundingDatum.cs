@@ -2,6 +2,7 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.Singletons;
 
@@ -73,7 +74,7 @@ namespace S100Framework.Applications
 
                 all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat", "plts_comp_scale"]);
                 all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat", "plts_comp_scale"]);
-
+                
 
                 var all_M_QUAL_dissolved = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
 
@@ -81,6 +82,12 @@ namespace S100Framework.Applications
 
                 // Store all dissolved m_quals
                 foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
+
+
+                    verticalDatum soundingDatum = default;
+                    foreach (var elm in SoundingDatums.Instance.Touch(item)) {
+                        soundingDatum = elm.Item2;
+                    }
 
                     if (item.IsEmpty) {
                         continue;
@@ -90,9 +97,16 @@ namespace S100Framework.Applications
                         verticalDatum = default,
                     };
 
-                    instance.verticalDatum = DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+                    //foreach (var datum in Geometries.GetTouchingOrIntersectingGeometries(all_M_QUAL_geometries,item)) {
+                    //    instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum, DomainModel.S101.verticalDatum>(datum.FieldName_FieldValue!["SDAT"].ToString()!); // DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+                    //}
 
-                    buffer["ps"] = ps101;
+                    instance.verticalDatum = soundingDatum;
+
+
+                 // Clear vdat if covered by a metadata object with same vdat
+
+                 buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
