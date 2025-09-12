@@ -1,10 +1,6 @@
-﻿using NetTopologySuite.Geometries;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S128.ComplexAttributes;
+﻿using S100Framework.DomainModel;
 using S100Framework.Topology;
 using System.Globalization;
-using System.Security.Cryptography;
-using System.Threading.Channels;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
@@ -137,195 +133,357 @@ namespace S100Framework.YAML
         }
     }
 
-    public class DatasetUpdate
+    public record FeatureDiff(
+        Dictionary<string, string> Added,
+        Dictionary<string, string> Deleted,
+        Dictionary<string, string> Updated
+    );
+    public record SupportFileDiff(
+        Dictionary<string, string> Added,
+        Dictionary<string, string> Deleted,
+        Dictionary<string, string> Updated
+    );
+    public record InformationTypeDiff(
+        Dictionary<string, string> Added,
+        Dictionary<string, string> Deleted,
+        Dictionary<string, string> Updated
+    );
+
+    public record GeometryDiff(
+        Dictionary<string, Geometry> Added,
+        Dictionary<string, Geometry> Deleted,
+        Dictionary<string, Geometry> Updated
+    );
+
+    public class DatasetDiff
     {
-        public DatasetUpdate(string root, string update) {
-            _rootDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(root);
-            _updateDataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(update);
+        public FeatureDiff? Features { get; init; }
+        public InformationTypeDiff? InformationTypes { get; init; }
+        public GeometryDiff? Points { get; init; }
+        public GeometryDiff? Depths { get; init; }
+        public GeometryDiff? Curves { get; init; }
+        public GeometryDiff? CompositeCurves { get; init; }
+        public GeometryDiff? Surfaces { get; init; }
+        public SupportFileDiff? SupportFiles { get; init; }
+    }
 
-            // CellName
-            if (!DatasetEquals())
-                throw new InvalidOperationException("The two datasets are not of the same cell.");
+    public static class DatasetComparer
+    {
+        public static DatasetDiff Compare(string root, string update) {
+            var rootDataset = BuildDatasetUpdate(root);
+            var updateDataset = BuildDatasetUpdate(update);
 
+
+            // Compare SupportFiles
+            var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
+
+            // Compare InformationTypes
+            var informationTypeDiff = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
+
+            // Compare Features
+            var featureDiff = FeatureEquals(rootDataset.Features, updateDataset.Features);
+
+            // Compare Points
+            var pointDiff = GeometryEquals(rootDataset.Points!, updateDataset.Points!);
+
+            // Compare Depths
+            var depthDiff = GeometryEquals<PointSet>(rootDataset.Depths!, updateDataset.Depths!);
+
+            // Compare Curves
+            var curveDiff = GeometryEquals(rootDataset.Curves!, updateDataset.Curves!);
+
+            // Compare Composite Curves
+            var compositeCurveDiff = GeometryEquals(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
+
+            // Compare Surfaces
+            var surfaceDiff = GeometryEquals(rootDataset.Surfaces!, updateDataset.Surfaces!);
+
+
+            // Build result return it
+            var result = new DatasetDiff() {
+                SupportFiles = supportFileDiff,
+                Features = featureDiff,
+                InformationTypes = informationTypeDiff,
+                Points = pointDiff,
+                Depths = depthDiff,
+                Curves = curveDiff,
+                CompositeCurves = compositeCurveDiff,
+                Surfaces = surfaceDiff,
+            };
+
+            return result;
+        }
+
+        private static DatasetUpdate BuildDatasetUpdate(string dataset) {
             // Deserialize to Dictionary
-            var temp_root_raw = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(root);
-            var temp_update_raw = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(update);
+            var rawDictionary = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(dataset);
 
+            // TO-DO: Read associations from Geometry
+            // Cleanup after full updates
 
             // Read InformationTypes
-            var temp_root_information = temp_root_raw["InformationTypes"] as List<object>;
-            var temp_update_information = temp_update_raw["InformationTypes"] as List<object>;
-
-            _rootInformationTypes = temp_root_information!
+            var informationTypes = (rawDictionary["InformationTypes"] as List<object>)!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["ID"]!.ToString()!,
                     dict => Converter.Serialize(dict)
                 );
 
-            _updateInformationTypes = temp_update_information!
-                .OfType<Dictionary<object, object>>()
-                .ToDictionary(
-                    dict => dict["ID"].ToString()!,
-                    dict => Converter.Serialize(dict)
-                );
-
             // Read Features
-            var temp_root_feature = temp_root_raw["Features"] as List<object>;
-            var temp_update_feature = temp_update_raw["Features"] as List<object>;
-
-            _rootFeatures = temp_root_feature!
+            var features = (rawDictionary["Features"] as List<object>)!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
-                    dict => dict["Foid"].ToString()!,
+                    dict => dict["Foid"]!.ToString()!,
                     dict => Converter.Serialize(dict)
                 );
 
-            _updateFeatures = temp_update_feature!
+            // Read SupportFiles
+            var supportFiles = ((rawDictionary["Metadata"] as Dictionary<object, object>)?["SupportFiles"] as List<object> ?? [])
                 .OfType<Dictionary<object, object>>()
-                .ToDictionary(
-                    dict => dict["Foid"].ToString()!,
-                    dict => Converter.Serialize(dict)
-                );
+                .Select(d => new SupportFile(
+                    d["Name"]?.ToString() ?? string.Empty,
+                    d["Content"]?.ToString() ?? string.Empty
+                ))
+                .ToDictionary(sf => sf.Name);
+
+            // Read Points
+            var points = (rawDictionary["Points"] as List<object> ?? [])
+                .OfType<Dictionary<object, object>>()
+                .Select(d => {
+                    var location = d["Location"]?.ToString() ?? string.Empty;
+                    var split = location.Split(',');
+                    var point = new Point(
+                        double.Parse(split[0]),
+                        double.Parse(split[1])
+                    ) {
+                        Name = d["Name"].ToString()
+                    };
+                    return point;
+                }).ToDictionary(p => p.Name!);
+
+            // Read Depths
+            var depths = (rawDictionary["Depths"] as List<object> ?? [])
+                .OfType<Dictionary<object, object>>()
+                .Select(d => {
+                    var location = d["Location"]?.ToString() ?? string.Empty;
+                    var split = location.Split(',');
+                    var pointSet = new PointSet(
+                        [new Coordinate(
+                            double.Parse(split[0]),
+                            double.Parse(split[1])
+                        )],
+                        [double.Parse(d["Z"].ToString()!)]
+                    ) {
+                        Name = d["Name"].ToString()
+                    };
+                    return pointSet;
+                }).ToDictionary(ps => ps.Name!);
 
 
-            // Read Metadata
-            var temp_root_metadata = temp_root_raw["Metadata"];
-            var temp_update_metadata = temp_update_raw["Metadata"];
+            // Read Curves
+            var curves = (rawDictionary["Curves"] as List<object> ?? new List<object>())
+                .OfType<Dictionary<object, object>>()
+                .Select(d => {
+                    var location = d["Vertices"]?.ToString() ?? string.Empty;
+                    var split = location.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                        .Select(s => double.Parse(s, CultureInfo.InvariantCulture))
+                                        .ToArray();
 
-            _rootMetadata = Converter.Serialize(temp_root_metadata);
-            _updateMetadata = Converter.Serialize(temp_update_metadata);
+                    var vertices = new List<Coordinate>();
+                    for (int i = 0; i < split.Length; i += 2) {
+                        vertices.Add(new Coordinate(split[i], split[i + 1]));
+                    }
 
-            // Compare Metadata
-            MetadataEquals();
+                    return new Curve(
+                        start: d["Start"].ToString(),
+                        end: d["End"].ToString(),
+                        vertices: [.. vertices]
+                    ) {
+                        Name = d["Name"].ToString()
+                    };
+                }).ToDictionary(c => c.Name!);
 
-            // Compare InformationTypes
-            InformationTypeEquals();
 
-            // Compare Features
-            FeatureEquals();
+            // Read CompositeCurves
+            var compositeCurves = (rawDictionary["CompositeCurves"] as List<object> ?? [])
+                .OfType<Dictionary<object, object>>()
+                .Select(d => {
+                    var compositeCurve = new CompositeCurve(
+                        d["Components"]?.ToString()!) {
+                        Name = d["Name"].ToString()
+                    };
+                    return compositeCurve;
+                }).ToDictionary(cc => cc.Name!);
 
-            // Compare Points
-            GeometryEquals(_rootDataset.Points!, _updateDataset.Points!);
 
-            // Compare Depths
-            GeometryEquals(_rootDataset.Depths!, _updateDataset.Depths!);
+            // Read Surfaces
+            var surfaces = (rawDictionary["Surfaces"] as List<object> ?? [])
+                .OfType<Dictionary<object, object>>()
+                .Select(d => {
+                    var surface = new Surface(
+                        d["Exterior"]?.ToString()!) {
+                        Name = d["Name"].ToString()
+                    };
 
-            // Compare Curves
-            GeometryEquals(_rootDataset.Curves!, _updateDataset.Curves!);
+                    if (d["Exterior"] is List<object> interior && interior.Count > 0) {
+                        var interiorRings = new List<string>();
+                        foreach (var hole in interior) {
+                            if (hole is Dictionary<object, object> holeDict) {
+                                var ring = holeDict["Hole"].ToString();
+                                if (!string.IsNullOrEmpty(ring))
+                                    interiorRings.Add(ring);
+                            }
+                        }
+                        surface.InteriorRings = [.. interiorRings];
+                    }
 
-            // Compare Composite Curves
-            GeometryEquals(_rootDataset.CompositeCurves!, _updateDataset.CompositeCurves!);
+                    return surface;
+                }).ToDictionary(s => s.Name!);
 
-            // Compare Surfaces
-            GeometryEquals(_rootDataset.Surfaces!, _updateDataset.Surfaces!);
+
+            return new DatasetUpdate() {
+                Features = features,
+                SupportFiles = supportFiles,
+                InformationTypes = informationTypes,
+                Points = points,
+                Depths = depths,
+                Curves = curves,
+                CompositeCurves = compositeCurves,
+                Surfaces = surfaces
+            };
         }
 
-        private readonly Dictionary<string, string> _rootFeatures = [];
-        private readonly Dictionary<string, string> _updateFeatures = [];
+        private static string AppendUpdates(string dataset, string[] updates) {
+            // To-Do
 
-        private readonly Dictionary<string, string> _rootInformationTypes = [];
-        private readonly Dictionary<string, string> _updateInformationTypes = [];
+            return dataset;
+        }
 
-        private readonly string _rootMetadata = string.Empty;
-        private readonly string _updateMetadata = string.Empty;
+        private static FeatureDiff FeatureEquals(Dictionary<string, string> rootFeatures, Dictionary<string, string> updateFeatures) {
+            var featureDiff = new FeatureDiff(
+                // Added
+                updateFeatures.Keys
+                    .Except(rootFeatures.Keys)
+                    .ToDictionary(k => k!, k => updateFeatures[k]),
 
-        private readonly Dataset _rootDataset;
-        private readonly Dataset _updateDataset;
+                // Deleted
+                rootFeatures.Keys
+                    .Except(updateFeatures.Keys)
+                    .ToDictionary(k => k!, k => rootFeatures[k]),
 
-        public Dictionary<string, string> FeaturesAdded { get; internal set; } = [];
-        public Dictionary<string, string> FeaturesDeleted { get; internal set; } = [];
-        public Dictionary<string, string> FeaturesUpdated { get; internal set; } = [];
+                // Updates
+                rootFeatures.Keys
+                    .Intersect(updateFeatures.Keys)
+                    .Where(k => !rootFeatures[k].Equals(updateFeatures[k]))
+                    .ToDictionary(k => k!, k => updateFeatures[k])
+            );
 
-        public Dictionary<string, string> InformationTypesAdded { get; internal set; } = [];
-        public Dictionary<string, string> InformationTypesDeleted { get; internal set; } = [];
-        public Dictionary<string, string> InformationTypesUpdated { get; internal set; } = [];
+            return featureDiff;
+        }
+        private static SupportFileDiff SupportFileEquals(Dictionary<string, SupportFile> rootcasted, Dictionary<string, SupportFile> updatecasted) {
+            //var rootcasted = rootSupportFiles
+            //   .OfType<Dictionary<object, object>>() // skips anything that isn't a dict
+            //   .Select(d => new SupportFile(
+            //       d["Name"]?.ToString() ?? string.Empty,
+            //       d["Content"]?.ToString() ?? string.Empty
+            //   )).ToDictionary(sf => sf.Name);
 
-        public Dictionary<string, Geometry> GeometriesAdded { get; internal set; } = [];
-        public Dictionary<string, Geometry> GeometriesDeleted { get; internal set; } = [];
-        public Dictionary<string, Geometry> GeometriesUpdated { get; internal set; } = [];
+            //var updatecasted = updateSupportFiles
+            //   .OfType<Dictionary<object, object>>() // skips anything that isn't a dict
+            //   .Select(d => new SupportFile(
+            //       d["Name"]?.ToString() ?? string.Empty,
+            //       d["Content"]?.ToString() ?? string.Empty
+            //   )).ToDictionary(sf => sf.Name);
 
-        public string? MetadataUpdated { get; internal set; }
+            var supportFileDiff = new SupportFileDiff(
+                // Added
+                updatecasted.Keys
+                .Except(rootcasted.Keys)
+                .ToDictionary(k => k!, k => updatecasted[k].Content),
 
-        private void FeatureEquals() {
+                // Deleted
+                rootcasted.Keys
+                    .Except(updatecasted.Keys)
+                    .ToDictionary(k => k!, k => rootcasted[k].Content),
+
+                // Updated
+                rootcasted.Keys
+                    .Intersect(updatecasted.Keys)
+                    .Where(k => !rootcasted[k].Equals(updatecasted[k]))
+                    .ToDictionary(k => k!, k => updatecasted[k].Content)
+            );
+
+            return supportFileDiff;
+        }
+        private static InformationTypeDiff InformationTypeEquals(Dictionary<string, string> rootInformationTypes, Dictionary<string, string> updateInformationTypes) {
+            var informationTypeDiff = new InformationTypeDiff(
+                // Added
+                updateInformationTypes.Keys
+                    .Except(rootInformationTypes.Keys)
+                    .ToDictionary(k => k!, k => updateInformationTypes[k]),
+
+                // Deleted
+                rootInformationTypes.Keys
+                    .Except(updateInformationTypes.Keys)
+                    .ToDictionary(k => k!, k => rootInformationTypes[k]),
+
+                // Updated
+                rootInformationTypes.Keys
+                    .Intersect(updateInformationTypes.Keys)
+                    .Where(k => !rootInformationTypes[k].Equals(updateInformationTypes[k]))
+                    .ToDictionary(k => k!, k => updateInformationTypes[k])
+            );
+
+            return informationTypeDiff;
+
             // Added
-            FeaturesAdded = _updateFeatures.Keys
-                .Except(_rootFeatures.Keys)
-                .ToDictionary(k => k!, k => _updateFeatures[k]);
+            //InformationTypesAdded = _updateInformationTypes.Keys
+            //    .Except(_rootInformationTypes.Keys)
+            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
 
-            // Deleted
-            FeaturesDeleted = _rootFeatures.Keys
-                .Except(_updateFeatures.Keys)
-                .ToDictionary(k => k!, k => _rootFeatures[k]);
+            //// Deleted
+            //InformationTypesDeleted = _rootInformationTypes.Keys
+            //    .Except(_updateInformationTypes.Keys)
+            //    .ToDictionary(k => k!, k => _rootInformationTypes[k]);
 
-            // Updates
-            FeaturesUpdated = _rootFeatures.Keys
-                .Intersect(_updateFeatures.Keys)
-                .Where(k => !_rootFeatures[k].Equals(_updateFeatures[k]))
-                .ToDictionary(k => k!, k => _updateFeatures[k]);
+            //// Updates
+            //InformationTypesUpdated = _rootInformationTypes.Keys
+            //    .Intersect(_updateInformationTypes.Keys)
+            //    .Where(k => !_rootInformationTypes[k].Equals(_updateInformationTypes[k]))
+            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
+        }
+        private static GeometryDiff GeometryEquals<T>(Dictionary<string, T> originalDict, Dictionary<string, T> updatedDict) where T : Geometry {
+            var geometryDiff = new GeometryDiff(
+                // Added
+                updatedDict.Keys
+                    .Except(originalDict.Keys)
+                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k] as Geometry),
+
+                // Deleted
+                originalDict.Keys
+                    .Except(updatedDict.Keys)
+                    .ToDictionary(k => originalDict[k].Name!, k => originalDict[k] as Geometry),
+
+                // Updated
+                originalDict.Keys
+                    .Intersect(updatedDict.Keys)
+                    .Where(k => !originalDict[k].Equals(updatedDict[k]))
+                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k] as Geometry)
+            );
+
+            return geometryDiff;
         }
 
-        private bool DatasetEquals() {
-            return _rootDataset.CellName == _updateDataset.CellName;
-        }
-
-        private void MetadataEquals() {
-            if (_rootMetadata.Equals(_updateMetadata))
-                return;
-
-            MetadataUpdated = _updateMetadata ?? string.Empty;
-        }
-
-        private void InformationTypeEquals() {
-            // Added
-            InformationTypesAdded = _updateInformationTypes.Keys
-                .Except(_rootInformationTypes.Keys)
-                .ToDictionary(k => k!, k => _updateInformationTypes[k]);
-
-            // Deleted
-            InformationTypesDeleted = _rootInformationTypes.Keys
-                .Except(_updateInformationTypes.Keys)
-                .ToDictionary(k => k!, k => _rootInformationTypes[k]);
-
-            // Updates
-            InformationTypesUpdated = _rootInformationTypes.Keys
-                .Intersect(_updateInformationTypes.Keys)
-                .Where(k => !_rootInformationTypes[k].Equals(_updateInformationTypes[k]))
-                .ToDictionary(k => k!, k => _updateInformationTypes[k]);
-        }
-
-        private void GeometryEquals(IEnumerable<Geometry> original, IEnumerable<Geometry> update) {
-            // Use Name as unique key
-            var originalDict = original.ToDictionary(c => c.Name!);
-            var updatedDict = update.ToDictionary(c => c.Name!);
-
-            // Added
-            var added = updatedDict.Keys
-                .Except(originalDict.Keys)
-                .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k]);
-
-            foreach (var item in added) {
-                GeometriesAdded.TryAdd(item.Key, item.Value);
-            }
-
-            // Deleted
-            var deleted = originalDict.Keys
-                .Except(updatedDict.Keys)
-                .ToDictionary(k => originalDict[k].Name!, k => originalDict[k]);
-
-            foreach (var item in deleted) {
-                GeometriesDeleted.TryAdd(item.Key, item.Value);
-            }
-
-            // Updates
-            var updated = originalDict.Keys
-                .Intersect(updatedDict.Keys)
-                .Where(k => !originalDict[k].Equals(updatedDict[k]))
-                .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k]);
-
-            foreach (var item in updated) {
-                GeometriesUpdated.TryAdd(item.Key, item.Value);
-            }
+        private class DatasetUpdate
+        {
+            public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+            public Dictionary<string, string> Features { get; init; } = [];
+            public Dictionary<string, string> InformationTypes { get; init; } = [];
+            public Dictionary<string, Point> Points { get; init; } = [];
+            public Dictionary<string, PointSet> Depths { get; init; } = [];
+            public Dictionary<string, Curve> Curves { get; init; } = [];
+            public Dictionary<string, CompositeCurve> CompositeCurves { get; init; } = [];
+            public Dictionary<string, Surface> Surfaces { get; init; } = [];
         }
     }
 
@@ -441,7 +599,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location;
+            return Name == other.Name && Location == other.Location && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -472,7 +630,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location && Z == other.Z;
+            return Name == other.Name && Location == other.Location && Z == other.Z && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -519,7 +677,7 @@ namespace S100Framework.YAML
                 return false;
 
             //return Name == other.Name && Vertices == other.Vertices;
-            return Vertices == other.Vertices;
+            return Vertices == other.Vertices && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -550,7 +708,7 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            return Name == other.Name && Components == other.Components;
+            return Name == other.Name && Components == other.Components && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -577,16 +735,14 @@ namespace S100Framework.YAML
             if (other is null)
                 return false;
 
-            // Use a more robust comparison for strings
             var nameEquals = string.Equals(Name, other.Name, StringComparison.Ordinal);
             var exteriorEquals = string.Equals(Exterior, other.Exterior, StringComparison.Ordinal);
 
-            // Compare the InteriorRings arrays for value equality
             var interiorRingsEquals = (InteriorRings is null && other.InteriorRings is null) ||
                                       (InteriorRings is not null && other.InteriorRings is not null &&
                                        Enumerable.SequenceEqual(InteriorRings, other.InteriorRings));
 
-            return nameEquals && exteriorEquals && interiorRingsEquals;
+            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
@@ -594,7 +750,6 @@ namespace S100Framework.YAML
             hash.Add(Name);
             hash.Add(Exterior);
 
-            // Include the hash codes of all elements in the array
             if (InteriorRings != null) {
                 foreach (var ring in InteriorRings) {
                     hash.Add(ring);
@@ -679,5 +834,20 @@ namespace S100Framework.YAML
         public string To { get; set; } = default!;
         public string Name { get; set; } = default!;
         public string Role { get; set; } = default!;
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as Association);
+        }
+
+        public bool Equals(Association? other) {
+            if (other is null)
+                return false;
+
+            return Name == other.Name && To == other.To && Role == other.Role;
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, To, Role);
+        }
     }
 }
