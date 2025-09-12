@@ -58,7 +58,7 @@ namespace ArcGIS.Core.Geometry
                              "{0:0.#######},{1:0.#######}", point.X, point.Y
                          );
 
-                        var hashId = System.IO.Hashing.XxHash64.HashToUInt64(new NetTopologySuite.Geometries.Point(point.X, point.Y).ToBinary());
+                        var hashId = System.IO.Hashing.XxHash32.HashToUInt32(new NetTopologySuite.Geometries.Point(point.X, point.Y).ToBinary());
 
                         var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Name == $"P{hashId}");
 
@@ -79,7 +79,7 @@ namespace ArcGIS.Core.Geometry
 
                         var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
 
-                        var hashId = System.IO.Hashing.XxHash64.HashToUInt64(new NetTopologySuite.Geometries.MultiPoint([.. multiPoint.Points.Select(e => new NetTopologySuite.Geometries.Point(e.X, e.Y, e.Z))]).ToBinary());
+                        var hashId = System.IO.Hashing.XxHash32.HashToUInt32(new NetTopologySuite.Geometries.MultiPoint([.. multiPoint.Points.Select(e => new NetTopologySuite.Geometries.Point(e.X, e.Y, e.Z))]).ToBinary());
 
                         var pointSet = new PointSet(points, depths) { Name = $"P{hashId}" };
                         dataset.AddPointSet(pointSet);

@@ -34,7 +34,8 @@ namespace S100Framework.Topology
             this.LineStringText = lineString.ToString();
             this.LineStringReverseText = this.LineStringReverse.ToString();
 
-            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(LineString.ToBinary());
+            //base.Id = System.IO.Hashing.XxHash64.HashToUInt64(LineString.ToBinary());
+            base.Id = System.IO.Hashing.XxHash32.HashToUInt32(LineString.ToBinary());
         }
 
         public LineString LineString { get; set; }
@@ -74,7 +75,8 @@ namespace S100Framework.Topology
         public CompositeCurveFeature(FeatureRef[] curves) {
             Curves = curves;
 
-            base.Id = System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
+            //base.Id = System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
+            base.Id = System.IO.Hashing.XxHash32.HashToUInt32(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
         }
 
         public FeatureRef[] Curves { get; init; } = [];
