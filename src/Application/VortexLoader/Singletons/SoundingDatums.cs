@@ -52,7 +52,7 @@ namespace S100Framework.Applications.Singletons
             if (polygon.GeometryType != GeometryType.Polygon)
                 throw new ArgumentException("Only polygon geometries are supported.");
 
-            _polygons.Add((polygon, vdat));
+            _polygons.Add((polygon, vdat)); 
         }
 
         /// <summary>
