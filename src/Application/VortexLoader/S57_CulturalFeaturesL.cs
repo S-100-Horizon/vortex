@@ -663,7 +663,7 @@ namespace S100Framework.Applications
 
                             var name = "";
                             foreach (var shape in geometries) {
-                                SetShape(buffer, current.SHAPE);
+                                SetShape(buffer, shape);
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var n = Convert.ToString(featureN["name"]) ?? "Unknown name";
@@ -720,7 +720,7 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            Geometry[] geometries = [];
+                            Geometry[] geometries = [];                            
 
                             if (current.SHAPE is Polyline polyline) {
                                 var points = polyline.Points.Select(e => $"{e.X}, {e.Y}").ToArray();
