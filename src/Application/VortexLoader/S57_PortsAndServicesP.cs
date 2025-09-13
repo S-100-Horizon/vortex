@@ -299,6 +299,13 @@ namespace S100Framework.Applications
 
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
 
+                            // Clear vdat if covered by a metadata object with same vdat
+                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                if (elm.Item2 == instance.verticalDatum) {
+                                    instance.verticalDatum = null;
+                                    break;
+                                }
+                            }
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength = current.VERLEN.Value;
