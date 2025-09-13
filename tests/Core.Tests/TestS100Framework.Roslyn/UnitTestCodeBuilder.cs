@@ -233,7 +233,7 @@ namespace TestS100Framework
 
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
-                var s100 = XDocument.Load(@".\Artifacts\S125FC.xml");
+                var s100 = XDocument.Load(@".\Artifacts\4. S-125 Feature Catalogue - Annex C.1 (XML).xml");
 
                 Assert.True(VerifyProductSpecification(s100));
 
