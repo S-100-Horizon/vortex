@@ -48,4 +48,10 @@
     <Folder Include="Maps\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="s100ed8.gdb.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
