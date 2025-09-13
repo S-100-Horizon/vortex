@@ -64,7 +64,8 @@ namespace S100Framework.Applications.Singletons
 
             return _polygons.Where(p =>
                 GeometryEngine.Instance.Touches(p.Item1, geometry) ||
-                GeometryEngine.Instance.Intersects(p.Item1, geometry));
+                GeometryEngine.Instance.Intersects(p.Item1, geometry) ||
+                GeometryEngine.Instance.Contains(p.Item1, geometry));
         }
 
     }
