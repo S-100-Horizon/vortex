@@ -2,6 +2,7 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
+using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel;
 using S100Framework.GML;
 using Serilog;
@@ -79,6 +80,7 @@ namespace S100Framework.Applications
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
+            Action<bool> initialize = (append) => { };
 
             bool append = false;
 
@@ -93,6 +95,17 @@ namespace S100Framework.Applications
                     };
                 }
                 else if (IO.Directory.Exists(target) && ".gdb".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
+                    initialize = (append) => {
+                        if (!append) {
+                            FastZip fastZip = new();
+
+                            IO.Directory.Delete(target, true);
+
+                            fastZip.ExtractZip(IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"s100ed8.gdb.zip"), IO.Path.GetFullPath(target), null);
+                        }
+                    };
+
+
                     createGeodatabase = () => {
                         var geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(target))));
 
@@ -128,6 +141,8 @@ namespace S100Framework.Applications
 
                 append = o.Append;
             });
+
+            initialize(append);
 
             using Geodatabase target = createGeodatabase();
 
