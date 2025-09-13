@@ -42,7 +42,7 @@
     <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\2.0.0\S-124 FC_%282.0.0%29_0710.xml" Link="Artifacts\S-124 FC_%282.0.0%29_0710.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-125 Marine Aids to Navigation\0.0.4\FC\S125FC.xml" Link="Artifacts\S125FC.xml">
+    <Content Include="..\..\..\artifacts\Product Specifications\S-125 Marine Aids to Navigation\0.0.4\FC\4. S-125 Feature Catalogue - Annex C.1 %28XML%29.xml" Link="Artifacts\4. S-125 Feature Catalogue - Annex C.1 %28XML%29.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\artifacts\Product Specifications\S-127 Marine Traffic Management\2.0.0\S-127FC_2.0.0 .xml" Link="Artifacts\S-127FC_2.0.0 .xml">
