@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -31,7 +32,6 @@ namespace S100Framework.Applications
 
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
-
 
                 if (FeatureRelations.Instance.IsSlave(globalid)) {
                     continue;
@@ -633,20 +633,46 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
+                            Geometry[] geometries = [];
+
+                            if (current.SHAPE is Polyline polyline) {
+                                var points = polyline.Points.Select(e => $"{e.X}, {e.Y}").ToArray();
+
+                                MapPoint[] parts = [polyline.Points[0]];
+                                int i = 1;
+                                for (; i < points.Length; i++) {
+                                    parts = [.. parts, polyline.Points[i]];
+
+                                    var p = $"{polyline.Points[i].X}, {polyline.Points[i].Y}";
+                                    if (i != Array.LastIndexOf(points, p)) {
+                                        geometries = [.. geometries, PolylineBuilderEx.CreatePolyline(parts)];
+                                        parts = [polyline.Points[i]];
+                                    }
+                                }
+                                if (parts.Any())
+                                    geometries = [.. geometries, PolylineBuilderEx.CreatePolyline(parts)];
+                            }
+                            else
+                                geometries = [current.SHAPE!];
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = "";
+                            foreach (var shape in geometries) {
+                                SetShape(buffer, current.SHAPE);
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var n = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                name += $"{n},";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                                }
                             }
-
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -694,21 +720,47 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
+                            Geometry[] geometries = [];
+
+                            if (current.SHAPE is Polyline polyline) {
+                                var points = polyline.Points.Select(e => $"{e.X}, {e.Y}").ToArray();
+
+                                MapPoint[] parts = [polyline.Points[0]];
+                                int i = 1;
+                                for (; i < points.Length; i++) {
+                                    parts = [.. parts, polyline.Points[i]];
+
+                                    var p = $"{polyline.Points[i].X}, {polyline.Points[i].Y}";
+                                    if (i != Array.LastIndexOf(points, p)) {
+                                        geometries = [.. geometries, PolylineBuilderEx.CreatePolyline(parts)];
+                                        parts = [polyline.Points[i]];
+                                    }
+                                }
+                                if (parts.Any())
+                                    geometries = [.. geometries, PolylineBuilderEx.CreatePolyline(parts)];
+                            }
+                            else
+                                geometries = [current.SHAPE!];
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = "";
+                            foreach (var shape in geometries) {
+                                SetShape(buffer, shape);
 
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                                var featureN = featureClass.CreateRow(buffer);
+                                var n = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                name += $"{n},";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                                }
                             }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name.TrimEnd(','));
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
