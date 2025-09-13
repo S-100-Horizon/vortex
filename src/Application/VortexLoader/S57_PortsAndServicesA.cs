@@ -285,6 +285,7 @@ namespace S100Framework.Applications
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
+                                    break;
                                 }
                             }
 
