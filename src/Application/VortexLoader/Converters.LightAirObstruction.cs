@@ -82,14 +82,14 @@ namespace S100Framework.Applications
             if (current.VALNMR.HasValue) {
                 instance.valueOfNominalRange = current.VALNMR.Value;
             }
-            // todo: mean sea level til baltic.
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
 
+            instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                 if (elm.Item2 == instance.verticalDatum) {
                     instance.verticalDatum = null;
                 }
             }
+
             if (System.Diagnostics.Debugger.IsAttached && instance.verticalDatum != null) {
                 System.Diagnostics.Debugger.Break();
             }

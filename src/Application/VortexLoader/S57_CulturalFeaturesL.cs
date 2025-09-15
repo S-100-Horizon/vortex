@@ -112,7 +112,6 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-
                             if (current.CONDTN.HasValue) {
                                 instance.condition = GetCondition(current.CONDTN.Value);
                             }
@@ -121,9 +120,12 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-
                             instance.verticalDatum = ImporterNIS.GetVerticalDatum<CableOverhead>(current.VERDAT ?? 3);
-
+                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                if (elm.Item2 == instance.verticalDatum) {
+                                    instance.verticalDatum = null;
+                                }
+                            }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
