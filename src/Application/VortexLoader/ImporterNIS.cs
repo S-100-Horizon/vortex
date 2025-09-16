@@ -968,6 +968,8 @@ namespace S100Framework.Applications
 
             if (!string.IsNullOrEmpty(ntxtds)) {
 
+                // TODO: make information binding -> Nautical Information - binding.
+
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (!File.Exists(filePath)) {
@@ -997,6 +999,8 @@ namespace S100Framework.Applications
             }
 
             if (!string.IsNullOrEmpty(txtdsc)) {
+
+                // TODO: make information binding -> Nautical Information - binding.
 
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);

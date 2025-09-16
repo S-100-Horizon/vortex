@@ -54,10 +54,8 @@ namespace S100Framework.Applications
                 }
 
                 if (ConversionAnalytics.Instance.IsConverted(globalid)) {
-                    throw new Exception("Ups. Not supported");
+                    throw new Exception("Not supported.");
                 }
-
-
 
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
@@ -217,7 +215,6 @@ namespace S100Framework.Applications
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
             using var informationassociationTable = target.OpenDataset<Table>(target.GetName("informationassociation"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
-
 
             spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<SpatialQuality, qualityOfHorizontalMeasurement>(4);
 

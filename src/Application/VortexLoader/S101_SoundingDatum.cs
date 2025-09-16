@@ -101,6 +101,9 @@ namespace S100Framework.Applications
                     //    instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum, DomainModel.S101.verticalDatum>(datum.FieldName_FieldValue!["SDAT"].ToString()!); // DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
                     //}
 
+                    if (soundingDatum == default) {
+                        throw new ArgumentException("Cannot set sounding datum.");
+                    }
                     instance.verticalDatum = soundingDatum;
 
 
