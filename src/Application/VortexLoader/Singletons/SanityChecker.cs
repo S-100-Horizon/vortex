@@ -115,12 +115,19 @@ namespace S100Framework.Applications.Singletons
                 "curve",
                 "point",
                 "surface",
-                "pointset"
+                "pointset",
+                "attachment",
+                "configuration",
+                "featureassociation",
+                "featuretype",
+                "informationassociation",
+                "informationtype",
+                "messages"
             };
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 

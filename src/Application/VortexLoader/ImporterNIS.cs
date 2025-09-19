@@ -351,6 +351,9 @@ namespace S100Framework.Applications
                     }
                 }
             }
+
+
+
         }
 
         internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
@@ -1365,6 +1368,10 @@ namespace S100Framework.Applications
             // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
             // Sent to Nigel & Co.
             List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
+
+
+
+
             instanceInformation.AddRange(information);
         }
     }
