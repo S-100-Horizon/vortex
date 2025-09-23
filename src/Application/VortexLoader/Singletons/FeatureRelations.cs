@@ -826,6 +826,7 @@ namespace S100Framework.Applications.Singletons
 
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
+                featureAssociationBuffer["edition"] = ImporterNIS.s101version;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
                 featureAssociationName = (string)association["name"];
             }
