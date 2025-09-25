@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 
 namespace S100Framework.Applications
@@ -581,106 +582,127 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 40: { // FLODOC_FloatingDock // SKIN OF EARTH
-                            var instance = new FloatingDock() {
-                            };
+                            {
+                                var instance = new FloatingDock() {
+                                };
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours<FloatingDock>(current.COLOUR);
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours<FloatingDock>(current.COLOUR);
+                                }
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
+                                }
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
+                                    instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    instance.fixedDateRange = dateRange;
+                                }
+
+                                // TODO: HorizontalClearanceLength
+
+                                if (current.HORCLR.HasValue) {
+                                    instance.horizontalClearanceWidth = current.HORCLR.Value;
+                                }
+
+                                if (current.HORLEN.HasValue) {
+                                    instance.horizontalLength = current.HORLEN.Value;
+                                }
+
+                                if (current.HORWID.HasValue) {
+                                    instance.horizontalWidth = current.HORWID.Value;
+                                }
+
+                                // TODO: InteroperabilityIdentifier
+
+                                if (current.LIFCAP.HasValue) {
+                                    instance.liftingCapacity = current.LIFCAP.Value;
+                                }
+
+                                // TODO: MaximumPermitedDraught - not converted no inform info in GST
+
+                                if (current.CONRAD.HasValue) {
+                                    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                                }
+
+                                if (current.STATUS != default) {
+                                    instance.status = GetStatus(current.STATUS);
+                                }
+
+                                if (current.VERLEN.HasValue) {
+                                    instance.verticalLength = current.VERLEN.Value;
+                                }
+
+                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                    instance.visualProminence = EnumHelper.GetEnumValue<FloatingDock, visualProminence>(current.CONVIS.Value);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
+                                if (current.PICREP != default) {
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
+                                }
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                }
+
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
+                            // Create an UNSURVEYED AREA on the flodoc
+                            {
+                                var instance = new UnsurveyedArea();
 
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
+                                // TODO: InteroperabilityIdentifier
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            // TODO: HorizontalClearanceLength
-
-                            if (current.HORCLR.HasValue) {
-                                instance.horizontalClearanceWidth = current.HORCLR.Value;
-                            }
-
-                            if (current.HORLEN.HasValue) {
-                                instance.horizontalLength = current.HORLEN.Value;
-                            }
-
-                            if (current.HORWID.HasValue) {
-                                instance.horizontalWidth = current.HORWID.Value;
-                            }
-
-                            // TODO: InteroperabilityIdentifier
-
-                            if (current.LIFCAP.HasValue) {
-                                instance.liftingCapacity = current.LIFCAP.Value;
-                            }
-
-                            // TODO: MaximumPermitedDraught - not converted no inform info in GST
-
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-
-                            if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
-                            }
-
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<FloatingDock, visualProminence>(current.CONVIS.Value);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
-
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-
-                            if (current.PICREP != default) {
-                                instance.pictorialRepresentation = FixFilename(current.PICREP);
-                            }
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                         break;
                     case 45: { // GATCON_Gate
@@ -860,103 +882,125 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 60: { // HULKES_Hulk // SKIN OF EARTH
-                            var instance = new Hulk();
+                            {
+                                var instance = new Hulk();
 
 
-                            if (current.CATHLK != default) {
-                                instance.categoryOfHulk = EnumHelper.GetEnumValues<Hulk, categoryOfHulk>(current.CATHLK);
-                            }
+                                if (current.CATHLK != default) {
+                                    instance.categoryOfHulk = EnumHelper.GetEnumValues<Hulk, categoryOfHulk>(current.CATHLK);
+                                }
                             ;
 
 
-                            if (current.COLOUR != default) {
-                                instance.colour = GetColours<Hulk>(current.COLOUR);
-                            }
-
-                            if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
-                            }
-
-                            if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
-                            }
-
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
-                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
-                            if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
-                            }
-
-                            if (current.HORLEN.HasValue) {
-                                instance.horizontalLength = current.HORLEN.Value;
-                            }
-
-                            if (current.HORWID.HasValue) {
-                                instance.horizontalWidth = current.HORWID.Value;
-                            }
-
-                            // TODO: interoperabilityIdentifier
-
-                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
-                            if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
-                            }
-
-                            if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            }
-                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (current.COLOUR != default) {
+                                    instance.colour = GetColours<Hulk>(current.COLOUR);
                                 }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+
+                                if (current.COLPAT != default) {
+                                    instance.colourPattern = GetColourPattern(current.COLPAT);
                                 }
+
+                                if (current.CONDTN.HasValue) {
+                                    instance.condition = GetCondition(current.CONDTN.Value);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                                if (dateRange != default) {
+                                    instance.fixedDateRange = dateRange;
+                                }
+
+                                if (current.HORLEN.HasValue) {
+                                    instance.horizontalLength = current.HORLEN.Value;
+                                }
+
+                                if (current.HORWID.HasValue) {
+                                    instance.horizontalWidth = current.HORWID.Value;
+                                }
+
+                                // TODO: interoperabilityIdentifier
+
+                                DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                                if (periodicDateRange != default) {
+                                    instance.periodicDateRange = periodicDateRange;
+                                }
+
+                                if (current.CONRAD.HasValue) {
+                                    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                                }
+                                if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                        instance.reportedDate = result;
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                    }
+                                }
+
+
+
+                                if (current.VERLEN.HasValue) {
+                                    instance.verticalLength = current.VERLEN.Value;
+                                }
+
+                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                    instance.visualProminence = EnumHelper.GetEnumValue<Hulk, visualProminence>(current.CONVIS.Value);
+                                }
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+
+                                if (current.PICREP != default) {
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
+                                }
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
+                            // Create an UNSURVEYED AREA on the hulk
+                            {
+                                var instance = new UnsurveyedArea();
 
+                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
+                                // TODO: InteroperabilityIdentifier
 
-                            if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+
+                                //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
-
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Hulk, visualProminence>(current.CONVIS.Value);
-                            }
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-
-                            if (current.PICREP != default) {
-                                instance.pictorialRepresentation = FixFilename(current.PICREP);
-                            }
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
                         }
                         break;
