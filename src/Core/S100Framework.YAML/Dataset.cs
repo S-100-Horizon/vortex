@@ -134,44 +134,96 @@ namespace S100Framework.YAML
     }
 
     public record FeatureDiff(
-        Dictionary<string, string> Added,
-        Dictionary<string, string> Deleted,
-        Dictionary<string, string> Updated
+        Dictionary<string, object> Added,
+        Dictionary<string, object> Deleted
     );
+
     public record SupportFileDiff(
         Dictionary<string, string> Added,
-        Dictionary<string, string> Deleted,
-        Dictionary<string, string> Updated
+        Dictionary<string, string> Deleted
     );
+
     public record InformationTypeDiff(
-        Dictionary<string, string> Added,
-        Dictionary<string, string> Deleted,
-        Dictionary<string, string> Updated
+        Dictionary<string, object> Added,
+        Dictionary<string, object> Deleted
     );
 
     public record GeometryDiff(
         Dictionary<string, Geometry> Added,
-        Dictionary<string, Geometry> Deleted,
-        Dictionary<string, Geometry> Updated
+        Dictionary<string, Geometry> Deleted
     );
 
-    public class DatasetDiff
+    public class DatasetDiff(GeometryDiff points,
+                             GeometryDiff depths,
+                             GeometryDiff curves,
+                             GeometryDiff compositeCurves,
+                             GeometryDiff surfaces,
+                             SupportFileDiff supportFiles,
+                             FeatureDiff features,
+                             InformationTypeDiff informationTypes)
     {
-        public FeatureDiff? Features { get; init; }
-        public InformationTypeDiff? InformationTypes { get; init; }
-        public GeometryDiff? Points { get; init; }
-        public GeometryDiff? Depths { get; init; }
-        public GeometryDiff? Curves { get; init; }
-        public GeometryDiff? CompositeCurves { get; init; }
-        public GeometryDiff? Surfaces { get; init; }
-        public SupportFileDiff? SupportFiles { get; init; }
+        [YamlMember(Alias = "infAdd", ApplyNamingConventions = false)]
+        public ICollection<object>? InformationTypesAdded => InformationTypes.Added.Count != 0 ? InformationTypes?.Added.Values : null;
+        [YamlMember(Alias = "infDel", ApplyNamingConventions = false)]
+        public ICollection<string>? InformationTypesDeleted => InformationTypes.Deleted.Count != 0 ? InformationTypes?.Deleted.Keys : null;
+        [YamlMember(Alias = "fAdd", ApplyNamingConventions = false)]
+        public ICollection<object>? FeaturesAdded => Features.Added.Count != 0 ? Features?.Added.Values : null;
+        [YamlMember(Alias = "fDel", ApplyNamingConventions = false)]
+        public ICollection<string>? FeaturesDeleted => Features.Deleted.Count != 0 ? Features?.Deleted.Keys : null;
+        [YamlMember(Alias = "gAdd", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? GeometriesAdded {
+            get {
+                var all = Points.Added.Values
+                    .Concat(Depths.Added.Values)
+                    .Concat(Curves.Added.Values)
+                    .Concat(CompositeCurves.Added.Values)
+                    .Concat(Surfaces.Added.Values);
+
+                return all.Any() ? [.. all] : null;
+            }
+        }
+
+        [YamlMember(Alias = "gDel", ApplyNamingConventions = false)]
+        public ICollection<string>? GeometriesDeleted {
+            get {
+                var all = Points.Deleted.Keys
+                    .Concat(Depths.Deleted.Keys)
+                    .Concat(Curves.Deleted.Keys)
+                    .Concat(CompositeCurves.Deleted.Keys)
+                    .Concat(Surfaces.Deleted.Keys);
+
+                return all.Any() ? [.. all] : null;
+            }
+        }
+
+        [YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
+        public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
+        [YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
+        public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
+
+        [YamlIgnore]
+        internal FeatureDiff Features { get; init; } = features;
+        [YamlIgnore]
+        internal InformationTypeDiff InformationTypes { get; init; } = informationTypes;
+        [YamlIgnore]
+        internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
+        [YamlIgnore]
+        internal GeometryDiff Points { get; init; } = points;
+        [YamlIgnore]
+        internal GeometryDiff Depths { get; init; } = depths;
+        [YamlIgnore]
+        internal GeometryDiff Curves { get; init; } = curves;
+        [YamlIgnore]
+        internal GeometryDiff CompositeCurves { get; init; } = compositeCurves;
+        [YamlIgnore]
+        internal GeometryDiff Surfaces { get; init; } = surfaces;
     }
 
     public static class DatasetComparer
     {
         public static DatasetDiff Compare(string root, string update) {
-            var rootDataset = BuildDatasetUpdate(root);
-            var updateDataset = BuildDatasetUpdate(update);
+            var rootDataset = ReadDataset(root);
+            var updateDataset = ReadDataset(update);
 
 
             // Compare SupportFiles
@@ -184,49 +236,46 @@ namespace S100Framework.YAML
             var featureDiff = FeatureEquals(rootDataset.Features, updateDataset.Features);
 
             // Compare Points
-            var pointDiff = GeometryEquals(rootDataset.Points!, updateDataset.Points!);
+            var pointDiff = GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
 
             // Compare Depths
             var depthDiff = GeometryEquals<PointSet>(rootDataset.Depths!, updateDataset.Depths!);
 
             // Compare Curves
-            var curveDiff = GeometryEquals(rootDataset.Curves!, updateDataset.Curves!);
+            var curveDiff = GeometryEquals<Curve>(rootDataset.Curves!, updateDataset.Curves!);
 
             // Compare Composite Curves
-            var compositeCurveDiff = GeometryEquals(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
+            var compositeCurveDiff = GeometryEquals<CompositeCurve>(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
 
             // Compare Surfaces
-            var surfaceDiff = GeometryEquals(rootDataset.Surfaces!, updateDataset.Surfaces!);
+            var surfaceDiff = GeometryEquals<Surface>(rootDataset.Surfaces!, updateDataset.Surfaces!);
 
 
             // Build result return it
-            var result = new DatasetDiff() {
-                SupportFiles = supportFileDiff,
-                Features = featureDiff,
-                InformationTypes = informationTypeDiff,
-                Points = pointDiff,
-                Depths = depthDiff,
-                Curves = curveDiff,
-                CompositeCurves = compositeCurveDiff,
-                Surfaces = surfaceDiff,
-            };
+            var result = new DatasetDiff(
+                points: pointDiff,
+                depths: depthDiff,
+                curves: curveDiff,
+                compositeCurves: compositeCurveDiff,
+                surfaces: surfaceDiff,
+                supportFiles: supportFileDiff,
+                features: featureDiff,
+                informationTypes: informationTypeDiff
+            );
 
             return result;
         }
 
-        private static DatasetUpdate BuildDatasetUpdate(string dataset) {
+        private static DatasetUpdate ReadDataset(string dataset) {
             // Deserialize to Dictionary
             var rawDictionary = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(dataset);
-
-            // TO-DO: Read associations from Geometry
-            // Cleanup after full updates
 
             // Read InformationTypes
             var informationTypes = (rawDictionary["InformationTypes"] as List<object>)!
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["ID"]!.ToString()!,
-                    dict => Converter.Serialize(dict)
+                    dict => dict as object
                 );
 
             // Read Features
@@ -234,7 +283,7 @@ namespace S100Framework.YAML
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["Foid"]!.ToString()!,
-                    dict => Converter.Serialize(dict)
+                    dict => dict as object
                 );
 
             // Read SupportFiles
@@ -253,11 +302,25 @@ namespace S100Framework.YAML
                     var location = d["Location"]?.ToString() ?? string.Empty;
                     var split = location.Split(',');
                     var point = new Point(
-                        double.Parse(split[0]),
-                        double.Parse(split[1])
+                        double.Parse(split[0], CultureInfo.InvariantCulture),
+                        double.Parse(split[1], CultureInfo.InvariantCulture)
                     ) {
                         Name = d["Name"].ToString()
                     };
+
+                    if (d.TryGetValue("Association", out var assocObj) && assocObj is List<object> assocList) {
+                        foreach (var item in assocList) {
+                            if (item is Dictionary<object, object> asso) {
+                                var association = new Association {
+                                    To = asso["To"]?.ToString() ?? "",
+                                    Name = asso["Name"]?.ToString() ?? "",
+                                    Role = asso["Role"]?.ToString() ?? ""
+                                };
+
+                                point.AddAssociation(association);
+                            }
+                        }
+                    }
                     return point;
                 }).ToDictionary(p => p.Name!);
 
@@ -276,6 +339,21 @@ namespace S100Framework.YAML
                     ) {
                         Name = d["Name"].ToString()
                     };
+
+                    if (d.TryGetValue("Association", out var assocObj) && assocObj is List<object> assocList) {
+                        foreach (var item in assocList) {
+                            if (item is Dictionary<object, object> asso) {
+                                var association = new Association {
+                                    To = asso["To"]?.ToString() ?? "",
+                                    Name = asso["Name"]?.ToString() ?? "",
+                                    Role = asso["Role"]?.ToString() ?? ""
+                                };
+
+                                pointSet.AddAssociation(association);
+                            }
+                        }
+                    }
+
                     return pointSet;
                 }).ToDictionary(ps => ps.Name!);
 
@@ -293,14 +371,29 @@ namespace S100Framework.YAML
                     for (int i = 0; i < split.Length; i += 2) {
                         vertices.Add(new Coordinate(split[i], split[i + 1]));
                     }
-
-                    return new Curve(
+                    var curve = new Curve(
                         start: d["Start"].ToString(),
                         end: d["End"].ToString(),
                         vertices: [.. vertices]
                     ) {
-                        Name = d["Name"].ToString()
+                        Name = d["Name"].ToString(),
                     };
+
+                    if (d.TryGetValue("Association", out var assocObj) && assocObj is List<object> assocList) {
+                        foreach (var item in assocList) {
+                            if (item is Dictionary<object, object> asso) {
+                                var association = new Association {
+                                    To = asso["To"]?.ToString() ?? "",
+                                    Name = asso["Name"]?.ToString() ?? "",
+                                    Role = asso["Role"]?.ToString() ?? ""
+                                };
+
+                                curve.AddAssociation(association);
+                            }
+                        }
+                    }
+
+                    return curve;
                 }).ToDictionary(c => c.Name!);
 
 
@@ -312,6 +405,21 @@ namespace S100Framework.YAML
                         d["Components"]?.ToString()!) {
                         Name = d["Name"].ToString()
                     };
+
+                    if (d.TryGetValue("Association", out var assocObj) && assocObj is List<object> assocList) {
+                        foreach (var item in assocList) {
+                            if (item is Dictionary<object, object> asso) {
+                                var association = new Association {
+                                    To = asso["To"]?.ToString() ?? "",
+                                    Name = asso["Name"]?.ToString() ?? "",
+                                    Role = asso["Role"]?.ToString() ?? ""
+                                };
+
+                                compositeCurve.AddAssociation(association);
+                            }
+                        }
+                    }
+
                     return compositeCurve;
                 }).ToDictionary(cc => cc.Name!);
 
@@ -337,6 +445,20 @@ namespace S100Framework.YAML
                         surface.InteriorRings = [.. interiorRings];
                     }
 
+                    if (d.TryGetValue("Association", out var assocObj) && assocObj is List<object> assocList) {
+                        foreach (var item in assocList) {
+                            if (item is Dictionary<object, object> asso) {
+                                var association = new Association {
+                                    To = asso["To"]?.ToString() ?? "",
+                                    Name = asso["Name"]?.ToString() ?? "",
+                                    Role = asso["Role"]?.ToString() ?? ""
+                                };
+
+                                surface.AddAssociation(association);
+                            }
+                        }
+                    }
+
                     return surface;
                 }).ToDictionary(s => s.Name!);
 
@@ -352,133 +474,287 @@ namespace S100Framework.YAML
                 Surfaces = surfaces
             };
         }
+        public static string BuildDatasetUpdate(string dataset, DatasetDiff updates) {
+            var rawDictionary = Converter.Deserialize<Dictionary<object, object>>(dataset);
 
-        private static string AppendUpdates(string dataset, string[] updates) {
-            // To-Do
+            // Features
+            if (updates.FeaturesDeleted != null)
+                rawDictionary.Add("fDel", updates.FeaturesDeleted);
+            if (updates.FeaturesAdded != null)
+                rawDictionary.Add("fAdd", updates.FeaturesAdded);
 
-            return dataset;
+            // Support files
+            if (updates.SupportFilesDeleted != null)
+                rawDictionary.Add("fileDel", updates.SupportFilesDeleted);
+            if (updates.SupportFilesAdded != null)
+                rawDictionary.Add("fileAdd", updates.SupportFilesAdded);
+
+            // InformationTypes
+            if (updates.InformationTypesDeleted != null)
+                rawDictionary.Add("infDel", updates.InformationTypesDeleted);
+            if (updates.InformationTypesAdded != null)
+                rawDictionary.Add("infAdd", updates.InformationTypesAdded);
+
+            // Geometry
+            if (updates.GeometriesDeleted != null)
+                rawDictionary.Add("gDel", updates.GeometriesDeleted);
+            if (updates.GeometriesAdded != null)
+                rawDictionary.Add("gAdd", updates.GeometriesAdded);
+
+            return Converter.Serialize(rawDictionary);
         }
+        public static string AppendUpdate(string root, string update) {
+            var supportFiles = new List<Dictionary<object, object>>();
 
-        private static FeatureDiff FeatureEquals(Dictionary<string, string> rootFeatures, Dictionary<string, string> updateFeatures) {
+            var dataset = Converter.Deserialize<Dictionary<object, object>>(root);
+            var updates = Converter.Deserialize<Dictionary<string, object>>(update);
+
+            if (dataset.TryGetValue("Metadata", out var metadataObj)
+                && metadataObj is Dictionary<object, object> metadata
+                && metadata.TryGetValue("SupportFiles", out var supportFilesObj)
+                && supportFilesObj is List<object> rawSupportFiles) {
+                supportFiles = [.. rawSupportFiles.Cast<Dictionary<object, object>>()];
+            }
+            var features = (dataset["Features"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var informationTypes = (dataset["InformationTypes"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var points = (dataset["Points"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var depths = (dataset["Depths"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var curves = (dataset["Curves"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var compositeCurves = (dataset["CompositeCurves"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+            var surfaces = (dataset["Surfaces"] as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+
+
+            // SupportFile delete
+            if (updates.TryGetValue("fileDel", out var fileDelValue)) {
+                var fileDels = fileDelValue as List<object> ?? [];
+                foreach (var fileDel in fileDels) {
+                    var supportFile = supportFiles.FirstOrDefault(e => e["Name"].ToString() == fileDel.ToString());
+
+                    if (supportFile != null)
+                        supportFiles.Remove(supportFile);
+                }
+            }
+            // SupportFile add
+            if (updates.TryGetValue("fileAdd", out var fileAddValue)) {
+                var fileAdds = (fileAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+
+                foreach (var fileAdd in fileAdds) {
+                    if (fileAdd != null)
+                        supportFiles.Add(fileAdd);
+                }
+            }
+            // InformationType delete
+            if (updates.TryGetValue("infDel", out var infDelValue)) {
+                var infDels = infDelValue as List<object> ?? [];
+                foreach (var infDel in infDels) {
+                    var informationType = informationTypes.FirstOrDefault(e => e["ID"].ToString() == infDel.ToString());
+
+                    if (informationType != null)
+                        informationTypes.Remove(informationType);
+                }
+            }
+            // InformationType add
+            if (updates.TryGetValue("infAdd", out var infAddValue)) {
+                var infAdds = (infAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+
+                foreach (var infAdd in infAdds) {
+                    if (infAdd != null)
+                        informationTypes.Add(infAdd);
+                }
+            }
+            // Feature delete
+            if (updates.TryGetValue("fDel", out var featureDelValue)) {
+                var fDels = featureDelValue as List<object> ?? [];
+                foreach (var fDel in fDels) {
+                    var feature = features.FirstOrDefault(e => e["Foid"].ToString() == fDel.ToString());
+
+                    if (feature != null)
+                        features.Remove(feature);
+                }
+            }
+            // Feature add
+            if (updates.TryGetValue("fAdd", out var featureAddValue)) {
+                var fAdds = (featureAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+
+                foreach (var fAdd in fAdds) {
+                    if (fAdd != null)
+                        features.Add(fAdd);
+                }
+            }
+            // Geometry delete
+            if (updates.TryGetValue("gDel", out var geometryDelValue)) {
+                var gDels = geometryDelValue as List<object> ?? [];
+                foreach (var gDel in gDels) {
+                    // Points
+                    var point = points.FirstOrDefault(e => e["Name"].ToString() == gDel.ToString());
+
+                    if (point != null)
+                        points.Remove(point);
+
+                    // Depths
+                    var depth = depths.FirstOrDefault(e => e["Name"].ToString() == gDel.ToString());
+
+                    if (depth != null)
+                        depths.Remove(depth);
+
+                    // Curves
+                    var curve = curves.FirstOrDefault(e => e["Name"].ToString() == gDel.ToString());
+
+                    if (curve != null)
+                        curves.Remove(curve);
+
+                    // CompositeCurves
+                    var compositeCurve = compositeCurves.FirstOrDefault(e => e["Name"].ToString() == gDel.ToString());
+
+                    if (compositeCurve != null)
+                        compositeCurves.Remove(compositeCurve);
+
+                    // Surfaces
+                    var surface = surfaces.FirstOrDefault(e => e["Name"].ToString() == gDel.ToString());
+
+                    if (surface != null)
+                        surfaces.Remove(surface);
+                }
+            }
+            // Geometry add
+            if (updates.TryGetValue("gAdd", out var geometryAddValue)) {
+                var gAdds = (geometryAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
+
+                foreach (var gAdd in gAdds) {
+                    var name = gAdd["Name"].ToString()!;
+                    if (gAdd == null)
+                        continue;
+                    switch (name[0]) {
+                        case 'P': // Point
+                            if (!gAdd.ContainsKey("Z"))         // if no Z, its point
+                                points.Add(gAdd);
+                            else
+                                depths.Add(gAdd);
+                            break;
+
+                        case 'C': // Curves
+                            if (!gAdd.ContainsKey("Vertices"))  // if no Vertices, its composite curve
+                                compositeCurves.Add(gAdd);
+                            else                               // if vertices, its a curve
+                                curves.Add(gAdd);
+                            break;
+
+                        case 'S':   // Surfaces
+                            surfaces.Add(gAdd);
+                            break;
+
+                        default:
+                            System.Diagnostics.Debugger.Break();
+                            break;
+                    }
+                }
+            }
+
+            // Save changes
+            dataset["Features"] = features;
+            dataset["InformationTypes"] = informationTypes;
+            dataset["Points"] = points;
+            dataset["Depths"] = depths;
+            dataset["Curves"] = curves;
+            dataset["CompositeCurves"] = compositeCurves;
+            dataset["Surfaces"] = surfaces;
+            (metadataObj as Dictionary<object, object>)!["SupportFiles"] = supportFiles;
+
+            return Converter.Serialize(dataset);
+        }
+        private static FeatureDiff FeatureEquals(Dictionary<string, object> rootFeatures, Dictionary<string, object> updateFeatures) {
+            // Updated
+            var updatedKeys = rootFeatures.Keys
+                .Intersect(updateFeatures.Keys)
+                .Where(k => !Converter.Serialize(rootFeatures[k]).Equals(Converter.Serialize(updateFeatures[k])));
+
             var featureDiff = new FeatureDiff(
                 // Added
                 updateFeatures.Keys
                     .Except(rootFeatures.Keys)
+                    .Concat(updatedKeys)
                     .ToDictionary(k => k!, k => updateFeatures[k]),
 
                 // Deleted
                 rootFeatures.Keys
                     .Except(updateFeatures.Keys)
-                    .ToDictionary(k => k!, k => rootFeatures[k]),
-
-                // Updates
-                rootFeatures.Keys
-                    .Intersect(updateFeatures.Keys)
-                    .Where(k => !rootFeatures[k].Equals(updateFeatures[k]))
-                    .ToDictionary(k => k!, k => updateFeatures[k])
+                    .Concat(updatedKeys)
+                    .ToDictionary(k => k!, k => rootFeatures[k])
             );
 
             return featureDiff;
         }
         private static SupportFileDiff SupportFileEquals(Dictionary<string, SupportFile> rootcasted, Dictionary<string, SupportFile> updatecasted) {
-            //var rootcasted = rootSupportFiles
-            //   .OfType<Dictionary<object, object>>() // skips anything that isn't a dict
-            //   .Select(d => new SupportFile(
-            //       d["Name"]?.ToString() ?? string.Empty,
-            //       d["Content"]?.ToString() ?? string.Empty
-            //   )).ToDictionary(sf => sf.Name);
-
-            //var updatecasted = updateSupportFiles
-            //   .OfType<Dictionary<object, object>>() // skips anything that isn't a dict
-            //   .Select(d => new SupportFile(
-            //       d["Name"]?.ToString() ?? string.Empty,
-            //       d["Content"]?.ToString() ?? string.Empty
-            //   )).ToDictionary(sf => sf.Name);
+            // Updated
+            var updatedKeys = rootcasted.Keys
+                .Intersect(updatecasted.Keys)
+                .Where(k => !rootcasted[k].Equals(updatecasted[k]));
 
             var supportFileDiff = new SupportFileDiff(
                 // Added
                 updatecasted.Keys
-                .Except(rootcasted.Keys)
-                .ToDictionary(k => k!, k => updatecasted[k].Content),
+                    .Except(rootcasted.Keys)
+                    .Concat(updatedKeys)
+                    .ToDictionary(k => k!, k => updatecasted[k].Content),
 
                 // Deleted
                 rootcasted.Keys
                     .Except(updatecasted.Keys)
-                    .ToDictionary(k => k!, k => rootcasted[k].Content),
-
-                // Updated
-                rootcasted.Keys
-                    .Intersect(updatecasted.Keys)
-                    .Where(k => !rootcasted[k].Equals(updatecasted[k]))
-                    .ToDictionary(k => k!, k => updatecasted[k].Content)
+                    .Concat(updatedKeys)
+                    .ToDictionary(k => k!, k => rootcasted[k].Content)
             );
 
             return supportFileDiff;
         }
-        private static InformationTypeDiff InformationTypeEquals(Dictionary<string, string> rootInformationTypes, Dictionary<string, string> updateInformationTypes) {
+        private static InformationTypeDiff InformationTypeEquals(Dictionary<string, object> rootInformationTypes, Dictionary<string, object> updateInformationTypes) {
+            // Updated
+            var updatedKeys = rootInformationTypes.Keys
+                .Intersect(updateInformationTypes.Keys)
+                .Where(k => !Converter.Serialize(rootInformationTypes[k]).Equals(Converter.Serialize(updateInformationTypes[k])));
+
             var informationTypeDiff = new InformationTypeDiff(
                 // Added
                 updateInformationTypes.Keys
                     .Except(rootInformationTypes.Keys)
+                    .Concat(updatedKeys)
                     .ToDictionary(k => k!, k => updateInformationTypes[k]),
 
                 // Deleted
                 rootInformationTypes.Keys
                     .Except(updateInformationTypes.Keys)
-                    .ToDictionary(k => k!, k => rootInformationTypes[k]),
-
-                // Updated
-                rootInformationTypes.Keys
-                    .Intersect(updateInformationTypes.Keys)
-                    .Where(k => !rootInformationTypes[k].Equals(updateInformationTypes[k]))
-                    .ToDictionary(k => k!, k => updateInformationTypes[k])
+                    .Concat(updatedKeys)
+                    .ToDictionary(k => k!, k => rootInformationTypes[k])
             );
 
             return informationTypeDiff;
-
-            // Added
-            //InformationTypesAdded = _updateInformationTypes.Keys
-            //    .Except(_rootInformationTypes.Keys)
-            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
-
-            //// Deleted
-            //InformationTypesDeleted = _rootInformationTypes.Keys
-            //    .Except(_updateInformationTypes.Keys)
-            //    .ToDictionary(k => k!, k => _rootInformationTypes[k]);
-
-            //// Updates
-            //InformationTypesUpdated = _rootInformationTypes.Keys
-            //    .Intersect(_updateInformationTypes.Keys)
-            //    .Where(k => !_rootInformationTypes[k].Equals(_updateInformationTypes[k]))
-            //    .ToDictionary(k => k!, k => _updateInformationTypes[k]);
         }
         private static GeometryDiff GeometryEquals<T>(Dictionary<string, T> originalDict, Dictionary<string, T> updatedDict) where T : Geometry {
+            // Updated
+            var updatedKeys = originalDict.Keys
+                .Intersect(updatedDict.Keys)
+                .Where(k => !originalDict[k].Equals(updatedDict[k]));
+
             var geometryDiff = new GeometryDiff(
-                // Added
+                // Added 
                 updatedDict.Keys
                     .Except(originalDict.Keys)
+                    .Concat(updatedKeys)
                     .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k] as Geometry),
 
-                // Deleted
+                // Deleted 
                 originalDict.Keys
                     .Except(updatedDict.Keys)
-                    .ToDictionary(k => originalDict[k].Name!, k => originalDict[k] as Geometry),
-
-                // Updated
-                originalDict.Keys
-                    .Intersect(updatedDict.Keys)
-                    .Where(k => !originalDict[k].Equals(updatedDict[k]))
-                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k] as Geometry)
+                    .Concat(updatedKeys)
+                    .ToDictionary(k => originalDict[k].Name!, k => originalDict[k] as Geometry)
             );
-
             return geometryDiff;
         }
 
-        private class DatasetUpdate
+        public class DatasetUpdate
         {
             public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
-            public Dictionary<string, string> Features { get; init; } = [];
-            public Dictionary<string, string> InformationTypes { get; init; } = [];
+            public Dictionary<string, object> Features { get; init; } = [];
+            public Dictionary<string, object> InformationTypes { get; init; } = [];
             public Dictionary<string, Point> Points { get; init; } = [];
             public Dictionary<string, PointSet> Depths { get; init; } = [];
             public Dictionary<string, Curve> Curves { get; init; } = [];

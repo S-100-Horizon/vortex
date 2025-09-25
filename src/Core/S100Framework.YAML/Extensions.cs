@@ -69,16 +69,16 @@
                 foreach (var s in theMatrix.Surfaces) {
                     surfaceFeature = s;
 
-                    var exteriorRing = s.Exterior.Reverse ? $"RC{s.Exterior.Id}" : $"C{s.Exterior.Id}";
-                    var interiorRings = s?.Interior?.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}").ToArray();
+                    var exteriorRing = surfaceFeature.Exterior.Reverse ? $"RC{surfaceFeature.Exterior.Id}" : $"C{surfaceFeature.Exterior.Id}";
+                    var interiorRings = surfaceFeature?.Interior?.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}").ToArray();
 
                     var surface = new Surface(exteriorRing) {
                         InteriorRings = interiorRings,
-                        //Name = s.Ref
-                        Name = $"S{s?.Id}",
+                        Name = surfaceFeature.Ref
                     };
 
                     _ = dataset.AddSurface(surface);
+                    dataset.UpdateFeatureReferences($"S{surfaceFeature!.Id}", $"{surfaceFeature.Ref}");
                 }
             }
             catch (Exception ex) {
