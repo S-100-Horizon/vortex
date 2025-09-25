@@ -875,8 +875,11 @@ namespace S100Framework.Applications.Singletons
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
                 s101SlaveFeature.Store();
             } else {
-                ; // TODO: merge featurebindings
-                Logger.Current.DataError(s101SlaveFeature.GetObjectID(), "Relations", s101SlaveFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept foreign bindings: {s101SlaveFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(foreignBindings)}");
+                List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!)!;
+                existingBinding.AddRange(foreignBindings);
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
+                s101SlaveFeature.Store();
+                //Logger.Current.DataError(s101SlaveFeature.GetObjectID(), "Relations", s101SlaveFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept foreign bindings: {s101SlaveFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(foreignBindings)}");
             }
 
             if (s101MasterFeature["featurebindings"] is null) {
@@ -884,8 +887,11 @@ namespace S100Framework.Applications.Singletons
                 s101MasterFeature.Store();
             }
             else {
-                ; // TODO: merge featurebindings
-                Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", s101MasterFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
+                List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!)!;
+                existingBinding.AddRange(primaryBindings);
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
+                s101SlaveFeature.Store();
+                //Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", s101MasterFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
             }
 
 

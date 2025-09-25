@@ -195,7 +195,8 @@ namespace S100Framework.Applications
 
                     // Add relation between s57master polygon and slave equipment
 
-                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
+                    // TODO: ENABLE THIS 
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
 
                 }
                 // 
@@ -223,9 +224,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        // TODO: ENABLE THIS 
                         FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
-
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
