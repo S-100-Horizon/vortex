@@ -68,7 +68,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("affectedChartPublications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class affectedChartPublicationsViewModel : ViewModelBase {
+	public partial class affectedChartPublicationsViewModel : ComplexViewModel {
 		private chartAffectedViewModel? _chartAffected  = default;
 
 		[Category("affectedChartPublications")]
@@ -166,7 +166,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("chartAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class chartAffectedViewModel : ViewModelBase {
+	public partial class chartAffectedViewModel : ComplexViewModel {
 		private String _chartNumber  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -247,7 +247,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
+	public partial class fixedDateRangeViewModel : ComplexViewModel {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
@@ -328,7 +328,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("generalArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class generalAreaViewModel : ViewModelBase {
+	public partial class generalAreaViewModel : ComplexViewModel {
 		private String? _localityIdentifier  = default;
 
 		public String? localityIdentifier {
@@ -383,7 +383,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -438,7 +438,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("locality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class localityViewModel : ViewModelBase {
+	public partial class localityViewModel : ComplexViewModel {
 		private String? _localityIdentifier  = default;
 
 		public String? localityIdentifier {
@@ -493,7 +493,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("locationName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class locationNameViewModel : ViewModelBase {
+	public partial class locationNameViewModel : ComplexViewModel {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -548,7 +548,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("messageSeriesIdentifier",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class messageSeriesIdentifierViewModel : ViewModelBase {
+	public partial class messageSeriesIdentifierViewModel : ComplexViewModel {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -675,7 +675,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("navwarnTitle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class navwarnTitleViewModel : ViewModelBase {
+	public partial class navwarnTitleViewModel : ComplexViewModel {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -730,7 +730,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("warningInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class warningInformationViewModel : ViewModelBase {
+	public partial class warningInformationViewModel : ComplexViewModel {
 		[Category("warningInformation")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("warningInformation")]
@@ -784,7 +784,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("featureReference",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureReferenceViewModel : ViewModelBase {
+	public partial class featureReferenceViewModel : ComplexViewModel {
 		[Category("featureReference")]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 		[Category("featureReference")]
@@ -838,7 +838,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -911,7 +911,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -952,7 +952,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class spatialAccuracyViewModel : ViewModelBase {
+	public partial class spatialAccuracyViewModel : ComplexViewModel {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]

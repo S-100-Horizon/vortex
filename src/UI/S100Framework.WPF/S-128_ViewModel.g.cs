@@ -86,7 +86,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class contactAddressViewModel : ViewModelBase {
+	public partial class contactAddressViewModel : ComplexViewModel {
 		private String? _administrativeDivision  = default;
 
 		public String? administrativeDivision {
@@ -180,7 +180,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("customPaperSize",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class customPaperSizeViewModel : ViewModelBase {
+	public partial class customPaperSizeViewModel : ComplexViewModel {
 		private double _paperWidth  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -235,7 +235,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("defaultLocale",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class defaultLocaleViewModel : ViewModelBase {
+	public partial class defaultLocaleViewModel : ComplexViewModel {
 		private String _characterEncoding  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -303,7 +303,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel {
 		private String? _language  = default;
 
 		public String? language {
@@ -375,7 +375,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel {
 		private String? _fileLocator  = default;
 
 		public String? fileLocator {
@@ -469,7 +469,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("issuanceCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class issuanceCycleViewModel : ViewModelBase {
+	public partial class issuanceCycleViewModel : ComplexViewModel {
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("issuanceCycle")]
@@ -532,7 +532,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class onlineResourceViewModel : ViewModelBase {
+	public partial class onlineResourceViewModel : ComplexViewModel {
 		private String? _applicationProfile  = default;
 
 		public String? applicationProfile {
@@ -638,7 +638,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class periodicDateRangeViewModel : ViewModelBase {
+	public partial class periodicDateRangeViewModel : ComplexViewModel {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
@@ -695,7 +695,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("pricing",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class pricingViewModel : ViewModelBase {
+	public partial class pricingViewModel : ComplexViewModel {
 		private String? _contractPeriod  = default;
 
 		public String? contractPeriod {
@@ -763,7 +763,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("printInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class printInformationViewModel : ViewModelBase {
+	public partial class printInformationViewModel : ComplexViewModel {
 		private String? _printAgency  = default;
 
 		public String? printAgency {
@@ -860,7 +860,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("printSize",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class printSizeViewModel : ViewModelBase {
+	public partial class printSizeViewModel : ComplexViewModel {
 		private iSO216? _iSO216  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -923,7 +923,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("productSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class productSpecificationViewModel : ViewModelBase {
+	public partial class productSpecificationViewModel : ComplexViewModel {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -1005,7 +1005,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("supportFile",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class supportFileViewModel : ViewModelBase {
+	public partial class supportFileViewModel : ComplexViewModel {
 		private String? _comment  = default;
 
 		public String? comment {
@@ -1220,7 +1220,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("supportFileSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class supportFileSpecificationViewModel : ViewModelBase {
+	public partial class supportFileSpecificationViewModel : ComplexViewModel {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -1289,7 +1289,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("serviceSpecification",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class serviceSpecificationViewModel : ViewModelBase {
+	public partial class serviceSpecificationViewModel : ComplexViewModel {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -1358,7 +1358,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("sourceIndication",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sourceIndicationViewModel : ViewModelBase {
+	public partial class sourceIndicationViewModel : ComplexViewModel {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1475,7 +1475,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class telecommunicationsViewModel : ViewModelBase {
+	public partial class telecommunicationsViewModel : ComplexViewModel {
 		private String _contactInstructions  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -1550,7 +1550,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("timeIntervalOfProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class timeIntervalOfProductViewModel : ViewModelBase {
+	public partial class timeIntervalOfProductViewModel : ComplexViewModel {
 		private DateOnly? _expirationDate  = default;
 
 		public DateOnly? expirationDate {
@@ -1622,7 +1622,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("timeIntervalOfCycle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class timeIntervalOfCycleViewModel : ViewModelBase {
+	public partial class timeIntervalOfCycleViewModel : ComplexViewModel {
 		[Category("timeIntervalOfCycle")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
@@ -1683,7 +1683,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("referenceToNM",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class referenceToNMViewModel : ViewModelBase {
+	public partial class referenceToNMViewModel : ComplexViewModel {
 		private DateOnly _publicationDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
@@ -1742,7 +1742,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("weekOfYear",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class weekOfYearViewModel : ViewModelBase {
+	public partial class weekOfYearViewModel : ComplexViewModel {
 		private int _weekNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]

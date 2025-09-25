@@ -139,7 +139,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("bearingInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class bearingInformationViewModel : ViewModelBase {
+	public partial class bearingInformationViewModel : ComplexViewModel {
 		private cardinalDirection? _cardinalDirection  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -242,7 +242,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class contactAddressViewModel : ViewModelBase {
+	public partial class contactAddressViewModel : ComplexViewModel {
 		[Category("contactAddress")]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _cityName  = default;
@@ -336,7 +336,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel {
 		private Boolean? _displayName  = default;
 
 		public Boolean? displayName {
@@ -403,7 +403,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
+	public partial class fixedDateRangeViewModel : ComplexViewModel {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
@@ -458,7 +458,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("frequencyPair",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class frequencyPairViewModel : ViewModelBase {
+	public partial class frequencyPairViewModel : ComplexViewModel {
 		[Category("frequencyPair")]
 		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
 		[Category("frequencyPair")]
@@ -524,7 +524,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("graphic",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class graphicViewModel : ViewModelBase {
+	public partial class graphicViewModel : ComplexViewModel {
 		[Category("graphic")]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 		private String? _pictureCaption  = default;
@@ -623,7 +623,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -664,7 +664,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel {
 		private String? _fileLocator  = default;
 
 		public String? fileLocator {
@@ -756,7 +756,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("noticeTime",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class noticeTimeViewModel : ViewModelBase {
+	public partial class noticeTimeViewModel : ComplexViewModel {
 		[Category("noticeTime")]
 		public ObservableCollection<double> noticeTimeHours  { get; set; } = new ();
 		private String? _noticeTimeText  = default;
@@ -829,7 +829,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class onlineResourceViewModel : ViewModelBase {
+	public partial class onlineResourceViewModel : ComplexViewModel {
 		private String _linkage  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -953,7 +953,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class orientationViewModel : ViewModelBase {
+	public partial class orientationViewModel : ComplexViewModel {
 		private double? _orientationUncertainty  = default;
 
 		public double? orientationUncertainty {
@@ -1007,7 +1007,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("scheduleByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
+	public partial class scheduleByDayOfWeekViewModel : ComplexViewModel {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1067,7 +1067,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class periodicDateRangeViewModel : ViewModelBase {
+	public partial class periodicDateRangeViewModel : ComplexViewModel {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
@@ -1124,7 +1124,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("radiocommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class radiocommunicationsViewModel : ViewModelBase {
+	public partial class radiocommunicationsViewModel : ComplexViewModel {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1280,7 +1280,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("rxNCode",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class rxNCodeViewModel : ViewModelBase {
+	public partial class rxNCodeViewModel : ComplexViewModel {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
 		public categoryOfRxN? categoryOfRxN {
@@ -1352,7 +1352,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("sourceIndication",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sourceIndicationViewModel : ViewModelBase {
+	public partial class sourceIndicationViewModel : ComplexViewModel {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1470,7 +1470,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("surveyDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class surveyDateRangeViewModel : ViewModelBase {
+	public partial class surveyDateRangeViewModel : ComplexViewModel {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
@@ -1526,7 +1526,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class telecommunicationsViewModel : ViewModelBase {
+	public partial class telecommunicationsViewModel : ComplexViewModel {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1649,7 +1649,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("textContent",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class textContentViewModel : ViewModelBase {
+	public partial class textContentViewModel : ComplexViewModel {
 		private categoryOfText? _categoryOfText  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1745,7 +1745,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("timeIntervalsByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel {
 		[Category("timeIntervalsByDayOfWeek")]
 		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
@@ -1829,7 +1829,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("underKeelAllowance",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class underKeelAllowanceViewModel : ViewModelBase {
+	public partial class underKeelAllowanceViewModel : ComplexViewModel {
 		private double? _underKeelAllowanceFixed  = default;
 
 		public double? underKeelAllowanceFixed {
@@ -1913,7 +1913,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("vesselsMeasurements",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class vesselsMeasurementsViewModel : ViewModelBase {
+	public partial class vesselsMeasurementsViewModel : ComplexViewModel {
 		private comparisonOperator _comparisonOperator  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]

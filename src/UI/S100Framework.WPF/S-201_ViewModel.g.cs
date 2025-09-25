@@ -172,7 +172,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class contactAddressViewModel : ViewModelBase {
+	public partial class contactAddressViewModel : ComplexViewModel {
 		private String? _deliveryPoint  = default;
 
 		public String? deliveryPoint {
@@ -264,7 +264,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("directionalCharacter",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class directionalCharacterViewModel : ViewModelBase {
+	public partial class directionalCharacterViewModel : ComplexViewModel {
 		private Boolean? _moireEffect  = default;
 
 		public Boolean? moireEffect {
@@ -322,7 +322,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel {
 		private Boolean? _displayName  = default;
 
 		public Boolean? displayName {
@@ -389,7 +389,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
+	public partial class fixedDateRangeViewModel : ComplexViewModel {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
@@ -444,7 +444,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("lightSector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class lightSectorViewModel : ViewModelBase {
+	public partial class lightSectorViewModel : ComplexViewModel {
 		[Category("lightSector")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(colourList), typeof(colour))]
@@ -582,7 +582,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("multiplicityOfFeatures",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class multiplicityOfFeaturesViewModel : ViewModelBase {
+	public partial class multiplicityOfFeaturesViewModel : ComplexViewModel {
 		private Boolean _multiplicityKnown  = false;
 
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
@@ -636,7 +636,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class orientationViewModel : ViewModelBase {
+	public partial class orientationViewModel : ComplexViewModel {
 		private double? _orientationUncertainty  = default;
 
 		public double? orientationUncertainty {
@@ -690,7 +690,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class periodicDateRangeViewModel : ViewModelBase {
+	public partial class periodicDateRangeViewModel : ComplexViewModel {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
@@ -747,7 +747,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("radarWaveLength",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class radarWaveLengthViewModel : ViewModelBase {
+	public partial class radarWaveLengthViewModel : ComplexViewModel {
 		private String _radarBand  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -802,7 +802,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("rhythmOfLight",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class rhythmOfLightViewModel : ViewModelBase {
+	public partial class rhythmOfLightViewModel : ComplexViewModel {
 		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
@@ -887,7 +887,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sectorCharacteristics",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sectorCharacteristicsViewModel : ViewModelBase {
+	public partial class sectorCharacteristicsViewModel : ComplexViewModel {
 		private lightCharacteristic _lightCharacteristic  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
@@ -997,7 +997,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sectorInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sectorInformationViewModel : ViewModelBase {
+	public partial class sectorInformationViewModel : ComplexViewModel {
 		private String? _language  = default;
 
 		public String? language {
@@ -1051,7 +1051,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sectorLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sectorLimitViewModel : ViewModelBase {
+	public partial class sectorLimitViewModel : ComplexViewModel {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
 		[Category("sectorLimit")]
@@ -1114,7 +1114,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sectorLimitOne",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sectorLimitOneViewModel : ViewModelBase {
+	public partial class sectorLimitOneViewModel : ComplexViewModel {
 		private double _sectorBearing  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -1168,7 +1168,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sectorLimitTwo",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sectorLimitTwoViewModel : ViewModelBase {
+	public partial class sectorLimitTwoViewModel : ComplexViewModel {
 		private double _sectorBearing  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -1222,7 +1222,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("shapeInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class shapeInformationViewModel : ViewModelBase {
+	public partial class shapeInformationViewModel : ComplexViewModel {
 		private String? _language  = default;
 
 		public String? language {
@@ -1276,7 +1276,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("signalSequence",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class signalSequenceViewModel : ViewModelBase {
+	public partial class signalSequenceViewModel : ComplexViewModel {
 		private double _signalDuration  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -1335,7 +1335,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class spatialAccuracyViewModel : ViewModelBase {
+	public partial class spatialAccuracyViewModel : ComplexViewModel {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("spatialAccuracy")]
@@ -1416,7 +1416,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("CableDimensions",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class CableDimensionsViewModel : ViewModelBase {
+	public partial class CableDimensionsViewModel : ComplexViewModel {
 		private double _cableLength  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -1489,7 +1489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("ChangeDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ChangeDetailsViewModel : ViewModelBase {
+	public partial class ChangeDetailsViewModel : ComplexViewModel {
 		private atonCommissioning? _atonCommissioning  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -1660,7 +1660,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("ObscuredSector",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ObscuredSectorViewModel : ViewModelBase {
+	public partial class ObscuredSectorViewModel : ComplexViewModel {
 		private sectorLimitViewModel _sectorLimit  = default;
 
 		[Category("ObscuredSector")]
@@ -1723,7 +1723,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("sinkerDimensions",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sinkerDimensionsViewModel : ViewModelBase {
+	public partial class sinkerDimensionsViewModel : ComplexViewModel {
 		private heightLengthUnits _heightLengthUnits  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<heightLengthUnits?>), typeof(Editors.UnknownEditor<heightLengthUnits?>))]
@@ -1807,7 +1807,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("positioningMethod",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class positioningMethodViewModel : ViewModelBase {
+	public partial class positioningMethodViewModel : ComplexViewModel {
 		private positioningEquipment _positioningEquipment  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<positioningEquipment?>), typeof(Editors.UnknownEditor<positioningEquipment?>))]
@@ -1866,7 +1866,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
@@ -1920,7 +1920,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel {
 		private String? _fileLocator  = default;
 
 		public String? fileLocator {
@@ -2013,7 +2013,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("textualDescription",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class textualDescriptionViewModel : ViewModelBase {
+	public partial class textualDescriptionViewModel : ComplexViewModel {
 		private String _fileReference  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
@@ -2067,7 +2067,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("verticalUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class verticalUncertaintyViewModel : ViewModelBase {
+	public partial class verticalUncertaintyViewModel : ComplexViewModel {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]

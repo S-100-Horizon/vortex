@@ -423,7 +423,7 @@ namespace S100Framework.WPF.Editors
                     //OnPropertyChanged(nameof(instance));
                 };
 
-                if (propertyType == typeof(double)) {
+                if (propertyType == typeof(double) || propertyType == typeof(int) || propertyType == typeof(Int32)) {
                     var editor = new PropertyGridEditorDecimalUpDown();
                     editor.ValueChanged += (s, e) => {
                         radioButtonUnknown.IsChecked = !editor.Value.HasValue;
