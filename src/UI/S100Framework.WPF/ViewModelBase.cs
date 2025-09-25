@@ -435,7 +435,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
 
         protected override void Validate() {
-            var errors = base.GetErrors();
+            string[] errors = [.. base.GetErrors()];
 
             base.Validate();
 
@@ -443,6 +443,14 @@ namespace S100Framework.WPF.ViewModel
 
             var properties = typeof(TFeatureType).GetProperties();
             foreach (var p in properties) {
+                var required = p.GetCustomAttribute<RequiredAttribute>();
+                if (required != default) {
+                    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
+                    if (value is null) {
+                        this.AddError(p.Name, $"{p.Name} is required.");
+                    }
+                }
+
                 var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
                 if (attribute != default) {
                     var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);

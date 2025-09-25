@@ -388,7 +388,7 @@ namespace S100Framework.Applications
                             };
 
                             Func<string, string> converter = prefix switch {
-                                "double" => (v) => $"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                "double" => (v) => v,   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
                                 "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
                                 _ => throw new InvalidOperationException()
                             };
@@ -517,6 +517,10 @@ namespace S100Framework.Applications
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
 
+                            builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
+                            if(upper.HasValue)
+                                builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
                                 postfix = " = default;";
@@ -561,10 +565,10 @@ namespace S100Framework.Applications
                                 }
                             }
                             else {
-                                if (lower > 0)
-                                    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
-                                if (upper.HasValue)
-                                    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+                                //if (lower > 0)
+                                //    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
+                                //if (upper.HasValue)
+                                //    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
 
                                 prefix = $"List<{prefix}>";
                                 postfix = " = [];";
@@ -1432,6 +1436,10 @@ namespace S100Framework.Applications
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
 
+                builder.AppendLine($"\t\t\t[Lower({lower})]");
+                if (upper.HasValue)
+                    builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
                     postfix = " = default;";
@@ -1459,10 +1467,10 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
-                    if (lower > 0)
-                        builder.AppendLine($"\t\t\t[Lower({lower})]");
-                    if (upper.HasValue)
-                        builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+                    //if (lower > 0)
+                    //    builder.AppendLine($"\t\t\t[Lower({lower})]");
+                    //if (upper.HasValue)
+                    //    builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
 
                     prefix = $"List<{prefix}>";
                     postfix = " = [];";
