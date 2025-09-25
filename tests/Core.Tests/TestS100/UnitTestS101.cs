@@ -90,7 +90,8 @@ namespace TestS100
                         var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
                         var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                        var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+                        var _ = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                        int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
 
                         if (!dictionary.ContainsKey(role)) {
                             dictionary.Add(role, (lower, upper));
@@ -146,7 +147,8 @@ namespace TestS100
                         var role = binding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
 
                         var lower = int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                        var upper = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Attribute(XName.Get("infinite")) != default ? default(int?) : int.Parse(binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!.Value);
+                        var _ = binding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                        int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
 
                         if (!dictionary.ContainsKey(role)) {
                             dictionary.Add(role, (lower, upper));
