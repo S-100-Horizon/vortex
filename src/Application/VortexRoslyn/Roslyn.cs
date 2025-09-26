@@ -791,6 +791,8 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("\t\tusing System.Xml.Linq;");
             builderDomainModel.AppendLine();
 
+            var abstractTypes = new List<string>();
+
             //  --- S100_FC_InformationType -----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -825,6 +827,10 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        if (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) {
+                            abstractTypes.Add(code);
+                        }
+
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -852,26 +858,48 @@ namespace S100Framework.Applications
                         }, (builder) => {
                             builder.AppendLine();
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
-                                if (productFormat == ProductFormat.GML) {
-                                    builder.AppendLine("\t\t\t[JsonIgnore]");
-                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                if (superType is null || abstractTypes.Contains(superType.Value)) {
+                                    if (productFormat == ProductFormat.GML) {
+                                        builder.AppendLine("\t\t\t[JsonIgnore]");
+                                        builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                        builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    }
                                 }
 
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
-                                builder.AppendLine("\t\t\t};");
+                                if (superType is null) {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
+                                    builder.AppendLine();
 
-                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
-                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{d.Check}");
-                                builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
+                                else {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
+
+                                    builder.AppendLine();
+
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    if (!abstractTypes.Contains(superType.Value))
+                                        builder.AppendLine("\t\t\t\tbase.RunValidationChecks();");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
                             }
                         });
 
@@ -925,6 +953,10 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        if (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) {
+                            abstractTypes.Add(code);
+                        }
+
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -951,32 +983,53 @@ namespace S100Framework.Applications
                             DependencyRules = dependencyRules,
                         }, (builder) => {
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
-                                if (productFormat == ProductFormat.GML) {
+                                if (superType is null || abstractTypes.Contains(superType.Value)) {
+                                    if (productFormat == ProductFormat.GML) {
+                                        builder.AppendLine();
+                                        builder.AppendLine("\t\t\t[JsonIgnore]");
+                                        builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                        builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    }
+
                                     builder.AppendLine();
                                     builder.AppendLine("\t\t\t[JsonIgnore]");
-                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    builder.AppendLine("\t\t\t[XmlAnyElement]");
+                                    builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
                                 }
+                                if (superType is null) {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
-                                builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine("\t\t\t[XmlAnyElement]");
-                                builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
+                                    builder.AppendLine();
 
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
-                                builder.AppendLine("\t\t\t};");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
+                                else {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
+                                    builder.AppendLine();
 
-                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
-                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{d.Check}");
-                                builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    if (!abstractTypes.Contains(superType.Value))
+                                        builder.AppendLine("\t\t\t\tbase.RunValidationChecks();");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
                             }
 
                             //if (superType == null) {

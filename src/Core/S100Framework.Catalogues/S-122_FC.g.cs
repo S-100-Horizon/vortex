@@ -2944,9 +2944,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -2954,6 +2951,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -2982,9 +2980,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -2992,6 +2987,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3011,9 +3007,6 @@ namespace S100Framework.DomainModel.S122 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3021,6 +3014,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3040,9 +3034,6 @@ namespace S100Framework.DomainModel.S122 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3050,6 +3041,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3069,9 +3061,6 @@ namespace S100Framework.DomainModel.S122 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3079,6 +3068,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3140,9 +3130,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3150,6 +3137,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3255,9 +3243,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3265,6 +3250,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3311,9 +3297,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3321,6 +3304,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3369,9 +3353,6 @@ namespace S100Framework.DomainModel.S122 {
 				},
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3379,6 +3360,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
@@ -3479,9 +3461,6 @@ namespace S100Framework.DomainModel.S122 {
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
 
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
@@ -3489,6 +3468,7 @@ namespace S100Framework.DomainModel.S122 {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 	}

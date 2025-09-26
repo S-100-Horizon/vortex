@@ -9523,20 +9523,13 @@ namespace S100Framework.DomainModel.S201 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
 
-			[JsonIgnore]
-			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-			public string? gmlId { get; set; }
-
-			[JsonIgnore]
-			[XmlAnyElement]
-			public XElement[]? Geometry { get; set; } = default;
-
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Lighthouse, bool>> _conditionalUnknown = new Dictionary<string,Func<Lighthouse, bool>> {
 			};
 
 			public override void RunValidationChecks() {
+				base.RunValidationChecks();
 			}
 		}
 
