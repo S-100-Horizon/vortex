@@ -114,8 +114,8 @@ namespace S100Framework.DomainModel
         }
 
         public MultiplicityAttribute(int lower, int upper) {
-            this.Lower= lower;
-            this.Upper= upper;
+            this.Lower = lower;
+            this.Upper = upper;
         }
 
         public int Lower;
@@ -381,7 +381,7 @@ namespace S100Framework.DomainModel
         //    };
         //}
 
-        public override bool Equals(object obj) => obj is Tristate<T> other && Equals(other);
+        public override bool Equals(object? obj) => obj is Tristate<T> other && Equals(other);
 
         public bool Equals(Tristate<T> other) {
             if (Status != other.Status) return false;
@@ -394,7 +394,7 @@ namespace S100Framework.DomainModel
             {
                 int hash = 17;
                 hash = hash * 23 + Status.GetHashCode();
-                if (HasValue) {
+                if (_value != null) {
                     hash = hash * 23 + _value.GetHashCode();
                 }
                 return hash;
@@ -425,7 +425,7 @@ namespace S100Framework.DomainModel
         }
 
         public XmlSchema GetSchema() {
-            return null;
+            return new XmlSchema();
         }
 
         public void ReadXml(XmlReader reader) {

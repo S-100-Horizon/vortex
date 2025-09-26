@@ -425,7 +425,7 @@ namespace S100Framework.DomainModel
         }
 
         public XmlSchema GetSchema() {
-            return null;
+            return new XmlSchema();
         }
 
         public void ReadXml(XmlReader reader) {
