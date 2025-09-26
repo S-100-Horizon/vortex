@@ -517,9 +517,11 @@ namespace S100Framework.Applications
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
 
-                            builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
-                            if(upper.HasValue)
-                                builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+
+                            if (upper.HasValue)
+                                builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                            else
+                                builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower})]");
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
@@ -1436,9 +1438,10 @@ namespace S100Framework.Applications
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
 
-                builder.AppendLine($"\t\t\t[Lower({lower})]");
                 if (upper.HasValue)
-                    builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+                    builder.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                else
+                    builder.AppendLine($"\t\t\t[Multiplicity({lower})]");
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";

@@ -96,16 +96,30 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class LowerAttribute(int lower) : System.Attribute
+    public class MandatoryAttribute() : System.Attribute
     {
-        public int Lower = lower;
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class UpperAttribute(int upper) : System.Attribute
+    public class OptionalAttribute() : System.Attribute
     {
-        public int Upper = upper;
     }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class MultiplicityAttribute : System.Attribute
+    {
+        public MultiplicityAttribute(int lower, int upper) {
+            this.Lower= lower;
+            this.Upper= upper;
+        }
+
+        public int Lower;
+
+        public int? Upper;
+
+        public bool Infinite => !Upper.HasValue;
+    }
+
 
     public enum Closure : int
     {
