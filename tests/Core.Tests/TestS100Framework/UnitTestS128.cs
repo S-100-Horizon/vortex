@@ -173,7 +173,7 @@ namespace TestS100Framework
                     nameUsage = nameUsage.DefaultNameDisplay,
                     name = p.datasetName,
                 });
-                p.optimumDisplayScale = $"{p.compilationScale[0]}";
+                p.optimumDisplayScale = p.compilationScale[0];
                 p.maximumDisplayScale = (int)(p.compilationScale[0] / 2);
                 p.minimumDisplayScale = (int)(p.compilationScale[0] * 2);
 

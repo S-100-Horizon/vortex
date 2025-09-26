@@ -517,11 +517,20 @@ namespace S100Framework.Applications
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
 
-
-                            if (upper.HasValue)
-                                builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
-                            else
-                                builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                            if (upper.HasValue) {
+                                if (lower == 0 && upper == 1)
+                                    builderDomainModel.AppendLine($"\t\t\t[Optional]");
+                                else if (lower == 1 && upper == 1)
+                                    builderDomainModel.AppendLine($"\t\t\t[Mandatory]");
+                                else
+                                    builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                            }
+                            else {
+                                if (lower == 0)
+                                    builderDomainModel.AppendLine($"\t\t\t[Optional]");
+                                else
+                                    builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                            }
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
@@ -614,6 +623,7 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                         builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -848,6 +858,7 @@ namespace S100Framework.Applications
                                     builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
                                 }
 
+                                builder.AppendLine();
                                 builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                 builder.AppendLine();
                                 builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -952,6 +963,7 @@ namespace S100Framework.Applications
                                 builder.AppendLine("\t\t\t[XmlAnyElement]");
                                 builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
 
+                                builder.AppendLine();
                                 builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                 builder.AppendLine();
                                 builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -1438,10 +1450,20 @@ namespace S100Framework.Applications
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
 
-                if (upper.HasValue)
-                    builder.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
-                else
-                    builder.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                if (upper.HasValue) {
+                    if (lower == 0 && upper == 1)
+                        builder.AppendLine($"\t\t\t[Optional]");
+                    else if (lower == 1 && upper == 1)
+                        builder.AppendLine($"\t\t\t[Mandatory]");
+                    else
+                        builder.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                }
+                else {
+                    if (lower == 0)
+                        builder.AppendLine($"\t\t\t[Optional]");
+                    else
+                        builder.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                }
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";

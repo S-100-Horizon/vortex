@@ -2716,10 +2716,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
-		private String? _optimumDisplayScale  = default;
+		private int? _optimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
-		public String? optimumDisplayScale {
+		public int? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
 			}
@@ -3266,10 +3266,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Browsable(false)]
 		public navigationPurpose[] navigationPurposeList => [(navigationPurpose)1,(navigationPurpose)2,(navigationPurpose)3];
-		private String? _optimumDisplayScale  = default;
+		private int? _optimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
-		public String? optimumDisplayScale {
+		public int? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
 			}

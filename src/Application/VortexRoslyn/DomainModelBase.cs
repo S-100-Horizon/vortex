@@ -108,6 +108,11 @@ namespace S100Framework.DomainModel
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class MultiplicityAttribute : System.Attribute
     {
+        public MultiplicityAttribute(int lower) {
+            this.Lower = lower;
+            this.Upper = default;
+        }
+
         public MultiplicityAttribute(int lower, int upper) {
             this.Lower= lower;
             this.Upper= upper;

@@ -4652,6 +4652,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)3,(condition)5];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("CautionArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private status? _status  = default;
 
 		[Category("CautionArea")]
@@ -4694,6 +4705,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent.Load(instance.textContent);
 			}
 			condition = instance.condition;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status = instance.status;
 			return this;
 		}
@@ -4706,6 +4718,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				condition = this.condition,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4719,6 +4732,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			condition = this._condition,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this._status,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
@@ -4795,6 +4809,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfConcentrationOfShippingHazardArea[] categoryOfConcentrationOfShippingHazardAreaList => [(categoryOfConcentrationOfShippingHazardArea)1,(categoryOfConcentrationOfShippingHazardArea)2,(categoryOfConcentrationOfShippingHazardArea)3,(categoryOfConcentrationOfShippingHazardArea)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ConcentrationOfShippingHazardArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("ConcentrationOfShippingHazardArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -4832,6 +4857,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfConcentrationOfShippingHazardArea)
 					categoryOfConcentrationOfShippingHazardArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -4848,6 +4874,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfConcentrationOfShippingHazardArea = this.categoryOfConcentrationOfShippingHazardArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4861,6 +4888,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfConcentrationOfShippingHazardArea = this.categoryOfConcentrationOfShippingHazardArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => ConcentrationOfShippingHazardArea._informationBindingDefinitions;
@@ -4937,6 +4965,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ISPSCodeSecurityLevel")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private iSPSLevel _iSPSLevel  = default;
 
 		[Category("ISPSCodeSecurityLevel")]
@@ -4978,6 +5017,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.textContent != default) {
 				textContent.Load(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			iSPSLevel = instance.iSPSLevel;
 			return this;
 		}
@@ -4989,6 +5029,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				iSPSLevel = this.iSPSLevel,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -5001,6 +5042,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			iSPSLevel = this._iSPSLevel,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => ISPSCodeSecurityLevel._informationBindingDefinitions;
@@ -5073,6 +5115,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("LocalPortServiceArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("LocalPortServiceArea")]
@@ -5121,6 +5174,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.textContent != default) {
 				textContent.Load(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -5133,6 +5187,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -5146,6 +5201,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
@@ -5225,6 +5281,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfMilitaryPracticeArea[] categoryOfMilitaryPracticeAreaList => [(categoryOfMilitaryPracticeArea)2,(categoryOfMilitaryPracticeArea)3,(categoryOfMilitaryPracticeArea)4,(categoryOfMilitaryPracticeArea)5,(categoryOfMilitaryPracticeArea)6];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("MilitaryPracticeArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _nationality  = default;
 
 		[Category("MilitaryPracticeArea")]
@@ -5280,6 +5347,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfMilitaryPracticeArea)
 					categoryOfMilitaryPracticeArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
 			restriction.Clear();
 			if (instance.restriction is not null) {
@@ -5302,6 +5370,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfMilitaryPracticeArea = this.categoryOfMilitaryPracticeArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				nationality = this.nationality,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
@@ -5317,6 +5386,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfMilitaryPracticeArea = this.categoryOfMilitaryPracticeArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			nationality = this._nationality,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
@@ -5468,6 +5538,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _destination, value);
 			}
 		}
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotBoardingPlace")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private pilotMovement? _pilotMovement  = default;
 
 		[Category("PilotBoardingPlace")]
@@ -5537,6 +5618,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 					communicationChannel.Add(e);
 			}
 			destination = instance.destination;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			pilotMovement = instance.pilotMovement;
 			pilotVessel = instance.pilotVessel;
 			status.Clear();
@@ -5560,6 +5642,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfVessel = this.categoryOfVessel,
 				communicationChannel = this.communicationChannel.ToList(),
 				destination = this.destination,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				pilotMovement = this.pilotMovement,
 				pilotVessel = this.pilotVessel,
 				status = this.status.ToList(),
@@ -5580,6 +5663,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfVessel = this._categoryOfVessel,
 			communicationChannel = this.communicationChannel.ToList(),
 			destination = this._destination,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			pilotMovement = this._pilotMovement,
 			pilotVessel = this._pilotVessel,
 			status = this.status.ToList(),
@@ -5667,6 +5751,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfPilot[] categoryOfPilotList => [(categoryOfPilot)1,(categoryOfPilot)2,(categoryOfPilot)3,(categoryOfPilot)4,(categoryOfPilot)5,(categoryOfPilot)6,(categoryOfPilot)7];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotService")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private pilotQualification? _pilotQualification  = default;
 
 		[Category("PilotService")]
@@ -5748,6 +5843,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfPilot)
 					categoryOfPilot.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			pilotQualification = instance.pilotQualification;
 			pilotRequest = instance.pilotRequest;
 			remotePilot = instance.remotePilot;
@@ -5766,6 +5862,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfPilot = this.categoryOfPilot.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				pilotQualification = this.pilotQualification,
 				pilotRequest = this.pilotRequest,
 				remotePilot = this.remotePilot,
@@ -5782,6 +5879,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfPilot = this.categoryOfPilot.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			pilotQualification = this._pilotQualification,
 			pilotRequest = this._pilotRequest,
 			remotePilot = this._remotePilot,
@@ -5859,6 +5957,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("PilotageDistrict")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotageDistrict")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
 		public override FeatureViewModel<PilotageDistrict> Load(PilotageDistrict instance) {
@@ -5889,6 +5998,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -5900,6 +6010,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -5912,6 +6023,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PilotageDistrict._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -5986,6 +6098,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PiracyRiskArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("PiracyRiskArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
@@ -6025,6 +6148,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.textContent != default) {
 				textContent.Load(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6045,6 +6169,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6058,6 +6183,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
@@ -6139,6 +6265,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("PlaceOfRefuge")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PlaceOfRefuge")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("PlaceOfRefuge")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -6176,6 +6313,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6192,6 +6330,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -6205,6 +6344,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => PlaceOfRefuge._informationBindingDefinitions;
@@ -6282,6 +6422,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("RadarRange")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RadarRange")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RadarRange")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -6319,6 +6470,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6335,6 +6487,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -6348,6 +6501,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
@@ -6450,6 +6604,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("RadioCallingInPoint")]
 		public ObservableCollection<double> orientationValue  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RadioCallingInPoint")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -6519,6 +6684,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.orientationValue)
 					orientationValue.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6540,6 +6706,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfCargo = this.categoryOfCargo.ToList(),
 				categoryOfVessel = this.categoryOfVessel.ToList(),
 				orientationValue = this.orientationValue.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 				trafficFlow = this.trafficFlow,
 			};
@@ -6558,6 +6725,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfCargo = this.categoryOfCargo.ToList(),
 			categoryOfVessel = this.categoryOfVessel.ToList(),
 			orientationValue = this.orientationValue.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 			trafficFlow = this._trafficFlow,
 		};
@@ -6652,6 +6820,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RestrictedAreaNavigational")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RestrictedAreaNavigational")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
@@ -6696,6 +6875,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfRestrictedArea)
 					categoryOfRestrictedArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6717,6 +6897,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6731,6 +6912,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
@@ -6819,6 +7001,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RestrictedAreaRegulatory")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RestrictedAreaRegulatory")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
@@ -6863,6 +7056,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfRestrictedArea)
 					categoryOfRestrictedArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6884,6 +7078,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6898,6 +7093,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
@@ -7025,6 +7221,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RouteingMeasure")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
 		public override FeatureViewModel<RouteingMeasure> Load(RouteingMeasure instance) {
@@ -7053,6 +7260,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfRouteingMeasure = instance.categoryOfRouteingMeasure;
 			categoryOfTrafficSeparationScheme = instance.categoryOfTrafficSeparationScheme;
 			categoryOfNavigationLine = instance.categoryOfNavigationLine;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7066,6 +7274,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfRouteingMeasure = this.categoryOfRouteingMeasure,
 				categoryOfTrafficSeparationScheme = this.categoryOfTrafficSeparationScheme,
 				categoryOfNavigationLine = this.categoryOfNavigationLine,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7080,6 +7289,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfRouteingMeasure = this._categoryOfRouteingMeasure,
 			categoryOfTrafficSeparationScheme = this._categoryOfTrafficSeparationScheme,
 			categoryOfNavigationLine = this._categoryOfNavigationLine,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => RouteingMeasure._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RouteingMeasure._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -7151,6 +7361,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ShipReportingServiceArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("ShipReportingServiceArea")]
@@ -7199,6 +7420,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.textContent != default) {
 				textContent.Load(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -7211,6 +7433,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -7224,6 +7447,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
@@ -7303,6 +7527,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1,(categoryOfSignalStationWarning)2,(categoryOfSignalStationWarning)3,(categoryOfSignalStationWarning)4,(categoryOfSignalStationWarning)5,(categoryOfSignalStationWarning)6,(categoryOfSignalStationWarning)7,(categoryOfSignalStationWarning)8,(categoryOfSignalStationWarning)9,(categoryOfSignalStationWarning)10,(categoryOfSignalStationWarning)11,(categoryOfSignalStationWarning)12,(categoryOfSignalStationWarning)13,(categoryOfSignalStationWarning)14,(categoryOfSignalStationWarning)15,(categoryOfSignalStationWarning)16,(categoryOfSignalStationWarning)17,(categoryOfSignalStationWarning)18];
 		[Category("SignalStationWarning")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("SignalStationWarning")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("SignalStationWarning")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -7345,6 +7580,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -7362,6 +7598,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent = this.textContent?.Model,
 				categoryOfSignalStationWarning = this.categoryOfSignalStationWarning.ToList(),
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -7376,6 +7613,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			textContent = this._textContent?.Model,
 			categoryOfSignalStationWarning = this.categoryOfSignalStationWarning.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
@@ -7464,6 +7702,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1,(categoryOfSignalStationTraffic)2,(categoryOfSignalStationTraffic)3,(categoryOfSignalStationTraffic)4,(categoryOfSignalStationTraffic)5,(categoryOfSignalStationTraffic)6,(categoryOfSignalStationTraffic)7,(categoryOfSignalStationTraffic)8,(categoryOfSignalStationTraffic)9,(categoryOfSignalStationTraffic)10,(categoryOfSignalStationTraffic)13];
 		[Category("SignalStationTraffic")]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("SignalStationTraffic")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("SignalStationTraffic")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
@@ -7506,6 +7755,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -7523,6 +7773,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent = this.textContent?.Model,
 				categoryOfSignalStationTraffic = this.categoryOfSignalStationTraffic.ToList(),
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -7537,6 +7788,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			textContent = this._textContent?.Model,
 			categoryOfSignalStationTraffic = this.categoryOfSignalStationTraffic.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
@@ -7615,6 +7867,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("UnderKeelClearanceAllowanceArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private underKeelAllowanceViewModel? _underKeelAllowance  = default;
 
 		[Category("UnderKeelClearanceAllowanceArea")]
@@ -7668,6 +7931,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.textContent != default) {
 				textContent.Load(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			underKeelAllowance = new ();
 			if (instance.underKeelAllowance != default) {
 				underKeelAllowance.Load(instance.underKeelAllowance);
@@ -7683,6 +7947,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				underKeelAllowance = this.underKeelAllowance?.Model,
 				waterLevelTrend = this.waterLevelTrend,
 			};
@@ -7696,6 +7961,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			underKeelAllowance = this._underKeelAllowance?.Model,
 			waterLevelTrend = this._waterLevelTrend,
 		};
@@ -7785,6 +8051,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public dynamicResource[] dynamicResourceList => [(dynamicResource)1,(dynamicResource)2,(dynamicResource)3,(dynamicResource)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("UnderKeelClearanceManagementArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
 		public override FeatureViewModel<UnderKeelClearanceManagementArea> Load(UnderKeelClearanceManagementArea instance) {
@@ -7811,6 +8088,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent.Load(instance.textContent);
 			}
 			dynamicResource = instance.dynamicResource;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7822,6 +8100,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				dynamicResource = this.dynamicResource,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7834,6 +8113,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			dynamicResource = this._dynamicResource,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => UnderKeelClearanceManagementArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. UnderKeelClearanceManagementArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -7912,6 +8192,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfVesselTrafficService[] categoryOfVesselTrafficServiceList => [(categoryOfVesselTrafficService)1,(categoryOfVesselTrafficService)2,(categoryOfVesselTrafficService)3];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("VesselTrafficServiceArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("VesselTrafficServiceArea")]
@@ -7965,6 +8256,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.categoryOfVesselTrafficService)
 					categoryOfVesselTrafficService.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -7978,6 +8270,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfVesselTrafficService = this.categoryOfVesselTrafficService.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -7992,6 +8285,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfVesselTrafficService = this.categoryOfVesselTrafficService.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
@@ -8083,6 +8377,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public dynamicResource[] dynamicResourceList => [(dynamicResource)1,(dynamicResource)2,(dynamicResource)3,(dynamicResource)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("WaterwayArea")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _siltationRate  = default;
 
 		[Category("WaterwayArea")]
@@ -8127,6 +8432,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent.Load(instance.textContent);
 			}
 			dynamicResource = instance.dynamicResource;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			siltationRate = instance.siltationRate;
 			status.Clear();
 			if (instance.status is not null) {
@@ -8144,6 +8450,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				dynamicResource = this.dynamicResource,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				siltationRate = this.siltationRate,
 				status = this.status.ToList(),
 			};
@@ -8158,6 +8465,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			dynamicResource = this._dynamicResource,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			siltationRate = this._siltationRate,
 			status = this.status.ToList(),
 		};
@@ -8190,6 +8498,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("DataCoverage")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
@@ -8217,6 +8536,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) {
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
 			return this;
@@ -8224,6 +8544,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string Serialize() {
 			var instance = new DataCoverage {
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				maximumDisplayScale = this.maximumDisplayScale,
 				minimumDisplayScale = this.minimumDisplayScale,
 			};
@@ -8232,6 +8553,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public DataCoverage Model => new () {
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			maximumDisplayScale = this._maximumDisplayScale,
 			minimumDisplayScale = this._minimumDisplayScale,
 		};
@@ -8306,6 +8628,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("QualityOfNonBathymetricData")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -8345,6 +8678,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			if (instance.horizontalPositionUncertainty != default) {
 				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
 				sourceIndication.Load(instance.sourceIndication);
@@ -8363,6 +8697,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				orientationUncertainty = this.orientationUncertainty,
 				horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
 				horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				sourceIndication = this.sourceIndication?.Model,
 				surveyDateRange = this.surveyDateRange?.Model,
 			};
@@ -8376,6 +8711,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			orientationUncertainty = this._orientationUncertainty,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			sourceIndication = this._sourceIndication?.Model,
 			surveyDateRange = this._surveyDateRange?.Model,
 		};

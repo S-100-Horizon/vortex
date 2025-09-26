@@ -2486,29 +2486,35 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class contactAddress : ComplexType {
 			[XmlElement("deliveryPoint")]
+			[Optional]
 			public List<String> deliveryPoint {get;set;} = [];
 
 			public bool ShouldSerializedeliveryPoint() { return deliveryPoint.Any(); }
 
 			[XmlElement("cityName")]
+			[Optional]
 			public String? cityName {get;set;} = default;
 
 			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			[XmlElement("administrativeDivision")]
+			[Optional]
 			public String? administrativeDivision {get;set;} = default;
 
 			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
 
 			[XmlElement("countryName")]
+			[Optional]
 			public String? countryName {get;set;} = default;
 
 			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			[XmlElement("postalCode")]
+			[Optional]
 			public String? postalCode {get;set;} = default;
 
 			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalUnknown = new Dictionary<string,Func<contactAddress, bool>> {
@@ -2525,17 +2531,21 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName : ComplexType {
 			[XmlElement("displayName")]
+			[Optional]
 			public Boolean? displayName {get;set;} = default;
 
 			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
 
 			[XmlElement("language")]
+			[Optional]
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("name")]
+			[Mandatory]
 			public String name {get;set;} = string.Empty;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
@@ -2555,14 +2565,17 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class fixedDateRange : ComplexType {
 			[XmlElement("dateStart")]
+			[Optional]
 			public String? dateStart {get;set;} = default;
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			[XmlElement("dateEnd")]
+			[Optional]
 			public String? dateEnd {get;set;} = default;
 
 			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
@@ -2580,20 +2593,24 @@ namespace S100Framework.DomainModel.S131 {
 		public class frequencyPair : ComplexType {
 			[XmlElement("frequencyShoreStationTransmits")]
 			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
+			[Optional]
 			public List<int> frequencyShoreStationTransmits {get;set;} = [];
 
 			public bool ShouldSerializefrequencyShoreStationTransmits() { return frequencyShoreStationTransmits.Any(); }
 
 			[XmlElement("frequencyShoreStationReceives")]
 			[RangeConstraint<int>(1, default, Closure.gtSemiInterval)]
+			[Optional]
 			public List<int> frequencyShoreStationReceives {get;set;} = [];
 
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.Any(); }
 
 			[XmlElement("contactInstructions")]
+			[Optional]
 			public List<String> contactInstructions {get;set;} = [];
 
 			public bool ShouldSerializecontactInstructions() { return contactInstructions.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<frequencyPair, bool>> _conditionalUnknown = new Dictionary<string,Func<frequencyPair, bool>> {
@@ -2614,12 +2631,15 @@ namespace S100Framework.DomainModel.S131 {
 		public class horizontalPositionUncertainty : ComplexType {
 			[XmlElement("uncertaintyFixed")]
 			[PrecisionConstraint(1)]
+			[Mandatory]
 			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
+			[Optional]
 			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<horizontalPositionUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<horizontalPositionUncertainty, bool>> {
@@ -2639,29 +2659,35 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class information : ComplexType {
 			[XmlElement("fileLocator")]
+			[Optional]
 			public String? fileLocator {get;set;} = default;
 
 			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
 			[XmlElement("fileReference")]
+			[Optional]
 			public String? fileReference {get;set;} = default;
 
 			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
 
 			[XmlElement("headline")]
+			[Optional]
 			public List<String> headline {get;set;} = [];
 
 			public bool ShouldSerializeheadline() { return headline.Any(); }
 
 			[XmlElement("language")]
+			[Optional]
 			public String? language {get;set;} = default;
 
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("text")]
+			[Optional]
 			public String? text {get;set;} = default;
 
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalUnknown = new Dictionary<string,Func<information, bool>> {
@@ -2678,30 +2704,36 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource : ComplexType {
 			[XmlElement("onlineResourceLinkageURL")]
+			[Mandatory]
 			public String onlineResourceLinkageURL {get;set;} = string.Empty;
 
 			[XmlElement("protocol")]
+			[Optional]
 			public String? protocol {get;set;} = default;
 
 			public bool ShouldSerializeprotocol() { return !string.IsNullOrEmpty(protocol); }
 
 			[XmlElement("applicationProfile")]
+			[Optional]
 			public String? applicationProfile {get;set;} = default;
 
 			public bool ShouldSerializeapplicationProfile() { return !string.IsNullOrEmpty(applicationProfile); }
 
 			[XmlElement("nameOfResource")]
+			[Optional]
 			public String? nameOfResource {get;set;} = default;
 
 			public bool ShouldSerializenameOfResource() { return !string.IsNullOrEmpty(nameOfResource); }
 
 			[XmlElement("onlineResourceDescription")]
+			[Optional]
 			public String? onlineResourceDescription {get;set;} = default;
 
 			public bool ShouldSerializeonlineResourceDescription() { return !string.IsNullOrEmpty(onlineResourceDescription); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11])]
+			[Optional]
 			public onlineFunction? onlineFunction {get;set;} = default;
 
 			[JsonIgnore]
@@ -2711,9 +2743,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeonlineFunction() { return onlineFunction.HasValue; }
 
 			[XmlElement("protocolRequest")]
+			[Optional]
 			public String? protocolRequest {get;set;} = default;
 
 			public bool ShouldSerializeprotocolRequest() { return !string.IsNullOrEmpty(protocolRequest); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<onlineResource, bool>> _conditionalUnknown = new Dictionary<string,Func<onlineResource, bool>> {
@@ -2730,14 +2764,17 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation : ComplexType {
 			[XmlElement("orientationUncertainty")]
+			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 360.0, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
+			[Mandatory]
 			public double orientationValue {get;set;} = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<orientation, bool>> _conditionalUnknown = new Dictionary<string,Func<orientation, bool>> {
@@ -2754,10 +2791,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class periodicDateRange : ComplexType {
 			[XmlElement("dateStart")]
+			[Mandatory]
 			public String dateStart {get;set;} = string.Empty;
 
 			[XmlElement("dateEnd")]
+			[Mandatory]
 			public String dateEnd {get;set;} = string.Empty;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<periodicDateRange, bool>> {
@@ -2775,20 +2815,24 @@ namespace S100Framework.DomainModel.S131 {
 		public class rxNCode : ComplexType {
 			[XmlElement("categoryOfRxN")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
+			[Optional]
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfRxN() { return categoryOfRxN != default; }
 
 			[XmlElement("actionOrActivity")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[Optional]
 			public actionOrActivity? actionOrActivity {get;set;} = default;
 
 			public bool ShouldSerializeactionOrActivity() { return actionOrActivity != default; }
 
 			[XmlElement("headline")]
+			[Optional]
 			public List<String> headline {get;set;} = [];
 
 			public bool ShouldSerializeheadline() { return headline.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<rxNCode, bool>> _conditionalUnknown = new Dictionary<string,Func<rxNCode, bool>> {
@@ -2805,12 +2849,15 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class surveyDateRange : ComplexType {
 			[XmlElement("dateStart")]
+			[Optional]
 			public String? dateStart {get;set;} = default;
 
 			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
 
 			[XmlElement("dateEnd")]
+			[Mandatory]
 			public String dateEnd {get;set;} = string.Empty;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<surveyDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<surveyDateRange, bool>> {
@@ -2831,6 +2878,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class textContent : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public categoryOfText? categoryOfText {get;set;} = default;
 
 			[JsonIgnore]
@@ -2840,23 +2888,27 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfText() { return categoryOfText.HasValue; }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("onlineResource")]
+			[Optional]
 			public onlineResource? onlineResource {get;set;} = default;
 
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
 			[XmlElement("source")]
 			[StringLengthConstraint(150)]
+			[Optional]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
+			[Optional]
 			public sourceType? sourceType {get;set;} = default;
 
 			[JsonIgnore]
@@ -2866,9 +2918,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			[XmlElement("reportedDate")]
+			[Optional]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<textContent, bool>> _conditionalUnknown = new Dictionary<string,Func<textContent, bool>> {
@@ -2886,7 +2940,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class timeIntervalsByDayOfWeek : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
-			[Upper(7)]
+			[Multiplicity(0, 7)]
 			public List<dayOfWeek> dayOfWeek {get;set;} = [];
 
 			[JsonIgnore]
@@ -2896,19 +2950,23 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializedayOfWeek() { return dayOfWeek.Any(); }
 
 			[XmlElement("dayOfWeekIsRange")]
+			[Optional]
 			public Boolean? dayOfWeekIsRange {get;set;} = default;
 
 			public bool ShouldSerializedayOfWeekIsRange() { return dayOfWeekIsRange.HasValue; }
 
 			[XmlElement("timeOfDayStart")]
+			[Optional]
 			public List<S100Framework.DomainModel.S100.Time> timeOfDayStart {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayStart() { return timeOfDayStart.Any(); }
 
 			[XmlElement("timeOfDayEnd")]
+			[Optional]
 			public List<S100Framework.DomainModel.S100.Time> timeOfDayEnd {get;set;} = [];
 
 			public bool ShouldSerializetimeOfDayEnd() { return timeOfDayEnd.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<timeIntervalsByDayOfWeek, bool>> _conditionalUnknown = new Dictionary<string,Func<timeIntervalsByDayOfWeek, bool>> {
@@ -2925,10 +2983,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class usefulMarkDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<usefulMarkDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<usefulMarkDescription, bool>> {
@@ -2949,12 +3008,15 @@ namespace S100Framework.DomainModel.S131 {
 		public class verticalUncertainty : ComplexType {
 			[XmlElement("uncertaintyFixed")]
 			[PrecisionConstraint(1)]
+			[Mandatory]
 			public double uncertaintyFixed {get;set;} = default;
 
 			[XmlElement("uncertaintyVariableFactor")]
+			[Optional]
 			public double? uncertaintyVariableFactor {get;set;} = default;
 
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalUncertainty, bool>> {
@@ -2975,6 +3037,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class vesselsMeasurements : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
+			[Mandatory]
 			public comparisonOperator comparisonOperator {get;set;}
 
 			[JsonIgnore]
@@ -2983,6 +3046,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,6,7,8,9,10,11,12,13])]
+			[Mandatory]
 			public vesselsCharacteristics vesselsCharacteristics {get;set;}
 
 			[JsonIgnore]
@@ -2990,15 +3054,18 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<vesselsCharacteristics> vesselsCharacteristicsElement { get { return vesselsCharacteristics; } set { } }
 
 			[XmlElement("vesselsCharacteristicsValue")]
+			[Mandatory]
 			public double vesselsCharacteristicsValue {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,9])]
+			[Mandatory]
 			public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {get;set;}
 
 			[JsonIgnore]
 			[XmlElement("vesselsCharacteristicsUnit")]
 			public SerializableEnumeration<vesselsCharacteristicsUnit> vesselsCharacteristicsUnitElement { get { return vesselsCharacteristicsUnit; } set { } }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<vesselsMeasurements, bool>> _conditionalUnknown = new Dictionary<string,Func<vesselsMeasurements, bool>> {
@@ -3015,12 +3082,14 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class weatherResource : ComplexType {
 			[XmlElement("onlineResource")]
+			[Optional]
 			public onlineResource? onlineResource {get;set;} = default;
 
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public dynamicResource? dynamicResource {get;set;} = default;
 
 			[JsonIgnore]
@@ -3030,9 +3099,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializedynamicResource() { return dynamicResource.HasValue; }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public textContent? textContent {get;set;} = default;
 
 			public bool ShouldSerializetextContent() { return textContent!=default; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<weatherResource, bool>> _conditionalUnknown = new Dictionary<string,Func<weatherResource, bool>> {
@@ -3050,6 +3121,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class bearingInformation : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[Optional]
 			public cardinalDirection? cardinalDirection {get;set;} = default;
 
 			[JsonIgnore]
@@ -3060,26 +3132,30 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("distance")]
 			[PrecisionConstraint(1)]
+			[Optional]
 			public double? distance {get;set;} = default;
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
 
 			[XmlElement("sectorBearing")]
 			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<double> sectorBearing {get;set;} = [];
 
 			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("orientation")]
+			[Optional]
 			public orientation? orientation {get;set;} = default;
 
 			public bool ShouldSerializeorientation() { return orientation!=default; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<bearingInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<bearingInformation, bool>> {
@@ -3099,10 +3175,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class cargoServicesDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<cargoServicesDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<cargoServicesDescription, bool>> {
@@ -3119,12 +3196,14 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class constructionInformation : ComplexType {
 			[XmlElement("fixedDateRange")]
+			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,5])]
+			[Optional]
 			public condition? condition {get;set;} = default;
 
 			[JsonIgnore]
@@ -3134,17 +3213,21 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecondition() { return condition.HasValue; }
 
 			[XmlElement("development")]
+			[Mandatory]
 			public String development {get;set;} = string.Empty;
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<constructionInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<constructionInformation, bool>> {
@@ -3162,6 +3245,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class depthsDescription : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Mandatory]
 			public categoryOfDepthsDescription categoryOfDepthsDescription {get;set;}
 
 			[JsonIgnore]
@@ -3169,10 +3253,11 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<categoryOfDepthsDescription> categoryOfDepthsDescriptionElement { get { return categoryOfDepthsDescription; } set { } }
 
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<depthsDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<depthsDescription, bool>> {
@@ -3189,10 +3274,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class facilitiesLayoutDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<facilitiesLayoutDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<facilitiesLayoutDescription, bool>> {
@@ -3212,10 +3298,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalPortDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<generalPortDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<generalPortDescription, bool>> {
@@ -3232,30 +3319,35 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class graphic : ComplexType {
 			[XmlElement("pictorialRepresentation")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<String> pictorialRepresentation {get;set;} = [];
 
 			public bool ShouldSerializepictorialRepresentation() { return pictorialRepresentation.Any(); }
 
 			[XmlElement("pictureCaption")]
+			[Optional]
 			public String? pictureCaption {get;set;} = default;
 
 			public bool ShouldSerializepictureCaption() { return !string.IsNullOrEmpty(pictureCaption); }
 
 			[XmlIgnore]
+			[Optional]
 			public DateOnly? sourceDate {get;set;} = default;
 
 			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
 
 			[XmlElement("pictureInformation")]
+			[Optional]
 			public String? pictureInformation {get;set;} = default;
 
 			public bool ShouldSerializepictureInformation() { return !string.IsNullOrEmpty(pictureInformation); }
 
 			[XmlElement("bearingInformation")]
+			[Optional]
 			public bearingInformation? bearingInformation {get;set;} = default;
 
 			public bool ShouldSerializebearingInformation() { return bearingInformation!=default; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<graphic, bool>> _conditionalUnknown = new Dictionary<string,Func<graphic, bool>> {
@@ -3272,10 +3364,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class landmarkDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<landmarkDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<landmarkDescription, bool>> {
@@ -3292,10 +3385,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class limitsDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<limitsDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<limitsDescription, bool>> {
@@ -3312,10 +3406,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class majorLightDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<majorLightDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<majorLightDescription, bool>> {
@@ -3332,10 +3427,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class markedBy : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<markedBy, bool>> _conditionalUnknown = new Dictionary<string,Func<markedBy, bool>> {
@@ -3352,10 +3448,11 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class offshoreMarkDescription : ComplexType {
 			[XmlElement("textContent")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<offshoreMarkDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<offshoreMarkDescription, bool>> {
@@ -3373,6 +3470,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class scheduleByDayOfWeek : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public categoryOfSchedule? categoryOfSchedule {get;set;} = default;
 
 			[JsonIgnore]
@@ -3382,10 +3480,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfSchedule() { return categoryOfSchedule.HasValue; }
 
 			[XmlElement("timeIntervalsByDayOfWeek")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializetimeIntervalsByDayOfWeek() { return timeIntervalsByDayOfWeek.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<scheduleByDayOfWeek, bool>> _conditionalUnknown = new Dictionary<string,Func<scheduleByDayOfWeek, bool>> {
@@ -3402,19 +3501,23 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class spatialAccuracy : ComplexType {
 			[XmlElement("fixedDateRange")]
+			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("horizontalPositionUncertainty")]
+			[Optional]
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			[XmlElement("verticalUncertainty")]
+			[Optional]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<spatialAccuracy, bool>> _conditionalUnknown = new Dictionary<string,Func<spatialAccuracy, bool>> {
@@ -3435,6 +3538,7 @@ namespace S100Framework.DomainModel.S131 {
 		public class telecommunications : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
 			[JsonIgnore]
@@ -3444,20 +3548,24 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			[XmlElement("telecommunicationIdentifier")]
+			[Mandatory]
 			public String telecommunicationIdentifier {get;set;} = string.Empty;
 
 			[XmlElement("telecommunicationCarrier")]
+			[Optional]
 			public String? telecommunicationCarrier {get;set;} = default;
 
 			public bool ShouldSerializetelecommunicationCarrier() { return !string.IsNullOrEmpty(telecommunicationCarrier); }
 
 			[XmlElement("contactInstructions")]
+			[Optional]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Optional]
 			public List<telecommunicationService> telecommunicationService {get;set;} = [];
 
 			[JsonIgnore]
@@ -3467,9 +3575,11 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
 
 			[XmlElement("scheduleByDayOfWeek")]
+			[Optional]
 			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek!=default; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalUnknown = new Dictionary<string,Func<telecommunications, bool>> {
@@ -3489,34 +3599,41 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class generalHarbourInformation : ComplexType {
 			[XmlElement("generalPortDescription")]
+			[Optional]
 			public generalPortDescription? generalPortDescription {get;set;} = default;
 
 			public bool ShouldSerializegeneralPortDescription() { return generalPortDescription!=default; }
 
 			[XmlElement("facilitiesLayoutDescription")]
+			[Optional]
 			public facilitiesLayoutDescription? facilitiesLayoutDescription {get;set;} = default;
 
 			public bool ShouldSerializefacilitiesLayoutDescription() { return facilitiesLayoutDescription!=default; }
 
 			[XmlElement("limitsDescription")]
+			[Optional]
 			public limitsDescription? limitsDescription {get;set;} = default;
 
 			public bool ShouldSerializelimitsDescription() { return limitsDescription!=default; }
 
 			[XmlElement("constructionInformation")]
+			[Optional]
 			public constructionInformation? constructionInformation {get;set;} = default;
 
 			public bool ShouldSerializeconstructionInformation() { return constructionInformation!=default; }
 
 			[XmlElement("cargoServicesDescription")]
+			[Optional]
 			public cargoServicesDescription? cargoServicesDescription {get;set;} = default;
 
 			public bool ShouldSerializecargoServicesDescription() { return cargoServicesDescription!=default; }
 
 			[XmlElement("weatherResource")]
+			[Optional]
 			public List<weatherResource> weatherResource {get;set;} = [];
 
 			public bool ShouldSerializeweatherResource() { return weatherResource.Any(); }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<generalHarbourInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<generalHarbourInformation, bool>> {
@@ -3720,6 +3837,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class InclusionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
+			[Mandatory]
 			public membership membership {get;set;}
 
 			[JsonIgnore]
@@ -3739,6 +3857,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
+			[Mandatory]
 			public categoryOfRelationship categoryOfRelationship {get;set;}
 
 			[JsonIgnore]
@@ -3878,33 +3997,39 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class InformationType : InformationNode, IInformationBindingDefinition {
 			[XmlElement("featureName")]
+			[Optional]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("fixedDateRange")]
+			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("periodicDateRange")]
+			[Optional]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
 			[XmlElement("graphic")]
+			[Optional]
 			public List<graphic> graphic {get;set;} = [];
 
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
 			[XmlElement("source")]
 			[StringLengthConstraint(150)]
+			[Optional]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
+			[Optional]
 			public sourceType? sourceType {get;set;} = default;
 
 			[JsonIgnore]
@@ -3914,6 +4039,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			[XmlElement("reportedDate")]
+			[Optional]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
@@ -3947,6 +4073,7 @@ namespace S100Framework.DomainModel.S131 {
 		public abstract class AbstractRxN : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[Optional]
 			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
 
 			[JsonIgnore]
@@ -3956,11 +4083,13 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
 
 			[XmlElement("rxNCode")]
+			[Optional]
 			public List<rxNCode> rxNCode {get;set;} = [];
 
 			public bool ShouldSerializerxNCode() { return rxNCode.Any(); }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -4002,12 +4131,14 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Applicability : InformationType {
 			[XmlElement("inBallast")]
+			[Optional]
 			public Boolean? inBallast {get;set;} = default;
 
 			public bool ShouldSerializeinBallast() { return inBallast.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
+			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			[JsonIgnore]
@@ -4018,6 +4149,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])]
+			[Optional]
 			public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo {get;set;} = [];
 
 			[JsonIgnore]
@@ -4028,12 +4160,14 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("categoryOfVessel")]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
+			[Optional]
 			public categoryOfVessel? categoryOfVessel {get;set;} = default;
 
 			public bool ShouldSerializecategoryOfVessel() { return categoryOfVessel != default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
+			[Optional]
 			public categoryOfVesselRegistry? categoryOfVesselRegistry {get;set;} = default;
 
 			[JsonIgnore]
@@ -4044,6 +4178,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2])]
+			[Optional]
 			public logicalConnectives? logicalConnectives {get;set;} = default;
 
 			[JsonIgnore]
@@ -4055,21 +4190,25 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlElement("thicknessOfIceCapability")]
 			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 			[PrecisionConstraint(0)]
+			[Optional]
 			public int? thicknessOfIceCapability {get;set;} = default;
 
 			public bool ShouldSerializethicknessOfIceCapability() { return thicknessOfIceCapability.HasValue; }
 
 			[XmlElement("vesselPerformance")]
+			[Optional]
 			public String? vesselPerformance {get;set;} = default;
 
 			public bool ShouldSerializevesselPerformance() { return !string.IsNullOrEmpty(vesselPerformance); }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("vesselsMeasurements")]
+			[Optional]
 			public List<vesselsMeasurements> vesselsMeasurements {get;set;} = [];
 
 			public bool ShouldSerializevesselsMeasurements() { return vesselsMeasurements.Any(); }
@@ -4105,6 +4244,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Applicability, bool>> _conditionalUnknown = new Dictionary<string,Func<Applicability, bool>> {
@@ -4122,6 +4262,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class Authority : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[Mandatory]
 			public categoryOfAuthority categoryOfAuthority {get;set;}
 
 			[JsonIgnore]
@@ -4129,6 +4270,7 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<categoryOfAuthority> categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public textContent? textContent {get;set;} = default;
 
 			public bool ShouldSerializetextContent() { return textContent!=default; }
@@ -4173,6 +4315,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Authority, bool>> _conditionalUnknown = new Dictionary<string,Func<Authority, bool>> {
@@ -4190,6 +4333,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class AvailablePortServices : InformationType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public List<firefightingService> firefightingService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4200,6 +4344,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
+			[Optional]
 			public List<medicalService> medicalService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4210,6 +4355,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[Optional]
 			public List<repairService> repairService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4220,6 +4366,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public List<technicalPortService> technicalPortService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4230,6 +4377,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public List<shipSanitationControl> shipSanitationControl {get;set;} = [];
 
 			[JsonIgnore]
@@ -4240,12 +4388,14 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("transportConnection")]
 			[EnumerationValue([2,3,4,5,6,8,9,11,12,13])]
+			[Optional]
 			public List<transportConnection> transportConnection {get;set;} = [];
 
 			public bool ShouldSerializetransportConnection() { return transportConnection.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
+			[Optional]
 			public List<berthingAssistance> berthingAssistance {get;set;} = [];
 
 			[JsonIgnore]
@@ -4256,6 +4406,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public List<cargoService> cargoService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4266,12 +4417,14 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("securitySafetyEmergencyService")]
 			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Optional]
 			public List<securitySafetyEmergencyService> securitySafetyEmergencyService {get;set;} = [];
 
 			public bool ShouldSerializesecuritySafetyEmergencyService() { return securitySafetyEmergencyService.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
+			[Optional]
 			public List<wasteDisposalService> wasteDisposalService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4282,6 +4435,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[Optional]
 			public List<supplyService> supplyService {get;set;} = [];
 
 			[JsonIgnore]
@@ -4291,11 +4445,13 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesupplyService() { return supplyService.Any(); }
 
 			[XmlElement("tugInformation")]
+			[Optional]
 			public String? tugInformation {get;set;} = default;
 
 			public bool ShouldSerializetugInformation() { return !string.IsNullOrEmpty(tugInformation); }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -4313,6 +4469,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AvailablePortServices, bool>> _conditionalUnknown = new Dictionary<string,Func<AvailablePortServices, bool>> {
@@ -4329,17 +4486,20 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ContactDetails : InformationType {
 			[XmlElement("callName")]
+			[Optional]
 			public String? callName {get;set;} = default;
 
 			public bool ShouldSerializecallName() { return !string.IsNullOrEmpty(callName); }
 
 			[XmlElement("callSign")]
+			[Optional]
 			public String? callSign {get;set;} = default;
 
 			public bool ShouldSerializecallSign() { return !string.IsNullOrEmpty(callSign); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
 
 			[JsonIgnore]
@@ -4349,47 +4509,56 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
 
 			[XmlElement("communicationChannel")]
+			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
 			[XmlElement("contactAddress")]
+			[Optional]
 			public List<contactAddress> contactAddress {get;set;} = [];
 
 			public bool ShouldSerializecontactAddress() { return contactAddress.Any(); }
 
 			[XmlElement("contactInstructions")]
+			[Optional]
 			public String? contactInstructions {get;set;} = default;
 
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
 			[XmlElement("signalFrequency")]
 			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+			[Optional]
 			public List<int> signalFrequency {get;set;} = [];
 
 			public bool ShouldSerializesignalFrequency() { return signalFrequency.Any(); }
 
 			[XmlElement("frequencyPair")]
+			[Optional]
 			public List<frequencyPair> frequencyPair {get;set;} = [];
 
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("mMSICode")]
+			[Optional]
 			public String? mMSICode {get;set;} = default;
 
 			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			[XmlElement("onlineResource")]
+			[Optional]
 			public List<onlineResource> onlineResource {get;set;} = [];
 
 			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
 
 			[XmlElement("telecommunications")]
+			[Optional]
 			public List<telecommunications> telecommunications {get;set;} = [];
 
 			public bool ShouldSerializetelecommunications() { return telecommunications.Any(); }
@@ -4416,6 +4585,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<ContactDetails, bool>> _conditionalUnknown = new Dictionary<string,Func<ContactDetails, bool>> {
@@ -4432,51 +4602,61 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Entrance : InformationType {
 			[XmlElement("entranceDescription")]
+			[Optional]
 			public String? entranceDescription {get;set;} = default;
 
 			public bool ShouldSerializeentranceDescription() { return !string.IsNullOrEmpty(entranceDescription); }
 
 			[XmlElement("associatedFeatureName")]
+			[Optional]
 			public List<String> associatedFeatureName {get;set;} = [];
 
 			public bool ShouldSerializeassociatedFeatureName() { return associatedFeatureName.Any(); }
 
 			[XmlElement("localKnowledgeDescription")]
+			[Optional]
 			public String? localKnowledgeDescription {get;set;} = default;
 
 			public bool ShouldSerializelocalKnowledgeDescription() { return !string.IsNullOrEmpty(localKnowledgeDescription); }
 
 			[XmlElement("approachDescription")]
+			[Optional]
 			public String? approachDescription {get;set;} = default;
 
 			public bool ShouldSerializeapproachDescription() { return !string.IsNullOrEmpty(approachDescription); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public List<markedBy> markedBy {get;set;} = [];
 
 			public bool ShouldSerializemarkedBy() { return markedBy.Any(); }
 
 			[XmlElement("landmarkDescription")]
+			[Optional]
 			public List<landmarkDescription> landmarkDescription {get;set;} = [];
 
 			public bool ShouldSerializelandmarkDescription() { return landmarkDescription.Any(); }
 
 			[XmlElement("offshoreMarkDescription")]
+			[Optional]
 			public List<offshoreMarkDescription> offshoreMarkDescription {get;set;} = [];
 
 			public bool ShouldSerializeoffshoreMarkDescription() { return offshoreMarkDescription.Any(); }
 
 			[XmlElement("majorLightDescription")]
+			[Optional]
 			public List<majorLightDescription> majorLightDescription {get;set;} = [];
 
 			public bool ShouldSerializemajorLightDescription() { return majorLightDescription.Any(); }
 
 			[XmlElement("usefulMarkDescription")]
+			[Optional]
 			public List<usefulMarkDescription> usefulMarkDescription {get;set;} = [];
 
 			public bool ShouldSerializeusefulMarkDescription() { return usefulMarkDescription.Any(); }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -4494,6 +4674,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Entrance, bool>> _conditionalUnknown = new Dictionary<string,Func<Entrance, bool>> {
@@ -4531,6 +4712,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<NauticalInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<NauticalInformation, bool>> {
@@ -4547,16 +4729,19 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class NonStandardWorkingDay : InformationType {
 			[XmlElement("dateFixed")]
+			[Optional]
 			public List<String> dateFixed {get;set;} = [];
 
 			public bool ShouldSerializedateFixed() { return dateFixed.Any(); }
 
 			[XmlElement("dateVariable")]
+			[Optional]
 			public List<String> dateVariable {get;set;} = [];
 
 			public bool ShouldSerializedateVariable() { return dateVariable.Any(); }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -4574,6 +4759,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<NonStandardWorkingDay, bool>> _conditionalUnknown = new Dictionary<string,Func<NonStandardWorkingDay, bool>> {
@@ -4602,6 +4788,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Recommendations, bool>> _conditionalUnknown = new Dictionary<string,Func<Recommendations, bool>> {
@@ -4630,6 +4817,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Regulations, bool>> _conditionalUnknown = new Dictionary<string,Func<Regulations, bool>> {
@@ -4658,6 +4846,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Restrictions, bool>> _conditionalUnknown = new Dictionary<string,Func<Restrictions, bool>> {
@@ -4674,12 +4863,13 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ServiceHours : InformationType {
 			[XmlElement("scheduleByDayOfWeek")]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<scheduleByDayOfWeek> scheduleByDayOfWeek {get;set;} = [];
 
 			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek.Any(); }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -4715,6 +4905,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<ServiceHours, bool>> _conditionalUnknown = new Dictionary<string,Func<ServiceHours, bool>> {
@@ -4732,6 +4923,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class SpatialQuality : InformationNode, IInformationBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
+			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
 			[JsonIgnore]
@@ -4741,6 +4933,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
 
 			[XmlElement("spatialAccuracy")]
+			[Optional]
 			public List<spatialAccuracy> spatialAccuracy {get;set;} = [];
 
 			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy.Any(); }
@@ -4758,6 +4951,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SpatialQuality, bool>> _conditionalUnknown = new Dictionary<string,Func<SpatialQuality, bool>> {
@@ -4780,49 +4974,58 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class FeatureType : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("locationMRN")]
+			[Optional]
 			public String? locationMRN {get;set;} = default;
 
 			public bool ShouldSerializelocationMRN() { return !string.IsNullOrEmpty(locationMRN); }
 
 			[XmlElement("globalLocationNumber")]
 			[StringLengthConstraint(13)]
+			[Optional]
 			public String? globalLocationNumber {get;set;} = default;
 
 			public bool ShouldSerializeglobalLocationNumber() { return !string.IsNullOrEmpty(globalLocationNumber); }
 
 			[XmlElement("featureName")]
+			[Optional]
 			public List<featureName> featureName {get;set;} = [];
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
 			[XmlElement("fixedDateRange")]
+			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
 			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("periodicDateRange")]
+			[Optional]
 			public List<periodicDateRange> periodicDateRange {get;set;} = [];
 
 			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange.Any(); }
 
 			[XmlElement("rxNCode")]
+			[Optional]
 			public List<rxNCode> rxNCode {get;set;} = [];
 
 			public bool ShouldSerializerxNCode() { return rxNCode.Any(); }
 
 			[XmlElement("graphic")]
+			[Optional]
 			public List<graphic> graphic {get;set;} = [];
 
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
 			[XmlElement("source")]
 			[StringLengthConstraint(150)]
+			[Optional]
 			public String? source {get;set;} = default;
 
 			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
+			[Optional]
 			public sourceType? sourceType {get;set;} = default;
 
 			[JsonIgnore]
@@ -4832,11 +5035,13 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
 
 			[XmlElement("reportedDate")]
+			[Optional]
 			public String? reportedDate {get;set;} = default;
 
 			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
 
 			[XmlElement("textContent")]
+			[Optional]
 			public List<textContent> textContent {get;set;} = [];
 
 			public bool ShouldSerializetextContent() { return textContent.Any(); }
@@ -4985,7 +5190,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class HarbourPhysicalInfrastructure : SupervisedArea {
 			[XmlElement("verticalClearanceValue")]
-			[RangeConstraint<double>(0.1, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0.1, 100.0, Closure.closedInterval)]
+			[Optional]
 			public double? verticalClearanceValue {get;set;} = default;
 
 			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
@@ -5114,6 +5320,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AnchorBerth, bool>> _conditionalUnknown = new Dictionary<string,Func<AnchorBerth, bool>> {
@@ -5130,22 +5337,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -5201,6 +5412,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AnchorageArea, bool>> _conditionalUnknown = new Dictionary<string,Func<AnchorageArea, bool>> {
@@ -5217,41 +5429,48 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Berth : Layout {
 			[XmlElement("availableBerthingLength")]
-			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 10000.0, Closure.closedInterval)]
+			[Optional]
 			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
 
 			[XmlElement("bollardDescription")]
+			[Optional]
 			public String? bollardDescription {get;set;} = default;
 
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
+			[Optional]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
 			[XmlElement("minimumBerthDepth")]
-			[RangeConstraint<double>(0, default, Closure.gtSemiInterval)]
+			[RangeConstraint<double>(0.00, default, Closure.gtSemiInterval)]
+			[Optional]
 			public double? minimumBerthDepth {get;set;} = default;
 
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
 			[XmlElement("elevation")]
-			[RangeConstraint<double>(0, 8850, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 8850.0, Closure.closedInterval)]
+			[Optional]
 			public double? elevation {get;set;} = default;
 
 			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("cathodicProtectionSystem")]
+			[Optional]
 			public Boolean? cathodicProtectionSystem {get;set;} = default;
 
 			public bool ShouldSerializecathodicProtectionSystem() { return cathodicProtectionSystem.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
+			[Optional]
 			public categoryOfBerthLocation? categoryOfBerthLocation {get;set;} = default;
 
 			[JsonIgnore]
@@ -5261,45 +5480,50 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfBerthLocation() { return categoryOfBerthLocation.HasValue; }
 
 			[XmlElement("portFacilityNumber")]
+			[Optional]
 			public String? portFacilityNumber {get;set;} = default;
 
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
 			[XmlElement("bollardNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> bollardNumber {get;set;} = [];
 
 			public bool ShouldSerializebollardNumber() { return bollardNumber.Any(); }
 
 			[XmlElement("gLNExtension")]
+			[Optional]
 			public String? gLNExtension {get;set;} = default;
 
 			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			[XmlElement("metreMarkNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> metreMarkNumber {get;set;} = [];
 
 			public bool ShouldSerializemetreMarkNumber() { return metreMarkNumber.Any(); }
 
 			[XmlElement("manifoldNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> manifoldNumber {get;set;} = [];
 
 			public bool ShouldSerializemanifoldNumber() { return manifoldNumber.Any(); }
 
 			[XmlElement("rampNumber")]
+			[Optional]
 			public String? rampNumber {get;set;} = default;
 
 			public bool ShouldSerializerampNumber() { return !string.IsNullOrEmpty(rampNumber); }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10])]
+			[Optional]
 			public methodOfSecuring? methodOfSecuring {get;set;} = default;
 
 			[JsonIgnore]
@@ -5310,9 +5534,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("uNLocationCode")]
 			[StringLengthConstraint(20)]
+			[Mandatory]
 			public String uNLocationCode {get;set;} = string.Empty;
 
 			[XmlElement("terminalIdentifier")]
+			[Optional]
 			public String? terminalIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
@@ -5381,6 +5607,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Berth, bool>> _conditionalUnknown = new Dictionary<string,Func<Berth, bool>> {
@@ -5397,51 +5624,57 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BerthPosition : Layout {
 			[XmlElement("availableBerthingLength")]
-			[RangeConstraint<double>(0, 10000, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 10000.0, Closure.closedInterval)]
+			[Optional]
 			public double? availableBerthingLength {get;set;} = default;
 
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
 
 			[XmlElement("bollardDescription")]
+			[Optional]
 			public String? bollardDescription {get;set;} = default;
 
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
+			[Optional]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
 			[XmlElement("bollardNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> bollardNumber {get;set;} = [];
 
 			public bool ShouldSerializebollardNumber() { return bollardNumber.Any(); }
 
 			[XmlElement("gLNExtension")]
+			[Optional]
 			public String? gLNExtension {get;set;} = default;
 
 			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
 			[XmlElement("metreMarkNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> metreMarkNumber {get;set;} = [];
 
 			public bool ShouldSerializemetreMarkNumber() { return metreMarkNumber.Any(); }
 
 			[XmlElement("manifoldNumber")]
-			[Upper(2)]
+			[Multiplicity(0, 2)]
 			public List<String> manifoldNumber {get;set;} = [];
 
 			public bool ShouldSerializemanifoldNumber() { return manifoldNumber.Any(); }
 
 			[XmlElement("rampNumber")]
+			[Optional]
 			public String? rampNumber {get;set;} = default;
 
 			public bool ShouldSerializerampNumber() { return !string.IsNullOrEmpty(rampNumber); }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
@@ -5492,6 +5725,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<BerthPosition, bool>> _conditionalUnknown = new Dictionary<string,Func<BerthPosition, bool>> {
@@ -5508,22 +5742,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DockArea : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -5588,6 +5826,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DockArea, bool>> _conditionalUnknown = new Dictionary<string,Func<DockArea, bool>> {
@@ -5604,7 +5843,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DryDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 100.0, Closure.closedInterval)]
+			[Optional]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -5648,6 +5888,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DryDock, bool>> _conditionalUnknown = new Dictionary<string,Func<DryDock, bool>> {
@@ -5664,22 +5905,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DumpingGround : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -5735,6 +5980,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DumpingGround, bool>> _conditionalUnknown = new Dictionary<string,Func<DumpingGround, bool>> {
@@ -5751,7 +5997,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class FloatingDock : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 100.0, Closure.closedInterval)]
+			[Optional]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -5795,6 +6042,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<FloatingDock, bool>> _conditionalUnknown = new Dictionary<string,Func<FloatingDock, bool>> {
@@ -5811,7 +6059,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Gridiron : HarbourPhysicalInfrastructure {
 			[XmlElement("sillDepth")]
-			[RangeConstraint<double>(0, 100, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 100.0, Closure.closedInterval)]
+			[Optional]
 			public double? sillDepth {get;set;} = default;
 
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
@@ -5855,6 +6104,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Gridiron, bool>> _conditionalUnknown = new Dictionary<string,Func<Gridiron, bool>> {
@@ -5872,22 +6122,26 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class HarbourAreaAdministrative : Layout {
 			[XmlElement("uNLocationCode")]
 			[StringLengthConstraint(20)]
+			[Optional]
 			public String? uNLocationCode {get;set;} = default;
 
 			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
 
 			[XmlElement("nationality")]
+			[Optional]
 			public String? nationality {get;set;} = default;
 
 			public bool ShouldSerializenationality() { return !string.IsNullOrEmpty(nationality); }
 
 			[XmlElement("applicableLoadLineZone")]
+			[Optional]
 			public String? applicableLoadLineZone {get;set;} = default;
 
 			public bool ShouldSerializeapplicableLoadLineZone() { return !string.IsNullOrEmpty(applicableLoadLineZone); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -5898,6 +6152,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[Optional]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			[JsonIgnore]
@@ -5907,6 +6162,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
 
 			[XmlElement("generalHarbourInformation")]
+			[Optional]
 			public generalHarbourInformation? generalHarbourInformation {get;set;} = default;
 
 			public bool ShouldSerializegeneralHarbourInformation() { return generalHarbourInformation!=default; }
@@ -5975,6 +6231,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<HarbourAreaAdministrative, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourAreaAdministrative, bool>> {
@@ -5992,6 +6249,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class HarbourAreaSection : Layout {
 			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
+			[Optional]
 			public categoryOfPortSection? categoryOfPortSection {get;set;} = default;
 
 			[JsonIgnore]
@@ -6002,6 +6260,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([4,5,6,9,14,15,16,17])]
+			[Optional]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			[JsonIgnore]
@@ -6012,6 +6271,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -6021,6 +6281,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 
 			[XmlElement("facilitiesLayoutDescription")]
+			[Optional]
 			public facilitiesLayoutDescription? facilitiesLayoutDescription {get;set;} = default;
 
 			public bool ShouldSerializefacilitiesLayoutDescription() { return facilitiesLayoutDescription!=default; }
@@ -6066,7 +6327,7 @@ namespace S100Framework.DomainModel.S131 {
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
 					roleType = roleType.aggregation,
-					lower = 1,
+					lower = 0,
 					upper =  1,
 					association = nameof(LayoutDivision),
 					role = Enum.GetName<Role>(Role.componentOf)!,
@@ -6113,6 +6374,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<HarbourAreaSection, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourAreaSection, bool>> {
@@ -6129,22 +6391,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class HarbourBasin : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -6200,6 +6466,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<HarbourBasin, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourBasin, bool>> {
@@ -6217,7 +6484,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
 			[XmlIgnore]
 			[EnumerationValue([12,13])]
-			[Lower(1)]
+			[Multiplicity(1)]
 			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
 
 			[JsonIgnore]
@@ -6265,6 +6532,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<HarbourFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourFacility, bool>> {
@@ -6282,6 +6550,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class MooringWarpingFacility : Layout {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7])]
+			[Mandatory]
 			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
 
 			[JsonIgnore]
@@ -6289,20 +6558,24 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<categoryOfMooringWarpingFacility> categoryOfMooringWarpingFacilityElement { get { return categoryOfMooringWarpingFacility; } set { } }
 
 			[XmlElement("iDCode")]
+			[Mandatory]
 			public String iDCode {get;set;} = string.Empty;
 
 			[XmlElement("bollardDescription")]
+			[Optional]
 			public String? bollardDescription {get;set;} = default;
 
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
 			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0, 1000, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
+			[Optional]
 			public double? bollardPull {get;set;} = default;
 
 			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
 
 			[XmlElement("heavingLinesFromShore")]
+			[Optional]
 			public Boolean? heavingLinesFromShore {get;set;} = default;
 
 			public bool ShouldSerializeheavingLinesFromShore() { return heavingLinesFromShore.HasValue; }
@@ -6363,6 +6636,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<MooringWarpingFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringWarpingFacility, bool>> {
@@ -6379,31 +6653,37 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class OuterLimit : Layout {
 			[XmlElement("limitsDescription")]
+			[Optional]
 			public limitsDescription? limitsDescription {get;set;} = default;
 
 			public bool ShouldSerializelimitsDescription() { return limitsDescription!=default; }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public List<markedBy> markedBy {get;set;} = [];
 
 			public bool ShouldSerializemarkedBy() { return markedBy.Any(); }
 
 			[XmlElement("landmarkDescription")]
+			[Optional]
 			public List<landmarkDescription> landmarkDescription {get;set;} = [];
 
 			public bool ShouldSerializelandmarkDescription() { return landmarkDescription.Any(); }
 
 			[XmlElement("offshoreMarkDescription")]
+			[Optional]
 			public List<offshoreMarkDescription> offshoreMarkDescription {get;set;} = [];
 
 			public bool ShouldSerializeoffshoreMarkDescription() { return offshoreMarkDescription.Any(); }
 
 			[XmlElement("majorLightDescription")]
+			[Optional]
 			public List<majorLightDescription> majorLightDescription {get;set;} = [];
 
 			public bool ShouldSerializemajorLightDescription() { return majorLightDescription.Any(); }
 
 			[XmlElement("usefulMarkDescription")]
+			[Optional]
 			public List<usefulMarkDescription> usefulMarkDescription {get;set;} = [];
 
 			public bool ShouldSerializeusefulMarkDescription() { return usefulMarkDescription.Any(); }
@@ -6455,6 +6735,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<OuterLimit, bool>> _conditionalUnknown = new Dictionary<string,Func<OuterLimit, bool>> {
@@ -6471,22 +6752,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PilotBoardingPlace : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -6542,6 +6827,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<PilotBoardingPlace, bool>> _conditionalUnknown = new Dictionary<string,Func<PilotBoardingPlace, bool>> {
@@ -6558,22 +6844,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SeaplaneLandingArea : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -6629,6 +6919,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SeaplaneLandingArea, bool>> _conditionalUnknown = new Dictionary<string,Func<SeaplaneLandingArea, bool>> {
@@ -6645,12 +6936,14 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Terminal : Layout {
 			[XmlElement("portFacilityNumber")]
+			[Optional]
 			public String? portFacilityNumber {get;set;} = default;
 
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,3,5,7,8,10,11])]
+			[Optional]
 			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
 
 			[JsonIgnore]
@@ -6661,6 +6954,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
+			[Optional]
 			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
 
 			[JsonIgnore]
@@ -6671,6 +6965,7 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22])]
+			[Optional]
 			public List<product> product {get;set;} = [];
 
 			[JsonIgnore]
@@ -6680,17 +6975,20 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializeproduct() { return product.Any(); }
 
 			[XmlElement("terminalIdentifier")]
+			[Optional]
 			public String? terminalIdentifier {get;set;} = default;
 
 			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
 
 			[XmlElement("sMDGTerminalCode")]
+			[Optional]
 			public String? sMDGTerminalCode {get;set;} = default;
 
 			public bool ShouldSerializesMDGTerminalCode() { return !string.IsNullOrEmpty(sMDGTerminalCode); }
 
 			[XmlElement("uNLocationCode")]
 			[StringLengthConstraint(20)]
+			[Optional]
 			public String? uNLocationCode {get;set;} = default;
 
 			public bool ShouldSerializeuNLocationCode() { return !string.IsNullOrEmpty(uNLocationCode); }
@@ -6767,6 +7065,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Terminal, bool>> _conditionalUnknown = new Dictionary<string,Func<Terminal, bool>> {
@@ -6783,22 +7082,26 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TurningBasin : Layout {
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
+			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
 			[JsonIgnore]
@@ -6854,6 +7157,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<TurningBasin, bool>> _conditionalUnknown = new Dictionary<string,Func<TurningBasin, bool>> {
@@ -6871,6 +7175,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class WaterwayArea : Layout {
 			[XmlIgnore]
 			[EnumerationValue([1,3,8,9,11,12])]
+			[Mandatory]
 			public categoryOfPortSection categoryOfPortSection {get;set;}
 
 			[JsonIgnore]
@@ -6878,16 +7183,19 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<categoryOfPortSection> categoryOfPortSectionElement { get { return categoryOfPortSection; } set { } }
 
 			[XmlElement("depthsDescription")]
+			[Optional]
 			public depthsDescription? depthsDescription {get;set;} = default;
 
 			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
 			[XmlElement("locationByText")]
+			[Optional]
 			public String? locationByText {get;set;} = default;
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
 			[XmlElement("markedBy")]
+			[Optional]
 			public markedBy? markedBy {get;set;} = default;
 
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
@@ -6939,6 +7247,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<WaterwayArea, bool>> _conditionalUnknown = new Dictionary<string,Func<WaterwayArea, bool>> {
@@ -6956,10 +7265,12 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("maximumDisplayScale")]
 			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+			[Mandatory]
 			public int maximumDisplayScale {get;set;} = default;
 
 			[XmlElement("minimumDisplayScale")]
 			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+			[Mandatory]
 			public int minimumDisplayScale {get;set;} = default;
 
 			[JsonIgnore]
@@ -6992,6 +7303,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DataCoverage, bool>> _conditionalUnknown = new Dictionary<string,Func<DataCoverage, bool>> {
@@ -7009,6 +7321,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class QualityOfNonBathymetricData : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
+			[Optional]
 			public categoryOfTemporalVariation? categoryOfTemporalVariation {get;set;} = default;
 
 			[JsonIgnore]
@@ -7020,31 +7333,37 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlElement("horizontalDistanceUncertainty")]
 			[RangeConstraint<double>(0, default, Closure.geSemiInterval)]
 			[PrecisionConstraint(1)]
+			[Optional]
 			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
 			[XmlElement("horizontalPositionUncertainty")]
+			[Mandatory]
 			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
 				uncertaintyFixed = default,
 			};
 
 			[XmlElement("orientationUncertainty")]
+			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
 			[XmlElement("surveyDateRange")]
+			[Optional]
 			public surveyDateRange? surveyDateRange {get;set;} = default;
 
 			public bool ShouldSerializesurveyDateRange() { return surveyDateRange!=default; }
 
 			[XmlElement("verticalUncertainty")]
+			[Optional]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7079,6 +7398,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<QualityOfNonBathymetricData, bool>> _conditionalUnknown = new Dictionary<string,Func<QualityOfNonBathymetricData, bool>> {
@@ -7096,6 +7416,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class SoundingDatum : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44])]
+			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
 			[JsonIgnore]
@@ -7103,6 +7424,7 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7137,6 +7459,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SoundingDatum, bool>> _conditionalUnknown = new Dictionary<string,Func<SoundingDatum, bool>> {
@@ -7154,6 +7477,7 @@ namespace S100Framework.DomainModel.S131 {
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
 			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
 			[JsonIgnore]
@@ -7161,6 +7485,7 @@ namespace S100Framework.DomainModel.S131 {
 			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
 
 			[XmlElement("information")]
+			[Optional]
 			public List<information> information {get;set;} = [];
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
@@ -7195,6 +7520,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<VerticalDatumOfData, bool>> _conditionalUnknown = new Dictionary<string,Func<VerticalDatumOfData, bool>> {
@@ -7211,20 +7537,24 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
 			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
+			[RangeConstraint<double>(0.0, 360.0, Closure.closedInterval)]
 			[PrecisionConstraint(1)]
+			[Mandatory]
 			public double orientationValue {get;set;} = default;
 
 			[XmlElement("text")]
+			[Optional]
 			public String? text {get;set;} = default;
 
 			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
 
 			[XmlElement("textOffsetMm")]
+			[Mandatory]
 			public int textOffsetMm {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1])]
+			[Optional]
 			public textType? textType {get;set;} = default;
 
 			[JsonIgnore]
@@ -7234,6 +7564,7 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializetextType() { return textType.HasValue; }
 
 			[XmlElement("scaleMinimum")]
+			[Optional]
 			public int? scaleMinimum {get;set;} = default;
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
@@ -7276,6 +7607,7 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
+
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<TextPlacement, bool>> _conditionalUnknown = new Dictionary<string,Func<TextPlacement, bool>> {

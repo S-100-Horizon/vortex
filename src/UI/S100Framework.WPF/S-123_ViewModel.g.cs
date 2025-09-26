@@ -38,6 +38,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			"ServiceContact" => new ServiceContactViewModel { Name = name },
 			"ServiceCoordination" => new ServiceCoordinationViewModel { Name = name },
 			"SpatialAssociation" => new SpatialAssociationViewModel { Name = name },
+			"TMAS" => new TMASViewModel { Name = name },
 			"TransmissionService" => new TransmissionServiceViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
@@ -46,7 +47,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			"coreAggregation" => new coreAggregationViewModel { Name = name },
 			"fuzzyZoneAggregation" => new fuzzyZoneAggregationViewModel { Name = name },
 			"ServiceProvisionArea" => new ServiceProvisionAreaViewModel { Name = name },
-			"TextAssociation" => new TextAssociationViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -64,6 +64,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			"Restrictions" => new RestrictionsViewModel { Name = name },
 			"ServiceHours" => new ServiceHoursViewModel { Name = name },
 			"SpatialQuality" => new SpatialQualityViewModel { Name = name },
+			"TelemedicalAssistanceService" => new TelemedicalAssistanceServiceViewModel { Name = name },
 			"TransmissionDetails" => new TransmissionDetailsViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
@@ -77,11 +78,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			"NavtexServiceArea" => new NavtexServiceAreaViewModel { Name = name },
 			"RadioServiceArea" => new RadioServiceAreaViewModel { Name = name },
 			"RadioStation" => new RadioStationViewModel { Name = name },
+			"SARRegion" => new SARRegionViewModel { Name = name },
 			"WeatherForecastAndWarningArea" => new WeatherForecastAndWarningAreaViewModel { Name = name },
 			"RadioServiceAreaAggregate" => new RadioServiceAreaAggregateViewModel { Name = name },
 			"DataCoverage" => new DataCoverageViewModel { Name = name },
 			"QualityOfNonBathymetricData" => new QualityOfNonBathymetricDataViewModel { Name = name },
-			"TextPlacement" => new TextPlacementViewModel { Name = name },
 			_ or "" => throw new InvalidOperationException(),
 		};
 
@@ -95,8 +96,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			("BroadcastTransmission", "theTransmissionDetails") => ["TransmissionDetails"],
 			("AuthorityContact", "theAuthority") => ["Authority","RadioControlCentre"],
 			("ExceptionalWorkday", "theServiceHours_nsdy") => ["ServiceHours"],
+			("TMAS", "theTMAS") => ["TelemedicalAssistanceService"],
 			("AuthorityHours", "theAuthority") => ["Authority","RadioControlCentre"],
 			("ExceptionalWorkday", "partialWorkingDay") => ["NonStandardWorkingDay"],
+			("RadioServiceControl", "theControlCentre") => ["RadioControlCentre"],
 			("BroadcastTransmission", "theBroadcastDetails") => ["BroadcastDetails"],
 			("AssociatedRxN", "theRxN") => ["AbstractRxN"],
 			("PermissionType", "permission") => ["Applicability"],
@@ -105,21 +108,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			("LocationHours", "theServiceHours") => ["ServiceHours"],
 			("AvailableQoS", "theQoS") => ["ConnectivityQualityOfService"],
 			("ServiceCoordination", "coordinatingAuthority") => ["Authority"],
-			("RadioServiceControl", "theControlCentre") => ["RadioControlCentre"],
 			("BroadcastService", "theBroadcastDetails") => ["BroadcastDetails"],
 			("TransmissionService", "theTransmissionDetails") => ["TransmissionDetails"],
 			_ => throw new InvalidOperationException(),
 		};
 
 		public static ICollection<string> FeatureAssociationBindings(string association, string role) => (association, role) switch {
-			("TextAssociation", "theCartographicText") => ["TextPlacement"],
 			("ServiceProvisionArea", "serviceProvider") => ["RadioStation"],
 			("fuzzyZoneAggregation", "theCollection") => ["FuzzyAreaAggregate"],
 			("coreAggregation", "theCollection") => ["RadioServiceAreaAggregate"],
 			("ServiceProvisionArea", "serviceArea") => ["ConnectivitySubscriptionArea","GMDSSArea","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
 			("fuzzyZoneAggregation", "theComponent") => ["IndeterminateZone"],
 			("coreAggregation", "theComponent") => ["RadioServiceArea"],
-			("TextAssociation", "thePositionProvider") => ["FeatureType"],
 			_ => throw new InvalidOperationException(),
 		};
 	}
@@ -198,100 +198,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	/// <summary>
-	/// A bearing is the direction one object is from another object.
-	/// </summary>
-	[CategoryOrder("bearingInformation",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class bearingInformationViewModel : ComplexViewModel {
-		private double? _distance  = default;
-
-		public double? distance {
-			get {
-				return _distance;
-			}
-			set {
-				SetValue(ref _distance, value);
-			}
-		}
-		private informationViewModel? _information  = default;
-
-		[Category("bearingInformation")]
-		[ExpandableObject]
-		public informationViewModel? information {
-			get {
-				return _information;
-			}
-			set {
-				SetValue(ref _information, value);
-			}
-		}
-		private orientationViewModel? _orientation  = default;
-
-		[Category("bearingInformation")]
-		[ExpandableObject]
-		public orientationViewModel? orientation {
-			get {
-				return _orientation;
-			}
-			set {
-				SetValue(ref _orientation, value);
-			}
-		}
-		private sectorLimitViewModel? _sectorLimit  = default;
-
-		[Category("bearingInformation")]
-		[ExpandableObject]
-		public sectorLimitViewModel? sectorLimit {
-			get {
-				return _sectorLimit;
-			}
-			set {
-				SetValue(ref _sectorLimit, value);
-			}
-		}
-
-
-		public bearingInformationViewModel Load(bearingInformation instance) {
-			distance = instance.distance;
-			information = new ();
-			if (instance.information != default) {
-				information.Load(instance.information);
-			}
-			orientation = new ();
-			if (instance.orientation != default) {
-				orientation.Load(instance.orientation);
-			}
-			sectorLimit = new ();
-			if (instance.sectorLimit != default) {
-				sectorLimit.Load(instance.sectorLimit);
-			}
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new bearingInformation {
-				distance = this.distance,
-				information = this.information?.Model,
-				orientation = this.orientation?.Model,
-				sectorLimit = this.sectorLimit?.Model,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public bearingInformation Model => new () {
-			distance = this._distance,
-			information = this._information?.Model,
-			orientation = this._orientation?.Model,
-			sectorLimit = this._sectorLimit?.Model,
-		};
-
-		public override string? ToString() => $"Bearing Information";
-	}
-
-
-	/// <summary>
 	/// Details related to the content of the broadcast.
 	/// </summary>
 	[CategoryOrder("broadcastContent",0)]
@@ -305,16 +211,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfBroadcastContent[] typeOfBroadcastContentList => [(typeOfBroadcastContent)1,(typeOfBroadcastContent)2,(typeOfBroadcastContent)3,(typeOfBroadcastContent)4,(typeOfBroadcastContent)5,(typeOfBroadcastContent)6,(typeOfBroadcastContent)7,(typeOfBroadcastContent)8];
-		private String? _subjectIndicatorCharacter  = default;
-
-		public String? subjectIndicatorCharacter {
-			get {
-				return _subjectIndicatorCharacter;
-			}
-			set {
-				SetValue(ref _subjectIndicatorCharacter, value);
-			}
-		}
+		[Category("broadcastContent")]
+		public ObservableCollection<String> subjectOrMessageTypeCode  { get; set; } = new ();
 		private String? _subjectDescription  = default;
 
 		public String? subjectDescription {
@@ -358,7 +256,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				foreach(var e in instance.typeOfBroadcastContent)
 					typeOfBroadcastContent.Add(e);
 			}
-			subjectIndicatorCharacter = instance.subjectIndicatorCharacter;
+			subjectOrMessageTypeCode.Clear();
+			if (instance.subjectOrMessageTypeCode is not null) {
+				foreach(var e in instance.subjectOrMessageTypeCode)
+					subjectOrMessageTypeCode.Add(e);
+			}
 			subjectDescription = instance.subjectDescription;
 			observationTime = instance.observationTime;
 			transmissionRegularity = instance.transmissionRegularity;
@@ -368,7 +270,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string Serialize() {
 			var instance = new broadcastContent {
 				typeOfBroadcastContent = this.typeOfBroadcastContent.ToList(),
-				subjectIndicatorCharacter = this.subjectIndicatorCharacter,
+				subjectOrMessageTypeCode = this.subjectOrMessageTypeCode.ToList(),
 				subjectDescription = this.subjectDescription,
 				observationTime = this.observationTime,
 				transmissionRegularity = this.transmissionRegularity,
@@ -379,7 +281,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public broadcastContent Model => new () {
 			typeOfBroadcastContent = this.typeOfBroadcastContent.ToList(),
-			subjectIndicatorCharacter = this._subjectIndicatorCharacter,
+			subjectOrMessageTypeCode = this.subjectOrMessageTypeCode.ToList(),
 			subjectDescription = this._subjectDescription,
 			observationTime = this._observationTime,
 			transmissionRegularity = this._transmissionRegularity,
@@ -390,6 +292,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public broadcastContentViewModel() : base() {
 			typeOfBroadcastContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(typeOfBroadcastContent));
+			};
+			subjectOrMessageTypeCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(subjectOrMessageTypeCode));
 			};
 		}
 	}
@@ -504,9 +409,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minimumReceivedPower, value);
 			}
 		}
-		private int? _presumedReceiverAntennaHeight  = default;
+		private double? _presumedReceiverAntennaHeight  = default;
 
-		public int? presumedReceiverAntennaHeight {
+		public double? presumedReceiverAntennaHeight {
 			get {
 				return _presumedReceiverAntennaHeight;
 			}
@@ -800,9 +705,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyRangeViewModel : ComplexViewModel {
-		private int? _frequencyLimitLower  = default;
+		private int _frequencyLimitLower  = default;
 
-		public int? frequencyLimitLower {
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		public int frequencyLimitLower {
 			get {
 				return _frequencyLimitLower;
 			}
@@ -810,9 +716,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _frequencyLimitLower, value);
 			}
 		}
-		private int? _frequencyLimitUpper  = default;
+		private int _frequencyLimitUpper  = default;
 
-		public int? frequencyLimitUpper {
+		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		public int frequencyLimitUpper {
 			get {
 				return _frequencyLimitUpper;
 			}
@@ -894,18 +801,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _pictureInformation, value);
 			}
 		}
-		private bearingInformationViewModel? _bearingInformation  = default;
-
-		[Category("graphic")]
-		[ExpandableObject]
-		public bearingInformationViewModel? bearingInformation {
-			get {
-				return _bearingInformation;
-			}
-			set {
-				SetValue(ref _bearingInformation, value);
-			}
-		}
 
 
 		public graphicViewModel Load(graphic instance) {
@@ -913,10 +808,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			pictureCaption = instance.pictureCaption;
 			sourceDate = instance.sourceDate;
 			pictureInformation = instance.pictureInformation;
-			bearingInformation = new ();
-			if (instance.bearingInformation != default) {
-				bearingInformation.Load(instance.bearingInformation);
-			}
 			return this;
 		}
 
@@ -926,7 +817,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				pictureCaption = this.pictureCaption,
 				sourceDate = this.sourceDate,
 				pictureInformation = this.pictureInformation,
-				bearingInformation = this.bearingInformation?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -937,7 +827,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			pictureCaption = this._pictureCaption,
 			sourceDate = this._sourceDate,
 			pictureInformation = this._pictureInformation,
-			bearingInformation = this._bearingInformation?.Model,
 		};
 
 		public override string? ToString() => $"Graphic";
@@ -1159,60 +1048,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	/// <summary>
-	/// (1) The angular distance measured from true north to the major axis of the feature. (2) In ECDIS, the mode in which information on the ECDIS is being presented. Typical modes include: north-up - as shown on a nautical chart, north is at the top of the display; Ships head-up - based on the actual heading of the ship, (e.g. Ships gyrocompass); course-up display - based on the course or route being taken.
-	/// </summary>
-	[CategoryOrder("orientation",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class orientationViewModel : ComplexViewModel {
-		private double? _orientationUncertainty  = default;
-
-		public double? orientationUncertainty {
-			get {
-				return _orientationUncertainty;
-			}
-			set {
-				SetValue(ref _orientationUncertainty, value);
-			}
-		}
-		private double _orientationValue  = default;
-
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
-		public double orientationValue {
-			get {
-				return _orientationValue;
-			}
-			set {
-				SetValue(ref _orientationValue, value);
-			}
-		}
-
-
-		public orientationViewModel Load(orientation instance) {
-			orientationUncertainty = instance.orientationUncertainty;
-			orientationValue = instance.orientationValue;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new orientation {
-				orientationUncertainty = this.orientationUncertainty,
-				orientationValue = this.orientationValue,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public orientation Model => new () {
-			orientationUncertainty = this._orientationUncertainty,
-			orientationValue = this._orientationValue,
-		};
-
-		public override string? ToString() => $"Orientation";
-	}
-
-
-	/// <summary>
 	/// The active period of a recurring event or occurrence.
 	/// </summary>
 	[CategoryOrder("periodicDateRange",0)]
@@ -1280,6 +1115,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("radioChannelDetails")]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
+		[Category("radioChannelDetails")]
+		public ObservableCollection<int> dataTransmissionRate  { get; set; } = new ();
 		private Boolean _transmissionOfTrafficLists  = false;
 
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
@@ -1314,6 +1151,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				foreach(var e in instance.frequencyPair)
 					frequencyPair.Add(new frequencyPairViewModel().Load(e));
 			}
+			dataTransmissionRate.Clear();
+			if (instance.dataTransmissionRate is not null) {
+				foreach(var e in instance.dataTransmissionRate)
+					dataTransmissionRate.Add(e);
+			}
 			transmissionOfTrafficLists = instance.transmissionOfTrafficLists;
 			hoursOfWatch = instance.hoursOfWatch;
 			return this;
@@ -1323,6 +1165,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			var instance = new radioChannelDetails {
 				communicationChannel = this.communicationChannel.ToList(),
 				frequencyPair = this.frequencyPair.Select(e => e.Model).ToList(),
+				dataTransmissionRate = this.dataTransmissionRate.ToList(),
 				transmissionOfTrafficLists = this.transmissionOfTrafficLists,
 				hoursOfWatch = this.hoursOfWatch,
 			};
@@ -1333,6 +1176,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public radioChannelDetails Model => new () {
 			communicationChannel = this.communicationChannel.ToList(),
 			frequencyPair = this.frequencyPair.Select(e => e.Model).ToList(),
+			dataTransmissionRate = this.dataTransmissionRate.ToList(),
 			transmissionOfTrafficLists = this._transmissionOfTrafficLists,
 			hoursOfWatch = this._hoursOfWatch,
 		};
@@ -1346,6 +1190,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			frequencyPair.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(frequencyPair));
 			};
+			dataTransmissionRate.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(dataTransmissionRate));
+			};
 		}
 	}
 
@@ -1357,62 +1204,74 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radiocommunicationIdentifierViewModel : ComplexViewModel {
-		private String? _callSign  = default;
-
-		public String? callSign {
-			get {
-				return _callSign;
-			}
-			set {
-				SetValue(ref _callSign, value);
-			}
-		}
-		private String? _mMSICode  = default;
-
-		public String? mMSICode {
-			get {
-				return _mMSICode;
-			}
-			set {
-				SetValue(ref _mMSICode, value);
-			}
-		}
-		private int? _selectiveCallNumber  = default;
-
-		public int? selectiveCallNumber {
-			get {
-				return _selectiveCallNumber;
-			}
-			set {
-				SetValue(ref _selectiveCallNumber, value);
-			}
-		}
+		[Category("radiocommunicationIdentifier")]
+		public ObservableCollection<String> callSign  { get; set; } = new ();
+		[Category("radiocommunicationIdentifier")]
+		public ObservableCollection<String> mMSICode  { get; set; } = new ();
+		[Category("radiocommunicationIdentifier")]
+		public ObservableCollection<int> selectiveCallNumber  { get; set; } = new ();
+		[Category("radiocommunicationIdentifier")]
+		public ObservableCollection<String> coastStationIdentificationCode  { get; set; } = new ();
 
 
 		public radiocommunicationIdentifierViewModel Load(radiocommunicationIdentifier instance) {
-			callSign = instance.callSign;
-			mMSICode = instance.mMSICode;
-			selectiveCallNumber = instance.selectiveCallNumber;
+			callSign.Clear();
+			if (instance.callSign is not null) {
+				foreach(var e in instance.callSign)
+					callSign.Add(e);
+			}
+			mMSICode.Clear();
+			if (instance.mMSICode is not null) {
+				foreach(var e in instance.mMSICode)
+					mMSICode.Add(e);
+			}
+			selectiveCallNumber.Clear();
+			if (instance.selectiveCallNumber is not null) {
+				foreach(var e in instance.selectiveCallNumber)
+					selectiveCallNumber.Add(e);
+			}
+			coastStationIdentificationCode.Clear();
+			if (instance.coastStationIdentificationCode is not null) {
+				foreach(var e in instance.coastStationIdentificationCode)
+					coastStationIdentificationCode.Add(e);
+			}
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new radiocommunicationIdentifier {
-				callSign = this.callSign,
-				mMSICode = this.mMSICode,
-				selectiveCallNumber = this.selectiveCallNumber,
+				callSign = this.callSign.ToList(),
+				mMSICode = this.mMSICode.ToList(),
+				selectiveCallNumber = this.selectiveCallNumber.ToList(),
+				coastStationIdentificationCode = this.coastStationIdentificationCode.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public radiocommunicationIdentifier Model => new () {
-			callSign = this._callSign,
-			mMSICode = this._mMSICode,
-			selectiveCallNumber = this._selectiveCallNumber,
+			callSign = this.callSign.ToList(),
+			mMSICode = this.mMSICode.ToList(),
+			selectiveCallNumber = this.selectiveCallNumber.ToList(),
+			coastStationIdentificationCode = this.coastStationIdentificationCode.ToList(),
 		};
 
 		public override string? ToString() => $"Radiocommunication Identifier";
+
+		public radiocommunicationIdentifierViewModel() : base() {
+			callSign.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(callSign));
+			};
+			mMSICode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(mMSICode));
+			};
+			selectiveCallNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(selectiveCallNumber));
+			};
+			coastStationIdentificationCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(coastStationIdentificationCode));
+			};
+		}
 	}
 
 
@@ -2887,6 +2746,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	/// <summary>
+	/// Available Telemedical Assistance Service and related coordination centre.
+	/// </summary>
+	[CategoryOrder("TMAS",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class TMASViewModel : AssociationViewModel {
+
+
+		public TMASViewModel Load(TMAS instance) {
+
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new TMAS {
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public TMAS Model => new () {
+
+		};
+
+		public override string? ToString() => $"Available Telemedical Assistance Service";
+	}
+
+
+
+	/// <summary>
 	/// The radio transmission of a service area or facility
 	/// </summary>
 	[CategoryOrder("TransmissionService",0)]
@@ -3002,36 +2891,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		};
 
 		public override string? ToString() => $"Service provision area";
-	}
-
-
-
-	/// <summary>
-	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
-	/// </summary>
-	[CategoryOrder("TextAssociation",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class TextAssociationViewModel : AssociationViewModel {
-
-
-		public TextAssociationViewModel Load(TextAssociation instance) {
-
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new TextAssociation {
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public TextAssociation Model => new () {
-
-		};
-
-		public override string? ToString() => $"Text association";
 	}
 
 
@@ -4144,10 +4003,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+		private textContentViewModel? _textContent  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+		[ExpandableObject]
+		public textContentViewModel? textContent {
+			get {
+				return _textContent;
+			}
+			set {
+				SetValue(ref _textContent, value);
+			}
+		}
+		private graphicViewModel? _graphic  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+		[ExpandableObject]
+		public graphicViewModel? graphic {
+			get {
+				return _graphic;
+			}
+			set {
+				SetValue(ref _graphic, value);
+			}
+		}
 		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4171,15 +4050,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
-			textContent.Clear();
-			if (instance.textContent is not null) {
-				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+			textContent = new ();
+			if (instance.textContent != default) {
+				textContent.Load(instance.textContent);
 			}
-			graphic.Clear();
-			if (instance.graphic is not null) {
-				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+			graphic = new ();
+			if (instance.graphic != default) {
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
@@ -4197,8 +4074,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				source = this.source,
 				reportedDate = this.reportedDate,
 				categoryOfAuthority = this.categoryOfAuthority,
-				textContent = this.textContent.Select(e => e.Model).ToList(),
-				graphic = this.graphic.Select(e => e.Model).ToList(),
+				textContent = this.textContent?.Model,
+				graphic = this.graphic?.Model,
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4212,8 +4089,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = this._source,
 			reportedDate = this._reportedDate,
 			categoryOfAuthority = this._categoryOfAuthority,
-			textContent = this.textContent.Select(e => e.Model).ToList(),
-			graphic = this.graphic.Select(e => e.Model).ToList(),
+			textContent = this._textContent?.Model,
+			graphic = this._graphic?.Model,
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
@@ -4226,12 +4103,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
-			};
-			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(textContent));
-			};
-			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(graphic));
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
@@ -4429,10 +4300,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		private Boolean? _isMRCC  = default;
+		private Boolean _isMRCC  = false;
 
 		[Category("RadioControlCentre")]
-		public Boolean? isMRCC {
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		public Boolean isMRCC {
 			get {
 				return _isMRCC;
 			}
@@ -4440,10 +4312,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _isMRCC, value);
 			}
 		}
-		private Boolean? _acceptAMVER  = default;
+		private Boolean _acceptAMVER  = false;
 
 		[Category("RadioControlCentre")]
-		public Boolean? acceptAMVER {
+		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		public Boolean acceptAMVER {
 			get {
 				return _acceptAMVER;
 			}
@@ -4603,10 +4476,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+		private textContentViewModel? _textContent  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+		[ExpandableObject]
+		public textContentViewModel? textContent {
+			get {
+				return _textContent;
+			}
+			set {
+				SetValue(ref _textContent, value);
+			}
+		}
+		private graphicViewModel? _graphic  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+		[ExpandableObject]
+		public graphicViewModel? graphic {
+			get {
+				return _graphic;
+			}
+			set {
+				SetValue(ref _graphic, value);
+			}
+		}
 		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4630,15 +4523,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
-			textContent.Clear();
-			if (instance.textContent is not null) {
-				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+			textContent = new ();
+			if (instance.textContent != default) {
+				textContent.Load(instance.textContent);
 			}
-			graphic.Clear();
-			if (instance.graphic is not null) {
-				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+			graphic = new ();
+			if (instance.graphic != default) {
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
@@ -4656,8 +4547,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				source = this.source,
 				reportedDate = this.reportedDate,
 				categoryOfAuthority = this.categoryOfAuthority,
-				textContent = this.textContent.Select(e => e.Model).ToList(),
-				graphic = this.graphic.Select(e => e.Model).ToList(),
+				textContent = this.textContent?.Model,
+				graphic = this.graphic?.Model,
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4671,8 +4562,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = this._source,
 			reportedDate = this._reportedDate,
 			categoryOfAuthority = this._categoryOfAuthority,
-			textContent = this.textContent.Select(e => e.Model).ToList(),
-			graphic = this.graphic.Select(e => e.Model).ToList(),
+			textContent = this._textContent?.Model,
+			graphic = this._graphic?.Model,
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
@@ -4685,12 +4576,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
-			};
-			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(textContent));
-			};
-			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(graphic));
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
@@ -4763,10 +4648,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+		private textContentViewModel? _textContent  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+		[ExpandableObject]
+		public textContentViewModel? textContent {
+			get {
+				return _textContent;
+			}
+			set {
+				SetValue(ref _textContent, value);
+			}
+		}
+		private graphicViewModel? _graphic  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+		[ExpandableObject]
+		public graphicViewModel? graphic {
+			get {
+				return _graphic;
+			}
+			set {
+				SetValue(ref _graphic, value);
+			}
+		}
 		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4790,15 +4695,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
-			textContent.Clear();
-			if (instance.textContent is not null) {
-				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+			textContent = new ();
+			if (instance.textContent != default) {
+				textContent.Load(instance.textContent);
 			}
-			graphic.Clear();
-			if (instance.graphic is not null) {
-				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+			graphic = new ();
+			if (instance.graphic != default) {
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
@@ -4816,8 +4719,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				source = this.source,
 				reportedDate = this.reportedDate,
 				categoryOfAuthority = this.categoryOfAuthority,
-				textContent = this.textContent.Select(e => e.Model).ToList(),
-				graphic = this.graphic.Select(e => e.Model).ToList(),
+				textContent = this.textContent?.Model,
+				graphic = this.graphic?.Model,
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4831,8 +4734,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = this._source,
 			reportedDate = this._reportedDate,
 			categoryOfAuthority = this._categoryOfAuthority,
-			textContent = this.textContent.Select(e => e.Model).ToList(),
-			graphic = this.graphic.Select(e => e.Model).ToList(),
+			textContent = this._textContent?.Model,
+			graphic = this._graphic?.Model,
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
@@ -4845,12 +4748,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
-			};
-			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(textContent));
-			};
-			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(graphic));
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
@@ -4923,10 +4820,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+		private textContentViewModel? _textContent  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+		[ExpandableObject]
+		public textContentViewModel? textContent {
+			get {
+				return _textContent;
+			}
+			set {
+				SetValue(ref _textContent, value);
+			}
+		}
+		private graphicViewModel? _graphic  = default;
+
 		[Category("AbstractRxN")]
-		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
+		[ExpandableObject]
+		public graphicViewModel? graphic {
+			get {
+				return _graphic;
+			}
+			set {
+				SetValue(ref _graphic, value);
+			}
+		}
 		[Category("AbstractRxN")]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4950,15 +4867,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
-			textContent.Clear();
-			if (instance.textContent is not null) {
-				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+			textContent = new ();
+			if (instance.textContent != default) {
+				textContent.Load(instance.textContent);
 			}
-			graphic.Clear();
-			if (instance.graphic is not null) {
-				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+			graphic = new ();
+			if (instance.graphic != default) {
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
@@ -4976,8 +4891,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				source = this.source,
 				reportedDate = this.reportedDate,
 				categoryOfAuthority = this.categoryOfAuthority,
-				textContent = this.textContent.Select(e => e.Model).ToList(),
-				graphic = this.graphic.Select(e => e.Model).ToList(),
+				textContent = this.textContent?.Model,
+				graphic = this.graphic?.Model,
 				rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4991,8 +4906,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = this._source,
 			reportedDate = this._reportedDate,
 			categoryOfAuthority = this._categoryOfAuthority,
-			textContent = this.textContent.Select(e => e.Model).ToList(),
-			graphic = this.graphic.Select(e => e.Model).ToList(),
+			textContent = this._textContent?.Model,
+			graphic = this._graphic?.Model,
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
@@ -5005,12 +4920,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
-			};
-			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(textContent));
-			};
-			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(graphic));
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
@@ -5170,17 +5079,26 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
+		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
+		private spatialAccuracyViewModel? _spatialAccuracy  = default;
+
 		[Category("SpatialQuality")]
-		public ObservableCollection<spatialAccuracyViewModel> spatialAccuracy  { get; set; } = new ();
+		[ExpandableObject]
+		public spatialAccuracyViewModel? spatialAccuracy {
+			get {
+				return _spatialAccuracy;
+			}
+			set {
+				SetValue(ref _spatialAccuracy, value);
+			}
+		}
 
 
 		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
-			spatialAccuracy.Clear();
-			if (instance.spatialAccuracy is not null) {
-				foreach(var e in instance.spatialAccuracy)
-					spatialAccuracy.Add(new spatialAccuracyViewModel().Load(e));
+			spatialAccuracy = new ();
+			if (instance.spatialAccuracy != default) {
+				spatialAccuracy.Load(instance.spatialAccuracy);
 			}
 			return this;
 		}
@@ -5188,7 +5106,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public override string Serialize() {
 			var instance = new SpatialQuality {
 				qualityOfHorizontalMeasurement = this.qualityOfHorizontalMeasurement,
-				spatialAccuracy = this.spatialAccuracy.Select(e => e.Model).ToList(),
+				spatialAccuracy = this.spatialAccuracy?.Model,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -5196,15 +5114,183 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public SpatialQuality Model => new () {
 			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
-			spatialAccuracy = this.spatialAccuracy.Select(e => e.Model).ToList(),
+			spatialAccuracy = this._spatialAccuracy?.Model,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
 		public override string? ToString() => $"Spatial Quality";
+	}
 
-		public SpatialQualityViewModel() : base() {
-			spatialAccuracy.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(spatialAccuracy));
+
+
+	/// <summary>
+	/// A service to provide decision support and advice to the seafarer on board responsible for medical care.
+	/// </summary>
+	[CategoryOrder("TelemedicalAssistanceService",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class TelemedicalAssistanceServiceViewModel : InformationViewModel<TelemedicalAssistanceService> {
+		private fixedDateRangeViewModel? _fixedDateRange  = default;
+
+		[Category("InformationType")]
+		[ExpandableObject]
+		public fixedDateRangeViewModel? fixedDateRange {
+			get {
+				return _fixedDateRange;
+			}
+			set {
+				SetValue(ref _fixedDateRange, value);
+			}
+		}
+		[Category("InformationType")]
+		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+		[Category("InformationType")]
+		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+		private String? _source  = default;
+
+		[Category("InformationType")]
+		public String? source {
+			get {
+				return _source;
+			}
+			set {
+				SetValue(ref _source, value);
+			}
+		}
+		private String? _reportedDate  = default;
+
+		[Category("InformationType")]
+		[S100TruncatedDateAttribute]
+		public String? reportedDate {
+			get {
+				return _reportedDate;
+			}
+			set {
+				SetValue(ref _reportedDate, value);
+			}
+		}
+
+		private String? _contactInstructions  = default;
+
+		[Category("TelemedicalAssistanceService")]
+		public String? contactInstructions {
+			get {
+				return _contactInstructions;
+			}
+			set {
+				SetValue(ref _contactInstructions, value);
+			}
+		}
+		private informationViewModel? _information  = default;
+
+		[Category("TelemedicalAssistanceService")]
+		[ExpandableObject]
+		public informationViewModel? information {
+			get {
+				return _information;
+			}
+			set {
+				SetValue(ref _information, value);
+			}
+		}
+		[Category("TelemedicalAssistanceService")]
+		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
+		[Category("TelemedicalAssistanceService")]
+		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
+		private String? _languageInformation  = default;
+
+		[Category("TelemedicalAssistanceService")]
+		public String? languageInformation {
+			get {
+				return _languageInformation;
+			}
+			set {
+				SetValue(ref _languageInformation, value);
+			}
+		}
+
+
+		public override InformationViewModel<TelemedicalAssistanceService> Load(TelemedicalAssistanceService instance) {
+			fixedDateRange = new ();
+			if (instance.fixedDateRange != default) {
+				fixedDateRange.Load(instance.fixedDateRange);
+			}
+			periodicDateRange.Clear();
+			if (instance.periodicDateRange is not null) {
+				foreach(var e in instance.periodicDateRange)
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+			}
+			featureName.Clear();
+			if (instance.featureName is not null) {
+				foreach(var e in instance.featureName)
+					featureName.Add(new featureNameViewModel().Load(e));
+			}
+			source = instance.source;
+			reportedDate = instance.reportedDate;
+			contactInstructions = instance.contactInstructions;
+			information = new ();
+			if (instance.information != default) {
+				information.Load(instance.information);
+			}
+			onlineResource.Clear();
+			if (instance.onlineResource is not null) {
+				foreach(var e in instance.onlineResource)
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
+			}
+			telecommunications.Clear();
+			if (instance.telecommunications is not null) {
+				foreach(var e in instance.telecommunications)
+					telecommunications.Add(new telecommunicationsViewModel().Load(e));
+			}
+			languageInformation = instance.languageInformation;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new TelemedicalAssistanceService {
+				fixedDateRange = this.fixedDateRange?.Model,
+				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+				featureName = this.featureName.Select(e => e.Model).ToList(),
+				source = this.source,
+				reportedDate = this.reportedDate,
+				contactInstructions = this.contactInstructions,
+				information = this.information?.Model,
+				onlineResource = this.onlineResource.Select(e => e.Model).ToList(),
+				telecommunications = this.telecommunications.Select(e => e.Model).ToList(),
+				languageInformation = this.languageInformation,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public TelemedicalAssistanceService Model => new () {
+			fixedDateRange = this._fixedDateRange?.Model,
+			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+			featureName = this.featureName.Select(e => e.Model).ToList(),
+			source = this._source,
+			reportedDate = this._reportedDate,
+			contactInstructions = this._contactInstructions,
+			information = this._information?.Model,
+			onlineResource = this.onlineResource.Select(e => e.Model).ToList(),
+			telecommunications = this.telecommunications.Select(e => e.Model).ToList(),
+			languageInformation = this._languageInformation,
+		};
+		public override informationBindingDefinition[] informationBindingDefinitions => TelemedicalAssistanceService._informationBindingDefinitions;
+
+		public override string? ToString() => $"Telemedical Assistance Service";
+
+		public TelemedicalAssistanceServiceViewModel() : base() {
+			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureName));
+			};
+			onlineResource.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(onlineResource));
+			};
+			telecommunications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(telecommunications));
 			};
 		}
 	}
@@ -5728,18 +5814,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfGMDSSArea[] categoryOfGMDSSAreaList => [(categoryOfGMDSSArea)1,(categoryOfGMDSSArea)2,(categoryOfGMDSSArea)3,(categoryOfGMDSSArea)4];
-		private areaA3ServiceDescriptionViewModel? _areaA3ServiceDescription  = default;
-
 		[Category("GMDSSArea")]
-		[ExpandableObject]
-		public areaA3ServiceDescriptionViewModel? areaA3ServiceDescription {
-			get {
-				return _areaA3ServiceDescription;
-			}
-			set {
-				SetValue(ref _areaA3ServiceDescription, value);
-			}
-		}
+		public ObservableCollection<areaA3ServiceDescriptionViewModel> areaA3ServiceDescription  { get; set; } = new ();
 
 
 		public override FeatureViewModel<GMDSSArea> Load(GMDSSArea instance) {
@@ -5768,9 +5844,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			idNAVAREA = instance.idNAVAREA;
 			nationality = instance.nationality;
 			categoryOfGMDSSArea = instance.categoryOfGMDSSArea;
-			areaA3ServiceDescription = new ();
-			if (instance.areaA3ServiceDescription != default) {
-				areaA3ServiceDescription.Load(instance.areaA3ServiceDescription);
+			areaA3ServiceDescription.Clear();
+			if (instance.areaA3ServiceDescription is not null) {
+				foreach(var e in instance.areaA3ServiceDescription)
+					areaA3ServiceDescription.Add(new areaA3ServiceDescriptionViewModel().Load(e));
 			}
 			return this;
 		}
@@ -5787,7 +5864,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				idNAVAREA = this.idNAVAREA,
 				nationality = this.nationality,
 				categoryOfGMDSSArea = this.categoryOfGMDSSArea,
-				areaA3ServiceDescription = this.areaA3ServiceDescription?.Model,
+				areaA3ServiceDescription = this.areaA3ServiceDescription.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -5804,7 +5881,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			idNAVAREA = this._idNAVAREA,
 			nationality = this._nationality,
 			categoryOfGMDSSArea = this._categoryOfGMDSSArea,
-			areaA3ServiceDescription = this._areaA3ServiceDescription?.Model,
+			areaA3ServiceDescription = this.areaA3ServiceDescription.Select(e => e.Model).ToList(),
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => GMDSSArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. GMDSSArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -5822,6 +5899,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			areaA3ServiceDescription.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(areaA3ServiceDescription));
 			};
 		}
 	}
@@ -6798,7 +6878,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Browsable(false)]
-		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
+		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
@@ -6848,11 +6928,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)16,(status)17];
-		private radiocommunicationIdentifierViewModel _radiocommunicationIdentifier  = default;
+		private radiocommunicationIdentifierViewModel? _radiocommunicationIdentifier  = default;
 
 		[Category("RadioStation")]
 		[ExpandableObject]
-		public radiocommunicationIdentifierViewModel radiocommunicationIdentifier {
+		public radiocommunicationIdentifierViewModel? radiocommunicationIdentifier {
 			get {
 				return _radiocommunicationIdentifier;
 			}
@@ -6974,6 +7054,153 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			sectorLimit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sectorLimit));
+			};
+		}
+	}
+
+
+
+	/// <summary>
+	/// A defined geographical area where a specific country or organization is designated to coordinate and provide search and rescue services.
+	/// </summary>
+	[CategoryOrder("SARRegion",0)]
+	[CategoryOrder("InformationBindings",100)]
+	[CategoryOrder("FeatureBindings",200)]
+	public partial class SARRegionViewModel : FeatureViewModel<SARRegion> {
+		[Category("FeatureType")]
+		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+		[Category("FeatureType")]
+		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+		private fixedDateRangeViewModel? _fixedDateRange  = default;
+
+		[Category("FeatureType")]
+		[ExpandableObject]
+		public fixedDateRangeViewModel? fixedDateRange {
+			get {
+				return _fixedDateRange;
+			}
+			set {
+				SetValue(ref _fixedDateRange, value);
+			}
+		}
+		[Category("FeatureType")]
+		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+		private String? _source  = default;
+
+		[Category("FeatureType")]
+		public String? source {
+			get {
+				return _source;
+			}
+			set {
+				SetValue(ref _source, value);
+			}
+		}
+		private String? _reportedDate  = default;
+
+		[Category("FeatureType")]
+		[S100TruncatedDateAttribute]
+		public String? reportedDate {
+			get {
+				return _reportedDate;
+			}
+			set {
+				SetValue(ref _reportedDate, value);
+			}
+		}
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("FeatureType")]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
+
+		private String? _nationality  = default;
+
+		[Category("SARRegion")]
+		public String? nationality {
+			get {
+				return _nationality;
+			}
+			set {
+				SetValue(ref _nationality, value);
+			}
+		}
+
+
+		public override FeatureViewModel<SARRegion> Load(SARRegion instance) {
+			textContent.Clear();
+			if (instance.textContent is not null) {
+				foreach(var e in instance.textContent)
+					textContent.Add(new textContentViewModel().Load(e));
+			}
+			featureName.Clear();
+			if (instance.featureName is not null) {
+				foreach(var e in instance.featureName)
+					featureName.Add(new featureNameViewModel().Load(e));
+			}
+			fixedDateRange = new ();
+			if (instance.fixedDateRange != default) {
+				fixedDateRange.Load(instance.fixedDateRange);
+			}
+			periodicDateRange.Clear();
+			if (instance.periodicDateRange is not null) {
+				foreach(var e in instance.periodicDateRange)
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+			}
+			source = instance.source;
+			reportedDate = instance.reportedDate;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
+			nationality = instance.nationality;
+			return this;
+		}
+
+		public override string Serialize() {
+			var instance = new SARRegion {
+				textContent = this.textContent.Select(e => e.Model).ToList(),
+				featureName = this.featureName.Select(e => e.Model).ToList(),
+				fixedDateRange = this.fixedDateRange?.Model,
+				periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+				source = this.source,
+				reportedDate = this.reportedDate,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
+				nationality = this.nationality,
+			};
+			return System.Text.Json.JsonSerializer.Serialize(instance);
+		}
+
+		[Browsable(false)]
+		public SARRegion Model => new () {
+			textContent = this.textContent.Select(e => e.Model).ToList(),
+			featureName = this.featureName.Select(e => e.Model).ToList(),
+			fixedDateRange = this._fixedDateRange?.Model,
+			periodicDateRange = this.periodicDateRange.Select(e => e.Model).ToList(),
+			source = this._source,
+			reportedDate = this._reportedDate,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
+			nationality = this._nationality,
+		};
+		public override informationBindingDefinition[] informationBindingDefinitions => SARRegion._informationBindingDefinitions;
+		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SARRegion._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
+
+		public override featureBindingDefinition[] featureBindingDefinitions => SARRegion._featureBindingDefinitions;
+
+		public override string? ToString() => $"Search and Rescue Region";
+
+		public SARRegionViewModel() : base() {
+			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(textContent));
+			};
+			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(featureName));
+			};
+			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(periodicDateRange));
 			};
 		}
 	}
@@ -7344,30 +7571,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
-		[Category("DataCoverage")]
-		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private String? _interoperabilityIdentifier  = default;
+		private int? _optimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		public String? interoperabilityIdentifier {
+		public int? optimumDisplayScale {
 			get {
-				return _interoperabilityIdentifier;
+				return _optimumDisplayScale;
 			}
 			set {
-				SetValue(ref _interoperabilityIdentifier, value);
+				SetValue(ref _optimumDisplayScale, value);
 			}
 		}
+		[Category("DataCoverage")]
+		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
 		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) {
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
+			optimumDisplayScale = instance.optimumDisplayScale;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
 					information.Add(new informationViewModel().Load(e));
 			}
-			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7375,8 +7602,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			var instance = new DataCoverage {
 				maximumDisplayScale = this.maximumDisplayScale,
 				minimumDisplayScale = this.minimumDisplayScale,
+				optimumDisplayScale = this.optimumDisplayScale,
 				information = this.information.Select(e => e.Model).ToList(),
-				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7385,8 +7612,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public DataCoverage Model => new () {
 			maximumDisplayScale = this._maximumDisplayScale,
 			minimumDisplayScale = this._minimumDisplayScale,
+			optimumDisplayScale = this._optimumDisplayScale,
 			information = this.information.Select(e => e.Model).ToList(),
-			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DataCoverage._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -7487,17 +7714,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		[Category("QualityOfNonBathymetricData")]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
-		private String? _interoperabilityIdentifier  = default;
-
-		[Category("QualityOfNonBathymetricData")]
-		public String? interoperabilityIdentifier {
-			get {
-				return _interoperabilityIdentifier;
-			}
-			set {
-				SetValue(ref _interoperabilityIdentifier, value);
-			}
-		}
 
 
 		public override FeatureViewModel<QualityOfNonBathymetricData> Load(QualityOfNonBathymetricData instance) {
@@ -7521,7 +7737,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				foreach(var e in instance.information)
 					information.Add(new informationViewModel().Load(e));
 			}
-			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7534,7 +7749,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				surveyDateRange = this.surveyDateRange?.Model,
 				verticalUncertainty = this.verticalUncertainty?.Model,
 				information = this.information.Select(e => e.Model).ToList(),
-				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7548,7 +7762,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			surveyDateRange = this._surveyDateRange?.Model,
 			verticalUncertainty = this._verticalUncertainty?.Model,
 			information = this.information.Select(e => e.Model).ToList(),
-			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
 		public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. QualityOfNonBathymetricData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
@@ -7560,116 +7773,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public QualityOfNonBathymetricDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
-			};
-		}
-	}
-
-
-
-	/// <summary>
-	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
-	/// </summary>
-	[CategoryOrder("TextPlacement",0)]
-	[CategoryOrder("InformationBindings",100)]
-	[CategoryOrder("FeatureBindings",200)]
-	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
-		private int _textOffsetBearing  = default;
-
-		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
-		public int textOffsetBearing {
-			get {
-				return _textOffsetBearing;
-			}
-			set {
-				SetValue(ref _textOffsetBearing, value);
-			}
-		}
-		private int _textOffsetDistance  = default;
-
-		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
-		public int textOffsetDistance {
-			get {
-				return _textOffsetDistance;
-			}
-			set {
-				SetValue(ref _textOffsetDistance, value);
-			}
-		}
-		private Boolean? _textRotation  = default;
-
-		[Category("TextPlacement")]
-		public Boolean? textRotation {
-			get {
-				return _textRotation;
-			}
-			set {
-				SetValue(ref _textRotation, value);
-			}
-		}
-		[Category("TextPlacement")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
-		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
-		public ObservableCollection<textType> textType  { get; set; } = new ();
-
-		[Browsable(false)]
-		public textType[] textTypeList => [(textType)1];
-		private int? _scaleMinimum  = default;
-
-		[Category("TextPlacement")]
-		public int? scaleMinimum {
-			get {
-				return _scaleMinimum;
-			}
-			set {
-				SetValue(ref _scaleMinimum, value);
-			}
-		}
-
-
-		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) {
-			textOffsetBearing = instance.textOffsetBearing;
-			textOffsetDistance = instance.textOffsetDistance;
-			textRotation = instance.textRotation;
-			textType.Clear();
-			if (instance.textType is not null) {
-				foreach(var e in instance.textType)
-					textType.Add(e);
-			}
-			scaleMinimum = instance.scaleMinimum;
-			return this;
-		}
-
-		public override string Serialize() {
-			var instance = new TextPlacement {
-				textOffsetBearing = this.textOffsetBearing,
-				textOffsetDistance = this.textOffsetDistance,
-				textRotation = this.textRotation,
-				textType = this.textType.ToList(),
-				scaleMinimum = this.scaleMinimum,
-			};
-			return System.Text.Json.JsonSerializer.Serialize(instance);
-		}
-
-		[Browsable(false)]
-		public TextPlacement Model => new () {
-			textOffsetBearing = this._textOffsetBearing,
-			textOffsetDistance = this._textOffsetDistance,
-			textRotation = this._textRotation,
-			textType = this.textType.ToList(),
-			scaleMinimum = this._scaleMinimum,
-		};
-		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
-		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
-
-		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
-
-		public override string? ToString() => $"Text Placement";
-
-		public TextPlacementViewModel() : base() {
-			textType.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
-				OnPropertyChanged(nameof(textType));
 			};
 		}
 	}
