@@ -31,7 +31,7 @@ namespace TestS100Framework
     {        
         public class UnitTestCodeBuilder
         {
-            public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(@".\..\..\..\..\..\..\artifacts\Product Specifications", ps));
+            public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(@".\..\..\..\..\..\..\..\artifacts\Product Specifications", ps));
 
             static string[] productSpecifications = new string[] {
                     @".\Artifacts\FeatureCatalogue.xml",
@@ -75,40 +75,40 @@ namespace TestS100Framework
             [Fact]
             public void Build_KnownFeatureCatalogues() {
                 Build_S101();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\S-101_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-101_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-101_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-101_ViewModel.cs"));
 
                 Build_S122();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\S-122_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-122_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-122_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-122_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-122_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-122_ViewModel.cs"));
 
                 Build_S123();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-123_FC.g.cs", File.ReadAllText(@".\..\..\..\S-123_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-123_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-123_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-123_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-123_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-123_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-123_ViewModel.cs"));
 
                 Build_S124();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\S-124_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-124_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_ViewModel.cs"));
 
                 Build_S127();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\S-127_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-127_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
 
                 Build_S128();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\S-128_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-128_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-128_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-128_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_ViewModel.cs"));
 
                 Build_S131();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-131_FC.g.cs", File.ReadAllText(@".\..\..\..\S-131_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-131_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-131_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-131_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-131_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-131_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-131_ViewModel.cs"));
 
                 Build_S201();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-201_FC.g.cs", File.ReadAllText(@".\..\..\..\S-201_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-201_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-201_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-201_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-201_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_ViewModel.cs"));
 
                 Build_S501();
-                File.WriteAllText(@"..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\S-501_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\S-501_ViewModel.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-501_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-501_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-501_ViewModel.cs"));
             }
 
 
@@ -141,7 +141,6 @@ namespace TestS100Framework
 
                 Assert.True(VerifyProductSpecification(s100));
 
-
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
                     new S100Framework.Applications.Roslyn.AttributeRule("UnderwaterAwashRock.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
@@ -173,8 +172,8 @@ namespace TestS100Framework
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-101_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-101_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -187,8 +186,8 @@ namespace TestS100Framework
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-122_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-122_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -205,8 +204,8 @@ namespace TestS100Framework
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-123_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-123_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-123_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-123_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -223,8 +222,8 @@ namespace TestS100Framework
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-124_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-124_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -240,8 +239,8 @@ namespace TestS100Framework
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
 
-                File.WriteAllText(@".\..\..\..\S-125_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-125_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-125_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-125_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -256,8 +255,8 @@ namespace TestS100Framework
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-127_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-127_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-127_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-127_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -273,8 +272,8 @@ namespace TestS100Framework
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S128/2.0");
 
-                File.WriteAllText(@".\..\..\..\S-128_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-128_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-128_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-128_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -289,8 +288,8 @@ namespace TestS100Framework
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S131/1.0");
 
-                File.WriteAllText(@".\..\..\..\S-131_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-131_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-131_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-131_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -303,8 +302,8 @@ namespace TestS100Framework
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder(s100, "http://www.iho.int/S100FC/5.0");
 
-                File.WriteAllText(@".\..\..\..\S-201_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-201_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-201_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-201_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
             [Fact]
@@ -318,8 +317,8 @@ namespace TestS100Framework
 
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
-                File.WriteAllText(@".\..\..\..\S-501_FC.cs", content.DomainModel, Encoding.UTF8);
-                File.WriteAllText(@".\..\..\..\S-501_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-501_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-501_ViewModel.cs", content.ViewModel, Encoding.UTF8);
             }
 
 
