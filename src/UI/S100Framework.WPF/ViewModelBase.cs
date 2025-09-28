@@ -33,12 +33,7 @@ namespace S100Framework.WPF.ViewModel
     {
     }
 
-    public interface IUnknownValues
-    {
-        bool this[string propertyName] { get; set; }
-    }
-
-    public abstract class ViewModelBase : IUnknownValues, INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
     {
         public ViewModelBase() {
             this.PropertyChanged += (sender, e) => {
@@ -94,7 +89,6 @@ namespace S100Framework.WPF.ViewModel
         }
 
         #endregion
-
 
         #region INotifyDataErrorInfo
 
@@ -198,7 +192,6 @@ namespace S100Framework.WPF.ViewModel
         #endregion
 
         #region IDisposable
-
         public void Dispose() {   // need to make sure that we unsubscibed
             foreach (ViewModelBase viewModel in nestedProperties.Keys) {
                 viewModel.PropertyChanged -= ChildViewModelChanged;
@@ -218,8 +211,7 @@ namespace S100Framework.WPF.ViewModel
                 if (required != default) {
                     var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
                     if (value is null) {
-                        if (this[p.Name] == false)
-                            this.AddError(p.Name, $"{p.Name} is required.");
+                        // UNKNOWN, this.AddError(p.Name, $"{p.Name} is required.");
                     }
                 }
 
@@ -238,26 +230,6 @@ namespace S100Framework.WPF.ViewModel
             //foreach (var e in this.GetErrors().Where(e => !errors.Contains(e)))
             //    this.OnErrorsChanged(e);
         }
-
-        #region IUnknownValues
-
-        public bool this[string propertyName] {
-            get { return _unknownValues.Contains(propertyName); }
-            set {
-                if (value) {
-                    if (!_unknownValues.Contains(propertyName))
-                        _unknownValues = [.. _unknownValues, propertyName];
-                }
-                else {
-                    _unknownValues = [.. _unknownValues.Except([propertyName])];
-                }
-                this.OnPropertyChanged(propertyName);
-            }
-        }
-
-        private string[] _unknownValues = [];
-
-        #endregion
     }
 
     public abstract class AssociationViewModel : ViewModelBase
