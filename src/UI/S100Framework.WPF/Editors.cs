@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using S100Framework.DomainModel;
+using S100Framework.WPF.ViewModel;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -346,6 +348,8 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
+            var viewModel = propertyItem.Instance as ViewModelBase;
+
             var instance = (T)propertyItem.Value;
 
             var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
@@ -361,21 +365,23 @@ namespace S100Framework.WPF.Editors
                     GroupName = propertyItem.DisplayName,
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center,
-                    IsChecked = instance == null,
+                    IsChecked = viewModel![propertyItem.DisplayName],
                     Margin = new Thickness(0, 0, 18, 0),
                 };
-                radioButtonUnknown.Checked += (s, e) => {
+                radioButtonUnknown.Checked += (sender, e) => {
                     //OnPropertyChanged(nameof(instance));
                 };
 
                 var editor = new PropertyGridEditorComboBox() {
                 };
-                editor.SelectionChanged += (s, e) => {
-                    radioButtonUnknown.IsChecked = false;
+                editor.SelectionChanged += (sender, e) => {
+                    radioButtonUnknown.IsChecked = viewModel[propertyItem.DisplayName] = false;
                 };
-                radioButtonUnknown.Click += (s, e) => {
-                    editor.SelectedValue = null;
-                    radioButtonUnknown.IsChecked = true;
+                radioButtonUnknown.Click += (sender, e) => {
+                    if (editor.SelectedValue != null)
+                        editor.SelectedValue = null;
+                    else
+                        radioButtonUnknown.IsChecked = viewModel[propertyItem.DisplayName] = true;
                 };
 
                 var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
@@ -396,9 +402,14 @@ namespace S100Framework.WPF.Editors
                     VerticalAlignment = VerticalAlignment.Center,
                 };
 
-                var editor = new PropertyGridEditorCheckBox();
+                var editor = new PropertyGridEditorCheckBox {
+                };
 
                 editor.IsThreeState = true;
+
+                editor.Click += (sender, e) => {
+                    viewModel![propertyItem.DisplayName] = ((PropertyGridEditorCheckBox)e.Source).IsChecked is null;
+                };
 
                 var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
                 BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
@@ -416,21 +427,26 @@ namespace S100Framework.WPF.Editors
                     GroupName = propertyItem.DisplayName,
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center,
-                    IsChecked = instance == null,
+                    //IsChecked = instance == null,
+                    IsChecked = viewModel![propertyItem.DisplayName],
                     Margin = new Thickness(0, 0, 18, 0),
                 };
-                radioButtonUnknown.Checked += (s, e) => {
+                radioButtonUnknown.Checked += (sender, e) => {
                     //OnPropertyChanged(nameof(instance));
                 };
 
                 if (propertyType == typeof(double) || propertyType == typeof(int) || propertyType == typeof(Int32)) {
-                    var editor = new PropertyGridEditorDecimalUpDown();
-                    editor.ValueChanged += (s, e) => {
-                        radioButtonUnknown.IsChecked = !editor.Value.HasValue;
+                    var editor = new PropertyGridEditorDecimalUpDown {
+                        //Watermark = "[UNKNOWN]",                        
                     };
-                    radioButtonUnknown.Click += (s, e) => {
-                        editor.Value = default;
-                        radioButtonUnknown.IsChecked = true;
+                    editor.ValueChanged += (sender, e) => {
+                        radioButtonUnknown.IsChecked = viewModel![propertyItem.DisplayName] = !editor.Value.HasValue;
+                    };
+                    radioButtonUnknown.Click += (sender, e) => {
+                        if (editor.Value != default)
+                            editor.Value = default;
+                        else
+                            radioButtonUnknown.IsChecked = viewModel![propertyItem.DisplayName] = true;
                     };
                     var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
                     BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);

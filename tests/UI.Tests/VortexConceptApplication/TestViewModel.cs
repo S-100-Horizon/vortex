@@ -35,9 +35,20 @@ namespace VortexConceptApplication
             }
         }
 
-
-
         private String _interoperabilityIdentifier2;
+
+        [Category("Test")]
+        [Editor(typeof(S100Framework.WPF.Editors.UnknownEditor<bool?>), typeof(S100Framework.WPF.Editors.UnknownEditor<bool?>))]
+        public bool? Bool {
+            get {
+                return _bool;
+            }
+            set {
+                SetValue(ref _bool, value);
+            }
+        }
+
+        private bool? _bool;
 
         [Category("Test")]
         public String interoperabilityIdentifier2 {

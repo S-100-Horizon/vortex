@@ -89,6 +89,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		private String? _administrativeDivision  = default;
 
+		[Optional]
 		public String? administrativeDivision {
 			get {
 				return _administrativeDivision;
@@ -99,6 +100,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _cityName  = default;
 
+		[Optional]
 		public String? cityName {
 			get {
 				return _cityName;
@@ -109,6 +111,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _countryName  = default;
 
+		[Optional]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -118,9 +121,11 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("contactAddress")]
+		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _postalCode  = default;
 
+		[Optional]
 		public String? postalCode {
 			get {
 				return _postalCode;
@@ -186,6 +191,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private double _paperWidth  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double paperWidth {
 			get {
 				return _paperWidth;
@@ -197,6 +203,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private double _paperLength  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double paperLength {
 			get {
 				return _paperLength;
@@ -243,6 +250,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _characterEncoding  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String characterEncoding {
 			get {
 				return _characterEncoding;
@@ -254,6 +262,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _countryName  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String countryName {
 			get {
 				return _countryName;
@@ -264,6 +273,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -312,6 +322,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -323,6 +334,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -335,6 +347,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(nameUsageList), typeof(nameUsage))]
+		[Optional]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -386,6 +399,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Optional]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -396,6 +410,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _fileReference  = default;
 
+		[Optional]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -406,6 +421,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _headline  = default;
 
+		[Optional]
 		public String? headline {
 			get {
 				return _headline;
@@ -416,6 +432,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -425,6 +442,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("information")]
+		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
 
@@ -484,6 +502,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("issuanceCycle")]
 		[ExpandableObject]
+		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
 			get {
 				return _periodicDateRange;
@@ -496,6 +515,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("issuanceCycle")]
 		[ExpandableObject]
+		[Optional]
 		public timeIntervalOfCycleViewModel? timeIntervalOfCycle {
 			get {
 				return _timeIntervalOfCycle;
@@ -547,6 +567,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String? _applicationProfile  = default;
 
+		[Optional]
 		public String? applicationProfile {
 			get {
 				return _applicationProfile;
@@ -558,6 +579,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _linkage  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String linkage {
 			get {
 				return _linkage;
@@ -568,6 +590,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _nameOfResource  = default;
 
+		[Optional]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -578,6 +601,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _onlineDescription  = default;
 
+		[Optional]
 		public String? onlineDescription {
 			get {
 				return _onlineDescription;
@@ -588,6 +612,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _protocol  = default;
 
+		[Optional]
 		public String? protocol {
 			get {
 				return _protocol;
@@ -598,6 +623,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _protocolRequest  = default;
 
+		[Optional]
 		public String? protocolRequest {
 			get {
 				return _protocolRequest;
@@ -657,6 +683,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -669,6 +696,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -714,6 +742,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class pricingViewModel : ComplexViewModel<pricing> {
 		private String? _contractPeriod  = default;
 
+		[Optional]
 		public String? contractPeriod {
 			get {
 				return _contractPeriod;
@@ -725,6 +754,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _currency  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String currency {
 			get {
 				return _currency;
@@ -736,6 +766,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private double _price  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double price {
 			get {
 				return _price;
@@ -784,6 +815,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class printInformationViewModel : ComplexViewModel<printInformation> {
 		private String? _printAgency  = default;
 
+		[Optional]
 		public String? printAgency {
 			get {
 				return _printAgency;
@@ -794,6 +826,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _printNation  = default;
 
+		[Optional]
 		public String? printNation {
 			get {
 				return _printNation;
@@ -804,6 +837,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _reprintEdition  = default;
 
+		[Optional]
 		public String? reprintEdition {
 			get {
 				return _reprintEdition;
@@ -814,6 +848,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _reprintNation  = default;
 
+		[Optional]
 		public String? reprintNation {
 			get {
 				return _reprintNation;
@@ -826,6 +861,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("printInformation")]
 		[ExpandableObject]
+		[Mandatory]
 		public printSizeViewModel printSize {
 			get {
 				return _printSize;
@@ -885,6 +921,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSO216List), typeof(iSO216))]
+		[Optional]
 		public iSO216? iSO216 {
 			get {
 				return _iSO216;
@@ -900,6 +937,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("printSize")]
 		[ExpandableObject]
+		[Optional]
 		public customPaperSizeViewModel? customPaperSize {
 			get {
 				return _customPaperSize;
@@ -949,6 +987,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -959,6 +998,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _iSSN  = default;
 
+		[Optional]
 		public String? iSSN {
 			get {
 				return _iSSN;
@@ -970,6 +1010,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -981,6 +1022,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _version  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String version {
 			get {
 				return _version;
@@ -1032,6 +1074,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class supportFileViewModel : ComplexViewModel<supportFile> {
 		private String? _comment  = default;
 
+		[Optional]
 		public String? comment {
 			get {
 				return _comment;
@@ -1044,6 +1087,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.UnknownEditor<digitalSignatureReference?>), typeof(Editors.UnknownEditor<digitalSignatureReference?>))]
 		[DomainModel.EnumerationAttribute(nameof(digitalSignatureReferenceList), typeof(digitalSignatureReference))]
+		[Mandatory]
 		public digitalSignatureReference digitalSignatureReference {
 			get {
 				return _digitalSignatureReference;
@@ -1059,6 +1103,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(digitalSignatureValueList), typeof(digitalSignatureValue))]
+		[Optional]
 		public digitalSignatureValue? digitalSignatureValue {
 			get {
 				return _digitalSignatureValue;
@@ -1072,6 +1117,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public digitalSignatureValue[] digitalSignatureValueList => [(digitalSignatureValue)1,(digitalSignatureValue)2];
 		private int? _editionNumber  = default;
 
+		[Optional]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -1083,6 +1129,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _fileLocator  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String fileLocator {
 			get {
 				return _fileLocator;
@@ -1094,6 +1141,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _fileName  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String fileName {
 			get {
 				return _fileName;
@@ -1104,6 +1152,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly? _issueDate  = default;
 
+		[Optional]
 		public DateOnly? issueDate {
 			get {
 				return _issueDate;
@@ -1114,6 +1163,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _otherDataTypeDescription  = default;
 
+		[Optional]
 		public String? otherDataTypeDescription {
 			get {
 				return _otherDataTypeDescription;
@@ -1126,6 +1176,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.UnknownEditor<supportFileFormat?>), typeof(Editors.UnknownEditor<supportFileFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFileFormatList), typeof(supportFileFormat))]
+		[Mandatory]
 		public supportFileFormat supportFileFormat {
 			get {
 				return _supportFileFormat;
@@ -1141,6 +1192,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.UnknownEditor<supportFilePurpose?>), typeof(Editors.UnknownEditor<supportFilePurpose?>))]
 		[DomainModel.EnumerationAttribute(nameof(supportFilePurposeList), typeof(supportFilePurpose))]
+		[Mandatory]
 		public supportFilePurpose supportFilePurpose {
 			get {
 				return _supportFilePurpose;
@@ -1156,6 +1208,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("supportFile")]
 		[ExpandableObject]
+		[Mandatory]
 		public defaultLocaleViewModel defaultLocale {
 			get {
 				return _defaultLocale;
@@ -1168,6 +1221,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("supportFile")]
 		[ExpandableObject]
+		[Mandatory]
 		public supportFileSpecificationViewModel supportFileSpecification {
 			get {
 				return _supportFileSpecification;
@@ -1250,6 +1304,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1261,6 +1316,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -1272,6 +1328,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _version  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String version {
 			get {
 				return _version;
@@ -1321,6 +1378,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -1332,6 +1390,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -1343,6 +1402,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _version  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String version {
 			get {
 				return _version;
@@ -1393,6 +1453,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -1406,6 +1467,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16,(categoryOfAuthority)17,(categoryOfAuthority)18,(categoryOfAuthority)19];
 		private String? _countryName  = default;
 
+		[Optional]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -1416,6 +1478,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private DateOnly? _reportedDate  = default;
 
+		[Optional]
 		public DateOnly? reportedDate {
 			get {
 				return _reportedDate;
@@ -1426,6 +1489,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 		private String? _source  = default;
 
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -1438,6 +1502,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1450,6 +1515,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 		[Category("sourceIndication")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
@@ -1511,6 +1577,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _contactInstructions  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1522,6 +1589,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String _telecommunicationIdentifier  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1533,6 +1601,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("telecommunications")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
+		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1587,6 +1656,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class timeIntervalOfProductViewModel : ComplexViewModel<timeIntervalOfProduct> {
 		private DateOnly? _expirationDate  = default;
 
+		[Optional]
 		public DateOnly? expirationDate {
 			get {
 				return _expirationDate;
@@ -1598,6 +1668,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _issueDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -1610,6 +1681,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("timeIntervalOfProduct")]
 		[ExpandableObject]
+		[Optional]
 		public issuanceCycleViewModel? issuanceCycle {
 			get {
 				return _issuanceCycle;
@@ -1662,6 +1734,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("timeIntervalOfCycle")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfTimeIntervalUnitList), typeof(typeOfTimeIntervalUnit))]
+		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1669,6 +1742,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int _valueOfTime  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int valueOfTime {
 			get {
 				return _valueOfTime;
@@ -1725,6 +1799,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly _publicationDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly publicationDate {
 			get {
 				return _publicationDate;
@@ -1737,6 +1812,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("referenceToNM")]
 		[ExpandableObject]
+		[Optional]
 		public weekOfYearViewModel? weekOfYear {
 			get {
 				return _weekOfYear;
@@ -1786,6 +1862,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int _weekNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int weekNumber {
 			get {
 				return _weekNumber;
@@ -1797,6 +1874,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int _yearNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int yearNumber {
 			get {
 				return _yearNumber;
@@ -2086,6 +2164,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("ProductMapping")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfProductMapping?>), typeof(Editors.UnknownEditor<categoryOfProductMapping?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfProductMappingList), typeof(categoryOfProductMapping))]
+		[Mandatory]
 		public categoryOfProductMapping categoryOfProductMapping {
 			get {
 				return _categoryOfProductMapping;
@@ -2163,6 +2242,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueSectionHeader")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int catalogueSectionNumber {
 			get {
 				return _catalogueSectionNumber;
@@ -2174,6 +2254,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _catalogueSectionTitle  = default;
 
 		[Category("CatalogueSectionHeader")]
+		[Optional]
 		public String? catalogueSectionTitle {
 			get {
 				return _catalogueSectionTitle;
@@ -2186,6 +2267,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueSectionHeader")]
 		[ExpandableObject]
+		[Optional]
 		public informationViewModel? information {
 			get {
 				return _information;
@@ -2242,6 +2324,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String contactInstructions {
 			get {
 				return _contactInstructions;
@@ -2251,14 +2334,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 
@@ -2351,6 +2439,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _domesticCarriageRequirements  = default;
 
 		[Category("IndicationOfCarriageRequirement")]
+		[Optional]
 		public String? domesticCarriageRequirements {
 			get {
 				return _domesticCarriageRequirements;
@@ -2362,6 +2451,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _internationalCarriageRequirements  = default;
 
 		[Category("IndicationOfCarriageRequirement")]
+		[Optional]
 		public String? internationalCarriageRequirements {
 			get {
 				return _internationalCarriageRequirements;
@@ -2371,6 +2461,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("IndicationOfCarriageRequirement")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
@@ -2424,12 +2515,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PriceInformationViewModel : InformationViewModel<PriceInformation> {
 		[Category("PriceInformation")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("PriceInformation")]
+		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("PriceInformation")]
+		[Optional]
 		public ObservableCollection<pricingViewModel> pricing  { get; set; } = new ();
 		[Category("PriceInformation")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 
@@ -2510,6 +2605,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("ProducerInformation")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -2521,6 +2617,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _agencyName  = default;
 
 		[Category("ProducerInformation")]
+		[Optional]
 		public String? agencyName {
 			get {
 				return _agencyName;
@@ -2571,6 +2668,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("DistributorInformation")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String distributorName {
 			get {
 				return _distributorName;
@@ -2617,6 +2715,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _agencyResponsibleForProduction  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -2628,6 +2727,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
+		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2635,6 +2735,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _catalogueElementIdentifier  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -2646,6 +2747,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _classification  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? classification {
 			get {
 				return _classification;
@@ -2657,6 +2759,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2665,6 +2768,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -2674,13 +2778,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -2693,6 +2800,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -2702,11 +2810,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -2717,14 +2827,17 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
+		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
+		[Optional]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -2739,6 +2852,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _editionNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -2750,6 +2864,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _maximumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -2761,6 +2876,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _minimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -2772,6 +2888,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
+		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2779,6 +2896,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _optimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
@@ -2790,6 +2908,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _originalProductNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? originalProductNumber {
 			get {
 				return _originalProductNumber;
@@ -2801,6 +2920,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _producerNation  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? producerNation {
 			get {
 				return _producerNation;
@@ -2812,6 +2932,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _productNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? productNumber {
 			get {
 				return _productNumber;
@@ -2825,6 +2946,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
+		[Optional]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -2839,6 +2961,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly? _updateDate  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public DateOnly? updateDate {
 			get {
 				return _updateDate;
@@ -2850,6 +2973,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _updateNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? updateNumber {
 			get {
 				return _updateNumber;
@@ -2861,6 +2985,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public horizontalDatumEPSGCode? horizontalDatumEPSGCode {
 			get {
 				return _horizontalDatumEPSGCode;
@@ -2874,6 +2999,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
+		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -2889,6 +3015,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean? _compressionFlag  = default;
 
 		[Category("ElectronicProduct")]
+		[Optional]
 		public Boolean? compressionFlag {
 			get {
 				return _compressionFlag;
@@ -2900,6 +3027,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _datasetName  = default;
 
 		[Category("ElectronicProduct")]
+		[Optional]
 		public String? datasetName {
 			get {
 				return _datasetName;
@@ -2912,6 +3040,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly issueDate {
 			get {
 				return _issueDate;
@@ -2923,6 +3052,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private S100Framework.DomainModel.S100.Time? _issueTime  = default;
 
 		[Category("ElectronicProduct")]
+		[Optional]
 		public S100Framework.DomainModel.S100.Time? issueTime {
 			get {
 				return _issueTime;
@@ -2936,6 +3066,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("ElectronicProduct")]
 		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
+		[Mandatory]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;
@@ -2951,6 +3082,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("ElectronicProduct")]
 		[ExpandableObject]
+		[Optional]
 		public productSpecificationViewModel? productSpecification {
 			get {
 				return _productSpecification;
@@ -3170,6 +3302,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _agencyResponsibleForProduction  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -3181,6 +3314,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
+		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3188,6 +3322,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _catalogueElementIdentifier  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -3199,6 +3334,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _classification  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? classification {
 			get {
 				return _classification;
@@ -3210,6 +3346,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3218,6 +3355,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3227,13 +3365,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3246,6 +3387,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3255,11 +3397,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -3270,14 +3414,17 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
+		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
 
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(distributionStatusList), typeof(distributionStatus))]
+		[Optional]
 		public distributionStatus? distributionStatus {
 			get {
 				return _distributionStatus;
@@ -3292,6 +3439,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _editionNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? editionNumber {
 			get {
 				return _editionNumber;
@@ -3303,6 +3451,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _maximumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -3314,6 +3463,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _minimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -3325,6 +3475,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(navigationPurposeList), typeof(navigationPurpose))]
+		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3332,6 +3483,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _optimumDisplayScale  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? optimumDisplayScale {
 			get {
 				return _optimumDisplayScale;
@@ -3343,6 +3495,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _originalProductNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? originalProductNumber {
 			get {
 				return _originalProductNumber;
@@ -3354,6 +3507,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _producerNation  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? producerNation {
 			get {
 				return _producerNation;
@@ -3365,6 +3519,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _productNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public String? productNumber {
 			get {
 				return _productNumber;
@@ -3378,6 +3533,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(specificUsageList), typeof(specificUsage))]
+		[Optional]
 		public specificUsage? specificUsage {
 			get {
 				return _specificUsage;
@@ -3392,6 +3548,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private DateOnly? _updateDate  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public DateOnly? updateDate {
 			get {
 				return _updateDate;
@@ -3403,6 +3560,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private int? _updateNumber  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public int? updateNumber {
 			get {
 				return _updateNumber;
@@ -3414,6 +3572,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private horizontalDatumEPSGCode? _horizontalDatumEPSGCode  = default;
 
 		[Category("NavigationalProduct")]
+		[Optional]
 		public horizontalDatumEPSGCode? horizontalDatumEPSGCode {
 			get {
 				return _horizontalDatumEPSGCode;
@@ -3427,6 +3586,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("NavigationalProduct")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
+		[Optional]
 		public verticalDatum? verticalDatum {
 			get {
 				return _verticalDatum;
@@ -3443,6 +3603,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("PhysicalProduct")]
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -3454,6 +3615,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _iSBN  = default;
 
 		[Category("PhysicalProduct")]
+		[Optional]
 		public String? iSBN {
 			get {
 				return _iSBN;
@@ -3465,6 +3627,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _publicationNumber  = default;
 
 		[Category("PhysicalProduct")]
+		[Optional]
 		public String? publicationNumber {
 			get {
 				return _publicationNumber;
@@ -3476,6 +3639,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _typeOfPhysicalProduct  = default;
 
 		[Category("PhysicalProduct")]
+		[Optional]
 		public String? typeOfPhysicalProduct {
 			get {
 				return _typeOfPhysicalProduct;
@@ -3488,6 +3652,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("PhysicalProduct")]
 		[ExpandableObject]
+		[Optional]
 		public printInformationViewModel? printInformation {
 			get {
 				return _printInformation;
@@ -3500,6 +3665,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("PhysicalProduct")]
 		[ExpandableObject]
+		[Optional]
 		public referenceToNMViewModel? referenceToNM {
 			get {
 				return _referenceToNM;
@@ -3722,6 +3888,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _agencyResponsibleForProduction  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -3733,6 +3900,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(catalogueElementClassificationList), typeof(catalogueElementClassification))]
+		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3740,6 +3908,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _catalogueElementIdentifier  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? catalogueElementIdentifier {
 			get {
 				return _catalogueElementIdentifier;
@@ -3751,6 +3920,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _classification  = default;
 
 		[Category("CatalogueElement")]
+		[Optional]
 		public String? classification {
 			get {
 				return _classification;
@@ -3762,6 +3932,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iMOMaritimeServiceList), typeof(iMOMaritimeService))]
+		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3770,6 +3941,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean notForNavigation {
 			get {
 				return _notForNavigation;
@@ -3779,13 +3951,16 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -3798,6 +3973,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -3807,11 +3983,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
+		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
 
 		[Category("CatalogueElement")]
 		[ExpandableObject]
+		[Optional]
 		public timeIntervalOfProductViewModel? timeIntervalOfProduct {
 			get {
 				return _timeIntervalOfProduct;
@@ -3824,6 +4002,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private Boolean? _compressionFlag  = default;
 
 		[Category("S100Service")]
+		[Optional]
 		public Boolean? compressionFlag {
 			get {
 				return _compressionFlag;
@@ -3835,6 +4014,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		private String? _serviceName  = default;
 
 		[Category("S100Service")]
+		[Optional]
 		public String? serviceName {
 			get {
 				return _serviceName;
@@ -3848,6 +4028,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("S100Service")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(serviceStatusList), typeof(serviceStatus))]
+		[Optional]
 		public serviceStatus? serviceStatus {
 			get {
 				return _serviceStatus;
@@ -3864,6 +4045,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("S100Service")]
 		[Editor(typeof(Editors.UnknownEditor<typeOfProductFormat?>), typeof(Editors.UnknownEditor<typeOfProductFormat?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfProductFormatList), typeof(typeOfProductFormat))]
+		[Mandatory]
 		public typeOfProductFormat typeOfProductFormat {
 			get {
 				return _typeOfProductFormat;
@@ -3879,6 +4061,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("S100Service")]
 		[ExpandableObject]
+		[Optional]
 		public serviceSpecificationViewModel? serviceSpecification {
 			get {
 				return _serviceSpecification;
@@ -3891,6 +4074,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("S100Service")]
 		[ExpandableObject]
+		[Optional]
 		public productSpecificationViewModel? productSpecification {
 			get {
 				return _productSpecification;

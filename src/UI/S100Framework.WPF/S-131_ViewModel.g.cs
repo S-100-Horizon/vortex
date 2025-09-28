@@ -147,6 +147,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(cardinalDirectionList), typeof(cardinalDirection))]
+		[Optional]
 		public cardinalDirection? cardinalDirection {
 			get {
 				return _cardinalDirection;
@@ -160,6 +161,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
 		private double? _distance  = default;
 
+		[Optional]
 		public double? distance {
 			get {
 				return _distance;
@@ -169,13 +171,16 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("bearingInformation")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
 
 		[Category("bearingInformation")]
 		[ExpandableObject]
+		[Optional]
 		public orientationViewModel? orientation {
 			get {
 				return _orientation;
@@ -249,6 +254,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class cargoServicesDescriptionViewModel : ComplexViewModel<cargoServicesDescription> {
 		[Category("cargoServicesDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -296,6 +302,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("constructionInformation")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -308,6 +315,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(conditionList), typeof(condition))]
+		[Optional]
 		public condition? condition {
 			get {
 				return _condition;
@@ -322,6 +330,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _development  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String development {
 			get {
 				return _development;
@@ -332,6 +341,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _locationByText  = default;
 
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -341,6 +351,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("constructionInformation")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -400,9 +411,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		[Category("contactAddress")]
+		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _cityName  = default;
 
+		[Optional]
 		public String? cityName {
 			get {
 				return _cityName;
@@ -413,6 +426,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _administrativeDivision  = default;
 
+		[Optional]
 		public String? administrativeDivision {
 			get {
 				return _administrativeDivision;
@@ -423,6 +437,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _countryName  = default;
 
+		[Optional]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -433,6 +448,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _postalCode  = default;
 
+		[Optional]
 		public String? postalCode {
 			get {
 				return _postalCode;
@@ -499,6 +515,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>), typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDepthsDescriptionList), typeof(categoryOfDepthsDescription))]
+		[Mandatory]
 		public categoryOfDepthsDescription categoryOfDepthsDescription {
 			get {
 				return _categoryOfDepthsDescription;
@@ -511,6 +528,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfDepthsDescription[] categoryOfDepthsDescriptionList => [(categoryOfDepthsDescription)1,(categoryOfDepthsDescription)2,(categoryOfDepthsDescription)3];
 		[Category("depthsDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -558,6 +576,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class facilitiesLayoutDescriptionViewModel : ComplexViewModel<facilitiesLayoutDescription> {
 		[Category("facilitiesLayoutDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -603,6 +622,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private Boolean? _displayName  = default;
 
+		[Optional]
 		public Boolean? displayName {
 			get {
 				return _displayName;
@@ -613,6 +633,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -624,6 +645,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -673,6 +695,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _dateStart  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -684,6 +707,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -728,10 +752,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<String> contactInstructions  { get; set; } = new ();
 
 
@@ -799,6 +826,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("generalHarbourInformation")]
 		[ExpandableObject]
+		[Optional]
 		public generalPortDescriptionViewModel? generalPortDescription {
 			get {
 				return _generalPortDescription;
@@ -811,6 +839,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("generalHarbourInformation")]
 		[ExpandableObject]
+		[Optional]
 		public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
 			get {
 				return _facilitiesLayoutDescription;
@@ -823,6 +852,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("generalHarbourInformation")]
 		[ExpandableObject]
+		[Optional]
 		public limitsDescriptionViewModel? limitsDescription {
 			get {
 				return _limitsDescription;
@@ -835,6 +865,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("generalHarbourInformation")]
 		[ExpandableObject]
+		[Optional]
 		public constructionInformationViewModel? constructionInformation {
 			get {
 				return _constructionInformation;
@@ -847,6 +878,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("generalHarbourInformation")]
 		[ExpandableObject]
+		[Optional]
 		public cargoServicesDescriptionViewModel? cargoServicesDescription {
 			get {
 				return _cargoServicesDescription;
@@ -856,6 +888,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("generalHarbourInformation")]
+		[Optional]
 		public ObservableCollection<weatherResourceViewModel> weatherResource  { get; set; } = new ();
 
 
@@ -930,6 +963,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class generalPortDescriptionViewModel : ComplexViewModel<generalPortDescription> {
 		[Category("generalPortDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -974,9 +1008,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
 		[Category("graphic")]
+		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 		private String? _pictureCaption  = default;
 
+		[Optional]
 		public String? pictureCaption {
 			get {
 				return _pictureCaption;
@@ -987,6 +1023,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private DateOnly? _sourceDate  = default;
 
+		[Optional]
 		public DateOnly? sourceDate {
 			get {
 				return _sourceDate;
@@ -997,6 +1034,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _pictureInformation  = default;
 
+		[Optional]
 		public String? pictureInformation {
 			get {
 				return _pictureInformation;
@@ -1009,6 +1047,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("graphic")]
 		[ExpandableObject]
+		[Optional]
 		public bearingInformationViewModel? bearingInformation {
 			get {
 				return _bearingInformation;
@@ -1077,6 +1116,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -1087,6 +1127,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Optional]
 		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
@@ -1132,6 +1173,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Optional]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -1142,6 +1184,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _fileReference  = default;
 
+		[Optional]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -1151,9 +1194,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("information")]
+		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -1164,6 +1209,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _text  = default;
 
+		[Optional]
 		public String? text {
 			get {
 				return _text;
@@ -1227,6 +1273,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class landmarkDescriptionViewModel : ComplexViewModel<landmarkDescription> {
 		[Category("landmarkDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -1271,6 +1318,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class limitsDescriptionViewModel : ComplexViewModel<limitsDescription> {
 		[Category("limitsDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -1315,6 +1363,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class majorLightDescriptionViewModel : ComplexViewModel<majorLightDescription> {
 		[Category("majorLightDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -1359,6 +1408,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class markedByViewModel : ComplexViewModel<markedBy> {
 		[Category("markedBy")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -1403,6 +1453,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class offshoreMarkDescriptionViewModel : ComplexViewModel<offshoreMarkDescription> {
 		[Category("offshoreMarkDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -1449,6 +1500,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _onlineResourceLinkageURL  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String onlineResourceLinkageURL {
 			get {
 				return _onlineResourceLinkageURL;
@@ -1459,6 +1511,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _protocol  = default;
 
+		[Optional]
 		public String? protocol {
 			get {
 				return _protocol;
@@ -1469,6 +1522,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _applicationProfile  = default;
 
+		[Optional]
 		public String? applicationProfile {
 			get {
 				return _applicationProfile;
@@ -1479,6 +1533,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _nameOfResource  = default;
 
+		[Optional]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -1489,6 +1544,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _onlineResourceDescription  = default;
 
+		[Optional]
 		public String? onlineResourceDescription {
 			get {
 				return _onlineResourceDescription;
@@ -1501,6 +1557,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(onlineFunctionList), typeof(onlineFunction))]
+		[Optional]
 		public onlineFunction? onlineFunction {
 			get {
 				return _onlineFunction;
@@ -1514,6 +1571,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public onlineFunction[] onlineFunctionList => [(onlineFunction)1,(onlineFunction)3,(onlineFunction)4,(onlineFunction)5,(onlineFunction)6,(onlineFunction)7,(onlineFunction)8,(onlineFunction)9,(onlineFunction)10,(onlineFunction)11];
 		private String? _protocolRequest  = default;
 
+		[Optional]
 		public String? protocolRequest {
 			get {
 				return _protocolRequest;
@@ -1574,6 +1632,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Optional]
 		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -1585,6 +1644,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double _orientationValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double orientationValue {
 			get {
 				return _orientationValue;
@@ -1632,6 +1692,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -1644,6 +1705,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1689,6 +1751,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class rxNCodeViewModel : ComplexViewModel<rxNCode> {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
+		[Optional]
 		public categoryOfRxN? categoryOfRxN {
 			get {
 				return _categoryOfRxN;
@@ -1702,6 +1765,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public categoryOfRxN[] categoryOfRxNList =>  CodeList.categoryOfRxNS.ToArray();
 		private actionOrActivity? _actionOrActivity  = default;
 
+		[Optional]
 		public actionOrActivity? actionOrActivity {
 			get {
 				return _actionOrActivity;
@@ -1714,6 +1778,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 		[Category("rxNCode")]
+		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 
 
@@ -1767,6 +1832,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList), typeof(categoryOfSchedule))]
+		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -1779,6 +1845,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 		[Category("scheduleByDayOfWeek")]
+		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
@@ -1829,6 +1896,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("spatialAccuracy")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -1841,6 +1909,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("spatialAccuracy")]
 		[ExpandableObject]
+		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -1853,6 +1922,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("spatialAccuracy")]
 		[ExpandableObject]
+		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -1911,6 +1981,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _dateStart  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -1923,6 +1994,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1970,6 +2042,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1984,6 +2057,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _telecommunicationIdentifier  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1994,6 +2068,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _telecommunicationCarrier  = default;
 
+		[Optional]
 		public String? telecommunicationCarrier {
 			get {
 				return _telecommunicationCarrier;
@@ -2004,6 +2079,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _contactInstructions  = default;
 
+		[Optional]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -2015,6 +2091,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("telecommunications")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
+		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2023,6 +2100,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("telecommunications")]
 		[ExpandableObject]
+		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
 			get {
 				return _scheduleByDayOfWeek;
@@ -2095,6 +2173,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTextList), typeof(categoryOfText))]
+		[Optional]
 		public categoryOfText? categoryOfText {
 			get {
 				return _categoryOfText;
@@ -2107,11 +2186,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 		[Category("textContent")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("textContent")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -2122,6 +2203,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String? _source  = default;
 
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -2134,6 +2216,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -2148,6 +2231,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _reportedDate  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -2219,12 +2303,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("timeIntervalsByDayOfWeek")]
 		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
+		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
 		[Browsable(false)]
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 		private Boolean? _dayOfWeekIsRange  = default;
 
+		[Optional]
 		public Boolean? dayOfWeekIsRange {
 			get {
 				return _dayOfWeekIsRange;
@@ -2234,8 +2320,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("timeIntervalsByDayOfWeek")]
+		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 		[Category("timeIntervalsByDayOfWeek")]
+		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
 
@@ -2303,6 +2391,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class usefulMarkDescriptionViewModel : ComplexViewModel<usefulMarkDescription> {
 		[Category("usefulMarkDescription")]
+		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -2349,6 +2438,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -2359,6 +2449,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private double? _uncertaintyVariableFactor  = default;
 
+		[Optional]
 		public double? uncertaintyVariableFactor {
 			get {
 				return _uncertaintyVariableFactor;
@@ -2406,6 +2497,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
+		[Mandatory]
 		public comparisonOperator comparisonOperator {
 			get {
 				return _comparisonOperator;
@@ -2421,6 +2513,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
+		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
 				return _vesselsCharacteristics;
@@ -2435,6 +2528,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double _vesselsCharacteristicsValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
@@ -2447,6 +2541,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
+		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
 				return _vesselsCharacteristicsUnit;
@@ -2503,6 +2598,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("weatherResource")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -2515,6 +2611,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
+		[Optional]
 		public dynamicResource? dynamicResource {
 			get {
 				return _dynamicResource;
@@ -2530,6 +2627,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("weatherResource")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -2858,6 +2956,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InclusionType")]
 		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
 		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
+		[Mandatory]
 		public membership membership {
 			get {
 				return _membership;
@@ -2905,6 +3004,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("PermissionType")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
+		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
 				return _categoryOfRelationship;
@@ -3248,11 +3348,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ApplicabilityViewModel : InformationViewModel<Applicability> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3262,12 +3364,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -3281,6 +3386,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3296,6 +3402,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3308,6 +3415,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private Boolean? _inBallast  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public Boolean? inBallast {
 			get {
 				return _inBallast;
@@ -3319,6 +3427,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3326,6 +3435,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3333,6 +3443,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
 				return _categoryOfVessel;
@@ -3349,6 +3460,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList), typeof(categoryOfVesselRegistry))]
+		[Optional]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
 				return _categoryOfVesselRegistry;
@@ -3365,6 +3477,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(logicalConnectivesList), typeof(logicalConnectives))]
+		[Optional]
 		public logicalConnectives? logicalConnectives {
 			get {
 				return _logicalConnectives;
@@ -3379,6 +3492,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private int? _thicknessOfIceCapability  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public int? thicknessOfIceCapability {
 			get {
 				return _thicknessOfIceCapability;
@@ -3390,6 +3504,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _vesselPerformance  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public String? vesselPerformance {
 			get {
 				return _vesselPerformance;
@@ -3399,8 +3514,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("Applicability")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("Applicability")]
+		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
 
@@ -3541,11 +3658,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AuthorityViewModel : InformationViewModel<Authority> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3555,12 +3674,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -3574,6 +3696,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3589,6 +3712,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3603,6 +3727,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Authority")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfAuthority?>), typeof(Editors.UnknownEditor<categoryOfAuthority?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3618,6 +3743,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("Authority")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -3716,11 +3842,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AvailablePortServicesViewModel : InformationViewModel<AvailablePortServices> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3730,12 +3858,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -3749,6 +3880,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -3764,6 +3896,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -3776,6 +3909,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(firefightingServiceList), typeof(firefightingService))]
+		[Optional]
 		public ObservableCollection<firefightingService> firefightingService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3783,6 +3917,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(medicalServiceList), typeof(medicalService))]
+		[Optional]
 		public ObservableCollection<medicalService> medicalService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3790,6 +3925,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(repairServiceList), typeof(repairService))]
+		[Optional]
 		public ObservableCollection<repairService> repairService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3797,6 +3933,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(technicalPortServiceList), typeof(technicalPortService))]
+		[Optional]
 		public ObservableCollection<technicalPortService> technicalPortService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3804,11 +3941,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(shipSanitationControlList), typeof(shipSanitationControl))]
+		[Optional]
 		public ObservableCollection<shipSanitationControl> shipSanitationControl  { get; set; } = new ();
 
 		[Browsable(false)]
 		public shipSanitationControl[] shipSanitationControlList => [(shipSanitationControl)1,(shipSanitationControl)2,(shipSanitationControl)3];
 		[Category("AvailablePortServices")]
+		[Optional]
 		public ObservableCollection<transportConnection> transportConnection  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3816,6 +3955,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(berthingAssistanceList), typeof(berthingAssistance))]
+		[Optional]
 		public ObservableCollection<berthingAssistance> berthingAssistance  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3823,11 +3963,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(cargoServiceList), typeof(cargoService))]
+		[Optional]
 		public ObservableCollection<cargoService> cargoService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public cargoService[] cargoServiceList => [(cargoService)1,(cargoService)2,(cargoService)3,(cargoService)4];
 		[Category("AvailablePortServices")]
+		[Optional]
 		public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3835,6 +3977,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(wasteDisposalServiceList), typeof(wasteDisposalService))]
+		[Optional]
 		public ObservableCollection<wasteDisposalService> wasteDisposalService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3842,6 +3985,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AvailablePortServices")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(supplyServiceList), typeof(supplyService))]
+		[Optional]
 		public ObservableCollection<supplyService> supplyService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3849,6 +3993,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _tugInformation  = default;
 
 		[Category("AvailablePortServices")]
+		[Optional]
 		public String? tugInformation {
 			get {
 				return _tugInformation;
@@ -3858,6 +4003,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("AvailablePortServices")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -4063,11 +4209,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ContactDetailsViewModel : InformationViewModel<ContactDetails> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4077,12 +4225,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -4096,6 +4247,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4111,6 +4263,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4123,6 +4276,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _callName  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? callName {
 			get {
 				return _callName;
@@ -4134,6 +4288,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _callSign  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? callSign {
 			get {
 				return _callSign;
@@ -4147,6 +4302,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -4159,12 +4315,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 		private String? _contactInstructions  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -4174,14 +4333,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<int> signalFrequency  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _mMSICode  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? mMSICode {
 			get {
 				return _mMSICode;
@@ -4191,8 +4354,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 
 
@@ -4360,11 +4525,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EntranceViewModel : InformationViewModel<Entrance> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4374,12 +4541,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -4393,6 +4563,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4408,6 +4579,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4420,6 +4592,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _entranceDescription  = default;
 
 		[Category("Entrance")]
+		[Optional]
 		public String? entranceDescription {
 			get {
 				return _entranceDescription;
@@ -4429,10 +4602,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<String> associatedFeatureName  { get; set; } = new ();
 		private String? _localKnowledgeDescription  = default;
 
 		[Category("Entrance")]
+		[Optional]
 		public String? localKnowledgeDescription {
 			get {
 				return _localKnowledgeDescription;
@@ -4444,6 +4619,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _approachDescription  = default;
 
 		[Category("Entrance")]
+		[Optional]
 		public String? approachDescription {
 			get {
 				return _approachDescription;
@@ -4453,16 +4629,22 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<markedByViewModel> markedBy  { get; set; } = new ();
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<landmarkDescriptionViewModel> landmarkDescription  { get; set; } = new ();
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<offshoreMarkDescriptionViewModel> offshoreMarkDescription  { get; set; } = new ();
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<majorLightDescriptionViewModel> majorLightDescription  { get; set; } = new ();
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<usefulMarkDescriptionViewModel> usefulMarkDescription  { get; set; } = new ();
 		[Category("Entrance")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -4624,11 +4806,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NauticalInformationViewModel : InformationViewModel<NauticalInformation> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4638,12 +4822,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -4657,6 +4844,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4672,6 +4860,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4686,6 +4875,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4698,8 +4888,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -4806,11 +4998,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NonStandardWorkingDayViewModel : InformationViewModel<NonStandardWorkingDay> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4820,12 +5014,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -4839,6 +5036,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -4854,6 +5052,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -4865,10 +5064,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("NonStandardWorkingDay")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
@@ -4981,11 +5183,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RecommendationsViewModel : InformationViewModel<Recommendations> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4995,12 +5199,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -5014,6 +5221,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5029,6 +5237,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5043,6 +5252,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -5055,8 +5265,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -5163,11 +5375,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RegulationsViewModel : InformationViewModel<Regulations> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5177,12 +5391,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -5196,6 +5413,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5211,6 +5429,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5225,6 +5444,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -5237,8 +5457,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -5345,11 +5567,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictionsViewModel : InformationViewModel<Restrictions> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5359,12 +5583,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -5378,6 +5605,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5393,6 +5621,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5407,6 +5636,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -5419,8 +5649,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -5527,11 +5759,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ServiceHoursViewModel : InformationViewModel<ServiceHours> {
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5541,12 +5775,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("InformationType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -5560,6 +5797,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("InformationType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5575,6 +5813,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5585,8 +5824,10 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		[Category("ServiceHours")]
+		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
 		[Category("ServiceHours")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
@@ -5693,6 +5934,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
 				return _qualityOfHorizontalMeasurement;
@@ -5705,6 +5947,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
 		[Category("SpatialQuality")]
+		[Optional]
 		public ObservableCollection<spatialAccuracyViewModel> spatialAccuracy  { get; set; } = new ();
 
 
@@ -5757,6 +6000,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -5768,6 +6012,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -5777,11 +6022,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5791,14 +6038,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -5812,6 +6063,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -5827,6 +6079,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -5836,6 +6089,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -5953,6 +6207,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -5964,6 +6219,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -5973,11 +6229,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5987,14 +6245,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -6008,6 +6270,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6023,6 +6286,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6032,6 +6296,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -6041,6 +6306,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("AnchorageArea")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -6052,6 +6318,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("AnchorageArea")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -6064,6 +6331,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("AnchorageArea")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -6077,6 +6345,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("AnchorageArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -6218,6 +6487,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -6229,6 +6499,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -6238,11 +6509,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6252,14 +6525,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -6273,6 +6550,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6288,6 +6566,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6297,6 +6576,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -6305,6 +6585,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _availableBerthingLength  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
@@ -6316,6 +6597,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _bollardDescription  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? bollardDescription {
 			get {
 				return _bollardDescription;
@@ -6327,6 +6609,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _bollardPull  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public double? bollardPull {
 			get {
 				return _bollardPull;
@@ -6338,6 +6621,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _minimumBerthDepth  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public double? minimumBerthDepth {
 			get {
 				return _minimumBerthDepth;
@@ -6349,6 +6633,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _elevation  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public double? elevation {
 			get {
 				return _elevation;
@@ -6360,6 +6645,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private Boolean? _cathodicProtectionSystem  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public Boolean? cathodicProtectionSystem {
 			get {
 				return _cathodicProtectionSystem;
@@ -6373,6 +6659,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Berth")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfBerthLocationList), typeof(categoryOfBerthLocation))]
+		[Optional]
 		public categoryOfBerthLocation? categoryOfBerthLocation {
 			get {
 				return _categoryOfBerthLocation;
@@ -6387,6 +6674,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _portFacilityNumber  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? portFacilityNumber {
 			get {
 				return _portFacilityNumber;
@@ -6396,10 +6684,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("Berth")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> bollardNumber  { get; set; } = new ();
 		private String? _gLNExtension  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? gLNExtension {
 			get {
 				return _gLNExtension;
@@ -6409,12 +6699,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("Berth")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> metreMarkNumber  { get; set; } = new ();
 		[Category("Berth")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> manifoldNumber  { get; set; } = new ();
 		private String? _rampNumber  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? rampNumber {
 			get {
 				return _rampNumber;
@@ -6426,6 +6719,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -6439,6 +6733,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Berth")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(methodOfSecuringList), typeof(methodOfSecuring))]
+		[Optional]
 		public methodOfSecuring? methodOfSecuring {
 			get {
 				return _methodOfSecuring;
@@ -6454,6 +6749,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("Berth")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String uNLocationCode {
 			get {
 				return _uNLocationCode;
@@ -6465,6 +6761,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _terminalIdentifier  = default;
 
 		[Category("Berth")]
+		[Optional]
 		public String? terminalIdentifier {
 			get {
 				return _terminalIdentifier;
@@ -6657,6 +6954,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -6668,6 +6966,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -6677,11 +6976,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6691,14 +6992,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -6712,6 +7017,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -6727,6 +7033,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -6736,6 +7043,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -6744,6 +7052,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _availableBerthingLength  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public double? availableBerthingLength {
 			get {
 				return _availableBerthingLength;
@@ -6755,6 +7064,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _bollardDescription  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public String? bollardDescription {
 			get {
 				return _bollardDescription;
@@ -6766,6 +7076,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _bollardPull  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public double? bollardPull {
 			get {
 				return _bollardPull;
@@ -6775,10 +7086,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("BerthPosition")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> bollardNumber  { get; set; } = new ();
 		private String? _gLNExtension  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public String? gLNExtension {
 			get {
 				return _gLNExtension;
@@ -6788,12 +7101,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("BerthPosition")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> metreMarkNumber  { get; set; } = new ();
 		[Category("BerthPosition")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<String> manifoldNumber  { get; set; } = new ();
 		private String? _rampNumber  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public String? rampNumber {
 			get {
 				return _rampNumber;
@@ -6805,6 +7121,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("BerthPosition")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -6973,6 +7290,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -6984,6 +7302,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -6993,11 +7312,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7007,14 +7328,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -7028,6 +7353,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7043,6 +7369,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7052,6 +7379,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -7061,6 +7389,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DockArea")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -7072,6 +7401,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("DockArea")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -7084,6 +7414,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DockArea")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -7097,6 +7428,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("DockArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -7238,6 +7570,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -7249,6 +7582,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -7258,11 +7592,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7272,14 +7608,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -7293,6 +7633,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7308,6 +7649,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7317,6 +7659,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -7324,6 +7667,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
+		[Optional]
 		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -7336,6 +7680,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _sillDepth  = default;
 
 		[Category("DryDock")]
+		[Optional]
 		public double? sillDepth {
 			get {
 				return _sillDepth;
@@ -7462,6 +7807,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -7473,6 +7819,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -7482,11 +7829,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7496,14 +7845,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -7517,6 +7870,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7532,6 +7886,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7541,6 +7896,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -7550,6 +7906,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DumpingGround")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -7561,6 +7918,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("DumpingGround")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -7573,6 +7931,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DumpingGround")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -7586,6 +7945,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("DumpingGround")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -7727,6 +8087,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -7738,6 +8099,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -7747,11 +8109,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7761,14 +8125,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -7782,6 +8150,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -7797,6 +8166,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -7806,6 +8176,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -7813,6 +8184,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
+		[Optional]
 		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -7825,6 +8197,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _sillDepth  = default;
 
 		[Category("FloatingDock")]
+		[Optional]
 		public double? sillDepth {
 			get {
 				return _sillDepth;
@@ -7951,6 +8324,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -7962,6 +8336,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -7971,11 +8346,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7985,14 +8362,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -8006,6 +8387,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8021,6 +8403,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8030,6 +8413,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -8037,6 +8421,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
+		[Optional]
 		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -8049,6 +8434,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _sillDepth  = default;
 
 		[Category("Gridiron")]
+		[Optional]
 		public double? sillDepth {
 			get {
 				return _sillDepth;
@@ -8175,6 +8561,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -8186,6 +8573,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -8195,11 +8583,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8209,14 +8599,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -8230,6 +8624,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8245,6 +8640,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8254,6 +8650,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -8262,6 +8659,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _uNLocationCode  = default;
 
 		[Category("HarbourAreaAdministrative")]
+		[Optional]
 		public String? uNLocationCode {
 			get {
 				return _uNLocationCode;
@@ -8273,6 +8671,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _nationality  = default;
 
 		[Category("HarbourAreaAdministrative")]
+		[Optional]
 		public String? nationality {
 			get {
 				return _nationality;
@@ -8284,6 +8683,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _applicableLoadLineZone  = default;
 
 		[Category("HarbourAreaAdministrative")]
+		[Optional]
 		public String? applicableLoadLineZone {
 			get {
 				return _applicableLoadLineZone;
@@ -8297,6 +8697,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -8311,6 +8712,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourAreaAdministrative")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
+		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -8319,6 +8721,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("HarbourAreaAdministrative")]
 		[ExpandableObject]
+		[Optional]
 		public generalHarbourInformationViewModel? generalHarbourInformation {
 			get {
 				return _generalHarbourInformation;
@@ -8467,6 +8870,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -8478,6 +8882,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -8487,11 +8892,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8501,14 +8908,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -8522,6 +8933,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8537,6 +8949,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8546,6 +8959,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -8556,6 +8970,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList), typeof(categoryOfPortSection))]
+		[Optional]
 		public categoryOfPortSection? categoryOfPortSection {
 			get {
 				return _categoryOfPortSection;
@@ -8570,6 +8985,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
+		[Optional]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -8579,6 +8995,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourAreaSection")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -8594,6 +9011,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("HarbourAreaSection")]
 		[ExpandableObject]
+		[Optional]
 		public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
 			get {
 				return _facilitiesLayoutDescription;
@@ -8736,6 +9154,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -8747,6 +9166,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -8756,11 +9176,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8770,14 +9192,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -8791,6 +9217,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -8806,6 +9233,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -8815,6 +9243,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -8824,6 +9253,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("HarbourBasin")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -8835,6 +9265,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("HarbourBasin")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -8847,6 +9278,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("HarbourBasin")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -8860,6 +9292,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourBasin")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -9001,6 +9434,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -9012,6 +9446,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -9021,11 +9456,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9035,14 +9472,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -9056,6 +9497,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9071,6 +9513,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9080,6 +9523,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -9087,6 +9531,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _verticalClearanceValue  = default;
 
 		[Category("HarbourPhysicalInfrastructure")]
+		[Optional]
 		public double? verticalClearanceValue {
 			get {
 				return _verticalClearanceValue;
@@ -9099,6 +9544,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("HarbourFacility")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
+		[Multiplicity(1)]
 		public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -9228,6 +9674,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -9239,6 +9686,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -9248,11 +9696,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9262,14 +9712,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -9283,6 +9737,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9298,6 +9753,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9307,6 +9763,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -9317,6 +9774,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>), typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfMooringWarpingFacilityList), typeof(categoryOfMooringWarpingFacility))]
+		[Mandatory]
 		public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
 			get {
 				return _categoryOfMooringWarpingFacility;
@@ -9332,6 +9790,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("MooringWarpingFacility")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String iDCode {
 			get {
 				return _iDCode;
@@ -9343,6 +9802,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _bollardDescription  = default;
 
 		[Category("MooringWarpingFacility")]
+		[Optional]
 		public String? bollardDescription {
 			get {
 				return _bollardDescription;
@@ -9354,6 +9814,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _bollardPull  = default;
 
 		[Category("MooringWarpingFacility")]
+		[Optional]
 		public double? bollardPull {
 			get {
 				return _bollardPull;
@@ -9365,6 +9826,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private Boolean? _heavingLinesFromShore  = default;
 
 		[Category("MooringWarpingFacility")]
+		[Optional]
 		public Boolean? heavingLinesFromShore {
 			get {
 				return _heavingLinesFromShore;
@@ -9500,6 +9962,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -9511,6 +9974,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -9520,11 +9984,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9534,14 +10000,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -9555,6 +10025,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9570,6 +10041,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9579,6 +10051,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -9588,6 +10061,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("OuterLimit")]
 		[ExpandableObject]
+		[Optional]
 		public limitsDescriptionViewModel? limitsDescription {
 			get {
 				return _limitsDescription;
@@ -9597,14 +10071,19 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("OuterLimit")]
+		[Optional]
 		public ObservableCollection<markedByViewModel> markedBy  { get; set; } = new ();
 		[Category("OuterLimit")]
+		[Optional]
 		public ObservableCollection<landmarkDescriptionViewModel> landmarkDescription  { get; set; } = new ();
 		[Category("OuterLimit")]
+		[Optional]
 		public ObservableCollection<offshoreMarkDescriptionViewModel> offshoreMarkDescription  { get; set; } = new ();
 		[Category("OuterLimit")]
+		[Optional]
 		public ObservableCollection<majorLightDescriptionViewModel> majorLightDescription  { get; set; } = new ();
 		[Category("OuterLimit")]
+		[Optional]
 		public ObservableCollection<usefulMarkDescriptionViewModel> usefulMarkDescription  { get; set; } = new ();
 
 
@@ -9774,6 +10253,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -9785,6 +10265,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -9794,11 +10275,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -9808,14 +10291,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -9829,6 +10316,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -9844,6 +10332,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -9853,6 +10342,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -9862,6 +10352,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("PilotBoardingPlace")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -9873,6 +10364,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -9885,6 +10377,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("PilotBoardingPlace")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -9898,6 +10391,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -10039,6 +10533,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -10050,6 +10545,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -10059,11 +10555,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -10073,14 +10571,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -10094,6 +10596,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10109,6 +10612,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10118,6 +10622,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -10127,6 +10632,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("SeaplaneLandingArea")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -10138,6 +10644,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("SeaplaneLandingArea")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -10150,6 +10657,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("SeaplaneLandingArea")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -10163,6 +10671,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("SeaplaneLandingArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -10304,6 +10813,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -10315,6 +10825,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -10324,11 +10835,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -10338,14 +10851,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -10359,6 +10876,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10374,6 +10892,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10383,6 +10902,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -10391,6 +10911,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _portFacilityNumber  = default;
 
 		[Category("Terminal")]
+		[Optional]
 		public String? portFacilityNumber {
 			get {
 				return _portFacilityNumber;
@@ -10404,6 +10925,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Terminal")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfHarbourFacilityList), typeof(categoryOfHarbourFacility))]
+		[Optional]
 		public categoryOfHarbourFacility? categoryOfHarbourFacility {
 			get {
 				return _categoryOfHarbourFacility;
@@ -10418,6 +10940,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Terminal")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -10425,6 +10948,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("Terminal")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(productList), typeof(product))]
+		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -10432,6 +10956,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _terminalIdentifier  = default;
 
 		[Category("Terminal")]
+		[Optional]
 		public String? terminalIdentifier {
 			get {
 				return _terminalIdentifier;
@@ -10443,6 +10968,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _sMDGTerminalCode  = default;
 
 		[Category("Terminal")]
+		[Optional]
 		public String? sMDGTerminalCode {
 			get {
 				return _sMDGTerminalCode;
@@ -10454,6 +10980,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _uNLocationCode  = default;
 
 		[Category("Terminal")]
+		[Optional]
 		public String? uNLocationCode {
 			get {
 				return _uNLocationCode;
@@ -10609,6 +11136,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -10620,6 +11148,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -10629,11 +11158,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -10643,14 +11174,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -10664,6 +11199,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10679,6 +11215,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10688,6 +11225,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -10697,6 +11235,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("TurningBasin")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -10708,6 +11247,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("TurningBasin")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -10720,6 +11260,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("TurningBasin")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -10733,6 +11274,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("TurningBasin")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Optional]
 		public iSPSLevel? iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -10874,6 +11416,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationMRN  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? locationMRN {
 			get {
 				return _locationMRN;
@@ -10885,6 +11428,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _globalLocationNumber  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? globalLocationNumber {
 			get {
 				return _globalLocationNumber;
@@ -10894,11 +11438,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -10908,14 +11454,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		private String? _source  = default;
 
 		[Category("FeatureType")]
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -10929,6 +11479,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("FeatureType")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -10944,6 +11495,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureType")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -10953,6 +11505,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
@@ -10963,6 +11516,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfPortSection?>), typeof(Editors.UnknownEditor<categoryOfPortSection?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList), typeof(categoryOfPortSection))]
+		[Mandatory]
 		public categoryOfPortSection categoryOfPortSection {
 			get {
 				return _categoryOfPortSection;
@@ -10978,6 +11532,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("WaterwayArea")]
 		[ExpandableObject]
+		[Optional]
 		public depthsDescriptionViewModel? depthsDescription {
 			get {
 				return _depthsDescription;
@@ -10989,6 +11544,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _locationByText  = default;
 
 		[Category("WaterwayArea")]
+		[Optional]
 		public String? locationByText {
 			get {
 				return _locationByText;
@@ -11001,6 +11557,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("WaterwayArea")]
 		[ExpandableObject]
+		[Optional]
 		public markedByViewModel? markedBy {
 			get {
 				return _markedBy;
@@ -11140,6 +11697,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -11152,6 +11710,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -11206,6 +11765,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("QualityOfNonBathymetricData")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
@@ -11220,6 +11780,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Optional]
 		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
@@ -11232,6 +11793,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -11243,6 +11805,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Optional]
 		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -11255,6 +11818,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Optional]
 		public surveyDateRangeViewModel? surveyDateRange {
 			get {
 				return _surveyDateRange;
@@ -11267,6 +11831,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
 			get {
 				return _verticalUncertainty;
@@ -11276,6 +11841,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 		[Category("QualityOfNonBathymetricData")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
@@ -11357,6 +11923,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("SoundingDatum")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
+		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
 				return _verticalDatum;
@@ -11369,6 +11936,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)19,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)44];
 		[Category("SoundingDatum")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
@@ -11426,6 +11994,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("VerticalDatumOfData")]
 		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
+		[Mandatory]
 		public verticalDatum verticalDatum {
 			get {
 				return _verticalDatum;
@@ -11438,6 +12007,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
 		[Category("VerticalDatumOfData")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
@@ -11494,6 +12064,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double orientationValue {
 			get {
 				return _orientationValue;
@@ -11505,6 +12076,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String? _text  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public String? text {
 			get {
 				return _text;
@@ -11517,6 +12089,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int textOffsetMm {
 			get {
 				return _textOffsetMm;
@@ -11530,6 +12103,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
+		[Optional]
 		public textType? textType {
 			get {
 				return _textType;
@@ -11544,6 +12118,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private int? _scaleMinimum  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public int? scaleMinimum {
 			get {
 				return _scaleMinimum;

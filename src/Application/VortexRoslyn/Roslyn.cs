@@ -1804,6 +1804,9 @@ namespace S100Framework.Applications
 
             var loadBuilder = new StringBuilder();
 
+            loadBuilder.AppendLine($"\t\t\tvar properties = typeof({code}).GetProperties().ToDictionary(e => e.Name, e => e);");
+            loadBuilder.AppendLine();
+
             var serializeBuilder = new StringBuilder();
             serializeBuilder.AppendLine($"\t\t\tvar instance = new {code} {{");
 
@@ -1952,6 +1955,20 @@ namespace S100Framework.Applications
                     //}
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
+                    if (upper.HasValue) {
+                        if (lower == 0 && upper == 1)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else if (lower == 1 && upper == 1)
+                            builder.AppendLine($"\t\t[Mandatory]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower}, {upper.Value})]");
+                    }
+                    else {
+                        if (lower == 0)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower})]");
+                    }
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
 
                     builder.AppendLine("\t\t\tget {");
@@ -1972,6 +1989,10 @@ namespace S100Framework.Applications
                     }
                     else {
                         loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
+
+                        loadBuilder.AppendLine($"\t\t\tif (properties[\"{referenceCode}\"].GetCustomAttribute<MandatoryAttribute>() != null && instance.{referenceCode} is null)");
+                        loadBuilder.AppendLine($"\t\t\t\tbase[\"{referenceCode}\"] = true;");
+
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
                     }
@@ -1988,7 +2009,21 @@ namespace S100Framework.Applications
                     //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
                     //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
                     //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
-                    //}                    
+                    //}
+                    if (upper.HasValue) {
+                        if (lower == 0 && upper == 1)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else if (lower == 1 && upper == 1)
+                            builder.AppendLine($"\t\t[Mandatory]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower}, {upper.Value})]");
+                    }
+                    else {
+                        if (lower == 0)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower})]");
+                    }
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
                     loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
                     loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");

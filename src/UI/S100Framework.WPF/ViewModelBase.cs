@@ -33,7 +33,12 @@ namespace S100Framework.WPF.ViewModel
     {
     }
 
-    public abstract class ViewModelBase : INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
+    public interface IUnknownValues
+    {
+        bool this[string propertyName] { get; set; }
+    }
+
+    public abstract class ViewModelBase : IUnknownValues, INotifyPropertyChanged, INotifyDataErrorInfo, IDisposable
     {
         public ViewModelBase() {
             this.PropertyChanged += (sender, e) => {
@@ -213,7 +218,8 @@ namespace S100Framework.WPF.ViewModel
                 if (required != default) {
                     var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
                     if (value is null) {
-                        this.AddError(p.Name, $"{p.Name} is required.");
+                        if (this[p.Name] == false)
+                            this.AddError(p.Name, $"{p.Name} is required.");
                     }
                 }
 
@@ -232,6 +238,26 @@ namespace S100Framework.WPF.ViewModel
             //foreach (var e in this.GetErrors().Where(e => !errors.Contains(e)))
             //    this.OnErrorsChanged(e);
         }
+
+        #region IUnknownValues
+
+        public bool this[string propertyName] {
+            get { return _unknownValues.Contains(propertyName); }
+            set {
+                if (value) {
+                    if (!_unknownValues.Contains(propertyName))
+                        _unknownValues = [.. _unknownValues, propertyName];
+                }
+                else {
+                    _unknownValues = [.. _unknownValues.Except([propertyName])];
+                }
+                this.OnPropertyChanged(propertyName);
+            }
+        }
+
+        private string[] _unknownValues = [];
+
+        #endregion
     }
 
     public abstract class AssociationViewModel : ViewModelBase
