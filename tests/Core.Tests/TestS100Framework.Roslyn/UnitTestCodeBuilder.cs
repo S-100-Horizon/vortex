@@ -143,14 +143,29 @@ namespace TestS100Framework
 
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependsOn(\"valueOfSounding\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("UnderwaterAwashRock.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("UnderwaterAwashRock.defaultClearanceDepthh","[DependsOn(\"valueOfSounding\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("Wreck.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
-                    new S100Framework.Applications.Roslyn.AttributeRule("rhythmOfLight.signalPeriod","[ConditionalUnknownDependency(\"rhythmOfLight.signalPeriod\")]"),                    
+                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.defaultClearanceDepth","[DependsOn(\"valueOfSounding\")]"),
+
+                    new S100Framework.Applications.Roslyn.AttributeRule("rhythmOfLight.signalPeriod","[ConditionalUnknownDependency(\"rhythmOfLight.signalPeriod\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("Bridge.categoryOfOpeningBridge","[ConditionalUnknownDependency(\"Bridge.categoryOfOpeningBridge\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("Bridge.openingBridge","[ConditionalUnknownDependency(\"Bridge.openingBridge\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependentUnknownValue(\"height\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.valueOfSounding","[DependsOn(\"height\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("MarineFarmCulture.valueOfSounding","[DependentUnknownValue(\"height\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("MarineFarmCulture.valueOfSounding","[DependsOn(\"height\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("Wreck.categoryOfWreck","[DependentUnknownValue(\"valueOfSounding\")]"),
+                    new S100Framework.Applications.Roslyn.AttributeRule("Wreck.categoryOfWreck","[DependsOn(\"valueOfSounding\")]"),
+
                     new S100Framework.Applications.Roslyn.AttributeRule("surfaceCharacteristics.natureOfSurface","[ConditionalUnknownDependency(\"surfaceCharacteristics.natureOfSurface\")]"),
                 };
 
