@@ -285,7 +285,7 @@ namespace TestNIPWG
             ];
 
             XDocument[] xIndicationOfCarriageRequirement = [];
-            foreach (var e in carriageRequirements) {
+            foreach (var e in carriageRequirements.Reverse()) {
                 var theRequirement = new theRequirement {
                     href = $"#{e.gmlId}",
                     arcrole = "http://www.iho.int/S128/gml/1.2/roles/theRequirement",
