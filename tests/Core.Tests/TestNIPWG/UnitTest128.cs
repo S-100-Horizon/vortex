@@ -19,6 +19,16 @@ namespace TestNIPWG
     public class UnitTest128
     {
         [XmlRoot(Namespace = "http://www.iho.int/S128/2.0")]
+        public class theRequirement
+        {
+            [XmlAttribute("href", Namespace = "http://www.w3.org/1999/xlink")]
+            public string? href { get; set; } = default;
+
+            [XmlAttribute("arcrole", Namespace = "http://www.w3.org/1999/xlink")]
+            public string? arcrole { get; set; } = default;
+        }
+
+        [XmlRoot(Namespace = "http://www.iho.int/S128/2.0")]
         public class elementContainer
         {
             [XmlAttribute("href", Namespace = "http://www.w3.org/1999/xlink")]
@@ -259,6 +269,28 @@ namespace TestNIPWG
 
             var productMappings = new List<(S100Framework.DomainModel.S128.FeatureAssociations.ProductMapping pProductMapping, string From, string To)>();
 
+            var indicationOfCarriageRequirement = new IndicationOfCarriageRequirement {
+                domesticCarriageRequirements = "According to the Danish Maritime Authority's \"Notices B - Technical regulations for the construction and equipment of ships, etc.\", a nautical chart or nautical publication is defined as \"a specially produced chart or book, or a specially prepared database from which such a chart or book can be extracted, which is officially issued by or under the authority of a government, an authorized hydrographic office or other relevant government institution, and which is prepared with a view to meeting the requirements of maritime navigation\".",
+                internationalCarriageRequirements = "According to international and Danish maritime regulations, all ships must have updated charts and nautical publications on board to be seaworthy.",
+                gmlId = "CNP0002",
+            };
+
+            XDocument xIndicationOfCarriageRequirement;
+            {
+                var theRequirement = new theRequirement {
+                    href = $"#{indicationOfCarriageRequirement.gmlId}",
+                    arcrole = "http://www.iho.int/S128/gml/1.2/roles/theRequirement",
+                };
+
+                var serializerContainer = new XmlSerializer(typeof(theRequirement));
+
+                using (var ms = new MemoryStream()) {
+                    serializerContainer.Serialize(ms, theRequirement, ns);
+                    ms.Position = 0;
+                    xIndicationOfCarriageRequirement = XDocument.Load(ms);
+                }
+            }
+
             using (var tableProductDefinitions = sourcedb.OpenDataset<Table>("NIS.ProductDefinitions")) {
                 using var cursor = tableProductDefinitions.Search(new QueryFilter {
                     WhereClause = "upper(ExportType) <> 'CANCEL' AND CSCL = 22000",
@@ -380,13 +412,13 @@ namespace TestNIPWG
                 gmlId = "CNP0001",
             };
 
-            var elementContainer = new elementContainer {
-                href = $"#{catalogueSectionHeader.gmlId}",
-                arcrole = "http://www.iho.int/S128/gml/1.2/roles/elementContainer",
-            };
-
             XDocument xElementContainer;
             {
+                var elementContainer = new elementContainer {
+                    href = $"#{catalogueSectionHeader.gmlId}",
+                    arcrole = "http://www.iho.int/S128/gml/1.2/roles/elementContainer",
+                };
+
                 var serializerContainer = new XmlSerializer(typeof(elementContainer));
 
                 using (var ms = new MemoryStream()) {
@@ -422,7 +454,7 @@ namespace TestNIPWG
             dataset.members = new Members();
 
             dataset.members = new S100Framework.DomainModel.S128.Members {
-                elements = [catalogueSectionHeader, .. electronicProducts]
+                elements = [catalogueSectionHeader, indicationOfCarriageRequirement, .. electronicProducts]
             };
 
             var serializer = new XmlSerializer(typeof(S100Framework.DomainModel.S128.Dataset));
@@ -441,6 +473,7 @@ namespace TestNIPWG
 
                 e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(theReferences[gmlId].Root);
                 e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(xElementContainer.Root);
+                e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(xIndicationOfCarriageRequirement.Root);
                 e.Add(geometry);
             }
 
