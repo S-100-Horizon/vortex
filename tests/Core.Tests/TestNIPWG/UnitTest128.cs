@@ -37,7 +37,7 @@ namespace TestNIPWG
             [XmlAttribute("arcrole", Namespace = "http://www.w3.org/1999/xlink")]
             public string? arcrole { get; set; } = default;
         }
-       
+
         [XmlRoot(Namespace = "http://www.iho.int/S128/2.0")]
         public class theReference
         {
@@ -150,7 +150,7 @@ namespace TestNIPWG
                 catalogueElementClassification = [catalogueElementClassification.Enc],
                 agencyResponsibleForProduction = "Danish Geodata Agency",
                 timeIntervalOfProduct = new S100Framework.DomainModel.S128.ComplexAttributes.timeIntervalOfProduct {
-                    issueDate = issueDate,                    
+                    issueDate = issueDate,
                 },
                 catalogueElementClassificationElement = [catalogueElementClassification.Enc],
                 specificUsage = specificUsage.NavigationalPurposeCoastal,
@@ -269,16 +269,25 @@ namespace TestNIPWG
 
             var productMappings = new List<(S100Framework.DomainModel.S128.FeatureAssociations.ProductMapping pProductMapping, string From, string To)>();
 
-            var indicationOfCarriageRequirement = new IndicationOfCarriageRequirement {
-                domesticCarriageRequirements = "According to the Danish Maritime Authority's \"Notices B - Technical regulations for the construction and equipment of ships, etc.\", a nautical chart or nautical publication is defined as \"a specially produced chart or book, or a specially prepared database from which such a chart or book can be extracted, which is officially issued by or under the authority of a government, an authorized hydrographic office or other relevant government institution, and which is prepared with a view to meeting the requirements of maritime navigation\".",
-                internationalCarriageRequirements = "According to international and Danish maritime regulations, all ships must have updated charts and nautical publications on board to be seaworthy.",
-                gmlId = "CNP0002",
-            };
+            IndicationOfCarriageRequirement[] carriageRequirements = [
+                new IndicationOfCarriageRequirement {
+                    domesticCarriageRequirements = "According to the Danish Maritime Authority's \"Notices B - Technical regulations for the construction and equipment of ships, etc.\", a nautical chart or nautical publication is defined as \"a specially produced chart or book, or a specially prepared database from which such a chart or book can be extracted, which is officially issued by or under the authority of a government, an authorized hydrographic office or other relevant government institution, and which is prepared with a view to meeting the requirements of maritime navigation\".",
+                    gmlId = "CNP0101",
+                },
+                new IndicationOfCarriageRequirement {
+                    internationalCarriageRequirements = "According to international and Danish maritime regulations, all ships must have updated charts and nautical publications on board to be seaworthy.",
+                    gmlId = "CNP0102",
+                },
+                new IndicationOfCarriageRequirement {
+                    internationalCarriageRequirements = "The same technical regulation states in relation to ship-based navigation systems and equipment, among other things, that all ships, regardless of size, must have \"nautical charts and nautical publications to plan and show the ship's route on the intended voyage and to plot and record positions throughout the voyage; an electronic chart display and information system (ECDIS) may be recognized as meeting the requirements for charts in this provision. A backup arrangement to meet the above functional requirements, if this function is fulfilled in whole or in part by means of electronic aids\".",
+                    gmlId = "CNP0103",
+                },
+            ];
 
-            XDocument xIndicationOfCarriageRequirement;
-            {
+            XDocument[] xIndicationOfCarriageRequirement = [];
+            foreach (var e in carriageRequirements) {
                 var theRequirement = new theRequirement {
-                    href = $"#{indicationOfCarriageRequirement.gmlId}",
+                    href = $"#{e.gmlId}",
                     arcrole = "http://www.iho.int/S128/gml/1.2/roles/theRequirement",
                 };
 
@@ -287,7 +296,7 @@ namespace TestNIPWG
                 using (var ms = new MemoryStream()) {
                     serializerContainer.Serialize(ms, theRequirement, ns);
                     ms.Position = 0;
-                    xIndicationOfCarriageRequirement = XDocument.Load(ms);
+                    xIndicationOfCarriageRequirement = [.. xIndicationOfCarriageRequirement, XDocument.Load(ms)];
                 }
             }
 
@@ -312,9 +321,9 @@ namespace TestNIPWG
 
 
                     var productMappingS57 = new S100Framework.DomainModel.S128.FeatureAssociations.ProductMapping {
-                        categoryOfProductMapping = categoryOfProductMapping.LowerPriorityAlternative,                        
+                        categoryOfProductMapping = categoryOfProductMapping.LowerPriorityAlternative,
                     };
-                    productMappings.Add(new (productMappingS57, s101.gmlId!, s57.gmlId!));
+                    productMappings.Add(new(productMappingS57, s101.gmlId!, s57.gmlId!));
 
                     var productMappingS101 = new S100Framework.DomainModel.S128.FeatureAssociations.ProductMapping {
                         categoryOfProductMapping = categoryOfProductMapping.HigherPriorityAlternative,
@@ -325,7 +334,7 @@ namespace TestNIPWG
                     {
                         var theReference = new theReference {
                             href = $"#{s57.gmlId}",
-                            ProductMapping = new theReferenceProductMapping {                                
+                            ProductMapping = new theReferenceProductMapping {
                                 categoryOfProductMapping = new theReferenceProductMappingCategoryOfProductMapping {
                                     code = (int)categoryOfProductMapping.LowerPriorityAlternative,
                                     Value = "Lower Priority Alternative",
@@ -454,7 +463,7 @@ namespace TestNIPWG
             dataset.members = new Members();
 
             dataset.members = new S100Framework.DomainModel.S128.Members {
-                elements = [catalogueSectionHeader, indicationOfCarriageRequirement, .. electronicProducts]
+                elements = [catalogueSectionHeader, .. carriageRequirements, .. electronicProducts]
             };
 
             var serializer = new XmlSerializer(typeof(S100Framework.DomainModel.S128.Dataset));
@@ -473,7 +482,10 @@ namespace TestNIPWG
 
                 e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(theReferences[gmlId].Root);
                 e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(xElementContainer.Root);
-                e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(xIndicationOfCarriageRequirement.Root);
+
+                foreach (var xDocument in xIndicationOfCarriageRequirement) {
+                    e.Element(XName.Get("timeIntervalOfProduct", "http://www.iho.int/S128/2.0"))!.AddAfterSelf(xDocument.Root);
+                }
                 e.Add(geometry);
             }
 
