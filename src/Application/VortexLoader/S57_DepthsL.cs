@@ -30,7 +30,7 @@ namespace S100Framework.Applications
             //using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
+
 
             using var cursor = depthsl.Search(filter, true);
             int recordCount = 0;

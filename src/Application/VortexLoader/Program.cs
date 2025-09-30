@@ -306,18 +306,18 @@ namespace S100Framework.Applications
                         }
                         // Point is simply a point
                         else {
-                            var point = dataset.Points!.FirstOrDefault(e => e.Name == feature.Geometry);
+                            var point = dataset!.Points!.FirstOrDefault(e => e.Name == feature.Geometry);
 
-                            return MapPointBuilderEx.CreateMapPoint(point.Coordinate!.X, point.Coordinate.Y);
+                            return MapPointBuilderEx.CreateMapPoint(point!.Coordinate!.X, point!.Coordinate.Y);
                         }
                     }
                 case YAML.Primitive.Curve: {
                         var points = new List<MapPoint>();
-                        var compositeExist = dataset.FindCompositeCurve(feature.Geometry);
+                        var compositeExist = dataset.FindCompositeCurve(feature.Geometry!);
 
                         // If feature references a composite curve
                         if (compositeExist != default) {
-                            var curvesInComposite = feature.Geometry.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
+                            var curvesInComposite = feature.Geometry!.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
                             foreach (var curveName in curvesInComposite) {
                                 var curve = dataset.FindCurve(curveName);
 
@@ -373,10 +373,10 @@ namespace S100Framework.Applications
                             var curve = dataset.FindCurve(surface.Exterior);
 
                             var coords = curve.Name?.StartsWith('R') == true
-                                  ? curve.Coordinate.Reverse()
+                                  ? curve.Coordinate!.Reverse()
                                   : curve.Coordinate;
 
-                            foreach (var c in coords) {
+                            foreach (var c in coords!) {
                                 var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
                                 exteriorPoints.Add(point);
                             }
@@ -398,7 +398,7 @@ namespace S100Framework.Applications
 
                                 // If interior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
                                 if (interiorCompositeExist != default) {
-                                    var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
+                                    var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist!.Curves.Reverse() : compositeExist!.Curves;
                                     foreach (var curveName in curvesInComposite) {
                                         var curve = dataset.FindCurve(curveName);
 

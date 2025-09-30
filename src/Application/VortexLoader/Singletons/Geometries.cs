@@ -123,7 +123,7 @@ namespace VortexLoader.Singletons
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 var val = Activator.CreateInstance(typeof(T), feature) as T;
-                result.Add(val);
+                result.Add(val!);
             }
             return result;
         }
@@ -235,7 +235,7 @@ namespace VortexLoader.Singletons
         public class RingGrouping
         {
 
-            public Polygon OuterRing { get; set; }
+            public Polygon? OuterRing { get; set; }
             public List<Polygon> InnerRings { get; set; } = new List<Polygon>();
 
             /// <summary>
@@ -243,7 +243,7 @@ namespace VortexLoader.Singletons
             /// </summary>
             public Polygon Geometry {
                 get {
-                    var builder = new PolygonBuilder(OuterRing.Parts[0].SpatialReference);
+                    var builder = new PolygonBuilder(OuterRing!.Parts[0].SpatialReference);
 
                     if (OuterRing.Parts.Count != 1) {
                         throw new NotSupportedException("Building single polygon from multiple outer parts is not supported.");
@@ -275,7 +275,7 @@ namespace VortexLoader.Singletons
                 var outerRings = new List<Polygon>();
                 var innerRings = new List<Polygon>();
 
-                foreach (var segmentCollection in polygon.Parts) {
+                foreach (var segmentCollection in polygon!.Parts) {
                     var isClockwise = IsRingClockwise(segmentCollection);
                     var ringPolygon = PolygonBuilder.CreatePolygon(segmentCollection);
 

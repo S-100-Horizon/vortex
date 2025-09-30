@@ -58,7 +58,7 @@ namespace S100Framework.Applications
             // default value - overwritten by args
             var skinOfEarthOnly = false;
             var append = false;
-
+            string status = null!;
             arguments.WithParsed<Options>(o => {
                 var source = o.Source!;
 
@@ -320,17 +320,20 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                string status = null!;
 
+                Logger.Current.Information($"Validating drawing index");
                 status = SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
 
+                Logger.Current.Information($"Validating ESRI Uknown values"); 
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No ESRI unknown values (-32767) in S-101: {status}");
 
+                Logger.Current.Information($"Validating edition-info"); 
                 status = SanityChecker.Instance.Check_GetEditionsErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No missing edition-info in S-101: {status}");
 
+                Logger.Current.Information($"Validating default clearance"); 
                 status = SanityChecker.Instance.Check_GetDefaultClearanceViolationCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No defaultClearanceViolation in S-101: {status}");
 
@@ -372,17 +375,15 @@ namespace S100Framework.Applications
                         leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
                     }
 
-
-
-                    if (depthArea.FcSubtype! is 15) {  // UNSARE
+                    if (depthArea.FcSubtype is 15) {  // UNSARE
                         coveredByUnsurveyedArea = true;
                         break;
                     }
-                    if (depthArea.FcSubtype! is 5) {  // DRGARE
+                    if (depthArea.FcSubtype is 5) {  // DRGARE
                         coveredByDredgedArea = true;
                         surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                     }
-                    if (depthArea.FcSubtype! is 1) {  // DEPARE
+                    if (depthArea.FcSubtype is 1) {  // DEPARE
                         surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                     }
 
@@ -1120,7 +1121,7 @@ namespace S100Framework.Applications
 
         internal static InformationResult BindNauticalInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             InformationResult result = new();
-            
+
             if (!string.IsNullOrEmpty(ntxtds)) {
                 // TODO: make information binding -> Nautical Information - binding.
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {

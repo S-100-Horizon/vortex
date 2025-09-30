@@ -32,7 +32,6 @@ namespace S100Framework.Applications
             var whereclause = $"({filter.WhereClause.Replace("PLTS_COMP_SCALE", "CSCL")})";
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
             using var cursor = productDefinitionsTable.Search(new QueryFilter {
                 WhereClause = whereclause,
             }, true);

@@ -17,7 +17,6 @@ namespace S100Framework.Applications
 
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = tidesAndVariationsA.Search(filter, true);
             int recordCount = 0;

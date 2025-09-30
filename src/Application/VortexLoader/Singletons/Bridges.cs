@@ -12,11 +12,11 @@ namespace S100Framework.Applications.Singletons
     internal class BridgeElement
     {
         public int Id { get; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         public List<string> ObjectIDs { get; private set; }
 
-        public string BridgeAggregationName { get; set; }
+        public string BridgeAggregationName { get; set; } = null!;
 
         public Geometry DissolvedGeometry { get; private set; }
 
@@ -113,7 +113,7 @@ namespace S100Framework.Applications.Singletons
             foreach (var group in groups) {
                 var geoms = group.Select(oid => features.First(f => f.ObjectID == oid).Geometry).ToList();
 
-                Geometry dissolved = null;
+                Geometry dissolved = null!;
                 if (geoms.Count == 1) {
                     dissolved = geoms[0];
                 }
@@ -190,13 +190,13 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal IEnumerable<BridgeElement> BridgeElements() {
-            foreach (var bridgeElement in _groups) {
+            foreach (var bridgeElement in _groups!) {
                 yield return bridgeElement;
             }
         }
 
-        private static Geodatabase _source;
-        private static Geodatabase _destination;
+        private static Geodatabase? _source;
+        private static Geodatabase? _destination;
 
         private Bridges(Geodatabase source, Geodatabase destination, QueryFilter whereClause) {
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -226,11 +226,10 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal void CreateRelations() {
-            var name = _destination.GetName("featuretype");
-            using var featuretypeTable = _destination.OpenDataset<Table>(_destination.GetName("featuretype"));
+            var name = _destination!.GetName("featuretype");
+            using var featuretypeTable = _destination!.OpenDataset<Table>(_destination.GetName("featuretype"));
 
             using var bufferFeatureType = featuretypeTable.CreateRowBuffer();
-            using var insertFeatureType = featuretypeTable.CreateInsertCursor();
 
             var bridgeElements = _instance!.BridgeElements().ToList();
 
@@ -239,7 +238,7 @@ namespace S100Framework.Applications.Singletons
                     using (var row = cursor.Current) {
                         long oid = row.GetObjectID();
                         //var shape = row.GetShape();
-                        S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"])!);
+                        Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
 
                         var bindings = _instance!.GetBindings($"{row.GetGlobalID():N}");
 

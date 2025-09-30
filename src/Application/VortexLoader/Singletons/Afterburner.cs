@@ -51,7 +51,6 @@ namespace S100Framework.Applications.Singletons
 
             using var featureClass = _target!.OpenDataset<FeatureClass>(_target.GetName("curve"));
             using var updateCursor = featureClass.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Road'" }, true);
-            using var insertCursor = featureClass.CreateInsertCursor();
             using var rowBuffer = featureClass.CreateRowBuffer();
 
             while (updateCursor.MoveNext()) {
@@ -88,7 +87,7 @@ namespace S100Framework.Applications.Singletons
                         }
 
                         newFeature.Store();
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Split this feature in 2. Closing line on input. NewFeature name is {newFeature["name"]}");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Split this feature in 2. Closing line on input. NewFeature name is {feature.GetGlobalID():N}");
                     }
                 }
             }

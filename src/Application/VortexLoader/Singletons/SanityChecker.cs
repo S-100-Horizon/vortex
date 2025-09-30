@@ -111,7 +111,7 @@ namespace S100Framework.Applications.Singletons
         internal int Check_GetEditionsErrorCount() {
             Int32 errorCount = 0;
 
-            var featureClasses = new List<string>() {
+            var tables = new List<string>() {
                 "curve",
                 "point",
                 "surface",
@@ -126,8 +126,9 @@ namespace S100Framework.Applications.Singletons
             };
             int recordCount = 0;
 
-            foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
+            foreach (var tableName in tables) {
+                var tableErrorCount = 0;
+                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(tableName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -135,8 +136,15 @@ namespace S100Framework.Applications.Singletons
                     recordCount++;
                     var feature = cursor.Current;
                     var edition = feature["edition"];
-                    if (edition == null || edition == DBNull.Value || string.IsNullOrEmpty(edition.ToString()))
+                    if (edition == null || edition == DBNull.Value || string.IsNullOrEmpty(edition.ToString())) {
                         errorCount++;
+                        tableErrorCount++;
+                    }
+
+                }
+
+                if (tableErrorCount >0) {
+                    Logger.Current.Information($"{tableErrorCount} errors in {tableName}");
                 }
             }
             return errorCount;
@@ -145,7 +153,7 @@ namespace S100Framework.Applications.Singletons
         internal int Check_GetDefaultClearanceViolationCount() {
             Int32 errorCount = 0;
 
-            var featureClasses = new List<string>() {
+            var tableNames = new List<string>() {
                 "curve",
                 "point",
                 "surface",
@@ -153,8 +161,9 @@ namespace S100Framework.Applications.Singletons
             };
             int recordCount = 0;
 
-            foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+            foreach (var tableName in tableNames) {
+                var tableErrorCount = 0;
+                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(tableName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -163,11 +172,19 @@ namespace S100Framework.Applications.Singletons
                     var feature = cursor.Current;
                     var json = feature["json"].ToString()!.ToLower();
 
-                    if (json.Contains("\"defaultclearancedepth\":null") && json.Contains("\"valueofsounding\":null"))
+                    if (json.Contains("\"defaultclearancedepth\":null") && json.Contains("\"valueofsounding\":null")) {
                         errorCount++;
+                        tableErrorCount++;
+                    }
                 }
+
+                if (tableErrorCount > 0) {
+                    Logger.Current.Information($"{tableErrorCount} errors in {tableName}");
+                }
+
             }
-             return errorCount;
+
+            return errorCount;
 
         }
 

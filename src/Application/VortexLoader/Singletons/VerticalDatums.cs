@@ -37,7 +37,7 @@ namespace S100Framework.Applications.Singletons
             get {
                 if (_instance == null)
                     Initialize();
-                return _instance;
+                return _instance!;
             }
         }
 

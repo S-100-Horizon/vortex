@@ -30,7 +30,7 @@ namespace S100Framework.Applications.Singletons
 
         private PLTS_Collections _plts_collections;
 
-        Geodatabase _source;
+        Geodatabase? _source;
 
         public PltsCollection(Geodatabase source, PLTS_Collections plts_collections) {
             _plts_collections = plts_collections;
@@ -879,7 +879,6 @@ namespace S100Framework.Applications.Singletons
                 existingBinding.AddRange(foreignBindings);
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
                 s101SlaveFeature.Store();
-                //Logger.Current.DataError(s101SlaveFeature.GetObjectID(), "Relations", s101SlaveFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept foreign bindings: {s101SlaveFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(foreignBindings)}");
             }
 
             if (s101MasterFeature["featurebindings"] is null) {
@@ -891,13 +890,7 @@ namespace S100Framework.Applications.Singletons
                 existingBinding.AddRange(primaryBindings);
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
                 s101SlaveFeature.Store();
-                //Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", $"{s101MasterFeature.GetGlobalID():N}"!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
             }
-
-
-
-
-
         }
 
         internal bool IsCircular(S57Master master, S57Slave slave) {
@@ -1011,9 +1004,9 @@ namespace S100Framework.Applications.Singletons
             using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
             using var associationBinding = target.OpenDataset<Table>(target.GetName("associationbinding"));
             using var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
-            //using var featureAssociationInsert = featureAssociation.CreateInsertCursor();
+
             using var associationBindingBuffer = associationBinding.CreateRowBuffer();
-            //using var associationBindingInsert = associationBinding.CreateInsertCursor();
+            
 
             var duplicates = _relations
                 .GroupBy(p => new { p = p.Master.Name, s = p.Slave.Name })
@@ -1083,7 +1076,7 @@ namespace S100Framework.Applications.Singletons
         public string Name { get => this._s101name; set => this._s101name = value; }
 
         // Implement IEquatable<MyObject>
-        public bool Equals(S57Master other) {
+        public bool Equals(S57Master? other) {
             if (other == null) {
                 return false;
             }
@@ -1091,7 +1084,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         // Override Equals (for compatibility with collections like HashSet)
-        public override bool Equals(object obj) {
+        public override bool Equals(object? obj) {
             if (obj is Relation other) {
                 return Equals(other); // Use the correct Equals method
             }
@@ -1116,7 +1109,7 @@ namespace S100Framework.Applications.Singletons
         public string Name { get => this._s101name; set => this._s101name = value; }
 
         // Implement IEquatable<MyObject>
-        public bool Equals(S57Slave other) {
+        public bool Equals(S57Slave? other) {
             if (other == null) {
                 return false;
             }
@@ -1124,7 +1117,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         // Override Equals (for compatibility with collections like HashSet)
-        public override bool Equals(object obj) {
+        public override bool Equals(object? obj) {
             if (obj is Relation other) {
                 return Equals(other); // Use the correct Equals method
             }
@@ -1153,15 +1146,15 @@ namespace S100Framework.Applications.Singletons
         internal bool Stored { get => this._stored; set => this._stored = value; }
 
         // Implement IEquatable<MyObject>
-        public bool Equals(Relation other) {
+        public bool Equals(Relation? other) {
             if (other == null) {
                 return false;
             }
-            return this._master.Equals(other._master) && this._slave.Equals(other._slave);
+            return this._master!.Equals(other._master) && this._slave!.Equals(other._slave);
         }
 
         // Override Equals (for compatibility with collections like HashSet)
-        public override bool Equals(object obj) {
+        public override bool Equals(object? obj) {
             if (obj is Relation other) {
                 return Equals(other); // Use the correct Equals method
             }
@@ -1170,7 +1163,6 @@ namespace S100Framework.Applications.Singletons
 
         public override int GetHashCode() {
             return HashCode.Combine(_master, _slave);
-            Console.WriteLine($"{Master.S101Type.Name} -> {_slave.S101Type.Name}");
         }
     }
 }

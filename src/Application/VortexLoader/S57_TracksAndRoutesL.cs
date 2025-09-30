@@ -22,7 +22,6 @@ namespace S100Framework.Applications
 
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = tracksAndRoutesL.Search(filter, true);
             int recordCount = 0;
@@ -112,10 +111,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // NAVLNE_NavigationLine
-                            var instance = new NavigationLine {
-                                categoryOfNavigationLine = default,
-                                orientation = default,
-                            };
+                            var instance = new NavigationLine();
 
                             if (current.CATNAV.HasValue) {
                                 instance.categoryOfNavigationLine = EnumHelper.GetEnumValue<NavigationLine, categoryOfNavigationLine>(current.CATNAV.Value);
@@ -180,49 +176,7 @@ namespace S100Framework.Applications
                     case 15: { // RADLNE_RadarLine
 
                             throw new NotImplementedException($"No RADLNE_RadarLine in DK or GL. {tableName}");
-
-
-                            var instance = new RadarLine {
-                                orientationValue = default,
-                            };
-
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
-
-
-                            if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
-                            }
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
-                            }
-
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
-                        break;
                     case 20: { // RCRTCL_RecommendedRouteCenterline
                             var instance = new RecommendedRouteCentreline {
                                 basedOnFixedMarks = default,

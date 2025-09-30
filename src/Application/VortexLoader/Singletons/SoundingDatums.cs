@@ -11,7 +11,7 @@ namespace S100Framework.Applications.Singletons
 {
     internal sealed class SoundingDatums
     {
-        private static SoundingDatums _instance;
+        private static SoundingDatums? _instance;
         private static readonly object _lock = new object();
 
         private readonly List<(Geometry, DomainModel.S101.verticalDatum)> _polygons = new List<(Geometry, DomainModel.S101.verticalDatum)>();
@@ -37,7 +37,7 @@ namespace S100Framework.Applications.Singletons
             get {
                 if (_instance == null)
                     Initialize();
-                return _instance;
+                return _instance!;
             }
         }
 

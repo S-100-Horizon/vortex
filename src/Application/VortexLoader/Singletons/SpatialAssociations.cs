@@ -13,14 +13,12 @@ namespace S100Framework.Applications.Singletons
     {
         const int P_QUAPOS_approximate = 4;
 
-        private static SpatialAssociations _instance;
+        private static SpatialAssociations? _instance;
         private static readonly object _lock = new object();
 
         private static Dictionary<string, FeatureClass> _featureClasses = new();
 
-        private static Geodatabase _geodatabase;
-
-        private static string _whereClause;
+        private static Geodatabase? _geodatabase;
 
         private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
 
@@ -58,7 +56,7 @@ namespace S100Framework.Applications.Singletons
                     if (_spatialAttributesL.ContainsKey(wkt)) {
                         errorCount++;
                         Console.WriteLine($"{plts_spatialattributel.OBJECTID!.Value}::{plts_spatialattributel.LNAM}::{plts_spatialattributel.GlobalId}");
-                        Logger.Current.DataError(plts_spatialattributel.OBJECTID!.Value, "PLTS_SpatialAttributeL", plts_spatialattributel.LNAM, $"Duplicate geometry. Ignoring this element");
+                        Logger.Current.DataError(plts_spatialattributel.OBJECTID!.Value, "PLTS_SpatialAttributeL", plts_spatialattributel.LNAM!, $"Duplicate geometry. Ignoring this element");
                         //throw new Exception("Multiple spatialattributeL in same band");
                         continue;
 

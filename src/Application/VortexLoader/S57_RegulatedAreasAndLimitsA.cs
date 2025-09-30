@@ -21,7 +21,6 @@ namespace S100Framework.Applications
 
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = regulatedAreasAndLimitsA.Search(filter, true);
 
@@ -340,9 +339,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // CUSZNE_CustomZone
                             throw new NotImplementedException($"No CUSZNE_CustomZone in DK or GL. {tableName}");
-
                         }
-                        break;
                     case 40: { // DMPGRD_DumpingGround
                             var instance = new DumpingGround();
 
@@ -441,12 +438,10 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No FRPARE_FreePortArea in DK or GL. {tableName}");
 
                         }
-                        break;
                     case 60: { // FSHGRD_FishingGround
                             throw new NotImplementedException($"No FSHGRD_FishingGround in DK or GL. {tableName}");
 
                         }
-                        break;
                     case 65: { // FSHZNE_FisheryZone
                             var instance = new FisheryZone {
                                 nationality = default,
@@ -537,14 +532,14 @@ namespace S100Framework.Applications
                             //https://iho.int/uploads/user/pubs/standards/s-65/S-65%20Annex%20B_Ed%201.2.0_Final.pdf
 
                         }
-                        break;
+
                     case 85: { // LOGPON_LogPond
 
                             throw new NotImplementedException($"No LOGPON_LogPond in DK or GL. {tableName}");
 
 
                         }
-                        break;
+
                     case 95: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture {
                                 waterLevelEffect = default,

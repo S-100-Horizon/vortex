@@ -67,12 +67,18 @@ namespace S100Framework.Applications.Singletons
                 return true;
             }
 
-            value = null;
+            value = null!;
             return false;
         }
 
-        internal void RegisterSubtypes(FeatureClass metadataa) {
-            ; // throw new NotImplementedException();
+        internal void RegisterSubtypes(FeatureClass featureclass) {
+            var subtypes = new Dictionary<int, string>();
+            foreach (var subtype in featureclass.GetSubtypes()) {
+                subtypes.Add(subtype.Key, subtype.Value);
+
+            }
+            _subtypes[_sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
+
         }
     }
 }

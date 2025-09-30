@@ -20,7 +20,7 @@ namespace S100Framework.Applications
             using var informationtype = target.OpenDataset<Table>(target.GetName("informationType"));
 
             using var bufferPointset = featureClass.CreateRowBuffer();
-            using var insertPointset = featureClass.CreateInsertCursor();
+            using var insertCursor = featureClass.CreateInsertCursor();
 
             using var cursor = soundingsP.Search(filter, true);
 
