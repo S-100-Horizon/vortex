@@ -20,7 +20,7 @@ namespace S100Framework.Applications
         HashSet<string> _relations = new();
 
         //RowBuffer _featureAssociationBuffer = null;
-        Table _featureAssociation = null;
+        Table _featureAssociation = null!;
 
         public RelatedEquipment(Geodatabase source, Geodatabase target) {
             this._source = source;
@@ -151,7 +151,7 @@ namespace S100Framework.Applications
 
             // group structures per location
             var relatedPerLocation = areaRelated
-                    .GroupBy(obj => (X: Math.Round(((MapPoint)obj.S57Object.Shape).X, 7), Y: Math.Round(((MapPoint)obj.S57Object.Shape).Y, 7), obj.S57Object.Shape.SpatialReference))
+                    .GroupBy(obj => (X: Math.Round(((MapPoint)obj.S57Object!.Shape!).X, 7), Y: Math.Round(((MapPoint)obj.S57Object.Shape).Y, 7), obj.S57Object.Shape.SpatialReference))
                     .ToDictionary(
                         group => group.Key,
                         group => group.ToList()
@@ -216,7 +216,7 @@ namespace S100Framework.Applications
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         ImporterNIS.SetShape(buffer, shape);
-                        ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object.PLTS_COMP_SCALE.Value);
+                        ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object!.PLTS_COMP_SCALE!.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
                         var equipmentName = Convert.ToString(featureN["name"]);
@@ -224,7 +224,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -246,7 +246,7 @@ namespace S100Framework.Applications
         // S57Object s57master, FeatureNode s101master, Feature s101MasterFeature
         internal void CreateRelatedPointEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
 
-            var key = (s57master.TableName.ToLower(), s57master.FcSubtype.Value, s57master.GlobalId);
+            var key = (s57master.TableName!.ToLower(), s57master.FcSubtype!.Value, s57master.GlobalId);
             if (_converted.Contains(key)) {
                 throw new DuplicateNameException($"Related equipment already converted for {key}");
             }
@@ -278,7 +278,7 @@ namespace S100Framework.Applications
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 ImporterNIS.SetShape(buffer, s57master.Shape);
-                ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
+                ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
                 var featureN = featureClass.CreateRow(buffer);
                 var equipmentName = Convert.ToString(featureN["name"]);
@@ -287,7 +287,7 @@ namespace S100Framework.Applications
                 }
 
                 foreach (var relatedObject in related) {
-                    ConversionAnalytics.Instance.AddConverted(relatedObject.GetType().Name, relatedObject.GLOBALID, equipmentName);
+                    ConversionAnalytics.Instance.AddConverted(relatedObject.GetType().Name, relatedObject.GLOBALID, equipmentName!);
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
                 }
 
@@ -295,7 +295,7 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
 
                 // return;
             }
@@ -322,7 +322,7 @@ namespace S100Framework.Applications
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     ImporterNIS.SetShape(buffer, s57master.Shape);
-                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE.Value);
+                    ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE!.Value);
 
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = Convert.ToString(featureN["name"]);
@@ -339,7 +339,7 @@ namespace S100Framework.Applications
                     }
 
                     //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure, _featureAssociation);
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()!), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
                     featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
@@ -674,7 +674,7 @@ namespace S100Framework.Applications
             //}
 
             foreach (var plts in totalRelated) {
-                if (!ConversionAnalytics.Instance.IsConverted(plts.S57Object.GlobalId)) {
+                if (!ConversionAnalytics.Instance.IsConverted(plts.S57Object!.GlobalId)) {
                     // TODO: handle missing related - TOMOREDO: REFACTURE!!!
                     ;
                 }

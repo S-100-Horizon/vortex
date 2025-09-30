@@ -20,7 +20,6 @@ namespace S100Framework.Applications
             int recordCount = 0;
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = offshoreinstallations.Search(filter, true);
 

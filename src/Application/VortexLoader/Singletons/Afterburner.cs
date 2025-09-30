@@ -51,7 +51,6 @@ namespace S100Framework.Applications.Singletons
 
             using var featureClass = _target!.OpenDataset<FeatureClass>(_target.GetName("curve"));
             using var updateCursor = featureClass.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Road'" }, true);
-            using var insertCursor = featureClass.CreateInsertCursor();
             using var rowBuffer = featureClass.CreateRowBuffer();
 
             while (updateCursor.MoveNext()) {

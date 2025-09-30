@@ -10,9 +10,6 @@ namespace S100Framework.Applications
     {
         private static void S57_SeabedL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "SeabedL";
-
-            var ps101 = "S-101";
-
             var seabedL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(seabedL);
 
@@ -20,7 +17,6 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = seabedL.Search(filter, true);
             int recordCount = 0;

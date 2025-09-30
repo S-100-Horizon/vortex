@@ -25,13 +25,9 @@ namespace S100Framework.Applications
             using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
             using var featureType = target.OpenDataset<Table>(target.GetName("featuretype"));
 
-            //using var buffer = surface.CreateRowBuffer();
-            //using var insert = surface.CreateInsertCursor();
-
             using var bufferFeatureType = featureType.CreateRowBuffer();
-            using var insertFeatureType = featureType.CreateInsertCursor();
+
             using var bufferSurface = surface.CreateRowBuffer();
-            using var insertSurface = surface.CreateInsertCursor();
 
             // Bridges - Store an aggregation per bridge
             if (createBridgesAndRelations) {
@@ -250,10 +246,10 @@ namespace S100Framework.Applications
                                 unlimited will be populated as False.
                             */
 
-                            verticalUncertainty verticalUncertaintyValue = null;
+                            verticalUncertainty verticalUncertaintyValue = null!;
 
                             if (openingBridge) {
-                                SpanOpening instance = null;
+                                SpanOpening instance = null!;
                                 if (current.VERACC.HasValue && current.VERACC.Value != -32767d) {
                                     verticalUncertaintyValue = new verticalUncertainty() {
                                         uncertaintyFixed = current.VERACC.Value,
@@ -354,7 +350,7 @@ namespace S100Framework.Applications
                                     relatedBridge = relatedBridges[0];
                                 }
 
-                                SpanFixed instance = null;
+                                SpanFixed instance = null!;
 
                                 if (current.VERACC.HasValue && current.VERACC.Value != -32767d) {
                                     verticalUncertaintyValue = new verticalUncertainty() {

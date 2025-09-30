@@ -22,7 +22,6 @@ namespace S100Framework.Applications
 
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = offshoreinstallations.Search(filter, true);
 
@@ -154,13 +153,9 @@ namespace S100Framework.Applications
                     case 5: { // PIPARE_PipelineArea
                             throw new NotImplementedException($"No PIPARE_PipelineArea in DK or GL. {tableName}");
                         }
-                        break;
                     case 10: { // PIPSOL_PipelineSubmarineOnLand
                             throw new NotImplementedException($"No PIPSOL_PipelineSubmarineOnLand in DK or GL. {tableName}");
-
-
                         }
-                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();

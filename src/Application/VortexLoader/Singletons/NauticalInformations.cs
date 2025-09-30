@@ -1,4 +1,5 @@
-﻿using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
 using System;
@@ -12,19 +13,25 @@ namespace S100Framework.Applications.Singletons
 {
     internal sealed class NauticalInformations
     {
-        private static NauticalInformations _instance;
+        private static NauticalInformations? _instance;
         private static readonly object _lock = new object();
+        private static Geodatabase? _destination;
 
         private readonly Dictionary<string,NauticalInformation> _nauticalInformations = new ();
 
-
-        internal static void Initialize() {
+        /// <summary>
+        /// Initializes
+        /// </summary>
+        /// <param name="destination">The S100 destination geodatabase</param>
+        /// <exception cref="InvalidOperationException"></exception>
+        internal static void Initialize(Geodatabase destination) {
             if (_instance != null) {
                 throw new InvalidOperationException("Subtypes has already been initialized.");
             }
 
             lock (_lock) {
                 if (_instance == null) {
+                    _destination = destination;
                     _instance = new NauticalInformations();
                 }
             }
@@ -37,7 +44,8 @@ namespace S100Framework.Applications.Singletons
         public static NauticalInformations Instance {
             get {
                 if (_instance == null)
-                    Initialize();
+                    throw new Exception("NauticalInformations is not initialized.");
+
                 return _instance!;
             }
         }
@@ -54,13 +62,16 @@ namespace S100Framework.Applications.Singletons
 
             if (!_nauticalInformations.ContainsKey(fileName)) {
                 _nauticalInformations.Add(fileName, nauticalInformation);
+
+                
+
             }
         }
 
         /// <summary>
         /// Returns all polygons from the collection that touch the specified geometry.
         /// </summary>
-        public bool Bind(string fileName, out NauticalInformation nauticalInformation) {
+        public bool Bind(string fileName, out NauticalInformation? nauticalInformation) {
             return _nauticalInformations.TryGetValue(fileName, out nauticalInformation);
         }
 

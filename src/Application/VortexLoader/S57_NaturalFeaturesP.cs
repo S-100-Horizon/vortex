@@ -18,7 +18,6 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = naturalFeaturesP.Search(filter, true);
 
@@ -94,7 +93,7 @@ namespace S100Framework.Applications
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name!);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
@@ -200,10 +199,7 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // RAPIDS_Rapids
                             throw new NotImplementedException($"No RAPIDS_Rapids in DK or GL. {tableName}");
-
-
                         }
-                        break;
                     case 20: { // SEAARE_SeaAreaNamedWaterArea
                             var instance = new SeaAreaNamedWaterArea();
 
@@ -248,7 +244,6 @@ namespace S100Framework.Applications
 
 
                         }
-                        break;
                     case 30: { // VEGATN_Vegetation
                             var instance = new Vegetation {
                                 categoryOfVegetation = default,
@@ -313,10 +308,7 @@ namespace S100Framework.Applications
                         break;
                     case 35: { // WATFAL_Waterfall
                             throw new NotImplementedException($"No WATFAL_Waterfall in DK or GL. {tableName}");
-
-
                         }
-                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();

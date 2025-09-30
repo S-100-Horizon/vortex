@@ -19,7 +19,6 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = metadataa.Search(filter, true);
             int recordCount = 0;
@@ -56,101 +55,14 @@ namespace S100Framework.Applications
                     case 1: { // M_ACCY_AccuracyOfData
                             throw new NotImplementedException($"No M_ACCY_AccuracyOfData in DK or GL. {tableName}");
 
-                            var instance = new QualityOfNonBathymetricData {
-                                horizontalPositionUncertainty = default,
-                            };
-
-                            if (current.CATZOC.HasValue && current.CATZOC.Value != -32767) {
-                                if (current.CATZOC.Value == 6) {
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
-                                }
-                                else {
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                }
-                            }
-
-                            if (current.HORACC.HasValue) {
-                                instance.horizontalDistanceUncertainty = current.HORACC.Value;
-                            }
-                            if (current.POSACC.HasValue) {
-                                instance.horizontalPositionUncertainty = new() {
-                                    uncertaintyFixed = current.POSACC.Value
-                                };
-                            }
-
-                            // TODO: InteroperabilityIdentifier
-
-                            // TODO: OrientationUncertainty
-
-                            if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
-                                instance.surveyDateRange = surveyDateRange;
-                            }
-
-                            if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
-                                    uncertaintyFixed = current.SOUACC.Value
-                                };
-                            }
-
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, default);
-                            }
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
-                        break;
-
                     case 20: { // M_CSCL_CompilationScaleOfData
-                               //var instance = new DataCoverage();
-
-                            //if (displayScale != null) {
-                            //    instance.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                            //    instance.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
-                            //    instance.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                            //}
-
-                            //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-                            //buffer["ps"] = ps101;
-                            //buffer["code"] = instance.GetType().Name;
-                            //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //SetShape(buffer,current.SHAPE);
-                            //var featureN = featureClass.CreateRow(buffer);
-                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                            //    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
-                            //}
-
-                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID,name);
-
-                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
+                            throw new NotImplementedException($"No M_CSCL_CompilationScaleOfData in DK or GL. {tableName}");
                         }
-                        break;
 
                     case 25: { // M_HOPA_HorizontalDatumShiftParameters
                             throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
-
-                            //There is no equivalent Meta Feature _s101type in S - 101 for the S-57 Meta Object M_HOPA.It is considered
-                            //that this information is not required for S - 101.Data Producers should consider removing instances of
-                            //M_HOPA from their S-57 data for consistency.
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "DEPRECATED");
-                            Logger.Current.DataObject(objectid, tableName, longname, "Not converted");
                         }
-                        break;
                     case 30: { // M_NPUB_NauticalPublicationInformation
                             var instance = new InformationArea();
 
@@ -283,7 +195,7 @@ namespace S100Framework.Applications
                             var instance = new QualityOfBathymetricData {
                                 categoryOfTemporalVariation = default,
                                 dataAssessment = default,
-                                featuresDetected = default,
+                                featuresDetected = default!,
                                 fullSeafloorCoverageAchieved = default,
                             };
 
@@ -476,7 +388,7 @@ namespace S100Framework.Applications
                     case 50: { // M_SREL_SurveyReliability
                             var instance = new QualityOfSurvey {
                                 surveyAuthority = default,
-                                surveyDateRange = default,
+                                surveyDateRange = default!,
                             };
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
@@ -535,7 +447,7 @@ namespace S100Framework.Applications
                             }
 
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
-                                instance.surveyDateRange = surveyDateRange;
+                                instance.surveyDateRange = surveyDateRange!;
                             }
 
                             if (current.SURTYP != default) {

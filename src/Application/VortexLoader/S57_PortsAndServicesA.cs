@@ -21,9 +21,7 @@ namespace S100Framework.Applications
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = portsAndServicesA.Search(filter, true);
             int recordCount = 0;
@@ -208,10 +206,7 @@ namespace S100Framework.Applications
                         break;
                     case 15: { // CHKPNT_CheckPoint
                             throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
-
-
                         }
-                        break;
                     case 20: { // CRANES_Cranes
                             var instance = new Crane();
 
@@ -795,9 +790,7 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // GRIDRN_Gridiron
                             throw new NotImplementedException($"No GRIDRN_Gridiron in DK or GL. {tableName}");
-
                         }
-                        break;
                     case 55: { // HRBFAC_HarbourFacility
                             var instance = new HarbourFacility();
 
@@ -1572,7 +1565,6 @@ namespace S100Framework.Applications
                     case 75: { // PILBOP_PilotBoardingPlace
                             throw new NotImplementedException($"No PILBOP_PilotBoardingPlace in DK or GL. {tableName}");
                         }
-                        break;
                     case 80: { // PONTON_Pontoon // SKIN OF EARTH
                             {
                                 var instance = new Pontoon();
@@ -1670,15 +1662,11 @@ namespace S100Framework.Applications
                         break;
                     case 85: { // SMCFAC_SmallCraftFacility
                             throw new NotImplementedException($"No SMCFAC_SmallCraftFacility in DK or GL. {tableName}");
-
                         }
-                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();
                         break;
-
-
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));

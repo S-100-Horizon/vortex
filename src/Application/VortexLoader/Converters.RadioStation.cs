@@ -17,7 +17,7 @@ namespace S100Framework.Applications
             }
 
             if (current.CATROS != null) {
-                var subtype = Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out var val) ? val : "Unknown";
+                var subtype = Subtypes.Instance.TryGetSubtype(current.TableName!, current.FCSUBTYPE!.Value, out var val) ? val : "Unknown";
 
                 var category = current.CATROS switch {
                     "1" => null,

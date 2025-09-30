@@ -17,7 +17,7 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
+            
 
             using var cursor = coastlinea.Search(filter, true);
             int recordCount = 0;

@@ -17,7 +17,6 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
             using var bufferSurface = featureClass.CreateRowBuffer();
-            using var insertSurface = featureClass.CreateInsertCursor();
 
             using var cursor = naturalFeaturesA.Search(filter, true);
 
@@ -215,7 +214,6 @@ namespace S100Framework.Applications
                     case 15: {    // RAPIDS_Rapids
                             throw new NotImplementedException($"No RAPIDS in DK or GL. {tableName}");
                         }
-                        break;
 
                     case 20: {    // RIVERS
                             var instance = new River();
@@ -314,64 +312,7 @@ namespace S100Framework.Applications
 
                     case 30: {    // SLOGRD_SlopingGround
                             throw new NotImplementedException($"No SLOGRD_SlopingGround\r\n in DK or GL. {tableName}");
-
-                            //var instance = new SlopingGround {
-                            //    categoryOfSlope = null,
-                            //    radarConspicuous = null,
-                            //    visualProminence = null,
-                            //    scaleMinimum = null,
-                            //};
-
-                            //if (current.CATSLO.HasValue) {
-                            //    instance.categoryOfSlope = EnumHelper.GetEnumValue<categoryOfSlope>(current.CATSLO.Value);
-                            //}
-
-                            //if (current.COLOUR != default) {
-                            //    instance.colour = GetColours(current.COLOUR);
-                            //}
-
-                            //if (current.NATSUR != default) {
-                            //    instance.natureOfSurface = EnumHelper.GetEnumValues<natureOfSurface>(current.NATSUR);
-                            //}
-
-                            //if (current.CONRAD.HasValue) {
-                            //    instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
-                            //}
-
-                            //if (convis != default) {
-                            //    instance.visualProminence = convis switch {
-                            //        1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
-                            //        2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
-                            //        -32767 =>null,
-                            //        _ => throw new IndexOutOfRangeException(),
-                            //    };
-                            //}
-                            //if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                            //    string subtype = "";
-
-                            //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                            //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            //}
-
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            //AddInformation(instance.information,current.OBJECTID!.Value,current.TableName!,current.NTXTDS,current.TXTDSC, current.INFORM,current.NINFOM);
-
-                            //bufferSurface["ps"] = ps101;
-                            //bufferSurface["code"] = instance.GetType().Name; 
-                            //bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            //SetShape(bufferSurface, current.SHAPE);
-                            //SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
-                            //var featureN = featureClass.CreateRow(bufferSurface);
-                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            //// TODO: Create relations
-
-                            //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
-                        break;
 
                     case 35: {    // VEGATN
                             var instance = new Vegetation {

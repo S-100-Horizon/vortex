@@ -19,7 +19,7 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
+            
 
             var orgWhereClause = filter.WhereClause.Clone().ToString();
 
@@ -50,7 +50,7 @@ namespace S100Framework.Applications
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
                 if (FeatureRelations.Instance.IsSlave(globalid)) {
-                    Subtypes.Instance.TryGetSubtype(tableName, current.FCSUBTYPE.Value, out var subtype);
+                    Subtypes.Instance.TryGetSubtype(tableName, current.FCSUBTYPE!.Value, out var subtype);
                     _slaves.Add(globalid, $"{tableName}::{globalid}::{subtype}");
                     continue;
                 }
@@ -177,7 +177,7 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            instance.pictorialRepresentation = FixFilename(current.PICREP);
+                            instance.pictorialRepresentation = FixFilename(current.PICREP!);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1138,7 +1138,7 @@ namespace S100Framework.Applications
 
                             AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
-                            instance.pictorialRepresentation = FixFilename(current.PICREP);
+                            instance.pictorialRepresentation = FixFilename(current.PICREP!);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
