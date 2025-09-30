@@ -62,8 +62,8 @@ namespace S100Framework.Applications
                             var natureOfSurfaceQualifyingTermsCount = 0;
                             var naturOfSurfaceCount = 0;
 
-                            string[] natsurValues = default;
-                            string[] natquaValues = default;
+                            string[] natsurValues = null!;
+                            string[] natquaValues = null!;
 
                             List<natureOfSurfaceQualifyingTerms>? natureOfSurfaceQualifyingTermsList = null;
 

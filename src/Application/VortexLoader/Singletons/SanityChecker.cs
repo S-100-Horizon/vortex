@@ -5,10 +5,10 @@ namespace S100Framework.Applications.Singletons
 {
     public class SanityChecker
     {
-        private static SanityChecker _instance;
+        private static SanityChecker? _instance;
         private static readonly object _lock = new object();
 
-        private static Geodatabase _geodatabase;
+        private static Geodatabase? _geodatabase;
 
         private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
 
@@ -54,7 +54,7 @@ namespace S100Framework.Applications.Singletons
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -91,7 +91,7 @@ namespace S100Framework.Applications.Singletons
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -127,7 +127,7 @@ namespace S100Framework.Applications.Singletons
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<Table>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
@@ -154,7 +154,7 @@ namespace S100Framework.Applications.Singletons
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
-                using var featureClass = _geodatabase.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 

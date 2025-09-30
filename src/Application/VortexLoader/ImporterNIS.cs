@@ -37,7 +37,7 @@ namespace S100Framework.Applications
         internal static string ps128 = S100Framework.DomainModel.S128.Summary.ProductId;
         internal static string s101version = S100Framework.DomainModel.S101.Summary.Version.ToString();
 
-        internal static Geodatabase _geodatabase;
+        internal static Geodatabase? _geodatabase;
 
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
@@ -320,7 +320,7 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-                string status = null;
+                string status = null!;
 
                 status = SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
@@ -977,7 +977,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
                     }
                     //var note = new Note(filePath);
                     string? fileLocator = default;
@@ -1009,7 +1009,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
                     }
                     //var note = new Note(filePath);
                     string? fileLocator = default;
@@ -1062,7 +1062,7 @@ namespace S100Framework.Applications
                             information.Add(instance);
                         }
                         else {
-                            Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                            Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
                         }
                     }
                     else if (!string.IsNullOrEmpty(value)) {
@@ -1101,7 +1101,7 @@ namespace S100Framework.Applications
                                 information.Add(instance);
                             }
                             else {
-                                Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                                Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
                             }
                         }
                         else if (!string.IsNullOrEmpty(value)) {
@@ -1163,7 +1163,7 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
                     }
                     //var note = new Note(filePath);
                     string? fileLocator = default;
@@ -1223,7 +1223,7 @@ namespace S100Framework.Applications
                             NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
                         }
                         else {
-                            Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                            Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
                         }
                     }
                     else if (!string.IsNullOrEmpty(value)) {
@@ -1266,7 +1266,7 @@ namespace S100Framework.Applications
                                 NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
                             }
                             else {
-                                Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                                Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
                             }
                         }
                         else if (!string.IsNullOrEmpty(value)) {

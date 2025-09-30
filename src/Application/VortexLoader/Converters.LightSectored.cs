@@ -112,7 +112,7 @@ namespace S100Framework.Applications
             var lights = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightSectored), structure.GlobalId);
             AidsToNavigationP current;
             if (lights.Count == 0) {
-                current = structure as AidsToNavigationP;
+                current = (AidsToNavigationP)structure;
             }
             else {
                 current = lights.First();

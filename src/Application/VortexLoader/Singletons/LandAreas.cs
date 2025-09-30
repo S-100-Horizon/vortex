@@ -11,7 +11,7 @@ namespace S100Framework.Applications.Singletons
 {
     internal sealed class LandAreas
     {
-        private static LandAreas _instance;
+        private static LandAreas? _instance;
         private static readonly object _lock = new object();
 
         private readonly List<Geometry> _polygons = new List<Geometry>();
@@ -37,7 +37,7 @@ namespace S100Framework.Applications.Singletons
             get {
                 if (_instance == null)
                     Initialize();
-                return _instance;
+                return _instance!;
             }
         }
 

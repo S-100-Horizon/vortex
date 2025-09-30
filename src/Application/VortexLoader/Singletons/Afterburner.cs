@@ -105,7 +105,7 @@ namespace S100Framework.Applications.Singletons
 
         public static IReadOnlyList<Polyline> SplitAtMidpoint(Polyline polyline) {
             if (polyline == null || polyline.IsEmpty)
-                return null;
+                return null!;
 
             var spatialRef = polyline.SpatialReference;
 
@@ -114,7 +114,7 @@ namespace S100Framework.Applications.Singletons
             var locationResult = GeometryEngine.Instance.QueryPoint(polyline, SegmentExtensionType.NoExtension, totalLength / 2, AsRatioOrLength.AsLength);
 
             if (locationResult == null) {
-                return null;
+                return null!;
             }
 
             MapPoint midpoint = MapPointBuilder.CreateMapPoint(locationResult.X, locationResult.Y, locationResult.Z, polyline.SpatialReference);
@@ -129,7 +129,7 @@ namespace S100Framework.Applications.Singletons
             var cutResult = GeometryEngine.Instance.Cut(polyline, cutter);
 
             if (cutResult == null || cutResult.Count != 2)
-                return null;
+                return null!;
 
             return cutResult
                 .Select(part => PolylineBuilder.CreatePolyline(part as Polyline, spatialRef))

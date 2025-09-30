@@ -11,7 +11,7 @@ namespace S100Framework.Applications.Singletons
 {
     internal sealed class VerticalDatums
     {
-        private static VerticalDatums _instance;
+        private static VerticalDatums? _instance;
         private static readonly object _lock = new object();
 
         private readonly List<(Geometry, DomainModel.S101.verticalDatum)> _polygons = new List<(Geometry, DomainModel.S101.verticalDatum)>();

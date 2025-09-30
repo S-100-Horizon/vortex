@@ -166,7 +166,7 @@ namespace S100Framework.Applications
                     case 5: { // BRIDGE_Bridge  // SPANS
                               //var instance = new Bridge();
 
-                            BridgeElement relatedBridge = null;
+                            BridgeElement relatedBridge = null!;
 
                             if (createBridgesAndRelations) {
                                 var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);

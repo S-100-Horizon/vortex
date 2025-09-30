@@ -12,7 +12,7 @@ namespace S100Framework.Applications
 
         internal static LightAllAround CreateLightAllAround(AidsToNavigationP current, int? scaleMinimum, Geodatabase source) {
             var instance = new LightAllAround {
-                rhythmOfLight = default,
+                rhythmOfLight = default!,
             };
 
             if (current.CATLIT != null) {

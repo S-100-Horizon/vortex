@@ -13,10 +13,10 @@ namespace VortexLoader
                 throw new ArgumentNullException(nameof(converter));
             }
 
-            _converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum,  geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase);
+            _converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum,  geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase)!;
         }
 
-        public TOut Convert<TOut>(object value, int? scaleMinimum = default(int?), Geodatabase geodatabase = null) {
+        public TOut Convert<TOut>(object value, int? scaleMinimum = default(int?), Geodatabase geodatabase = null!) {
             var fromType = value.GetType();
             var toType = typeof(TOut);
 
@@ -27,7 +27,7 @@ namespace VortexLoader
             throw new InvalidOperationException($"No converter registered from {fromType.Name} to {toType.Name}");
         }
 
-        public object Convert(object value, Type toType, int? scaleMinimum/* = default(int?)*/, Geodatabase geodatabase = null) {
+        public object Convert(object value, Type toType, int? scaleMinimum/* = default(int?)*/, Geodatabase geodatabase = null!) {
             var fromType = value.GetType();
 
             if (_converters.TryGetValue((fromType, toType), out var converter)) {

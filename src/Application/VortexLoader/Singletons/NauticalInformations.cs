@@ -52,7 +52,9 @@ namespace S100Framework.Applications.Singletons
             if (nauticalInformation == null)
                 throw new ArgumentNullException(nameof(nauticalInformation));
 
-            _nauticalInformations.Add(fileName, nauticalInformation);
+            if (!_nauticalInformations.ContainsKey(fileName)) {
+                _nauticalInformations.Add(fileName, nauticalInformation);
+            }
         }
 
         /// <summary>

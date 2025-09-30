@@ -5,7 +5,7 @@ namespace S100Framework.Applications.Singletons
 {
     internal sealed class Subtypes
     {
-        private static Subtypes _instance;
+        private static Subtypes? _instance;
         private static readonly object _lock = new object();
         private readonly Geodatabase _geodatabase;
         private SQLSyntax _sqlSyntax;

@@ -51,7 +51,7 @@ namespace S100Framework.Applications
                     case 5: { // LOCMAG_LocalMagneticAnomaly
                             throw new NotImplementedException("No LOCMAG_LocalMagneticAnomaly in DK | GL NIS");
                         }
-                        break;
+
                     case 10: { // MAGVAR_MagneticVariation
                             var instance = new MagneticVariation {
                                 referenceYearForMagneticVariation = default,
@@ -111,39 +111,30 @@ namespace S100Framework.Applications
                     case 15: { // T_HMON_TideHarmonicPrediction
                             throw new NotImplementedException("No T_HMON_TideHarmonicPrediction in DK | GL NIS");
                         }
-                        break;
                     case 20: { // T_NHMN_TideNonHarmonicPrediction
                             throw new NotImplementedException("No T_NHMN_TideNonHarmonicPrediction in DK | GL NIS");
                         }
-                        break;
                     case 25: { // T_TIMS_TideTimeSeries
                             throw new NotImplementedException("No T_TIMS_TideTimeSeries in DK | GL NIS");
                         }
-                        break;
                     case 30: { // TIDEWY_Tideway
                             throw new NotImplementedException("No TIDEWY_Tideway in DK | GL NIS");
                         }
-                        break;
                     case 35: { // TS_FEB_TidalStreamFloodEbb
                             throw new NotImplementedException("No TS_FEB_TidalStreamFloodEbb in DK | GL NIS");
                         }
-                        break;
                     case 40: { // TS_PAD_TidalStreamPanelData
                             throw new NotImplementedException("No TS_PAD_TidalStreamPanelData in DK | GL NIS");
                         }
-                        break;
                     case 45: { // TS_PNH_TidalStreamNonHarmonicPrediction
                             throw new NotImplementedException("No TS_PNH_TidalStreamNonHarmonicPrediction in DK | GL NIS");
                         }
-                        break;
                     case 50: { // TS_PRH_TidalStreamHarmonicPrediction
                             throw new NotImplementedException("No TS_PRH_TidalStreamHarmonicPrediction in DK | GL NIS");
                         }
-                        break;
                     case 55: { // TS_TIS_TidalStreamTimeSeries
                             throw new NotImplementedException("No TS_TIS_TidalStreamTimeSeries in DK | GL NIS");
                         }
-                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();

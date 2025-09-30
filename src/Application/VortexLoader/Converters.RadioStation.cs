@@ -44,7 +44,6 @@ namespace S100Framework.Applications
                 }
                 else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Radiostation of type {subtype} is not converted.");
-                    return null;
                 }
             }
 
