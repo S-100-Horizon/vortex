@@ -1533,9 +1533,7 @@ namespace S100Framework.Applications
             //TODO: Fix binding
             var result = BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
 
-
             instanceInformation.AddRange(result.information);
-
         }
     }
 }

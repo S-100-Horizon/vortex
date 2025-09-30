@@ -10,7 +10,10 @@ namespace S100Framework.Applications
 {
     internal class InformationResult {
 
+        // Simple text
         internal List<information> information { get; set; } = new();
+
+        // File references
         internal List<NauticalInformation> NauticalInformation { get; set; } = new();
     }
 }
