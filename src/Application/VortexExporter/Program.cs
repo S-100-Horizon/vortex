@@ -446,7 +446,7 @@ namespace S100Framework.Applications
                                             var asso = new YAML.Association {
                                                 Name = binding.association,
                                                 Role = binding.role,
-                                                To = $"110:{binding.featureId!.GetHashCode()}:1"
+                                                To = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(binding!.featureId!))}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
