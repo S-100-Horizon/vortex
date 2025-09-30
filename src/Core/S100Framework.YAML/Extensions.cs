@@ -74,11 +74,11 @@
 
                     var surface = new Surface(exteriorRing) {
                         InteriorRings = interiorRings,
-                        Name = surfaceFeature.Ref
+                        Name = $"S{surfaceFeature!.Ref!.ToUpperInvariant()}",
                     };
 
                     _ = dataset.AddSurface(surface);
-                    dataset.UpdateFeatureReferences($"S{surfaceFeature!.Id}", $"{surfaceFeature.Ref}");
+                    dataset.UpdateFeatureReferences($"S{surfaceFeature!.Id}", $"S{surfaceFeature.Ref!.ToUpperInvariant()}");
                 }
             }
             catch (Exception ex) {

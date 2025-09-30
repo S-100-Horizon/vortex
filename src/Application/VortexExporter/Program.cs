@@ -252,7 +252,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                            var foid = $"110:{name.GetHashCode()}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(name))}:1";       // Geodatastyrelsen: 110 
 
                             var feature = new YAML.Feature {
                                 Prim = Primitive.NoGeometry,
@@ -334,7 +334,7 @@ namespace S100Framework.Applications
 
                             var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{name.GetHashCode()}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(name))}:1";       // Geodatastyrelsen: 110 
 
                             var prim = shapetype switch {
                                 GeometryType.Point => Primitive.Point,
@@ -451,7 +451,7 @@ namespace S100Framework.Applications
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.GetHashCode()}:1"));
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(binding.featureId))}:1"));
                                             if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                                 featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
