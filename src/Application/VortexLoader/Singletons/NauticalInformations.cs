@@ -1,0 +1,68 @@
+﻿using ArcGIS.Core.Geometry;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.InformationTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace S100Framework.Applications.Singletons
+{
+    internal sealed class NauticalInformations
+    {
+        private static NauticalInformations _instance;
+        private static readonly object _lock = new object();
+
+        private readonly Dictionary<string,NauticalInformation> _nauticalInformations = new ();
+
+
+        internal static void Initialize() {
+            if (_instance != null) {
+                throw new InvalidOperationException("Subtypes has already been initialized.");
+            }
+
+            lock (_lock) {
+                if (_instance == null) {
+                    _instance = new NauticalInformations();
+                }
+            }
+        }
+
+        private NauticalInformations() {
+
+        }
+
+        public static NauticalInformations Instance {
+            get {
+                if (_instance == null)
+                    Initialize();
+                return _instance!;
+            }
+        }
+
+
+        /// <summary>
+        /// Adds a polygon geometry to the collection.
+        /// </summary>
+        public void Add(string fileName, NauticalInformation nauticalInformation) {
+            if (fileName == null)
+                throw new ArgumentNullException(nameof(fileName));
+            if (nauticalInformation == null)
+                throw new ArgumentNullException(nameof(nauticalInformation));
+
+            _nauticalInformations.Add(fileName, nauticalInformation);
+        }
+
+        /// <summary>
+        /// Returns all polygons from the collection that touch the specified geometry.
+        /// </summary>
+        public bool Bind(string fileName, out NauticalInformation nauticalInformation) {
+            return _nauticalInformations.TryGetValue(fileName, out nauticalInformation);
+        }
+
+    }
+}
+
+
