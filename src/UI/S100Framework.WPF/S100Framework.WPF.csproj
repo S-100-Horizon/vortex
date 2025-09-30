@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>S100Framework.ViewModel</RootNamespace>
 	<UseWPF>true</UseWPF>
+	<Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

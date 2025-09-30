@@ -139,11 +139,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("bearingInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class bearingInformationViewModel : ViewModelBase {
+	public partial class bearingInformationViewModel : ComplexViewModel<bearingInformation> {
 		private cardinalDirection? _cardinalDirection  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(cardinalDirectionList), typeof(cardinalDirection))]
+		[Optional]
 		public cardinalDirection? cardinalDirection {
 			get {
 				return _cardinalDirection;
@@ -157,6 +158,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
 		private double? _distance  = default;
 
+		[Optional]
 		public double? distance {
 			get {
 				return _distance;
@@ -166,13 +168,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("bearingInformation")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
 
 		[Category("bearingInformation")]
 		[ExpandableObject]
+		[Optional]
 		public orientationViewModel? orientation {
 			get {
 				return _orientation;
@@ -183,7 +188,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public bearingInformationViewModel Load(bearingInformation instance) {
+		public bearingInformationViewModel LoadbearingInformation(bearingInformation instance) {
 			cardinalDirection = instance.cardinalDirection;
 			distance = instance.distance;
 			sectorBearing.Clear();
@@ -194,11 +199,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			orientation = new ();
 			if (instance.orientation != default) {
-				orientation.Load(instance.orientation);
+				orientation.Loadorientation(instance.orientation);
 			}
 			return this;
 		}
@@ -223,6 +228,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			orientation = this._orientation?.Model,
 		};
 
+		public override ComplexViewModel<bearingInformation> Load(bearingInformation instance) => this.LoadbearingInformation(instance);
+
 		public override string? ToString() => $"Bearing Information";
 
 		public bearingInformationViewModel() : base() {
@@ -242,11 +249,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("contactAddress",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class contactAddressViewModel : ViewModelBase {
+	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		[Category("contactAddress")]
+		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _cityName  = default;
 
+		[Optional]
 		public String? cityName {
 			get {
 				return _cityName;
@@ -257,6 +266,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _administrativeDivision  = default;
 
+		[Optional]
 		public String? administrativeDivision {
 			get {
 				return _administrativeDivision;
@@ -267,6 +277,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _countryName  = default;
 
+		[Optional]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -277,6 +288,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _postalCode  = default;
 
+		[Optional]
 		public String? postalCode {
 			get {
 				return _postalCode;
@@ -287,7 +299,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public contactAddressViewModel Load(contactAddress instance) {
+		public contactAddressViewModel LoadcontactAddress(contactAddress instance) {
 			deliveryPoint.Clear();
 			if (instance.deliveryPoint is not null) {
 				foreach(var e in instance.deliveryPoint)
@@ -320,6 +332,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			postalCode = this._postalCode,
 		};
 
+		public override ComplexViewModel<contactAddress> Load(contactAddress instance) => this.LoadcontactAddress(instance);
+
 		public override string? ToString() => $"Contact Address";
 
 		public contactAddressViewModel() : base() {
@@ -336,9 +350,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private Boolean? _displayName  = default;
 
+		[Optional]
 		public Boolean? displayName {
 			get {
 				return _displayName;
@@ -349,6 +364,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -360,6 +376,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -370,7 +387,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public featureNameViewModel Load(featureName instance) {
+		public featureNameViewModel LoadfeatureName(featureName instance) {
 			displayName = instance.displayName;
 			language = instance.language;
 			name = instance.name;
@@ -393,6 +410,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			name = this._name,
 		};
 
+		public override ComplexViewModel<featureName> Load(featureName instance) => this.LoadfeatureName(instance);
+
 		public override string? ToString() => $"Feature Name";
 	}
 
@@ -403,10 +422,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
+	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -418,6 +438,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _dateStart  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -428,7 +449,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public fixedDateRangeViewModel Load(fixedDateRange instance) {
+		public fixedDateRangeViewModel LoadfixedDateRange(fixedDateRange instance) {
 			dateEnd = instance.dateEnd;
 			dateStart = instance.dateStart;
 			return this;
@@ -448,6 +469,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			dateStart = this._dateStart,
 		};
 
+		public override ComplexViewModel<fixedDateRange> Load(fixedDateRange instance) => this.LoadfixedDateRange(instance);
+
 		public override string? ToString() => $"Fixed Date Range";
 	}
 
@@ -458,16 +481,19 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("frequencyPair",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class frequencyPairViewModel : ViewModelBase {
+	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Optional]
 		public ObservableCollection<String> contactInstructions  { get; set; } = new ();
 
 
-		public frequencyPairViewModel Load(frequencyPair instance) {
+		public frequencyPairViewModel LoadfrequencyPair(frequencyPair instance) {
 			frequencyShoreStationTransmits.Clear();
 			if (instance.frequencyShoreStationTransmits is not null) {
 				foreach(var e in instance.frequencyShoreStationTransmits)
@@ -502,6 +528,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			contactInstructions = this.contactInstructions.ToList(),
 		};
 
+		public override ComplexViewModel<frequencyPair> Load(frequencyPair instance) => this.LoadfrequencyPair(instance);
+
 		public override string? ToString() => $"Frequency Pair";
 
 		public frequencyPairViewModel() : base() {
@@ -524,11 +552,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("graphic",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class graphicViewModel : ViewModelBase {
+	public partial class graphicViewModel : ComplexViewModel<graphic> {
 		[Category("graphic")]
+		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 		private String? _pictureCaption  = default;
 
+		[Optional]
 		public String? pictureCaption {
 			get {
 				return _pictureCaption;
@@ -539,6 +569,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private DateOnly? _sourceDate  = default;
 
+		[Optional]
 		public DateOnly? sourceDate {
 			get {
 				return _sourceDate;
@@ -549,6 +580,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _pictureInformation  = default;
 
+		[Optional]
 		public String? pictureInformation {
 			get {
 				return _pictureInformation;
@@ -561,6 +593,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("graphic")]
 		[ExpandableObject]
+		[Optional]
 		public bearingInformationViewModel? bearingInformation {
 			get {
 				return _bearingInformation;
@@ -571,7 +604,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public graphicViewModel Load(graphic instance) {
+		public graphicViewModel Loadgraphic(graphic instance) {
 			pictorialRepresentation.Clear();
 			if (instance.pictorialRepresentation is not null) {
 				foreach(var e in instance.pictorialRepresentation)
@@ -582,7 +615,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			pictureInformation = instance.pictureInformation;
 			bearingInformation = new ();
 			if (instance.bearingInformation != default) {
-				bearingInformation.Load(instance.bearingInformation);
+				bearingInformation.LoadbearingInformation(instance.bearingInformation);
 			}
 			return this;
 		}
@@ -607,6 +640,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			bearingInformation = this._bearingInformation?.Model,
 		};
 
+		public override ComplexViewModel<graphic> Load(graphic instance) => this.Loadgraphic(instance);
+
 		public override string? ToString() => $"Graphic";
 
 		public graphicViewModel() : base() {
@@ -623,10 +658,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -637,7 +673,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
+		public horizontalPositionUncertaintyViewModel LoadhorizontalPositionUncertainty(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			return this;
 		}
@@ -654,6 +690,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			uncertaintyFixed = this._uncertaintyFixed,
 		};
 
+		public override ComplexViewModel<horizontalPositionUncertainty> Load(horizontalPositionUncertainty instance) => this.LoadhorizontalPositionUncertainty(instance);
+
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
 
@@ -664,9 +702,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Optional]
 		public String? fileLocator {
 			get {
 				return _fileLocator;
@@ -677,6 +716,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _fileReference  = default;
 
+		[Optional]
 		public String? fileReference {
 			get {
 				return _fileReference;
@@ -687,6 +727,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _headline  = default;
 
+		[Optional]
 		public String? headline {
 			get {
 				return _headline;
@@ -697,6 +738,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _language  = default;
 
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -707,6 +749,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _text  = default;
 
+		[Optional]
 		public String? text {
 			get {
 				return _text;
@@ -717,7 +760,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public informationViewModel Load(information instance) {
+		public informationViewModel Loadinformation(information instance) {
 			fileLocator = instance.fileLocator;
 			fileReference = instance.fileReference;
 			headline = instance.headline;
@@ -746,6 +789,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			text = this._text,
 		};
 
+		public override ComplexViewModel<information> Load(information instance) => this.Loadinformation(instance);
+
 		public override string? ToString() => $"Information";
 	}
 
@@ -756,11 +801,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("noticeTime",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class noticeTimeViewModel : ViewModelBase {
+	public partial class noticeTimeViewModel : ComplexViewModel<noticeTime> {
 		[Category("noticeTime")]
+		[Optional]
 		public ObservableCollection<double> noticeTimeHours  { get; set; } = new ();
 		private String? _noticeTimeText  = default;
 
+		[Optional]
 		public String? noticeTimeText {
 			get {
 				return _noticeTimeText;
@@ -773,6 +820,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(operationList), typeof(operation))]
+		[Optional]
 		public operation? operation {
 			get {
 				return _operation;
@@ -786,7 +834,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public operation[] operationList => [(operation)1,(operation)2];
 
 
-		public noticeTimeViewModel Load(noticeTime instance) {
+		public noticeTimeViewModel LoadnoticeTime(noticeTime instance) {
 			noticeTimeHours.Clear();
 			if (instance.noticeTimeHours is not null) {
 				foreach(var e in instance.noticeTimeHours)
@@ -813,6 +861,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			operation = this._operation,
 		};
 
+		public override ComplexViewModel<noticeTime> Load(noticeTime instance) => this.LoadnoticeTime(instance);
+
 		public override string? ToString() => $"Notice Time";
 
 		public noticeTimeViewModel() : base() {
@@ -829,10 +879,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("onlineResource",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class onlineResourceViewModel : ViewModelBase {
+	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String _linkage  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String linkage {
 			get {
 				return _linkage;
@@ -843,6 +894,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _protocol  = default;
 
+		[Optional]
 		public String? protocol {
 			get {
 				return _protocol;
@@ -853,6 +905,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _applicationProfile  = default;
 
+		[Optional]
 		public String? applicationProfile {
 			get {
 				return _applicationProfile;
@@ -863,6 +916,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _nameOfResource  = default;
 
+		[Optional]
 		public String? nameOfResource {
 			get {
 				return _nameOfResource;
@@ -873,6 +927,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _onlineResourceDescription  = default;
 
+		[Optional]
 		public String? onlineResourceDescription {
 			get {
 				return _onlineResourceDescription;
@@ -885,6 +940,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(onlineFunctionList), typeof(onlineFunction))]
+		[Optional]
 		public onlineFunction? onlineFunction {
 			get {
 				return _onlineFunction;
@@ -898,6 +954,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public onlineFunction[] onlineFunctionList => [(onlineFunction)1,(onlineFunction)2,(onlineFunction)3,(onlineFunction)4,(onlineFunction)5,(onlineFunction)6,(onlineFunction)7,(onlineFunction)8,(onlineFunction)9,(onlineFunction)10,(onlineFunction)11];
 		private String? _protocolRequest  = default;
 
+		[Optional]
 		public String? protocolRequest {
 			get {
 				return _protocolRequest;
@@ -908,7 +965,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public onlineResourceViewModel Load(onlineResource instance) {
+		public onlineResourceViewModel LoadonlineResource(onlineResource instance) {
 			linkage = instance.linkage;
 			protocol = instance.protocol;
 			applicationProfile = instance.applicationProfile;
@@ -943,6 +1000,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			protocolRequest = this._protocolRequest,
 		};
 
+		public override ComplexViewModel<onlineResource> Load(onlineResource instance) => this.LoadonlineResource(instance);
+
 		public override string? ToString() => $"Online Resource";
 	}
 
@@ -953,9 +1012,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("orientation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class orientationViewModel : ViewModelBase {
+	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Optional]
 		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -967,6 +1027,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double _orientationValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double orientationValue {
 			get {
 				return _orientationValue;
@@ -977,7 +1038,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public orientationViewModel Load(orientation instance) {
+		public orientationViewModel Loadorientation(orientation instance) {
 			orientationUncertainty = instance.orientationUncertainty;
 			orientationValue = instance.orientationValue;
 			return this;
@@ -997,6 +1058,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			orientationValue = this._orientationValue,
 		};
 
+		public override ComplexViewModel<orientation> Load(orientation instance) => this.Loadorientation(instance);
+
 		public override string? ToString() => $"Orientation";
 	}
 
@@ -1007,11 +1070,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("scheduleByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
+	public partial class scheduleByDayOfWeekViewModel : ComplexViewModel<scheduleByDayOfWeek> {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList), typeof(categoryOfSchedule))]
+		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
 				return _categoryOfSchedule;
@@ -1024,15 +1088,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 		[Category("scheduleByDayOfWeek")]
+		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
-		public scheduleByDayOfWeekViewModel Load(scheduleByDayOfWeek instance) {
+		public scheduleByDayOfWeekViewModel LoadscheduleByDayOfWeek(scheduleByDayOfWeek instance) {
 			categoryOfSchedule = instance.categoryOfSchedule;
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
-					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().Load(e));
+					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().LoadtimeIntervalsByDayOfWeek(e));
 			}
 			return this;
 		}
@@ -1051,6 +1116,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 		};
 
+		public override ComplexViewModel<scheduleByDayOfWeek> Load(scheduleByDayOfWeek instance) => this.LoadscheduleByDayOfWeek(instance);
+
 		public override string? ToString() => $"Schedule by Day of Week";
 
 		public scheduleByDayOfWeekViewModel() : base() {
@@ -1067,11 +1134,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("periodicDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class periodicDateRangeViewModel : ViewModelBase {
+	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1084,6 +1152,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateStart {
 			get {
 				return _dateStart;
@@ -1094,7 +1163,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public periodicDateRangeViewModel Load(periodicDateRange instance) {
+		public periodicDateRangeViewModel LoadperiodicDateRange(periodicDateRange instance) {
 			dateEnd = instance.dateEnd;
 			dateStart = instance.dateStart;
 			return this;
@@ -1114,6 +1183,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			dateStart = this._dateStart,
 		};
 
+		public override ComplexViewModel<periodicDateRange> Load(periodicDateRange instance) => this.LoadperiodicDateRange(instance);
+
 		public override string? ToString() => $"Periodic Date Range";
 	}
 
@@ -1124,11 +1195,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("radiocommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class radiocommunicationsViewModel : ViewModelBase {
+	public partial class radiocommunicationsViewModel : ComplexViewModel<radiocommunications> {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1143,6 +1215,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("radiocommunications")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfMaritimeBroadcastList), typeof(categoryOfMaritimeBroadcast))]
+		[Optional]
 		public ObservableCollection<categoryOfMaritimeBroadcast> categoryOfMaritimeBroadcast  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1150,14 +1223,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("radiocommunications")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRadioMethodsList), typeof(categoryOfRadioMethods))]
+		[Optional]
 		public ObservableCollection<categoryOfRadioMethods> categoryOfRadioMethods  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRadioMethods[] categoryOfRadioMethodsList => [(categoryOfRadioMethods)1,(categoryOfRadioMethods)2,(categoryOfRadioMethods)3,(categoryOfRadioMethods)4,(categoryOfRadioMethods)5,(categoryOfRadioMethods)6,(categoryOfRadioMethods)7,(categoryOfRadioMethods)8,(categoryOfRadioMethods)9,(categoryOfRadioMethods)10,(categoryOfRadioMethods)11,(categoryOfRadioMethods)12,(categoryOfRadioMethods)13,(categoryOfRadioMethods)14,(categoryOfRadioMethods)15,(categoryOfRadioMethods)16,(categoryOfRadioMethods)17,(categoryOfRadioMethods)18,(categoryOfRadioMethods)19,(categoryOfRadioMethods)20];
 		[Category("radiocommunications")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _contactInstructions  = default;
 
+		[Optional]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1167,11 +1243,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("radiocommunications")]
+		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 		[Category("radiocommunications")]
+		[Optional]
 		public ObservableCollection<int> signalFrequency  { get; set; } = new ();
 		private String? _transmissionContent  = default;
 
+		[Optional]
 		public String? transmissionContent {
 			get {
 				return _transmissionContent;
@@ -1181,10 +1260,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("radiocommunications")]
+		[Optional]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
-		public radiocommunicationsViewModel Load(radiocommunications instance) {
+		public radiocommunicationsViewModel Loadradiocommunications(radiocommunications instance) {
 			categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
 			categoryOfMaritimeBroadcast.Clear();
 			if (instance.categoryOfMaritimeBroadcast is not null) {
@@ -1205,7 +1285,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			frequencyPair.Clear();
 			if (instance.frequencyPair is not null) {
 				foreach(var e in instance.frequencyPair)
-					frequencyPair.Add(new frequencyPairViewModel().Load(e));
+					frequencyPair.Add(new frequencyPairViewModel().LoadfrequencyPair(e));
 			}
 			signalFrequency.Clear();
 			if (instance.signalFrequency is not null) {
@@ -1216,7 +1296,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
-					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().Load(e));
+					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().LoadtimeIntervalsByDayOfWeek(e));
 			}
 			return this;
 		}
@@ -1249,6 +1329,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 		};
 
+		public override ComplexViewModel<radiocommunications> Load(radiocommunications instance) => this.Loadradiocommunications(instance);
+
 		public override string? ToString() => $"Radiocommunications";
 
 		public radiocommunicationsViewModel() : base() {
@@ -1280,9 +1362,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("rxNCode",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class rxNCodeViewModel : ViewModelBase {
+	public partial class rxNCodeViewModel : ComplexViewModel<rxNCode> {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
+		[Optional]
 		public categoryOfRxN? categoryOfRxN {
 			get {
 				return _categoryOfRxN;
@@ -1296,6 +1379,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfRxN[] categoryOfRxNList =>  CodeList.categoryOfRxNS.ToArray();
 		private actionOrActivity? _actionOrActivity  = default;
 
+		[Optional]
 		public actionOrActivity? actionOrActivity {
 			get {
 				return _actionOrActivity;
@@ -1309,6 +1393,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 		private String? _headline  = default;
 
+		[Optional]
 		public String? headline {
 			get {
 				return _headline;
@@ -1319,7 +1404,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public rxNCodeViewModel Load(rxNCode instance) {
+		public rxNCodeViewModel LoadrxNCode(rxNCode instance) {
 			categoryOfRxN = instance.categoryOfRxN;
 			actionOrActivity = instance.actionOrActivity;
 			headline = instance.headline;
@@ -1342,6 +1427,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			headline = this._headline,
 		};
 
+		public override ComplexViewModel<rxNCode> Load(rxNCode instance) => this.LoadrxNCode(instance);
+
 		public override string? ToString() => $"RxN Code";
 	}
 
@@ -1352,11 +1439,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("sourceIndication",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class sourceIndicationViewModel : ViewModelBase {
+	public partial class sourceIndicationViewModel : ComplexViewModel<sourceIndication> {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -1370,6 +1458,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		private String? _countryName  = default;
 
+		[Optional]
 		public String? countryName {
 			get {
 				return _countryName;
@@ -1381,6 +1470,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _reportedDate  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? reportedDate {
 			get {
 				return _reportedDate;
@@ -1391,6 +1481,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _source  = default;
 
+		[Optional]
 		public String? source {
 			get {
 				return _source;
@@ -1403,6 +1494,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Optional]
 		public sourceType? sourceType {
 			get {
 				return _sourceType;
@@ -1415,10 +1507,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		[Category("sourceIndication")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public sourceIndicationViewModel Load(sourceIndication instance) {
+		public sourceIndicationViewModel LoadsourceIndication(sourceIndication instance) {
 			categoryOfAuthority = instance.categoryOfAuthority;
 			countryName = instance.countryName;
 			reportedDate = instance.reportedDate;
@@ -1427,7 +1520,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			return this;
 		}
@@ -1454,6 +1547,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 		};
 
+		public override ComplexViewModel<sourceIndication> Load(sourceIndication instance) => this.LoadsourceIndication(instance);
+
 		public override string? ToString() => $"Source Indication";
 
 		public sourceIndicationViewModel() : base() {
@@ -1470,11 +1565,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("surveyDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class surveyDateRangeViewModel : ViewModelBase {
+	public partial class surveyDateRangeViewModel : ComplexViewModel<surveyDateRange> {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
 		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Mandatory]
 		public String dateEnd {
 			get {
 				return _dateEnd;
@@ -1486,6 +1582,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _dateStart  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -1496,7 +1593,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public surveyDateRangeViewModel Load(surveyDateRange instance) {
+		public surveyDateRangeViewModel LoadsurveyDateRange(surveyDateRange instance) {
 			dateEnd = instance.dateEnd;
 			dateStart = instance.dateStart;
 			return this;
@@ -1516,6 +1613,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			dateStart = this._dateStart,
 		};
 
+		public override ComplexViewModel<surveyDateRange> Load(surveyDateRange instance) => this.LoadsurveyDateRange(instance);
+
 		public override string? ToString() => $"Survey Date Range";
 	}
 
@@ -1526,11 +1625,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("telecommunications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class telecommunicationsViewModel : ViewModelBase {
+	public partial class telecommunicationsViewModel : ComplexViewModel<telecommunications> {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -1545,6 +1645,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String _telecommunicationIdentifier  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
 				return _telecommunicationIdentifier;
@@ -1555,6 +1656,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _telecommunicationCarrier  = default;
 
+		[Optional]
 		public String? telecommunicationCarrier {
 			get {
 				return _telecommunicationCarrier;
@@ -1565,6 +1667,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _contactInstructions  = default;
 
+		[Optional]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -1576,6 +1679,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("telecommunications")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
+		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -1584,6 +1688,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("telecommunications")]
 		[ExpandableObject]
+		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
 			get {
 				return _scheduleByDayOfWeek;
@@ -1594,7 +1699,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public telecommunicationsViewModel Load(telecommunications instance) {
+		public telecommunicationsViewModel Loadtelecommunications(telecommunications instance) {
 			categoryOfCommunicationPreference = instance.categoryOfCommunicationPreference;
 			telecommunicationIdentifier = instance.telecommunicationIdentifier;
 			telecommunicationCarrier = instance.telecommunicationCarrier;
@@ -1606,7 +1711,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 			scheduleByDayOfWeek = new ();
 			if (instance.scheduleByDayOfWeek != default) {
-				scheduleByDayOfWeek.Load(instance.scheduleByDayOfWeek);
+				scheduleByDayOfWeek.LoadscheduleByDayOfWeek(instance.scheduleByDayOfWeek);
 			}
 			return this;
 		}
@@ -1633,6 +1738,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
 		};
 
+		public override ComplexViewModel<telecommunications> Load(telecommunications instance) => this.Loadtelecommunications(instance);
+
 		public override string? ToString() => $"Telecommunications";
 
 		public telecommunicationsViewModel() : base() {
@@ -1649,11 +1756,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("textContent",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class textContentViewModel : ViewModelBase {
+	public partial class textContentViewModel : ComplexViewModel<textContent> {
 		private categoryOfText? _categoryOfText  = default;
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTextList), typeof(categoryOfText))]
+		[Optional]
 		public categoryOfText? categoryOfText {
 			get {
 				return _categoryOfText;
@@ -1666,11 +1774,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 		[Category("textContent")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("textContent")]
 		[ExpandableObject]
+		[Optional]
 		public onlineResourceViewModel? onlineResource {
 			get {
 				return _onlineResource;
@@ -1683,6 +1793,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("textContent")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -1693,20 +1804,20 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public textContentViewModel Load(textContent instance) {
+		public textContentViewModel LoadtextContent(textContent instance) {
 			categoryOfText = instance.categoryOfText;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			onlineResource = new ();
 			if (instance.onlineResource != default) {
-				onlineResource.Load(instance.onlineResource);
+				onlineResource.LoadonlineResource(instance.onlineResource);
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			return this;
 		}
@@ -1729,6 +1840,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 		};
 
+		public override ComplexViewModel<textContent> Load(textContent instance) => this.LoadtextContent(instance);
+
 		public override string? ToString() => $"Text Content";
 
 		public textContentViewModel() : base() {
@@ -1745,16 +1858,18 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("timeIntervalsByDayOfWeek",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
+	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Category("timeIntervalsByDayOfWeek")]
 		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
 		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
+		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
 		[Browsable(false)]
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 		private Boolean? _dayOfWeekIsRange  = default;
 
+		[Optional]
 		public Boolean? dayOfWeekIsRange {
 			get {
 				return _dayOfWeekIsRange;
@@ -1764,12 +1879,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("timeIntervalsByDayOfWeek")]
+		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 		[Category("timeIntervalsByDayOfWeek")]
+		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
 
-		public timeIntervalsByDayOfWeekViewModel Load(timeIntervalsByDayOfWeek instance) {
+		public timeIntervalsByDayOfWeekViewModel LoadtimeIntervalsByDayOfWeek(timeIntervalsByDayOfWeek instance) {
 			dayOfWeek.Clear();
 			if (instance.dayOfWeek is not null) {
 				foreach(var e in instance.dayOfWeek)
@@ -1807,6 +1924,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			timeOfDayEnd = this.timeOfDayEnd.ToList(),
 		};
 
+		public override ComplexViewModel<timeIntervalsByDayOfWeek> Load(timeIntervalsByDayOfWeek instance) => this.LoadtimeIntervalsByDayOfWeek(instance);
+
 		public override string? ToString() => $"Time Intervals by Day of Week";
 
 		public timeIntervalsByDayOfWeekViewModel() : base() {
@@ -1829,9 +1948,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("underKeelAllowance",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class underKeelAllowanceViewModel : ViewModelBase {
+	public partial class underKeelAllowanceViewModel : ComplexViewModel<underKeelAllowance> {
 		private double? _underKeelAllowanceFixed  = default;
 
+		[Optional]
 		public double? underKeelAllowanceFixed {
 			get {
 				return _underKeelAllowanceFixed;
@@ -1842,6 +1962,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private double? _underKeelAllowanceVariableBeamBased  = default;
 
+		[Optional]
 		public double? underKeelAllowanceVariableBeamBased {
 			get {
 				return _underKeelAllowanceVariableBeamBased;
@@ -1852,6 +1973,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private double? _underKeelAllowanceVariableDraughtBased  = default;
 
+		[Optional]
 		public double? underKeelAllowanceVariableDraughtBased {
 			get {
 				return _underKeelAllowanceVariableDraughtBased;
@@ -1864,6 +1986,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(operationList), typeof(operation))]
+		[Optional]
 		public operation? operation {
 			get {
 				return _operation;
@@ -1877,7 +2000,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public operation[] operationList => [(operation)1,(operation)2];
 
 
-		public underKeelAllowanceViewModel Load(underKeelAllowance instance) {
+		public underKeelAllowanceViewModel LoadunderKeelAllowance(underKeelAllowance instance) {
 			underKeelAllowanceFixed = instance.underKeelAllowanceFixed;
 			underKeelAllowanceVariableBeamBased = instance.underKeelAllowanceVariableBeamBased;
 			underKeelAllowanceVariableDraughtBased = instance.underKeelAllowanceVariableDraughtBased;
@@ -1903,6 +2026,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			operation = this._operation,
 		};
 
+		public override ComplexViewModel<underKeelAllowance> Load(underKeelAllowance instance) => this.LoadunderKeelAllowance(instance);
+
 		public override string? ToString() => $"Under Keel Allowance";
 	}
 
@@ -1913,11 +2038,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("vesselsMeasurements",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class vesselsMeasurementsViewModel : ViewModelBase {
+	public partial class vesselsMeasurementsViewModel : ComplexViewModel<vesselsMeasurements> {
 		private comparisonOperator _comparisonOperator  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
+		[Mandatory]
 		public comparisonOperator comparisonOperator {
 			get {
 				return _comparisonOperator;
@@ -1933,6 +2059,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
+		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
 				return _vesselsCharacteristics;
@@ -1947,6 +2074,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double _vesselsCharacteristicsValue  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
 				return _vesselsCharacteristicsValue;
@@ -1959,6 +2087,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
+		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
 				return _vesselsCharacteristicsUnit;
@@ -1972,7 +2101,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)1,(vesselsCharacteristicsUnit)2,(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)8,(vesselsCharacteristicsUnit)9,(vesselsCharacteristicsUnit)10,(vesselsCharacteristicsUnit)11,(vesselsCharacteristicsUnit)12];
 
 
-		public vesselsMeasurementsViewModel Load(vesselsMeasurements instance) {
+		public vesselsMeasurementsViewModel LoadvesselsMeasurements(vesselsMeasurements instance) {
 			comparisonOperator = instance.comparisonOperator;
 			vesselsCharacteristics = instance.vesselsCharacteristics;
 			vesselsCharacteristicsValue = instance.vesselsCharacteristicsValue;
@@ -1998,6 +2127,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
 		};
 
+		public override ComplexViewModel<vesselsMeasurements> Load(vesselsMeasurements instance) => this.LoadvesselsMeasurements(instance);
+
 		public override string? ToString() => $"Vessels Measurements";
 	}
 
@@ -2012,7 +2143,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class AdditionalInformationViewModel : AssociationViewModel {
 
 
-		public AdditionalInformationViewModel Load(AdditionalInformation instance) {
+		public AdditionalInformationViewModel LoadAdditionalInformation(AdditionalInformation instance) {
 
 			return this;
 		}
@@ -2042,7 +2173,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class AuthorityContactViewModel : AssociationViewModel {
 
 
-		public AuthorityContactViewModel Load(AuthorityContact instance) {
+		public AuthorityContactViewModel LoadAuthorityContact(AuthorityContact instance) {
 
 			return this;
 		}
@@ -2072,7 +2203,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class AuthorityHoursViewModel : AssociationViewModel {
 
 
-		public AuthorityHoursViewModel Load(AuthorityHours instance) {
+		public AuthorityHoursViewModel LoadAuthorityHours(AuthorityHours instance) {
 
 			return this;
 		}
@@ -2102,7 +2233,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class AssociatedRxNViewModel : AssociationViewModel {
 
 
-		public AssociatedRxNViewModel Load(AssociatedRxN instance) {
+		public AssociatedRxNViewModel LoadAssociatedRxN(AssociatedRxN instance) {
 
 			return this;
 		}
@@ -2132,7 +2263,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
 
 
-		public ExceptionalWorkdayViewModel Load(ExceptionalWorkday instance) {
+		public ExceptionalWorkdayViewModel LoadExceptionalWorkday(ExceptionalWorkday instance) {
 
 			return this;
 		}
@@ -2165,6 +2296,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("InclusionType")]
 		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
 		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
+		[Mandatory]
 		public membership membership {
 			get {
 				return _membership;
@@ -2178,7 +2310,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public membership[] membershipList => [(membership)1,(membership)2];
 
 
-		public InclusionTypeViewModel Load(InclusionType instance) {
+		public InclusionTypeViewModel LoadInclusionType(InclusionType instance) {
 			membership = instance.membership;
 			return this;
 		}
@@ -2212,6 +2344,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PermissionType")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
+		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
 				return _categoryOfRelationship;
@@ -2225,7 +2358,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfRelationship[] categoryOfRelationshipList => [(categoryOfRelationship)1,(categoryOfRelationship)2,(categoryOfRelationship)3,(categoryOfRelationship)4,(categoryOfRelationship)5,(categoryOfRelationship)6];
 
 
-		public PermissionTypeViewModel Load(PermissionType instance) {
+		public PermissionTypeViewModel LoadPermissionType(PermissionType instance) {
 			categoryOfRelationship = instance.categoryOfRelationship;
 			return this;
 		}
@@ -2256,7 +2389,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class RelatedOrganisationViewModel : AssociationViewModel {
 
 
-		public RelatedOrganisationViewModel Load(RelatedOrganisation instance) {
+		public RelatedOrganisationViewModel LoadRelatedOrganisation(RelatedOrganisation instance) {
 
 			return this;
 		}
@@ -2286,7 +2419,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ReportingAuthorityViewModel : AssociationViewModel {
 
 
-		public ReportingAuthorityViewModel Load(ReportingAuthority instance) {
+		public ReportingAuthorityViewModel LoadReportingAuthority(ReportingAuthority instance) {
 
 			return this;
 		}
@@ -2316,7 +2449,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ReportingRequirementViewModel : AssociationViewModel {
 
 
-		public ReportingRequirementViewModel Load(ReportingRequirement instance) {
+		public ReportingRequirementViewModel LoadReportingRequirement(ReportingRequirement instance) {
 
 			return this;
 		}
@@ -2346,7 +2479,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ServiceContactViewModel : AssociationViewModel {
 
 
-		public ServiceContactViewModel Load(ServiceContact instance) {
+		public ServiceContactViewModel LoadServiceContact(ServiceContact instance) {
 
 			return this;
 		}
@@ -2376,7 +2509,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ServiceControlViewModel : AssociationViewModel {
 
 
-		public ServiceControlViewModel Load(ServiceControl instance) {
+		public ServiceControlViewModel LoadServiceControl(ServiceControl instance) {
 
 			return this;
 		}
@@ -2406,7 +2539,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class SpatialAssociationViewModel : AssociationViewModel {
 
 
-		public SpatialAssociationViewModel Load(SpatialAssociation instance) {
+		public SpatialAssociationViewModel LoadSpatialAssociation(SpatialAssociation instance) {
 
 			return this;
 		}
@@ -2436,7 +2569,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class LocationHoursViewModel : AssociationViewModel {
 
 
-		public LocationHoursViewModel Load(LocationHours instance) {
+		public LocationHoursViewModel LoadLocationHours(LocationHours instance) {
 
 			return this;
 		}
@@ -2466,7 +2599,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class TrafficServiceReportViewModel : AssociationViewModel {
 
 
-		public TrafficServiceReportViewModel Load(TrafficServiceReport instance) {
+		public TrafficServiceReportViewModel LoadTrafficServiceReport(TrafficServiceReport instance) {
 
 			return this;
 		}
@@ -2496,7 +2629,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class ServiceProvisionAreaViewModel : AssociationViewModel {
 
 
-		public ServiceProvisionAreaViewModel Load(ServiceProvisionArea instance) {
+		public ServiceProvisionAreaViewModel LoadServiceProvisionArea(ServiceProvisionArea instance) {
 
 			return this;
 		}
@@ -2526,7 +2659,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class PilotageDistrictAssociationViewModel : AssociationViewModel {
 
 
-		public PilotageDistrictAssociationViewModel Load(PilotageDistrictAssociation instance) {
+		public PilotageDistrictAssociationViewModel LoadPilotageDistrictAssociation(PilotageDistrictAssociation instance) {
 
 			return this;
 		}
@@ -2556,7 +2689,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class TextAssociationViewModel : AssociationViewModel {
 
 
-		public TextAssociationViewModel Load(TextAssociation instance) {
+		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
 
 			return this;
 		}
@@ -2586,7 +2719,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class TrafficControlServiceAggregationViewModel : AssociationViewModel {
 
 
-		public TrafficControlServiceAggregationViewModel Load(TrafficControlServiceAggregation instance) {
+		public TrafficControlServiceAggregationViewModel LoadTrafficControlServiceAggregation(TrafficControlServiceAggregation instance) {
 
 			return this;
 		}
@@ -2618,6 +2751,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2627,32 +2761,35 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 
-		public override InformationViewModel<InformationType> Load(InformationType instance) {
+		public InformationTypeViewModel LoadInformationType(InformationType instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			return this;
 		}
@@ -2674,7 +2811,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this.sourceIndication.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
+
+		public override InformationViewModel<InformationType> Load(InformationType instance) => this.LoadInformationType(instance);
 
 		public override string? ToString() => $"Information Type";
 
@@ -2704,6 +2844,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2713,10 +2854,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
@@ -2724,6 +2868,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -2736,48 +2881,51 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
-		public override InformationViewModel<AbstractRxN> Load(AbstractRxN instance) {
+		public AbstractRxNViewModel LoadAbstractRxN(AbstractRxN instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+					textContent.Add(new textContentViewModel().LoadtextContent(e));
 			}
 			graphic.Clear();
 			if (instance.graphic is not null) {
 				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+					graphic.Add(new graphicViewModel().Loadgraphic(e));
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().Load(e));
+					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
 			}
 			return this;
 		}
@@ -2807,7 +2955,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			graphic = this.graphic.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => AbstractRxN._informationBindingDefinitions;
+
+		public override InformationViewModel<AbstractRxN> Load(AbstractRxN instance) => this.LoadAbstractRxN(instance);
 
 		public override string? ToString() => $"AbstractRxN";
 
@@ -2846,6 +2997,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -2855,15 +3007,19 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private Boolean? _inBallast  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public Boolean? inBallast {
 			get {
 				return _inBallast;
@@ -2875,6 +3031,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2882,6 +3039,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -2889,6 +3047,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
 				return _categoryOfVessel;
@@ -2905,6 +3064,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList), typeof(categoryOfVesselRegistry))]
+		[Optional]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
 				return _categoryOfVesselRegistry;
@@ -2921,6 +3081,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("Applicability")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(logicalConnectivesList), typeof(logicalConnectives))]
+		[Optional]
 		public logicalConnectives? logicalConnectives {
 			get {
 				return _logicalConnectives;
@@ -2935,6 +3096,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int? _thicknessOfIceCapability  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public int? thicknessOfIceCapability {
 			get {
 				return _thicknessOfIceCapability;
@@ -2946,6 +3108,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _vesselPerformance  = default;
 
 		[Category("Applicability")]
+		[Optional]
 		public String? vesselPerformance {
 			get {
 				return _vesselPerformance;
@@ -2955,30 +3118,32 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("Applicability")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("Applicability")]
+		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
 
-		public override InformationViewModel<Applicability> Load(Applicability instance) {
+		public ApplicabilityViewModel LoadApplicability(Applicability instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			inBallast = instance.inBallast;
 			categoryOfCargo.Clear();
@@ -2999,12 +3164,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			vesselsMeasurements.Clear();
 			if (instance.vesselsMeasurements is not null) {
 				foreach(var e in instance.vesselsMeasurements)
-					vesselsMeasurements.Add(new vesselsMeasurementsViewModel().Load(e));
+					vesselsMeasurements.Add(new vesselsMeasurementsViewModel().LoadvesselsMeasurements(e));
 			}
 			return this;
 		}
@@ -3046,7 +3211,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			information = this.information.Select(e => e.Model).ToList(),
 			vesselsMeasurements = this.vesselsMeasurements.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
+
+		public override InformationViewModel<Applicability> Load(Applicability instance) => this.LoadApplicability(instance);
 
 		public override string? ToString() => $"Applicability";
 
@@ -3088,6 +3256,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3097,10 +3266,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority _categoryOfAuthority  = default;
@@ -3108,6 +3280,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("Authority")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfAuthority?>), typeof(Editors.UnknownEditor<categoryOfAuthority?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3123,6 +3296,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("Authority")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -3133,30 +3307,30 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override InformationViewModel<Authority> Load(Authority instance) {
+		public AuthorityViewModel LoadAuthority(Authority instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			return this;
 		}
@@ -3182,7 +3356,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfAuthority = this._categoryOfAuthority,
 			textContent = this._textContent?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
+
+		public override InformationViewModel<Authority> Load(Authority instance) => this.LoadAuthority(instance);
 
 		public override string? ToString() => $"Authority";
 
@@ -3212,6 +3389,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3221,15 +3399,19 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private String? _callName  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? callName {
 			get {
 				return _callName;
@@ -3241,6 +3423,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? callSign {
 			get {
 				return _callSign;
@@ -3254,6 +3437,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("ContactDetails")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
 				return _categoryOfCommunicationPreference;
@@ -3266,12 +3450,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 		private String? _contactInstructions  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? contactInstructions {
 			get {
 				return _contactInstructions;
@@ -3281,12 +3468,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _language  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? language {
 			get {
 				return _language;
@@ -3298,6 +3488,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _mMSICode  = default;
 
 		[Category("ContactDetails")]
+		[Optional]
 		public String? mMSICode {
 			get {
 				return _mMSICode;
@@ -3307,32 +3498,35 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Optional]
 		public ObservableCollection<radiocommunicationsViewModel> radiocommunications  { get; set; } = new ();
 
 
-		public override InformationViewModel<ContactDetails> Load(ContactDetails instance) {
+		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			callName = instance.callName;
 			callSign = instance.callSign;
@@ -3345,35 +3539,35 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			contactAddress.Clear();
 			if (instance.contactAddress is not null) {
 				foreach(var e in instance.contactAddress)
-					contactAddress.Add(new contactAddressViewModel().Load(e));
+					contactAddress.Add(new contactAddressViewModel().LoadcontactAddress(e));
 			}
 			contactInstructions = instance.contactInstructions;
 			frequencyPair.Clear();
 			if (instance.frequencyPair is not null) {
 				foreach(var e in instance.frequencyPair)
-					frequencyPair.Add(new frequencyPairViewModel().Load(e));
+					frequencyPair.Add(new frequencyPairViewModel().LoadfrequencyPair(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			language = instance.language;
 			mMSICode = instance.mMSICode;
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().Load(e));
+					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
 			}
 			telecommunications.Clear();
 			if (instance.telecommunications is not null) {
 				foreach(var e in instance.telecommunications)
-					telecommunications.Add(new telecommunicationsViewModel().Load(e));
+					telecommunications.Add(new telecommunicationsViewModel().Loadtelecommunications(e));
 			}
 			radiocommunications.Clear();
 			if (instance.radiocommunications is not null) {
 				foreach(var e in instance.radiocommunications)
-					radiocommunications.Add(new radiocommunicationsViewModel().Load(e));
+					radiocommunications.Add(new radiocommunicationsViewModel().Loadradiocommunications(e));
 			}
 			return this;
 		}
@@ -3421,7 +3615,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			telecommunications = this.telecommunications.Select(e => e.Model).ToList(),
 			radiocommunications = this.radiocommunications.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
+
+		public override InformationViewModel<ContactDetails> Load(ContactDetails instance) => this.LoadContactDetails(instance);
 
 		public override string? ToString() => $"Contact Details";
 
@@ -3472,6 +3669,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3481,10 +3679,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
@@ -3492,6 +3693,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -3504,49 +3706,52 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
 
-		public override InformationViewModel<NauticalInformation> Load(NauticalInformation instance) {
+		public NauticalInformationViewModel LoadNauticalInformation(NauticalInformation instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+					textContent.Add(new textContentViewModel().LoadtextContent(e));
 			}
 			graphic.Clear();
 			if (instance.graphic is not null) {
 				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+					graphic.Add(new graphicViewModel().Loadgraphic(e));
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().Load(e));
+					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
 			}
 			return this;
 		}
@@ -3576,7 +3781,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			graphic = this.graphic.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
+
+		public override InformationViewModel<NauticalInformation> Load(NauticalInformation instance) => this.LoadNauticalInformation(instance);
 
 		public override string? ToString() => $"Nautical Information";
 
@@ -3615,6 +3823,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3624,40 +3833,46 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("NonStandardWorkingDay")]
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public override InformationViewModel<NonStandardWorkingDay> Load(NonStandardWorkingDay instance) {
+		public NonStandardWorkingDayViewModel LoadNonStandardWorkingDay(NonStandardWorkingDay instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			dateFixed.Clear();
 			if (instance.dateFixed is not null) {
@@ -3672,7 +3887,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			return this;
 		}
@@ -3700,7 +3915,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			dateVariable = this.dateVariable.ToList(),
 			information = this.information.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
+
+		public override InformationViewModel<NonStandardWorkingDay> Load(NonStandardWorkingDay instance) => this.LoadNonStandardWorkingDay(instance);
 
 		public override string? ToString() => $"Non-Standard Working Day";
 
@@ -3739,6 +3957,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3748,47 +3967,52 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("ServiceHours")]
+		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
 		[Category("ServiceHours")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public override InformationViewModel<ServiceHours> Load(ServiceHours instance) {
+		public ServiceHoursViewModel LoadServiceHours(ServiceHours instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			scheduleByDayOfWeek.Clear();
 			if (instance.scheduleByDayOfWeek is not null) {
 				foreach(var e in instance.scheduleByDayOfWeek)
-					scheduleByDayOfWeek.Add(new scheduleByDayOfWeekViewModel().Load(e));
+					scheduleByDayOfWeek.Add(new scheduleByDayOfWeekViewModel().LoadscheduleByDayOfWeek(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			return this;
 		}
@@ -3814,7 +4038,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			scheduleByDayOfWeek = this.scheduleByDayOfWeek.Select(e => e.Model).ToList(),
 			information = this.information.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
+
+		public override InformationViewModel<ServiceHours> Load(ServiceHours instance) => this.LoadServiceHours(instance);
 
 		public override string? ToString() => $"Service Hours";
 
@@ -3850,6 +4077,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -3859,15 +4087,19 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("ShipReport")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfShipReportList), typeof(categoryOfShipReport))]
+		[Multiplicity(1)]
 		public ObservableCollection<categoryOfShipReport> categoryOfShipReport  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -3876,6 +4108,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("ShipReport")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean iMOFormatForReporting {
 			get {
 				return _iMOFormatForReporting;
@@ -3885,11 +4118,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ShipReport")]
+		[Multiplicity(1)]
 		public ObservableCollection<noticeTimeViewModel> noticeTime  { get; set; } = new ();
 		private textContentViewModel? _textContent  = default;
 
 		[Category("ShipReport")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -3900,25 +4135,25 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override InformationViewModel<ShipReport> Load(ShipReport instance) {
+		public ShipReportViewModel LoadShipReport(ShipReport instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfShipReport.Clear();
 			if (instance.categoryOfShipReport is not null) {
@@ -3929,11 +4164,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			noticeTime.Clear();
 			if (instance.noticeTime is not null) {
 				foreach(var e in instance.noticeTime)
-					noticeTime.Add(new noticeTimeViewModel().Load(e));
+					noticeTime.Add(new noticeTimeViewModel().LoadnoticeTime(e));
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			return this;
 		}
@@ -3963,7 +4198,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			noticeTime = this.noticeTime.Select(e => e.Model).ToList(),
 			textContent = this._textContent?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ShipReport._informationBindingDefinitions;
+
+		public override InformationViewModel<ShipReport> Load(ShipReport instance) => this.LoadShipReport(instance);
 
 		public override string? ToString() => $"Ship Report";
 
@@ -3999,6 +4237,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4008,10 +4247,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
@@ -4019,6 +4261,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4031,49 +4274,52 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
 
-		public override InformationViewModel<Recommendations> Load(Recommendations instance) {
+		public RecommendationsViewModel LoadRecommendations(Recommendations instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+					textContent.Add(new textContentViewModel().LoadtextContent(e));
 			}
 			graphic.Clear();
 			if (instance.graphic is not null) {
 				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+					graphic.Add(new graphicViewModel().Loadgraphic(e));
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().Load(e));
+					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
 			}
 			return this;
 		}
@@ -4103,7 +4349,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			graphic = this.graphic.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
+
+		public override InformationViewModel<Recommendations> Load(Recommendations instance) => this.LoadRecommendations(instance);
 
 		public override string? ToString() => $"Recommendations";
 
@@ -4142,6 +4391,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4151,10 +4401,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
@@ -4162,6 +4415,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4174,49 +4428,52 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
 
-		public override InformationViewModel<Regulations> Load(Regulations instance) {
+		public RegulationsViewModel LoadRegulations(Regulations instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+					textContent.Add(new textContentViewModel().LoadtextContent(e));
 			}
 			graphic.Clear();
 			if (instance.graphic is not null) {
 				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+					graphic.Add(new graphicViewModel().Loadgraphic(e));
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().Load(e));
+					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
 			}
 			return this;
 		}
@@ -4246,7 +4503,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			graphic = this.graphic.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
+
+		public override InformationViewModel<Regulations> Load(Regulations instance) => this.LoadRegulations(instance);
 
 		public override string? ToString() => $"Regulations";
 
@@ -4285,6 +4545,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("InformationType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4294,10 +4555,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
@@ -4305,6 +4569,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("AbstractRxN")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
 				return _categoryOfAuthority;
@@ -4317,49 +4582,52 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
 
-		public override InformationViewModel<Restrictions> Load(Restrictions instance) {
+		public RestrictionsViewModel LoadRestrictions(Restrictions instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication.Clear();
 			if (instance.sourceIndication is not null) {
 				foreach(var e in instance.sourceIndication)
-					sourceIndication.Add(new sourceIndicationViewModel().Load(e));
+					sourceIndication.Add(new sourceIndicationViewModel().LoadsourceIndication(e));
 			}
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().Load(e));
+					textContent.Add(new textContentViewModel().LoadtextContent(e));
 			}
 			graphic.Clear();
 			if (instance.graphic is not null) {
 				foreach(var e in instance.graphic)
-					graphic.Add(new graphicViewModel().Load(e));
+					graphic.Add(new graphicViewModel().Loadgraphic(e));
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().Load(e));
+					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
 			}
 			return this;
 		}
@@ -4389,7 +4657,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			graphic = this.graphic.Select(e => e.Model).ToList(),
 			rxNCode = this.rxNCode.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
+
+		public override InformationViewModel<Restrictions> Load(Restrictions instance) => this.LoadRestrictions(instance);
 
 		public override string? ToString() => $"Restrictions";
 
@@ -4429,6 +4700,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
@@ -4445,6 +4717,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
 				return _qualityOfHorizontalMeasurement;
@@ -4460,6 +4733,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("SpatialQuality")]
 		[ExpandableObject]
+		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -4470,12 +4744,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) {
+		public SpatialQualityViewModel LoadSpatialQuality(SpatialQuality instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
 			}
 			return this;
 		}
@@ -4495,7 +4769,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+
+		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) => this.LoadSpatialQuality(instance);
 
 		public override string? ToString() => $"Spatial Quality";
 	}
@@ -4514,6 +4791,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
@@ -4530,6 +4808,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
 				return _qualityOfHorizontalMeasurement;
@@ -4545,6 +4824,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("SpatialQuality")]
 		[ExpandableObject]
+		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -4556,12 +4836,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
-		public override InformationViewModel<SpatialQualityPoints> Load(SpatialQualityPoints instance) {
+		public SpatialQualityPointsViewModel LoadSpatialQualityPoints(SpatialQualityPoints instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
 			}
 			return this;
 		}
@@ -4581,7 +4861,10 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQualityPoints._informationBindingDefinitions;
+
+		public override InformationViewModel<SpatialQualityPoints> Load(SpatialQualityPoints instance) => this.LoadSpatialQualityPoints(instance);
 
 		public override string? ToString() => $"Spatial Quality Points";
 	}
@@ -4599,6 +4882,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4608,13 +4892,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -4627,6 +4914,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -4641,6 +4929,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(conditionList), typeof(condition))]
+		[Optional]
 		public condition? condition {
 			get {
 				return _condition;
@@ -4652,11 +4941,24 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)3,(condition)5];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("CautionArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private status? _status  = default;
 
 		[Category("CautionArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public status? status {
 			get {
 				return _status;
@@ -4670,30 +4972,31 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public status[] statusList => [(status)5,(status)7];
 
 
-		public override FeatureViewModel<CautionArea> Load(CautionArea instance) {
+		public CautionAreaViewModel LoadCautionArea(CautionArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			condition = instance.condition;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status = instance.status;
 			return this;
 		}
@@ -4706,6 +5009,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				condition = this.condition,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4719,12 +5023,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			condition = this._condition,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this._status,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => CautionArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. CautionArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<CautionArea> Load(CautionArea instance) => this.LoadCautionArea(instance);
 
 		public override string? ToString() => $"Caution Area";
 
@@ -4751,6 +5059,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4760,13 +5069,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -4779,6 +5091,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -4791,47 +5104,62 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("ConcentrationOfShippingHazardArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfConcentrationOfShippingHazardAreaList), typeof(categoryOfConcentrationOfShippingHazardArea))]
+		[Optional]
 		public ObservableCollection<categoryOfConcentrationOfShippingHazardArea> categoryOfConcentrationOfShippingHazardArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfConcentrationOfShippingHazardArea[] categoryOfConcentrationOfShippingHazardAreaList => [(categoryOfConcentrationOfShippingHazardArea)1,(categoryOfConcentrationOfShippingHazardArea)2,(categoryOfConcentrationOfShippingHazardArea)3,(categoryOfConcentrationOfShippingHazardArea)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ConcentrationOfShippingHazardArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("ConcentrationOfShippingHazardArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)7,(status)16,(status)17];
 
 
-		public override FeatureViewModel<ConcentrationOfShippingHazardArea> Load(ConcentrationOfShippingHazardArea instance) {
+		public ConcentrationOfShippingHazardAreaViewModel LoadConcentrationOfShippingHazardArea(ConcentrationOfShippingHazardArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfConcentrationOfShippingHazardArea.Clear();
 			if (instance.categoryOfConcentrationOfShippingHazardArea is not null) {
 				foreach(var e in instance.categoryOfConcentrationOfShippingHazardArea)
 					categoryOfConcentrationOfShippingHazardArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -4848,6 +5176,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfConcentrationOfShippingHazardArea = this.categoryOfConcentrationOfShippingHazardArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -4861,12 +5190,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfConcentrationOfShippingHazardArea = this.categoryOfConcentrationOfShippingHazardArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ConcentrationOfShippingHazardArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. ConcentrationOfShippingHazardArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ConcentrationOfShippingHazardArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<ConcentrationOfShippingHazardArea> Load(ConcentrationOfShippingHazardArea instance) => this.LoadConcentrationOfShippingHazardArea(instance);
 
 		public override string? ToString() => $"Concentration of Shipping Hazard Area";
 
@@ -4899,6 +5232,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -4908,13 +5242,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -4927,6 +5264,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -4937,11 +5275,24 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ISPSCodeSecurityLevel")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private iSPSLevel _iSPSLevel  = default;
 
 		[Category("ISPSCodeSecurityLevel")]
 		[Editor(typeof(Editors.UnknownEditor<iSPSLevel?>), typeof(Editors.UnknownEditor<iSPSLevel?>))]
 		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Mandatory]
 		public iSPSLevel iSPSLevel {
 			get {
 				return _iSPSLevel;
@@ -4955,29 +5306,30 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
-		public override FeatureViewModel<ISPSCodeSecurityLevel> Load(ISPSCodeSecurityLevel instance) {
+		public ISPSCodeSecurityLevelViewModel LoadISPSCodeSecurityLevel(ISPSCodeSecurityLevel instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			iSPSLevel = instance.iSPSLevel;
 			return this;
 		}
@@ -4989,6 +5341,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				iSPSLevel = this.iSPSLevel,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -5001,12 +5354,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			iSPSLevel = this._iSPSLevel,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ISPSCodeSecurityLevel._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. ISPSCodeSecurityLevel._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ISPSCodeSecurityLevel._featureBindingDefinitions;
+
+		public override FeatureViewModel<ISPSCodeSecurityLevel> Load(ISPSCodeSecurityLevel instance) => this.LoadISPSCodeSecurityLevel(instance);
 
 		public override string? ToString() => $"ISPS Code Security Level";
 
@@ -5033,6 +5390,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5042,13 +5400,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5061,6 +5422,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5073,9 +5435,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("LocalPortServiceArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("LocalPortServiceArea")]
+		[Optional]
 		public String? serviceAccessProcedure {
 			get {
 				return _serviceAccessProcedure;
@@ -5088,6 +5463,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("LocalPortServiceArea")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
 				return _requirementsForMaintenanceOfListeningWatch;
@@ -5098,29 +5474,30 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<LocalPortServiceArea> Load(LocalPortServiceArea instance) {
+		public LocalPortServiceAreaViewModel LoadLocalPortServiceArea(LocalPortServiceArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -5133,6 +5510,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -5146,13 +5524,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => LocalPortServiceArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. LocalPortServiceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LocalPortServiceArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<LocalPortServiceArea> Load(LocalPortServiceArea instance) => this.LoadLocalPortServiceArea(instance);
 
 		public override string? ToString() => $"Local Port Service Area";
 
@@ -5179,6 +5561,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5188,13 +5571,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5207,6 +5593,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5221,13 +5608,27 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfMilitaryPracticeAreaList), typeof(categoryOfMilitaryPracticeArea))]
+		[Optional]
 		public ObservableCollection<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfMilitaryPracticeArea[] categoryOfMilitaryPracticeAreaList => [(categoryOfMilitaryPracticeArea)2,(categoryOfMilitaryPracticeArea)3,(categoryOfMilitaryPracticeArea)4,(categoryOfMilitaryPracticeArea)5,(categoryOfMilitaryPracticeArea)6];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("MilitaryPracticeArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _nationality  = default;
 
 		[Category("MilitaryPracticeArea")]
+		[Optional]
 		public String? nationality {
 			get {
 				return _nationality;
@@ -5239,6 +5640,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -5246,40 +5648,42 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("MilitaryPracticeArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)6,(status)7,(status)16,(status)17];
 
 
-		public override FeatureViewModel<MilitaryPracticeArea> Load(MilitaryPracticeArea instance) {
+		public MilitaryPracticeAreaViewModel LoadMilitaryPracticeArea(MilitaryPracticeArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfMilitaryPracticeArea.Clear();
 			if (instance.categoryOfMilitaryPracticeArea is not null) {
 				foreach(var e in instance.categoryOfMilitaryPracticeArea)
 					categoryOfMilitaryPracticeArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
 			restriction.Clear();
 			if (instance.restriction is not null) {
@@ -5302,6 +5706,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfMilitaryPracticeArea = this.categoryOfMilitaryPracticeArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				nationality = this.nationality,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
@@ -5317,14 +5722,18 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfMilitaryPracticeArea = this.categoryOfMilitaryPracticeArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			nationality = this._nationality,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => MilitaryPracticeArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. MilitaryPracticeArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<MilitaryPracticeArea> Load(MilitaryPracticeArea instance) => this.LoadMilitaryPracticeArea(instance);
 
 		public override string? ToString() => $"Military Practice Area";
 
@@ -5360,6 +5769,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5369,13 +5779,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5388,6 +5801,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5401,6 +5815,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public String? callSign {
 			get {
 				return _callSign;
@@ -5414,6 +5829,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPilotBoardingPlaceList), typeof(categoryOfPilotBoardingPlace))]
+		[Optional]
 		public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {
 			get {
 				return _categoryOfPilotBoardingPlace;
@@ -5430,6 +5846,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPreferenceList), typeof(categoryOfPreference))]
+		[Optional]
 		public categoryOfPreference? categoryOfPreference {
 			get {
 				return _categoryOfPreference;
@@ -5444,6 +5861,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
 				return _categoryOfVessel;
@@ -5456,10 +5874,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _destination  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public String? destination {
 			get {
 				return _destination;
@@ -5468,11 +5888,24 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _destination, value);
 			}
 		}
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotBoardingPlace")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private pilotMovement? _pilotMovement  = default;
 
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(pilotMovementList), typeof(pilotMovement))]
+		[Optional]
 		public pilotMovement? pilotMovement {
 			get {
 				return _pilotMovement;
@@ -5487,6 +5920,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _pilotVessel  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Optional]
 		public String? pilotVessel {
 			get {
 				return _pilotVessel;
@@ -5498,34 +5932,35 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PilotBoardingPlace")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)6,(status)9,(status)16,(status)17,(status)28];
 
 
-		public override FeatureViewModel<PilotBoardingPlace> Load(PilotBoardingPlace instance) {
+		public PilotBoardingPlaceViewModel LoadPilotBoardingPlace(PilotBoardingPlace instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			callSign = instance.callSign;
 			categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -5537,6 +5972,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 					communicationChannel.Add(e);
 			}
 			destination = instance.destination;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			pilotMovement = instance.pilotMovement;
 			pilotVessel = instance.pilotVessel;
 			status.Clear();
@@ -5560,6 +5996,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfVessel = this.categoryOfVessel,
 				communicationChannel = this.communicationChannel.ToList(),
 				destination = this.destination,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				pilotMovement = this.pilotMovement,
 				pilotVessel = this.pilotVessel,
 				status = this.status.ToList(),
@@ -5580,14 +6017,18 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfVessel = this._categoryOfVessel,
 			communicationChannel = this.communicationChannel.ToList(),
 			destination = this._destination,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			pilotMovement = this._pilotMovement,
 			pilotVessel = this._pilotVessel,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => PilotBoardingPlace._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PilotBoardingPlace._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PilotBoardingPlace._featureBindingDefinitions;
+
+		public override FeatureViewModel<PilotBoardingPlace> Load(PilotBoardingPlace instance) => this.LoadPilotBoardingPlace(instance);
 
 		public override string? ToString() => $"Pilot Boarding Place";
 
@@ -5620,6 +6061,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5629,13 +6071,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5648,6 +6093,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5663,15 +6109,29 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PilotService")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPilotList), typeof(categoryOfPilot))]
+		[Optional]
 		public ObservableCollection<categoryOfPilot> categoryOfPilot  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfPilot[] categoryOfPilotList => [(categoryOfPilot)1,(categoryOfPilot)2,(categoryOfPilot)3,(categoryOfPilot)4,(categoryOfPilot)5,(categoryOfPilot)6,(categoryOfPilot)7];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotService")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private pilotQualification? _pilotQualification  = default;
 
 		[Category("PilotService")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(pilotQualificationList), typeof(pilotQualification))]
+		[Optional]
 		public pilotQualification? pilotQualification {
 			get {
 				return _pilotQualification;
@@ -5686,6 +6146,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _pilotRequest  = default;
 
 		[Category("PilotService")]
+		[Optional]
 		public String? pilotRequest {
 			get {
 				return _pilotRequest;
@@ -5698,6 +6159,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("PilotService")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean remotePilot {
 			get {
 				return _remotePilot;
@@ -5710,6 +6172,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("PilotService")]
 		[ExpandableObject]
+		[Optional]
 		public noticeTimeViewModel? noticeTime {
 			get {
 				return _noticeTime;
@@ -5720,40 +6183,41 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<PilotService> Load(PilotService instance) {
+		public PilotServiceViewModel LoadPilotService(PilotService instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfPilot.Clear();
 			if (instance.categoryOfPilot is not null) {
 				foreach(var e in instance.categoryOfPilot)
 					categoryOfPilot.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			pilotQualification = instance.pilotQualification;
 			pilotRequest = instance.pilotRequest;
 			remotePilot = instance.remotePilot;
 			noticeTime = new ();
 			if (instance.noticeTime != default) {
-				noticeTime.Load(instance.noticeTime);
+				noticeTime.LoadnoticeTime(instance.noticeTime);
 			}
 			return this;
 		}
@@ -5766,6 +6230,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfPilot = this.categoryOfPilot.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				pilotQualification = this.pilotQualification,
 				pilotRequest = this.pilotRequest,
 				remotePilot = this.remotePilot,
@@ -5782,15 +6247,19 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfPilot = this.categoryOfPilot.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			pilotQualification = this._pilotQualification,
 			pilotRequest = this._pilotRequest,
 			remotePilot = this._remotePilot,
 			noticeTime = this._noticeTime?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => PilotService._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PilotService._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PilotService._featureBindingDefinitions;
+
+		public override FeatureViewModel<PilotService> Load(PilotService instance) => this.LoadPilotService(instance);
 
 		public override string? ToString() => $"Pilot Service";
 
@@ -5820,6 +6289,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5829,13 +6299,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5848,6 +6321,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5858,37 +6332,51 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("PilotageDistrict")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PilotageDistrict")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
-		public override FeatureViewModel<PilotageDistrict> Load(PilotageDistrict instance) {
+		public PilotageDistrictViewModel LoadPilotageDistrict(PilotageDistrict instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -5900,6 +6388,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -5912,11 +6401,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => PilotageDistrict._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PilotageDistrict._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PilotageDistrict._featureBindingDefinitions;
+
+		public override FeatureViewModel<PilotageDistrict> Load(PilotageDistrict instance) => this.LoadPilotageDistrict(instance);
 
 		public override string? ToString() => $"Pilotage District";
 
@@ -5946,6 +6439,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -5955,13 +6449,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -5974,6 +6471,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -5986,9 +6484,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PiracyRiskArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("PiracyRiskArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -5996,35 +6507,37 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("PiracyRiskArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)7];
 
 
-		public override FeatureViewModel<PiracyRiskArea> Load(PiracyRiskArea instance) {
+		public PiracyRiskAreaViewModel LoadPiracyRiskArea(PiracyRiskArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6045,6 +6558,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6058,13 +6572,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => PiracyRiskArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PiracyRiskArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PiracyRiskArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<PiracyRiskArea> Load(PiracyRiskArea instance) => this.LoadPiracyRiskArea(instance);
 
 		public override string? ToString() => $"Piracy Risk Area";
 
@@ -6097,6 +6615,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6106,13 +6625,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6125,6 +6647,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6138,44 +6661,59 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("PlaceOfRefuge")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("PlaceOfRefuge")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("PlaceOfRefuge")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)28];
 
 
-		public override FeatureViewModel<PlaceOfRefuge> Load(PlaceOfRefuge instance) {
+		public PlaceOfRefugeViewModel LoadPlaceOfRefuge(PlaceOfRefuge instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6192,6 +6730,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -6205,12 +6744,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => PlaceOfRefuge._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. PlaceOfRefuge._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PlaceOfRefuge._featureBindingDefinitions;
+
+		public override FeatureViewModel<PlaceOfRefuge> Load(PlaceOfRefuge instance) => this.LoadPlaceOfRefuge(instance);
 
 		public override string? ToString() => $"Place of Refuge";
 
@@ -6243,6 +6786,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6252,13 +6796,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6271,6 +6818,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6281,44 +6829,59 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("RadarRange")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RadarRange")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RadarRange")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7];
 
 
-		public override FeatureViewModel<RadarRange> Load(RadarRange instance) {
+		public RadarRangeViewModel LoadRadarRange(RadarRange instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6335,6 +6898,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -6348,12 +6912,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => RadarRange._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RadarRange._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
+
+		public override FeatureViewModel<RadarRange> Load(RadarRange instance) => this.LoadRadarRange(instance);
 
 		public override string? ToString() => $"Radar Range";
 
@@ -6386,6 +6954,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6395,13 +6964,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6414,6 +6986,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6426,6 +6999,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("RadioCallingInPoint")]
+		[Optional]
 		public String? callSign {
 			get {
 				return _callSign;
@@ -6435,24 +7009,41 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9];
 		[Category("RadioCallingInPoint")]
+		[Optional]
 		public ObservableCollection<categoryOfVessel> categoryOfVessel  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("RadioCallingInPoint")]
+		[Multiplicity(0, 2)]
 		public ObservableCollection<double> orientationValue  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RadioCallingInPoint")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -6462,6 +7053,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RadioCallingInPoint")]
 		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
+		[Mandatory]
 		public trafficFlow trafficFlow {
 			get {
 				return _trafficFlow;
@@ -6475,28 +7067,28 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public trafficFlow[] trafficFlowList => [(trafficFlow)1,(trafficFlow)2,(trafficFlow)3,(trafficFlow)4];
 
 
-		public override FeatureViewModel<RadioCallingInPoint> Load(RadioCallingInPoint instance) {
+		public RadioCallingInPointViewModel LoadRadioCallingInPoint(RadioCallingInPoint instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			callSign = instance.callSign;
 			communicationChannel.Clear();
@@ -6519,6 +7111,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.orientationValue)
 					orientationValue.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -6540,6 +7133,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfCargo = this.categoryOfCargo.ToList(),
 				categoryOfVessel = this.categoryOfVessel.ToList(),
 				orientationValue = this.orientationValue.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 				trafficFlow = this.trafficFlow,
 			};
@@ -6558,13 +7152,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfCargo = this.categoryOfCargo.ToList(),
 			categoryOfVessel = this.categoryOfVessel.ToList(),
 			orientationValue = this.orientationValue.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 			trafficFlow = this._trafficFlow,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => RadioCallingInPoint._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RadioCallingInPoint._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
+
+		public override FeatureViewModel<RadioCallingInPoint> Load(RadioCallingInPoint instance) => this.LoadRadioCallingInPoint(instance);
 
 		public override string? ToString() => $"Radio Calling-In Point";
 
@@ -6606,6 +7204,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6615,13 +7214,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6634,6 +7236,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6648,13 +7251,27 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RestrictedAreaNavigational")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
+		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RestrictedAreaNavigational")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RestrictedAreaNavigational")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -6662,40 +7279,42 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RestrictedAreaNavigational")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9,(status)18,(status)28];
 
 
-		public override FeatureViewModel<RestrictedAreaNavigational> Load(RestrictedAreaNavigational instance) {
+		public RestrictedAreaNavigationalViewModel LoadRestrictedAreaNavigational(RestrictedAreaNavigational instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfRestrictedArea.Clear();
 			if (instance.categoryOfRestrictedArea is not null) {
 				foreach(var e in instance.categoryOfRestrictedArea)
 					categoryOfRestrictedArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6717,6 +7336,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6731,13 +7351,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => RestrictedAreaNavigational._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RestrictedAreaNavigational._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedAreaNavigational._featureBindingDefinitions;
+
+		public override FeatureViewModel<RestrictedAreaNavigational> Load(RestrictedAreaNavigational instance) => this.LoadRestrictedAreaNavigational(instance);
 
 		public override string? ToString() => $"Restricted Area Navigational";
 
@@ -6773,6 +7397,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6782,13 +7407,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6801,6 +7429,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6815,13 +7444,27 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RestrictedAreaRegulatory")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
+		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRestrictedArea[] categoryOfRestrictedAreaList => [(categoryOfRestrictedArea)1,(categoryOfRestrictedArea)4,(categoryOfRestrictedArea)5,(categoryOfRestrictedArea)6,(categoryOfRestrictedArea)7,(categoryOfRestrictedArea)8,(categoryOfRestrictedArea)9,(categoryOfRestrictedArea)10,(categoryOfRestrictedArea)12,(categoryOfRestrictedArea)14,(categoryOfRestrictedArea)19,(categoryOfRestrictedArea)20,(categoryOfRestrictedArea)22,(categoryOfRestrictedArea)23,(categoryOfRestrictedArea)25,(categoryOfRestrictedArea)27,(categoryOfRestrictedArea)28,(categoryOfRestrictedArea)29,(categoryOfRestrictedArea)30,(categoryOfRestrictedArea)31,(categoryOfRestrictedArea)32];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RestrictedAreaRegulatory")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("RestrictedAreaRegulatory")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
@@ -6829,40 +7472,42 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RestrictedAreaRegulatory")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9,(status)18,(status)28];
 
 
-		public override FeatureViewModel<RestrictedAreaRegulatory> Load(RestrictedAreaRegulatory instance) {
+		public RestrictedAreaRegulatoryViewModel LoadRestrictedAreaRegulatory(RestrictedAreaRegulatory instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfRestrictedArea.Clear();
 			if (instance.categoryOfRestrictedArea is not null) {
 				foreach(var e in instance.categoryOfRestrictedArea)
 					categoryOfRestrictedArea.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -6884,6 +7529,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				restriction = this.restriction.ToList(),
 				status = this.status.ToList(),
 			};
@@ -6898,13 +7544,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfRestrictedArea = this.categoryOfRestrictedArea.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			restriction = this.restriction.ToList(),
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => RestrictedAreaRegulatory._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RestrictedAreaRegulatory._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedAreaRegulatory._featureBindingDefinitions;
+
+		public override FeatureViewModel<RestrictedAreaRegulatory> Load(RestrictedAreaRegulatory instance) => this.LoadRestrictedAreaRegulatory(instance);
 
 		public override string? ToString() => $"Restricted Area Regulatory";
 
@@ -6940,6 +7590,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -6949,13 +7600,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -6968,6 +7622,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -6982,6 +7637,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RouteingMeasure")]
 		[Editor(typeof(Editors.UnknownEditor<categoryOfRouteingMeasure?>), typeof(Editors.UnknownEditor<categoryOfRouteingMeasure?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRouteingMeasureList), typeof(categoryOfRouteingMeasure))]
+		[Mandatory]
 		public categoryOfRouteingMeasure categoryOfRouteingMeasure {
 			get {
 				return _categoryOfRouteingMeasure;
@@ -6998,6 +7654,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RouteingMeasure")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTrafficSeparationSchemeList), typeof(categoryOfTrafficSeparationScheme))]
+		[Optional]
 		public categoryOfTrafficSeparationScheme? categoryOfTrafficSeparationScheme {
 			get {
 				return _categoryOfTrafficSeparationScheme;
@@ -7014,6 +7671,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("RouteingMeasure")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfNavigationLineList), typeof(categoryOfNavigationLine))]
+		[Optional]
 		public categoryOfNavigationLine? categoryOfNavigationLine {
 			get {
 				return _categoryOfNavigationLine;
@@ -7025,34 +7683,47 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("RouteingMeasure")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
-		public override FeatureViewModel<RouteingMeasure> Load(RouteingMeasure instance) {
+		public RouteingMeasureViewModel LoadRouteingMeasure(RouteingMeasure instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfRouteingMeasure = instance.categoryOfRouteingMeasure;
 			categoryOfTrafficSeparationScheme = instance.categoryOfTrafficSeparationScheme;
 			categoryOfNavigationLine = instance.categoryOfNavigationLine;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7066,6 +7737,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				categoryOfRouteingMeasure = this.categoryOfRouteingMeasure,
 				categoryOfTrafficSeparationScheme = this.categoryOfTrafficSeparationScheme,
 				categoryOfNavigationLine = this.categoryOfNavigationLine,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7080,11 +7752,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			categoryOfRouteingMeasure = this._categoryOfRouteingMeasure,
 			categoryOfTrafficSeparationScheme = this._categoryOfTrafficSeparationScheme,
 			categoryOfNavigationLine = this._categoryOfNavigationLine,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => RouteingMeasure._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. RouteingMeasure._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RouteingMeasure._featureBindingDefinitions;
+
+		public override FeatureViewModel<RouteingMeasure> Load(RouteingMeasure instance) => this.LoadRouteingMeasure(instance);
 
 		public override string? ToString() => $"Routeing Measure";
 
@@ -7111,6 +7787,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7120,13 +7797,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7139,6 +7819,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7151,9 +7832,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("ShipReportingServiceArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("ShipReportingServiceArea")]
+		[Optional]
 		public String? serviceAccessProcedure {
 			get {
 				return _serviceAccessProcedure;
@@ -7166,6 +7860,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("ShipReportingServiceArea")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
 				return _requirementsForMaintenanceOfListeningWatch;
@@ -7176,29 +7871,30 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<ShipReportingServiceArea> Load(ShipReportingServiceArea instance) {
+		public ShipReportingServiceAreaViewModel LoadShipReportingServiceArea(ShipReportingServiceArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -7211,6 +7907,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -7224,13 +7921,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => ShipReportingServiceArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. ShipReportingServiceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ShipReportingServiceArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<ShipReportingServiceArea> Load(ShipReportingServiceArea instance) => this.LoadShipReportingServiceArea(instance);
 
 		public override string? ToString() => $"Ship Reporting Service Area";
 
@@ -7257,6 +7958,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7266,13 +7968,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7285,6 +7990,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7297,43 +8003,58 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SignalStationWarning")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationWarningList), typeof(categoryOfSignalStationWarning))]
+		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationWarning> categoryOfSignalStationWarning  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1,(categoryOfSignalStationWarning)2,(categoryOfSignalStationWarning)3,(categoryOfSignalStationWarning)4,(categoryOfSignalStationWarning)5,(categoryOfSignalStationWarning)6,(categoryOfSignalStationWarning)7,(categoryOfSignalStationWarning)8,(categoryOfSignalStationWarning)9,(categoryOfSignalStationWarning)10,(categoryOfSignalStationWarning)11,(categoryOfSignalStationWarning)12,(categoryOfSignalStationWarning)13,(categoryOfSignalStationWarning)14,(categoryOfSignalStationWarning)15,(categoryOfSignalStationWarning)16,(categoryOfSignalStationWarning)17,(categoryOfSignalStationWarning)18];
 		[Category("SignalStationWarning")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("SignalStationWarning")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("SignalStationWarning")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)14,(status)15,(status)16,(status)17];
 
 
-		public override FeatureViewModel<SignalStationWarning> Load(SignalStationWarning instance) {
+		public SignalStationWarningViewModel LoadSignalStationWarning(SignalStationWarning instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfSignalStationWarning.Clear();
 			if (instance.categoryOfSignalStationWarning is not null) {
@@ -7345,6 +8066,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -7362,6 +8084,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent = this.textContent?.Model,
 				categoryOfSignalStationWarning = this.categoryOfSignalStationWarning.ToList(),
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -7376,12 +8099,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			textContent = this._textContent?.Model,
 			categoryOfSignalStationWarning = this.categoryOfSignalStationWarning.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => SignalStationWarning._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SignalStationWarning._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SignalStationWarning._featureBindingDefinitions;
+
+		public override FeatureViewModel<SignalStationWarning> Load(SignalStationWarning instance) => this.LoadSignalStationWarning(instance);
 
 		public override string? ToString() => $"Signal Station Warning";
 
@@ -7417,6 +8144,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7426,13 +8154,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7445,6 +8176,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7458,43 +8190,58 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("SignalStationTraffic")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationTrafficList), typeof(categoryOfSignalStationTraffic))]
+		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1,(categoryOfSignalStationTraffic)2,(categoryOfSignalStationTraffic)3,(categoryOfSignalStationTraffic)4,(categoryOfSignalStationTraffic)5,(categoryOfSignalStationTraffic)6,(categoryOfSignalStationTraffic)7,(categoryOfSignalStationTraffic)8,(categoryOfSignalStationTraffic)9,(categoryOfSignalStationTraffic)10,(categoryOfSignalStationTraffic)13];
 		[Category("SignalStationTraffic")]
+		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("SignalStationTraffic")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		[Category("SignalStationTraffic")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)14,(status)15,(status)16,(status)17];
 
 
-		public override FeatureViewModel<SignalStationTraffic> Load(SignalStationTraffic instance) {
+		public SignalStationTrafficViewModel LoadSignalStationTraffic(SignalStationTraffic instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfSignalStationTraffic.Clear();
 			if (instance.categoryOfSignalStationTraffic is not null) {
@@ -7506,6 +8253,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				foreach(var e in instance.communicationChannel)
 					communicationChannel.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -7523,6 +8271,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				textContent = this.textContent?.Model,
 				categoryOfSignalStationTraffic = this.categoryOfSignalStationTraffic.ToList(),
 				communicationChannel = this.communicationChannel.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				status = this.status.ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
@@ -7537,12 +8286,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			textContent = this._textContent?.Model,
 			categoryOfSignalStationTraffic = this.categoryOfSignalStationTraffic.ToList(),
 			communicationChannel = this.communicationChannel.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => SignalStationTraffic._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. SignalStationTraffic._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SignalStationTraffic._featureBindingDefinitions;
+
+		public override FeatureViewModel<SignalStationTraffic> Load(SignalStationTraffic instance) => this.LoadSignalStationTraffic(instance);
 
 		public override string? ToString() => $"Signal Station Traffic";
 
@@ -7578,6 +8331,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7587,13 +8341,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7606,6 +8363,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7615,10 +8373,23 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("UnderKeelClearanceAllowanceArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private underKeelAllowanceViewModel? _underKeelAllowance  = default;
 
 		[Category("UnderKeelClearanceAllowanceArea")]
 		[ExpandableObject]
+		[Optional]
 		public underKeelAllowanceViewModel? underKeelAllowance {
 			get {
 				return _underKeelAllowance;
@@ -7632,6 +8403,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("UnderKeelClearanceAllowanceArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelTrendList), typeof(waterLevelTrend))]
+		[Optional]
 		public waterLevelTrend? waterLevelTrend {
 			get {
 				return _waterLevelTrend;
@@ -7645,32 +8417,33 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public waterLevelTrend[] waterLevelTrendList => [(waterLevelTrend)1,(waterLevelTrend)2,(waterLevelTrend)3];
 
 
-		public override FeatureViewModel<UnderKeelClearanceAllowanceArea> Load(UnderKeelClearanceAllowanceArea instance) {
+		public UnderKeelClearanceAllowanceAreaViewModel LoadUnderKeelClearanceAllowanceArea(UnderKeelClearanceAllowanceArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			underKeelAllowance = new ();
 			if (instance.underKeelAllowance != default) {
-				underKeelAllowance.Load(instance.underKeelAllowance);
+				underKeelAllowance.LoadunderKeelAllowance(instance.underKeelAllowance);
 			}
 			waterLevelTrend = instance.waterLevelTrend;
 			return this;
@@ -7683,6 +8456,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				featureName = this.featureName.Select(e => e.Model).ToList(),
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				underKeelAllowance = this.underKeelAllowance?.Model,
 				waterLevelTrend = this.waterLevelTrend,
 			};
@@ -7696,13 +8470,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			underKeelAllowance = this._underKeelAllowance?.Model,
 			waterLevelTrend = this._waterLevelTrend,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => UnderKeelClearanceAllowanceArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. UnderKeelClearanceAllowanceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => UnderKeelClearanceAllowanceArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<UnderKeelClearanceAllowanceArea> Load(UnderKeelClearanceAllowanceArea instance) => this.LoadUnderKeelClearanceAllowanceArea(instance);
 
 		public override string? ToString() => $"Under Keel Clearance Allowance Area";
 
@@ -7729,6 +8507,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7738,13 +8517,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7757,6 +8539,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7774,6 +8557,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("UnderKeelClearanceManagementArea")]
 		[Editor(typeof(Editors.UnknownEditor<dynamicResource?>), typeof(Editors.UnknownEditor<dynamicResource?>))]
 		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
+		[Mandatory]
 		public dynamicResource dynamicResource {
 			get {
 				return _dynamicResource;
@@ -7785,32 +8569,45 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public dynamicResource[] dynamicResourceList => [(dynamicResource)1,(dynamicResource)2,(dynamicResource)3,(dynamicResource)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("UnderKeelClearanceManagementArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 
 
-		public override FeatureViewModel<UnderKeelClearanceManagementArea> Load(UnderKeelClearanceManagementArea instance) {
+		public UnderKeelClearanceManagementAreaViewModel LoadUnderKeelClearanceManagementArea(UnderKeelClearanceManagementArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			dynamicResource = instance.dynamicResource;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			return this;
 		}
 
@@ -7822,6 +8619,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				dynamicResource = this.dynamicResource,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
@@ -7834,11 +8632,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			dynamicResource = this._dynamicResource,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => UnderKeelClearanceManagementArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. UnderKeelClearanceManagementArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => UnderKeelClearanceManagementArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<UnderKeelClearanceManagementArea> Load(UnderKeelClearanceManagementArea instance) => this.LoadUnderKeelClearanceManagementArea(instance);
 
 		public override string? ToString() => $"Under Keel Clearance Management Area";
 
@@ -7865,6 +8667,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -7874,13 +8677,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -7893,6 +8699,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -7908,13 +8715,27 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("VesselTrafficServiceArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList), typeof(categoryOfVesselTrafficService))]
+		[Optional]
 		public ObservableCollection<categoryOfVesselTrafficService> categoryOfVesselTrafficService  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfVesselTrafficService[] categoryOfVesselTrafficServiceList => [(categoryOfVesselTrafficService)1,(categoryOfVesselTrafficService)2,(categoryOfVesselTrafficService)3];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("VesselTrafficServiceArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("VesselTrafficServiceArea")]
+		[Optional]
 		public String? serviceAccessProcedure {
 			get {
 				return _serviceAccessProcedure;
@@ -7927,6 +8748,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("VesselTrafficServiceArea")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
 				return _requirementsForMaintenanceOfListeningWatch;
@@ -7937,34 +8759,35 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<VesselTrafficServiceArea> Load(VesselTrafficServiceArea instance) {
+		public VesselTrafficServiceAreaViewModel LoadVesselTrafficServiceArea(VesselTrafficServiceArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			categoryOfVesselTrafficService.Clear();
 			if (instance.categoryOfVesselTrafficService is not null) {
 				foreach(var e in instance.categoryOfVesselTrafficService)
 					categoryOfVesselTrafficService.Add(e);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			serviceAccessProcedure = instance.serviceAccessProcedure;
 			requirementsForMaintenanceOfListeningWatch = instance.requirementsForMaintenanceOfListeningWatch;
 			return this;
@@ -7978,6 +8801,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				categoryOfVesselTrafficService = this.categoryOfVesselTrafficService.ToList(),
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				serviceAccessProcedure = this.serviceAccessProcedure,
 				requirementsForMaintenanceOfListeningWatch = this.requirementsForMaintenanceOfListeningWatch,
 			};
@@ -7992,13 +8816,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			categoryOfVesselTrafficService = this.categoryOfVesselTrafficService.ToList(),
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			serviceAccessProcedure = this._serviceAccessProcedure,
 			requirementsForMaintenanceOfListeningWatch = this._requirementsForMaintenanceOfListeningWatch,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => VesselTrafficServiceArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. VesselTrafficServiceArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<VesselTrafficServiceArea> Load(VesselTrafficServiceArea instance) => this.LoadVesselTrafficServiceArea(instance);
 
 		public override string? ToString() => $"Vessel Traffic Service Area";
 
@@ -8028,6 +8856,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
 			get {
 				return _fixedDateRange;
@@ -8037,13 +8866,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -8056,6 +8888,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("FeatureType")]
 		[ExpandableObject]
+		[Optional]
 		public textContentViewModel? textContent {
 			get {
 				return _textContent;
@@ -8072,6 +8905,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.UnknownEditor<dynamicResource?>), typeof(Editors.UnknownEditor<dynamicResource?>))]
 		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
+		[Mandatory]
 		public dynamicResource dynamicResource {
 			get {
 				return _dynamicResource;
@@ -8083,9 +8917,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public dynamicResource[] dynamicResourceList => [(dynamicResource)1,(dynamicResource)2,(dynamicResource)3,(dynamicResource)4];
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("WaterwayArea")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private String? _siltationRate  = default;
 
 		[Category("WaterwayArea")]
+		[Optional]
 		public String? siltationRate {
 			get {
 				return _siltationRate;
@@ -8097,36 +8944,38 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("WaterwayArea")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)28];
 
 
-		public override FeatureViewModel<WaterwayArea> Load(WaterwayArea instance) {
+		public WaterwayAreaViewModel LoadWaterwayArea(WaterwayArea instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.Load(instance.fixedDateRange);
+				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.Load(instance.textContent);
+				textContent.LoadtextContent(instance.textContent);
 			}
 			dynamicResource = instance.dynamicResource;
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			siltationRate = instance.siltationRate;
 			status.Clear();
 			if (instance.status is not null) {
@@ -8144,6 +8993,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				sourceIndication = this.sourceIndication?.Model,
 				textContent = this.textContent?.Model,
 				dynamicResource = this.dynamicResource,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				siltationRate = this.siltationRate,
 				status = this.status.ToList(),
 			};
@@ -8158,13 +9008,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			sourceIndication = this._sourceIndication?.Model,
 			textContent = this._textContent?.Model,
 			dynamicResource = this._dynamicResource,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			siltationRate = this._siltationRate,
 			status = this.status.ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => WaterwayArea._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. WaterwayArea._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => WaterwayArea._featureBindingDefinitions;
+
+		public override FeatureViewModel<WaterwayArea> Load(WaterwayArea instance) => this.LoadWaterwayArea(instance);
 
 		public override string? ToString() => $"Waterway Area";
 
@@ -8190,10 +9044,23 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("DataCoverage")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int maximumDisplayScale {
 			get {
 				return _maximumDisplayScale;
@@ -8206,6 +9073,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("DataCoverage")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int minimumDisplayScale {
 			get {
 				return _minimumDisplayScale;
@@ -8216,7 +9084,8 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) {
+		public DataCoverageViewModel LoadDataCoverage(DataCoverage instance) {
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
 			return this;
@@ -8224,6 +9093,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		public override string Serialize() {
 			var instance = new DataCoverage {
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				maximumDisplayScale = this.maximumDisplayScale,
 				minimumDisplayScale = this.minimumDisplayScale,
 			};
@@ -8232,13 +9102,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Browsable(false)]
 		public DataCoverage Model => new () {
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			maximumDisplayScale = this._maximumDisplayScale,
 			minimumDisplayScale = this._minimumDisplayScale,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. DataCoverage._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
+
+		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) => this.LoadDataCoverage(instance);
 
 		public override string? ToString() => $"Data Coverage";
 	}
@@ -8253,6 +9127,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
 		[Category("DataQuality")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
@@ -8260,6 +9135,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("QualityOfTemporalVariation")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
 				return _categoryOfTemporalVariation;
@@ -8275,6 +9151,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Optional]
 		public double? orientationUncertainty {
 			get {
 				return _orientationUncertainty;
@@ -8286,6 +9163,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Optional]
 		public double? horizontalDistanceUncertainty {
 			get {
 				return _horizontalDistanceUncertainty;
@@ -8298,6 +9176,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -8306,10 +9185,23 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+		private String? _interoperabilityIdentifier  = default;
+
+		[Category("QualityOfNonBathymetricData")]
+		[Optional]
+		public String? interoperabilityIdentifier {
+			get {
+				return _interoperabilityIdentifier;
+			}
+			set {
+				SetValue(ref _interoperabilityIdentifier, value);
+			}
+		}
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
 			get {
 				return _sourceIndication;
@@ -8322,6 +9214,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 		[Category("QualityOfNonBathymetricData")]
 		[ExpandableObject]
+		[Optional]
 		public surveyDateRangeViewModel? surveyDateRange {
 			get {
 				return _surveyDateRange;
@@ -8332,26 +9225,27 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 
-		public override FeatureViewModel<QualityOfNonBathymetricData> Load(QualityOfNonBathymetricData instance) {
+		public QualityOfNonBathymetricDataViewModel LoadQualityOfNonBathymetricData(QualityOfNonBathymetricData instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			orientationUncertainty = instance.orientationUncertainty;
 			horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
 			}
+			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			sourceIndication = new ();
 			if (instance.sourceIndication != default) {
-				sourceIndication.Load(instance.sourceIndication);
+				sourceIndication.LoadsourceIndication(instance.sourceIndication);
 			}
 			surveyDateRange = new ();
 			if (instance.surveyDateRange != default) {
-				surveyDateRange.Load(instance.surveyDateRange);
+				surveyDateRange.LoadsurveyDateRange(instance.surveyDateRange);
 			}
 			return this;
 		}
@@ -8363,6 +9257,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 				orientationUncertainty = this.orientationUncertainty,
 				horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
 				horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
+				interoperabilityIdentifier = this.interoperabilityIdentifier,
 				sourceIndication = this.sourceIndication?.Model,
 				surveyDateRange = this.surveyDateRange?.Model,
 			};
@@ -8376,13 +9271,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			orientationUncertainty = this._orientationUncertainty,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
+			interoperabilityIdentifier = this._interoperabilityIdentifier,
 			sourceIndication = this._sourceIndication?.Model,
 			surveyDateRange = this._surveyDateRange?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. QualityOfNonBathymetricData._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
+
+		public override FeatureViewModel<QualityOfNonBathymetricData> Load(QualityOfNonBathymetricData instance) => this.LoadQualityOfNonBathymetricData(instance);
 
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
@@ -8405,6 +9304,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _flipBearing  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public double? flipBearing {
 			get {
 				return _flipBearing;
@@ -8416,6 +9316,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int? _scaleMinimum  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public int? scaleMinimum {
 			get {
 				return _scaleMinimum;
@@ -8429,6 +9330,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<textJustification?>), typeof(Editors.UnknownEditor<textJustification?>))]
 		[DomainModel.EnumerationAttribute(nameof(textJustificationList), typeof(textJustification))]
+		[Mandatory]
 		public textJustification textJustification {
 			get {
 				return _textJustification;
@@ -8443,6 +9345,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _text  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public String? text {
 			get {
 				return _text;
@@ -8456,6 +9359,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
+		[Optional]
 		public textType? textType {
 			get {
 				return _textType;
@@ -8469,7 +9373,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public textType[] textTypeList => [(textType)1];
 
 
-		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) {
+		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			flipBearing = instance.flipBearing;
 			scaleMinimum = instance.scaleMinimum;
 			textJustification = instance.textJustification;
@@ -8497,10 +9401,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			text = this._text,
 			textType = this._textType,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+
+		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) => this.LoadTextPlacement(instance);
 
 		public override string? ToString() => $"Text Placement";
 	}

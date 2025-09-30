@@ -622,16 +622,22 @@ namespace VortexProAppModule
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
-                            var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(inspector["informationbindings"]));
-                            foreach (var e in informationBindings)
-                                featureViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                            var json = Convert.ToString(inspector["informationbindings"]);
+                            if (!string.IsNullOrEmpty(json)) {
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(json);
+                                foreach (var e in informationBindings)
+                                    featureViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                            }
                         }
 
                         //  featureBinding                        
                         if (!inspector.IsNull("featurebindings")) {
-                            var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(inspector["featurebindings"]));
-                            foreach (var e in featureBindings)
-                                featureViewModel.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
+                            var json = Convert.ToString(inspector["featurebindings"]);
+                            if (!string.IsNullOrEmpty(json)) {
+                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(json);
+                                foreach (var e in featureBindings)
+                                    featureViewModel.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
+                            }
                         }
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);

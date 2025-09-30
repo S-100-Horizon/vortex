@@ -19,7 +19,7 @@ namespace S100Framework.WPF.Converters
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            string strValue = value as string;
+            string? strValue = value as string;
 
             // If the textbox is empty, we interpret it as the Null state.
             if (string.IsNullOrEmpty(strValue)) {

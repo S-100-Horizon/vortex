@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.iho.int/s127/1.0/xc" targetNamespace="http://www.iho.int/s127/1.0/xc" elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+	xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+	xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
+	xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+	xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+	xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+	xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:S100XC="http://www.iho.int/s100/xc"
+	version="1.0.0-20190422">
+	<!-- ============================================================================================= -->
+	<!-- XML Schema for S-127 Edition 1.0.0 exchange set catalogues. 								   -->
+	<!-- ============================================================================================= -->
+	
+	<!--
+	© Copyright 2018-2019 
+	Prepared under contract for NOAA (Original)
+	
+	License
+	Certain parts of this document refer to or are based on the standards, documents, schemas, or other material
+	of the International Organization for Standardization (ISO), Open Geospatial Consortium (OGC), International
+	Hydrographic Organization / Organisation Hydrographique Internationale (IHO/OHI).
+	The ISO material can be obtained from any ISO member and from the Web site of the ISO Central Secretariat
+	at www.iso.org.
+	The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+	The IHO material can be obtained from the IHO Web site at www.iho.int or from the International Hydrographic
+	Bureau.
+	
+	Permission to copy and distribute this document is hereby granted provided that this notice is retained
+	on all copies, and that IHO, NOAA are credited when the material is redistributed or used in
+	part or whole in derivative works.
+	Redistributions in binary form must reproduce this notice in the documentation and/or other materials
+	provided with the distribution.
+	
+	Disclaimer
+	This work is provided by the copyright holders and contributors "as is" and any express or implied warranties,
+	including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose
+	are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect,
+	incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute
+	goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of
+	liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way
+	out of the use of this software, even if advised of the possibility of such damage.
+	
+	Document history
+	1.0.0	20190422	(RMM) Initial. Wrapper for the S-100 exchange catalogue schema, since there are no S-127 1.0.0
+		extensions to the S-100 schemas. S-127's restrictions are implemented in the accompanying Schematron file.
+	-->
+	
+	<!-- Imports - update as necessary when the exchange catalogue is updated -->
+	<!-- Imports from local file -->
+	<xs:import namespace="http://www.iho.int/s100/xc" schemaLocation="../../../../S100/4.0.0/S100Catalog/20190422/S100_ExchangeCatalogue.xsd"/>
+	
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+
+	<!-- Imports from ISO's site -->
+	<!-- example import -->
+	<!--<xs:import namespace="http://standards.iso.org/iso/19115/-3/cit/2.0" schemaLocation="http://standards.iso.org/iso/19115/-3/cit/2.0/cit.xsd"/>-->
+
+	<!-- ==================================================================
+		S127 1.0 metadata is the same as S-100 metadata except for certain
+		constraints. Rules checking these constraints are defined in the
+		accompanying Schematron file for S-127 metadata.
+		=================================================================== -->
+
+	<!-- ============================================================
+		Types for elements derived from ISO types
+		============================================================= -->
+	<!-- none -->
+
+	<!-- ============================================================
+		Extensions of S-100 types
+		============================================================= -->
+	<!-- none -->
+
+</xs:schema>

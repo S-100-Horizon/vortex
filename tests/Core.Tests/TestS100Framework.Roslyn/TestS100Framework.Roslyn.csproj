@@ -8,73 +8,21 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
 	<UseWPF>true</UseWPF>
+	<Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Artifacts\**" />
+    <EmbeddedResource Remove="Artifacts\**" />
+    <None Remove="Artifacts\**" />
+    <Page Remove="Artifacts\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="DomainModelBase.cs" />
     <Compile Remove="TestClassBuilder.cs" />
     <Compile Remove="UnitTestDataset.cs" />
     <Compile Remove="UnitTestRoslyn.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml" Link="Artifacts\101_Feature_Catalogue_2.0.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\FeatureCatalogue.xml" Link="Artifacts\FeatureCatalogue.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-122 Marine Protected Areas\1.2.1\01_Feature Catalogue\S-122_FC_1.2.1.xml" Link="Artifacts\S-122_FC_1.2.1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-122 Marine Protected Areas\1.2.1\jpS-122_FC_1.2.1.xml" Link="Artifacts\jpS-122_FC_1.2.1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-123 Marine Radio Services\1.1.0\S-123_FC_20250204.xml" Link="Artifacts\S-123_FC_20250204.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\1.5.0\S-124FC_1.5_20240330.xml" Link="Artifacts\S-124FC_1.5_20240330.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\2.0.0\S-124 FC_%282.0.0%29_0430.xml" Link="Artifacts\S-124 FC_%282.0.0%29_0430.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\2.0.0\S-124 FC_%282.0.0%29_0710.xml" Link="Artifacts\S-124 FC_%282.0.0%29_0710.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-125 Marine Aids to Navigation\0.0.4\FC\4. S-125 Feature Catalogue - Annex C.1 %28XML%29.xml" Link="Artifacts\4. S-125 Feature Catalogue - Annex C.1 %28XML%29.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-127 Marine Traffic Management\2.0.0\S-127FC_2.0.0 .xml" Link="Artifacts\S-127FC_2.0.0 .xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_FC.xml" Link="Artifacts\S-128_FC.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_FC_Ed2.0.0.xml" Link="Artifacts\S-128_FC_Ed2.0.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\1.0.0\131_1_0_0_20230315_FC - LOCAL.xml" Link="Artifacts\131_1_0_0_20230315_FC - LOCAL.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\1.0.0\131_1_0_0_20230315_FC.xml" Link="Artifacts\131_1_0_0_20230315_FC.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-201 Aids to Navigation Information\1.1.0\8. S-201 Ed 1.1.0_Annex D2_Feature Catalogue.xml" Link="Artifacts\8. S-201 Ed 1.1.0_Annex D2_Feature Catalogue.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-201 Aids to Navigation Information\2.0.0\6. S-201 Feature Catalogue - Annex C2.xml" Link="Artifacts\6. S-201 Feature Catalogue - Annex C2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-501 Additional Military Layers\0.0.5\S-501_FC_0_0_5_2024-08-09 - LOCAL.xml" Link="Artifacts\S-501_FC_0_0_5_2024-08-09 - LOCAL.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-501 Additional Military Layers\0.0.5\S-501_FC_0_0_5_2024-08-09.xml" Link="Artifacts\S-501_FC_0_0_5_2024-08-09.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-501 Additional Military Layers\0.0.9\S-501_FC_0_0_9_2025-02-14.xml" Link="Artifacts\S-501_FC_0_0_9_2025-02-14.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -97,18 +45,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Artifacts\" />
     <Folder Include="Samples\S201\" />
     <Folder Include="Samples\S131\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128.xsd" Link="Artifacts\S-128.xsd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_TDS_sample_Ed 2.0.0.gml" Link="Artifacts\S-128_TDS_sample_Ed 2.0.0.gml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\samples\DKAAL\S100_ROOT\S-131\DATASET_FILES\DK00\131DK00_DKAAL.GML" Link="Samples\S131\131DK00_DKAAL.GML">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

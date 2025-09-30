@@ -1,0 +1,16 @@
+
+ISO Licence Agreement for ISO electronic inserts [From the ISO distribution site: <https://standards.iso.org/all>]
+
+You are permitted to use the electronic insert(s) available on this site, in their original format without any modifications for the purposes specified in their respective ISO standard(s). When you download any electronic insert, you accept the ISO Customer Licence Agreement (“Licence Agreement”) [A], clauses 1. ISO’s Copyright, 7. Termination, 8. Limitations, and 9. Governing Law.
+
+Should you have any questions about this Licence Agreement, please contact ISO at [Contact email address at: <https://standards.iso.org/all>].
+
+[A] URL: <https://www.iso.org/terms-conditions-licence-agreement.html#Customer-Licence>
+
+===========================================================================================
+International Hydrographic Organization (IHO) Note:
+
+Should you have any questions about the use of these electronic inserts in IHO schemas, please contact the IHO Secretariat [Contact email address at www.iho.int].
+This licence information pertains to only the electronic inserts developed by or for ISO and available from the ISO distribution site (<https://standards.iso.org/all>) . These ISO inserts are located in the standards.iso.org folder in this distribution package or web site. The copyright/licence information for other electronic inserts is provided with or in those electronic inserts.
+
+

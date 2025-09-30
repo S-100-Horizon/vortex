@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Schema;
@@ -96,16 +97,35 @@ namespace S100Framework.DomainModel
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class LowerAttribute(int lower) : System.Attribute
+    public class MandatoryAttribute() : System.Attribute
     {
-        public int Lower = lower;
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
-    public class UpperAttribute(int upper) : System.Attribute
+    public class OptionalAttribute() : System.Attribute
     {
-        public int Upper = upper;
     }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class MultiplicityAttribute : System.Attribute
+    {
+        public MultiplicityAttribute(int lower) {
+            this.Lower = lower;
+            this.Upper = default;
+        }
+
+        public MultiplicityAttribute(int lower, int upper) {
+            this.Lower = lower;
+            this.Upper = upper;
+        }
+
+        public int Lower;
+
+        public int? Upper;
+
+        public bool Infinite => !Upper.HasValue;
+    }
+
 
     public enum Closure : int
     {
@@ -179,10 +199,23 @@ namespace S100Framework.DomainModel
     {
         [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
-
         public abstract bool ConditionalUnknown(string name);
-
         public abstract void RunValidationChecks();
+
+        public bool this[string propertyName] {
+            get { return _unknownValues.Contains(propertyName); }
+            set {
+                if (value) {
+                    if (!_unknownValues.Contains(propertyName))
+                        _unknownValues = [.. _unknownValues, propertyName];
+                }
+                else {
+                    _unknownValues = [.. _unknownValues.Except([propertyName])];
+                }
+            }
+        }
+
+        private string[] _unknownValues = [];
     }
 
     [System.SerializableAttribute()]
@@ -196,7 +229,6 @@ namespace S100Framework.DomainModel
     {
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
-
         public abstract Primitives[] primitives { get; }
     }
 
@@ -362,7 +394,7 @@ namespace S100Framework.DomainModel
         //    };
         //}
 
-        public override bool Equals(object obj) => obj is Tristate<T> other && Equals(other);
+        public override bool Equals(object? obj) => obj is Tristate<T> other && Equals(other);
 
         public bool Equals(Tristate<T> other) {
             if (Status != other.Status) return false;
@@ -375,7 +407,7 @@ namespace S100Framework.DomainModel
             {
                 int hash = 17;
                 hash = hash * 23 + Status.GetHashCode();
-                if (HasValue) {
+                if (_value != null) {
                     hash = hash * 23 + _value.GetHashCode();
                 }
                 return hash;
@@ -406,7 +438,7 @@ namespace S100Framework.DomainModel
         }
 
         public XmlSchema GetSchema() {
-            return null;
+            return new XmlSchema();
         }
 
         public void ReadXml(XmlReader reader) {
