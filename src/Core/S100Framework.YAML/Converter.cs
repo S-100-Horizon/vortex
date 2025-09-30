@@ -106,10 +106,14 @@ namespace S100Framework.YAML
             if (unknownValueAttr is not null)
                 return true;
 
+            var mandatory = property.GetCustomAttribute<MandatoryAttribute>();
+            if (mandatory is not null)
+                return true;
+
             // If the property (list) has a lowerAttribute, it should be required if lower > 1
-            var lowerAttr = property.GetCustomAttribute<LowerAttribute>();
-            if (lowerAttr is not null) {
-                if (lowerAttr.Lower > 0)
+            var multiplicityAttr = property.GetCustomAttribute<MultiplicityAttribute>();
+            if (multiplicityAttr is not null) {
+                if (multiplicityAttr.Lower > 0)
                     return true;
             }
 

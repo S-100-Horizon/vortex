@@ -68,11 +68,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("affectedChartPublications",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class affectedChartPublicationsViewModel : ViewModelBase {
+	public partial class affectedChartPublicationsViewModel : ComplexViewModel<affectedChartPublications> {
 		private chartAffectedViewModel? _chartAffected  = default;
 
 		[Category("affectedChartPublications")]
 		[ExpandableObject]
+		[Optional]
 		public chartAffectedViewModel? chartAffected {
 			get {
 				return _chartAffected;
@@ -83,6 +84,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _chartPublicationIdentifier  = default;
 
+		[Optional]
 		public String? chartPublicationIdentifier {
 			get {
 				return _chartPublicationIdentifier;
@@ -93,6 +95,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _internationalChartAffected  = default;
 
+		[Optional]
 		public String? internationalChartAffected {
 			get {
 				return _internationalChartAffected;
@@ -104,6 +107,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String language {
 			get {
 				return _language;
@@ -114,6 +118,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _publicationAffected  = default;
 
+		[Optional]
 		public String? publicationAffected {
 			get {
 				return _publicationAffected;
@@ -124,10 +129,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public affectedChartPublicationsViewModel Load(affectedChartPublications instance) {
+		public affectedChartPublicationsViewModel LoadaffectedChartPublications(affectedChartPublications instance) {
 			chartAffected = new ();
 			if (instance.chartAffected != default) {
-				chartAffected.Load(instance.chartAffected);
+				chartAffected.LoadchartAffected(instance.chartAffected);
 			}
 			chartPublicationIdentifier = instance.chartPublicationIdentifier;
 			internationalChartAffected = instance.internationalChartAffected;
@@ -156,6 +161,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			publicationAffected = this._publicationAffected,
 		};
 
+		public override ComplexViewModel<affectedChartPublications> Load(affectedChartPublications instance) => this.LoadaffectedChartPublications(instance);
+
 		public override string? ToString() => $"Affected Chart Publications";
 	}
 
@@ -166,10 +173,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("chartAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class chartAffectedViewModel : ViewModelBase {
+	public partial class chartAffectedViewModel : ComplexViewModel<chartAffected> {
 		private String _chartNumber  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String chartNumber {
 			get {
 				return _chartNumber;
@@ -180,6 +188,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _chartPlanNumber  = default;
 
+		[Optional]
 		public String? chartPlanNumber {
 			get {
 				return _chartPlanNumber;
@@ -191,6 +200,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
+		[Mandatory]
 		public DateOnly editionDate {
 			get {
 				return _editionDate;
@@ -201,6 +211,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateOnly? _lastNoticeDate  = default;
 
+		[Optional]
 		public DateOnly? lastNoticeDate {
 			get {
 				return _lastNoticeDate;
@@ -211,7 +222,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public chartAffectedViewModel Load(chartAffected instance) {
+		public chartAffectedViewModel LoadchartAffected(chartAffected instance) {
 			chartNumber = instance.chartNumber;
 			chartPlanNumber = instance.chartPlanNumber;
 			editionDate = instance.editionDate;
@@ -237,6 +248,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			lastNoticeDate = this._lastNoticeDate,
 		};
 
+		public override ComplexViewModel<chartAffected> Load(chartAffected instance) => this.LoadchartAffected(instance);
+
 		public override string? ToString() => $"Chart Affected";
 	}
 
@@ -247,10 +260,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("fixedDateRange",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fixedDateRangeViewModel : ViewModelBase {
+	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateEnd {
 			get {
 				return _dateEnd;
@@ -262,6 +276,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String? _dateStart  = default;
 
 		[S100TruncatedDateAttribute]
+		[Optional]
 		public String? dateStart {
 			get {
 				return _dateStart;
@@ -272,6 +287,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
+		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
 			get {
 				return _timeOfDayEnd;
@@ -282,6 +298,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
+		[Optional]
 		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
 			get {
 				return _timeOfDayStart;
@@ -292,7 +309,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public fixedDateRangeViewModel Load(fixedDateRange instance) {
+		public fixedDateRangeViewModel LoadfixedDateRange(fixedDateRange instance) {
 			dateEnd = instance.dateEnd;
 			dateStart = instance.dateStart;
 			timeOfDayEnd = instance.timeOfDayEnd;
@@ -318,6 +335,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			timeOfDayStart = this._timeOfDayStart,
 		};
 
+		public override ComplexViewModel<fixedDateRange> Load(fixedDateRange instance) => this.LoadfixedDateRange(instance);
+
 		public override string? ToString() => $"Fixed Date Range";
 	}
 
@@ -328,9 +347,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("generalArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class generalAreaViewModel : ViewModelBase {
+	public partial class generalAreaViewModel : ComplexViewModel<generalArea> {
 		private String? _localityIdentifier  = default;
 
+		[Optional]
 		public String? localityIdentifier {
 			get {
 				return _localityIdentifier;
@@ -340,15 +360,16 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("generalArea")]
+		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
 
-		public generalAreaViewModel Load(generalArea instance) {
+		public generalAreaViewModel LoadgeneralArea(generalArea instance) {
 			localityIdentifier = instance.localityIdentifier;
 			locationName.Clear();
 			if (instance.locationName is not null) {
 				foreach(var e in instance.locationName)
-					locationName.Add(new locationNameViewModel().Load(e));
+					locationName.Add(new locationNameViewModel().LoadlocationName(e));
 			}
 			return this;
 		}
@@ -367,6 +388,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			locationName = this.locationName.Select(e => e.Model).ToList(),
 		};
 
+		public override ComplexViewModel<generalArea> Load(generalArea instance) => this.LoadgeneralArea(instance);
+
 		public override string? ToString() => $"General Area";
 
 		public generalAreaViewModel() : base() {
@@ -383,10 +406,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("information",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class informationViewModel : ViewModelBase {
+	public partial class informationViewModel : ComplexViewModel<information> {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String language {
 			get {
 				return _language;
@@ -398,6 +422,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String text {
 			get {
 				return _text;
@@ -408,7 +433,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public informationViewModel Load(information instance) {
+		public informationViewModel Loadinformation(information instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -428,6 +453,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			text = this._text,
 		};
 
+		public override ComplexViewModel<information> Load(information instance) => this.Loadinformation(instance);
+
 		public override string? ToString() => $"Information";
 	}
 
@@ -438,9 +465,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("locality",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class localityViewModel : ViewModelBase {
+	public partial class localityViewModel : ComplexViewModel<locality> {
 		private String? _localityIdentifier  = default;
 
+		[Optional]
 		public String? localityIdentifier {
 			get {
 				return _localityIdentifier;
@@ -450,15 +478,16 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("locality")]
+		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
 
-		public localityViewModel Load(locality instance) {
+		public localityViewModel Loadlocality(locality instance) {
 			localityIdentifier = instance.localityIdentifier;
 			locationName.Clear();
 			if (instance.locationName is not null) {
 				foreach(var e in instance.locationName)
-					locationName.Add(new locationNameViewModel().Load(e));
+					locationName.Add(new locationNameViewModel().LoadlocationName(e));
 			}
 			return this;
 		}
@@ -477,6 +506,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			locationName = this.locationName.Select(e => e.Model).ToList(),
 		};
 
+		public override ComplexViewModel<locality> Load(locality instance) => this.Loadlocality(instance);
+
 		public override string? ToString() => $"Locality";
 
 		public localityViewModel() : base() {
@@ -493,10 +524,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("locationName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class locationNameViewModel : ViewModelBase {
+	public partial class locationNameViewModel : ComplexViewModel<locationName> {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String language {
 			get {
 				return _language;
@@ -508,6 +540,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String text {
 			get {
 				return _text;
@@ -518,7 +551,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public locationNameViewModel Load(locationName instance) {
+		public locationNameViewModel LoadlocationName(locationName instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -538,6 +571,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			text = this._text,
 		};
 
+		public override ComplexViewModel<locationName> Load(locationName instance) => this.LoadlocationName(instance);
+
 		public override string? ToString() => $"Location Name";
 	}
 
@@ -548,10 +583,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("messageSeriesIdentifier",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class messageSeriesIdentifierViewModel : ViewModelBase {
+	public partial class messageSeriesIdentifierViewModel : ComplexViewModel<messageSeriesIdentifier> {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String agencyResponsibleForProduction {
 			get {
 				return _agencyResponsibleForProduction;
@@ -562,6 +598,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _interoperabilityIdentifier  = default;
 
+		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
 				return _interoperabilityIdentifier;
@@ -573,6 +610,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _nameOfSeries  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String nameOfSeries {
 			get {
 				return _nameOfSeries;
@@ -583,6 +621,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String? _nationality  = default;
 
+		[Optional]
 		public String? nationality {
 			get {
 				return _nationality;
@@ -594,6 +633,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _warningNumber  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int warningNumber {
 			get {
 				return _warningNumber;
@@ -606,6 +646,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Editor(typeof(Editors.UnknownEditor<warningType?>), typeof(Editors.UnknownEditor<warningType?>))]
 		[DomainModel.EnumerationAttribute(nameof(warningTypeList), typeof(warningType))]
+		[Mandatory]
 		public warningType warningType {
 			get {
 				return _warningType;
@@ -620,6 +661,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _year  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int year {
 			get {
 				return _year;
@@ -630,7 +672,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public messageSeriesIdentifierViewModel Load(messageSeriesIdentifier instance) {
+		public messageSeriesIdentifierViewModel LoadmessageSeriesIdentifier(messageSeriesIdentifier instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nameOfSeries = instance.nameOfSeries;
@@ -665,6 +707,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			year = this._year,
 		};
 
+		public override ComplexViewModel<messageSeriesIdentifier> Load(messageSeriesIdentifier instance) => this.LoadmessageSeriesIdentifier(instance);
+
 		public override string? ToString() => $"Message Series Identifier";
 	}
 
@@ -675,10 +719,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("navwarnTitle",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class navwarnTitleViewModel : ViewModelBase {
+	public partial class navwarnTitleViewModel : ComplexViewModel<navwarnTitle> {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String language {
 			get {
 				return _language;
@@ -690,6 +735,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String text {
 			get {
 				return _text;
@@ -700,7 +746,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public navwarnTitleViewModel Load(navwarnTitle instance) {
+		public navwarnTitleViewModel LoadnavwarnTitle(navwarnTitle instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -720,6 +766,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			text = this._text,
 		};
 
+		public override ComplexViewModel<navwarnTitle> Load(navwarnTitle instance) => this.LoadnavwarnTitle(instance);
+
 		public override string? ToString() => $"NAVWARN Title";
 	}
 
@@ -730,18 +778,20 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("warningInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class warningInformationViewModel : ViewModelBase {
+	public partial class warningInformationViewModel : ComplexViewModel<warningInformation> {
 		[Category("warningInformation")]
+		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("warningInformation")]
+		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
 
-		public warningInformationViewModel Load(warningInformation instance) {
+		public warningInformationViewModel LoadwarningInformation(warningInformation instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Load(e));
+					information.Add(new informationViewModel().Loadinformation(e));
 			}
 			navwarnTypeDetails.Clear();
 			if (instance.navwarnTypeDetails is not null) {
@@ -765,6 +815,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
 		};
 
+		public override ComplexViewModel<warningInformation> Load(warningInformation instance) => this.LoadwarningInformation(instance);
+
 		public override string? ToString() => $"Warning Information";
 
 		public warningInformationViewModel() : base() {
@@ -784,14 +836,16 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("featureReference",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureReferenceViewModel : ViewModelBase {
+	public partial class featureReferenceViewModel : ComplexViewModel<featureReference> {
 		[Category("featureReference")]
+		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 		[Category("featureReference")]
+		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
 
-		public featureReferenceViewModel Load(featureReference instance) {
+		public featureReferenceViewModel LoadfeatureReference(featureReference instance) {
 			atoNNumber.Clear();
 			if (instance.atoNNumber is not null) {
 				foreach(var e in instance.atoNNumber)
@@ -819,6 +873,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
 
+		public override ComplexViewModel<featureReference> Load(featureReference instance) => this.LoadfeatureReference(instance);
+
 		public override string? ToString() => $"Feature Reference";
 
 		public featureReferenceViewModel() : base() {
@@ -838,10 +894,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("featureName",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class featureNameViewModel : ViewModelBase {
+	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String language {
 			get {
 				return _language;
@@ -853,6 +910,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String name {
 			get {
 				return _name;
@@ -865,6 +923,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(nameUsageList), typeof(nameUsage))]
+		[Optional]
 		public nameUsage? nameUsage {
 			get {
 				return _nameUsage;
@@ -878,7 +937,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
-		public featureNameViewModel Load(featureName instance) {
+		public featureNameViewModel LoadfeatureName(featureName instance) {
 			language = instance.language;
 			name = instance.name;
 			nameUsage = instance.nameUsage;
@@ -901,6 +960,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			nameUsage = this._nameUsage,
 		};
 
+		public override ComplexViewModel<featureName> Load(featureName instance) => this.LoadfeatureName(instance);
+
 		public override string? ToString() => $"Feature Name";
 	}
 
@@ -911,10 +972,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("horizontalPositionUncertainty",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
+	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
 		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Mandatory]
 		public double uncertaintyFixed {
 			get {
 				return _uncertaintyFixed;
@@ -925,7 +987,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
+		public horizontalPositionUncertaintyViewModel LoadhorizontalPositionUncertainty(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			return this;
 		}
@@ -942,6 +1004,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			uncertaintyFixed = this._uncertaintyFixed,
 		};
 
+		public override ComplexViewModel<horizontalPositionUncertainty> Load(horizontalPositionUncertainty instance) => this.LoadhorizontalPositionUncertainty(instance);
+
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
 
@@ -952,11 +1016,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("spatialAccuracy",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class spatialAccuracyViewModel : ViewModelBase {
+	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]
 		[ExpandableObject]
+		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
 			get {
 				return _horizontalPositionUncertainty;
@@ -967,10 +1032,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
+		public spatialAccuracyViewModel LoadspatialAccuracy(spatialAccuracy instance) {
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
 			}
 			return this;
 		}
@@ -987,6 +1052,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 		};
 
+		public override ComplexViewModel<spatialAccuracy> Load(spatialAccuracy instance) => this.LoadspatialAccuracy(instance);
+
 		public override string? ToString() => $"Spatial Accuracy";
 	}
 
@@ -1001,7 +1068,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class navwarnPreambleContentViewModel : AssociationViewModel {
 
 
-		public navwarnPreambleContentViewModel Load(navwarnPreambleContent instance) {
+		public navwarnPreambleContentViewModel LoadnavwarnPreambleContent(navwarnPreambleContent instance) {
 
 			return this;
 		}
@@ -1031,7 +1098,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class navwarnReferencesViewModel : AssociationViewModel {
 
 
-		public navwarnReferencesViewModel Load(navwarnReferences instance) {
+		public navwarnReferencesViewModel LoadnavwarnReferences(navwarnReferences instance) {
 
 			return this;
 		}
@@ -1061,7 +1128,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class TextAssociationViewModel : AssociationViewModel {
 
 
-		public TextAssociationViewModel Load(TextAssociation instance) {
+		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
 
 			return this;
 		}
@@ -1091,7 +1158,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class areaAffectedViewModel : AssociationViewModel {
 
 
-		public areaAffectedViewModel Load(areaAffected instance) {
+		public areaAffectedViewModel LoadareaAffected(areaAffected instance) {
 
 			return this;
 		}
@@ -1120,11 +1187,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ReferencesViewModel : InformationViewModel<References> {
 		[Category("References")]
+		[Optional]
 		public ObservableCollection<messageSeriesIdentifierViewModel> messageSeriesIdentifier  { get; set; } = new ();
 		private Boolean _noMessageOnHand  = false;
 
 		[Category("References")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean noMessageOnHand {
 			get {
 				return _noMessageOnHand;
@@ -1138,6 +1207,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("References")]
 		[Editor(typeof(Editors.UnknownEditor<referenceCategory?>), typeof(Editors.UnknownEditor<referenceCategory?>))]
 		[DomainModel.EnumerationAttribute(nameof(referenceCategoryList), typeof(referenceCategory))]
+		[Mandatory]
 		public referenceCategory referenceCategory {
 			get {
 				return _referenceCategory;
@@ -1151,11 +1221,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public referenceCategory[] referenceCategoryList => [(referenceCategory)1,(referenceCategory)2,(referenceCategory)3];
 
 
-		public override InformationViewModel<References> Load(References instance) {
+		public ReferencesViewModel LoadReferences(References instance) {
 			messageSeriesIdentifier.Clear();
 			if (instance.messageSeriesIdentifier is not null) {
 				foreach(var e in instance.messageSeriesIdentifier)
-					messageSeriesIdentifier.Add(new messageSeriesIdentifierViewModel().Load(e));
+					messageSeriesIdentifier.Add(new messageSeriesIdentifierViewModel().LoadmessageSeriesIdentifier(e));
 			}
 			noMessageOnHand = instance.noMessageOnHand;
 			referenceCategory = instance.referenceCategory;
@@ -1177,7 +1247,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			noMessageOnHand = this._noMessageOnHand,
 			referenceCategory = this._referenceCategory,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
+
+		public override InformationViewModel<References> Load(References instance) => this.LoadReferences(instance);
 
 		public override string? ToString() => $"References";
 
@@ -1198,15 +1271,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnPreambleViewModel : InformationViewModel<NavwarnPreamble> {
 		[Category("NavwarnPreamble")]
+		[Optional]
 		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
 		[Category("NavwarnPreamble")]
+		[Multiplicity(1)]
 		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
 		[Category("NavwarnPreamble")]
+		[Optional]
 		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
 		private messageSeriesIdentifierViewModel _messageSeriesIdentifier  = default;
 
 		[Category("NavwarnPreamble")]
 		[ExpandableObject]
+		[Mandatory]
 		public messageSeriesIdentifierViewModel messageSeriesIdentifier {
 			get {
 				return _messageSeriesIdentifier;
@@ -1216,10 +1293,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("NavwarnPreamble")]
+		[Optional]
 		public ObservableCollection<navwarnTitleViewModel> navwarnTitle  { get; set; } = new ();
 		private DateTime? _cancellationDate  = default;
 
 		[Category("NavwarnPreamble")]
+		[Optional]
 		public DateTime? cancellationDate {
 			get {
 				return _cancellationDate;
@@ -1232,6 +1311,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean intService {
 			get {
 				return _intService;
@@ -1244,6 +1324,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.UnknownEditor<navwarnTypeGeneral?>), typeof(Editors.UnknownEditor<navwarnTypeGeneral?>))]
+		[Mandatory]
 		public navwarnTypeGeneral navwarnTypeGeneral {
 			get {
 				return _navwarnTypeGeneral;
@@ -1259,6 +1340,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("NavwarnPreamble")]
 		[Editor(typeof(Editors.UnknownEditor<DateTime?>), typeof(Editors.UnknownEditor<DateTime?>))]
+		[Mandatory]
 		public DateTime publicationTime {
 			get {
 				return _publicationTime;
@@ -1269,30 +1351,30 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public override InformationViewModel<NavwarnPreamble> Load(NavwarnPreamble instance) {
+		public NavwarnPreambleViewModel LoadNavwarnPreamble(NavwarnPreamble instance) {
 			affectedChartPublications.Clear();
 			if (instance.affectedChartPublications is not null) {
 				foreach(var e in instance.affectedChartPublications)
-					affectedChartPublications.Add(new affectedChartPublicationsViewModel().Load(e));
+					affectedChartPublications.Add(new affectedChartPublicationsViewModel().LoadaffectedChartPublications(e));
 			}
 			generalArea.Clear();
 			if (instance.generalArea is not null) {
 				foreach(var e in instance.generalArea)
-					generalArea.Add(new generalAreaViewModel().Load(e));
+					generalArea.Add(new generalAreaViewModel().LoadgeneralArea(e));
 			}
 			locality.Clear();
 			if (instance.locality is not null) {
 				foreach(var e in instance.locality)
-					locality.Add(new localityViewModel().Load(e));
+					locality.Add(new localityViewModel().Loadlocality(e));
 			}
 			messageSeriesIdentifier = new ();
 			if (instance.messageSeriesIdentifier != default) {
-				messageSeriesIdentifier.Load(instance.messageSeriesIdentifier);
+				messageSeriesIdentifier.LoadmessageSeriesIdentifier(instance.messageSeriesIdentifier);
 			}
 			navwarnTitle.Clear();
 			if (instance.navwarnTitle is not null) {
 				foreach(var e in instance.navwarnTitle)
-					navwarnTitle.Add(new navwarnTitleViewModel().Load(e));
+					navwarnTitle.Add(new navwarnTitleViewModel().LoadnavwarnTitle(e));
 			}
 			cancellationDate = instance.cancellationDate;
 			intService = instance.intService;
@@ -1328,7 +1410,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			navwarnTypeGeneral = this._navwarnTypeGeneral,
 			publicationTime = this._publicationTime,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
+
+		public override InformationViewModel<NavwarnPreamble> Load(NavwarnPreamble instance) => this.LoadNavwarnPreamble(instance);
 
 		public override string? ToString() => $"NAVWARN Preamble";
 
@@ -1362,6 +1447,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("SpatialQuality")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
 				return _qualityOfHorizontalMeasurement;
@@ -1377,6 +1463,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("SpatialQuality")]
 		[ExpandableObject]
+		[Optional]
 		public spatialAccuracyViewModel? spatialAccuracy {
 			get {
 				return _spatialAccuracy;
@@ -1387,11 +1474,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) {
+		public SpatialQualityViewModel LoadSpatialQuality(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			spatialAccuracy = new ();
 			if (instance.spatialAccuracy != default) {
-				spatialAccuracy.Load(instance.spatialAccuracy);
+				spatialAccuracy.LoadspatialAccuracy(instance.spatialAccuracy);
 			}
 			return this;
 		}
@@ -1409,7 +1496,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
 			spatialAccuracy = this._spatialAccuracy?.Model,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
+
+		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) => this.LoadSpatialQuality(instance);
 
 		public override string? ToString() => $"Spatial Quality";
 	}
@@ -1428,6 +1518,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("NavwarnPart")]
 		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
 		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Optional]
 		public restriction? restriction {
 			get {
 				return _restriction;
@@ -1440,11 +1531,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
 		[Category("NavwarnPart")]
+		[Optional]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
 		private warningInformationViewModel _warningInformation  = default;
 
 		[Category("NavwarnPart")]
 		[ExpandableObject]
+		[Mandatory]
 		public warningInformationViewModel warningInformation {
 			get {
 				return _warningInformation;
@@ -1454,31 +1547,33 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("NavwarnPart")]
+		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("NavwarnPart")]
+		[Optional]
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
 
 
-		public override FeatureViewModel<NavwarnPart> Load(NavwarnPart instance) {
+		public NavwarnPartViewModel LoadNavwarnPart(NavwarnPart instance) {
 			restriction = instance.restriction;
 			fixedDateRange.Clear();
 			if (instance.fixedDateRange is not null) {
 				foreach(var e in instance.fixedDateRange)
-					fixedDateRange.Add(new fixedDateRangeViewModel().Load(e));
+					fixedDateRange.Add(new fixedDateRangeViewModel().LoadfixedDateRange(e));
 			}
 			warningInformation = new ();
 			if (instance.warningInformation != default) {
-				warningInformation.Load(instance.warningInformation);
+				warningInformation.LoadwarningInformation(instance.warningInformation);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().Load(e));
+					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
 			}
 			featureReference.Clear();
 			if (instance.featureReference is not null) {
 				foreach(var e in instance.featureReference)
-					featureReference.Add(new featureReferenceViewModel().Load(e));
+					featureReference.Add(new featureReferenceViewModel().LoadfeatureReference(e));
 			}
 			return this;
 		}
@@ -1502,10 +1597,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			featureName = this.featureName.Select(e => e.Model).ToList(),
 			featureReference = this.featureReference.Select(e => e.Model).ToList(),
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPart._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavwarnPart._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
+
+		public override FeatureViewModel<NavwarnPart> Load(NavwarnPart instance) => this.LoadNavwarnPart(instance);
 
 		public override string? ToString() => $"NAVWARN Part";
 
@@ -1533,7 +1631,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
 
-		public override FeatureViewModel<NavwarnAreaAffected> Load(NavwarnAreaAffected instance) {
+		public NavwarnAreaAffectedViewModel LoadNavwarnAreaAffected(NavwarnAreaAffected instance) {
 
 			return this;
 		}
@@ -1548,10 +1646,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public NavwarnAreaAffected Model => new () {
 
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnAreaAffected._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. NavwarnAreaAffected._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
+
+		public override FeatureViewModel<NavwarnAreaAffected> Load(NavwarnAreaAffected instance) => this.LoadNavwarnAreaAffected(instance);
 
 		public override string? ToString() => $"NAVWARN Area Affected";
 	}
@@ -1568,6 +1669,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int? _scaleMinimum  = default;
 
 		[Category("TextPlacement")]
+		[Optional]
 		public int? scaleMinimum {
 			get {
 				return _scaleMinimum;
@@ -1580,6 +1682,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
+		[Mandatory]
 		public String text {
 			get {
 				return _text;
@@ -1592,6 +1695,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int textOffsetBearing {
 			get {
 				return _textOffsetBearing;
@@ -1604,6 +1708,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Mandatory]
 		public int textOffsetDistance {
 			get {
 				return _textOffsetDistance;
@@ -1616,6 +1721,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("TextPlacement")]
 		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Mandatory]
 		public Boolean textRotation {
 			get {
 				return _textRotation;
@@ -1626,7 +1732,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) {
+		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			scaleMinimum = instance.scaleMinimum;
 			text = instance.text;
 			textOffsetBearing = instance.textOffsetBearing;
@@ -1654,10 +1760,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			textOffsetDistance = this._textOffsetDistance,
 			textRotation = this._textRotation,
 		};
+
 		public override informationBindingDefinition[] informationBindingDefinitions => TextPlacement._informationBindingDefinitions;
 		public override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. TextPlacement._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
+
+		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) => this.LoadTextPlacement(instance);
 
 		public override string? ToString() => $"Text Placement";
 	}

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:S100="http://www.iho.int/s100gml/1.0"
+	xmlns:gml="http://www.opengis.net/gml/3.2"
+	xmlns:S100EXT="http://www.iho.int/s100gml/1.0+EXT"
+	elementFormDefault="unqualified" version="0.2-20180824">
+	<!-- ============================================================================================= -->
+	<!-- Common types for NPUB GML application schemas.                                       -->
+	<!-- ============================================================================================= -->
+
+	<!-- =============================================================================================
+Draft Copyright, license, and disclaimer
+© Copyright 2018 International Hydrographic Organization (IHO)
+
+License (Draft)
+Certain parts of this document refer to or are based on the standards, documents, schemas, or other material
+of the International Organization for Standardization (ISO), Open Geospatial Consortium (OGC), International
+Hydrographic Organization / Organisation Hydrographique Internationale (IHO/OHI).
+The ISO material can be obtained from any ISO member and from the Web site of the ISO Central Secretariat
+at www.iso.org.
+The OGC material can be obtained from the OGC Web site at www.opengeospatial.org.
+The IHO material can be obtained from the IHO Web site at www.iho.int or from the International Hydrographic
+Organization Secretariat.
+
+Permission to copy and distribute this document is hereby granted provided that this notice is retained
+on all copies, and that IHO & the contributors are credited when the material is redistributed or used in
+part or whole in derivative works.
+Redistributions in binary form must reproduce this notice in the documentation and/or other materials
+provided with the distribution.
+
+Disclaimer
+This work is provided by the copyright holders and contributors "as is" and any express or implied warranties,
+including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose
+are disclaimed. In no event shall the copyright owner or contributors be liable for any direct, indirect,
+incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute
+goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of
+liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of this software, even if advised of the possibility of such damage.
+
+Document history
+Ver 0.1	2018-05-31	Raphael Malyankar (Portolan Scences)	Initial version
+================================================================================================== -->
+
+	<!-- To do: Schematron validation rules; full restrictions for numeric type attributes(?);
+-->
+	<!-- profile: xmlns:gml="http://www.iho.int/S-100/profile/s100_gmlProfile"
+        deployment:
+        (1) change gml namespace to official GML namespace http://www.opengis.net/gml/3.2
+        (2) add profile namespace xmlns:s100="http://www.iho.int/S-100/profile/s100_gmlProfile"
+        (3) update import statement below correspondingly
+-->
+	<xs:annotation>
+		<xs:documentation>Common types for IHO S-1xx GML schemas</xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://www.iho.int/s100gml/1.0" schemaLocation="../../../S100/4.0.0/S100GML/20180502/s100gmlbase.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../S100/4.0.0/S100GML/20180502/S100_gmlProfile.xsd"/>
+	<xs:import namespace="http://www.iho.int/S-100/profile/s100_gmlProfile" schemaLocation="../../../S100/4.0.0/S100GML/20180502/S100_gmlProfileLevels.xsd"/>
+	<xs:import namespace="http://www.iho.int/s100gml/1.0+EXT" schemaLocation="../../../S100/4.0.0/S100GML/20180502/s100gmlbaseExt.xsd"/>
+
+	<!-- =============================================== -->
+	<!-- common types - this is a common
+        "chameleon" schema for all NPUBS specifications  -->
+	<!-- =============================================== -->
+	<xs:complexType name="S100_TruncatedDate">
+		<xs:annotation>
+			<xs:documentation>built in date types from W3C XML schema, implementing S-100 truncated date</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="gDay" type="xs:gDay"/>
+			<xs:element name="gMonth" type="xs:gMonth"/>
+			<xs:element name="gYear" type="xs:gYear"/>
+			<xs:element name="gMonthDay" type="xs:gMonthDay"/>
+			<xs:element name="gYearMonth" type="xs:gYearMonth"/>
+			<xs:element name="date" type="xs:date"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="ISO639-3">
+		<xs:annotation>
+			<xs:documentation>stub for ISO 639-3 language codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\w{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISO639-2">
+		<xs:annotation>
+			<xs:documentation>stub for ISO 639-2 language codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\w{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISO3166-alpha2">
+		<xs:annotation>
+			<xs:documentation>stub for ISO 3166 alpha2 country codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\w{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Decimal0.0To360.0">
+		<xs:annotation>
+			<xs:documentation>Type for value interval [0.0, 360.0]. Also limits value to 1 decimal place.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="1"/>
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="360.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NonNegativeDecimal">
+		<xs:annotation>
+			<xs:documentation>Type for decimal values with minimum 0.0.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NonNegativeDecimal.1">
+		<xs:annotation>
+			<xs:documentation>Type for decimal values with minimum 0.0 and at most 1 decimal place</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NonNegativeDecimal">
+			<xs:fractionDigits value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Integer0To360">
+		<xs:annotation>
+			<xs:documentation>Type for value interval [0.0, 360.0]. Also limits value to 1 decimal place.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="360"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- =============================================== -->
+	<!-- spatial property convenience types    -->
+	<!-- =============================================== -->
+	<xs:complexType name="PointOrSurface">
+		<xs:choice>
+			<xs:element ref="S100:pointProperty"/>
+			<xs:element ref="S100:surfaceProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CurveOrSurface">
+		<xs:choice>
+			<xs:element ref="S100:curveProperty"/>
+			<xs:element ref="S100:surfaceProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PointCurveSurface">
+		<xs:choice>
+			<xs:element ref="S100:pointProperty"/>
+			<xs:element ref="S100:curveProperty"/>
+			<xs:element ref="S100:surfaceProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PointOrCurve">
+		<xs:choice>
+			<xs:element ref="S100:curveProperty"/>
+			<xs:element ref="S100:pointProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="GM_Point">
+		<xs:choice>
+			<xs:element ref="S100:pointProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="GM_Curve">
+		<xs:choice>
+			<xs:element ref="S100:curveProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="GM_Surface">
+		<xs:choice>
+			<xs:element ref="S100:surfaceProperty"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- ============================================================ -->
+	<!-- temporary definitions for pending model revisions by S100WG  -->
+	<!-- ============================================================ -->
+	<!-- none -->
+
+	<!-- ============================================================ -->
+	<!-- complex attributes, feature, and information types           -->
+	<!-- ============================================================ -->
+	
+
+	<!-- ============================================= -->
+	<!-- codelists -->
+	<!-- ============================================= -->
+
+	<!-- ================================================= -->
+	<!-- substitution head for meta-features               -->
+	<!-- distinguished from ordinary features to allow     -->
+	<!-- meta-features to be distinguished from ordinary   -->
+	<!-- geo-features                                      -->
+	<!-- ================================================= -->
+	<xs:element name="MetaFeature" type="MetaFeatureType" abstract="true" substitutionGroup="gml:AbstractFeature"/>
+	<xs:complexType name="MetaFeatureType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Generalized feature type which carry all the common attributes</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="S100:AbstractFeatureType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- ============================================= -->
+	<!-- types and elements for meta features		   -->
+	<!-- ============================================= -->
+
+
+	<!-- ==================================================== -->
+	<!-- types and elements specific to cartographic features -->
+	<!-- ==================================================== -->
+	
+	
+	
+
+	<!-- ============================================= -->
+	<!-- types and elements for the dataset definition -->
+	<!-- ============================================= -->
+	<!--<xs:element name="GenericFeature" type="GenericFeatureType" abstract="true" substitutionGroup="gml:AbstractFeature"/>-->
+	<xs:complexType name="GenericFeatureType">
+		<xs:complexContent>
+			<xs:extension base="S100:AbstractFeatureType">
+				<xs:sequence>
+					<xs:any namespace="##local" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+</xs:schema>

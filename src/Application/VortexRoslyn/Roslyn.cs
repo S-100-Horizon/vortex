@@ -388,7 +388,7 @@ namespace S100Framework.Applications
                             };
 
                             Func<string, string> converter = prefix switch {
-                                "double" => (v) => $"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                "double" => (v) => v,   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
                                 "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
                                 _ => throw new InvalidOperationException()
                             };
@@ -517,6 +517,21 @@ namespace S100Framework.Applications
                             //    builderDomainModel.AppendLine("\t\t\t[XmlIgnore]");
                             //}
 
+                            if (upper.HasValue) {
+                                if (lower == 0 && upper == 1)
+                                    builderDomainModel.AppendLine($"\t\t\t[Optional]");
+                                else if (lower == 1 && upper == 1)
+                                    builderDomainModel.AppendLine($"\t\t\t[Mandatory]");
+                                else
+                                    builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                            }
+                            else {
+                                if (lower == 0)
+                                    builderDomainModel.AppendLine($"\t\t\t[Optional]");
+                                else
+                                    builderDomainModel.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                            }
+
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
                                 prefix += "?";
                                 postfix = " = default;";
@@ -561,10 +576,10 @@ namespace S100Framework.Applications
                                 }
                             }
                             else {
-                                if (lower > 0)
-                                    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
-                                if (upper.HasValue)
-                                    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
+                                //if (lower > 0)
+                                //    builderDomainModel.AppendLine($"\t\t\t[Lower({lower})]");
+                                //if (upper.HasValue)
+                                //    builderDomainModel.AppendLine($"\t\t\t[Upper({upper.Value})]");
 
                                 prefix = $"List<{prefix}>";
                                 postfix = " = [];";
@@ -608,6 +623,7 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                         builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -775,6 +791,8 @@ namespace S100Framework.Applications
             builderDomainModel.AppendLine("\t\tusing System.Xml.Linq;");
             builderDomainModel.AppendLine();
 
+            var abstractTypes = new List<string>();
+
             //  --- S100_FC_InformationType -----------------------------------------------------
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -809,6 +827,10 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        if (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) {
+                            abstractTypes.Add(code);
+                        }
+
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -836,25 +858,48 @@ namespace S100Framework.Applications
                         }, (builder) => {
                             builder.AppendLine();
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
-                                if (productFormat == ProductFormat.GML) {
-                                    builder.AppendLine("\t\t\t[JsonIgnore]");
-                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                if (superType is null || abstractTypes.Contains(superType.Value)) {
+                                    if (productFormat == ProductFormat.GML) {
+                                        builder.AppendLine("\t\t\t[JsonIgnore]");
+                                        builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                        builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    }
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
-                                builder.AppendLine("\t\t\t};");
+                                if (superType is null) {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
+                                    builder.AppendLine();
 
-                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
-                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{d.Check}");
-                                builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
+                                else {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
+
+                                    builder.AppendLine();
+
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    if (!abstractTypes.Contains(superType.Value))
+                                        builder.AppendLine("\t\t\t\tbase.RunValidationChecks();");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
                             }
                         });
 
@@ -908,6 +953,10 @@ namespace S100Framework.Applications
                             }
                         }
 
+                        if (e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value)) {
+                            abstractTypes.Add(code);
+                        }
+
                         if (!isFirst)
                             builderDomainModel.AppendLine();
                         isFirst = false;
@@ -934,31 +983,53 @@ namespace S100Framework.Applications
                             DependencyRules = dependencyRules,
                         }, (builder) => {
                             if (!(e.Attribute("isAbstract") != default && bool.Parse(e.Attribute("isAbstract")!.Value))) {
-                                if (productFormat == ProductFormat.GML) {
+                                if (superType is null || abstractTypes.Contains(superType.Value)) {
+                                    if (productFormat == ProductFormat.GML) {
+                                        builder.AppendLine();
+                                        builder.AppendLine("\t\t\t[JsonIgnore]");
+                                        builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
+                                        builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    }
+
                                     builder.AppendLine();
                                     builder.AppendLine("\t\t\t[JsonIgnore]");
-                                    builder.AppendLine("\t\t\t[XmlAttribute(\"id\", Namespace = \"http://www.opengis.net/gml/3.2\")]");
-                                    builder.AppendLine("\t\t\tpublic string? gmlId { get; set; }");
+                                    builder.AppendLine("\t\t\t[XmlAnyElement]");
+                                    builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
                                 }
+                                if (superType is null) {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
-                                builder.AppendLine("\t\t\t[JsonIgnore]");
-                                builder.AppendLine("\t\t\t[XmlAnyElement]");
-                                builder.AppendLine("\t\t\tpublic XElement[]? Geometry { get; set; } = default;");
+                                    builder.AppendLine();
 
-                                builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
-                                builder.AppendLine();
-                                builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
-                                foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
-                                builder.AppendLine("\t\t\t};");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
+                                else {
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
+                                    builder.AppendLine();
+                                    builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
+                                    foreach (var d in dependencyRules.Where(e => e.AttributeType.Equals(typeof(ConditionalUnknownDependencyAttribute))).Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{{ \"{d.RuleName}\", {d.Rule} }},");
+                                    builder.AppendLine("\t\t\t};");
 
-                                builder.AppendLine();
+                                    builder.AppendLine();
 
-                                builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
-                                foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
-                                    builder.AppendLine($"\t\t\t\t{d.Check}");
-                                builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine($"\t\t\tpublic override void RunValidationChecks() {{");
+                                    if (!abstractTypes.Contains(superType.Value))
+                                        builder.AppendLine("\t\t\t\tbase.RunValidationChecks();");
+                                    foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
+                                        builder.AppendLine($"\t\t\t\t{d.Check}");
+                                    builder.AppendLine("\t\t\t}");
+                                }
                             }
 
                             //if (superType == null) {
@@ -1129,9 +1200,12 @@ namespace S100Framework.Applications
                         EnumerationTypes = client.EnumerationTypes,
                         ComplexTypes = client.ComplexTypes,
                         ProductFormat = client.ProductFormat,
-                        BaseClass = "ViewModelBase",
+                        BaseClass = $"ComplexViewModel<{code}>",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
+                    }, (b) => {
+                        b.AppendLine();
+                        b.AppendLine($"\t\tpublic override ComplexViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1164,6 +1238,7 @@ namespace S100Framework.Applications
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
                         ProductFormat = client.ProductFormat,
+                        //BaseClass = "InformationAssociationViewModel",
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
@@ -1201,6 +1276,7 @@ namespace S100Framework.Applications
                         CodeListTypes = client.CodeListTypes,
                         ComplexTypes = client.ComplexTypes,
                         ProductFormat = client.ProductFormat,
+                        //BaseClass = "FeatureAssociationViewModel",
                         BaseClass = "AssociationViewModel",
                         LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
@@ -1239,10 +1315,14 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         ProductFormat = client.ProductFormat,
                         BaseClass = $"InformationViewModel<{code}>",
-                        LoadPrefix = $"override InformationViewModel<{code}>",
+                        //LoadPrefix = $"override InformationViewModel<{code}>",
+                        LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
                     }, (b) => {
+                        b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                        b.AppendLine();
+                        b.AppendLine($"\t\tpublic override InformationViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1278,13 +1358,17 @@ namespace S100Framework.Applications
                         ComplexTypes = client.ComplexTypes,
                         ProductFormat = client.ProductFormat,
                         BaseClass = $"FeatureViewModel<{code}>",
-                        LoadPrefix = $"override FeatureViewModel<{code}>",
+                        //LoadPrefix = $"override FeatureViewModel<{code}>",
+                        LoadPrefix = $"{code}ViewModel",
                         Editors = client.Editors,
                     }, (b) => {
+                        b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. {code}._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
+                        b.AppendLine();
+                        b.AppendLine($"\t\tpublic override FeatureViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1430,6 +1514,21 @@ namespace S100Framework.Applications
                 //    builder.AppendLine("\t\t\t[XmlIgnore]");
                 //}
 
+                if (upper.HasValue) {
+                    if (lower == 0 && upper == 1)
+                        builder.AppendLine($"\t\t\t[Optional]");
+                    else if (lower == 1 && upper == 1)
+                        builder.AppendLine($"\t\t\t[Mandatory]");
+                    else
+                        builder.AppendLine($"\t\t\t[Multiplicity({lower}, {upper.Value})]");
+                }
+                else {
+                    if (lower == 0)
+                        builder.AppendLine($"\t\t\t[Optional]");
+                    else
+                        builder.AppendLine($"\t\t\t[Multiplicity({lower})]");
+                }
+
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
                     prefix += "?";
                     postfix = " = default;";
@@ -1457,10 +1556,10 @@ namespace S100Framework.Applications
                     }
                 }
                 else {
-                    if (lower > 0)
-                        builder.AppendLine($"\t\t\t[Lower({lower})]");
-                    if (upper.HasValue)
-                        builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
+                    //if (lower > 0)
+                    //    builder.AppendLine($"\t\t\t[Lower({lower})]");
+                    //if (upper.HasValue)
+                    //    builder.AppendLine($"\t\t\t[Upper({upper.Value})]");
 
                     prefix = $"List<{prefix}>";
                     postfix = " = [];";
@@ -1705,6 +1804,9 @@ namespace S100Framework.Applications
 
             var loadBuilder = new StringBuilder();
 
+            //loadBuilder.AppendLine($"\t\t\tvar properties = typeof({code}).GetProperties().ToDictionary(e => e.Name, e => e);");
+            //loadBuilder.AppendLine();
+
             var serializeBuilder = new StringBuilder();
             serializeBuilder.AppendLine($"\t\t\tvar instance = new {code} {{");
 
@@ -1734,7 +1836,7 @@ namespace S100Framework.Applications
             serializeBuilder.AppendLine("\t\t\treturn System.Text.Json.JsonSerializer.Serialize(instance);");
 
             builder.AppendLine();
-            builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load({code} instance) {{");
+            builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load{code}({code} instance) {{");
             builder.AppendLine(loadBuilder.ToString().TrimEnd([.. Environment.NewLine]));
             builder.AppendLine("\t\t\treturn this;");
             builder.AppendLine("\t\t}");
@@ -1853,6 +1955,21 @@ namespace S100Framework.Applications
                     //}
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
+
+                    if (upper.HasValue) {
+                        if (lower == 0 && upper == 1)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else if (lower == 1 && upper == 1)
+                            builder.AppendLine($"\t\t[Mandatory]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower}, {upper.Value})]");
+                    }
+                    else {
+                        if (lower == 0)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower})]");
+                    }
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
 
                     builder.AppendLine("\t\t\tget {");
@@ -1866,13 +1983,17 @@ namespace S100Framework.Applications
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
                         loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
                         loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
-                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
+                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load{referenceCode}(instance.{referenceCode});");
                         loadBuilder.AppendLine($"\t\t\t}}");
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
                     }
                     else {
                         loadBuilder.AppendLine($"\t\t\t{referenceCode} = instance.{referenceCode};");
+
+                        //loadBuilder.AppendLine($"\t\t\tif (properties[\"{referenceCode}\"].GetCustomAttribute<MandatoryAttribute>() != null && instance.{referenceCode} is null)");
+                        //loadBuilder.AppendLine($"\t\t\t\tbase[\"{referenceCode}\"] = true;");
+
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode},");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode},");
                     }
@@ -1889,13 +2010,27 @@ namespace S100Framework.Applications
                     //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
                     //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
                     //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
-                    //}                    
+                    //}
+                    if (upper.HasValue) {
+                        if (lower == 0 && upper == 1)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else if (lower == 1 && upper == 1)
+                            builder.AppendLine($"\t\t[Mandatory]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower}, {upper.Value})]");
+                    }
+                    else {
+                        if (lower == 0)
+                            builder.AppendLine($"\t\t[Optional]");
+                        else
+                            builder.AppendLine($"\t\t[Multiplicity({lower})]");
+                    }
                     builder.AppendLine($"\t\tpublic {prefix} {referenceCode} {postfix}");
                     loadBuilder.AppendLine($"\t\t\t{referenceCode}.Clear();");
                     loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
                     loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
-                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
+                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load{referenceCode}(e));");
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
                     }
