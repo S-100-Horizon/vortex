@@ -185,7 +185,7 @@ namespace VortexProAppModule
 
                         using var cursor = association.Search(q, true);
                         while (cursor.MoveNext()) {
-                            ids.Add(new AssociationId($"{Convert.ToString(cursor.Current["name"])}"));
+                            ids.Add(new AssociationId($"{cursor.Current.GetGlobalID():N}"));
                         }
 
                         return ids;
@@ -225,7 +225,7 @@ namespace VortexProAppModule
                                     if (!informationtypes.Contains(code))
                                         continue;
 
-                                    ids.Add(new InformationTypeId(code, Convert.ToString(local["name"])));
+                                    ids.Add(new InformationTypeId(code, $"{local["GlobalID"]:N}"));
                                 }
                             }
 
@@ -247,7 +247,7 @@ namespace VortexProAppModule
                             using var cursor = r.Search(q, true);
                             while (cursor.MoveNext() && top > 0) {
                                 var row = cursor.Current;
-                                ids.Add(new InformationTypeId(Convert.ToString(row["code"]), Convert.ToString(row["name"])));
+                                ids.Add(new InformationTypeId(Convert.ToString(row["code"]), $"{row.GetGlobalID():N}"));
 
                                 top -= 1;
                             }
@@ -289,7 +289,7 @@ namespace VortexProAppModule
                                     if (!features.Contains(code))
                                         continue;
 
-                                    ids.Add(new FeatureTypeId(code, Convert.ToString(local["name"])));
+                                    ids.Add(new FeatureTypeId(code, $"{local["GlobalID"]:N}"));
                                 }
                             }
 
@@ -311,7 +311,7 @@ namespace VortexProAppModule
                             using var cursor = f.Search(q, true);
                             while (cursor.MoveNext() && top > 0) {
                                 var feature = cursor.Current;
-                                ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), Convert.ToString(feature["name"])));
+                                ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), $"{feature.GetGlobalID():N}"));
 
                                 top -= 1;
                             }
@@ -573,7 +573,7 @@ namespace VortexProAppModule
 
                     var code = Convert.ToString(inspector["code"]);
 
-                    var name = Convert.ToString(inspector["name"]);
+                    var name = $"{inspector["GlobalID"]:N}";
 
                     var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
