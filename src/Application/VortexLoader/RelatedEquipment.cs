@@ -224,7 +224,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), $"{s101MasterFeature.GetGlobalID():N}"), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -295,7 +295,7 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), $"{s101MasterFeature.GetGlobalID():N}"), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
 
                 // return;
             }
@@ -339,7 +339,7 @@ namespace S100Framework.Applications
                     }
 
                     //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure, _featureAssociation);
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature["name"].ToString()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), $"{s101MasterFeature.GetGlobalID():N}"), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
                     featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));

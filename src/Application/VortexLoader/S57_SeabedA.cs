@@ -58,107 +58,10 @@ namespace S100Framework.Applications
                         }
                     case 30: { // SNDWAV_SandWaves
                             throw new NotImplementedException($"No SNDWAV_SandWaves in DK or GL. {tableName}");
-
-                            var instance = new Sandwave() {
-                            };
-                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                string subtype = "";
-
-                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                            }
-
-
-
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            SetShape(buffer, current.SHAPE);
-                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                            var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                            // TODO: Create relations
-
-                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                     case 40: { // WEDKLP_WeedKelp
                             throw new NotImplementedException($"No WEDKLP_WeedKelp in DK or GL. {tableName}");
-
-                            if (catweed == 3) {
-                                var instance = new Seagrass();
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                                var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                                // TODO: Create relations
-
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-                            }
-                            else {
-                                var instance = new WeedKelp() {
-                                };
-                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
-                                    string subtype = "";
-
-                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
-                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
-                                }
-
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                                AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                buffer["ps"] = ps101;
-                                buffer["code"] = instance.GetType().Name;
-                                buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                SetShape(buffer, current.SHAPE);
-                                ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
-
-                                var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
-
-                                // TODO: Create relations
-
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-
-                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
-                            }
-
                         }
-
-
-                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();

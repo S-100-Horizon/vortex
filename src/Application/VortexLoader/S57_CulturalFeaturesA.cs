@@ -863,13 +863,12 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var windturbineFeature = surface.CreateRow(bufferSurface);
-                                var structureName = Convert.ToString(windturbineFeature["name"]);
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedAreaEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, $"{windturbineFeature.GetGlobalID():N}" ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(windturbine));
                                 continue;
                             }
