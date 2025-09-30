@@ -131,7 +131,7 @@ namespace S100Framework.Applications
             _converterRegistry.Register<AidsToNavigationP, Retroreflector>(Converters.CreateRetroreflector);
 
             using (Geodatabase source = createGeodatabase()) {
-//#if null
+                //#if null
                 Store(() => {
                     if (!append) {
                         var query = new QueryFilter {
@@ -312,7 +312,7 @@ namespace S100Framework.Applications
 
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
-//#endif
+                //#endif
                 //Logger.Current.Information($"Igniting afterburner");
                 //Afterburner.Initialize(destination);
                 //Afterburner.Instance.CutClosedRoadLines();
@@ -367,21 +367,22 @@ namespace S100Framework.Applications
                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
                     if (leastDepth is null) {
                         leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
-                    } else if (leastDepth > depthArea.DRVAL1) {
+                    }
+                    else if (leastDepth > depthArea.DRVAL1) {
                         leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
                     }
 
-                    
 
-                    if (depthArea.FcSubtype! is  15) {  // UNSARE
+
+                    if (depthArea.FcSubtype! is 15) {  // UNSARE
                         coveredByUnsurveyedArea = true;
                         break;
                     }
-                    if (depthArea.FcSubtype! is  5) {  // DRGARE
+                    if (depthArea.FcSubtype! is 5) {  // DRGARE
                         coveredByDredgedArea = true;
                         surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                     }
-                    if (depthArea.FcSubtype! is  1) {  // DEPARE
+                    if (depthArea.FcSubtype! is 1) {  // DEPARE
                         surroundingDepth = leastDepth != -32767d ? leastDepth : null;
                     }
 
@@ -391,18 +392,18 @@ namespace S100Framework.Applications
 
             bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
 
-            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou is  -32767d);
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou is -32767d);
 
             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
 
             bool valsouIsKnown = valsou is not null && valsou is not -32767d;
             bool valsouIsUnknown = valsou is -32767d;
 
-            bool catwrkIsUnknown = catwrk is  -32767;
+            bool catwrkIsUnknown = catwrk is -32767;
 
             bool heightIsKnown = height is not null && height is not -32767d;
-            bool heightIsUnknown = height is  -32767d;
-            bool expositionOfSoundingIs1Or3 = expsou is  1 || expsou is  3;
+            bool heightIsUnknown = height is -32767d;
+            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3;
 
 
             if (allCoveringDepthRangeMinimumValuesAreKnown) {
@@ -412,43 +413,43 @@ namespace S100Framework.Applications
                     return null;
                 }
                 else if (valsouIsKnown &&
-                    (watlev is 3 || watlev is  4 || watlev is  5 || watlev is -32767)) {
+                    (watlev is 3 || watlev is 4 || watlev is 5 || watlev is -32767)) {
                     return null;
                 }
                 else if (expositionOfSoundingIs1Or3 &&
                     valsouIsUnknown &&
-                    (watlev.HasValue && (watlev is  3))) {
+                    (watlev.HasValue && (watlev is 3))) {
                     return leastDepth;
                 }
                 else if (expositionOfSoundingIs1Or3 &&
-                    (watlev.HasValue && (watlev is  3))) {
+                    (watlev.HasValue && (watlev is 3))) {
                     return leastDepth;
                 }
-                else if ((catwrk is  1) &&
-                    ( (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767))) {
+                else if ((catwrk is 1) &&
+                    ((watlev is 1 || watlev is 2 || watlev is 4 || watlev is 5 || watlev is -32767))) {
 
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
-                else if (catwrk is  1 &&
-                    (expsou is null || (expsou is  2))) {
+                else if (catwrk is 1 &&
+                    (expsou is null || (expsou is 2))) {
                     return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
-                else if ((expsou is null || (expsou is  2)) &&
+                else if ((expsou is null || (expsou is 2)) &&
                     valsouIsUnknown &&
-                    (watlev is  3 || watlev is  5)) {
+                    (watlev is 3 || watlev is 5)) {
                     return 0d;
                 }
-                else if ((expsou is null || (expsou is  2)) &&
+                else if ((expsou is null || (expsou is 2)) &&
                     valsouIsUnknown &&
-                    (watlev is  4 || watlev is  -32767)) {
+                    (watlev is 4 || watlev is -32767)) {
 
                     return -15d;
                 }
-                else if (((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767)) &&
-                    (watlev is  1 || watlev is  2 || watlev is  4 || watlev is  5 || watlev is  -32767)) {
+                else if (((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767)) &&
+                    (watlev is 1 || watlev is 2 || watlev is 4 || watlev is 5 || watlev is -32767)) {
                     return -15d;
                 }
-                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767) &&
+                else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767) &&
                     (expsou is null || (expsou is 2))) {
                     return -15d;
                 }
@@ -461,27 +462,27 @@ namespace S100Framework.Applications
             else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
 
                 if (catwrk is 1 &&
-                    (watlev is  3 || watlev is  -32767)) {
+                    (watlev is 3 || watlev is -32767)) {
                     return 20.1d;
                 }
                 else if (valsouIsUnknown &&
-                    (watlev is  3 || watlev is  5)) {
+                    (watlev is 3 || watlev is 5)) {
                     return 0d;
                 }
                 else if (valsouIsUnknown &&
-                    (watlev is  4 || watlev is  -32767)) {
+                    (watlev is 4 || watlev is -32767)) {
                     return -15d;
                 }
                 else if (catwrkIsUnknown &&
-                    (watlev is  3 || watlev is  5)) {
+                    (watlev is 3 || watlev is 5)) {
                     return 0d;
                 }
-                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5) &&
-                    (watlev is  3 || watlev is  5)) {
+                else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5) &&
+                    (watlev is 3 || watlev is 5)) {
                     return -15d;
                 }
-                else if ((catwrk is  2 || catwrk is  3 || catwrk is  4 || catwrk is  5 || catwrk is  -32767) &&
-                    (watlev is  4 || watlev is  -32767)) {
+                else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767) &&
+                    (watlev is 4 || watlev is -32767)) {
                     return -15d;
                 }
                 else {
@@ -548,7 +549,7 @@ namespace S100Framework.Applications
                     (watlev is 3 || watlev is 4 || watlev is 5 || watlev is -32767)) {
                     return null;
                 }
-                else if (expositionOfSoundingIs1Or3 && 
+                else if (expositionOfSoundingIs1Or3 &&
                     valsouIsUnknown &&
                     (watlev is 3)) {
                     return leastDepth;
@@ -968,10 +969,10 @@ namespace S100Framework.Applications
         internal static List<information> CreateInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             List<information> information = new List<information>();
 
-
             if (!string.IsNullOrEmpty(ntxtds)) {
 
                 // TODO: make information binding -> Nautical Information - binding.
+
 
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
@@ -1117,11 +1118,173 @@ namespace S100Framework.Applications
             return information;
         }
 
+        internal static InformationResult BindNauticalInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+            InformationResult result = new();
+            
+            if (!string.IsNullOrEmpty(ntxtds)) {
+                // TODO: make information binding -> Nautical Information - binding.
+                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
+                    if (!File.Exists(filePath)) {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = ntxtds;
+                    string language = "eng";
 
+                    var instance = new NauticalInformation();
+                    instance.information = new List<information>() {
+                            new information() {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language
+                        }
+                    };
+
+                    NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+
+                }
+                else if (!string.IsNullOrEmpty(ntxtds)) {
+                    string language = "eng";
+
+                    var instance = new information {
+                        language = language,
+                        text = ntxtds,
+                    };
+                    result.information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(txtdsc)) {
+
+                // TODO: make information binding -> Nautical Information - binding.
+
+                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
+                    if (!File.Exists(filePath)) {
+                        Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {filePath}");
+                    }
+                    //var note = new Note(filePath);
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new NauticalInformation();
+                    instance.information = new List<information>() {
+                            new information() {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language
+                        }
+                    };
+
+                    NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+
+                    // information.Add(instance);
+                }
+                else if (!string.IsNullOrEmpty(txtdsc)) {
+                    string? fileLocator = default;
+                    string fileReference = txtdsc;
+                    string language = "eng";
+
+                    var instance = new information {
+                        fileLocator = fileLocator,
+                        language = language,
+                        text = txtdsc,
+                    };
+                    result.information.Add(instance);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(inform)) {
+
+                //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+                string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
+
+                foreach (var value in informs) {
+                    string? fileLocator = default;
+                    string language = "eng";
+
+                    if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                        var filePath = System.IO.Path.Combine(_notesPath, value);
+                        if (File.Exists(value)) {
+                            var instance = new NauticalInformation();
+                            instance.information = new List<information>() {
+                            new information() {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    language = language
+                                }
+                            };
+
+                            NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                        }
+                        else {
+                            Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(value)) {
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            language = language,
+                            text = value,
+                        };
+                        result.information.Add(instance);
+                    }
+                }
+            }
+
+
+            if (!string.IsNullOrEmpty(ninform)) {
+                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+                if (!string.IsNullOrEmpty(ninform)) {
+
+                    string[] ninfoms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
+
+                    foreach (var value in ninfoms) {
+                        string? fileLocator = default;
+                        string language = "dan";
+
+                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
+                            var filePath = System.IO.Path.Combine(_notesPath, value);
+                            if (File.Exists(value)) {
+                                var instance = new NauticalInformation();
+                                instance.information = new List<information>() {
+                            new information() {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(value) ?? default,
+                                    headline = default,
+                                    language = language,
+                                    text = value,
+                                }
+                            };
+
+                                NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                            }
+                            else {
+                                Logger.Current.DataError(sourceObjectid, sourceTableName, "", $"AddInformation: Cannot find note {value}");
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(value)) {
+                            var instance = new information {
+                                fileLocator = fileLocator,
+                                language = language,
+                                text = value,
+                            };
+                            result.information.Add(instance);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
 
         internal static List<information> CreateInformationFrom(Row current) {
             List<information> information = new List<information>();
-
 
             if (current.FindField("NTXTDS") != -1 && (DBNull.Value != current["NTXTDS"])) {
                 var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
@@ -1359,20 +1522,20 @@ namespace S100Framework.Applications
         }
 
         //internal static void AddInformation(List<information> instanceInformation, Row current) {
-        //    // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
-        //    // Sent to Nigel & Co.
         //    List<information> information = CreateInformationFrom(current);
         //    instanceInformation.AddRange(information);
         //}
         internal static void AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
-            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
-            // Sent to Nigel & Co.
-            List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
+            // TODO: TBD.
+            //List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
+            //instanceInformation.AddRange(information);
+
+            //TODO: Fix binding
+            var result = BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
 
 
+            instanceInformation.AddRange(result.information);
 
-
-            instanceInformation.AddRange(information);
         }
     }
 }
