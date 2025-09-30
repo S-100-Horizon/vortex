@@ -200,22 +200,7 @@ namespace S100Framework.DomainModel
         [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
         public abstract bool ConditionalUnknown(string name);
-        public abstract void RunValidationChecks();
-
-        public bool this[string propertyName] {
-            get { return _unknownValues.Contains(propertyName); }
-            set {
-                if (value) {
-                    if (!_unknownValues.Contains(propertyName))
-                        _unknownValues = [.. _unknownValues, propertyName];
-                }
-                else {
-                    _unknownValues = [.. _unknownValues.Except([propertyName])];
-                }
-            }
-        }
-
-        private string[] _unknownValues = [];
+        public abstract void RunValidationChecks();        
     }
 
     [System.SerializableAttribute()]

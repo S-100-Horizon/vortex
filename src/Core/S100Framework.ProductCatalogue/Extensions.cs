@@ -69,7 +69,7 @@ namespace S100Framework.ProductCatalogue
 
                         var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
-                        var name = Convert.ToString(f["name"]);
+                        var name = $"{f.GetGlobalID():N}";
                         if (string.IsNullOrEmpty(name))
                             name = string.Empty;
 
@@ -109,7 +109,7 @@ namespace S100Framework.ProductCatalogue
 
                             var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
-                            var name = Convert.ToString(f["name"]);
+                            var name = $"{f.GetGlobalID():N}";
                             if (string.IsNullOrEmpty(name))
                                 name = string.Empty;
 
@@ -140,7 +140,7 @@ namespace S100Framework.ProductCatalogue
 
                             var shape = (ArcGIS.Core.Geometry.Polygon)f.GetShape();
 
-                            var name = Convert.ToString(f["name"]);
+                            var name = $"{f.GetGlobalID():N}";
                             if (string.IsNullOrEmpty(name))
                                 name = string.Empty;
 
@@ -185,7 +185,7 @@ namespace S100Framework.ProductCatalogue
 
                             var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
-                            var name = Convert.ToString(f["name"]);
+                            var name = $"{f.GetGlobalID():N}";
                             if (string.IsNullOrEmpty(name))
                                 name = string.Empty;
 
@@ -209,7 +209,7 @@ namespace S100Framework.ProductCatalogue
 
                             var shape = (ArcGIS.Core.Geometry.Polyline)f.GetShape();
 
-                            var name = Convert.ToString(f["name"]);
+                            var name = $"{f.GetGlobalID():N}";
                             if (string.IsNullOrEmpty(name))
                                 name = string.Empty;
 

@@ -828,7 +828,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 featureAssociationBuffer["edition"] = ImporterNIS.s101version;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = (string)association["name"];
+                featureAssociationName = $"{association.GetGlobalID():N}";
             }
 
             // Store binding
@@ -891,7 +891,7 @@ namespace S100Framework.Applications.Singletons
                 existingBinding.AddRange(primaryBindings);
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
                 s101SlaveFeature.Store();
-                //Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", s101MasterFeature["name"].ToString()!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
+                //Logger.Current.DataError(s101MasterFeature.GetObjectID(), "Relations", $"{s101MasterFeature.GetGlobalID():N}"!, $"S-101 Relation ignored because of existing relation. TBD on what to keep. Kept primary bindings: {s101MasterFeature["featurebindings"]} instead of {System.Text.Json.JsonSerializer.Serialize(primaryBindings)}");
             }
 
 
@@ -961,7 +961,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = (string)association["name"];
+                featureAssociationName = $"{association.GetGlobalID():N}";
 
             }
             {

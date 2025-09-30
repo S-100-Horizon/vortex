@@ -75,9 +75,6 @@ namespace TestS100Framework
             buffer["code"] = "test";
             
             var id = cursor.Insert(buffer);
-
-            var name = buffer["name"];
-            Assert.Null(name);
             
             cursor.Flush();            
 
