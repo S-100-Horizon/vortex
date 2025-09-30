@@ -64,7 +64,7 @@ namespace S100Framework.Applications.Singletons
                     var splitResult = SplitAtMidpoint(currentPolyline);
 
                     if (splitResult == null || splitResult.Count != 2) {
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature["name"].ToString() ?? "Unknown name", $"Cannot split closingline in two. Check geometry for this curve.");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Cannot split closingline in two. Check geometry for this curve.");
                         continue;
                     }
 
@@ -79,8 +79,7 @@ namespace S100Framework.Applications.Singletons
                         foreach (Field field in featureClass.GetDefinition().GetFields()) {
                             if (field.FieldType == FieldType.OID ||
                                 field.FieldType == FieldType.Geometry ||
-                                field.FieldType == FieldType.GlobalID ||
-                                field.Name.ToLower() == "name") {
+                                field.FieldType == FieldType.GlobalID) {
                                 continue;
                             }
                             if (field.IsEditable) {
@@ -89,7 +88,7 @@ namespace S100Framework.Applications.Singletons
                         }
 
                         newFeature.Store();
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature["name"].ToString() ?? "Unknown name", $"Split this feature in 2. Closing line on input. NewFeature name is {newFeature["name"]}");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Split this feature in 2. Closing line on input. NewFeature name is {newFeature["name"]}");
                     }
                 }
             }

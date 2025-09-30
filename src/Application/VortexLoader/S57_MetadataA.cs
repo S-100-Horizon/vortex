@@ -100,7 +100,7 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, default);
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                             //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             //SetShape(buffer,current.SHAPE);
                             //var featureN = featureClass.CreateRow(buffer);
-                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            //var name = $"{featureN.GetGlobalID():N}";
 
                             //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                             //    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -192,7 +192,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -237,7 +237,7 @@ namespace S100Framework.Applications
                                 ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featurelocalDirectionOfBuoyage = featureClass.CreateRow(buffer);
-                                var namelocalDirectionOfBuoyage = Convert.ToString(featurelocalDirectionOfBuoyage["name"]) ?? "Unknown name";
+                                var namelocalDirectionOfBuoyage = $"{featurelocalDirectionOfBuoyage.GetGlobalID()}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedAreaEquipment(current, localDirectionOfBuoyage, featurelocalDirectionOfBuoyage, localDirectionOfBuoyage.scaleMinimum);
@@ -266,7 +266,7 @@ namespace S100Framework.Applications
                                 ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, default);
@@ -459,7 +459,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -556,7 +556,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleValueMinimum);
@@ -591,7 +591,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, default);

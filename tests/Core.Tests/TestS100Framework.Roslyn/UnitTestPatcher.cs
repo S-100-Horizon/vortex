@@ -90,7 +90,7 @@ namespace TestS100Framework
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
 
-                            var name = Convert.ToString(f["name"])!;
+                            var name = $"{f.GetGlobalID():N}";
 
                             if (!groupFeatureAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;
@@ -121,7 +121,7 @@ namespace TestS100Framework
                         while (cursor.MoveNext()) {
                             var row = (Row)cursor.Current;
 
-                            var name = Convert.ToString(row["name"])!;
+                            var name = $"{row.GetGlobalID():N}";
 
                             if (!groupInformationAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;

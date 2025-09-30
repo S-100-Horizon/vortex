@@ -89,7 +89,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -150,7 +150,7 @@ namespace S100Framework.Applications
                             LandAreas.Instance.Add(current.SHAPE!.Clone());
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -201,7 +201,7 @@ namespace S100Framework.Applications
 
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -245,7 +245,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -300,7 +300,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -364,7 +364,7 @@ namespace S100Framework.Applications
                             //SetShape(bufferSurface, current.SHAPE);
                             //SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
                             //var featureN = featureClass.CreateRow(bufferSurface);
-                            //var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            //var name = $"{featureN.GetGlobalID():N}";
 
                             //// TODO: Create relations
 
@@ -422,7 +422,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);

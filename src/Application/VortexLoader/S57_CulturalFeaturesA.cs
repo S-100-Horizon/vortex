@@ -49,7 +49,7 @@ namespace S100Framework.Applications
                     //SetUsageBand(buffer, ImporterNIS._compilationScale);
 
                     var featureN = featureType.CreateRow(bufferFeatureType);
-                    var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                    var name = $"{featureN.GetGlobalID():N}";
 
                     bridge.Name = name;
 
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                     featureAssociationBuffer["edition"] = ImporterNIS.s101version;
 
                     var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                    string featureAssociationName = (string)association["name"];
+                    string featureAssociationName = $"{association.GetGlobalID():N}";
                     bridge.BridgeAggregationName = featureAssociationName;
 
                     ConversionAnalytics.Instance.AddConverted("DerivedBridgeElement", Guid.Empty, name);
@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -316,7 +316,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
 
                                 if (createBridgesAndRelations) {
@@ -405,7 +405,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
@@ -515,7 +515,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -624,7 +624,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -745,7 +745,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -843,7 +843,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -980,7 +980,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1077,7 +1077,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1194,7 +1194,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (createBridgesAndRelations) {
 
@@ -1274,7 +1274,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1335,7 +1335,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1442,7 +1442,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1525,7 +1525,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

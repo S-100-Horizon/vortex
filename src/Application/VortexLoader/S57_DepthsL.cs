@@ -140,7 +140,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -164,7 +164,7 @@ namespace S100Framework.Applications
                                 //    bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
                                 //    var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-                                //    var informationName = Convert.ToString(informationTypeRow["name"]) ?? "Unknown name";
+                                //    var informationName = Convert.ToString(informationTypeRow["name"]);
 
                                 //    // create Association
 
@@ -174,7 +174,7 @@ namespace S100Framework.Applications
                                 //    informationAssociationBuffer["code"] = "association";
 
                                 //    var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-                                //    var informationAssociationName = (string)association["name"];
+                                //    var informationAssociationName = $"{association.GetGlobalID():N}";
 
                                 //    // create binding
                                 //    var informationBinding = new informationBinding {
@@ -224,7 +224,7 @@ namespace S100Framework.Applications
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-            var informationName = Convert.ToString(informationTypeRow["name"]) ?? "Unknown name";
+            var informationName = $"{informationTypeRow.GetGlobalID():N}";
 
             // create Association
 
@@ -235,7 +235,7 @@ namespace S100Framework.Applications
             informationAssociationBuffer["edition"] = ImporterNIS.s101version;
 
             var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-            var informationAssociationName = (string)association["name"];
+            var informationAssociationName = $"{association.GetGlobalID():N}";
 
             // create binding
             var informationBinding = new informationBinding {

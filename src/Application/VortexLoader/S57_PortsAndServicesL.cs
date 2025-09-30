@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -191,7 +191,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -273,7 +273,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -375,7 +375,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -461,7 +461,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -577,7 +577,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -650,7 +650,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -771,7 +771,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -866,7 +866,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -923,7 +923,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -1013,7 +1013,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                                var name = $"{featureN.GetGlobalID():N}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -1086,7 +1086,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = Convert.ToString(featureN["name"]) ?? "Unknown name";
+                            var name = $"{featureN.GetGlobalID():N}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);

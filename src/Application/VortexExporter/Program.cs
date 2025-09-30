@@ -7,6 +7,7 @@ using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -178,7 +179,7 @@ namespace S100Framework.Applications
                         while (informationCursor.MoveNext()) {
                             var current = informationCursor.Current;
 
-                            var name = current["name"].ToString()!;
+                            var name = $"{current.GetGlobalID():N}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -243,7 +244,7 @@ namespace S100Framework.Applications
                         while (featureCursor.MoveNext()) {
                             var current = featureCursor.Current;
 
-                            var name = current["name"].ToString()!;
+                            var name = $"{current.GetGlobalID():N}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -251,7 +252,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                            var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.GetHashCode()}:1";       // Geodatastyrelsen: 110 
 
                             var feature = new YAML.Feature {
                                 Prim = Primitive.NoGeometry,
@@ -321,7 +322,7 @@ namespace S100Framework.Applications
                         using var cursor = fc.Search(filter, true);
                         while (cursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                            var name = Convert.ToString(current["name"])!;
+                            var name = $"{current.GetGlobalID():N}";
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
@@ -333,7 +334,7 @@ namespace S100Framework.Applications
 
                             var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.GetHashCode()}:1";       // Geodatastyrelsen: 110 
 
                             var prim = shapetype switch {
                                 GeometryType.Point => Primitive.Point,
@@ -445,12 +446,12 @@ namespace S100Framework.Applications
                                             var asso = new YAML.Association {
                                                 Name = binding.association,
                                                 Role = binding.role,
-                                                To = $"110:{binding.featureId![1..]}:1"
+                                                To = $"110:{binding.featureId!.GetHashCode()}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId![1..]}:1"));
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.GetHashCode()}:1"));
                                             if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                                 featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
