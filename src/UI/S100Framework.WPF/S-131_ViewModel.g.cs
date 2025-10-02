@@ -329,7 +329,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 		private String _development  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String development {
 			get {
@@ -513,7 +512,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class depthsDescriptionViewModel : ComplexViewModel<depthsDescription> {
 		private categoryOfDepthsDescription _categoryOfDepthsDescription  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>), typeof(Editors.UnknownEditor<categoryOfDepthsDescription?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDepthsDescriptionList), typeof(categoryOfDepthsDescription))]
 		[Mandatory]
 		public categoryOfDepthsDescription categoryOfDepthsDescription {
@@ -644,7 +642,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private String _name  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -1115,7 +1112,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -1499,7 +1495,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String _onlineResourceLinkageURL  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String onlineResourceLinkageURL {
 			get {
@@ -1643,7 +1638,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double orientationValue {
 			get {
@@ -1691,7 +1685,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _dateStart  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {
@@ -1704,7 +1698,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1993,7 +1987,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -2056,7 +2050,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
@@ -2437,7 +2430,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class verticalUncertaintyViewModel : ComplexViewModel<verticalUncertainty> {
 		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -2495,7 +2487,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class vesselsMeasurementsViewModel : ComplexViewModel<vesselsMeasurements> {
 		private comparisonOperator _comparisonOperator  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
@@ -2511,7 +2502,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
@@ -2527,7 +2517,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
 		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
@@ -2539,7 +2528,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
@@ -2954,7 +2942,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
-		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
 		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
 		[Mandatory]
 		public membership membership {
@@ -3002,7 +2989,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
 		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
@@ -3725,7 +3711,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfAuthority _categoryOfAuthority  = default;
 
 		[Category("Authority")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfAuthority?>), typeof(Editors.UnknownEditor<categoryOfAuthority?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
@@ -6748,7 +6733,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _uNLocationCode  = string.Empty;
 
 		[Category("Berth")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String uNLocationCode {
 			get {
@@ -9772,7 +9756,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility  = default;
 
 		[Category("MooringWarpingFacility")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>), typeof(Editors.UnknownEditor<categoryOfMooringWarpingFacility?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfMooringWarpingFacilityList), typeof(categoryOfMooringWarpingFacility))]
 		[Mandatory]
 		public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
@@ -9789,7 +9772,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private String _iDCode  = string.Empty;
 
 		[Category("MooringWarpingFacility")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String iDCode {
 			get {
@@ -11514,7 +11496,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private categoryOfPortSection _categoryOfPortSection  = default;
 
 		[Category("WaterwayArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfPortSection?>), typeof(Editors.UnknownEditor<categoryOfPortSection?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPortSectionList), typeof(categoryOfPortSection))]
 		[Mandatory]
 		public categoryOfPortSection categoryOfPortSection {
@@ -11696,7 +11677,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int maximumDisplayScale {
 			get {
@@ -11709,7 +11689,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int minimumDisplayScale {
 			get {
@@ -11921,7 +11900,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private verticalDatum _verticalDatum  = default;
 
 		[Category("SoundingDatum")]
-		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		[Mandatory]
 		public verticalDatum verticalDatum {
@@ -11992,7 +11970,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private verticalDatum _verticalDatum  = default;
 
 		[Category("VerticalDatumOfData")]
-		[Editor(typeof(Editors.UnknownEditor<verticalDatum?>), typeof(Editors.UnknownEditor<verticalDatum?>))]
 		[DomainModel.EnumerationAttribute(nameof(verticalDatumList), typeof(verticalDatum))]
 		[Mandatory]
 		public verticalDatum verticalDatum {
@@ -12063,7 +12040,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private double _orientationValue  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double orientationValue {
 			get {
@@ -12088,7 +12064,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		private int _textOffsetMm  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int textOffsetMm {
 			get {

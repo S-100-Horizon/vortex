@@ -143,7 +143,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class qRouteChannelWidthViewModel : ComplexViewModel<qRouteChannelWidth> {
 		private double? _rightQRouteWidth  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? rightQRouteWidth {
 			get {
@@ -257,7 +257,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private Boolean? _multiplicityKnown  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Editor(typeof(Editors.UnknownBooleanEditor), typeof(Editors.UnknownBooleanEditor))]
 		[Mandatory]
 		public Boolean? multiplicityKnown {
 			get {
@@ -376,7 +376,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class topmarkViewModel : ComplexViewModel<topmark> {
 		private topmarkDaymarkShape? _topmarkDaymarkShape  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<topmarkDaymarkShape?>), typeof(Editors.UnknownEditor<topmarkDaymarkShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(topmarkDaymarkShapeList), typeof(topmarkDaymarkShape))]
 		[Mandatory]
 		public topmarkDaymarkShape? topmarkDaymarkShape {
@@ -615,7 +614,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class altitudeRangeViewModel : ComplexViewModel<altitudeRange> {
 		private int? _minimumAltitude  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? minimumAltitude {
 			get {
@@ -627,7 +626,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int? _maximumAltitude  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? maximumAltitude {
 			get {
@@ -674,7 +673,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class altitudeViewModel : ComplexViewModel<altitude> {
 		private int? _minimumAltitude  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? minimumAltitude {
 			get {
@@ -686,7 +685,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int? _maximumAltitude  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? maximumAltitude {
 			get {
@@ -750,7 +749,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private lightCharacteristic? _lightCharacteristic  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
 		[Mandatory]
 		public lightCharacteristic? lightCharacteristic {
@@ -837,7 +835,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? verticalClearanceValue {
 			get {
@@ -1064,7 +1062,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class firstSourceInformationViewModel : ComplexViewModel<firstSourceInformation> {
 		private firstSensor? _firstSensor  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<firstSensor?>), typeof(Editors.UnknownEditor<firstSensor?>))]
 		[DomainModel.EnumerationAttribute(nameof(firstSensorList), typeof(firstSensor))]
 		[Mandatory]
 		public firstSensor? firstSensor {
@@ -1141,7 +1138,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class horizontalClearanceFixedViewModel : ComplexViewModel<horizontalClearanceFixed> {
 		private double? _horizontalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? horizontalClearanceValue {
 			get {
@@ -1210,7 +1207,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? uncertaintyFixed {
 			get {
@@ -1268,7 +1265,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int? _frequencyShoreStationTransmits  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? frequencyShoreStationTransmits {
 			get {
@@ -1315,7 +1312,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class vesselMeasurementsSpecificationViewModel : ComplexViewModel<vesselMeasurementsSpecification> {
 		private double? _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? vesselsCharacteristicsValue {
 			get {
@@ -1327,7 +1324,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private vesselsCharacteristics? _vesselsCharacteristics  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		[Mandatory]
 		public vesselsCharacteristics? vesselsCharacteristics {
@@ -1343,7 +1339,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)10,(vesselsCharacteristics)11];
 		private vesselsCharacteristicsUnit? _vesselsCharacteristicsUnit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit? vesselsCharacteristicsUnit {
@@ -1526,7 +1521,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private magneticAnomalyDetectorSignature? _magneticAnomalyDetectorSignature  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<magneticAnomalyDetectorSignature?>), typeof(Editors.UnknownEditor<magneticAnomalyDetectorSignature?>))]
 		[DomainModel.EnumerationAttribute(nameof(magneticAnomalyDetectorSignatureList), typeof(magneticAnomalyDetectorSignature))]
 		[Mandatory]
 		public magneticAnomalyDetectorSignature? magneticAnomalyDetectorSignature {
@@ -1591,7 +1585,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _speedMaximum  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? speedMaximum {
 			get {
@@ -1651,7 +1645,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _verticalClearanceValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? verticalClearanceValue {
 			get {
@@ -1787,7 +1781,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double? _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? uncertaintyFixed {
 			get {
@@ -1862,7 +1856,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		private lightCharacteristic? _lightCharacteristic  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<lightCharacteristic?>), typeof(Editors.UnknownEditor<lightCharacteristic?>))]
 		[DomainModel.EnumerationAttribute(nameof(lightCharacteristicList), typeof(lightCharacteristic))]
 		[Mandatory]
 		public lightCharacteristic? lightCharacteristic {
@@ -1949,7 +1942,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? orientationValue {
 			get {
@@ -2007,7 +2000,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class directionHeadingViewModel : ComplexViewModel<directionHeading> {
 		private double? _headingDownBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? headingDownBearing {
 			get {
@@ -2019,7 +2012,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _headingUpBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? headingUpBearing {
 			get {
@@ -2066,7 +2059,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class flightLevelViewModel : ComplexViewModel<flightLevel> {
 		private int? _minimumFlightLevel  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? minimumFlightLevel {
 			get {
@@ -2078,7 +2071,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private int? _maximumFlightLevel  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? maximumFlightLevel {
 			get {
@@ -2125,7 +2118,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class vesselSpeedLimitViewModel : ComplexViewModel<vesselSpeedLimit> {
 		private speedUnits? _speedUnits  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<speedUnits?>), typeof(Editors.UnknownEditor<speedUnits?>))]
 		[DomainModel.EnumerationAttribute(nameof(speedUnitsList), typeof(speedUnits))]
 		[Mandatory]
 		public speedUnits? speedUnits {
@@ -2152,7 +2144,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _speedLimit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? speedLimit {
 			get {
@@ -2500,7 +2492,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class signalSequenceViewModel : ComplexViewModel<signalSequence> {
 		private signalStatus? _signalStatus  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<signalStatus?>), typeof(Editors.UnknownEditor<signalStatus?>))]
 		[DomainModel.EnumerationAttribute(nameof(signalStatusList), typeof(signalStatus))]
 		[Mandatory]
 		public signalStatus? signalStatus {
@@ -2516,7 +2507,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public signalStatus[] signalStatusList => [(signalStatus)1,(signalStatus)2];
 		private double? _signalDuration  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? signalDuration {
 			get {
@@ -2761,7 +2752,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? sectorBearing {
 			get {
@@ -2819,7 +2810,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 		private double? _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? sectorBearing {
 			get {
@@ -3066,7 +3057,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -3270,7 +3260,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _depthRangeMaximumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? depthRangeMaximumValue {
 			get {
@@ -3298,7 +3288,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? depthRangeMinimumValue {
 			get {
@@ -3464,7 +3454,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow? _trafficFlow  = default;
 
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		[Mandatory]
 		public trafficFlow? trafficFlow {
@@ -3646,7 +3635,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfPatrolArea? _categoryOfPatrolArea  = default;
 
 		[Category("PatrolArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfPatrolArea?>), typeof(Editors.UnknownEditor<categoryOfPatrolArea?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfPatrolAreaList), typeof(categoryOfPatrolArea))]
 		[Mandatory]
 		public categoryOfPatrolArea? categoryOfPatrolArea {
@@ -3982,7 +3970,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private jurisdiction? _jurisdiction  = default;
 
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.UnknownEditor<jurisdiction?>), typeof(Editors.UnknownEditor<jurisdiction?>))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		[Mandatory]
 		public jurisdiction? jurisdiction {
@@ -4256,7 +4243,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _valueOfDepthContour  = default;
 
 		[Category("DepthContour")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? valueOfDepthContour {
 			get {
@@ -5269,7 +5256,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
 		[Mandatory]
 		public categoryOfCardinalMark? categoryOfCardinalMark {
@@ -5322,7 +5308,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -5628,7 +5613,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -7326,7 +7310,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private jurisdiction? _jurisdiction  = default;
 
 		[Category("AdministrationArea")]
-		[Editor(typeof(Editors.UnknownEditor<jurisdiction?>), typeof(Editors.UnknownEditor<jurisdiction?>))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		[Mandatory]
 		public jurisdiction? jurisdiction {
@@ -7665,7 +7648,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfDolphin? _categoryOfDolphin  = default;
 
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfDolphin?>), typeof(Editors.UnknownEditor<categoryOfDolphin?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfDolphinList), typeof(categoryOfDolphin))]
 		[Mandatory]
 		public categoryOfDolphin? categoryOfDolphin {
@@ -8137,7 +8119,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape? _beaconShape  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		[Mandatory]
 		public beaconShape? beaconShape {
@@ -8621,7 +8602,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -10858,7 +10838,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -11070,7 +11049,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _valueOfSounding  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? valueOfSounding {
 			get {
@@ -11108,7 +11087,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		[Mandatory]
 		public waterLevelEffect? waterLevelEffect {
@@ -12522,7 +12500,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		[Mandatory]
 		public waterLevelEffect? waterLevelEffect {
@@ -14010,7 +13987,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape? _beaconShape  = default;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		[Mandatory]
 		public beaconShape? beaconShape {
@@ -14056,7 +14032,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
 		[Mandatory]
 		public categoryOfLateralMark? categoryOfLateralMark {
@@ -15084,7 +15059,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _valueOfSounding  = default;
 
 		[Category("SmallBottomObject")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? valueOfSounding {
 			get {
@@ -16310,7 +16285,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		[Mandatory]
 		public waterLevelEffect? waterLevelEffect {
@@ -16983,7 +16957,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCompleteness? _categoryOfCompleteness  = default;
 
 		[Category("CompletenessOfProductSpecification")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfCompleteness?>), typeof(Editors.UnknownEditor<categoryOfCompleteness?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCompletenessList), typeof(categoryOfCompleteness))]
 		[Mandatory]
 		public categoryOfCompleteness? categoryOfCompleteness {
@@ -17322,7 +17295,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape? _beaconShape  = default;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		[Mandatory]
 		public beaconShape? beaconShape {
@@ -17352,7 +17324,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfCardinalMark? _categoryOfCardinalMark  = default;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfCardinalMark?>), typeof(Editors.UnknownEditor<categoryOfCardinalMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfCardinalMarkList), typeof(categoryOfCardinalMark))]
 		[Mandatory]
 		public categoryOfCardinalMark? categoryOfCardinalMark {
@@ -18240,7 +18211,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? depthRangeMinimumValue {
 			get {
@@ -18748,7 +18719,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		[Mandatory]
 		public waterLevelEffect? waterLevelEffect {
@@ -19184,7 +19154,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow? _trafficFlow  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		[Mandatory]
 		public trafficFlow? trafficFlow {
@@ -19241,7 +19210,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _depthRangeMinimumValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? depthRangeMinimumValue {
 			get {
@@ -19273,7 +19242,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? orientationValue {
 			get {
@@ -19650,7 +19619,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int? _optimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? optimumDisplayScale {
 			get {
@@ -19663,7 +19632,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int? _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? minimumDisplayScale {
 			get {
@@ -19679,7 +19648,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private int? _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
+		[Editor(typeof(Editors.UnknownIntegerEditor), typeof(Editors.UnknownIntegerEditor))]
 		[Mandatory]
 		public int? maximumDisplayScale {
 			get {
@@ -19785,7 +19754,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private waterLevelEffect? _waterLevelEffect  = default;
 
 		[Category("SeabedArea")]
-		[Editor(typeof(Editors.UnknownEditor<waterLevelEffect?>), typeof(Editors.UnknownEditor<waterLevelEffect?>))]
 		[DomainModel.EnumerationAttribute(nameof(waterLevelEffectList), typeof(waterLevelEffect))]
 		[Mandatory]
 		public waterLevelEffect? waterLevelEffect {
@@ -19903,7 +19871,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -20930,7 +20897,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private categoryOfLateralMark? _categoryOfLateralMark  = default;
 
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfLateralMark?>), typeof(Editors.UnknownEditor<categoryOfLateralMark?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfLateralMarkList), typeof(categoryOfLateralMark))]
 		[Mandatory]
 		public categoryOfLateralMark? categoryOfLateralMark {
@@ -20967,7 +20933,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private buoyShape? _buoyShape  = default;
 
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.UnknownEditor<buoyShape?>), typeof(Editors.UnknownEditor<buoyShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(buoyShapeList), typeof(buoyShape))]
 		[Mandatory]
 		public buoyShape? buoyShape {
@@ -21394,7 +21359,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private double? _orientationValue  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
+		[Editor(typeof(Editors.UnknownDoubleEditor), typeof(Editors.UnknownDoubleEditor))]
 		[Mandatory]
 		public double? orientationValue {
 			get {
@@ -21410,7 +21375,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private trafficFlow? _trafficFlow  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.UnknownEditor<trafficFlow?>), typeof(Editors.UnknownEditor<trafficFlow?>))]
 		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
 		[Mandatory]
 		public trafficFlow? trafficFlow {
@@ -21512,7 +21476,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private Boolean? _basedOnFixedMarks  = default;
 
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
+		[Editor(typeof(Editors.UnknownBooleanEditor), typeof(Editors.UnknownBooleanEditor))]
 		[Mandatory]
 		public Boolean? basedOnFixedMarks {
 			get {
@@ -23706,7 +23670,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape? _beaconShape  = default;
 
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		[Mandatory]
 		public beaconShape? beaconShape {
@@ -24118,7 +24081,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		private beaconShape? _beaconShape  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.UnknownEditor<beaconShape?>), typeof(Editors.UnknownEditor<beaconShape?>))]
 		[DomainModel.EnumerationAttribute(nameof(beaconShapeList), typeof(beaconShape))]
 		[Mandatory]
 		public beaconShape? beaconShape {

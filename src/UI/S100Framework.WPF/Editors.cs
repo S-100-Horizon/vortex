@@ -344,129 +344,356 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-    public class UnknownEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public abstract class UnknownEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+        public abstract FrameworkElement ResolveEditor(PropertyItem propertyItem);
+    }
+
+    public class UnknownBooleanEditor : UnknownEditor
+    {
+        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
             var viewModel = propertyItem.Instance as ViewModelBase;
 
-            var instance = (T)propertyItem.Value;
+            var instance = (bool?)propertyItem.Value;
 
-            var propertyType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+            var panel = new StackPanel {
+                Orientation = Orientation.Horizontal,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
 
-            if (propertyType.IsEnum) {
-                var panel = new Grid {
-                    HorizontalAlignment = HorizontalAlignment.Stretch,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
+            var editor = new PropertyGridEditorCheckBox {
+            };
 
-                var radioButtonUnknown = new RadioButton {
-                    ToolTip = "[Unknown]",
-                    GroupName = propertyItem.DisplayName,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    IsChecked = instance is null,
-                    Margin = new Thickness(0, 0, 18, 0),
-                };
-                radioButtonUnknown.Checked += (sender, e) => {
-                    //OnPropertyChanged(nameof(instance));
-                };
+            editor.IsThreeState = true;
 
-                var editor = new PropertyGridEditorComboBox() {
-                };
-                editor.SelectionChanged += (sender, e) => {
-                    radioButtonUnknown.IsChecked = false;
-                };
-                radioButtonUnknown.Click += (sender, e) => {
-                    if (editor.SelectedValue != null)
-                        editor.SelectedValue = null;
-                    else
-                        radioButtonUnknown.IsChecked = true;
-                };
+            editor.Click += (sender, e) => {
+                //viewModel![propertyItem.DisplayName] = ((PropertyGridEditorCheckBox)e.Source).IsChecked is null;
+            };
 
-                var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
 
-                var bindingItemsSourceProperty = new Binding(attribute.PropertyName) { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(editor, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            return editor;
+        }
+    }
 
-                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                BindingOperations.SetBinding(editor, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-                panel.Children.Add(editor);
+    public class UnknownDoubleEditor : UnknownEditor
+    {
+        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-                panel.Children.Add(radioButtonUnknown);
-                return panel;
-            }
-            else if (propertyType == typeof(bool) || propertyType == typeof(Boolean)) {
-                var panel = new StackPanel {
-                    Orientation = Orientation.Horizontal,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
+            var viewModel = propertyItem.Instance as ViewModelBase;
 
-                var editor = new PropertyGridEditorCheckBox {
-                };
+            var instance = (double?)propertyItem.Value;
 
-                editor.IsThreeState = true;
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
 
-                editor.Click += (sender, e) => {
-                    //viewModel![propertyItem.DisplayName] = ((PropertyGridEditorCheckBox)e.Source).IsChecked is null;
-                };
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = propertyItem.DisplayName,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                //IsChecked = instance == null,
+                IsChecked = instance is null,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (sender, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
 
-                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
-
-                return editor;
-            }
-            else {
-                var panel = new Grid {
-                    HorizontalAlignment = HorizontalAlignment.Stretch,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
-
-                var radioButtonUnknown = new RadioButton {
-                    ToolTip = "[Unknown]",
-                    GroupName = propertyItem.DisplayName,
-                    HorizontalAlignment = HorizontalAlignment.Right,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    //IsChecked = instance == null,
-                    IsChecked = instance is null,
-                    Margin = new Thickness(0, 0, 18, 0),
-                };
-                radioButtonUnknown.Checked += (sender, e) => {
-                    //OnPropertyChanged(nameof(instance));
-                };
-
-                if (propertyType == typeof(double) || propertyType == typeof(int) || propertyType == typeof(Int32)) {
-                    var editor = new PropertyGridEditorDecimalUpDown {
-                        //Watermark = "[UNKNOWN]",                        
-                    };
-                    editor.ValueChanged += (sender, e) => {
-                        radioButtonUnknown.IsChecked = !editor.Value.HasValue;
-                    };
-                    radioButtonUnknown.Click += (sender, e) => {
-                        if (editor.Value != default)
-                            editor.Value = default;
-                        else
-                            radioButtonUnknown.IsChecked = true;
-                    };
-                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
-                    panel.Children.Add(editor);
-
-                    panel.Children.Add(radioButtonUnknown);
-                    return panel;
-                }
+            var editor = new PropertyGridEditorDecimalUpDown {
+                //Watermark = "[UNKNOWN]",                        
+            };
+            editor.ValueChanged += (sender, e) => {
+                radioButtonUnknown.IsChecked = !editor.Value.HasValue;
+            };
+            radioButtonUnknown.Click += (sender, e) => {
+                if (editor.Value != default)
+                    editor.Value = default;
                 else
-                    System.Diagnostics.Debugger.Break();
-            }
-            throw new NotImplementedException();
+                    radioButtonUnknown.IsChecked = true;
+            };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
 
-            //panel.Children.Add(radioButtonUnknown);
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
 
-            //return panel;
+    public class UnknownIntegerEditor : UnknownEditor
+    {
+        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var viewModel = propertyItem.Instance as ViewModelBase;
+
+            var instance = (double?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = propertyItem.DisplayName,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                //IsChecked = instance == null,
+                IsChecked = instance is null,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (sender, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorDecimalUpDown {
+                //Watermark = "[UNKNOWN]",                        
+            };
+            editor.ValueChanged += (sender, e) => {
+                radioButtonUnknown.IsChecked = !editor.Value.HasValue;
+            };
+            radioButtonUnknown.Click += (sender, e) => {
+                if (editor.Value != default)
+                    editor.Value = default;
+                else
+                    radioButtonUnknown.IsChecked = true;
+            };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
+
+    public class UnknownUriEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (String?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
+
+    public class UnknownUrnEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (String?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
+
+    public class UnknownUrlEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (String?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
+
+    public class UnknownDateOnlyEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (String?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
         }
     }
 
 
+
+    //TODO: UnknownCodeListEditor
+    public class UnknownCodeListEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var instance = (String?)propertyItem.Value;
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            var radioButtonUnknown = new RadioButton {
+                ToolTip = "[Unknown]",
+                GroupName = "Unknown",
+                IsChecked = string.IsNullOrEmpty(instance),
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 18, 0),
+            };
+            radioButtonUnknown.Checked += (s, e) => {
+                //OnPropertyChanged(nameof(instance));
+            };
+
+            var editor = new PropertyGridEditorTextBox {
+
+                Watermark = "[unknown]",
+            };
+            editor.SelectionChanged += (s, e) => {
+                radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);
+            };
+            radioButtonUnknown.Click += (s, e) => {
+                editor.Text = null;
+                radioButtonUnknown.IsChecked = true;
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editor, TextBox.TextProperty, bindingSelectedItemProperty);
+            panel.Children.Add(editor);
+
+            panel.Children.Add(radioButtonUnknown);
+            return panel;
+        }
+    }
 
     public static class Extensions
     {

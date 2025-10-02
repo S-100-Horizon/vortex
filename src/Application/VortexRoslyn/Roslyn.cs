@@ -227,7 +227,7 @@ namespace S100Framework.Applications
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
                         }
                         else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                            b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
+                            System.Diagnostics.Debug.Assert(lower == 1 && upper.HasValue && upper.Value == 1);     //  b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
                         }
                         else
                             b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
@@ -341,20 +341,40 @@ namespace S100Framework.Applications
                             b.AppendLine("\t\t[S100TruncatedDateAttribute]");
                             if (lower > 1 || (upper.HasValue && upper.Value > 1))
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
-                            else if (lower == 1 && upper.HasValue && upper.Value == 1)
-                                b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
-                            //b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
+                            else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                                if (productFormat == ProductFormat.ISO8211) {
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
+                                }
+                                else {
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                                }
+                            }
                         });
                     }
                     else {
-                        editorBuilders.Add(code, (b, lower, upper) => {
-                            if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                                if (prefix.Equals("string", StringComparison.OrdinalIgnoreCase))
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]");
-                                else
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{prefix}?>), typeof(Editors.UnknownEditor<{prefix}?>))]");
-                            }
-                        });
+                        if (productFormat == ProductFormat.ISO8211) {
+                            var editor = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
+                                "boolean" => "UnknownBooleanEditor",
+                                "real" => "UnknownDoubleEditor",
+                                "text" => "UnknownStringEditor",
+                                "date" => "UnknownDateOnlyEditor",
+                                "dateonly" => "UnknownDateOnlyEditor",
+                                "datetime" => "UnknownDateTimeEditor",
+                                "time" => "UnknownTimeEditor",
+                                "integer" => "UnknownIntegerEditor",
+                                "urn" => "UnknownUrnEditor",
+                                "url" => "UnknownUrlEditor",
+                                "uri" => "UnknownUriEditor",
+                                "s100_codelist" => "UnknownCodeListEditor",
+                                _ => throw new InvalidDataException(),
+                            };
+
+                            editorBuilders.Add(code, (b, lower, upper) => {
+                                if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                                    b.AppendLine($"\t\t[Editor(typeof(Editors.{editor}), typeof(Editors.{editor}))]");
+                                }
+                            });
+                        }
                     }
 
                     var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {

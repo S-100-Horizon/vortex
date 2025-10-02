@@ -525,7 +525,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -537,7 +536,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private String _name  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -701,7 +699,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private int _frequencyShoreStationTransmits  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int frequencyShoreStationTransmits {
 			get {
@@ -748,7 +745,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class frequencyRangeViewModel : ComplexViewModel<frequencyRange> {
 		private int _frequencyLimitLower  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int frequencyLimitLower {
 			get {
@@ -760,7 +756,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private int _frequencyLimitUpper  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int frequencyLimitUpper {
 			get {
@@ -807,7 +802,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
 		private String _pictorialRepresentation  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String pictorialRepresentation {
 			get {
@@ -893,7 +887,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -984,7 +977,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -1062,7 +1054,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private String _linkage  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String linkage {
 			get {
@@ -1124,7 +1115,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _dateStart  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {
@@ -1137,7 +1128,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1193,7 +1184,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<int> dataTransmissionRate  { get; set; } = new ();
 		private Boolean _transmissionOfTrafficLists  = false;
 
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean transmissionOfTrafficLists {
 			get {
@@ -1570,7 +1560,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class sectorLimitOneViewModel : ComplexViewModel<sectorLimitOne> {
 		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1628,7 +1617,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class sectorLimitTwoViewModel : ComplexViewModel<sectorLimitTwo> {
 		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1785,7 +1773,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1843,7 +1831,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
@@ -2198,7 +2185,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class verticalUncertaintyViewModel : ComplexViewModel<verticalUncertainty> {
 		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -2256,7 +2242,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class vesselMeasurementsSpecificationViewModel : ComplexViewModel<vesselMeasurementsSpecification> {
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
@@ -2272,7 +2257,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
 		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
@@ -2284,7 +2268,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
@@ -2300,7 +2283,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)1,(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
 		private comparisonOperator _comparisonOperator  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
@@ -2629,7 +2611,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
-		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
 		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
 		[Mandatory]
 		public membership membership {
@@ -2707,7 +2688,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
 		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
@@ -4557,7 +4537,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private Boolean _isMRCC  = false;
 
 		[Category("RadioControlCentre")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean isMRCC {
 			get {
@@ -4570,7 +4549,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private Boolean _acceptAMVER  = false;
 
 		[Category("RadioControlCentre")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean acceptAMVER {
 			get {
@@ -6140,7 +6118,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _idNAVAREA  = string.Empty;
 
 		[Category("GMDSSArea")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String idNAVAREA {
 			get {
@@ -6165,7 +6142,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private categoryOfGMDSSArea _categoryOfGMDSSArea  = default;
 
 		[Category("GMDSSArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfGMDSSArea?>), typeof(Editors.UnknownEditor<categoryOfGMDSSArea?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfGMDSSAreaList), typeof(categoryOfGMDSSArea))]
 		[Mandatory]
 		public categoryOfGMDSSArea categoryOfGMDSSArea {
@@ -6510,7 +6486,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _idMETAREA  = string.Empty;
 
 		[Category("MetArea")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String idMETAREA {
 			get {
@@ -6682,7 +6657,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _idNAVAREA  = string.Empty;
 
 		[Category("NavArea")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String idNAVAREA {
 			get {
@@ -6854,7 +6828,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private typeOfNAVTEXService _typeOfNAVTEXService  = default;
 
 		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.UnknownEditor<typeOfNAVTEXService?>), typeof(Editors.UnknownEditor<typeOfNAVTEXService?>))]
 		[DomainModel.EnumerationAttribute(nameof(typeOfNAVTEXServiceList), typeof(typeOfNAVTEXService))]
 		[Mandatory]
 		public typeOfNAVTEXService typeOfNAVTEXService {
@@ -6871,7 +6844,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _idNAVAREA  = string.Empty;
 
 		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String idNAVAREA {
 			get {
@@ -6884,7 +6856,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private String _transmitterIdentificationCharacter  = string.Empty;
 
 		[Category("NavtexServiceArea")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String transmitterIdentificationCharacter {
 			get {
@@ -7740,7 +7711,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private categoryOfForecastOrWarningArea _categoryOfForecastOrWarningArea  = default;
 
 		[Category("WeatherForecastAndWarningArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfForecastOrWarningArea?>), typeof(Editors.UnknownEditor<categoryOfForecastOrWarningArea?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfForecastOrWarningAreaList), typeof(categoryOfForecastOrWarningArea))]
 		[Mandatory]
 		public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea {
@@ -8037,7 +8007,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int maximumDisplayScale {
 			get {
@@ -8050,7 +8019,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int minimumDisplayScale {
 			get {

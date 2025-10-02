@@ -106,7 +106,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -176,7 +175,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class chartAffectedViewModel : ComplexViewModel<chartAffected> {
 		private String _chartNumber  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String chartNumber {
 			get {
@@ -199,7 +197,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private DateOnly _editionDate  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<DateOnly?>), typeof(Editors.UnknownEditor<DateOnly?>))]
 		[Mandatory]
 		public DateOnly editionDate {
 			get {
@@ -409,7 +406,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -421,7 +417,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _text  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -527,7 +522,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class locationNameViewModel : ComplexViewModel<locationName> {
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -539,7 +533,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _text  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -586,7 +579,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class messageSeriesIdentifierViewModel : ComplexViewModel<messageSeriesIdentifier> {
 		private String _agencyResponsibleForProduction  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String agencyResponsibleForProduction {
 			get {
@@ -609,7 +601,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _nameOfSeries  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String nameOfSeries {
 			get {
@@ -632,7 +623,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private int _warningNumber  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int warningNumber {
 			get {
@@ -644,7 +634,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private warningType _warningType  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<warningType?>), typeof(Editors.UnknownEditor<warningType?>))]
 		[DomainModel.EnumerationAttribute(nameof(warningTypeList), typeof(warningType))]
 		[Mandatory]
 		public warningType warningType {
@@ -660,7 +649,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public warningType[] warningTypeList => [(warningType)1,(warningType)2,(warningType)3,(warningType)4,(warningType)5,(warningType)6,(warningType)7,(warningType)8,(warningType)9,(warningType)10,(warningType)11,(warningType)12];
 		private int _year  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int year {
 			get {
@@ -722,7 +710,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class navwarnTitleViewModel : ComplexViewModel<navwarnTitle> {
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -734,7 +721,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _text  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -897,7 +883,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -909,7 +894,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 		private String _name  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -975,7 +959,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -1192,7 +1175,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private Boolean _noMessageOnHand  = false;
 
 		[Category("References")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean noMessageOnHand {
 			get {
@@ -1205,7 +1187,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private referenceCategory _referenceCategory  = default;
 
 		[Category("References")]
-		[Editor(typeof(Editors.UnknownEditor<referenceCategory?>), typeof(Editors.UnknownEditor<referenceCategory?>))]
 		[DomainModel.EnumerationAttribute(nameof(referenceCategoryList), typeof(referenceCategory))]
 		[Mandatory]
 		public referenceCategory referenceCategory {
@@ -1310,7 +1291,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private Boolean _intService  = false;
 
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean intService {
 			get {
@@ -1323,7 +1303,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private navwarnTypeGeneral _navwarnTypeGeneral  = default;
 
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.UnknownEditor<navwarnTypeGeneral?>), typeof(Editors.UnknownEditor<navwarnTypeGeneral?>))]
 		[Mandatory]
 		public navwarnTypeGeneral navwarnTypeGeneral {
 			get {
@@ -1339,7 +1318,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private DateTime _publicationTime  = default;
 
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.UnknownEditor<DateTime?>), typeof(Editors.UnknownEditor<DateTime?>))]
 		[Mandatory]
 		public DateTime publicationTime {
 			get {
@@ -1681,7 +1659,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private String _text  = string.Empty;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String text {
 			get {
@@ -1694,7 +1671,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _textOffsetBearing  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int textOffsetBearing {
 			get {
@@ -1707,7 +1683,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private int _textOffsetDistance  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<int?>), typeof(Editors.UnknownEditor<int?>))]
 		[Mandatory]
 		public int textOffsetDistance {
 			get {
@@ -1720,7 +1695,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private Boolean _textRotation  = false;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.UnknownEditor<Boolean?>), typeof(Editors.UnknownEditor<Boolean?>))]
 		[Mandatory]
 		public Boolean textRotation {
 			get {

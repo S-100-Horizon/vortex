@@ -311,7 +311,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _language  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String language {
 			get {
@@ -323,7 +322,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _name  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -694,7 +692,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String _onlineResourceLinkageURL  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String onlineResourceLinkageURL {
 			get {
@@ -838,7 +835,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private double _orientationValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double orientationValue {
 			get {
@@ -886,7 +882,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String _dateStart  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {
@@ -899,7 +895,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String _dateEnd  = string.Empty;
 
 		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1148,7 +1144,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitOneViewModel : ComplexViewModel<sectorLimitOne> {
 		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1206,7 +1201,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitTwoViewModel : ComplexViewModel<sectorLimitTwo> {
 		private double _sectorBearing  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double sectorBearing {
 			get {
@@ -1302,7 +1296,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private String _telecommunicationIdentifier  = string.Empty;
 
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
@@ -1579,7 +1572,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class vesselsMeasurementsViewModel : ComplexViewModel<vesselsMeasurements> {
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristics?>), typeof(Editors.UnknownEditor<vesselsCharacteristics?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
@@ -1595,7 +1587,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
 		private double _vesselsCharacteristicsValue  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<double?>), typeof(Editors.UnknownEditor<double?>))]
 		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
@@ -1607,7 +1598,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>), typeof(Editors.UnknownEditor<vesselsCharacteristicsUnit?>))]
 		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
@@ -1623,7 +1613,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
 		private comparisonOperator _comparisonOperator  = default;
 
-		[Editor(typeof(Editors.UnknownEditor<comparisonOperator?>), typeof(Editors.UnknownEditor<comparisonOperator?>))]
 		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
@@ -1922,7 +1911,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfRelationship?>), typeof(Editors.UnknownEditor<categoryOfRelationship?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
 		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
@@ -1970,7 +1958,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
-		[Editor(typeof(Editors.UnknownEditor<membership?>), typeof(Editors.UnknownEditor<membership?>))]
 		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
 		[Mandatory]
 		public membership membership {
@@ -3307,7 +3294,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfAuthority _categoryOfAuthority  = default;
 
 		[Category("Authority")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfAuthority?>), typeof(Editors.UnknownEditor<categoryOfAuthority?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
 		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
@@ -4483,7 +4469,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String _interoperabilityIdentifier  = string.Empty;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String interoperabilityIdentifier {
 			get {
@@ -4701,7 +4686,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String _interoperabilityIdentifier  = string.Empty;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String interoperabilityIdentifier {
 			get {
@@ -4757,7 +4741,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea  = default;
 
 		[Category("MarineProtectedArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfMarineProtectedArea?>), typeof(Editors.UnknownEditor<categoryOfMarineProtectedArea?>))]
 		[Mandatory]
 		public categoryOfMarineProtectedArea categoryOfMarineProtectedArea {
 			get {
@@ -4781,7 +4764,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private jurisdiction _jurisdiction  = default;
 
 		[Category("MarineProtectedArea")]
-		[Editor(typeof(Editors.UnknownEditor<jurisdiction?>), typeof(Editors.UnknownEditor<jurisdiction?>))]
 		[DomainModel.EnumerationAttribute(nameof(jurisdictionList), typeof(jurisdiction))]
 		[Mandatory]
 		public jurisdiction jurisdiction {
@@ -4971,7 +4953,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private String _interoperabilityIdentifier  = string.Empty;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.UnknownStringEditor), typeof(Editors.UnknownStringEditor))]
 		[Mandatory]
 		public String interoperabilityIdentifier {
 			get {
@@ -5027,7 +5008,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		private categoryOfVesselTrafficService _categoryOfVesselTrafficService  = default;
 
 		[Category("VesselTrafficServiceArea")]
-		[Editor(typeof(Editors.UnknownEditor<categoryOfVesselTrafficService?>), typeof(Editors.UnknownEditor<categoryOfVesselTrafficService?>))]
 		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList), typeof(categoryOfVesselTrafficService))]
 		[Mandatory]
 		public categoryOfVesselTrafficService categoryOfVesselTrafficService {
