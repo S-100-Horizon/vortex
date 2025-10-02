@@ -1,5 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Desktop.Internal.Mapping;
+//using ArcGIS.Desktop.Internal.Mapping;
 using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;

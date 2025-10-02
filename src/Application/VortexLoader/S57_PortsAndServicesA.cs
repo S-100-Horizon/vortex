@@ -4,7 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
+//using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 
 namespace S100Framework.Applications
@@ -1569,6 +1569,17 @@ namespace S100Framework.Applications
                             {
                                 var instance = new Pontoon();
 
+                                BridgeElement relatedBridge = null!;
+
+                                if (createBridgesAndRelations) {
+                                    var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                                    if (relatedBridges.Count() != 1) {
+                                        throw new NotSupportedException("Unsupported number bridge relations. Must be 1");
+                                    }
+                                    relatedBridge = relatedBridges[0];
+                                }
+
+
                                 if (current.CONDTN.HasValue) {
                                     instance.condition = GetCondition(current.CONDTN.Value);
                                 }
@@ -1626,6 +1637,27 @@ namespace S100Framework.Applications
 
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = $"{featureN.Crc32}";
+
+                                if (createBridgesAndRelations) {
+
+                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
+
+                                    // Create link to bridge - Pontoon
+                                    List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                    bindings.Add(new() {
+                                        association = "BridgeAggregation",
+                                        associationId = relatedBridge.BridgeAggregationName,
+                                        featureId = relatedBridge.Name,
+                                        role = "theCollection",
+                                        roleType = "aggregation"
+                                    });
+
+                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                    featureN.Store();
+
+                                }
+
+
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
