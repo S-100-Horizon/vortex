@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.Topology", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProductCatalogue", "tests\Core.Tests\TestProductCatalogue\TestProductCatalogue.csproj", "{CF65EF05-C31C-C736-F115-6C87539976F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalogueService", "src\Application\ProductCatalogueService\ProductCatalogueService.csproj", "{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -110,6 +112,10 @@ Global
 		{CF65EF05-C31C-C736-F115-6C87539976F5}.Debug|x64.Build.0 = Debug|x64
 		{CF65EF05-C31C-C736-F115-6C87539976F5}.Release|x64.ActiveCfg = Release|x64
 		{CF65EF05-C31C-C736-F115-6C87539976F5}.Release|x64.Build.0 = Release|x64
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Debug|x64.Build.0 = Debug|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Release|x64.ActiveCfg = Release|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +138,7 @@ Global
 		{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 		{CF65EF05-C31C-C736-F115-6C87539976F5} = {0A3B2562-DD1E-4E0C-B170-AEE80FF4DD0C}
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3} = {83D42794-241F-4EED-99E4-C6309BA88041}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E973A0E9-A7CE-469B-A225-A426A3E0FAAF}
