@@ -1571,13 +1571,13 @@ namespace S100Framework.Applications
 
                                 BridgeElement relatedBridge = null!;
 
-                                if (createBridgesAndRelations) {
-                                    var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
-                                    if (relatedBridges.Count() != 1) {
-                                        throw new NotSupportedException("Unsupported number bridge relations. Must be 1");
-                                    }
-                                    relatedBridge = relatedBridges[0];
-                                }
+                                //if (createBridgesAndRelations) {
+                                //    var relatedBridges = Bridges.Instance.GetBridgeElementsContainingOID(current.TableName!, current.OBJECTID!.Value);
+                                //    if (relatedBridges.Count() != 1) {
+                                //        throw new NotSupportedException("Unsupported number bridge relations. Must be 1");
+                                //    }
+                                //    relatedBridge = relatedBridges[0];
+                                //}
 
 
                                 if (current.CONDTN.HasValue) {
@@ -1638,24 +1638,24 @@ namespace S100Framework.Applications
                                 var featureN = featureClass.CreateRow(buffer);
                                 var name = $"{featureN.Crc32}";
 
-                                if (createBridgesAndRelations) {
+                                //if (createBridgesAndRelations) {
 
-                                    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
+                                //    Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
 
-                                    // Create link to bridge - Pontoon
-                                    List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
-                                    bindings.Add(new() {
-                                        association = "BridgeAggregation",
-                                        associationId = relatedBridge.BridgeAggregationName,
-                                        featureId = relatedBridge.Name,
-                                        role = "theCollection",
-                                        roleType = "aggregation"
-                                    });
+                                //    // Create link to bridge - Pontoon
+                                //    List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
+                                //    bindings.Add(new() {
+                                //        association = "BridgeAggregation",
+                                //        associationId = relatedBridge.BridgeAggregationName,
+                                //        featureId = relatedBridge.Name,
+                                //        role = "theCollection",
+                                //        roleType = "aggregation"
+                                //    });
 
-                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
-                                    featureN.Store();
+                                //    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                //    featureN.Store();
 
-                                }
+                                //}
 
 
 
