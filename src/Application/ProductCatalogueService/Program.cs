@@ -1,3 +1,4 @@
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Mvc; // Required for ApiVersion
 using Microsoft.AspNetCore.Mvc.Versioning; // Required for AddApiVersioning
@@ -31,6 +32,15 @@ namespace ProductCatalogueService
             });
 
             var app = builder.Build();
+
+            ArcGIS.Core.Hosting.Host.Initialize();            
+
+            var output = new DirectoryInfo("s100ed9.gdb");
+
+            if (!output.Exists) {
+                FastZip fastZip = new();
+                fastZip.ExtractZip("s100ed9.gdb.zip", output.FullName, null);
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment()) {
