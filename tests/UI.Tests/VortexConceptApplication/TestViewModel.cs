@@ -25,7 +25,7 @@ namespace VortexConceptApplication
         private double? _decimal;
 
         [Category("Test")]
-        [Editor(typeof(S100Framework.WPF.Editors.UnknownEditor<double?>), typeof(S100Framework.WPF.Editors.UnknownEditor<double?>))]
+        [Editor(typeof(S100Framework.WPF.Editors.UnknownDoubleEditor), typeof(S100Framework.WPF.Editors.UnknownDoubleEditor))]
         public double? Decimal {
             get {
                 return _decimal;
@@ -38,7 +38,7 @@ namespace VortexConceptApplication
         private String _interoperabilityIdentifier2;
 
         [Category("Test")]
-        [Editor(typeof(S100Framework.WPF.Editors.UnknownEditor<bool?>), typeof(S100Framework.WPF.Editors.UnknownEditor<bool?>))]
+        [Editor(typeof(S100Framework.WPF.Editors.UnknownDoubleEditor), typeof(S100Framework.WPF.Editors.UnknownDoubleEditor))]
         public bool? Bool {
             get {
                 return _bool;
