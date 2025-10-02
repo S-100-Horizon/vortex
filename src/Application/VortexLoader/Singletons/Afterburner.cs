@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
-using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 namespace S100Framework.Applications.Singletons
 {

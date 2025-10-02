@@ -14,7 +14,7 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_CulturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            var createBridgesAndRelations = true;
+            
 
             var tableName = "CulturalFeaturesA";
 
@@ -318,7 +318,7 @@ namespace S100Framework.Applications
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM, current.NOBJNM);
 
-                                    // Create link to bridge
+                                    // Create link to bridge - SpanOpening
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                     bindings.Add(new() {
                                         association = "BridgeAggregation",
@@ -406,7 +406,7 @@ namespace S100Framework.Applications
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
 
-                                    // Create link to bridge
+                                    // Create link to bridge - Spanfixed
                                     List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                     bindings.Add(new() {
                                         association = "BridgeAggregation",
@@ -1195,7 +1195,7 @@ namespace S100Framework.Applications
 
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
 
-                                // Create link to bridge
+                                // Create link to bridge - PylonBridgeSupport
                                 List<DomainModel.featureBinding> bindings = new List<DomainModel.featureBinding>();
                                 bindings.Add(new() {
                                     association = "BridgeAggregation",

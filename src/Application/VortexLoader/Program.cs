@@ -1,9 +1,9 @@
-﻿using ArcGIS.Core.CIM;
+﻿//using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
-using S100Framework.DomainModel;
+//using S100Framework.DomainModel;
 using S100Framework.GML;
 using Serilog;
 using System.Text.Json;

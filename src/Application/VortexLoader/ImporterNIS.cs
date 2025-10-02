@@ -1,6 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Internal.Mapping;
+//using ArcGIS.Desktop.Internal.Mapping;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -36,8 +36,9 @@ namespace S100Framework.Applications
         internal static string ps101 = S100Framework.DomainModel.S101.Summary.ProductId;
         internal static string ps128 = S100Framework.DomainModel.S128.Summary.ProductId;
         internal static string s101version = S100Framework.DomainModel.S101.Summary.Version.ToString();
-
         internal static Geodatabase? _geodatabase;
+
+        internal static bool createBridgesAndRelations = true;
 
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
