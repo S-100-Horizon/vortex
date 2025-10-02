@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -191,7 +191,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -328,7 +328,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -400,7 +400,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -483,7 +483,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -563,7 +563,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -667,7 +667,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -694,7 +694,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
@@ -775,7 +775,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -861,7 +861,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -964,7 +964,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -990,7 +990,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }
@@ -1048,7 +1048,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1163,7 +1163,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1236,7 +1236,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1355,7 +1355,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1451,7 +1451,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1548,7 +1548,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1625,7 +1625,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                     relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1652,7 +1652,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = $"{featureN.Crc32}";
 
                                 //Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             }

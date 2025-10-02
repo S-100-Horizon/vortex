@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork;
 using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128.FeatureTypes;
@@ -411,7 +412,7 @@ namespace S100Framework.ProductCatalogue
                     while (informationCursor.MoveNext()) {
                         var current = informationCursor.Current;
 
-                        var name = $"{current.GetGlobalID():N}";
+                        var name = $"{current.Crc32}";
                         var code = current["code"].ToString()!;
                         var json = current["json"].ToString()!;
 
@@ -452,7 +453,7 @@ namespace S100Framework.ProductCatalogue
                         using var featureCursor = fc.Search(filter, true);
                         while (featureCursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)featureCursor.Current;
-                            var name = $"{current.GetGlobalID():N}";
+                            var name = $"{current.Crc32}";
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;

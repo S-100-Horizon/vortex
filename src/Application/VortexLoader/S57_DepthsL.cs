@@ -140,7 +140,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = $"{featureN.Crc32}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -224,7 +224,7 @@ namespace S100Framework.Applications
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-            var informationName = $"{informationTypeRow.GetGlobalID():N}";
+            var informationName = $"{informationTypeRow.Crc32}";
 
             // create Association
 
@@ -235,7 +235,7 @@ namespace S100Framework.Applications
             informationAssociationBuffer["edition"] = ImporterNIS.s101version;
 
             var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-            var informationAssociationName = $"{association.GetGlobalID():N}";
+            var informationAssociationName = $"{association.Crc32}";
 
             // create binding
             var informationBinding = new informationBinding {

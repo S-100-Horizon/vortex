@@ -179,7 +179,7 @@ namespace S100Framework.Applications
                         while (informationCursor.MoveNext()) {
                             var current = informationCursor.Current;
 
-                            var name = $"{current.GetGlobalID():N}";
+                            var name = $"{current.Crc32}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -244,7 +244,7 @@ namespace S100Framework.Applications
                         while (featureCursor.MoveNext()) {
                             var current = featureCursor.Current;
 
-                            var name = $"{current.GetGlobalID():N}";
+                            var name = $"{current.Crc32}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -252,7 +252,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                            var foid = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(name))}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
                             var feature = new YAML.Feature {
                                 Prim = Primitive.NoGeometry,
@@ -322,7 +322,7 @@ namespace S100Framework.Applications
                         using var cursor = fc.Search(filter, true);
                         while (cursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                            var name = $"{current.GetGlobalID():N}";
+                            var name = $"{current.Crc32}";
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
@@ -334,7 +334,7 @@ namespace S100Framework.Applications
 
                             var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(name))}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
                             var prim = shapetype switch {
                                 GeometryType.Point => Primitive.Point,
@@ -446,12 +446,12 @@ namespace S100Framework.Applications
                                             var asso = new YAML.Association {
                                                 Name = binding.association,
                                                 Role = binding.role,
-                                                To = $"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(binding!.featureId!))}:1"
+                                                To = $"110:{binding!.featureId!}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{System.IO.Hashing.Crc32.HashToUInt32(Encoding.UTF8.GetBytes(binding.featureId))}:1"));
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
                                             if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                                 featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
