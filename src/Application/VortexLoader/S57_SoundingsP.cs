@@ -152,7 +152,7 @@ namespace S100Framework.Applications
                             bufferPointset["edition"] = ImporterNIS.s101version;
                             var featureN = featureClass.CreateRow(bufferPointset);
 
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, sounding, featureN, sounding.scaleMinimum);
@@ -206,7 +206,7 @@ namespace S100Framework.Applications
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

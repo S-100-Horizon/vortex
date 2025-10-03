@@ -88,7 +88,9 @@ namespace S100Framework.Applications
         private static Serilog.Core.Logger _logger;
         private static string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        public static ILogger Current => _logger;
+        internal static ILogger Current => _logger;
+
+        internal static string LogDir { get => _logDir; set => _logDir = value; }
 
         static Logger() {
             _logger = new LoggerConfiguration()

@@ -45,7 +45,7 @@ namespace S100Framework.Applications
                     //SetUsageBand(buffer, ImporterNIS._compilationScale);
 
                     var featureN = featureType.CreateRow(bufferFeatureType);
-                    var name = $"{featureN.Crc32}";
+                    var name = $"{featureN.Crc32()}";
 
                     bridge.Name = name;
 
@@ -57,7 +57,7 @@ namespace S100Framework.Applications
                     featureAssociationBuffer["edition"] = ImporterNIS.s101version;
 
                     var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                    string featureAssociationName = $"{association.Crc32}";
+                    string featureAssociationName = $"{association.Crc32()}";
                     bridge.BridgeAggregationName = featureAssociationName;
 
                     ConversionAnalytics.Instance.AddConverted("DerivedBridgeElement", Guid.Empty, name);
@@ -147,7 +147,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -312,7 +312,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = $"{featureN.Crc32}";
+                                var name = $"{featureN.Crc32()}";
 
 
                                 if (createBridgesAndRelations) {
@@ -401,7 +401,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = surface.CreateRow(bufferSurface);
-                                var name = $"{featureN.Crc32}";
+                                var name = $"{featureN.Crc32()}";
 
                                 if (createBridgesAndRelations) {
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
@@ -511,7 +511,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -620,7 +620,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -741,7 +741,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -839,7 +839,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -868,7 +868,7 @@ namespace S100Framework.Applications
                                     relatedEquipment?.CreateRelatedAreaEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum);
                                 }
 
-                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, $"{windturbineFeature.Crc32}" ?? "Unknown structure name");
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, $"{windturbineFeature.Crc32()}" ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(windturbine));
                                 continue;
                             }
@@ -975,7 +975,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1072,7 +1072,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1189,7 +1189,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (createBridgesAndRelations) {
 
@@ -1269,7 +1269,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1330,7 +1330,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1437,7 +1437,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -1520,7 +1520,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = surface.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32}";
+                            var name = $"{featureN.Crc32()}";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

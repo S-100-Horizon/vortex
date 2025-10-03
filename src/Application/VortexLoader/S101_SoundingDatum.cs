@@ -116,7 +116,7 @@ namespace S100Framework.Applications
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMQuals[0]);
                     dissolved_M_QUAL_Count++;
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.Crc32}";
+                    var name = $"{featureN.Crc32()}";
                 }
 
                 // Add all M_SDATs
@@ -139,7 +139,7 @@ namespace S100Framework.Applications
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMSdats[0]);
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.Crc32}";
+                    var name = $"{featureN.Crc32()}";
                     M_SDAT_Count++;
                 }
             }

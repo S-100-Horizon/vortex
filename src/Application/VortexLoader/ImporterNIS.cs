@@ -342,6 +342,10 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"No defaultClearanceViolation in S-101: {status}");
 
                 Logger.Current.Information("Done");
+
+
+                Logger.Current.Information($"!: CHECK LOGS AT: {Logger.LogDir}");
+
                 return true;
             }
         }
