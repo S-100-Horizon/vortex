@@ -13,6 +13,18 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
+    public abstract class ValidatingEditor<T> : ITypeEditor where T : struct
+    {
+        public virtual FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public abstract class ValidatingUnknownEditor<T> : ValidatingEditor<T> where T : struct
+    {
+    }   
+
+
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
