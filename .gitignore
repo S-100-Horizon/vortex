@@ -406,3 +406,4 @@ FodyWeavers.xsd
 /src/Application/VortexLoader/Properties/launchSettings.json
 /tests/Core.Tests/TestS100Framework.Roslyn/*_FC.cs
 /tests/Core.Tests/TestS100Framework.Roslyn/*_ViewModel.cs
+/src/Application/ProductCatalogueService/s100ed9.gdb
