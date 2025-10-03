@@ -32,15 +32,21 @@ namespace TestS100Framework.Roslyn
         }
 
         [Fact]
-        public void Diff() {
+        public void Diff_201_vs_125() {
             var diff = new XmlDiffView();
             //diff.SideBySideHtmlHeader("S-201","S-125", false)
 
+            var source = this.Path(@"S-201 Aids to Navigation Information\2.0.0\6. S-201 Feature Catalogue - Annex C2.xml");
+            var compare = this.Path(@"S-125 Marine Aids to Navigation\1.0.0\4. S-125 Feature Catalogue - Annex C.1 (XML).xml");
+
+            IO.File.Copy(source, IO.Path.Combine(IO.Path.GetPathRoot(source)!, "S-201.xml"), true);
+            IO.File.Copy(compare, IO.Path.Combine(IO.Path.GetPathRoot(source)!, "S-125.xml"), true);
+
             var html = diff.DifferencesSideBySideAsHtml(
-                this.Path(@"S-201 Aids to Navigation Information\2.0.0\6. S-201 Feature Catalogue - Annex C2.xml"),
-                this.Path(@"S-125 Marine Aids to Navigation\1.0.0\4. S-125 Feature Catalogue - Annex C.1 (XML).xml"),
+                IO.Path.Combine(IO.Path.GetPathRoot(source)!, "S-201.xml"),
+                IO.Path.Combine(IO.Path.GetPathRoot(source)!, "S-125.xml"),
                 false,
-                XmlDiffOptions.IgnoreChildOrder | XmlDiffOptions.IgnoreWhitespace, 
+                XmlDiffOptions.IgnoreChildOrder | XmlDiffOptions.IgnoreWhitespace,
                 true);
 
             IO.File.WriteAllText(@"c:\temp\s100\diff.html", html.ReadToEnd());
