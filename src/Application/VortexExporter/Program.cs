@@ -179,7 +179,7 @@ namespace S100Framework.Applications
                         while (informationCursor.MoveNext()) {
                             var current = informationCursor.Current;
 
-                            var name = $"{current.Crc32}";
+                            var name = $"{current.Crc32()}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -244,7 +244,7 @@ namespace S100Framework.Applications
                         while (featureCursor.MoveNext()) {
                             var current = featureCursor.Current;
 
-                            var name = $"{current.Crc32}";
+                            var name = $"{current.Crc32()}";
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -322,7 +322,7 @@ namespace S100Framework.Applications
                         using var cursor = fc.Search(filter, true);
                         while (cursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                            var name = $"{current.Crc32}";
+                            var name = $"{current.Crc32()}";
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
