@@ -1966,13 +1966,11 @@ namespace S100Framework.Applications
                     if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
+                    builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
-                        client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
+                        //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }
-                    //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
-                    //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
-                    //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
-                    //}
+                    
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
 
@@ -2024,13 +2022,11 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t}};");
 
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
+
+                    builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
-                        client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
-                    }
-                    //if (client.BuildViewModelClassClient.EnumerationTypes.Contains(referenceCode)) {
-                    //    builder.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
-                    //    builder.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({referenceCode}List), typeof({referenceCode}))]");
-                    //}
+                        //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
+                    }                    
                     if (upper.HasValue) {
                         if (lower == 0 && upper == 1)
                             builder.AppendLine($"\t\t[Optional]");

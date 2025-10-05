@@ -27,21 +27,20 @@ namespace VortexConceptApplication
     {
         private double? _decimal;
 
-        [Category("Test")]
-        [Editor(typeof(S100Framework.WPF.Editors.UnknownDoubleEditor), typeof(S100Framework.WPF.Editors.UnknownDoubleEditor))]
-        public double? Decimal {
-            get {
-                return _decimal;
-            }
-            set {
-                SetValue(ref _decimal, value);
-            }
-        }
+        //[Category("Test")]
+        //[Editor(typeof(S100Framework.WPF.Editors.UnknownDoubleEditor), typeof(S100Framework.WPF.Editors.UnknownDoubleEditor))]
+        //public double? Decimal {
+        //    get {
+        //        return _decimal;
+        //    }
+        //    set {
+        //        SetValue(ref _decimal, value);
+        //    }
+        //}
 
         private String _interoperabilityIdentifier2;
 
-        [Category("Test")]
-        [Editor(typeof(UnknownBooleanEditor), typeof(UnknownBooleanEditor))]
+        [Category("Test")]               
         public bool? Bool {
             get {
                 return _bool;
@@ -79,53 +78,53 @@ namespace VortexConceptApplication
         }
     }
 
-    public class UnknownBooleanEditor : UnknownEditor
-    {
-        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+    //public class UnknownBooleanEditor : UnknownEditor
+    //{
+    //    public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
 
-            var viewModel = propertyItem.Instance as ViewModelBase;
+    //        var viewModel = propertyItem.Instance as ViewModelBase;
 
-            var instance = (bool?)propertyItem.Value;
+    //        var instance = (bool?)propertyItem.Value;
 
-            var border = new Border {
-                BorderBrush = System.Windows.Media.Brushes.Transparent,
-                Background = System.Windows.Media.Brushes.Transparent,
-                BorderThickness = new Thickness(0),
-                Padding = new Thickness(0),
-                Margin = new Thickness(0),
-            };
-            var panel = new StackPanel {
-                Orientation = Orientation.Horizontal,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
+    //        var border = new Border {
+    //            BorderBrush = System.Windows.Media.Brushes.Transparent,
+    //            Background = System.Windows.Media.Brushes.Transparent,
+    //            BorderThickness = new Thickness(0),
+    //            Padding = new Thickness(0),
+    //            Margin = new Thickness(0),
+    //        };
+    //        var panel = new StackPanel {
+    //            Orientation = Orientation.Horizontal,
+    //            VerticalAlignment = VerticalAlignment.Center,
+    //        };
 
-            var editor = new PropertyGridEditorCheckBox {
-            };
+    //        var editor = new PropertyGridEditorCheckBox {
+    //        };
 
-            editor.IsThreeState = true;
+    //        editor.IsThreeState = true;
 
-            editor.Click += (sender, e) => {
-                //viewModel![propertyItem.DisplayName] = ((PropertyGridEditorCheckBox)e.Source).IsChecked is null;
-            };
+    //        editor.Click += (sender, e) => {
+    //            //viewModel![propertyItem.DisplayName] = ((PropertyGridEditorCheckBox)e.Source).IsChecked is null;
+    //        };
 
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-            BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
+    //        var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+    //        BindingOperations.SetBinding(editor, CheckBox.IsCheckedProperty, bindingSelectedItemProperty);
 
 
 
-            Binding newBinding = new Binding(propertyItem.DisplayName) {
-                Source = propertyItem.Instance,
-                Mode = BindingMode.OneWay,
-            };
-            newBinding.Converter = new BrushValidatorConvertor();
-            panel.SetBinding(Border.BackgroundProperty, newBinding);
+    //        Binding newBinding = new Binding(propertyItem.DisplayName) {
+    //            Source = propertyItem.Instance,
+    //            Mode = BindingMode.OneWay,
+    //        };
+    //        newBinding.Converter = new BrushValidatorConvertor();
+    //        panel.SetBinding(Border.BackgroundProperty, newBinding);
 
-            //border.Child = panel;
-            panel.Children.Add(editor);
+    //        //border.Child = panel;
+    //        panel.Children.Add(editor);
 
-            return panel;
-        }
-    }
+    //        return panel;
+    //    }
+    //}
 
     //public class TristateEditor<T> : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     //{

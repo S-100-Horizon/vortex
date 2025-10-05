@@ -142,8 +142,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class bearingInformationViewModel : ComplexViewModel<bearingInformation> {
 		private cardinalDirection? _cardinalDirection  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(cardinalDirectionList), typeof(cardinalDirection))]
+		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public cardinalDirection? cardinalDirection {
 			get {
@@ -158,6 +157,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public cardinalDirection[] cardinalDirectionList => [(cardinalDirection)1,(cardinalDirection)2,(cardinalDirection)3,(cardinalDirection)4,(cardinalDirection)5,(cardinalDirection)6,(cardinalDirection)7,(cardinalDirection)8,(cardinalDirection)9,(cardinalDirection)10,(cardinalDirection)11,(cardinalDirection)12,(cardinalDirection)13,(cardinalDirection)14,(cardinalDirection)15,(cardinalDirection)16];
 		private double? _distance  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? distance {
 			get {
@@ -168,14 +168,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("bearingInformation")]
+		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 		[Category("bearingInformation")]
+		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private orientationViewModel? _orientation  = default;
 
 		[Category("bearingInformation")]
+		[Editor(typeof(Editors.HorizonEditor<bearingInformation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public orientationViewModel? orientation {
@@ -251,10 +254,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
 		[Category("contactAddress")]
+		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _cityName  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? cityName {
 			get {
@@ -266,6 +271,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _administrativeDivision  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? administrativeDivision {
 			get {
@@ -277,6 +283,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _countryName  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
 			get {
@@ -288,6 +295,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _postalCode  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? postalCode {
 			get {
@@ -353,6 +361,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class featureNameViewModel : ComplexViewModel<featureName> {
 		private Boolean? _displayName  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? displayName {
 			get {
@@ -364,6 +373,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _language  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
 			get {
@@ -375,6 +385,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String _name  = string.Empty;
 
+		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String name {
 			get {
@@ -424,7 +435,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
-		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -436,7 +447,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _dateStart  = default;
 
-		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -482,12 +493,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
 		[Category("frequencyPair")]
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
 		[Category("frequencyPair")]
+		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> contactInstructions  { get; set; } = new ();
 
@@ -553,10 +567,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
 		[Category("graphic")]
+		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 		private String? _pictureCaption  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictureCaption {
 			get {
@@ -568,6 +584,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private DateOnly? _sourceDate  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public DateOnly? sourceDate {
 			get {
@@ -579,6 +596,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _pictureInformation  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pictureInformation {
 			get {
@@ -591,6 +609,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private bearingInformationViewModel? _bearingInformation  = default;
 
 		[Category("graphic")]
+		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public bearingInformationViewModel? bearingInformation {
@@ -660,6 +679,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class horizontalPositionUncertaintyViewModel : ComplexViewModel<horizontalPositionUncertainty> {
 		private double _uncertaintyFixed  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double uncertaintyFixed {
 			get {
@@ -703,6 +723,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class informationViewModel : ComplexViewModel<information> {
 		private String? _fileLocator  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileLocator {
 			get {
@@ -714,6 +735,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _fileReference  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? fileReference {
 			get {
@@ -725,6 +747,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _headline  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
 			get {
@@ -736,6 +759,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _language  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
 			get {
@@ -747,6 +771,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _text  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
 			get {
@@ -801,10 +826,12 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class noticeTimeViewModel : ComplexViewModel<noticeTime> {
 		[Category("noticeTime")]
+		[Editor(typeof(Editors.HorizonEditor<noticeTime>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<double> noticeTimeHours  { get; set; } = new ();
 		private String? _noticeTimeText  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<noticeTime>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? noticeTimeText {
 			get {
@@ -816,8 +843,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private operation? _operation  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(operationList), typeof(operation))]
+		[Editor(typeof(Editors.HorizonEditor<noticeTime>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public operation? operation {
 			get {
@@ -880,6 +906,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class onlineResourceViewModel : ComplexViewModel<onlineResource> {
 		private String _linkage  = string.Empty;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String linkage {
 			get {
@@ -891,6 +918,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _protocol  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocol {
 			get {
@@ -902,6 +930,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _applicationProfile  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? applicationProfile {
 			get {
@@ -913,6 +942,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _nameOfResource  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nameOfResource {
 			get {
@@ -924,6 +954,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _onlineResourceDescription  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? onlineResourceDescription {
 			get {
@@ -935,8 +966,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private onlineFunction? _onlineFunction  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(onlineFunctionList), typeof(onlineFunction))]
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public onlineFunction? onlineFunction {
 			get {
@@ -951,6 +981,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public onlineFunction[] onlineFunctionList => [(onlineFunction)1,(onlineFunction)2,(onlineFunction)3,(onlineFunction)4,(onlineFunction)5,(onlineFunction)6,(onlineFunction)7,(onlineFunction)8,(onlineFunction)9,(onlineFunction)10,(onlineFunction)11];
 		private String? _protocolRequest  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? protocolRequest {
 			get {
@@ -1012,6 +1043,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class orientationViewModel : ComplexViewModel<orientation> {
 		private double? _orientationUncertainty  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
 			get {
@@ -1023,6 +1055,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private double _orientationValue  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double orientationValue {
 			get {
@@ -1069,8 +1102,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class scheduleByDayOfWeekViewModel : ComplexViewModel<scheduleByDayOfWeek> {
 		private categoryOfSchedule? _categoryOfSchedule  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfScheduleList), typeof(categoryOfSchedule))]
+		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfSchedule? categoryOfSchedule {
 			get {
@@ -1084,6 +1116,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 		[Category("scheduleByDayOfWeek")]
+		[Editor(typeof(Editors.HorizonEditor<scheduleByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1133,8 +1166,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1146,8 +1178,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String _dateStart  = string.Empty;
 
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {
@@ -1194,8 +1225,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class radiocommunicationsViewModel : ComplexViewModel<radiocommunications> {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
@@ -1209,26 +1239,26 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		[Category("radiocommunications")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfMaritimeBroadcastList), typeof(categoryOfMaritimeBroadcast))]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfMaritimeBroadcast> categoryOfMaritimeBroadcast  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfMaritimeBroadcast[] categoryOfMaritimeBroadcastList => [(categoryOfMaritimeBroadcast)1,(categoryOfMaritimeBroadcast)2,(categoryOfMaritimeBroadcast)3,(categoryOfMaritimeBroadcast)4,(categoryOfMaritimeBroadcast)5,(categoryOfMaritimeBroadcast)6,(categoryOfMaritimeBroadcast)7,(categoryOfMaritimeBroadcast)8,(categoryOfMaritimeBroadcast)9,(categoryOfMaritimeBroadcast)10,(categoryOfMaritimeBroadcast)11,(categoryOfMaritimeBroadcast)12,(categoryOfMaritimeBroadcast)13,(categoryOfMaritimeBroadcast)14,(categoryOfMaritimeBroadcast)15,(categoryOfMaritimeBroadcast)16,(categoryOfMaritimeBroadcast)17,(categoryOfMaritimeBroadcast)18,(categoryOfMaritimeBroadcast)19];
 		[Category("radiocommunications")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRadioMethodsList), typeof(categoryOfRadioMethods))]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRadioMethods> categoryOfRadioMethods  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRadioMethods[] categoryOfRadioMethodsList => [(categoryOfRadioMethods)1,(categoryOfRadioMethods)2,(categoryOfRadioMethods)3,(categoryOfRadioMethods)4,(categoryOfRadioMethods)5,(categoryOfRadioMethods)6,(categoryOfRadioMethods)7,(categoryOfRadioMethods)8,(categoryOfRadioMethods)9,(categoryOfRadioMethods)10,(categoryOfRadioMethods)11,(categoryOfRadioMethods)12,(categoryOfRadioMethods)13,(categoryOfRadioMethods)14,(categoryOfRadioMethods)15,(categoryOfRadioMethods)16,(categoryOfRadioMethods)17,(categoryOfRadioMethods)18,(categoryOfRadioMethods)19,(categoryOfRadioMethods)20];
 		[Category("radiocommunications")]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _contactInstructions  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contactInstructions {
 			get {
@@ -1239,13 +1269,16 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("radiocommunications")]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 		[Category("radiocommunications")]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<int> signalFrequency  { get; set; } = new ();
 		private String? _transmissionContent  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? transmissionContent {
 			get {
@@ -1256,6 +1289,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("radiocommunications")]
+		[Editor(typeof(Editors.HorizonEditor<radiocommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1361,6 +1395,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class rxNCodeViewModel : ComplexViewModel<rxNCode> {
 		private categoryOfRxN? _categoryOfRxN  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfRxN? categoryOfRxN {
 			get {
@@ -1375,6 +1410,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfRxN[] categoryOfRxNList =>  CodeList.categoryOfRxNS.ToArray();
 		private actionOrActivity? _actionOrActivity  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public actionOrActivity? actionOrActivity {
 			get {
@@ -1389,6 +1425,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 		private String? _headline  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? headline {
 			get {
@@ -1438,8 +1475,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class sourceIndicationViewModel : ComplexViewModel<sourceIndication> {
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -1454,6 +1490,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		private String? _countryName  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? countryName {
 			get {
@@ -1465,7 +1502,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _reportedDate  = default;
 
-		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -1477,6 +1514,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _source  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? source {
 			get {
@@ -1488,8 +1526,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private sourceType? _sourceType  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(sourceTypeList), typeof(sourceType))]
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public sourceType? sourceType {
 			get {
@@ -1503,6 +1540,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14];
 		[Category("sourceIndication")]
+		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1564,8 +1602,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class surveyDateRangeViewModel : ComplexViewModel<surveyDateRange> {
 		private String _dateEnd  = string.Empty;
 
-		[S100TruncatedDateAttribute]
-		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
+		[Editor(typeof(Editors.HorizonEditor<surveyDateRange>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -1577,7 +1614,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _dateStart  = default;
 
-		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.HorizonEditor<surveyDateRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -1624,8 +1661,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class telecommunicationsViewModel : ComplexViewModel<telecommunications> {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
@@ -1640,6 +1676,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		private String _telecommunicationIdentifier  = string.Empty;
 
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String telecommunicationIdentifier {
 			get {
@@ -1651,6 +1688,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _telecommunicationCarrier  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? telecommunicationCarrier {
 			get {
@@ -1662,6 +1700,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private String? _contactInstructions  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contactInstructions {
 			get {
@@ -1672,8 +1711,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("telecommunications")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(telecommunicationServiceList), typeof(telecommunicationService))]
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1682,6 +1720,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek  = default;
 
 		[Category("telecommunications")]
+		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
@@ -1754,8 +1793,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class textContentViewModel : ComplexViewModel<textContent> {
 		private categoryOfText? _categoryOfText  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfTextList), typeof(categoryOfText))]
+		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfText? categoryOfText {
 			get {
@@ -1769,11 +1807,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 		[Category("textContent")]
+		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("textContent")]
+		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -1787,6 +1827,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("textContent")]
+		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -1855,8 +1896,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
 		[Category("timeIntervalsByDayOfWeek")]
-		[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]
-		[DomainModel.EnumerationAttribute(nameof(dayOfWeekList), typeof(dayOfWeek))]
+		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -1864,6 +1904,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
 		private Boolean? _dayOfWeekIsRange  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? dayOfWeekIsRange {
 			get {
@@ -1874,9 +1915,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("timeIntervalsByDayOfWeek")]
+		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 		[Category("timeIntervalsByDayOfWeek")]
+		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -1946,6 +1989,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class underKeelAllowanceViewModel : ComplexViewModel<underKeelAllowance> {
 		private double? _underKeelAllowanceFixed  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<underKeelAllowance>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? underKeelAllowanceFixed {
 			get {
@@ -1957,6 +2001,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private double? _underKeelAllowanceVariableBeamBased  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<underKeelAllowance>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? underKeelAllowanceVariableBeamBased {
 			get {
@@ -1968,6 +2013,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private double? _underKeelAllowanceVariableDraughtBased  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<underKeelAllowance>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? underKeelAllowanceVariableDraughtBased {
 			get {
@@ -1979,8 +2025,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private operation? _operation  = default;
 
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(operationList), typeof(operation))]
+		[Editor(typeof(Editors.HorizonEditor<underKeelAllowance>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public operation? operation {
 			get {
@@ -2036,7 +2081,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	public partial class vesselsMeasurementsViewModel : ComplexViewModel<vesselsMeasurements> {
 		private comparisonOperator _comparisonOperator  = default;
 
-		[DomainModel.EnumerationAttribute(nameof(comparisonOperatorList), typeof(comparisonOperator))]
+		[Editor(typeof(Editors.HorizonEditor<vesselsMeasurements>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public comparisonOperator comparisonOperator {
 			get {
@@ -2051,7 +2096,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
 		private vesselsCharacteristics _vesselsCharacteristics  = default;
 
-		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsList), typeof(vesselsCharacteristics))]
+		[Editor(typeof(Editors.HorizonEditor<vesselsMeasurements>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public vesselsCharacteristics vesselsCharacteristics {
 			get {
@@ -2066,6 +2111,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)5,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13,(vesselsCharacteristics)14];
 		private double _vesselsCharacteristicsValue  = default;
 
+		[Editor(typeof(Editors.HorizonEditor<vesselsMeasurements>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public double vesselsCharacteristicsValue {
 			get {
@@ -2077,7 +2123,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
-		[DomainModel.EnumerationAttribute(nameof(vesselsCharacteristicsUnitList), typeof(vesselsCharacteristicsUnit))]
+		[Editor(typeof(Editors.HorizonEditor<vesselsMeasurements>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit {
 			get {
@@ -2285,7 +2331,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
-		[DomainModel.EnumerationAttribute(nameof(membershipList), typeof(membership))]
+		[Editor(typeof(Editors.HorizonEditor<InclusionType>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public membership membership {
 			get {
@@ -2332,7 +2378,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRelationshipList), typeof(categoryOfRelationship))]
+		[Editor(typeof(Editors.HorizonEditor<PermissionType>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public categoryOfRelationship categoryOfRelationship {
 			get {
@@ -2739,6 +2785,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2750,12 +2797,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
@@ -2832,6 +2882,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2843,20 +2894,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -2870,12 +2923,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -2985,6 +3041,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2996,18 +3053,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private Boolean? _inBallast  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public Boolean? inBallast {
 			get {
@@ -3018,16 +3079,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("Applicability")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9];
 		[Category("Applicability")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfDangerousOrHazardousCargoList), typeof(categoryOfDangerousOrHazardousCargo))]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
@@ -3036,6 +3095,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
@@ -3051,8 +3111,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
 		[Category("Applicability")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselRegistryList), typeof(categoryOfVesselRegistry))]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfVesselRegistry? categoryOfVesselRegistry {
 			get {
@@ -3068,8 +3127,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private logicalConnectives? _logicalConnectives  = default;
 
 		[Category("Applicability")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(logicalConnectivesList), typeof(logicalConnectives))]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public logicalConnectives? logicalConnectives {
 			get {
@@ -3085,6 +3143,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int? _thicknessOfIceCapability  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? thicknessOfIceCapability {
 			get {
@@ -3097,6 +3156,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _vesselPerformance  = default;
 
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? vesselPerformance {
 			get {
@@ -3107,9 +3167,11 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("Applicability")]
+		[Editor(typeof(Editors.HorizonEditor<Applicability>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
@@ -3244,6 +3306,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3255,19 +3318,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority _categoryOfAuthority  = default;
 
 		[Category("Authority")]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<Authority>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public categoryOfAuthority categoryOfAuthority {
 			get {
@@ -3283,6 +3349,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("Authority")]
+		[Editor(typeof(Editors.HorizonEditor<Authority>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -3376,6 +3443,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3387,18 +3455,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private String? _callName  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? callName {
 			get {
@@ -3411,6 +3483,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? callSign {
 			get {
@@ -3423,8 +3496,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfCommunicationPreference? _categoryOfCommunicationPreference  = default;
 
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCommunicationPreferenceList), typeof(categoryOfCommunicationPreference))]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfCommunicationPreference? categoryOfCommunicationPreference {
 			get {
@@ -3438,14 +3510,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfCommunicationPreference[] categoryOfCommunicationPreferenceList => [(categoryOfCommunicationPreference)1,(categoryOfCommunicationPreference)2,(categoryOfCommunicationPreference)3,(categoryOfCommunicationPreference)4];
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 		private String? _contactInstructions  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? contactInstructions {
 			get {
@@ -3456,14 +3531,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _language  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? language {
 			get {
@@ -3476,6 +3554,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _mMSICode  = default;
 
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? mMSICode {
 			get {
@@ -3486,12 +3565,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 		[Category("ContactDetails")]
+		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<radiocommunicationsViewModel> radiocommunications  { get; set; } = new ();
 
@@ -3656,6 +3738,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3667,20 +3750,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -3694,12 +3779,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -3810,6 +3898,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3821,23 +3910,28 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("NonStandardWorkingDay")]
-		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.HorizonEditor<NonStandardWorkingDay>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Editor(typeof(Editors.HorizonEditor<NonStandardWorkingDay>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 		[Category("NonStandardWorkingDay")]
+		[Editor(typeof(Editors.HorizonEditor<NonStandardWorkingDay>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -3944,6 +4038,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3955,19 +4050,24 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("ServiceHours")]
+		[Editor(typeof(Editors.HorizonEditor<ServiceHours>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
 		[Category("ServiceHours")]
+		[Editor(typeof(Editors.HorizonEditor<ServiceHours>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -4064,6 +4164,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4075,18 +4176,20 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		[Category("ShipReport")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfShipReportList), typeof(categoryOfShipReport))]
+		[Editor(typeof(Editors.HorizonEditor<ShipReport>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfShipReport> categoryOfShipReport  { get; set; } = new ();
 
@@ -4095,6 +4198,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private Boolean _iMOFormatForReporting  = false;
 
 		[Category("ShipReport")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReport>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean iMOFormatForReporting {
 			get {
@@ -4105,11 +4209,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ShipReport")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReport>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<noticeTimeViewModel> noticeTime  { get; set; } = new ();
 		private textContentViewModel? _textContent  = default;
 
 		[Category("ShipReport")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReport>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -4223,6 +4329,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4234,20 +4341,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -4261,12 +4370,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4377,6 +4489,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4388,20 +4501,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -4415,12 +4530,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4531,6 +4649,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4542,20 +4661,22 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("InformationType")]
+		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 		private categoryOfAuthority? _categoryOfAuthority  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfAuthorityList), typeof(categoryOfAuthority))]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfAuthority? categoryOfAuthority {
 			get {
@@ -4569,12 +4690,15 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)1,(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15];
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<graphicViewModel> graphic  { get; set; } = new ();
 		[Category("AbstractRxN")]
+		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
@@ -4685,8 +4809,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
@@ -4702,8 +4825,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
@@ -4719,6 +4841,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("SpatialQuality")]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -4776,8 +4899,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
@@ -4793,8 +4915,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(qualityOfHorizontalMeasurementList), typeof(qualityOfHorizontalMeasurement))]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
 			get {
@@ -4810,6 +4931,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("SpatialQuality")]
+		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -4868,6 +4990,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4879,14 +5002,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -4900,6 +5026,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -4914,8 +5041,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private condition? _condition  = default;
 
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(conditionList), typeof(condition))]
+		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public condition? condition {
 			get {
@@ -4931,6 +5057,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("CautionArea")]
+		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -4943,8 +5070,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private status? _status  = default;
 
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public status? status {
 			get {
@@ -5045,6 +5171,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5056,14 +5183,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -5077,6 +5207,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5089,8 +5220,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("ConcentrationOfShippingHazardArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfConcentrationOfShippingHazardAreaList), typeof(categoryOfConcentrationOfShippingHazardArea))]
+		[Editor(typeof(Editors.HorizonEditor<ConcentrationOfShippingHazardArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfConcentrationOfShippingHazardArea> categoryOfConcentrationOfShippingHazardArea  { get; set; } = new ();
 
@@ -5099,6 +5229,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("ConcentrationOfShippingHazardArea")]
+		[Editor(typeof(Editors.HorizonEditor<ConcentrationOfShippingHazardArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5109,8 +5240,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("ConcentrationOfShippingHazardArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<ConcentrationOfShippingHazardArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5218,6 +5348,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5229,14 +5360,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -5250,6 +5384,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5265,6 +5400,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("ISPSCodeSecurityLevel")]
+		[Editor(typeof(Editors.HorizonEditor<ISPSCodeSecurityLevel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5277,7 +5413,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private iSPSLevel _iSPSLevel  = default;
 
 		[Category("ISPSCodeSecurityLevel")]
-		[DomainModel.EnumerationAttribute(nameof(iSPSLevelList), typeof(iSPSLevel))]
+		[Editor(typeof(Editors.HorizonEditor<ISPSCodeSecurityLevel>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public iSPSLevel iSPSLevel {
 			get {
@@ -5375,6 +5511,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5386,14 +5523,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -5407,6 +5547,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5424,6 +5565,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("LocalPortServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<LocalPortServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5436,6 +5578,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("LocalPortServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<LocalPortServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? serviceAccessProcedure {
 			get {
@@ -5448,6 +5591,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String _requirementsForMaintenanceOfListeningWatch  = string.Empty;
 
 		[Category("LocalPortServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<LocalPortServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
@@ -5545,6 +5689,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5556,14 +5701,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -5577,6 +5725,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5591,8 +5740,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfMilitaryPracticeAreaList), typeof(categoryOfMilitaryPracticeArea))]
+		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea  { get; set; } = new ();
 
@@ -5601,6 +5749,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("MilitaryPracticeArea")]
+		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5613,6 +5762,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _nationality  = default;
 
 		[Category("MilitaryPracticeArea")]
+		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? nationality {
 			get {
@@ -5623,16 +5773,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5753,6 +5901,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5764,14 +5913,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -5785,6 +5937,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5800,6 +5953,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? callSign {
 			get {
@@ -5812,8 +5966,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfPilotBoardingPlace? _categoryOfPilotBoardingPlace  = default;
 
 		[Category("PilotBoardingPlace")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfPilotBoardingPlaceList), typeof(categoryOfPilotBoardingPlace))]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace {
 			get {
@@ -5829,8 +5982,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfPreference? _categoryOfPreference  = default;
 
 		[Category("PilotBoardingPlace")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfPreferenceList), typeof(categoryOfPreference))]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfPreference? categoryOfPreference {
 			get {
@@ -5846,6 +5998,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfVessel? _categoryOfVessel  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfVessel? categoryOfVessel {
 			get {
@@ -5859,11 +6012,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _destination  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? destination {
 			get {
@@ -5876,6 +6031,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -5888,8 +6044,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private pilotMovement? _pilotMovement  = default;
 
 		[Category("PilotBoardingPlace")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(pilotMovementList), typeof(pilotMovement))]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public pilotMovement? pilotMovement {
 			get {
@@ -5905,6 +6060,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _pilotVessel  = default;
 
 		[Category("PilotBoardingPlace")]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pilotVessel {
 			get {
@@ -5915,8 +6071,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("PilotBoardingPlace")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<PilotBoardingPlace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6045,6 +6200,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6056,14 +6212,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6077,6 +6236,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6092,8 +6252,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("PilotService")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfPilotList), typeof(categoryOfPilot))]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfPilot> categoryOfPilot  { get; set; } = new ();
 
@@ -6102,6 +6261,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("PilotService")]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6114,8 +6274,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private pilotQualification? _pilotQualification  = default;
 
 		[Category("PilotService")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(pilotQualificationList), typeof(pilotQualification))]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public pilotQualification? pilotQualification {
 			get {
@@ -6131,6 +6290,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _pilotRequest  = default;
 
 		[Category("PilotService")]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? pilotRequest {
 			get {
@@ -6143,6 +6303,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private Boolean _remotePilot  = false;
 
 		[Category("PilotService")]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public Boolean remotePilot {
 			get {
@@ -6155,6 +6316,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private noticeTimeViewModel? _noticeTime  = default;
 
 		[Category("PilotService")]
+		[Editor(typeof(Editors.HorizonEditor<PilotService>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public noticeTimeViewModel? noticeTime {
@@ -6272,6 +6434,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6283,14 +6446,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6304,6 +6470,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6316,11 +6483,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("PilotageDistrict")]
+		[Editor(typeof(Editors.HorizonEditor<PilotageDistrict>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("PilotageDistrict")]
+		[Editor(typeof(Editors.HorizonEditor<PilotageDistrict>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6422,6 +6591,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6433,14 +6603,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6454,6 +6627,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6471,6 +6645,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("PiracyRiskArea")]
+		[Editor(typeof(Editors.HorizonEditor<PiracyRiskArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6481,16 +6656,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("PiracyRiskArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Editor(typeof(Editors.HorizonEditor<PiracyRiskArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)14,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)31,(restriction)32,(restriction)33,(restriction)34];
 		[Category("PiracyRiskArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<PiracyRiskArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6598,6 +6771,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6609,14 +6783,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6630,6 +6807,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6645,11 +6823,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("PlaceOfRefuge")]
+		[Editor(typeof(Editors.HorizonEditor<PlaceOfRefuge>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("PlaceOfRefuge")]
+		[Editor(typeof(Editors.HorizonEditor<PlaceOfRefuge>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6660,8 +6840,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("PlaceOfRefuge")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<PlaceOfRefuge>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6769,6 +6948,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6780,14 +6960,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6801,6 +6984,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6813,11 +6997,13 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("RadarRange")]
+		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("RadarRange")]
+		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -6828,8 +7014,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RadarRange")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6937,6 +7122,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6948,14 +7134,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -6969,6 +7158,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -6983,6 +7173,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _callSign  = default;
 
 		[Category("RadioCallingInPoint")]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? callSign {
 			get {
@@ -6993,28 +7184,31 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfCargoList), typeof(categoryOfCargo))]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9];
 		[Category("RadioCallingInPoint")]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfVessel> categoryOfVessel  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
 		[Category("RadioCallingInPoint")]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("RadioCallingInPoint")]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7025,8 +7219,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7035,7 +7228,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private trafficFlow _trafficFlow  = default;
 
 		[Category("RadioCallingInPoint")]
-		[DomainModel.EnumerationAttribute(nameof(trafficFlowList), typeof(trafficFlow))]
+		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public trafficFlow trafficFlow {
 			get {
@@ -7186,6 +7379,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7197,14 +7391,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -7218,6 +7415,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -7232,8 +7430,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("RestrictedAreaNavigational")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaNavigational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -7242,6 +7439,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("RestrictedAreaNavigational")]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaNavigational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7252,16 +7450,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RestrictedAreaNavigational")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaNavigational>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)7,(restriction)8,(restriction)13,(restriction)14,(restriction)25,(restriction)26,(restriction)27,(restriction)28,(restriction)29,(restriction)30,(restriction)35,(restriction)36,(restriction)37];
 		[Category("RestrictedAreaNavigational")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaNavigational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7379,6 +7575,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7390,14 +7587,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -7411,6 +7611,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -7425,8 +7626,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("RestrictedAreaRegulatory")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRestrictedAreaList), typeof(categoryOfRestrictedArea))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaRegulatory>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -7435,6 +7635,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("RestrictedAreaRegulatory")]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaRegulatory>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7445,16 +7646,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("RestrictedAreaRegulatory")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(restrictionList), typeof(restriction))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaRegulatory>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)39];
 		[Category("RestrictedAreaRegulatory")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<RestrictedAreaRegulatory>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7572,6 +7771,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7583,14 +7783,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -7604,6 +7807,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -7618,7 +7822,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfRouteingMeasure _categoryOfRouteingMeasure  = default;
 
 		[Category("RouteingMeasure")]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfRouteingMeasureList), typeof(categoryOfRouteingMeasure))]
+		[Editor(typeof(Editors.HorizonEditor<RouteingMeasure>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public categoryOfRouteingMeasure categoryOfRouteingMeasure {
 			get {
@@ -7634,8 +7838,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfTrafficSeparationScheme? _categoryOfTrafficSeparationScheme  = default;
 
 		[Category("RouteingMeasure")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfTrafficSeparationSchemeList), typeof(categoryOfTrafficSeparationScheme))]
+		[Editor(typeof(Editors.HorizonEditor<RouteingMeasure>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfTrafficSeparationScheme? categoryOfTrafficSeparationScheme {
 			get {
@@ -7651,8 +7854,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private categoryOfNavigationLine? _categoryOfNavigationLine  = default;
 
 		[Category("RouteingMeasure")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfNavigationLineList), typeof(categoryOfNavigationLine))]
+		[Editor(typeof(Editors.HorizonEditor<RouteingMeasure>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfNavigationLine? categoryOfNavigationLine {
 			get {
@@ -7668,6 +7870,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("RouteingMeasure")]
+		[Editor(typeof(Editors.HorizonEditor<RouteingMeasure>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7768,6 +7971,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7779,14 +7983,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -7800,6 +8007,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -7817,6 +8025,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("ShipReportingServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReportingServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -7829,6 +8038,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("ShipReportingServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReportingServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? serviceAccessProcedure {
 			get {
@@ -7841,6 +8051,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String _requirementsForMaintenanceOfListeningWatch  = string.Empty;
 
 		[Category("ShipReportingServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<ShipReportingServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
@@ -7938,6 +8149,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7949,14 +8161,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -7970,6 +8185,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -7982,19 +8198,20 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		}
 
 		[Category("SignalStationWarning")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationWarningList), typeof(categoryOfSignalStationWarning))]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationWarning> categoryOfSignalStationWarning  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfSignalStationWarning[] categoryOfSignalStationWarningList => [(categoryOfSignalStationWarning)1,(categoryOfSignalStationWarning)2,(categoryOfSignalStationWarning)3,(categoryOfSignalStationWarning)4,(categoryOfSignalStationWarning)5,(categoryOfSignalStationWarning)6,(categoryOfSignalStationWarning)7,(categoryOfSignalStationWarning)8,(categoryOfSignalStationWarning)9,(categoryOfSignalStationWarning)10,(categoryOfSignalStationWarning)11,(categoryOfSignalStationWarning)12,(categoryOfSignalStationWarning)13,(categoryOfSignalStationWarning)14,(categoryOfSignalStationWarning)15,(categoryOfSignalStationWarning)16,(categoryOfSignalStationWarning)17,(categoryOfSignalStationWarning)18];
 		[Category("SignalStationWarning")]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("SignalStationWarning")]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8005,8 +8222,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("SignalStationWarning")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationWarning>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8124,6 +8340,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8135,14 +8352,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -8156,6 +8376,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -8169,19 +8390,20 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("SignalStationTraffic")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfSignalStationTrafficList), typeof(categoryOfSignalStationTraffic))]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfSignalStationTraffic[] categoryOfSignalStationTrafficList => [(categoryOfSignalStationTraffic)1,(categoryOfSignalStationTraffic)2,(categoryOfSignalStationTraffic)3,(categoryOfSignalStationTraffic)4,(categoryOfSignalStationTraffic)5,(categoryOfSignalStationTraffic)6,(categoryOfSignalStationTraffic)7,(categoryOfSignalStationTraffic)8,(categoryOfSignalStationTraffic)9,(categoryOfSignalStationTraffic)10,(categoryOfSignalStationTraffic)13];
 		[Category("SignalStationTraffic")]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("SignalStationTraffic")]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8192,8 +8414,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("SignalStationTraffic")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<SignalStationTraffic>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8311,6 +8532,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8322,14 +8544,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -8343,6 +8568,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -8357,6 +8583,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("UnderKeelClearanceAllowanceArea")]
+		[Editor(typeof(Editors.HorizonEditor<UnderKeelClearanceAllowanceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8369,6 +8596,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private underKeelAllowanceViewModel? _underKeelAllowance  = default;
 
 		[Category("UnderKeelClearanceAllowanceArea")]
+		[Editor(typeof(Editors.HorizonEditor<UnderKeelClearanceAllowanceArea>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public underKeelAllowanceViewModel? underKeelAllowance {
@@ -8382,8 +8610,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private waterLevelTrend? _waterLevelTrend  = default;
 
 		[Category("UnderKeelClearanceAllowanceArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(waterLevelTrendList), typeof(waterLevelTrend))]
+		[Editor(typeof(Editors.HorizonEditor<UnderKeelClearanceAllowanceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public waterLevelTrend? waterLevelTrend {
 			get {
@@ -8487,6 +8714,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8498,14 +8726,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -8519,6 +8750,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -8536,7 +8768,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private dynamicResource _dynamicResource  = default;
 
 		[Category("UnderKeelClearanceManagementArea")]
-		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
+		[Editor(typeof(Editors.HorizonEditor<UnderKeelClearanceManagementArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public dynamicResource dynamicResource {
 			get {
@@ -8552,6 +8784,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("UnderKeelClearanceManagementArea")]
+		[Editor(typeof(Editors.HorizonEditor<UnderKeelClearanceManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8646,6 +8879,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8657,14 +8891,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -8678,6 +8915,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -8693,8 +8931,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 
 
 		[Category("VesselTrafficServiceArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfVesselTrafficServiceList), typeof(categoryOfVesselTrafficService))]
+		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfVesselTrafficService> categoryOfVesselTrafficService  { get; set; } = new ();
 
@@ -8703,6 +8940,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("VesselTrafficServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8715,6 +8953,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _serviceAccessProcedure  = default;
 
 		[Category("VesselTrafficServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? serviceAccessProcedure {
 			get {
@@ -8727,6 +8966,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String _requirementsForMaintenanceOfListeningWatch  = string.Empty;
 
 		[Category("VesselTrafficServiceArea")]
+		[Editor(typeof(Editors.HorizonEditor<VesselTrafficServiceArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public String requirementsForMaintenanceOfListeningWatch {
 			get {
@@ -8834,6 +9074,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8845,14 +9086,17 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -8866,6 +9110,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textContentViewModel? _textContent  = default;
 
 		[Category("FeatureType")]
+		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -8882,7 +9127,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private dynamicResource _dynamicResource  = default;
 
 		[Category("WaterwayArea")]
-		[DomainModel.EnumerationAttribute(nameof(dynamicResourceList), typeof(dynamicResource))]
+		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public dynamicResource dynamicResource {
 			get {
@@ -8898,6 +9143,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("WaterwayArea")]
+		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -8910,6 +9156,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _siltationRate  = default;
 
 		[Category("WaterwayArea")]
+		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? siltationRate {
 			get {
@@ -8920,8 +9167,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 			}
 		}
 		[Category("WaterwayArea")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(statusList), typeof(status))]
+		[Editor(typeof(Editors.HorizonEditor<WaterwayArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9025,6 +9271,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -9037,6 +9284,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int _maximumDisplayScale  = default;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int maximumDisplayScale {
 			get {
@@ -9049,6 +9297,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public int minimumDisplayScale {
 			get {
@@ -9103,14 +9352,14 @@ namespace S100Framework.WPF.ViewModel.S127 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfNonBathymetricDataViewModel : FeatureViewModel<QualityOfNonBathymetricData> {
 		[Category("DataQuality")]
+		[Editor(typeof(Editors.HorizonEditor<DataQuality>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private categoryOfTemporalVariation? _categoryOfTemporalVariation  = default;
 
 		[Category("QualityOfTemporalVariation")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(categoryOfTemporalVariationList), typeof(categoryOfTemporalVariation))]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfTemporalVariation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public categoryOfTemporalVariation? categoryOfTemporalVariation {
 			get {
@@ -9127,6 +9376,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? orientationUncertainty {
 			get {
@@ -9139,6 +9389,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? horizontalDistanceUncertainty {
 			get {
@@ -9151,6 +9402,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -9164,6 +9416,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? interoperabilityIdentifier {
 			get {
@@ -9176,6 +9429,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private sourceIndicationViewModel? _sourceIndication  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sourceIndicationViewModel? sourceIndication {
@@ -9189,6 +9443,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfNonBathymetricData")]
+		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public surveyDateRangeViewModel? surveyDateRange {
@@ -9280,6 +9535,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private double? _flipBearing  = default;
 
 		[Category("TextPlacement")]
+		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public double? flipBearing {
 			get {
@@ -9292,6 +9548,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private int? _scaleMinimum  = default;
 
 		[Category("TextPlacement")]
+		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public int? scaleMinimum {
 			get {
@@ -9304,7 +9561,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textJustification _textJustification  = default;
 
 		[Category("TextPlacement")]
-		[DomainModel.EnumerationAttribute(nameof(textJustificationList), typeof(textJustification))]
+		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Mandatory]
 		public textJustification textJustification {
 			get {
@@ -9320,6 +9577,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private String? _text  = default;
 
 		[Category("TextPlacement")]
+		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public String? text {
 			get {
@@ -9332,8 +9590,7 @@ namespace S100Framework.WPF.ViewModel.S127 {
 		private textType? _textType  = default;
 
 		[Category("TextPlacement")]
-		[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-		[DomainModel.EnumerationAttribute(nameof(textTypeList), typeof(textType))]
+		[Editor(typeof(Editors.HorizonEditor<TextPlacement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public textType? textType {
 			get {

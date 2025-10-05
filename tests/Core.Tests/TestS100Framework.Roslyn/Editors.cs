@@ -7,12 +7,125 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace S100Framework.WPF.Editors
 {
+    public abstract class ValidatingEditor<T> : ITypeEditor where T : struct
+    {
+        public virtual FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public abstract class ValidatingUnknownEditor<T> : ValidatingEditor<T> where T : struct
+    {
+    }
+
+    //  https://www.webfx.com/web-design/color-picker/
+
+    public class BrushValidatorConvertor : IValueConverter
+    {
+        const string ColorCode = "#e9c8ca";
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is null)
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            return System.Windows.Media.Brushes.Transparent;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BrushUnknownConvertor : IValueConverter
+    {
+        const string ColorCode = "#c8dae9";
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is null)
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            return System.Windows.Media.Brushes.Transparent;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public abstract class HorizonEditor : ITypeEditor
+    {
+        public abstract FrameworkElement ResolveEditor(PropertyItem propertyItem);
+    }
+
+    public class HorizonEditor<T> : HorizonEditor where T : class
+    {
+        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var attributes = typeof(T).GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(true);
+
+            var supportsUnknown = false;
+
+            if (attributes.Any(attr => attr.GetType() == typeof(UnknownValueAttribute))) {
+                supportsUnknown = true;
+            }
+
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            if (supportsUnknown) {
+                Binding newBinding = new Binding(propertyItem.DisplayName) {
+                    Source = propertyItem.Instance,
+                    Mode = BindingMode.OneWay,
+                };
+                newBinding.Converter = new BrushUnknownConvertor();
+                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+
+                var radioButtonUnknown = new RadioButton {
+                    ToolTip = "[Unknown]",
+                    GroupName = propertyItem.DisplayName,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    IsChecked = propertyItem.Value is null,
+                    Margin = new Thickness(0, 0, 18, 0),
+                };
+
+                var editor = propertyItem.PropertyType switch {
+                    Type t when t == typeof(double) => new PropertyGridEditorDecimalUpDown(),
+                    Type t when t == typeof(double?) => new PropertyGridEditorDecimalUpDown(),
+                    _ => throw new NotImplementedException(),
+                };
+                editor.Background = System.Windows.Media.Brushes.Transparent;
+
+                editor.ValueChanged += (sender, e) => {
+                    radioButtonUnknown.IsChecked = !editor.Value.HasValue;
+                };
+                radioButtonUnknown.Click += (sender, e) => {
+                    if (editor.Value != default)
+                        editor.Value = default;
+                    else
+                        radioButtonUnknown.IsChecked = true;
+                };
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
+                panel.Children.Add(editor);
+
+                panel.Children.Add(radioButtonUnknown);
+                return panel;
+            }
+
+
+            throw new NotImplementedException();
+        }
+    }
+
+
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         private static readonly Regex _regexInput = new(@"^(\d|-{1,8})$");
