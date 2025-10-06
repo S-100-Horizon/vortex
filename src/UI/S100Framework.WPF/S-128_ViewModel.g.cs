@@ -124,7 +124,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("contactAddress")]
-		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 		private String? _postalCode  = default;
@@ -452,7 +451,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("information")]
-		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -1541,7 +1539,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 		[Category("sourceIndication")]
-		[Editor(typeof(Editors.HorizonEditor<sourceIndication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1626,7 +1623,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("telecommunications")]
-		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1760,7 +1756,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ComplexViewModel<timeIntervalOfCycle> {
 		[Category("timeIntervalOfCycle")]
-		[Editor(typeof(Editors.HorizonEditor<timeIntervalOfCycle>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -2363,23 +2358,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
@@ -2497,7 +2487,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("IndicationOfCarriageRequirement")]
-		[Editor(typeof(Editors.HorizonEditor<IndicationOfCarriageRequirement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -2552,19 +2541,15 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class PriceInformationViewModel : InformationViewModel<PriceInformation> {
 		[Category("PriceInformation")]
-		[Editor(typeof(Editors.HorizonEditor<PriceInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("PriceInformation")]
-		[Editor(typeof(Editors.HorizonEditor<PriceInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("PriceInformation")]
-		[Editor(typeof(Editors.HorizonEditor<PriceInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<pricingViewModel> pricing  { get; set; } = new ();
 		[Category("PriceInformation")]
-		[Editor(typeof(Editors.HorizonEditor<PriceInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
@@ -2768,7 +2753,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -2801,7 +2785,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
@@ -2821,11 +2804,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
@@ -2857,7 +2838,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
@@ -2876,11 +2856,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
@@ -2939,7 +2917,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3373,7 +3350,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -3406,7 +3382,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
@@ -3426,11 +3401,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
@@ -3462,7 +3435,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;
@@ -3481,11 +3453,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<double> approximateGridResolution  { get; set; } = new ();
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<int> compilationScale  { get; set; } = new ();
 		private distributionStatus? _distributionStatus  = default;
@@ -3544,7 +3514,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("NavigationalProduct")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationalProduct>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<navigationPurpose> navigationPurpose  { get; set; } = new ();
 
@@ -3979,7 +3948,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<catalogueElementClassification> catalogueElementClassification  { get; set; } = new ();
 
@@ -4012,7 +3980,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<iMOMaritimeService> iMOMaritimeService  { get; set; } = new ();
 
@@ -4032,11 +3999,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private onlineResourceViewModel? _onlineResource  = default;
@@ -4068,7 +4033,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 		[Category("CatalogueElement")]
-		[Editor(typeof(Editors.HorizonEditor<CatalogueElement>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<supportFileViewModel> supportFile  { get; set; } = new ();
 		private timeIntervalOfProductViewModel? _timeIntervalOfProduct  = default;

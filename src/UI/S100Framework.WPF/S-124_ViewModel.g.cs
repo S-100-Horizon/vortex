@@ -369,7 +369,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("generalArea")]
-		[Editor(typeof(Editors.HorizonEditor<generalArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -489,7 +488,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("locality")]
-		[Editor(typeof(Editors.HorizonEditor<locality>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -793,11 +791,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class warningInformationViewModel : ComplexViewModel<warningInformation> {
 		[Category("warningInformation")]
-		[Editor(typeof(Editors.HorizonEditor<warningInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("warningInformation")]
-		[Editor(typeof(Editors.HorizonEditor<warningInformation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
@@ -853,11 +849,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureReferenceViewModel : ComplexViewModel<featureReference> {
 		[Category("featureReference")]
-		[Editor(typeof(Editors.HorizonEditor<featureReference>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 		[Category("featureReference")]
-		[Editor(typeof(Editors.HorizonEditor<featureReference>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
@@ -1204,7 +1198,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ReferencesViewModel : InformationViewModel<References> {
 		[Category("References")]
-		[Editor(typeof(Editors.HorizonEditor<References>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<messageSeriesIdentifierViewModel> messageSeriesIdentifier  { get; set; } = new ();
 		private Boolean _noMessageOnHand  = false;
@@ -1288,15 +1281,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnPreambleViewModel : InformationViewModel<NavwarnPreamble> {
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
 		private messageSeriesIdentifierViewModel _messageSeriesIdentifier  = default;
@@ -1314,7 +1304,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<navwarnTitleViewModel> navwarnTitle  { get; set; } = new ();
 		private DateTime? _cancellationDate  = default;
@@ -1553,7 +1542,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
 		[Category("NavwarnPart")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
 		private warningInformationViewModel _warningInformation  = default;
@@ -1571,11 +1559,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 		[Category("NavwarnPart")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("NavwarnPart")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
 

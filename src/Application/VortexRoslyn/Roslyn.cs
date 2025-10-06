@@ -2023,7 +2023,7 @@ namespace S100Framework.Applications
 
                     builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
-                    builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
+                    //builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
                         //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }                    

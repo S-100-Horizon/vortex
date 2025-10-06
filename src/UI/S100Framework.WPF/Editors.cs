@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
+using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -7,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.Primitives;
@@ -59,6 +61,32 @@ namespace S100Framework.WPF.Editors
     }
 
 
+
+    public class RadioButtonAdorner : Adorner
+    {
+        private RadioButton _radioButton;
+
+        public RadioButtonAdorner(UIElement adornedElement) : base(adornedElement) {
+            _radioButton = new RadioButton();
+            _radioButton.VerticalAlignment = VerticalAlignment.Center;
+            _radioButton.HorizontalAlignment = HorizontalAlignment.Left;
+            _radioButton.Margin = new Thickness(4, 0, 0, 0);
+
+            AddVisualChild(_radioButton);
+        }
+
+        protected override int VisualChildrenCount => 1;
+
+        protected override Visual GetVisualChild(int index) => _radioButton;
+
+        protected override Size ArrangeOverride(Size finalSize) {
+            _radioButton.Arrange(new Rect(new Point(0, 0), finalSize));
+            return finalSize;
+        }
+    }
+
+
+
     public abstract class HorizonEditor : ITypeEditor
     {
         public abstract FrameworkElement ResolveEditor(PropertyItem propertyItem);
@@ -82,7 +110,7 @@ namespace S100Framework.WPF.Editors
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-
+            
             if (supportsUnknown) {
                 Binding newBinding = new Binding(propertyItem.DisplayName) {
                     Source = propertyItem.Instance,
@@ -92,8 +120,46 @@ namespace S100Framework.WPF.Editors
                 panel.SetBinding(Grid.BackgroundProperty, newBinding);
             }
 
-                Control? editor = default;
-            if (propertyItem.PropertyType == typeof(double) || propertyItem.PropertyType == typeof(double?)) {
+            Control? editor = default;
+
+            if (propertyItem.PropertyType == typeof(string) || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0] == typeof(string))) {
+                var editorTextBox = new PropertyGridEditorTextBox {
+                    Background = System.Windows.Media.Brushes.Transparent,
+                };
+
+                if (supportsUnknown) {
+                    editorTextBox.Watermark = "[UNKNOWN]";
+
+                    //var layer = AdornerLayer.GetAdornerLayer(editorTextBox);
+
+                    //layer.Add(new RadioButtonAdorner(editorTextBox));
+
+                    var radioButtonUnknown = new RadioButton {
+                        ToolTip = "[Unknown]",
+                        GroupName = propertyItem.DisplayName,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        IsChecked = propertyItem.Value is null,
+                        Margin = new Thickness(0, 0, 18, 0),
+                    };
+                    editorTextBox.TextChanged += (sender, e) => {
+                        radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editorTextBox.Text);
+                    };
+                    radioButtonUnknown.Click += (sender, e) => {
+                        if (editorTextBox.Text != default)
+                            editorTextBox.Text = default;
+                        else
+                            radioButtonUnknown.IsChecked = true;
+                    };
+
+                    panel.Children.Add(radioButtonUnknown);
+                }
+                editor = editorTextBox;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorTextBox.TextProperty, bindingSelectedItemProperty);                
+            }
+            else if (propertyItem.PropertyType == typeof(double) || propertyItem.PropertyType == typeof(double?)) {
                 var editorDecimalUpDown = new PropertyGridEditorDecimalUpDown {
                     Background = System.Windows.Media.Brushes.Transparent,
                 };
@@ -121,6 +187,9 @@ namespace S100Framework.WPF.Editors
                     panel.Children.Add(radioButtonUnknown);
                 }
                 editor = editorDecimalUpDown;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType == typeof(int) || propertyItem.PropertyType == typeof(int?) || propertyItem.PropertyType == typeof(short) || propertyItem.PropertyType == typeof(short?) || propertyItem.PropertyType == typeof(long) || propertyItem.PropertyType == typeof(long?)) {
                 var editorIntegerUpDown = new PropertyGridEditorIntegerUpDown {
@@ -149,14 +218,19 @@ namespace S100Framework.WPF.Editors
                     panel.Children.Add(radioButtonUnknown);
                 }
                 editor = editorIntegerUpDown;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorIntegerUpDown.ValueProperty, bindingSelectedItemProperty);
+            }
+            else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
+                //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
+                var specific = new EnumComboBoxEditor();
+                return specific.ResolveEditor(propertyItem);
             }
             else
                 throw new NotImplementedException();
 
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-            BindingOperations.SetBinding(editor, PropertyGridEditorDecimalUpDown.ValueProperty, bindingSelectedItemProperty);
             panel.Children.Add(editor);
-     
             return panel;
         }
     }
@@ -209,8 +283,11 @@ namespace S100Framework.WPF.Editors
     public class EnumComboBoxEditor : ComboBoxEditor
     {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
-            var attribute = (S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
-            return (IEnumerable)propertyItem.Instance.GetType().GetProperty(attribute.PropertyName)!.GetValue(propertyItem.Instance)!;
+            var attributes = propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(true);
+
+            //var attribute = (EnumerationAttribute)attributes.Single(attr => attr.GetType() == typeof(EnumerationAttribute));
+            //(S100Framework.DomainModel.EnumerationAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(S100Framework.DomainModel.EnumerationAttribute), true)[0];
+            return (IEnumerable)propertyItem.Instance.GetType().GetProperty($"{propertyItem.DisplayName}List")!.GetValue(propertyItem.Instance)!;
         }
     }
 

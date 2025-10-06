@@ -423,7 +423,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("topmark")]
-		[Editor(typeof(Editors.HorizonEditor<topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
@@ -732,7 +731,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rythmOfLightViewModel : ComplexViewModel<rythmOfLight> {
 		[Category("rythmOfLight")]
-		[Editor(typeof(Editors.HorizonEditor<rythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 		private double? _signalPeriod  = default;
@@ -748,7 +746,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("rythmOfLight")]
-		[Editor(typeof(Editors.HorizonEditor<rythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private lightCharacteristic? _lightCharacteristic  = default;
@@ -1434,7 +1431,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("surfaceCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<surfaceCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -1855,7 +1851,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ComplexViewModel<sectorCharacteristics> {
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 		private double? _signalPeriod  = default;
@@ -1871,7 +1866,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		private lightCharacteristic? _lightCharacteristic  = default;
@@ -1890,7 +1884,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -2378,11 +2371,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -2427,7 +2418,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -2915,11 +2905,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ReferenceToAPublication")]
-		[Editor(typeof(Editors.HorizonEditor<ReferenceToAPublication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 		[Category("ReferenceToAPublication")]
-		[Editor(typeof(Editors.HorizonEditor<ReferenceToAPublication>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -2984,7 +2972,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InstallationBuoyViewModel : FeatureViewModel<InstallationBuoy> {
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private colourPattern? _colourPattern  = default;
@@ -3004,7 +2991,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -3025,7 +3011,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -3048,11 +3033,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -3072,7 +3055,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -3118,7 +3100,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("InstallationBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<InstallationBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -3318,7 +3299,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DepthArea")]
-		[Editor(typeof(Editors.HorizonEditor<DepthArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private double? _depthRangeMinimumValue  = default;
@@ -3428,7 +3408,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public categoryOfReportingRadioCallingInPoint[] categoryOfReportingRadioCallingInPointList => [(categoryOfReportingRadioCallingInPoint)501];
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -3445,11 +3424,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -3466,18 +3443,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> orientationValue  { get; set; } = new ();
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9,(status)501];
 		[Category("RadioCallingInPoint")]
-		[Editor(typeof(Editors.HorizonEditor<RadioCallingInPoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -3709,15 +3683,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("PatrolArea")]
-		[Editor(typeof(Editors.HorizonEditor<PatrolArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("PatrolArea")]
-		[Editor(typeof(Editors.HorizonEditor<PatrolArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("PatrolArea")]
-		[Editor(typeof(Editors.HorizonEditor<PatrolArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -3826,7 +3797,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Checkpoint")]
-		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -3843,14 +3813,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Checkpoint")]
-		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)7,(status)9,(status)12];
 		[Category("Checkpoint")]
-		[Editor(typeof(Editors.HorizonEditor<Checkpoint>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -4009,14 +3977,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<speciesGrouping> speciesGrouping  { get; set; } = new ();
 
 		[Browsable(false)]
 		public speciesGrouping[] speciesGroupingList => [(speciesGrouping)501,(speciesGrouping)502,(speciesGrouping)503,(speciesGrouping)504,(speciesGrouping)505,(speciesGrouping)506,(speciesGrouping)507,(speciesGrouping)508,(speciesGrouping)509,(speciesGrouping)510];
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		private jurisdiction? _jurisdiction  = default;
@@ -4036,7 +4002,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public jurisdiction[] jurisdictionList => [(jurisdiction)1,(jurisdiction)2,(jurisdiction)2];
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private categoryofMarineProtectedArea? _categoryofMarineProtectedArea  = default;
@@ -4082,7 +4047,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _controllingAuthority  = default;
@@ -4128,14 +4092,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)13,(status)14,(status)16,(status)17,(status)519];
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryofRestrictions> categoryofRestrictions  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryofRestrictions[] categoryofRestrictionsList => [(categoryofRestrictions)4,(categoryofRestrictions)5,(categoryofRestrictions)6,(categoryofRestrictions)7,(categoryofRestrictions)10,(categoryofRestrictions)20,(categoryofRestrictions)22,(categoryofRestrictions)23,(categoryofRestrictions)27,(categoryofRestrictions)28,(categoryofRestrictions)31,(categoryofRestrictions)32];
 		[Category("MarineManagementArea")]
-		[Editor(typeof(Editors.HorizonEditor<MarineManagementArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> species  { get; set; } = new ();
 
@@ -4267,7 +4229,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DepthContourViewModel : FeatureViewModel<DepthContour> {
 		[Category("DepthContour")]
-		[Editor(typeof(Editors.HorizonEditor<DepthContour>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
@@ -4423,7 +4384,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class EnvironmentallySensitiveSeaAreaViewModel : FeatureViewModel<EnvironmentallySensitiveSeaArea> {
 		[Category("EnvironmentallySensitiveSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<EnvironmentallySensitiveSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _controllingAuthority  = default;
@@ -4440,7 +4400,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("EnvironmentallySensitiveSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<EnvironmentallySensitiveSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -4505,14 +4464,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RoadViewModel : FeatureViewModel<Road> {
 		[Category("Road")]
-		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)4,(natureOfConstruction)5];
 		[Category("Road")]
-		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -4587,11 +4544,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Road")]
-		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("Road")]
-		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4720,11 +4675,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("River")]
-		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("River")]
-		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4744,7 +4697,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("River")]
-		[Editor(typeof(Editors.HorizonEditor<River>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -4865,7 +4817,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public depthUnits[] depthUnitsList => [(depthUnits)1];
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _nationality  = default;
@@ -4882,7 +4833,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -4902,11 +4852,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<typeofMilitaryActivity> typeofMilitaryActivity  { get; set; } = new ();
 
@@ -4926,7 +4874,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _minimumSafeDepth  = default;
@@ -4943,7 +4890,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryofMilitaryPracticeArea> categoryofMilitaryPracticeArea  { get; set; } = new ();
 
@@ -5048,7 +4994,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MilitaryPracticeArea")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryPracticeArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5247,7 +5192,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DiscolouredWaterViewModel : FeatureViewModel<DiscolouredWater> {
 		[Category("DiscolouredWater")]
-		[Editor(typeof(Editors.HorizonEditor<DiscolouredWater>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -5361,7 +5305,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -5378,7 +5321,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -5427,7 +5369,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5460,7 +5401,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
@@ -5480,7 +5420,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -5531,7 +5470,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -5710,7 +5648,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -5743,7 +5680,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private topmarkViewModel? _topmark  = default;
@@ -5761,7 +5697,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5825,14 +5760,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -5891,7 +5824,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -6038,7 +5970,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadioStationViewModel : FeatureViewModel<RadioStation> {
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -6068,7 +5999,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private frequencyPairViewModel? _frequencyPair  = default;
@@ -6140,21 +6070,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8];
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRadioStation> categoryOfRadioStation  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private double? _estimatedRangeofTransmission  = default;
@@ -6308,11 +6235,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class MilitaryExerciseAirspaceViewModel : FeatureViewModel<MilitaryExerciseAirspace> {
 		[Category("MilitaryExerciseAirspace")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryExerciseAirspace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("MilitaryExerciseAirspace")]
-		[Editor(typeof(Editors.HorizonEditor<MilitaryExerciseAirspace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -6545,7 +6470,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ContiguousZone")]
-		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6565,15 +6489,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ContiguousZone")]
-		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 		[Category("ContiguousZone")]
-		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		[Category("ContiguousZone")]
-		[Editor(typeof(Editors.HorizonEditor<ContiguousZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -6679,7 +6600,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NormalBaselineViewModel : FeatureViewModel<NormalBaseline> {
 		[Category("NormalBaseline")]
-		[Editor(typeof(Editors.HorizonEditor<NormalBaseline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -6834,11 +6754,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableAreaViewModel : FeatureViewModel<CableArea> {
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6873,11 +6791,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -6907,7 +6823,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -6927,7 +6842,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CableArea")]
-		[Editor(typeof(Editors.HorizonEditor<CableArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfCable> categoryOfCable  { get; set; } = new ();
 
@@ -7096,7 +7010,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ContinentalShelfArea")]
-		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -7113,15 +7026,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ContinentalShelfArea")]
-		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("ContinentalShelfArea")]
-		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("ContinentalShelfArea")]
-		[Editor(typeof(Editors.HorizonEditor<ContinentalShelfArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -7234,11 +7144,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class InternalWatersViewModel : FeatureViewModel<InternalWaters> {
 		[Category("InternalWaters")]
-		[Editor(typeof(Editors.HorizonEditor<InternalWaters>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 		[Category("InternalWaters")]
-		[Editor(typeof(Editors.HorizonEditor<InternalWaters>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		private Boolean? _inDispute  = default;
@@ -7282,7 +7190,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("InternalWaters")]
-		[Editor(typeof(Editors.HorizonEditor<InternalWaters>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private Boolean? _lineTypeGeodesic  = default;
@@ -7472,15 +7379,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AdministrationArea")]
-		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AdministrationArea")]
-		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("AdministrationArea")]
-		[Editor(typeof(Editors.HorizonEditor<AdministrationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
@@ -7577,11 +7481,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Bollard")]
-		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("Bollard")]
-		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -7612,7 +7514,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Bollard")]
-		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -7645,7 +7546,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("Bollard")]
-		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7806,7 +7706,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public categoryOfDolphin[] categoryOfDolphinList => [(categoryOfDolphin)1,(categoryOfDolphin)2,(categoryOfDolphin)3,(categoryOfDolphin)4];
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private visualProminence? _visualProminence  = default;
@@ -7826,14 +7725,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private double? _elevation  = default;
@@ -7850,14 +7747,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)12,(status)14,(status)18];
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private Boolean? _radarConspicuous  = default;
@@ -7943,7 +7838,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -8087,7 +7981,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarRangeViewModel : FeatureViewModel<RadarRange> {
 		[Category("RadarRange")]
-		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -8104,7 +7997,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadarRange")]
-		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -8135,11 +8027,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadarRange")]
-		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		[Category("RadarRange")]
-		[Editor(typeof(Editors.HorizonEditor<RadarRange>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8252,7 +8142,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)5];
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -8298,21 +8187,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)18];
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -8454,14 +8340,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -8694,7 +8578,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private Boolean? _radarConspicuous  = default;
@@ -8724,7 +8607,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -8744,7 +8626,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
@@ -8780,7 +8661,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private colourPattern? _colourPattern  = default;
@@ -8826,14 +8706,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 		[Category("IsolatedDangerBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8974,7 +8852,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SubmarineTransitLaneViewModel : FeatureViewModel<SubmarineTransitLane> {
 		[Category("SubmarineTransitLane")]
-		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -9017,7 +8894,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SubmarineTransitLane")]
-		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private String? _controllingAuthority  = default;
@@ -9034,11 +8910,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SubmarineTransitLane")]
-		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("SubmarineTransitLane")]
-		[Editor(typeof(Editors.HorizonEditor<SubmarineTransitLane>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -9210,7 +9084,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MaritimeSafetyInformationArea")]
-		[Editor(typeof(Editors.HorizonEditor<MaritimeSafetyInformationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -9227,7 +9100,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MaritimeSafetyInformationArea")]
-		[Editor(typeof(Editors.HorizonEditor<MaritimeSafetyInformationArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -9301,7 +9173,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AirspaceRestrictionViewModel : FeatureViewModel<AirspaceRestriction> {
 		[Category("AirspaceRestriction")]
-		[Editor(typeof(Editors.HorizonEditor<AirspaceRestriction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -9359,7 +9230,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AirspaceRestriction")]
-		[Editor(typeof(Editors.HorizonEditor<AirspaceRestriction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private verticalDatum? _verticalDatum  = default;
@@ -9548,7 +9418,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public status[] statusList => [(status)18];
 		[Category("Sounding")]
-		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -9568,18 +9437,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Sounding")]
-		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("Sounding")]
-		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 		[Category("Sounding")]
-		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -9732,7 +9598,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeBoundary")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeBoundary>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9752,7 +9617,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeBoundary")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeBoundary>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -9876,21 +9740,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DumpingGroundViewModel : FeatureViewModel<DumpingGround> {
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfDumpingGround> categoryOfDumpingGround  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfDumpingGround[] categoryOfDumpingGroundList => [(categoryOfDumpingGround)2,(categoryOfDumpingGround)3,(categoryOfDumpingGround)4,(categoryOfDumpingGround)5,(categoryOfDumpingGround)6];
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9923,11 +9784,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -10025,7 +9884,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AirportAirfieldViewModel : FeatureViewModel<AirportAirfield> {
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfAirportAirfield> categoryOfAirportAirfield  { get; set; } = new ();
 
@@ -10046,7 +9904,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private condition? _condition  = default;
@@ -10189,15 +10046,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10360,7 +10214,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FoulGroundViewModel : FeatureViewModel<FoulGround> {
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10380,14 +10233,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -10434,11 +10285,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -10599,7 +10448,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private rythmOfLightViewModel? _rythmOfLight  = default;
@@ -10617,7 +10465,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10692,14 +10539,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1];
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private double? _relativeHorizontalAccuracy  = default;
@@ -10788,11 +10633,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -10983,11 +10826,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -11010,21 +10851,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)18];
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -11109,7 +10947,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("MooringBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<MooringBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -11327,7 +11164,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private natureOfSurface? _natureOfSurface  = default;
@@ -11402,14 +11238,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)18];
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -11429,7 +11263,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private double? _horizontalLength  = default;
@@ -11674,7 +11507,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11741,7 +11573,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -11802,7 +11633,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -11977,11 +11807,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public controlledAirspaceClassDesignation[] controlledAirspaceClassDesignationList => [(controlledAirspaceClassDesignation)501,(controlledAirspaceClassDesignation)502,(controlledAirspaceClassDesignation)503,(controlledAirspaceClassDesignation)504,(controlledAirspaceClassDesignation)505,(controlledAirspaceClassDesignation)506,(controlledAirspaceClassDesignation)507];
 		[Category("ControlledAirspace")]
-		[Editor(typeof(Editors.HorizonEditor<ControlledAirspace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("ControlledAirspace")]
-		[Editor(typeof(Editors.HorizonEditor<ControlledAirspace>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private categoryOfControlledAirspace? _categoryOfControlledAirspace  = default;
@@ -12211,7 +12039,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ObstructionViewModel : FeatureViewModel<Obstruction> {
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -12231,7 +12058,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -12390,7 +12216,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public soundingDatum[] soundingDatumList => [(soundingDatum)501,(soundingDatum)502,(soundingDatum)503,(soundingDatum)504,(soundingDatum)505,(soundingDatum)506,(soundingDatum)507,(soundingDatum)508,(soundingDatum)509,(soundingDatum)510,(soundingDatum)511,(soundingDatum)512,(soundingDatum)513,(soundingDatum)514,(soundingDatum)515,(soundingDatum)519,(soundingDatum)522,(soundingDatum)523,(soundingDatum)524,(soundingDatum)525,(soundingDatum)526,(soundingDatum)527,(soundingDatum)531,(soundingDatum)532];
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private magneticInformationViewModel? _magneticInformation  = default;
@@ -12421,7 +12246,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12471,7 +12295,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -12576,7 +12399,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
@@ -12654,7 +12476,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -12685,7 +12506,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -13042,7 +12862,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FishingGroundViewModel : FeatureViewModel<FishingGround> {
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13075,11 +12894,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -13110,18 +12927,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39];
 		[Category("FishingGround")]
-		[Editor(typeof(Editors.HorizonEditor<FishingGround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -13238,11 +13052,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FishingFacilityViewModel : FeatureViewModel<FishingFacility> {
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private condition? _condition  = default;
@@ -13288,7 +13100,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13324,7 +13135,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -13451,7 +13261,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("NavigationSystem")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationSystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -13510,7 +13319,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("NavigationSystem")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationSystem>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _communicationChannel  = default;
@@ -13622,14 +13430,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeCrossingViewModel : FeatureViewModel<TrafficSeparationSchemeCrossing> {
 		[Category("TrafficSeparationSchemeCrossing")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 		[Category("TrafficSeparationSchemeCrossing")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -13673,7 +13479,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeCrossing")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13694,7 +13499,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeCrossing")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeCrossing>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -13810,7 +13614,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeLanePartViewModel : FeatureViewModel<TrafficSeparationSchemeLanePart> {
 		[Category("TrafficSeparationSchemeLanePart")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -13827,7 +13630,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeLanePart")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -13844,7 +13646,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeLanePart")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -13878,7 +13679,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeLanePart")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeLanePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14014,11 +13814,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TerritorialSeaAreaViewModel : FeatureViewModel<TerritorialSeaArea> {
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private status? _status  = default;
@@ -14064,7 +13862,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -14095,7 +13892,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -14115,11 +13911,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		[Category("TerritorialSeaArea")]
-		[Editor(typeof(Editors.HorizonEditor<TerritorialSeaArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -14329,7 +14123,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14379,7 +14172,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -14423,7 +14215,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private colourPattern? _colourPattern  = default;
@@ -14443,7 +14234,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -14503,14 +14293,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)5];
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8];
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -14675,7 +14463,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CoastGuardStationViewModel : FeatureViewModel<CoastGuardStation> {
 		[Category("CoastGuardStation")]
-		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14695,15 +14482,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CoastGuardStation")]
-		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("CoastGuardStation")]
-		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("CoastGuardStation")]
-		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private Boolean? _isMRCC  = default;
@@ -14734,7 +14518,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CoastGuardStation")]
-		[Editor(typeof(Editors.HorizonEditor<CoastGuardStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationsChannel  { get; set; } = new ();
 
@@ -14864,14 +14647,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SeparationZoneOrLine")]
-		[Editor(typeof(Editors.HorizonEditor<SeparationZoneOrLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)9,(status)28];
 		[Category("SeparationZoneOrLine")]
-		[Editor(typeof(Editors.HorizonEditor<SeparationZoneOrLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -14995,7 +14776,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class BottomFeatureViewModel : FeatureViewModel<BottomFeature> {
 		[Category("BottomFeature")]
-		[Editor(typeof(Editors.HorizonEditor<BottomFeature>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _migrationDirection  = default;
@@ -15012,7 +14792,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("BottomFeature")]
-		[Editor(typeof(Editors.HorizonEditor<BottomFeature>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private double? _horizontalLength  = default;
@@ -15199,7 +14978,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ArchipelagicBaseline")]
-		[Editor(typeof(Editors.HorizonEditor<ArchipelagicBaseline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -15344,11 +15122,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public statusOfSmallBottomObject[] statusOfSmallBottomObjectList => [(statusOfSmallBottomObject)504];
 		[Category("SmallBottomObject")]
-		[Editor(typeof(Editors.HorizonEditor<SmallBottomObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("SmallBottomObject")]
-		[Editor(typeof(Editors.HorizonEditor<SmallBottomObject>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private double? _valueOfSounding  = default;
@@ -15432,7 +15208,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class ExclusiveEconomicZoneViewModel : FeatureViewModel<ExclusiveEconomicZone> {
 		[Category("ExclusiveEconomicZone")]
-		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -15463,7 +15238,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ExclusiveEconomicZone")]
-		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -15480,7 +15254,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ExclusiveEconomicZone")]
-		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -15510,7 +15283,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ExclusiveEconomicZone")]
-		[Editor(typeof(Editors.HorizonEditor<ExclusiveEconomicZone>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
@@ -15610,7 +15382,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RadarStationViewModel : FeatureViewModel<RadarStation> {
 		[Category("RadarStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15672,7 +15443,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadarStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -15689,15 +15459,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RadarStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("RadarStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("RadarStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadarStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private double? _valueOfMaximumRange  = default;
@@ -15833,7 +15600,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DivingLocation")]
-		[Editor(typeof(Editors.HorizonEditor<DivingLocation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private divingActivity? _divingActivity  = default;
@@ -15907,7 +15673,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RestrictedAreaViewModel : FeatureViewModel<RestrictedArea> {
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -15924,7 +15689,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea  { get; set; } = new ();
 
@@ -15958,22 +15722,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)9,(status)18,(status)28,(status)501];
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -16003,7 +15763,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RestrictedArea")]
-		[Editor(typeof(Editors.HorizonEditor<RestrictedArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -16136,7 +15895,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CableSubmarineViewModel : FeatureViewModel<CableSubmarine> {
 		[Category("CableSubmarine")]
-		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16196,7 +15954,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CableSubmarine")]
-		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private categoryOfCable? _categoryOfCable  = default;
@@ -16245,7 +16002,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)5];
 		[Category("CableSubmarine")]
-		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -16406,7 +16162,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -16495,7 +16250,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16518,7 +16272,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public sonarSignalStrength[] sonarSignalStrengthList => [(sonarSignalStrength)501,(sonarSignalStrength)502,(sonarSignalStrength)503,(sonarSignalStrength)504];
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private magneticInformationViewModel? _magneticInformation  = default;
@@ -16549,7 +16302,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -16725,7 +16477,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 		private lastSourceInformationViewModel? _lastSourceInformation  = default;
@@ -16775,7 +16526,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public cardinalPointOrientation[] cardinalPointOrientationList => [(cardinalPointOrientation)501,(cardinalPointOrientation)502,(cardinalPointOrientation)503,(cardinalPointOrientation)504];
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselMeasurementsSpecificationViewModel> vesselMeasurementsSpecification  { get; set; } = new ();
 		private Boolean? _existenceOfRestrictedArea  = default;
@@ -16845,7 +16595,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -16894,7 +16643,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public expositionOfSounding[] expositionOfSoundingList => [(expositionOfSounding)1,(expositionOfSounding)2,(expositionOfSounding)3];
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -17143,15 +16891,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("QRoute")]
-		[Editor(typeof(Editors.HorizonEditor<QRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("QRoute")]
-		[Editor(typeof(Editors.HorizonEditor<QRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("QRoute")]
-		[Editor(typeof(Editors.HorizonEditor<QRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17354,7 +17099,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CompletenessOfProductSpecification")]
-		[Editor(typeof(Editors.HorizonEditor<CompletenessOfProductSpecification>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -17424,18 +17168,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class RescueStationViewModel : FeatureViewModel<RescueStation> {
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17];
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -17453,7 +17194,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -17470,7 +17210,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfRescueStation> categoryOfRescueStation  { get; set; } = new ();
 
@@ -17490,7 +17229,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("RescueStation")]
-		[Editor(typeof(Editors.HorizonEditor<RescueStation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -17604,11 +17342,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CardinalBeaconViewModel : FeatureViewModel<CardinalBeacon> {
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -17706,7 +17442,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17726,7 +17461,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -17796,7 +17530,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -17861,7 +17594,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -18017,7 +17749,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightVesselViewModel : FeatureViewModel<LightVessel> {
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -18079,7 +17810,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -18109,11 +17839,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -18134,7 +17862,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -18157,7 +17884,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private double? _horizontalWidth  = default;
@@ -18344,11 +18070,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FisheryZone")]
-		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		[Category("FisheryZone")]
-		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> species  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -18365,7 +18089,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FisheryZone")]
-		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -18383,7 +18106,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FisheryZone")]
-		[Editor(typeof(Editors.HorizonEditor<FisheryZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private status? _status  = default;
@@ -18539,7 +18261,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private double? _depthRangeMaximumValue  = default;
@@ -18572,7 +18293,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -18592,14 +18312,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)23,(restriction)25,(restriction)27,(restriction)39];
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -18702,7 +18420,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class FerryRouteViewModel : FeatureViewModel<FerryRoute> {
 		[Category("FerryRoute")]
-		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -18735,7 +18452,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FerryRoute")]
-		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -18753,7 +18469,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FerryRoute")]
-		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -18796,14 +18511,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("FerryRoute")]
-		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfFerry> categoryOfFerry  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfFerry[] categoryOfFerryList => [(categoryOfFerry)1,(categoryOfFerry)2,(categoryOfFerry)3,(categoryOfFerry)5];
 		[Category("FerryRoute")]
-		[Editor(typeof(Editors.HorizonEditor<FerryRoute>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -18965,7 +18678,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public gradientOfSlope[] gradientOfSlopeList => [(gradientOfSlope)501,(gradientOfSlope)502,(gradientOfSlope)503,(gradientOfSlope)504,(gradientOfSlope)505];
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private condition? _condition  = default;
@@ -19001,7 +18713,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -19074,7 +18785,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -19094,7 +18804,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private waterLevelEffect? _waterLevelEffect  = default;
@@ -19114,7 +18823,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)1,(waterLevelEffect)2,(waterLevelEffect)3,(waterLevelEffect)4,(waterLevelEffect)5,(waterLevelEffect)6,(waterLevelEffect)7];
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -19348,7 +19056,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -19424,7 +19131,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -19534,7 +19240,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private trafficFlow? _trafficFlow  = default;
@@ -19567,7 +19272,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -19611,18 +19315,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -19642,14 +19343,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 		[Category("DeepWaterRoutePart")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRoutePart>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -19794,11 +19493,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CurrentNonGravitationalViewModel : FeatureViewModel<CurrentNonGravitational> {
 		[Category("CurrentNonGravitational")]
-		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("CurrentNonGravitational")]
-		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -19829,7 +19526,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("CurrentNonGravitational")]
-		[Editor(typeof(Editors.HorizonEditor<CurrentNonGravitational>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -20037,7 +19733,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DataCoverage")]
-		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _maximumDisplayScale  = default;
@@ -20120,7 +19815,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SeabedAreaViewModel : FeatureViewModel<SeabedArea> {
 		[Category("SeabedArea")]
-		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _agencyResponsibleForProduction  = default;
@@ -20166,11 +19860,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public waterLevelEffect[] waterLevelEffectList => [(waterLevelEffect)3,(waterLevelEffect)4,(waterLevelEffect)5];
 		[Category("SeabedArea")]
-		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("SeabedArea")]
-		[Editor(typeof(Editors.HorizonEditor<SeabedArea>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<surfaceCharacteristicsViewModel> surfaceCharacteristics  { get; set; } = new ();
 		private double? _attenuation  = default;
@@ -20267,7 +19959,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SpecialPurposeGeneralBuoyViewModel : FeatureViewModel<SpecialPurposeGeneralBuoy> {
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private buoyShape? _buoyShape  = default;
@@ -20300,7 +19991,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private sourceIdentificationViewModel? _sourceIdentification  = default;
@@ -20334,7 +20024,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -20354,7 +20043,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20401,7 +20089,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -20424,14 +20111,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)11];
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -20448,7 +20133,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
@@ -20606,7 +20290,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LightSectoredViewModel : FeatureViewModel<LightSectored> {
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20640,7 +20323,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private double? _relativeVerticalAccuracy  = default;
@@ -20657,7 +20339,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -20706,7 +20387,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _pictorialRepresentation  = default;
@@ -20765,7 +20445,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<sectorCharacteristicsViewModel> sectorCharacteristics  { get; set; } = new ();
 		private verticalDatum? _verticalDatum  = default;
@@ -20831,7 +20510,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)11];
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -20981,11 +20659,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class IceLineViewModel : FeatureViewModel<IceLine> {
 		[Category("IceLine")]
-		[Editor(typeof(Editors.HorizonEditor<IceLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("IceLine")]
-		[Editor(typeof(Editors.HorizonEditor<IceLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -21047,7 +20723,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class AnchorageAreaViewModel : FeatureViewModel<AnchorageArea> {
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -21082,11 +20757,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfAnchorage> categoryOfAnchorage  { get; set; } = new ();
 
@@ -21106,18 +20779,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)5,(status)6,(status)7,(status)8,(status)9,(status)14];
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AnchorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<AnchorageArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
@@ -21264,7 +20934,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -21297,15 +20966,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21328,7 +20994,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4];
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		private colourPattern? _colourPattern  = default;
@@ -21391,7 +21056,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LateralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -21584,7 +21248,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TrafficSeparationSchemeRoundaboutViewModel : FeatureViewModel<TrafficSeparationSchemeRoundabout> {
 		[Category("TrafficSeparationSchemeRoundabout")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 		private String? _interoperabilityIdentifier  = default;
@@ -21628,7 +21291,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeRoundabout")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -21646,7 +21308,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeRoundabout")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21666,7 +21327,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("TrafficSeparationSchemeRoundabout")]
-		[Editor(typeof(Editors.HorizonEditor<TrafficSeparationSchemeRoundabout>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<restriction> restriction  { get; set; } = new ();
 
@@ -21772,7 +21432,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DeepWaterRouteCentrelineViewModel : FeatureViewModel<DeepWaterRouteCentreline> {
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
@@ -21792,7 +21451,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private trafficFlow? _trafficFlow  = default;
@@ -21839,7 +21497,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21859,7 +21516,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
@@ -21916,7 +21572,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("DeepWaterRouteCentreline")]
-		[Editor(typeof(Editors.HorizonEditor<DeepWaterRouteCentreline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -22057,7 +21712,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22080,18 +21734,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)11];
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -22207,7 +21858,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -22224,7 +21874,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -22436,7 +22085,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22542,7 +22190,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)3,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)44];
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private Boolean? _majorLight  = default;
@@ -22604,7 +22251,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1];
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -22625,18 +22271,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11];
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -22798,14 +22441,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class CoastlineViewModel : FeatureViewModel<Coastline> {
 		[Category("Coastline")]
-		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)6,(colour)7,(colour)8,(colour)11,(colour)13];
 		[Category("Coastline")]
-		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private categoryOfCoastline? _categoryOfCoastline  = default;
@@ -22865,14 +22506,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Coastline")]
-		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfSurface> natureOfSurface  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17];
 		[Category("Coastline")]
-		[Editor(typeof(Editors.HorizonEditor<Coastline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private visualProminence? _visualProminence  = default;
@@ -23052,7 +22691,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public categoryOfSeaArea[] categoryOfSeaAreaList => [(categoryOfSeaArea)2,(categoryOfSeaArea)3,(categoryOfSeaArea)4,(categoryOfSeaArea)5,(categoryOfSeaArea)6,(categoryOfSeaArea)7,(categoryOfSeaArea)8,(categoryOfSeaArea)9,(categoryOfSeaArea)10,(categoryOfSeaArea)11,(categoryOfSeaArea)12,(categoryOfSeaArea)13,(categoryOfSeaArea)14,(categoryOfSeaArea)15,(categoryOfSeaArea)16,(categoryOfSeaArea)17,(categoryOfSeaArea)18,(categoryOfSeaArea)19,(categoryOfSeaArea)20,(categoryOfSeaArea)21,(categoryOfSeaArea)22,(categoryOfSeaArea)23,(categoryOfSeaArea)24,(categoryOfSeaArea)25,(categoryOfSeaArea)26,(categoryOfSeaArea)27,(categoryOfSeaArea)28,(categoryOfSeaArea)29,(categoryOfSeaArea)30,(categoryOfSeaArea)31,(categoryOfSeaArea)32,(categoryOfSeaArea)33,(categoryOfSeaArea)34,(categoryOfSeaArea)35,(categoryOfSeaArea)36,(categoryOfSeaArea)37,(categoryOfSeaArea)38,(categoryOfSeaArea)39,(categoryOfSeaArea)40,(categoryOfSeaArea)41,(categoryOfSeaArea)42,(categoryOfSeaArea)43,(categoryOfSeaArea)44,(categoryOfSeaArea)45,(categoryOfSeaArea)46,(categoryOfSeaArea)47,(categoryOfSeaArea)48,(categoryOfSeaArea)49,(categoryOfSeaArea)50,(categoryOfSeaArea)51,(categoryOfSeaArea)52,(categoryOfSeaArea)53,(categoryOfSeaArea)54,(categoryOfSeaArea)55,(categoryOfSeaArea)56];
 		[Category("SeaAreaNamedWaterArea")]
-		[Editor(typeof(Editors.HorizonEditor<SeaAreaNamedWaterArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -23069,7 +22707,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SeaAreaNamedWaterArea")]
-		[Editor(typeof(Editors.HorizonEditor<SeaAreaNamedWaterArea>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private gradient? _gradient  = default;
@@ -23191,7 +22828,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DropZoneViewModel : FeatureViewModel<DropZone> {
 		[Category("DropZone")]
-		[Editor(typeof(Editors.HorizonEditor<DropZone>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
@@ -23259,7 +22895,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public categoryOfConveyor[] categoryOfConveyorList => [(categoryOfConveyor)1,(categoryOfConveyor)2,(categoryOfConveyor)3,(categoryOfConveyor)4];
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private condition? _condition  = default;
@@ -23292,14 +22927,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private visualProminence? _visualProminence  = default;
@@ -23359,7 +22992,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23465,7 +23097,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -23627,7 +23258,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class LineOfDelimitationViewModel : FeatureViewModel<LineOfDelimitation> {
 		[Category("LineOfDelimitation")]
-		[Editor(typeof(Editors.HorizonEditor<LineOfDelimitation>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationalMaritimeAuthority  { get; set; } = new ();
 		private boundaryStatusType? _boundaryStatusType  = default;
@@ -23647,7 +23277,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public boundaryStatusType[] boundaryStatusTypeList => [(boundaryStatusType)501,(boundaryStatusType)502,(boundaryStatusType)504,(boundaryStatusType)599];
 		[Category("LineOfDelimitation")]
-		[Editor(typeof(Editors.HorizonEditor<LineOfDelimitation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private String? _reportedDate  = default;
@@ -23842,7 +23471,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("StraightTerritorialSeaBaseline")]
-		[Editor(typeof(Editors.HorizonEditor<StraightTerritorialSeaBaseline>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		private status? _status  = default;
@@ -23973,11 +23601,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class SafeWaterBeaconViewModel : FeatureViewModel<SafeWaterBeacon> {
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private double? _elevation  = default;
@@ -24034,7 +23660,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -24142,7 +23767,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -24205,11 +23829,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -24401,18 +24023,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)12,(status)18];
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -24586,7 +24205,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -24638,18 +24256,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 

@@ -475,7 +475,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -496,7 +495,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -529,7 +527,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 		private Boolean? _sectorExtension  = default;
@@ -876,7 +873,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("rhythmOfLight")]
-		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private double? _signalPeriod  = default;
@@ -892,7 +888,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("rhythmOfLight")]
-		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -969,11 +964,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 		private double? _signalPeriod  = default;
@@ -989,7 +982,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("sectorCharacteristics")]
-		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 		private double? _candela  = default;
@@ -3269,11 +3261,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -3409,7 +3399,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -3474,35 +3463,30 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -3522,7 +3506,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -3845,11 +3828,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -3985,7 +3966,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -4066,14 +4046,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -4122,7 +4100,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -4142,7 +4119,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4410,11 +4386,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -4550,7 +4524,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -4631,14 +4604,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -4661,7 +4632,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -4681,7 +4651,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -4940,11 +4909,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -5080,7 +5047,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -5101,7 +5067,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
 		[Category("NavigationLine")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5261,11 +5226,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -5401,7 +5364,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -5445,7 +5407,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5496,14 +5457,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)5,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9,(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
@@ -5703,11 +5662,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -5843,17 +5800,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -5873,7 +5827,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -5936,7 +5889,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
@@ -5959,7 +5911,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<marksNavigationalSystemOf> marksNavigationalSystemOf  { get; set; } = new ();
 
@@ -5982,11 +5933,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<ObscuredSectorViewModel> ObscuredSector  { get; set; } = new ();
 		[Category("LightSectored")]
-		[Editor(typeof(Editors.HorizonEditor<LightSectored>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<sectorCharacteristicsViewModel> sectorCharacteristics  { get; set; } = new ();
 
@@ -6201,11 +6150,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -6341,17 +6288,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -6371,7 +6315,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -6434,14 +6377,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfLight> categoryOfLight  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
 
@@ -6778,11 +6719,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -6918,17 +6857,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -6948,7 +6884,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7027,7 +6962,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -7316,11 +7250,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -7456,17 +7388,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -7486,7 +7415,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericLight")]
-		[Editor(typeof(Editors.HorizonEditor<GenericLight>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -7753,11 +7681,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -7893,12 +7819,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -7916,7 +7840,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("RadarReflector")]
-		[Editor(typeof(Editors.HorizonEditor<RadarReflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8101,11 +8024,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -8241,12 +8162,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -8335,7 +8254,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("FogSignal")]
-		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -8536,11 +8454,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -8676,12 +8592,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -8699,14 +8613,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("EnvironmentObservationEquipment")]
-		[Editor(typeof(Editors.HorizonEditor<EnvironmentObservationEquipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 		[Category("EnvironmentObservationEquipment")]
-		[Editor(typeof(Editors.HorizonEditor<EnvironmentObservationEquipment>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<String> typeOfEnvironmentalObservationEquipment  { get; set; } = new ();
 
@@ -8863,11 +8775,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -9003,12 +8913,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -9197,11 +9105,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -9337,12 +9243,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -9363,14 +9267,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9403,7 +9305,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -9423,7 +9324,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -9702,11 +9602,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -9842,24 +9740,20 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
 		[Category("Retroreflector")]
-		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Retroreflector")]
-		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -9882,7 +9776,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("Retroreflector")]
-		[Editor(typeof(Editors.HorizonEditor<Retroreflector>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10103,11 +9996,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -10243,12 +10134,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -10296,7 +10185,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10547,11 +10435,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -10687,7 +10573,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -10718,7 +10603,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("ElectronicAton")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -10881,11 +10765,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -11021,7 +10903,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -11052,7 +10933,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("ElectronicAton")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11215,11 +11095,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -11355,7 +11233,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -11386,7 +11263,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("ElectronicAton")]
-		[Editor(typeof(Editors.HorizonEditor<ElectronicAton>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11568,11 +11444,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -11708,12 +11582,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Equipment")]
-		[Editor(typeof(Editors.HorizonEditor<Equipment>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> remoteMonitoringSystem  { get; set; } = new ();
 
@@ -11734,7 +11606,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public CategoryOfPowerSource[] CategoryOfPowerSourceList => [(CategoryOfPowerSource)1,(CategoryOfPowerSource)2,(CategoryOfPowerSource)3,(CategoryOfPowerSource)4];
 		[Category("PowerSource")]
-		[Editor(typeof(Editors.HorizonEditor<PowerSource>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -11884,11 +11755,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -12024,7 +11893,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -12105,14 +11973,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -12161,7 +12027,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -12181,7 +12046,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12430,11 +12294,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -12570,7 +12432,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -12651,14 +12512,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -12707,7 +12566,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -12727,7 +12585,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -12995,11 +12852,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -13135,7 +12990,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -13216,14 +13070,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -13246,7 +13098,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13266,7 +13117,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -13506,11 +13356,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -13646,7 +13494,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -13727,14 +13574,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -13757,7 +13602,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -13777,7 +13621,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14036,11 +13879,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -14176,7 +14017,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -14257,14 +14097,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -14287,7 +14125,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14307,7 +14144,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -14566,11 +14402,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -14706,7 +14540,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -14787,14 +14620,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -14817,7 +14648,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -14837,7 +14667,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15077,11 +14906,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -15217,7 +15044,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -15298,14 +15124,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -15328,7 +15152,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -15348,7 +15171,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -15588,11 +15410,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -15728,7 +15548,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -15793,35 +15612,30 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfLandmark> categoryOfLandmark  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -15841,7 +15655,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16165,11 +15978,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -16305,7 +16116,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -16370,14 +16180,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -16423,7 +16231,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -16443,7 +16250,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("LightFloat")]
-		[Editor(typeof(Editors.HorizonEditor<LightFloat>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -16704,11 +16510,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -16844,7 +16648,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -16909,14 +16712,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -16962,7 +16763,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -16982,7 +16782,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("LightVessel")]
-		[Editor(typeof(Editors.HorizonEditor<LightVessel>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17243,11 +17042,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -17383,7 +17180,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -17448,21 +17244,18 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<categoryOfOffshorePlatform> categoryOfOffshorePlatform  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1,(categoryOfOffshorePlatform)2,(categoryOfOffshorePlatform)3,(categoryOfOffshorePlatform)4,(categoryOfOffshorePlatform)5,(categoryOfOffshorePlatform)6,(categoryOfOffshorePlatform)7,(categoryOfOffshorePlatform)8,(categoryOfOffshorePlatform)9,(categoryOfOffshorePlatform)10,(categoryOfOffshorePlatform)11];
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -17495,14 +17288,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
@@ -17522,7 +17313,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -17803,11 +17593,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -17943,7 +17731,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -18040,14 +17827,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1,(categoryOfSiloTank)2,(categoryOfSiloTank)3,(categoryOfSiloTank)4];
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -18080,7 +17865,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -18100,7 +17884,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -18367,11 +18150,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -18507,7 +18288,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -18588,14 +18368,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1,(categoryOfPile)3,(categoryOfPile)4,(categoryOfPile)5,(categoryOfPile)6,(categoryOfPile)7];
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -18846,11 +18624,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -18986,7 +18762,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -19186,11 +18961,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -19326,7 +19099,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -19526,11 +19298,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -19666,7 +19436,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -19862,11 +19631,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -20002,7 +19769,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -20181,11 +19947,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -20321,7 +20085,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -20356,7 +20119,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)3,(categoryOfCable)4,(categoryOfCable)5,(categoryOfCable)6,(categoryOfCable)7,(categoryOfCable)8];
 		[Category("CableSubmarine")]
-		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -20502,11 +20264,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -20642,7 +20402,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -20818,11 +20577,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -20958,7 +20715,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -21115,11 +20871,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -21255,7 +21009,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -21431,11 +21184,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -21571,26 +21322,22 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
 		[Category("Topmark")]
-		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("Topmark")]
-		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
 		[Category("Topmark")]
-		[Editor(typeof(Editors.HorizonEditor<Topmark>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -21782,11 +21529,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -21922,7 +21667,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -22003,14 +21747,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -22059,7 +21801,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -22079,7 +21820,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22328,11 +22068,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -22468,7 +22206,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -22549,14 +22286,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -22605,7 +22340,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -22625,7 +22359,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBeacon>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -22675,7 +22408,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -22891,11 +22623,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -23031,7 +22761,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -23112,14 +22841,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -23142,7 +22869,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -23162,7 +22888,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23402,11 +23127,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 		private int? _scaleMinimum  = default;
@@ -23542,7 +23265,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
 
@@ -23623,14 +23345,12 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
@@ -23653,7 +23373,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
@@ -23673,7 +23392,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			}
 		}
 		[Category("GenericBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<GenericBuoy>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
@@ -23720,7 +23438,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 		[Category("SpecialPurposeGeneralBuoy")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBuoy>), typeof(Editors.HorizonEditor))]
 		[Multiplicity(1)]
 		public ObservableCollection<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark  { get; set; } = new ();
 
@@ -23917,7 +23634,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DangerousFeatureViewModel : FeatureViewModel<DangerousFeature> {
 		[Category("DangerousFeature")]
-		[Editor(typeof(Editors.HorizonEditor<DangerousFeature>), typeof(Editors.HorizonEditor))]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
