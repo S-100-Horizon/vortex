@@ -31,22 +31,28 @@ namespace ProductCatalogueService
                 options.ReportApiVersions = true;
             });
 
+            builder.Services.AddRouting(options => {
+                options.LowercaseUrls = true;
+            });
+
+
+            // Problem details & Exception handling
+            builder.Services.AddProblemDetails();
+            builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
             var app = builder.Build();
 
-            ArcGIS.Core.Hosting.Host.Initialize();            
+            ArcGIS.Core.Hosting.Host.Initialize();
 
-            var output = new DirectoryInfo("s100ed9.gdb");
+            // Set output path to bin
+            var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"));
 
-            if (!output.Exists) {
-                FastZip fastZip = new();
-                fastZip.ExtractZip("s100ed9.gdb.zip", output.FullName, null);
-            }
+            if (!output.Exists)
+                new FastZip().ExtractZip("s100ed9.gdb.zip", output.FullName, null);
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment()) {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
