@@ -121,6 +121,8 @@ namespace TestProductCatalogue
             });
             Assert.NotNull(productManager);
 
+            var tasks = new List<Task>();
+
             //  S-57 ProductDefinitions
             await productManager.Dispatch(() => {
                 var connectionFile = new Uri(IO.Path.GetFullPath(s57));
@@ -139,8 +141,6 @@ namespace TestProductCatalogue
                     name = S100Framework.DomainModel.S101.Summary.ProductId,
                     version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
                 };
-
-                var tasks = new List<Task>();
 
                 using var geodatabase = createGeodatabase();
 
@@ -187,10 +187,10 @@ namespace TestProductCatalogue
 
                         tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                     }
-
-                    Task.WaitAll([.. tasks]);
                 }
             });
+
+            await Task.WhenAll([.. tasks]);
         }
 
         [Fact]
