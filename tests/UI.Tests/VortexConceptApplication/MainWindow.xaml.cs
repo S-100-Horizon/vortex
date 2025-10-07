@@ -168,14 +168,26 @@ namespace VortexConceptApplication
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Red);
             //model.colour.Add(S100Framework.DomainModel.S101.colour.Green);
 
-            var viewModel = new TestViewModel() {
+            var viewModel1 = new TestViewModel() {
                 Name = "S202600",
             }.Load(new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock());
+
+            //  RangeConstraintAttribute
+            var viewModel2 = new S100Framework.WPF.ViewModel.S101.LocalDirectionOfBuoyageViewModel() {
+                Name = "S202600",
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage());
+
+            //  StringLengthConstraintAttribute
+            var viewModel3 = new S100Framework.WPF.ViewModel.S101.FogSignalViewModel() {
+                Name = "S202600",
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
 
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
 
+
+            var viewModel = viewModel3;
 
             SelectedProperty = viewModel;
 

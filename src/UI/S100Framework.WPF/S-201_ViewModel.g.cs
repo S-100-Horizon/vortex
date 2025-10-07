@@ -185,6 +185,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _deliveryPoint, value);
 			}
 		}
+
 		private String? _cityName  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -197,6 +198,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _cityName, value);
 			}
 		}
+
 		private String? _administrativeDivision  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -209,6 +211,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _administrativeDivision, value);
 			}
 		}
+
 		private String? _countryName  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -221,6 +224,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _countryName, value);
 			}
 		}
+
 		private String? _postalCode  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -289,10 +293,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _moireEffect, value);
 			}
 		}
+
 		private orientationViewModel _orientation  = default;
 
 		[Category("directionalCharacter")]
-		[Editor(typeof(Editors.HorizonEditor<directionalCharacter>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {
@@ -353,6 +357,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _displayName, value);
 			}
 		}
+
 		private String? _language  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -365,6 +370,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -427,6 +433,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
+
 		private String? _dateStart  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -480,10 +487,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -494,16 +501,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _directionalCharacter, value);
 			}
 		}
+
 		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
+
 		private sectorLimitViewModel? _sectorLimit  = default;
 
 		[Category("lightSector")]
-		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -514,6 +522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
+
 		private double? _valueOfNominalRange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
@@ -526,9 +535,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfNominalRange, value);
 			}
 		}
+
 		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
+
 		private Boolean? _sectorExtension  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<lightSector>), typeof(Editors.HorizonEditor))]
@@ -633,6 +644,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityKnown, value);
 			}
 		}
+
 		private int? _numberOfFeatures  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<multiplicityOfFeatures>), typeof(Editors.HorizonEditor))]
@@ -692,6 +704,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
+
 		private double _orientationValue  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<orientation>), typeof(Editors.HorizonEditor))]
@@ -751,6 +764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
+
 		private String _dateStart  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
@@ -810,6 +824,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarBand, value);
 			}
 		}
+
 		private double _waveLengthValue  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<radarWaveLength>), typeof(Editors.HorizonEditor))]
@@ -872,9 +887,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
+
 		[Category("rhythmOfLight")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
+
 		private double? _signalPeriod  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<rhythmOfLight>), typeof(Editors.HorizonEditor))]
@@ -887,6 +904,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalPeriod, value);
 			}
 		}
+
 		[Category("rhythmOfLight")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
@@ -963,12 +981,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29,(lightCharacteristic)30,(lightCharacteristic)31,(lightCharacteristic)32,(lightCharacteristic)33,(lightCharacteristic)34,(lightCharacteristic)35];
+
 		[Category("sectorCharacteristics")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
+
 		[Category("sectorCharacteristics")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
+
 		private double? _signalPeriod  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
@@ -981,9 +1002,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalPeriod, value);
 			}
 		}
+
 		[Category("sectorCharacteristics")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
+
 		private double? _candela  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorCharacteristics>), typeof(Editors.HorizonEditor))]
@@ -1079,6 +1102,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorInformation>), typeof(Editors.HorizonEditor))]
@@ -1129,7 +1153,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
 		[Category("sectorLimit")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimit>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1140,10 +1163,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimitOne, value);
 			}
 		}
+
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
 		[Category("sectorLimit")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimit>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1207,6 +1230,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
+
 		private int? _sectorLineLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
@@ -1266,6 +1290,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
+
 		private int? _sectorLineLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
@@ -1325,6 +1350,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<shapeInformation>), typeof(Editors.HorizonEditor))]
@@ -1384,6 +1410,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalDuration, value);
 			}
 		}
+
 		private signalStatus _signalStatus  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<signalSequence>), typeof(Editors.HorizonEditor))]
@@ -1437,7 +1464,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1448,10 +1474,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1462,10 +1488,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1535,6 +1561,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _cableLength, value);
 			}
 		}
+
 		private heightLengthUnits _heightLengthUnits  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
@@ -1550,6 +1577,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
+
 		private double _diameter  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<CableDimensions>), typeof(Editors.HorizonEditor))]
@@ -1615,6 +1643,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public atonCommissioning[] atonCommissioningList => [(atonCommissioning)1,(atonCommissioning)2,(atonCommissioning)3,(atonCommissioning)4,(atonCommissioning)5,(atonCommissioning)6,(atonCommissioning)7,(atonCommissioning)8,(atonCommissioning)9,(atonCommissioning)10,(atonCommissioning)11,(atonCommissioning)12,(atonCommissioning)13];
+
 		private atonRemoval? _atonRemoval  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1630,6 +1659,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public atonRemoval[] atonRemovalList => [(atonRemoval)1,(atonRemoval)2,(atonRemoval)3,(atonRemoval)4,(atonRemoval)5,(atonRemoval)6,(atonRemoval)7,(atonRemoval)8,(atonRemoval)9,(atonRemoval)10,(atonRemoval)11,(atonRemoval)12,(atonRemoval)13,(atonRemoval)14,(atonRemoval)15,(atonRemoval)16,(atonRemoval)17,(atonRemoval)18,(atonRemoval)19,(atonRemoval)20,(atonRemoval)21,(atonRemoval)22,(atonRemoval)23,(atonRemoval)24,(atonRemoval)25,(atonRemoval)26,(atonRemoval)27];
+
 		private atonReplacement? _atonReplacement  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1645,6 +1675,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public atonReplacement[] atonReplacementList => [(atonReplacement)1,(atonReplacement)2,(atonReplacement)3,(atonReplacement)4,(atonReplacement)5,(atonReplacement)6,(atonReplacement)7,(atonReplacement)8,(atonReplacement)9,(atonReplacement)10,(atonReplacement)11,(atonReplacement)12,(atonReplacement)13,(atonReplacement)14,(atonReplacement)15,(atonReplacement)16];
+
 		private fixedAtonChange? _fixedAtonChange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1660,6 +1691,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public fixedAtonChange[] fixedAtonChangeList => [(fixedAtonChange)1,(fixedAtonChange)2,(fixedAtonChange)3,(fixedAtonChange)4,(fixedAtonChange)5,(fixedAtonChange)6,(fixedAtonChange)7,(fixedAtonChange)8,(fixedAtonChange)9,(fixedAtonChange)10,(fixedAtonChange)11];
+
 		private floatingAtonChange? _floatingAtonChange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1675,6 +1707,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public floatingAtonChange[] floatingAtonChangeList => [(floatingAtonChange)1,(floatingAtonChange)2,(floatingAtonChange)3,(floatingAtonChange)4,(floatingAtonChange)5,(floatingAtonChange)6,(floatingAtonChange)7,(floatingAtonChange)8,(floatingAtonChange)9,(floatingAtonChange)10,(floatingAtonChange)11,(floatingAtonChange)12,(floatingAtonChange)13,(floatingAtonChange)14,(floatingAtonChange)15,(floatingAtonChange)16,(floatingAtonChange)17,(floatingAtonChange)18,(floatingAtonChange)19,(floatingAtonChange)20,(floatingAtonChange)21,(floatingAtonChange)22,(floatingAtonChange)23,(floatingAtonChange)24,(floatingAtonChange)25,(floatingAtonChange)26];
+
 		private audibleSignalAtonChange? _audibleSignalAtonChange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1690,6 +1723,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public audibleSignalAtonChange[] audibleSignalAtonChangeList => [(audibleSignalAtonChange)1,(audibleSignalAtonChange)2,(audibleSignalAtonChange)3,(audibleSignalAtonChange)4];
+
 		private lightedAtonChange? _lightedAtonChange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1705,6 +1739,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightedAtonChange[] lightedAtonChangeList => [(lightedAtonChange)1,(lightedAtonChange)2,(lightedAtonChange)3,(lightedAtonChange)4,(lightedAtonChange)5,(lightedAtonChange)6,(lightedAtonChange)7,(lightedAtonChange)8,(lightedAtonChange)9,(lightedAtonChange)10,(lightedAtonChange)11,(lightedAtonChange)12,(lightedAtonChange)13,(lightedAtonChange)14,(lightedAtonChange)15,(lightedAtonChange)16,(lightedAtonChange)17,(lightedAtonChange)18,(lightedAtonChange)19,(lightedAtonChange)20,(lightedAtonChange)21,(lightedAtonChange)22,(lightedAtonChange)23,(lightedAtonChange)24];
+
 		private electronicAtonChange? _electronicAtonChange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<ChangeDetails>), typeof(Editors.HorizonEditor))]
@@ -1776,7 +1811,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private sectorLimitViewModel _sectorLimit  = default;
 
 		[Category("ObscuredSector")]
-		[Editor(typeof(Editors.HorizonEditor<ObscuredSector>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitViewModel sectorLimit {
@@ -1787,10 +1821,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimit, value);
 			}
 		}
+
 		private sectorInformationViewModel? _sectorInformation  = default;
 
 		[Category("ObscuredSector")]
-		[Editor(typeof(Editors.HorizonEditor<ObscuredSector>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sectorInformationViewModel? sectorInformation {
@@ -1857,6 +1891,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public heightLengthUnits[] heightLengthUnitsList => [(heightLengthUnits)1,(heightLengthUnits)2,(heightLengthUnits)3,(heightLengthUnits)4,(heightLengthUnits)5,(heightLengthUnits)6];
+
 		private double? _horizontalLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
@@ -1869,6 +1904,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
+
 		private double? _horizontalWidth  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
@@ -1881,6 +1917,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sinkerDimensions>), typeof(Editors.HorizonEditor))]
@@ -1949,6 +1986,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public positioningEquipment[] positioningEquipmentList => [(positioningEquipment)1,(positioningEquipment)2,(positioningEquipment)3,(positioningEquipment)4];
+
 		private String _NMEAString  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<positioningMethod>), typeof(Editors.HorizonEditor))]
@@ -2008,6 +2046,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
+
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
@@ -2067,6 +2106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fileLocator, value);
 			}
 		}
+
 		private String? _fileReference  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -2079,6 +2119,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fileReference, value);
 			}
 		}
+
 		private String? _headline  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -2091,6 +2132,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _headline, value);
 			}
 		}
+
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -2103,6 +2145,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String? _text  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -2171,6 +2214,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fileReference, value);
 			}
 		}
+
 		private String? _language  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<textualDescription>), typeof(Editors.HorizonEditor))]
@@ -2230,6 +2274,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
+
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
@@ -2951,6 +2996,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _referencePoint, value);
 			}
 		}
+
 		private horizontalDatum? _horizontalDatum  = default;
 
 		[Category("AtoNFixingMethod")]
@@ -2967,6 +3013,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public horizontalDatum[] horizontalDatumList => [(horizontalDatum)1,(horizontalDatum)2,(horizontalDatum)3,(horizontalDatum)4,(horizontalDatum)5,(horizontalDatum)6,(horizontalDatum)7,(horizontalDatum)8,(horizontalDatum)9,(horizontalDatum)10,(horizontalDatum)11,(horizontalDatum)12,(horizontalDatum)13,(horizontalDatum)14,(horizontalDatum)15,(horizontalDatum)16,(horizontalDatum)17,(horizontalDatum)18,(horizontalDatum)19,(horizontalDatum)20,(horizontalDatum)21,(horizontalDatum)22,(horizontalDatum)23,(horizontalDatum)24,(horizontalDatum)25,(horizontalDatum)26,(horizontalDatum)27,(horizontalDatum)28,(horizontalDatum)29,(horizontalDatum)30,(horizontalDatum)31,(horizontalDatum)32,(horizontalDatum)33,(horizontalDatum)34,(horizontalDatum)35,(horizontalDatum)36,(horizontalDatum)37,(horizontalDatum)38,(horizontalDatum)39,(horizontalDatum)40,(horizontalDatum)41,(horizontalDatum)42,(horizontalDatum)43,(horizontalDatum)44,(horizontalDatum)45,(horizontalDatum)46,(horizontalDatum)47,(horizontalDatum)48,(horizontalDatum)49,(horizontalDatum)50,(horizontalDatum)51,(horizontalDatum)52,(horizontalDatum)53,(horizontalDatum)54,(horizontalDatum)55,(horizontalDatum)56,(horizontalDatum)57,(horizontalDatum)58,(horizontalDatum)59,(horizontalDatum)60,(horizontalDatum)61,(horizontalDatum)62,(horizontalDatum)63,(horizontalDatum)64,(horizontalDatum)65,(horizontalDatum)66,(horizontalDatum)67,(horizontalDatum)68,(horizontalDatum)69,(horizontalDatum)70,(horizontalDatum)71,(horizontalDatum)72,(horizontalDatum)73,(horizontalDatum)74,(horizontalDatum)75,(horizontalDatum)76,(horizontalDatum)77,(horizontalDatum)78,(horizontalDatum)79,(horizontalDatum)80,(horizontalDatum)81,(horizontalDatum)82,(horizontalDatum)83,(horizontalDatum)84,(horizontalDatum)85,(horizontalDatum)86,(horizontalDatum)87,(horizontalDatum)88,(horizontalDatum)89,(horizontalDatum)90,(horizontalDatum)91,(horizontalDatum)92,(horizontalDatum)93,(horizontalDatum)94,(horizontalDatum)95,(horizontalDatum)96,(horizontalDatum)97,(horizontalDatum)98,(horizontalDatum)99,(horizontalDatum)100,(horizontalDatum)101,(horizontalDatum)102,(horizontalDatum)103,(horizontalDatum)104,(horizontalDatum)105,(horizontalDatum)106,(horizontalDatum)107,(horizontalDatum)108,(horizontalDatum)109,(horizontalDatum)110,(horizontalDatum)111,(horizontalDatum)112,(horizontalDatum)113,(horizontalDatum)114,(horizontalDatum)116,(horizontalDatum)117,(horizontalDatum)118,(horizontalDatum)119,(horizontalDatum)120,(horizontalDatum)121,(horizontalDatum)122,(horizontalDatum)123,(horizontalDatum)124,(horizontalDatum)125,(horizontalDatum)126,(horizontalDatum)127,(horizontalDatum)128,(horizontalDatum)129,(horizontalDatum)130,(horizontalDatum)131];
+
 		private DateOnly _sourceDate  = default;
 
 		[Category("AtoNFixingMethod")]
@@ -2980,6 +3027,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String _positioningProcedure  = string.Empty;
 
 		[Category("AtoNFixingMethod")]
@@ -3040,7 +3088,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private ChangeDetailsViewModel _ChangeDetails  = default;
 
 		[Category("AtonStatusInformation")]
-		[Editor(typeof(Editors.HorizonEditor<AtonStatusInformation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public ChangeDetailsViewModel ChangeDetails {
@@ -3051,6 +3098,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _ChangeDetails, value);
 			}
 		}
+
 		private ChangeTypes? _ChangeTypes  = default;
 
 		[Category("AtonStatusInformation")]
@@ -3121,10 +3169,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _positioningDevice, value);
 			}
 		}
+
 		private positioningMethodViewModel? _positioningMethod  = default;
 
 		[Category("PositioningInformation")]
-		[Editor(typeof(Editors.HorizonEditor<PositioningInformation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public positioningMethodViewModel? positioningMethod {
@@ -3192,10 +3240,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
+
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public spatialAccuracyViewModel? spatialAccuracy {
@@ -3260,12 +3308,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -3279,6 +3330,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -3292,6 +3344,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -3305,6 +3358,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -3318,6 +3372,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -3331,6 +3386,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -3344,6 +3400,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -3357,6 +3414,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -3370,10 +3428,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3384,10 +3442,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -3398,6 +3456,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -3415,6 +3474,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -3431,6 +3491,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -3447,10 +3508,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -3468,30 +3529,35 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("Landmark")]
@@ -3505,12 +3571,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("Landmark")]
@@ -3527,6 +3595,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private visualProminence _visualProminence  = default;
 
 		[Category("Landmark")]
@@ -3543,6 +3612,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _elevation  = default;
 
 		[Category("Landmark")]
@@ -3556,6 +3626,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("Landmark")]
@@ -3569,6 +3640,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private Boolean? _mannedStructure  = default;
 
 		[Category("Landmark")]
@@ -3582,6 +3654,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
@@ -3595,6 +3668,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
@@ -3827,12 +3901,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -3846,6 +3923,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -3859,6 +3937,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -3872,6 +3951,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -3885,6 +3965,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -3898,6 +3979,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -3911,6 +3993,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -3924,6 +4007,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -3937,10 +4021,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3951,10 +4035,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -3965,6 +4049,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -3982,6 +4067,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -3998,6 +4084,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -4014,10 +4101,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -4045,18 +4132,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
+
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
@@ -4070,6 +4160,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("GenericBeacon")]
@@ -4083,6 +4174,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBeacon")]
@@ -4099,12 +4191,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBeacon")]
@@ -4118,12 +4212,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
@@ -4137,6 +4233,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("GenericBeacon")]
@@ -4153,6 +4250,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
@@ -4385,12 +4483,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -4404,6 +4505,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -4417,6 +4519,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -4430,6 +4533,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -4443,6 +4547,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -4456,6 +4561,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -4469,6 +4575,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -4482,6 +4589,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -4495,10 +4603,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4509,10 +4617,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -4523,6 +4631,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -4540,6 +4649,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -4556,6 +4666,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -4572,10 +4683,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -4603,18 +4714,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -4631,12 +4745,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -4650,12 +4766,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -4669,6 +4787,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -4682,6 +4801,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -4908,12 +5028,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -4927,6 +5050,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -4940,6 +5064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -4953,6 +5078,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -4966,6 +5092,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -4979,6 +5106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -4992,6 +5120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -5005,6 +5134,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -5018,10 +5148,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5032,10 +5162,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -5046,6 +5176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -5066,16 +5197,17 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfNavigationLine[] categoryOfNavigationLineList => [(categoryOfNavigationLine)1,(categoryOfNavigationLine)2,(categoryOfNavigationLine)3];
+
 		[Category("NavigationLine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private orientationViewModel _orientation  = default;
 
 		[Category("NavigationLine")]
-		[Editor(typeof(Editors.HorizonEditor<NavigationLine>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {
@@ -5225,12 +5357,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -5244,6 +5379,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -5257,6 +5393,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -5270,6 +5407,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -5283,6 +5421,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -5296,6 +5435,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -5309,6 +5449,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -5322,6 +5463,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -5335,10 +5477,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5349,10 +5491,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -5363,6 +5505,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -5380,6 +5523,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _basedOnFixedMarks, value);
 			}
 		}
+
 		private double? _depthRangeMinimumValue  = default;
 
 		[Category("RecommendedTrack")]
@@ -5393,6 +5537,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _depthRangeMinimumValue, value);
 			}
 		}
+
 		private double? _maximalPermittedDraught  = default;
 
 		[Category("RecommendedTrack")]
@@ -5406,12 +5551,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _maximalPermittedDraught, value);
 			}
 		}
+
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("RecommendedTrack")]
@@ -5428,10 +5575,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private orientationViewModel _orientation  = default;
 
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {
@@ -5442,10 +5589,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientation, value);
 			}
 		}
+
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("RecommendedTrack")]
-		[Editor(typeof(Editors.HorizonEditor<RecommendedTrack>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -5456,18 +5603,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalUncertainty, value);
 			}
 		}
+
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)5,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9,(qualityOfVerticalMeasurement)10,(qualityOfVerticalMeasurement)11];
+
 		[Category("RecommendedTrack")]
 		[Optional]
 		public ObservableCollection<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement  { get; set; } = new ();
 
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)2,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)4,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)6,(techniqueOfVerticalMeasurement)7,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)10,(techniqueOfVerticalMeasurement)11,(techniqueOfVerticalMeasurement)12,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)14,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17];
+
 		private trafficFlow _trafficFlow  = default;
 
 		[Category("RecommendedTrack")]
@@ -5661,12 +5811,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -5680,6 +5833,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -5693,6 +5847,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -5706,6 +5861,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -5719,6 +5875,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -5732,6 +5889,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -5745,6 +5903,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -5758,6 +5917,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -5771,10 +5931,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5785,10 +5945,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -5799,6 +5959,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -5813,6 +5974,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -5826,12 +5988,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("GenericLight")]
@@ -5848,6 +6012,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
@@ -5861,6 +6026,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -5874,6 +6040,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
+
 		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
@@ -5894,6 +6061,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
+
 		private exhibitionConditionOfLight? _exhibitionConditionOfLight  = default;
 
 		[Category("LightSectored")]
@@ -5910,12 +6078,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
+
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<marksNavigationalSystemOf> marksNavigationalSystemOf  { get; set; } = new ();
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		private signalGeneration? _signalGeneration  = default;
 
 		[Category("LightSectored")]
@@ -5932,9 +6102,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+
 		[Category("LightSectored")]
 		[Optional]
 		public ObservableCollection<ObscuredSectorViewModel> ObscuredSector  { get; set; } = new ();
+
 		[Category("LightSectored")]
 		[Multiplicity(1)]
 		public ObservableCollection<sectorCharacteristicsViewModel> sectorCharacteristics  { get; set; } = new ();
@@ -6149,12 +6321,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -6168,6 +6343,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -6181,6 +6357,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -6194,6 +6371,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -6207,6 +6385,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -6220,6 +6399,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -6233,6 +6413,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -6246,6 +6427,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -6259,10 +6441,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6273,10 +6455,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -6287,6 +6469,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -6301,6 +6484,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -6314,12 +6498,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("GenericLight")]
@@ -6336,6 +6522,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
@@ -6349,6 +6536,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -6362,6 +6550,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
+
 		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
@@ -6382,12 +6571,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfLight[] categoryOfLightList => [(categoryOfLight)1,(categoryOfLight)4,(categoryOfLight)5,(categoryOfLight)6,(categoryOfLight)8,(categoryOfLight)9,(categoryOfLight)10,(categoryOfLight)11,(categoryOfLight)12,(categoryOfLight)13,(categoryOfLight)14,(categoryOfLight)15,(categoryOfLight)17,(categoryOfLight)18,(categoryOfLight)19,(categoryOfLight)20];
+
 		[Category("LightAllAround")]
 		[Optional]
 		public ObservableCollection<exhibitionConditionOfLight> exhibitionConditionOfLight  { get; set; } = new ();
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
+
 		private lightVisibility? _lightVisibility  = default;
 
 		[Category("LightAllAround")]
@@ -6404,6 +6595,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
+
 		private Boolean? _majorLight  = default;
 
 		[Category("LightAllAround")]
@@ -6417,6 +6609,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _majorLight, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("LightAllAround")]
@@ -6433,6 +6626,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		private signalGeneration? _signalGeneration  = default;
 
 		[Category("LightAllAround")]
@@ -6449,6 +6643,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+
 		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAllAround")]
@@ -6462,10 +6657,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfNominalRange, value);
 			}
 		}
+
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
@@ -6476,10 +6671,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
+
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightAllAround")]
-		[Editor(typeof(Editors.HorizonEditor<LightAllAround>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public rhythmOfLightViewModel rhythmOfLight {
@@ -6490,6 +6685,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _rhythmOfLight, value);
 			}
 		}
+
 		private int? _flareBearing  = default;
 
 		[Category("LightAllAround")]
@@ -6718,12 +6914,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -6737,6 +6936,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -6750,6 +6950,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -6763,6 +6964,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -6776,6 +6978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -6789,6 +6992,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -6802,6 +7006,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -6815,6 +7020,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -6828,10 +7034,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6842,10 +7048,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -6856,6 +7062,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -6870,6 +7077,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -6883,12 +7091,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("GenericLight")]
@@ -6905,6 +7115,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
@@ -6918,6 +7129,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -6931,6 +7143,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
+
 		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
@@ -6961,12 +7174,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public exhibitionConditionOfLight[] exhibitionConditionOfLightList => [(exhibitionConditionOfLight)1,(exhibitionConditionOfLight)2,(exhibitionConditionOfLight)3,(exhibitionConditionOfLight)4];
+
 		[Category("LightAirObstruction")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
 		[Browsable(false)]
 		public lightVisibility[] lightVisibilityList => [(lightVisibility)1,(lightVisibility)2,(lightVisibility)3,(lightVisibility)4,(lightVisibility)5,(lightVisibility)6,(lightVisibility)7,(lightVisibility)8,(lightVisibility)9];
+
 		private double? _valueOfGeographicRange  = default;
 
 		[Category("LightAirObstruction")]
@@ -6980,6 +7195,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfGeographicRange, value);
 			}
 		}
+
 		private double? _valueOfLuminousRange  = default;
 
 		[Category("LightAirObstruction")]
@@ -6993,6 +7209,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfLuminousRange, value);
 			}
 		}
+
 		private double? _valueOfNominalRange  = default;
 
 		[Category("LightAirObstruction")]
@@ -7006,10 +7223,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfNominalRange, value);
 			}
 		}
+
 		private multiplicityOfFeaturesViewModel? _multiplicityOfFeatures  = default;
 
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public multiplicityOfFeaturesViewModel? multiplicityOfFeatures {
@@ -7020,10 +7237,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
+
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightAirObstruction")]
-		[Editor(typeof(Editors.HorizonEditor<LightAirObstruction>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public rhythmOfLightViewModel rhythmOfLight {
@@ -7034,6 +7251,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _rhythmOfLight, value);
 			}
 		}
+
 		private int? _flareBearing  = default;
 
 		[Category("LightAirObstruction")]
@@ -7249,12 +7467,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -7268,6 +7489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -7281,6 +7503,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -7294,6 +7517,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -7307,6 +7531,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -7320,6 +7545,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -7333,6 +7559,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -7346,6 +7573,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -7359,10 +7587,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7373,10 +7601,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -7387,6 +7615,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -7401,6 +7630,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13,(colour)14,(colour)15,(colour)16,(colour)17,(colour)18,(colour)19,(colour)20];
+
 		private double? _height  = default;
 
 		[Category("GenericLight")]
@@ -7414,12 +7644,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("GenericLight")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("GenericLight")]
@@ -7436,6 +7668,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericLight")]
@@ -7449,6 +7682,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _effectiveIntensity  = default;
 
 		[Category("GenericLight")]
@@ -7462,6 +7696,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _effectiveIntensity, value);
 			}
 		}
+
 		private double? _peakIntensity  = default;
 
 		[Category("GenericLight")]
@@ -7492,10 +7727,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+
 		private rhythmOfLightViewModel _rhythmOfLight  = default;
 
 		[Category("LightFogDetector")]
-		[Editor(typeof(Editors.HorizonEditor<LightFogDetector>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public rhythmOfLightViewModel rhythmOfLight {
@@ -7680,12 +7915,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -7699,6 +7937,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -7712,6 +7951,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -7725,6 +7965,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -7738,6 +7979,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -7751,6 +7993,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -7764,6 +8007,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -7777,6 +8021,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -7790,10 +8035,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7804,10 +8049,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -7818,6 +8063,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -7839,12 +8085,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("RadarReflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("RadarReflector")]
@@ -7861,6 +8109,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("RadarReflector")]
@@ -8023,12 +8272,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -8042,6 +8294,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8055,6 +8308,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -8068,6 +8322,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -8081,6 +8336,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -8094,6 +8350,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -8107,6 +8364,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -8120,6 +8378,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8133,10 +8392,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8147,10 +8406,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -8161,6 +8420,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -8185,6 +8445,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfFogSignal[] categoryOfFogSignalList => [(categoryOfFogSignal)1,(categoryOfFogSignal)2,(categoryOfFogSignal)3,(categoryOfFogSignal)4,(categoryOfFogSignal)5,(categoryOfFogSignal)6,(categoryOfFogSignal)7,(categoryOfFogSignal)8,(categoryOfFogSignal)9,(categoryOfFogSignal)10];
+
 		private int? _signalFrequency  = default;
 
 		[Category("FogSignal")]
@@ -8198,6 +8459,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalFrequency, value);
 			}
 		}
+
 		private signalGeneration? _signalGeneration  = default;
 
 		[Category("FogSignal")]
@@ -8214,6 +8476,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+
 		private String? _signalGroup  = default;
 
 		[Category("FogSignal")]
@@ -8227,6 +8490,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
+
 		private double? _signalOutput  = default;
 
 		[Category("FogSignal")]
@@ -8240,6 +8504,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalOutput, value);
 			}
 		}
+
 		private double? _signalPeriod  = default;
 
 		[Category("FogSignal")]
@@ -8253,12 +8518,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalPeriod, value);
 			}
 		}
+
 		[Category("FogSignal")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _valueOfMaximumRange  = default;
 
 		[Category("FogSignal")]
@@ -8272,10 +8539,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfMaximumRange, value);
 			}
 		}
+
 		private signalSequenceViewModel? _signalSequence  = default;
 
 		[Category("FogSignal")]
-		[Editor(typeof(Editors.HorizonEditor<FogSignal>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public signalSequenceViewModel? signalSequence {
@@ -8453,12 +8720,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -8472,6 +8742,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8485,6 +8756,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -8498,6 +8770,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -8511,6 +8784,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -8524,6 +8798,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -8537,6 +8812,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -8550,6 +8826,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8563,10 +8840,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8577,10 +8854,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -8591,6 +8868,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -8612,12 +8890,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("EnvironmentObservationEquipment")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		[Category("EnvironmentObservationEquipment")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> typeOfEnvironmentalObservationEquipment  { get; set; } = new ();
@@ -8774,12 +9054,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -8793,6 +9076,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8806,6 +9090,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -8819,6 +9104,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -8832,6 +9118,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -8845,6 +9132,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -8858,6 +9146,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -8871,6 +9160,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -8884,10 +9174,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8898,10 +9188,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -8912,6 +9202,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -8936,6 +9227,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)1,(categoryOfRadioStation)2,(categoryOfRadioStation)3,(categoryOfRadioStation)4,(categoryOfRadioStation)5,(categoryOfRadioStation)6,(categoryOfRadioStation)7,(categoryOfRadioStation)8,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)11,(categoryOfRadioStation)12,(categoryOfRadioStation)13,(categoryOfRadioStation)14,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
+
 		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
@@ -8949,6 +9241,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _estimatedRangeOfTransmission, value);
 			}
 		}
+
 		private status? _status  = default;
 
 		[Category("RadioStation")]
@@ -9104,12 +9397,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -9123,6 +9419,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -9136,6 +9433,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -9149,6 +9447,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -9162,6 +9461,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -9175,6 +9475,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -9188,6 +9489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -9201,6 +9503,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -9214,10 +9517,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -9228,10 +9531,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -9242,6 +9545,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -9266,18 +9570,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
+
 		[Category("Daymark")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("Daymark")]
@@ -9291,6 +9598,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("Daymark")]
@@ -9304,12 +9612,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private double? _orientationValue  = default;
 
 		[Category("Daymark")]
@@ -9323,12 +9633,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationValue, value);
 			}
 		}
+
 		[Category("Daymark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Category("Daymark")]
@@ -9345,6 +9657,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("Daymark")]
@@ -9361,6 +9674,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("Daymark")]
@@ -9374,10 +9688,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private shapeInformationViewModel? _shapeInformation  = default;
 
 		[Category("Daymark")]
-		[Editor(typeof(Editors.HorizonEditor<Daymark>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public shapeInformationViewModel? shapeInformation {
@@ -9388,6 +9702,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _shapeInformation, value);
 			}
 		}
+
 		private Boolean _isSlatted  = false;
 
 		[Category("Daymark")]
@@ -9601,12 +9916,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -9620,6 +9938,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -9633,6 +9952,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -9646,6 +9966,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -9659,6 +9980,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -9672,6 +9994,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -9685,6 +10008,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -9698,6 +10022,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -9711,10 +10036,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -9725,10 +10050,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -9739,6 +10064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -9753,12 +10079,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("Retroreflector")]
@@ -9775,12 +10103,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("Retroreflector")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("Retroreflector")]
@@ -9797,6 +10127,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _height  = default;
 
 		[Category("Retroreflector")]
@@ -9810,6 +10141,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("Retroreflector")]
@@ -9995,12 +10327,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -10014,6 +10349,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10027,6 +10363,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -10040,6 +10377,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -10053,6 +10391,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -10066,6 +10405,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -10079,6 +10419,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -10092,6 +10433,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10105,10 +10447,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -10119,10 +10461,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -10133,6 +10475,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -10157,10 +10500,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfRadarTransponderBeacon[] categoryOfRadarTransponderBeaconList => [(categoryOfRadarTransponderBeacon)1,(categoryOfRadarTransponderBeacon)2,(categoryOfRadarTransponderBeacon)3];
+
 		private radarWaveLengthViewModel? _radarWaveLength  = default;
 
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public radarWaveLengthViewModel? radarWaveLength {
@@ -10171,6 +10514,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarWaveLength, value);
 			}
 		}
+
 		private String? _signalGroup  = default;
 
 		[Category("RadarTransponderBeacon")]
@@ -10184,12 +10528,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _signalGroup, value);
 			}
 		}
+
 		[Category("RadarTransponderBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _valueOfNominalRange  = default;
 
 		[Category("RadarTransponderBeacon")]
@@ -10203,6 +10549,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _valueOfNominalRange, value);
 			}
 		}
+
 		private String? _manufactorer  = default;
 
 		[Category("RadarTransponderBeacon")]
@@ -10216,10 +10563,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _manufactorer, value);
 			}
 		}
+
 		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitOneViewModel? sectorLimitOne {
@@ -10230,10 +10577,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimitOne, value);
 			}
 		}
+
 		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitTwoViewModel? sectorLimitTwo {
@@ -10244,10 +10591,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sectorLimitTwo, value);
 			}
 		}
+
 		private signalSequenceViewModel? _signalSequence  = default;
 
 		[Category("RadarTransponderBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<RadarTransponderBeacon>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public signalSequenceViewModel? signalSequence {
@@ -10434,12 +10781,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -10453,6 +10803,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10466,6 +10817,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -10479,6 +10831,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -10492,6 +10845,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -10505,6 +10859,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -10518,6 +10873,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -10531,6 +10887,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10544,10 +10901,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -10558,10 +10915,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -10572,6 +10929,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -10589,6 +10947,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private String _mMSICode  = string.Empty;
 
 		[Category("ElectronicAton")]
@@ -10602,6 +10961,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mMSICode, value);
 			}
 		}
+
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -10764,12 +11124,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -10783,6 +11146,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10796,6 +11160,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -10809,6 +11174,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -10822,6 +11188,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -10835,6 +11202,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -10848,6 +11216,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -10861,6 +11230,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -10874,10 +11244,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -10888,10 +11258,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -10902,6 +11272,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -10919,6 +11290,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private String _mMSICode  = string.Empty;
 
 		[Category("ElectronicAton")]
@@ -10932,6 +11304,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mMSICode, value);
 			}
 		}
+
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11094,12 +11467,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -11113,6 +11489,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11126,6 +11503,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -11139,6 +11517,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -11152,6 +11531,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -11165,6 +11545,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -11178,6 +11559,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -11191,6 +11573,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11204,10 +11587,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -11218,10 +11601,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -11232,6 +11615,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -11249,6 +11633,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private String _mMSICode  = string.Empty;
 
 		[Category("ElectronicAton")]
@@ -11262,6 +11647,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mMSICode, value);
 			}
 		}
+
 		[Category("ElectronicAton")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11285,6 +11671,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public CategoryOfSyntheticAISAidtoNavigation[] CategoryOfSyntheticAISAidtoNavigationList => [(CategoryOfSyntheticAISAidtoNavigation)1,(CategoryOfSyntheticAISAidtoNavigation)2];
+
 		private virtualAISAidToNavigationType _virtualAISAidToNavigationType  = default;
 
 		[Category("SyntheticAISAidToNavigation")]
@@ -11443,12 +11830,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -11462,6 +11852,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11475,6 +11866,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -11488,6 +11880,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -11501,6 +11894,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -11514,6 +11908,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -11527,6 +11922,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -11540,6 +11936,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11553,10 +11950,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -11567,10 +11964,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -11581,6 +11978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -11605,6 +12003,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public CategoryOfPowerSource[] CategoryOfPowerSourceList => [(CategoryOfPowerSource)1,(CategoryOfPowerSource)2,(CategoryOfPowerSource)3,(CategoryOfPowerSource)4];
+
 		[Category("PowerSource")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -11754,12 +12153,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -11773,6 +12175,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11786,6 +12189,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -11799,6 +12203,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -11812,6 +12217,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -11825,6 +12231,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -11838,6 +12245,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -11851,6 +12259,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -11864,10 +12273,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -11878,10 +12287,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -11892,6 +12301,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -11909,6 +12319,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -11925,6 +12336,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -11941,10 +12353,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -11972,18 +12384,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
+
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
@@ -11997,6 +12412,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("GenericBeacon")]
@@ -12010,6 +12426,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBeacon")]
@@ -12026,12 +12443,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBeacon")]
@@ -12045,12 +12464,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
@@ -12064,6 +12485,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("GenericBeacon")]
@@ -12080,6 +12502,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
@@ -12293,12 +12716,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -12312,6 +12738,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -12325,6 +12752,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -12338,6 +12766,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -12351,6 +12780,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -12364,6 +12794,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -12377,6 +12808,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -12390,6 +12822,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -12403,10 +12836,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -12417,10 +12850,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -12431,6 +12864,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -12448,6 +12882,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -12464,6 +12899,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -12480,10 +12916,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -12511,18 +12947,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
+
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
@@ -12536,6 +12975,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("GenericBeacon")]
@@ -12549,6 +12989,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBeacon")]
@@ -12565,12 +13006,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBeacon")]
@@ -12584,12 +13027,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
@@ -12603,6 +13048,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("GenericBeacon")]
@@ -12619,6 +13065,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
@@ -12851,12 +13298,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -12870,6 +13320,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -12883,6 +13334,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -12896,6 +13348,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -12909,6 +13362,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -12922,6 +13376,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -12935,6 +13390,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -12948,6 +13404,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -12961,10 +13418,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -12975,10 +13432,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -12989,6 +13446,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -13006,6 +13464,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -13022,6 +13481,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -13038,10 +13498,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -13069,18 +13529,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -13097,12 +13560,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -13116,12 +13581,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -13135,6 +13602,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -13148,6 +13616,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -13355,12 +13824,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -13374,6 +13846,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -13387,6 +13860,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -13400,6 +13874,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -13413,6 +13888,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -13426,6 +13902,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -13439,6 +13916,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -13452,6 +13930,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -13465,10 +13944,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -13479,10 +13958,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -13493,6 +13972,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -13510,6 +13990,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -13526,6 +14007,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -13542,10 +14024,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -13573,18 +14055,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -13601,12 +14086,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -13620,12 +14107,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -13639,6 +14128,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -13652,6 +14142,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -13878,12 +14369,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -13897,6 +14391,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -13910,6 +14405,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -13923,6 +14419,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -13936,6 +14433,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -13949,6 +14447,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -13962,6 +14461,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -13975,6 +14475,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -13988,10 +14489,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -14002,10 +14503,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -14016,6 +14517,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -14033,6 +14535,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -14049,6 +14552,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -14065,10 +14569,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -14096,18 +14600,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -14124,12 +14631,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -14143,12 +14652,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -14162,6 +14673,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -14175,6 +14687,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -14401,12 +14914,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -14420,6 +14936,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -14433,6 +14950,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -14446,6 +14964,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -14459,6 +14978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -14472,6 +14992,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -14485,6 +15006,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -14498,6 +15020,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -14511,10 +15034,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -14525,10 +15048,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -14539,6 +15062,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -14556,6 +15080,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -14572,6 +15097,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -14588,10 +15114,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -14619,18 +15145,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -14647,12 +15176,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -14666,12 +15197,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -14685,6 +15218,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -14698,6 +15232,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -14905,12 +15440,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -14924,6 +15462,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -14937,6 +15476,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -14950,6 +15490,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -14963,6 +15504,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -14976,6 +15518,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -14989,6 +15532,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -15002,6 +15546,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -15015,10 +15560,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -15029,10 +15574,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -15043,6 +15588,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -15060,6 +15606,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -15076,6 +15623,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -15092,10 +15640,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -15123,18 +15671,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -15151,12 +15702,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -15170,12 +15723,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -15189,6 +15744,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -15202,6 +15758,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -15409,12 +15966,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -15428,6 +15988,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -15441,6 +16002,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -15454,6 +16016,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -15467,6 +16030,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -15480,6 +16044,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -15493,6 +16058,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -15506,6 +16072,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -15519,10 +16086,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -15533,10 +16100,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -15547,6 +16114,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -15564,6 +16132,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -15580,6 +16149,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -15596,10 +16166,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -15617,30 +16187,35 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfLandmark[] categoryOfLandmarkList => [(categoryOfLandmark)1,(categoryOfLandmark)2,(categoryOfLandmark)3,(categoryOfLandmark)4,(categoryOfLandmark)5,(categoryOfLandmark)6,(categoryOfLandmark)7,(categoryOfLandmark)8,(categoryOfLandmark)9,(categoryOfLandmark)10,(categoryOfLandmark)11,(categoryOfLandmark)12,(categoryOfLandmark)13,(categoryOfLandmark)14,(categoryOfLandmark)15,(categoryOfLandmark)16,(categoryOfLandmark)17,(categoryOfLandmark)18,(categoryOfLandmark)19,(categoryOfLandmark)20,(categoryOfLandmark)21,(categoryOfLandmark)22,(categoryOfLandmark)23,(categoryOfLandmark)24,(categoryOfLandmark)25,(categoryOfLandmark)26,(categoryOfLandmark)27];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<function> function  { get; set; } = new ();
 
 		[Browsable(false)]
 		public function[] functionList => [(function)2,(function)3,(function)4,(function)5,(function)6,(function)7,(function)8,(function)9,(function)10,(function)11,(function)12,(function)13,(function)14,(function)15,(function)16,(function)17,(function)18,(function)19,(function)20,(function)21,(function)22,(function)23,(function)24,(function)25,(function)26,(function)27,(function)28,(function)29,(function)30,(function)31,(function)32,(function)33,(function)34,(function)35,(function)36,(function)37,(function)38,(function)39,(function)40,(function)41,(function)42,(function)43,(function)44,(function)45,(function)46,(function)47,(function)48];
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("Landmark")]
@@ -15654,12 +16229,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("Landmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("Landmark")]
@@ -15676,6 +16253,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private visualProminence _visualProminence  = default;
 
 		[Category("Landmark")]
@@ -15692,6 +16270,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _elevation  = default;
 
 		[Category("Landmark")]
@@ -15705,6 +16284,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("Landmark")]
@@ -15718,6 +16298,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private Boolean? _mannedStructure  = default;
 
 		[Category("Landmark")]
@@ -15731,6 +16312,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("Landmark")]
@@ -15744,6 +16326,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("Landmark")]
@@ -15977,12 +16560,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -15996,6 +16582,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -16009,6 +16596,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -16022,6 +16610,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -16035,6 +16624,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -16048,6 +16638,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -16061,6 +16652,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -16074,6 +16666,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -16087,10 +16680,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -16101,10 +16694,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -16115,6 +16708,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -16132,6 +16726,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -16148,6 +16743,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -16164,10 +16760,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -16185,12 +16781,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _horizontalLength  = default;
 
 		[Category("LightFloat")]
@@ -16204,6 +16802,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
+
 		private double? _horizontalWidth  = default;
 
 		[Category("LightFloat")]
@@ -16217,6 +16816,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
+
 		private Boolean? _mannedStructure  = default;
 
 		[Category("LightFloat")]
@@ -16230,12 +16830,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
+
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("LightFloat")]
@@ -16249,12 +16851,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("LightFloat")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("LightFloat")]
@@ -16268,6 +16872,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("LightFloat")]
@@ -16284,6 +16889,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("LightFloat")]
@@ -16297,6 +16903,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
+
 		private double? _horizontalAccuracy  = default;
 
 		[Category("LightFloat")]
@@ -16509,12 +17116,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -16528,6 +17138,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -16541,6 +17152,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -16554,6 +17166,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -16567,6 +17180,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -16580,6 +17194,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -16593,6 +17208,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -16606,6 +17222,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -16619,10 +17236,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -16633,10 +17250,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -16647,6 +17264,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -16664,6 +17282,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -16680,6 +17299,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -16696,10 +17316,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -16717,12 +17337,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _horizontalLength  = default;
 
 		[Category("LightVessel")]
@@ -16736,6 +17358,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalLength, value);
 			}
 		}
+
 		private double? _horizontalWidth  = default;
 
 		[Category("LightVessel")]
@@ -16749,6 +17372,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalWidth, value);
 			}
 		}
+
 		private Boolean? _mannedStructure  = default;
 
 		[Category("LightVessel")]
@@ -16762,12 +17386,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
+
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("LightVessel")]
@@ -16781,12 +17407,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("LightVessel")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("LightVessel")]
@@ -16800,6 +17428,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("LightVessel")]
@@ -16816,6 +17445,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("LightVessel")]
@@ -16829,6 +17459,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalAccuracy, value);
 			}
 		}
+
 		private double? _horizontalAccuracy  = default;
 
 		[Category("LightVessel")]
@@ -17041,12 +17672,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -17060,6 +17694,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -17073,6 +17708,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -17086,6 +17722,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -17099,6 +17736,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -17112,6 +17750,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -17125,6 +17764,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -17138,6 +17778,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -17151,10 +17792,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -17165,10 +17806,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -17179,6 +17820,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -17196,6 +17838,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -17212,6 +17855,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -17228,10 +17872,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -17249,18 +17893,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfOffshorePlatform[] categoryOfOffshorePlatformList => [(categoryOfOffshorePlatform)1,(categoryOfOffshorePlatform)2,(categoryOfOffshorePlatform)3,(categoryOfOffshorePlatform)4,(categoryOfOffshorePlatform)5,(categoryOfOffshorePlatform)6,(categoryOfOffshorePlatform)7,(categoryOfOffshorePlatform)8,(categoryOfOffshorePlatform)9,(categoryOfOffshorePlatform)10,(categoryOfOffshorePlatform)11];
+
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _height  = default;
 
 		[Category("OffshorePlatform")]
@@ -17274,6 +17921,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private Boolean? _mannedStructure  = default;
 
 		[Category("OffshorePlatform")]
@@ -17287,18 +17935,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _mannedStructure, value);
 			}
 		}
+
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<product> product  { get; set; } = new ();
 
 		[Browsable(false)]
 		public product[] productList => [(product)1,(product)2,(product)3,(product)4,(product)5,(product)6,(product)7,(product)8,(product)9,(product)10,(product)11,(product)12,(product)13,(product)14,(product)15,(product)16,(product)17,(product)18,(product)19,(product)20,(product)21,(product)22,(product)23,(product)24,(product)25];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("OffshorePlatform")]
@@ -17312,12 +17963,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("OffshorePlatform")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("OffshorePlatform")]
@@ -17334,6 +17987,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("OffshorePlatform")]
@@ -17347,6 +18001,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("OffshorePlatform")]
@@ -17363,6 +18018,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("OffshorePlatform")]
@@ -17592,12 +18248,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -17611,6 +18270,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -17624,6 +18284,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -17637,6 +18298,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -17650,6 +18312,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -17663,6 +18326,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -17676,6 +18340,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -17689,6 +18354,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -17702,10 +18368,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -17716,10 +18382,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -17730,6 +18396,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -17747,6 +18414,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -17763,6 +18431,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -17779,10 +18448,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -17810,6 +18479,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buildingShape[] buildingShapeList => [(buildingShape)5,(buildingShape)6,(buildingShape)7,(buildingShape)8,(buildingShape)9];
+
 		private categoryOfSiloTank? _categoryOfSiloTank  = default;
 
 		[Category("SiloTank")]
@@ -17826,18 +18496,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfSiloTank[] categoryOfSiloTankList => [(categoryOfSiloTank)1,(categoryOfSiloTank)2,(categoryOfSiloTank)3,(categoryOfSiloTank)4];
+
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("SiloTank")]
@@ -17851,6 +18524,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("SiloTank")]
@@ -17864,12 +18538,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("SiloTank")]
@@ -17883,12 +18559,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("SiloTank")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("SiloTank")]
@@ -17905,6 +18583,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("SiloTank")]
@@ -17918,6 +18597,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("SiloTank")]
@@ -17934,6 +18614,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("SiloTank")]
@@ -18149,12 +18830,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -18168,6 +18852,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -18181,6 +18866,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -18194,6 +18880,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -18207,6 +18894,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -18220,6 +18908,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -18233,6 +18922,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -18246,6 +18936,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -18259,10 +18950,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -18273,10 +18964,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -18287,6 +18978,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -18304,6 +18996,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -18320,6 +19013,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -18336,10 +19030,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -18367,18 +19061,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfPile[] categoryOfPileList => [(categoryOfPile)1,(categoryOfPile)3,(categoryOfPile)4,(categoryOfPile)5,(categoryOfPile)6,(categoryOfPile)7];
+
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Pile")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _height  = default;
 
 		[Category("Pile")]
@@ -18392,6 +19089,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private verticalDatum? _verticalDatum  = default;
 
 		[Category("Pile")]
@@ -18408,6 +19106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45];
+
 		private double? _verticalLength  = default;
 
 		[Category("Pile")]
@@ -18421,6 +19120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("Pile")]
@@ -18437,6 +19137,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("Pile")]
@@ -18623,12 +19324,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -18642,6 +19346,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -18655,6 +19360,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -18668,6 +19374,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -18681,6 +19388,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -18694,6 +19402,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -18707,6 +19416,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -18720,6 +19430,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -18733,10 +19444,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -18747,10 +19458,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -18761,6 +19472,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -18778,6 +19490,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -18794,6 +19507,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -18810,10 +19524,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -18960,12 +19674,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -18979,6 +19696,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -18992,6 +19710,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -19005,6 +19724,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -19018,6 +19738,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -19031,6 +19752,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -19044,6 +19766,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -19057,6 +19780,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19070,10 +19794,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -19084,10 +19808,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -19098,6 +19822,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -19115,6 +19840,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -19131,6 +19857,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -19147,10 +19874,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -19297,12 +20024,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -19316,6 +20046,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19329,6 +20060,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -19342,6 +20074,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -19355,6 +20088,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -19368,6 +20102,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -19381,6 +20116,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -19394,6 +20130,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19407,10 +20144,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -19421,10 +20158,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -19435,6 +20172,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -19455,10 +20193,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private sinkerDimensionsViewModel? _sinkerDimensions  = default;
 
 		[Category("SinkerAnchor")]
-		[Editor(typeof(Editors.HorizonEditor<SinkerAnchor>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public sinkerDimensionsViewModel? sinkerDimensions {
@@ -19469,6 +20207,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sinkerDimensions, value);
 			}
 		}
+
 		private double _weight  = default;
 
 		[Category("SinkerAnchor")]
@@ -19482,6 +20221,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _weight, value);
 			}
 		}
+
 		private String? _sinkerType  = default;
 
 		[Category("SinkerAnchor")]
@@ -19630,12 +20370,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -19649,6 +20392,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19662,6 +20406,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -19675,6 +20420,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -19688,6 +20434,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -19701,6 +20448,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -19714,6 +20462,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -19727,6 +20476,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19740,10 +20490,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -19754,10 +20504,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -19768,6 +20518,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -19788,6 +20539,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private ShackleType? _ShackleType  = default;
 
 		[Category("MooringShackle")]
@@ -19804,6 +20556,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public ShackleType[] ShackleTypeList => [(ShackleType)1,(ShackleType)2,(ShackleType)3,(ShackleType)4,(ShackleType)5,(ShackleType)6];
+
 		private double? _weight  = default;
 
 		[Category("MooringShackle")]
@@ -19946,12 +20699,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -19965,6 +20721,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -19978,6 +20735,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -19991,6 +20749,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -20004,6 +20763,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -20017,6 +20777,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -20030,6 +20791,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -20043,6 +20805,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20056,10 +20819,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -20070,10 +20833,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -20084,6 +20847,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -20091,7 +20855,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private CableDimensionsViewModel? _CableDimensions  = default;
 
 		[Category("CableSubmarine")]
-		[Editor(typeof(Editors.HorizonEditor<CableSubmarine>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public CableDimensionsViewModel? CableDimensions {
@@ -20102,6 +20865,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _CableDimensions, value);
 			}
 		}
+
 		private categoryOfCable _categoryOfCable  = default;
 
 		[Category("CableSubmarine")]
@@ -20118,6 +20882,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)3,(categoryOfCable)4,(categoryOfCable)5,(categoryOfCable)6,(categoryOfCable)7,(categoryOfCable)8];
+
 		[Category("CableSubmarine")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
@@ -20263,12 +21028,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -20282,6 +21050,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20295,6 +21064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -20308,6 +21078,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -20321,6 +21092,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -20334,6 +21106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -20347,6 +21120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -20360,6 +21134,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20373,10 +21148,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -20387,10 +21162,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -20401,6 +21176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -20421,6 +21197,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private double? _weight  = default;
 
 		[Category("Swivel")]
@@ -20434,6 +21211,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _weight, value);
 			}
 		}
+
 		private String? _swivelType  = default;
 
 		[Category("Swivel")]
@@ -20576,12 +21354,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -20595,6 +21376,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20608,6 +21390,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -20621,6 +21404,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -20634,6 +21418,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -20647,6 +21432,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -20660,6 +21446,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -20673,6 +21460,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20686,10 +21474,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -20700,10 +21488,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -20714,6 +21502,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -20731,6 +21520,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _bridleLinkType, value);
 			}
 		}
+
 		private String? _legsDetails  = default;
 
 		[Category("Bridle")]
@@ -20870,12 +21660,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -20889,6 +21682,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20902,6 +21696,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -20915,6 +21710,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -20928,6 +21724,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -20941,6 +21738,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -20954,6 +21752,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -20967,6 +21766,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -20980,10 +21780,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -20994,10 +21794,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -21008,6 +21808,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -21028,6 +21829,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private double _weight  = default;
 
 		[Category("CounterWeight")]
@@ -21041,6 +21843,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _weight, value);
 			}
 		}
+
 		private String? _counterWeightType  = default;
 
 		[Category("CounterWeight")]
@@ -21183,12 +21986,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -21202,6 +22008,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -21215,6 +22022,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -21228,6 +22036,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -21241,6 +22050,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -21254,6 +22064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -21267,6 +22078,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -21280,6 +22092,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -21293,10 +22106,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -21307,10 +22120,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -21321,6 +22134,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -21331,18 +22145,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		[Category("Topmark")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private topmarkDaymarkShape _topmarkDaymarkShape  = default;
 
 		[Category("Topmark")]
@@ -21359,6 +22176,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
+
 		private double? _verticalLength  = default;
 
 		[Category("Topmark")]
@@ -21528,12 +22346,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -21547,6 +22368,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -21560,6 +22382,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -21573,6 +22396,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -21586,6 +22410,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -21599,6 +22424,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -21612,6 +22438,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -21625,6 +22452,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -21638,10 +22466,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -21652,10 +22480,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -21666,6 +22494,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -21683,6 +22512,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -21699,6 +22529,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -21715,10 +22546,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -21746,18 +22577,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
+
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
@@ -21771,6 +22605,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("GenericBeacon")]
@@ -21784,6 +22619,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBeacon")]
@@ -21800,12 +22636,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBeacon")]
@@ -21819,12 +22657,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
@@ -21838,6 +22678,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("GenericBeacon")]
@@ -21854,6 +22695,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
@@ -22067,12 +22909,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -22086,6 +22931,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -22099,6 +22945,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -22112,6 +22959,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -22125,6 +22973,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -22138,6 +22987,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -22151,6 +23001,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -22164,6 +23015,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -22177,10 +23029,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -22191,10 +23043,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -22205,6 +23057,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -22222,6 +23075,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -22238,6 +23092,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -22254,10 +23109,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -22285,18 +23140,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public beaconShape[] beaconShapeList => [(beaconShape)1,(beaconShape)2,(beaconShape)3,(beaconShape)4,(beaconShape)5,(beaconShape)6,(beaconShape)7];
+
 		[Category("GenericBeacon")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private double? _elevation  = default;
 
 		[Category("GenericBeacon")]
@@ -22310,6 +23168,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _elevation, value);
 			}
 		}
+
 		private double? _height  = default;
 
 		[Category("GenericBeacon")]
@@ -22323,6 +23182,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _height, value);
 			}
 		}
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBeacon")]
@@ -22339,12 +23199,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBeacon")]
@@ -22358,12 +23220,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBeacon")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBeacon")]
@@ -22377,6 +23241,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private visualProminence? _visualProminence  = default;
 
 		[Category("GenericBeacon")]
@@ -22393,6 +23258,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBeacon")]
@@ -22622,12 +23488,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -22641,6 +23510,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -22654,6 +23524,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -22667,6 +23538,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -22680,6 +23552,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -22693,6 +23566,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -22706,6 +23580,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -22719,6 +23594,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -22732,10 +23608,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -22746,10 +23622,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -22760,6 +23636,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -22777,6 +23654,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -22793,6 +23671,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -22809,10 +23688,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -22840,18 +23719,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -22868,12 +23750,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -22887,12 +23771,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -22906,6 +23792,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -22919,6 +23806,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -23126,12 +24014,15 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _iDCode, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private int? _scaleMinimum  = default;
 
 		[Category("AidsToNavigation")]
@@ -23145,6 +24036,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -23158,6 +24050,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Category("AidsToNavigation")]
@@ -23171,6 +24064,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _pictorialRepresentation  = default;
 
 		[Category("AidsToNavigation")]
@@ -23184,6 +24078,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _inspectionFrequency  = default;
 
 		[Category("AidsToNavigation")]
@@ -23197,6 +24092,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionFrequency, value);
 			}
 		}
+
 		private String? _inspectionRequirements  = default;
 
 		[Category("AidsToNavigation")]
@@ -23210,6 +24106,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _inspectionRequirements, value);
 			}
 		}
+
 		private String? _aToNMaintenanceRecord  = default;
 
 		[Category("AidsToNavigation")]
@@ -23223,6 +24120,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _aToNMaintenanceRecord, value);
 			}
 		}
+
 		private DateOnly? _installationDate  = default;
 
 		[Category("AidsToNavigation")]
@@ -23236,10 +24134,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _installationDate, value);
 			}
 		}
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -23250,10 +24148,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
 		[Category("AidsToNavigation")]
-		[Editor(typeof(Editors.HorizonEditor<AidsToNavigation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -23264,6 +24162,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _periodicDateRange, value);
 			}
 		}
+
 		[Category("AidsToNavigation")]
 		[Optional]
 		public ObservableCollection<String> SeasonalActionRequired  { get; set; } = new ();
@@ -23281,6 +24180,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _AtoNNumber, value);
 			}
 		}
+
 		private aidAvailabilityCategory? _aidAvailabilityCategory  = default;
 
 		[Category("StructureObject")]
@@ -23297,6 +24197,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public aidAvailabilityCategory[] aidAvailabilityCategoryList => [(aidAvailabilityCategory)1,(aidAvailabilityCategory)2,(aidAvailabilityCategory)3];
+
 		private condition? _condition  = default;
 
 		[Category("StructureObject")]
@@ -23313,10 +24214,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public condition[] conditionList => [(condition)1,(condition)2,(condition)3,(condition)4,(condition)5];
+
 		private contactAddressViewModel? _contactAddress  = default;
 
 		[Category("StructureObject")]
-		[Editor(typeof(Editors.HorizonEditor<StructureObject>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public contactAddressViewModel? contactAddress {
@@ -23344,18 +24245,21 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public buoyShape[] buoyShapeList => [(buoyShape)1,(buoyShape)2,(buoyShape)3,(buoyShape)4,(buoyShape)5,(buoyShape)6,(buoyShape)7,(buoyShape)8];
+
 		[Category("GenericBuoy")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<colourPattern> colourPattern  { get; set; } = new ();
 
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6,(colourPattern)7,(colourPattern)8,(colourPattern)9];
+
 		private marksNavigationalSystemOf? _marksNavigationalSystemOf  = default;
 
 		[Category("GenericBuoy")]
@@ -23372,12 +24276,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public marksNavigationalSystemOf[] marksNavigationalSystemOfList => [(marksNavigationalSystemOf)1,(marksNavigationalSystemOf)2,(marksNavigationalSystemOf)9,(marksNavigationalSystemOf)10,(marksNavigationalSystemOf)11,(marksNavigationalSystemOf)12,(marksNavigationalSystemOf)13,(marksNavigationalSystemOf)14,(marksNavigationalSystemOf)15];
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<natureOfConstruction> natureOfConstruction  { get; set; } = new ();
 
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)3,(natureOfConstruction)4,(natureOfConstruction)5,(natureOfConstruction)6,(natureOfConstruction)7,(natureOfConstruction)8,(natureOfConstruction)9,(natureOfConstruction)10,(natureOfConstruction)11,(natureOfConstruction)12,(natureOfConstruction)13,(natureOfConstruction)14];
+
 		private Boolean? _radarConspicuous  = default;
 
 		[Category("GenericBuoy")]
@@ -23391,12 +24297,14 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _radarConspicuous, value);
 			}
 		}
+
 		[Category("GenericBuoy")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
 		private String? _typeOfBuoy  = default;
 
 		[Category("GenericBuoy")]
@@ -23410,6 +24318,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _typeOfBuoy, value);
 			}
 		}
+
 		private double? _verticalLength  = default;
 
 		[Category("GenericBuoy")]
@@ -23423,6 +24332,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _verticalLength, value);
 			}
 		}
+
 		private double? _verticalAccuracy  = default;
 
 		[Category("GenericBuoy")]
@@ -23808,6 +24718,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)2,(categoryOfTemporalVariation)3,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5,(categoryOfTemporalVariation)6];
+
 		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -23821,6 +24732,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
+
 		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -23834,10 +24746,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalDistanceUncertainty, value);
 			}
 		}
+
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
@@ -23848,10 +24760,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+
 		private informationViewModel? _information  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public informationViewModel? information {
@@ -23862,6 +24774,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _information, value);
 			}
 		}
+
 		private String? _informationInNationalLanguage  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -23875,10 +24788,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _informationInNationalLanguage, value);
 			}
 		}
+
 		private textualDescriptionViewModel? _textualDescription  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textualDescriptionViewModel? textualDescription {
@@ -23889,10 +24802,10 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _textualDescription, value);
 			}
 		}
+
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -23987,6 +24900,7 @@ namespace S100Framework.WPF.ViewModel.S201 {
 				SetValue(ref _maximumDisplayScale, value);
 			}
 		}
+
 		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
@@ -24044,7 +24958,6 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		private orientationViewModel _orientation  = default;
 
 		[Category("LocalDirectionOfBuoyage")]
-		[Editor(typeof(Editors.HorizonEditor<LocalDirectionOfBuoyage>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {

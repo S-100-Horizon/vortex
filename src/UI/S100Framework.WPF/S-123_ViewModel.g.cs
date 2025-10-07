@@ -137,6 +137,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public servingMobileSatelliteService[] servingMobileSatelliteServiceList => [(servingMobileSatelliteService)1,(servingMobileSatelliteService)2];
+
 		private String? _satelliteOceanRegion  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<areaA3ServiceDescription>), typeof(Editors.HorizonEditor))]
@@ -149,6 +150,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _satelliteOceanRegion, value);
 			}
 		}
+
 		private String? _mSICoastalWarningArea  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<areaA3ServiceDescription>), typeof(Editors.HorizonEditor))]
@@ -215,9 +217,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfBroadcastContent[] typeOfBroadcastContentList => [(typeOfBroadcastContent)1,(typeOfBroadcastContent)2,(typeOfBroadcastContent)3,(typeOfBroadcastContent)4,(typeOfBroadcastContent)5,(typeOfBroadcastContent)6,(typeOfBroadcastContent)7,(typeOfBroadcastContent)8];
+
 		[Category("broadcastContent")]
 		[Optional]
 		public ObservableCollection<String> subjectOrMessageTypeCode  { get; set; } = new ();
+
 		private String? _subjectDescription  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<broadcastContent>), typeof(Editors.HorizonEditor))]
@@ -230,6 +234,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _subjectDescription, value);
 			}
 		}
+
 		private S100Framework.DomainModel.S100.Time? _observationTime  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<broadcastContent>), typeof(Editors.HorizonEditor))]
@@ -242,6 +247,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _observationTime, value);
 			}
 		}
+
 		private transmissionRegularity? _transmissionRegularity  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<broadcastContent>), typeof(Editors.HorizonEditor))]
@@ -330,6 +336,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _deliveryPoint, value);
 			}
 		}
+
 		private String? _cityName  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -342,6 +349,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _cityName, value);
 			}
 		}
+
 		private String? _administrativeDivision  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -354,6 +362,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _administrativeDivision, value);
 			}
 		}
+
 		private String? _countryName  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -366,6 +375,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _countryName, value);
 			}
 		}
+
 		private String? _postalCode  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<contactAddress>), typeof(Editors.HorizonEditor))]
@@ -434,6 +444,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minimumReceivedPower, value);
 			}
 		}
+
 		private double? _presumedReceiverAntennaHeight  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<coverageIndication>), typeof(Editors.HorizonEditor))]
@@ -446,6 +457,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _presumedReceiverAntennaHeight, value);
 			}
 		}
+
 		private int? _minimumSignalToInterferenceNoiseRatio  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<coverageIndication>), typeof(Editors.HorizonEditor))]
@@ -458,12 +470,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minimumSignalToInterferenceNoiseRatio, value);
 			}
 		}
+
 		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17,(status)24,(status)25,(status)26,(status)27];
+
 		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
@@ -540,6 +554,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -552,6 +567,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _name, value);
 			}
 		}
+
 		private nameUsage? _nameUsage  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -617,6 +633,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dateStart, value);
 			}
 		}
+
 		private String? _dateEnd  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -629,6 +646,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
+
 		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -641,6 +659,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _timeOfDayStart, value);
 			}
 		}
+
 		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -706,6 +725,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _frequencyShoreStationReceives, value);
 			}
 		}
+
 		private int _frequencyShoreStationTransmits  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<frequencyPair>), typeof(Editors.HorizonEditor))]
@@ -765,6 +785,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _frequencyLimitLower, value);
 			}
 		}
+
 		private int _frequencyLimitUpper  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<frequencyRange>), typeof(Editors.HorizonEditor))]
@@ -824,6 +845,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _pictorialRepresentation, value);
 			}
 		}
+
 		private String? _pictureCaption  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
@@ -836,6 +858,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _pictureCaption, value);
 			}
 		}
+
 		private DateOnly? _sourceDate  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
@@ -848,6 +871,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sourceDate, value);
 			}
 		}
+
 		private String? _pictureInformation  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<graphic>), typeof(Editors.HorizonEditor))]
@@ -913,6 +937,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
+
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<horizontalPositionUncertainty>), typeof(Editors.HorizonEditor))]
@@ -972,6 +997,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fileLocator, value);
 			}
 		}
+
 		private String? _fileReference  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -984,6 +1010,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fileReference, value);
 			}
 		}
+
 		private String? _headline  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -996,6 +1023,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _headline, value);
 			}
 		}
+
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -1008,6 +1036,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String? _text  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -1076,6 +1105,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _headline, value);
 			}
 		}
+
 		private String _linkage  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
@@ -1088,6 +1118,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _linkage, value);
 			}
 		}
+
 		private String? _nameOfResource  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<onlineResource>), typeof(Editors.HorizonEditor))]
@@ -1150,6 +1181,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dateStart, value);
 			}
 		}
+
 		private String _dateEnd  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
@@ -1200,12 +1232,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+
 		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
+
 		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<int> dataTransmissionRate  { get; set; } = new ();
+
 		private Boolean _transmissionOfTrafficLists  = false;
 
 		[Editor(typeof(Editors.HorizonEditor<radioChannelDetails>), typeof(Editors.HorizonEditor))]
@@ -1218,6 +1253,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _transmissionOfTrafficLists, value);
 			}
 		}
+
 		private String? _hoursOfWatch  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<radioChannelDetails>), typeof(Editors.HorizonEditor))]
@@ -1301,12 +1337,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> callSign  { get; set; } = new ();
+
 		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> mMSICode  { get; set; } = new ();
+
 		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<int> selectiveCallNumber  { get; set; } = new ();
+
 		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> coastStationIdentificationCode  { get; set; } = new ();
@@ -1394,6 +1433,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _headline, value);
 			}
 		}
+
 		private categoryOfRxN? _categoryOfRxN  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
@@ -1406,6 +1446,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _categoryOfRxN, value);
 			}
 		}
+
 		private actionOrActivity? _actionOrActivity  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<rxNCode>), typeof(Editors.HorizonEditor))]
@@ -1471,6 +1512,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
+
 		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
@@ -1522,7 +1564,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
 		[Category("sectorLimit")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimit>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1533,10 +1574,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sectorLimitOne, value);
 			}
 		}
+
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
 		[Category("sectorLimit")]
-		[Editor(typeof(Editors.HorizonEditor<sectorLimit>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1600,6 +1641,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
+
 		private double? _sectorLineLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitOne>), typeof(Editors.HorizonEditor))]
@@ -1659,6 +1701,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _sectorBearing, value);
 			}
 		}
+
 		private double? _sectorLineLength  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<sectorLimitTwo>), typeof(Editors.HorizonEditor))]
@@ -1709,7 +1752,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1720,10 +1762,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1734,10 +1776,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1807,6 +1849,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dateStart, value);
 			}
 		}
+
 		private String _dateEnd  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<surveyDateRange>), typeof(Editors.HorizonEditor))]
@@ -1866,6 +1909,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _contactInstructions, value);
 			}
 		}
+
 		private String _telecommunicationIdentifier  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
@@ -1878,6 +1922,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _telecommunicationIdentifier, value);
 			}
 		}
+
 		private telecommunicationService? _telecommunicationService  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<telecommunications>), typeof(Editors.HorizonEditor))]
@@ -1946,13 +1991,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
+
 		[Category("textContent")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("textContent")]
-		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -1963,6 +2009,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _onlineResource, value);
 			}
 		}
+
 		private String? _source  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
@@ -1975,6 +2022,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<textContent>), typeof(Editors.HorizonEditor))]
@@ -2050,6 +2098,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public dayOfWeek[] dayOfWeekList => [(dayOfWeek)1,(dayOfWeek)2,(dayOfWeek)3,(dayOfWeek)4,(dayOfWeek)5,(dayOfWeek)6,(dayOfWeek)7];
+
 		private Boolean? _dayOfWeekIsRange  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<timeIntervalsByDayOfWeek>), typeof(Editors.HorizonEditor))]
@@ -2062,9 +2111,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _dayOfWeekIsRange, value);
 			}
 		}
+
 		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
+
 		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
@@ -2145,6 +2196,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minutePastEvenHours, value);
 			}
 		}
+
 		private int? _minutePastOddHours  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<timesOfTransmission>), typeof(Editors.HorizonEditor))]
@@ -2157,6 +2209,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minutePastOddHours, value);
 			}
 		}
+
 		private int? _minutePastEveryHour  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<timesOfTransmission>), typeof(Editors.HorizonEditor))]
@@ -2169,6 +2222,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minutePastEveryHour, value);
 			}
 		}
+
 		[Category("timesOfTransmission")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> transmissionTime  { get; set; } = new ();
@@ -2235,6 +2289,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uncertaintyFixed, value);
 			}
 		}
+
 		private double? _uncertaintyVariableFactor  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<verticalUncertainty>), typeof(Editors.HorizonEditor))]
@@ -2297,6 +2352,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public vesselsCharacteristics[] vesselsCharacteristicsList => [(vesselsCharacteristics)1,(vesselsCharacteristics)2,(vesselsCharacteristics)3,(vesselsCharacteristics)4,(vesselsCharacteristics)6,(vesselsCharacteristics)7,(vesselsCharacteristics)8,(vesselsCharacteristics)9,(vesselsCharacteristics)10,(vesselsCharacteristics)11,(vesselsCharacteristics)12,(vesselsCharacteristics)13];
+
 		private double _vesselsCharacteristicsValue  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
@@ -2309,6 +2365,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _vesselsCharacteristicsValue, value);
 			}
 		}
+
 		private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
@@ -2324,6 +2381,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public vesselsCharacteristicsUnit[] vesselsCharacteristicsUnitList => [(vesselsCharacteristicsUnit)1,(vesselsCharacteristicsUnit)3,(vesselsCharacteristicsUnit)4,(vesselsCharacteristicsUnit)5,(vesselsCharacteristicsUnit)6,(vesselsCharacteristicsUnit)7,(vesselsCharacteristicsUnit)9];
+
 		private comparisonOperator _comparisonOperator  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<vesselMeasurementsSpecification>), typeof(Editors.HorizonEditor))]
@@ -3078,7 +3136,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3089,12 +3146,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -3108,6 +3168,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -3135,12 +3196,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _inBallast, value);
 			}
 		}
+
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfVessel> categoryOfVessel  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfVessel[] categoryOfVesselList =>  CodeList.categoryOfVessels.ToArray();
+
 		private categoryOfVesselRegistry? _categoryOfVesselRegistry  = default;
 
 		[Category("Applicability")]
@@ -3157,18 +3220,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfVesselRegistry[] categoryOfVesselRegistryList => [(categoryOfVesselRegistry)1,(categoryOfVesselRegistry)2];
+
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfCargo> categoryOfCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
+
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo  { get; set; } = new ();
 
 		[Browsable(false)]
 		public categoryOfDangerousOrHazardousCargo[] categoryOfDangerousOrHazardousCargoList => [(categoryOfDangerousOrHazardousCargo)1,(categoryOfDangerousOrHazardousCargo)2,(categoryOfDangerousOrHazardousCargo)3,(categoryOfDangerousOrHazardousCargo)4,(categoryOfDangerousOrHazardousCargo)5,(categoryOfDangerousOrHazardousCargo)6,(categoryOfDangerousOrHazardousCargo)7,(categoryOfDangerousOrHazardousCargo)8,(categoryOfDangerousOrHazardousCargo)9,(categoryOfDangerousOrHazardousCargo)10,(categoryOfDangerousOrHazardousCargo)11,(categoryOfDangerousOrHazardousCargo)12,(categoryOfDangerousOrHazardousCargo)13,(categoryOfDangerousOrHazardousCargo)14,(categoryOfDangerousOrHazardousCargo)15,(categoryOfDangerousOrHazardousCargo)16,(categoryOfDangerousOrHazardousCargo)17,(categoryOfDangerousOrHazardousCargo)18,(categoryOfDangerousOrHazardousCargo)19,(categoryOfDangerousOrHazardousCargo)20,(categoryOfDangerousOrHazardousCargo)21];
+
 		private logicalConnectives? _logicalConnectives  = default;
 
 		[Category("Applicability")]
@@ -3185,6 +3251,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public logicalConnectives[] logicalConnectivesList => [(logicalConnectives)1,(logicalConnectives)2];
+
 		private int? _thicknessOfIceCapability  = default;
 
 		[Category("Applicability")]
@@ -3198,6 +3265,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _thicknessOfIceCapability, value);
 			}
 		}
+
 		private String? _vesselPerformance  = default;
 
 		[Category("Applicability")]
@@ -3211,9 +3279,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _vesselPerformance, value);
 			}
 		}
+
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<vesselMeasurementsSpecificationViewModel> vesselMeasurementsSpecification  { get; set; } = new ();
+
 		[Category("Applicability")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -3352,7 +3422,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3363,12 +3432,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -3382,6 +3454,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -3412,10 +3485,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+
 		private textContentViewModel? _textContent  = default;
 
 		[Category("Authority")]
-		[Editor(typeof(Editors.HorizonEditor<Authority>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -3505,7 +3578,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3516,12 +3588,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -3535,6 +3610,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -3552,6 +3628,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("BroadcastDetails")]
 		[Optional]
 		public ObservableCollection<String> language  { get; set; } = new ();
+
 		private categoryOfBroadcastCommunication? _categoryOfBroadcastCommunication  = default;
 
 		[Category("BroadcastDetails")]
@@ -3568,19 +3645,22 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfBroadcastCommunication[] categoryOfBroadcastCommunicationList => [(categoryOfBroadcastCommunication)1,(categoryOfBroadcastCommunication)2,(categoryOfBroadcastCommunication)3,(categoryOfBroadcastCommunication)4];
+
 		[Category("BroadcastDetails")]
 		[Multiplicity(1)]
 		public ObservableCollection<broadcastContentViewModel> broadcastContent  { get; set; } = new ();
+
 		[Category("BroadcastDetails")]
 		[Optional]
 		public ObservableCollection<timesOfTransmissionViewModel> timesOfTransmission  { get; set; } = new ();
+
 		[Category("BroadcastDetails")]
 		[Optional]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
+
 		private onlineResourceViewModel? _onlineResource  = default;
 
 		[Category("BroadcastDetails")]
-		[Editor(typeof(Editors.HorizonEditor<BroadcastDetails>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -3710,7 +3790,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3721,12 +3800,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -3740,6 +3822,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -3760,6 +3843,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfConnectivityResource[] typeOfConnectivityResourceList => [(typeOfConnectivityResource)1,(typeOfConnectivityResource)2,(typeOfConnectivityResource)3,(typeOfConnectivityResource)4];
+
 		private double? _uplinkBandwidth  = default;
 
 		[Category("ConnectivityQualityOfService")]
@@ -3773,6 +3857,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _uplinkBandwidth, value);
 			}
 		}
+
 		private double? _downlinkBandwidth  = default;
 
 		[Category("ConnectivityQualityOfService")]
@@ -3786,6 +3871,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _downlinkBandwidth, value);
 			}
 		}
+
 		private double? _packetDelay  = default;
 
 		[Category("ConnectivityQualityOfService")]
@@ -3799,6 +3885,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _packetDelay, value);
 			}
 		}
+
 		private int? _maximumDataBurstVolume  = default;
 
 		[Category("ConnectivityQualityOfService")]
@@ -3812,12 +3899,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _maximumDataBurstVolume, value);
 			}
 		}
+
 		[Category("ConnectivityQualityOfService")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17,(status)25,(status)26,(status)27];
+
 		[Category("ConnectivityQualityOfService")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -3933,7 +4022,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3944,12 +4032,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -3963,6 +4054,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -3990,16 +4082,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _contactInstructions, value);
 			}
 		}
+
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<contactAddressViewModel> contactAddress  { get; set; } = new ();
+
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
+
 		private informationViewModel? _information  = default;
 
 		[Category("ContactDetails")]
-		[Editor(typeof(Editors.HorizonEditor<ContactDetails>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public informationViewModel? information {
@@ -4010,12 +4104,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _information, value);
 			}
 		}
+
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
+
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
+
 		private String? _callName  = default;
 
 		[Category("ContactDetails")]
@@ -4029,6 +4126,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _callName, value);
 			}
 		}
+
 		private String? _callSign  = default;
 
 		[Category("ContactDetails")]
@@ -4042,9 +4140,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _callSign, value);
 			}
 		}
+
 		[Category("ContactDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
+
 		private String? _mMSICode  = default;
 
 		[Category("ContactDetails")]
@@ -4058,6 +4158,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _mMSICode, value);
 			}
 		}
+
 		private String? _language  = default;
 
 		[Category("ContactDetails")]
@@ -4212,7 +4313,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4223,12 +4323,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -4242,6 +4345,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -4272,10 +4376,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -4286,10 +4390,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _textContent, value);
 			}
 		}
+
 		private graphicViewModel? _graphic  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public graphicViewModel? graphic {
@@ -4300,6 +4404,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _graphic, value);
 			}
 		}
+
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
@@ -4399,7 +4504,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4410,12 +4514,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -4429,6 +4536,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -4446,9 +4554,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateFixed  { get; set; } = new ();
+
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
@@ -4552,7 +4662,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4563,12 +4672,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -4582,6 +4694,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -4609,6 +4722,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _isMRCC, value);
 			}
 		}
+
 		private Boolean _acceptAMVER  = false;
 
 		[Category("RadioControlCentre")]
@@ -4622,9 +4736,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _acceptAMVER, value);
 			}
 		}
+
 		[Category("RadioControlCentre")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		private String? _hoursOfWatch  = default;
 
 		[Category("RadioControlCentre")]
@@ -4727,7 +4843,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4738,12 +4853,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -4757,6 +4875,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -4787,10 +4906,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -4801,10 +4920,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _textContent, value);
 			}
 		}
+
 		private graphicViewModel? _graphic  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public graphicViewModel? graphic {
@@ -4815,6 +4934,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _graphic, value);
 			}
 		}
+
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
@@ -4914,7 +5034,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -4925,12 +5044,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -4944,6 +5066,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -4974,10 +5097,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -4988,10 +5111,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _textContent, value);
 			}
 		}
+
 		private graphicViewModel? _graphic  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public graphicViewModel? graphic {
@@ -5002,6 +5125,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _graphic, value);
 			}
 		}
+
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
@@ -5101,7 +5225,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5112,12 +5235,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -5131,6 +5257,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -5161,10 +5288,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfAuthority[] categoryOfAuthorityList => [(categoryOfAuthority)2,(categoryOfAuthority)3,(categoryOfAuthority)4,(categoryOfAuthority)5,(categoryOfAuthority)6,(categoryOfAuthority)7,(categoryOfAuthority)8,(categoryOfAuthority)9,(categoryOfAuthority)10,(categoryOfAuthority)11,(categoryOfAuthority)12,(categoryOfAuthority)13,(categoryOfAuthority)14,(categoryOfAuthority)15,(categoryOfAuthority)16];
+
 		private textContentViewModel? _textContent  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
@@ -5175,10 +5302,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _textContent, value);
 			}
 		}
+
 		private graphicViewModel? _graphic  = default;
 
 		[Category("AbstractRxN")]
-		[Editor(typeof(Editors.HorizonEditor<AbstractRxN>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public graphicViewModel? graphic {
@@ -5189,6 +5316,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _graphic, value);
 			}
 		}
+
 		[Category("AbstractRxN")]
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
@@ -5288,7 +5416,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5299,12 +5426,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -5318,6 +5448,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -5335,6 +5466,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("ServiceHours")]
 		[Multiplicity(1)]
 		public ObservableCollection<scheduleByDayOfWeekViewModel> scheduleByDayOfWeek  { get; set; } = new ();
+
 		[Category("ServiceHours")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -5441,10 +5573,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
+
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public spatialAccuracyViewModel? spatialAccuracy {
@@ -5499,7 +5631,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5510,12 +5641,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -5529,6 +5663,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -5556,10 +5691,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _contactInstructions, value);
 			}
 		}
+
 		private informationViewModel? _information  = default;
 
 		[Category("TelemedicalAssistanceService")]
-		[Editor(typeof(Editors.HorizonEditor<TelemedicalAssistanceService>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public informationViewModel? information {
@@ -5570,12 +5705,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _information, value);
 			}
 		}
+
 		[Category("TelemedicalAssistanceService")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
+
 		[Category("TelemedicalAssistanceService")]
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
+
 		private String? _languageInformation  = default;
 
 		[Category("TelemedicalAssistanceService")]
@@ -5691,7 +5829,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("InformationType")]
-		[Editor(typeof(Editors.HorizonEditor<InformationType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5702,12 +5839,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		[Category("InformationType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("InformationType")]
@@ -5721,6 +5861,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("InformationType")]
@@ -5751,6 +5892,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfRadioService[] typeOfRadioServiceList => [(typeOfRadioService)1,(typeOfRadioService)2,(typeOfRadioService)3,(typeOfRadioService)4,(typeOfRadioService)5,(typeOfRadioService)6,(typeOfRadioService)7,(typeOfRadioService)8,(typeOfRadioService)9,(typeOfRadioService)10,(typeOfRadioService)11,(typeOfRadioService)12,(typeOfRadioService)13];
+
 		private frequencyBand? _frequencyBand  = default;
 
 		[Category("TransmissionDetails")]
@@ -5767,6 +5909,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public frequencyBand[] frequencyBandList => [(frequencyBand)1,(frequencyBand)2,(frequencyBand)3,(frequencyBand)4,(frequencyBand)5,(frequencyBand)6];
+
 		private String? _classOfEmission  = default;
 
 		[Category("TransmissionDetails")]
@@ -5780,6 +5923,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _classOfEmission, value);
 			}
 		}
+
 		private String? _communicationStandard  = default;
 
 		[Category("TransmissionDetails")]
@@ -5793,6 +5937,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _communicationStandard, value);
 			}
 		}
+
 		[Category("TransmissionDetails")]
 		[Multiplicity(1)]
 		public ObservableCollection<radioChannelDetailsViewModel> radioChannelDetails  { get; set; } = new ();
@@ -5888,13 +6033,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -5905,9 +6051,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -5921,6 +6069,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -5934,6 +6083,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -5964,6 +6114,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfConnectivitySubscription[] categoryOfConnectivitySubscriptionList => [(categoryOfConnectivitySubscription)1,(categoryOfConnectivitySubscription)2,(categoryOfConnectivitySubscription)3,(categoryOfConnectivitySubscription)4];
+
 		private String? _communicationStandard  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
@@ -5977,6 +6128,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _communicationStandard, value);
 			}
 		}
+
 		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
@@ -5990,6 +6142,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _estimatedRangeOfTransmission, value);
 			}
 		}
+
 		private double? _baseStationAntennaHeight  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
@@ -6003,16 +6156,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _baseStationAntennaHeight, value);
 			}
 		}
+
 		[Category("ConnectivitySubscriptionArea")]
 		[Optional]
 		public ObservableCollection<frequencyRangeViewModel> frequencyRange  { get; set; } = new ();
+
 		[Category("ConnectivitySubscriptionArea")]
 		[Optional]
 		public ObservableCollection<sectorLimitViewModel> sectorLimit  { get; set; } = new ();
+
 		private coverageIndicationViewModel? _coverageIndication  = default;
 
 		[Category("ConnectivitySubscriptionArea")]
-		[Editor(typeof(Editors.HorizonEditor<ConnectivitySubscriptionArea>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public coverageIndicationViewModel? coverageIndication {
@@ -6147,13 +6302,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6164,9 +6320,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -6180,6 +6338,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -6193,6 +6352,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -6220,6 +6380,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _idNAVAREA, value);
 			}
 		}
+
 		private String? _nationality  = default;
 
 		[Category("GMDSSArea")]
@@ -6233,6 +6394,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _nationality, value);
 			}
 		}
+
 		private categoryOfGMDSSArea _categoryOfGMDSSArea  = default;
 
 		[Category("GMDSSArea")]
@@ -6249,6 +6411,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfGMDSSArea[] categoryOfGMDSSAreaList => [(categoryOfGMDSSArea)1,(categoryOfGMDSSArea)2,(categoryOfGMDSSArea)3,(categoryOfGMDSSArea)4];
+
 		[Category("GMDSSArea")]
 		[Optional]
 		public ObservableCollection<areaA3ServiceDescriptionViewModel> areaA3ServiceDescription  { get; set; } = new ();
@@ -6357,13 +6520,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6374,9 +6538,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -6390,6 +6556,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -6403,6 +6570,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -6522,13 +6690,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6539,9 +6708,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -6555,6 +6726,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -6568,6 +6740,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -6595,6 +6768,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _idMETAREA, value);
 			}
 		}
+
 		[Category("MetArea")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
@@ -6697,13 +6871,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6714,9 +6889,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -6730,6 +6907,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -6743,6 +6921,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -6770,6 +6949,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _idNAVAREA, value);
 			}
 		}
+
 		[Category("NavArea")]
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
@@ -6872,13 +7052,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -6889,9 +7070,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -6905,6 +7088,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -6918,6 +7102,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -6948,6 +7133,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public typeOfNAVTEXService[] typeOfNAVTEXServiceList => [(typeOfNAVTEXService)1,(typeOfNAVTEXService)2];
+
 		private String _idNAVAREA  = string.Empty;
 
 		[Category("NavtexServiceArea")]
@@ -6961,6 +7147,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _idNAVAREA, value);
 			}
 		}
+
 		private String _transmitterIdentificationCharacter  = string.Empty;
 
 		[Category("NavtexServiceArea")]
@@ -6974,6 +7161,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _transmitterIdentificationCharacter, value);
 			}
 		}
+
 		private String? _nationality  = default;
 
 		[Category("NavtexServiceArea")]
@@ -6987,6 +7175,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _nationality, value);
 			}
 		}
+
 		private status? _status  = default;
 
 		[Category("NavtexServiceArea")]
@@ -7104,13 +7293,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7121,9 +7311,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -7137,6 +7329,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -7150,6 +7343,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -7177,6 +7371,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _languageInformation, value);
 			}
 		}
+
 		private double? _transmissionPower  = default;
 
 		[Category("RadioServiceArea")]
@@ -7190,6 +7385,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _transmissionPower, value);
 			}
 		}
+
 		private Boolean? _transmissionOfTrafficLists  = default;
 
 		[Category("RadioServiceArea")]
@@ -7203,6 +7399,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _transmissionOfTrafficLists, value);
 			}
 		}
+
 		private status? _status  = default;
 
 		[Category("RadioServiceArea")]
@@ -7219,6 +7416,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17];
+
 		private String? _hoursOfWatch  = default;
 
 		[Category("RadioServiceArea")]
@@ -7333,13 +7531,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7350,9 +7549,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -7366,6 +7567,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -7379,6 +7581,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -7409,6 +7612,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfRadioStation[] categoryOfRadioStationList => [(categoryOfRadioStation)5,(categoryOfRadioStation)9,(categoryOfRadioStation)10,(categoryOfRadioStation)19,(categoryOfRadioStation)20];
+
 		private double? _estimatedRangeOfTransmission  = default;
 
 		[Category("RadioStation")]
@@ -7422,6 +7626,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _estimatedRangeOfTransmission, value);
 			}
 		}
+
 		private String? _transmissionContent  = default;
 
 		[Category("RadioStation")]
@@ -7435,6 +7640,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _transmissionContent, value);
 			}
 		}
+
 		private Boolean? _remoteControlled  = default;
 
 		[Category("RadioStation")]
@@ -7448,6 +7654,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _remoteControlled, value);
 			}
 		}
+
 		private status? _status  = default;
 
 		[Category("RadioStation")]
@@ -7464,10 +7671,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)16,(status)17];
+
 		private radiocommunicationIdentifierViewModel? _radiocommunicationIdentifier  = default;
 
 		[Category("RadioStation")]
-		[Editor(typeof(Editors.HorizonEditor<RadioStation>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public radiocommunicationIdentifierViewModel? radiocommunicationIdentifier {
@@ -7478,9 +7685,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _radiocommunicationIdentifier, value);
 			}
 		}
+
 		[Category("RadioStation")]
 		[Optional]
 		public ObservableCollection<sectorLimitViewModel> sectorLimit  { get; set; } = new ();
+
 		private String? _hoursOfWatch  = default;
 
 		[Category("RadioStation")]
@@ -7614,13 +7823,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7631,9 +7841,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -7647,6 +7859,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -7660,6 +7873,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -7776,13 +7990,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -7793,9 +8008,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -7809,6 +8026,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -7822,6 +8040,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -7852,6 +8071,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfForecastOrWarningArea[] categoryOfForecastOrWarningAreaList => [(categoryOfForecastOrWarningArea)1,(categoryOfForecastOrWarningArea)2,(categoryOfForecastOrWarningArea)3,(categoryOfForecastOrWarningArea)4,(categoryOfForecastOrWarningArea)5,(categoryOfForecastOrWarningArea)6,(categoryOfForecastOrWarningArea)7];
+
 		private String? _idMETAREA  = default;
 
 		[Category("WeatherForecastAndWarningArea")]
@@ -7865,6 +8085,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _idMETAREA, value);
 			}
 		}
+
 		private String? _nationality  = default;
 
 		[Category("WeatherForecastAndWarningArea")]
@@ -7878,6 +8099,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _nationality, value);
 			}
 		}
+
 		private status? _status  = default;
 
 		[Category("WeatherForecastAndWarningArea")]
@@ -7992,13 +8214,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
 		[Category("FeatureType")]
-		[Editor(typeof(Editors.HorizonEditor<FeatureType>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -8009,9 +8232,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _fixedDateRange, value);
 			}
 		}
+
 		[Category("FeatureType")]
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
+
 		private String? _source  = default;
 
 		[Category("FeatureType")]
@@ -8025,6 +8250,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _source, value);
 			}
 		}
+
 		private String? _reportedDate  = default;
 
 		[Category("FeatureType")]
@@ -8038,6 +8264,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _reportedDate, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Category("FeatureType")]
@@ -8149,6 +8376,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _maximumDisplayScale, value);
 			}
 		}
+
 		private int _minimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
@@ -8162,6 +8390,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _minimumDisplayScale, value);
 			}
 		}
+
 		private int? _optimumDisplayScale  = default;
 
 		[Category("DataCoverage")]
@@ -8175,6 +8404,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _optimumDisplayScale, value);
 			}
 		}
+
 		[Category("DataCoverage")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
@@ -8251,6 +8481,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Browsable(false)]
 		public categoryOfTemporalVariation[] categoryOfTemporalVariationList => [(categoryOfTemporalVariation)1,(categoryOfTemporalVariation)4,(categoryOfTemporalVariation)5];
+
 		private double? _horizontalDistanceUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -8264,10 +8495,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _horizontalDistanceUncertainty, value);
 			}
 		}
+
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -8278,6 +8509,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _horizontalPositionUncertainty, value);
 			}
 		}
+
 		private double? _orientationUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
@@ -8291,10 +8523,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _orientationUncertainty, value);
 			}
 		}
+
 		private surveyDateRangeViewModel? _surveyDateRange  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public surveyDateRangeViewModel? surveyDateRange {
@@ -8305,10 +8537,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _surveyDateRange, value);
 			}
 		}
+
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
 		[Category("QualityOfNonBathymetricData")]
-		[Editor(typeof(Editors.HorizonEditor<QualityOfNonBathymetricData>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -8319,6 +8551,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _verticalUncertainty, value);
 			}
 		}
+
 		[Category("QualityOfNonBathymetricData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();

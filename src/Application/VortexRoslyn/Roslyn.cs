@@ -1919,8 +1919,12 @@ namespace S100Framework.Applications
                 BuildViewModelClassAttribute(super.Element(XName.Get("code", scope_S100))!.Value, super, builder, loadBuilder, serializeBuilder, modelBuilder, constructorBuilder, client, callback);
             }
 
+            var first = true;
             var attributeBindings = e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager).Union(e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager));
             foreach (var attributeBinding in attributeBindings) {
+                if (!first)
+                    builder.AppendLine();
+                first = false;
 
                 var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
                 var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
@@ -1966,7 +1970,8 @@ namespace S100Framework.Applications
                     if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
-                    builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
+                    if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
+                        builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
                         //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }

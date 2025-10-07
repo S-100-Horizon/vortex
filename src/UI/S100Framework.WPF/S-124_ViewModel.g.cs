@@ -72,7 +72,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private chartAffectedViewModel? _chartAffected  = default;
 
 		[Category("affectedChartPublications")]
-		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public chartAffectedViewModel? chartAffected {
@@ -83,6 +82,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _chartAffected, value);
 			}
 		}
+
 		private String? _chartPublicationIdentifier  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
@@ -95,6 +95,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _chartPublicationIdentifier, value);
 			}
 		}
+
 		private String? _internationalChartAffected  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
@@ -107,6 +108,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _internationalChartAffected, value);
 			}
 		}
+
 		private String _language  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
@@ -119,6 +121,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String? _publicationAffected  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<affectedChartPublications>), typeof(Editors.HorizonEditor))]
@@ -190,6 +193,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _chartNumber, value);
 			}
 		}
+
 		private String? _chartPlanNumber  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
@@ -202,6 +206,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _chartPlanNumber, value);
 			}
 		}
+
 		private DateOnly _editionDate  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
@@ -214,6 +219,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _editionDate, value);
 			}
 		}
+
 		private DateOnly? _lastNoticeDate  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<chartAffected>), typeof(Editors.HorizonEditor))]
@@ -279,6 +285,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _dateEnd, value);
 			}
 		}
+
 		private String? _dateStart  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -291,6 +298,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _dateStart, value);
 			}
 		}
+
 		private S100Framework.DomainModel.S100.Time? _timeOfDayEnd  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -303,6 +311,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _timeOfDayEnd, value);
 			}
 		}
+
 		private S100Framework.DomainModel.S100.Time? _timeOfDayStart  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
@@ -368,6 +377,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _localityIdentifier, value);
 			}
 		}
+
 		[Category("generalArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
@@ -428,6 +438,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<information>), typeof(Editors.HorizonEditor))]
@@ -487,6 +498,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _localityIdentifier, value);
 			}
 		}
+
 		[Category("locality")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
@@ -547,6 +559,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<locationName>), typeof(Editors.HorizonEditor))]
@@ -606,6 +619,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _agencyResponsibleForProduction, value);
 			}
 		}
+
 		private String? _interoperabilityIdentifier  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -618,6 +632,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _interoperabilityIdentifier, value);
 			}
 		}
+
 		private String _nameOfSeries  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -630,6 +645,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nameOfSeries, value);
 			}
 		}
+
 		private String? _nationality  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -642,6 +658,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _nationality, value);
 			}
 		}
+
 		private int _warningNumber  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -654,6 +671,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _warningNumber, value);
 			}
 		}
+
 		private warningType _warningType  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -669,6 +687,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public warningType[] warningTypeList => [(warningType)1,(warningType)2,(warningType)3,(warningType)4,(warningType)5,(warningType)6,(warningType)7,(warningType)8,(warningType)9,(warningType)10,(warningType)11,(warningType)12];
+
 		private int _year  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<messageSeriesIdentifier>), typeof(Editors.HorizonEditor))]
@@ -743,6 +762,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<navwarnTitle>), typeof(Editors.HorizonEditor))]
@@ -793,6 +813,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
 		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
@@ -851,6 +872,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
+
 		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
@@ -918,6 +940,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _language, value);
 			}
 		}
+
 		private String _name  = string.Empty;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -930,6 +953,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _name, value);
 			}
 		}
+
 		private nameUsage? _nameUsage  = default;
 
 		[Editor(typeof(Editors.HorizonEditor<featureName>), typeof(Editors.HorizonEditor))]
@@ -1030,7 +1054,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
 		[Category("spatialAccuracy")]
-		[Editor(typeof(Editors.HorizonEditor<spatialAccuracy>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
@@ -1200,6 +1223,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("References")]
 		[Optional]
 		public ObservableCollection<messageSeriesIdentifierViewModel> messageSeriesIdentifier  { get; set; } = new ();
+
 		private Boolean _noMessageOnHand  = false;
 
 		[Category("References")]
@@ -1213,6 +1237,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _noMessageOnHand, value);
 			}
 		}
+
 		private referenceCategory _referenceCategory  = default;
 
 		[Category("References")]
@@ -1283,16 +1308,18 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<affectedChartPublicationsViewModel> affectedChartPublications  { get; set; } = new ();
+
 		[Category("NavwarnPreamble")]
 		[Multiplicity(1)]
 		public ObservableCollection<generalAreaViewModel> generalArea  { get; set; } = new ();
+
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<localityViewModel> locality  { get; set; } = new ();
+
 		private messageSeriesIdentifierViewModel _messageSeriesIdentifier  = default;
 
 		[Category("NavwarnPreamble")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPreamble>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public messageSeriesIdentifierViewModel messageSeriesIdentifier {
@@ -1303,9 +1330,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _messageSeriesIdentifier, value);
 			}
 		}
+
 		[Category("NavwarnPreamble")]
 		[Optional]
 		public ObservableCollection<navwarnTitleViewModel> navwarnTitle  { get; set; } = new ();
+
 		private DateTime? _cancellationDate  = default;
 
 		[Category("NavwarnPreamble")]
@@ -1319,6 +1348,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _cancellationDate, value);
 			}
 		}
+
 		private Boolean _intService  = false;
 
 		[Category("NavwarnPreamble")]
@@ -1332,6 +1362,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _intService, value);
 			}
 		}
+
 		private navwarnTypeGeneral _navwarnTypeGeneral  = default;
 
 		[Category("NavwarnPreamble")]
@@ -1348,6 +1379,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public navwarnTypeGeneral[] navwarnTypeGeneralList =>  CodeList.navwarnTypeGenerals.ToArray();
+
 		private DateTime _publicationTime  = default;
 
 		[Category("NavwarnPreamble")]
@@ -1470,10 +1502,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)1,(qualityOfHorizontalMeasurement)2,(qualityOfHorizontalMeasurement)3,(qualityOfHorizontalMeasurement)4,(qualityOfHorizontalMeasurement)5,(qualityOfHorizontalMeasurement)6,(qualityOfHorizontalMeasurement)7,(qualityOfHorizontalMeasurement)8,(qualityOfHorizontalMeasurement)9,(qualityOfHorizontalMeasurement)10,(qualityOfHorizontalMeasurement)11];
+
 		private spatialAccuracyViewModel? _spatialAccuracy  = default;
 
 		[Category("SpatialQuality")]
-		[Editor(typeof(Editors.HorizonEditor<SpatialQuality>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Optional]
 		public spatialAccuracyViewModel? spatialAccuracy {
@@ -1541,13 +1573,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)7,(restriction)8,(restriction)14,(restriction)25,(restriction)27];
+
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<fixedDateRangeViewModel> fixedDateRange  { get; set; } = new ();
+
 		private warningInformationViewModel _warningInformation  = default;
 
 		[Category("NavwarnPart")]
-		[Editor(typeof(Editors.HorizonEditor<NavwarnPart>), typeof(Editors.HorizonEditor))]
 		[ExpandableObject]
 		[Mandatory]
 		public warningInformationViewModel warningInformation {
@@ -1558,9 +1591,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _warningInformation, value);
 			}
 		}
+
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
+
 		[Category("NavwarnPart")]
 		[Optional]
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
@@ -1691,6 +1726,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _scaleMinimum, value);
 			}
 		}
+
 		private String _text  = string.Empty;
 
 		[Category("TextPlacement")]
@@ -1704,6 +1740,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _text, value);
 			}
 		}
+
 		private int _textOffsetBearing  = default;
 
 		[Category("TextPlacement")]
@@ -1717,6 +1754,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _textOffsetBearing, value);
 			}
 		}
+
 		private int _textOffsetDistance  = default;
 
 		[Category("TextPlacement")]
@@ -1730,6 +1768,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 				SetValue(ref _textOffsetDistance, value);
 			}
 		}
+
 		private Boolean _textRotation  = false;
 
 		[Category("TextPlacement")]

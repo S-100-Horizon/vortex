@@ -110,7 +110,7 @@ namespace S100Framework.WPF.Editors
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
             };
-            
+
             if (supportsUnknown) {
                 Binding newBinding = new Binding(propertyItem.DisplayName) {
                     Source = propertyItem.Instance,
@@ -127,6 +127,11 @@ namespace S100Framework.WPF.Editors
                     Background = System.Windows.Media.Brushes.Transparent,
                 };
 
+                var stringLengthConstraint = (StringLengthConstraintAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(StringLengthConstraintAttribute));
+                if (stringLengthConstraint != default) {
+                    editorTextBox.MaxLength = stringLengthConstraint.StringLength;
+                }
+
                 if (supportsUnknown) {
                     editorTextBox.Watermark = "[UNKNOWN]";
 
@@ -140,7 +145,7 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),  
+                        Margin = new Thickness(0, 0, 18, 0),
                         IsTabStop = false,
                     };
                     editorTextBox.TextChanged += (sender, e) => {
@@ -158,7 +163,7 @@ namespace S100Framework.WPF.Editors
                 editor = editorTextBox;
 
                 var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                BindingOperations.SetBinding(editor, PropertyGridEditorTextBox.TextProperty, bindingSelectedItemProperty);                
+                BindingOperations.SetBinding(editor, PropertyGridEditorTextBox.TextProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType == typeof(double) || propertyItem.PropertyType == typeof(double?)) {
                 var editorDecimalUpDown = new PropertyGridEditorDecimalUpDown {
@@ -166,7 +171,16 @@ namespace S100Framework.WPF.Editors
                     ShowButtonSpinner = false,
                 };
 
+                var rangeConstraint = (RangeConstraintAttribute<double>?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(RangeConstraintAttribute<double>));
+                if (rangeConstraint != default) {
+                    editorDecimalUpDown.Minimum = (decimal)rangeConstraint!.LowerBound;
+                    editorDecimalUpDown.Maximum = (decimal)rangeConstraint!.UpperBound;
+                    editorDecimalUpDown.ClipValueToMinMax = true;
+                }
+
                 if (supportsUnknown) {
+                    editorDecimalUpDown.Watermark = "[UNKNOWN]";
+
                     var radioButtonUnknown = new RadioButton {
                         ToolTip = "[Unknown]",
                         GroupName = propertyItem.DisplayName,
@@ -200,7 +214,16 @@ namespace S100Framework.WPF.Editors
                     ShowButtonSpinner = false,
                 };
 
+                var rangeConstraint = (RangeConstraintAttribute<int>?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(RangeConstraintAttribute<int>));
+                if (rangeConstraint != default) {
+                    editorIntegerUpDown.Minimum = (int)rangeConstraint!.LowerBound;
+                    editorIntegerUpDown.Maximum = (int)rangeConstraint!.UpperBound;
+                    editorIntegerUpDown.ClipValueToMinMax = true;
+                }
+
                 if (supportsUnknown) {
+                    editorIntegerUpDown.Watermark = "[UNKNOWN]";
+
                     var radioButtonUnknown = new RadioButton {
                         ToolTip = "[Unknown]",
                         GroupName = propertyItem.DisplayName,
@@ -234,7 +257,7 @@ namespace S100Framework.WPF.Editors
             }
             else
                 throw new NotImplementedException();
-            
+
             panel.Children.Add(editor);
 
             Panel.SetZIndex(panel.Children[0], 10);
