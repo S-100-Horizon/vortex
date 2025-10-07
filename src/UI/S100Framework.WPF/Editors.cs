@@ -140,7 +140,8 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
+                        Margin = new Thickness(0, 0, 18, 0),  
+                        IsTabStop = false,
                     };
                     editorTextBox.TextChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editorTextBox.Text);
@@ -162,6 +163,7 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType == typeof(double) || propertyItem.PropertyType == typeof(double?)) {
                 var editorDecimalUpDown = new PropertyGridEditorDecimalUpDown {
                     Background = System.Windows.Media.Brushes.Transparent,
+                    ShowButtonSpinner = false,
                 };
 
                 if (supportsUnknown) {
@@ -172,6 +174,7 @@ namespace S100Framework.WPF.Editors
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
                         Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = false,
                     };
 
                     editorDecimalUpDown.ValueChanged += (sender, e) => {
@@ -194,6 +197,7 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType == typeof(int) || propertyItem.PropertyType == typeof(int?) || propertyItem.PropertyType == typeof(short) || propertyItem.PropertyType == typeof(short?) || propertyItem.PropertyType == typeof(long) || propertyItem.PropertyType == typeof(long?)) {
                 var editorIntegerUpDown = new PropertyGridEditorIntegerUpDown {
                     Background = System.Windows.Media.Brushes.Transparent,
+                    ShowButtonSpinner = false,
                 };
 
                 if (supportsUnknown) {
@@ -204,6 +208,7 @@ namespace S100Framework.WPF.Editors
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
                         Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = false,
                     };
                     editorIntegerUpDown.ValueChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = !editorIntegerUpDown.Value.HasValue;
@@ -229,8 +234,12 @@ namespace S100Framework.WPF.Editors
             }
             else
                 throw new NotImplementedException();
-
+            
             panel.Children.Add(editor);
+
+            Panel.SetZIndex(panel.Children[0], 10);
+            Panel.SetZIndex(editor, 0);
+
             return panel;
         }
     }
