@@ -28,7 +28,7 @@ namespace ProductCatalogueService
                 Status = statusCode,
                 Type = exception?.GetType().Name,
                 //Detail = exception?.Message,
-                Instance = httpContext.Request.Path
+                Instance = httpContext.Request.Path,
             };
 
             await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);

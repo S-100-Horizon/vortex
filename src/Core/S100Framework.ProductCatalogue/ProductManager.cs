@@ -3,6 +3,7 @@ using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
+using S100Horizon.Settings;
 using Serilog;
 using System;
 using System.Collections;
@@ -599,7 +600,7 @@ namespace S100Framework.ProductCatalogue
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
                         DatasetName = electronicProduct.datasetName!,
                         Edition = electronicProduct.editionNumber!.Value,
-                        Update = electronicProduct.updateNumber!.Value,
+                        Update = electronicProduct.updateNumber ?? 0,
                         ExportTypes = exportType,
                         TimestampUTC = timestamp
                     });
