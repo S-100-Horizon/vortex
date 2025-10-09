@@ -2,7 +2,6 @@
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel.S131.FeatureTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
 using System.Globalization;
 using System.IO;
 using System.Xml;
@@ -102,7 +101,7 @@ namespace TestS100Framework
         public static Geometry? Geometry(this XElement element) {
             var prefix = element.GetPrefixOfNamespace(element.Name.NamespaceName)!;
             var ns = element.GetNamespaceOfPrefix(prefix)!;
-            
+
             var geometry = element.Element(XName.Get("geometry", ns.NamespaceName))!;
 
             if (geometry == null) return null; // No geometry detected

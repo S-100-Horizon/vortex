@@ -1,0 +1,6 @@
+@ProductCatalogueService_HostAddress = http://localhost:5290
+
+GET {{ProductCatalogueService_HostAddress}}/electronicproducts/
+Accept: application/json
+
+###

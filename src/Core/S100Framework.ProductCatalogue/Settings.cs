@@ -1,11 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace S100Horizon.Settings
+﻿namespace S100Horizon.Settings
 {
     public record Connection(string ProductSpecification, Uri? ConnectionFile = default);
     public class ProductCatalogue
