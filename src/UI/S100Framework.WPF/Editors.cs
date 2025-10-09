@@ -56,6 +56,19 @@ namespace S100Framework.WPF.Editors
         }
     }
 
+    public class DependentUnknownValueConvertor(string propertyName) : IValueConverter
+    {
+        public string PropertyName { get; } = propertyName;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return System.Windows.Media.Brushes.Transparent;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
 
 
     public class RadioButtonAdorner : Adorner
@@ -101,7 +114,6 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
-
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -113,6 +125,19 @@ namespace S100Framework.WPF.Editors
                     Mode = BindingMode.OneWay,
                 };
                 newBinding.Converter = new BrushUnknownConvertor();
+                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+            }
+
+
+            var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
+            if(dependentUnknownValue is not null) {
+                var propertyName = dependentUnknownValue.PropertyName;
+
+                Binding newBinding = new Binding() {
+                    Source = propertyItem.Instance,
+                    Mode = BindingMode.OneWay,
+                };
+                newBinding.Converter = new DependentUnknownValueConvertor(propertyName);
                 panel.SetBinding(Grid.BackgroundProperty, newBinding);
             }
 
