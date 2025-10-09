@@ -19,7 +19,7 @@ namespace S100Framework.Applications
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("point"));
 
             using var buffer = featureClass.CreateRowBuffer();
-            
+
 
             var orgWhereClause = filter.WhereClause.Clone().ToString();
 
@@ -64,6 +64,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -175,7 +176,7 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             instance.pictorialRepresentation = FixFilename(current.PICREP!);
 
@@ -183,6 +184,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -303,7 +305,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -313,6 +315,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -426,7 +429,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -436,6 +439,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -553,7 +557,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -563,6 +567,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -653,7 +658,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -663,6 +668,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -747,7 +753,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -757,6 +763,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -842,7 +849,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -852,6 +859,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -942,7 +950,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -952,6 +960,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1037,7 +1046,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -1047,6 +1056,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1136,7 +1146,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             instance.pictorialRepresentation = FixFilename(current.PICREP!);
 
@@ -1144,6 +1154,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1163,11 +1174,12 @@ namespace S100Framework.Applications
 
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
                             var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1190,12 +1202,13 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
                             var instance = _converterRegistry.Convert<FogSignal>(current);
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1226,6 +1239,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1246,6 +1260,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1262,6 +1277,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1278,6 +1294,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                                 SetShape(buffer, current.SHAPE);
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1363,7 +1380,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -1373,6 +1390,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1455,7 +1473,7 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
@@ -1465,6 +1483,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1519,12 +1538,13 @@ namespace S100Framework.Applications
                             }
 
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1549,6 +1569,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1571,6 +1592,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1594,6 +1616,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1616,6 +1639,7 @@ namespace S100Framework.Applications
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
@@ -1625,7 +1649,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

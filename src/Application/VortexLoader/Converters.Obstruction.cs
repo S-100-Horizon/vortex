@@ -315,7 +315,7 @@ namespace S100Framework.Applications
 
             instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
 
-            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
 
 

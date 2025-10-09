@@ -174,6 +174,8 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                     ImporterNIS.SetShape(buffer, shape);
                     ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
@@ -215,6 +217,10 @@ namespace S100Framework.Applications
                         buffer["code"] = instance.GetType().Name;
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                        if (instance is FeatureNode) {
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                        }
+
                         ImporterNIS.SetShape(buffer, shape);
                         ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object!.PLTS_COMP_SCALE!.Value);
 
@@ -277,6 +283,11 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                if (instance is FeatureNode) {
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                }
+
+
                 ImporterNIS.SetShape(buffer, s57master.Shape);
                 ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
 
@@ -321,6 +332,11 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+
+                    if (instance is FeatureNode) {
+                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                    }
+
                     ImporterNIS.SetShape(buffer, s57master.Shape);
                     ImporterNIS.SetUsageBand(buffer, s57master.PLTS_COMP_SCALE!.Value);
 

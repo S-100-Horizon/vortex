@@ -144,12 +144,14 @@ namespace S100Framework.Applications
                                 sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(sounding.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            sounding.SetInformationBindings(AddInformation(sounding.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
-                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
+                            bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
                             bufferPointset["edition"] = ImporterNIS.s101version;
+                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings());
+
                             var featureN = featureClass.CreateRow(bufferPointset);
 
                             var name = $"{featureN.Crc32()}";
@@ -201,9 +203,13 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferPointset["ps"] = ps101;
+                            bufferPointset["code"] = instance.GetType().Name;
+                            bufferPointset["edition"] = ImporterNIS.s101version;
+                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = $"{featureN.Crc32()}";

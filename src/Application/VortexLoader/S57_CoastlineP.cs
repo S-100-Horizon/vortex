@@ -17,7 +17,7 @@ namespace S100Framework.Applications
 
 
             using var buffer = featureClass.CreateRowBuffer();
-            
+
             using var cursor = coastlinep.Search(filter, true);
             int recordCount = 0;
 
@@ -144,13 +144,14 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

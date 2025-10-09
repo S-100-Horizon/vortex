@@ -52,6 +52,10 @@ namespace S100Framework.Applications
                     dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
                     dataCoverage_m_scl.optimumDisplayScale = displayScale.OptimumDisplayScale;
                 }
+                else {
+                   Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM","Optimumdisplayscale must be set");
+                }
+
                 {
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
@@ -66,8 +70,6 @@ namespace S100Framework.Applications
                     // TODO: Create relations
                 }
             }
-
-
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -182,7 +184,14 @@ namespace S100Framework.Applications
                                 dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
                                 dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
                                 dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                            } {
+                            }
+                            else {
+                                    Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage","Calculated", "Optimumdisplayscale must be set");
+                            } 
+
+
+
+                            {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;

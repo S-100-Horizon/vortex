@@ -90,9 +90,9 @@ namespace S100Framework.Applications
 
         internal static ILogger Current => _logger;
 
-        internal static string LogDir { get => _logDir; set => _logDir = value; }
+        internal static string LogDir { get => System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}"); }
 
-        static Logger() {
+        static Logger() { 
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
                 .WriteTo.Logger(lc => lc

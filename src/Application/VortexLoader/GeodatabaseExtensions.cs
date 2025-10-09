@@ -2,7 +2,6 @@
 
 namespace S100Framework.Applications
 {
-
     internal static class GeodatabaseExtensions
     {
 
