@@ -137,7 +137,7 @@ namespace S100Framework.YAML
             return false;
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {            
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
             // If the attribute is not required and the value is null, omit from yaml
             if (!required && propertyValue == null)
                 return;

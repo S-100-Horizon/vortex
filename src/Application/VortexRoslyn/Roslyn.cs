@@ -1,14 +1,10 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using static S100Framework.Applications.Roslyn;
 
 namespace S100Framework.Applications
 {
@@ -499,7 +495,7 @@ namespace S100Framework.Applications
                         constructor.AppendLine($"new {code} {{");
 
                         var regionShouldSerialize = new StringBuilder();
-                        var regionSerializableEnumeration = new StringBuilder();                        
+                        var regionSerializableEnumeration = new StringBuilder();
 
                         var isFirst = true;
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
@@ -1740,7 +1736,7 @@ namespace S100Framework.Applications
 
                 informationBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
-                builder.AppendLine("\t\t\t#endregion");                
+                builder.AppendLine("\t\t\t#endregion");
             }
 
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
@@ -1808,7 +1804,7 @@ namespace S100Framework.Applications
                 builder.AppendLine();
 
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
-                builder.AppendLine("\t\t\t#endregion");                
+                builder.AppendLine("\t\t\t#endregion");
             }
 
             postBuilder?.Invoke(builder);

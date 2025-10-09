@@ -27,9 +27,9 @@ namespace S100Framework.Catalogues
             if (property == null) return null;
 
             var attribute = (EnumerationValueAttribute?)property!.GetCustomAttribute(typeof(EnumerationValueAttribute));
-            if(attribute == null) return ((int[])Enum.GetValues(property.PropertyType)).Select(e => (int)e).ToArray();
+            if (attribute == null) return ((int[])Enum.GetValues(property.PropertyType)).Select(e => (int)e).ToArray();
 
-            return attribute.PropertyValues;                
+            return attribute.PropertyValues;
         }
     }
 }

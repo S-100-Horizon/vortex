@@ -1,17 +1,12 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using JsonFlatten;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
-using Newtonsoft.Json.Linq;
 using S100Framework.DomainModel.S100;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S128;
 using S100Framework.DomainModel.S128.ComplexAttributes;
 using System.Collections;
 using System.IO;
-using System.Text;
 using System.Text.Json;
 using System.Xml;
 using System.Xml.Linq;
@@ -141,10 +136,10 @@ namespace TestS100Framework
                     iMOMaritimeServiceElement = [iMOMaritimeService.MaritimeAssistanceService],
                     information = [new information {
                         language = "eng",
-                        text = ["Just testing"],                        
+                        text = ["Just testing"],
                     }],
                     //issueDateField = 
-                    issueTime = new Time(now.Hour, now.Minute),            
+                    issueTime = new Time(now.Hour, now.Minute),
                     onlineResource = new onlineResource {
                         linkage = "iho.int/en/s-100-universal-hydrographic-data-model",
                         protocol = "https",
@@ -155,14 +150,14 @@ namespace TestS100Framework
                     productSpecification = new productSpecification {
                         name = Summary.Name,
                         version = Summary.Version.ToString(),
-                        editionDate = Summary.VersionDate,                        
+                        editionDate = Summary.VersionDate,
                     },
                     sourceIndication = new sourceIndication {
                         categoryOfAuthority = categoryOfAuthority.HydrographicOffice,
                         countryName = "Qostrana",
                         reportedDate = DateOnly.FromDateTime(now),
                         source = "AI",
-                        sourceType = sourceType.Maritime,                        
+                        sourceType = sourceType.Maritime,
                     },
                     typeOfProductFormatElement = typeOfProductFormat.IsoIec8211,
                 };
@@ -218,7 +213,7 @@ namespace TestS100Framework
 
             var id = $"DK00_{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}";
 
-            var fileName = $"128{id}.gml";            
+            var fileName = $"128{id}.gml";
 
             var dataset = new S100Framework.DomainModel.S128.Dataset {
                 gmlId = id,

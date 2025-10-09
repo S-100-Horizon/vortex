@@ -1,8 +1,5 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.WPF.ViewModel;
-using System;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -11,7 +8,6 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
-using Xceed.Wpf.Toolkit.Primitives;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 

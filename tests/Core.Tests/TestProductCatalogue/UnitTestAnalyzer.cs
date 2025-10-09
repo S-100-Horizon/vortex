@@ -3,7 +3,6 @@ using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.YAML;
 using System.Diagnostics;
-using System.IO;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -250,7 +249,7 @@ namespace TestProductCatalogue
                     version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
                 };
 
-               
+
 
                 using var geodatabase = createGeodatabase();
 

@@ -5,7 +5,6 @@ using S100Framework.DomainModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Windows.Media.Animation;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -28,7 +27,7 @@ namespace TestS100Framework
     }
 
     namespace Roslyn
-    {        
+    {
         public class UnitTestCodeBuilder
         {
             public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(@".\..\..\..\..\..\..\..\artifacts\Product Specifications", ps));
@@ -136,7 +135,7 @@ namespace TestS100Framework
             public void Build_S101() {
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
-               
+
                 var s100 = XDocument.Load(this.Path(@"S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"));
 
                 Assert.True(VerifyProductSpecification(s100));
@@ -173,7 +172,7 @@ namespace TestS100Framework
                     new S100Framework.Applications.Roslyn.DependencyRule("Bridge", "Bridge.categoryOfOpeningBridge","(bridge) => bridge.openingBridge.HasValue && bridge.openingBridge.Value == true", typeof(ConditionalUnknownDependencyAttribute)),
                     new S100Framework.Applications.Roslyn.DependencyRule("Bridge", "Bridge.openingBridge","(bridge) => !bridge.openingBridge.HasValue", typeof(ConditionalUnknownDependencyAttribute)),
                     new S100Framework.Applications.Roslyn.DependencyRule("rhythmOfLight","rhythmOfLight.signalPeriod","(rhythmOfLight) => !rhythmOfLight.lightCharacteristic.HasValue || (rhythmOfLight.lightCharacteristic.HasValue && rhythmOfLight.lightCharacteristic.Value != (lightCharacteristic)1)", typeof(ConditionalUnknownDependencyAttribute)),
-                    new S100Framework.Applications.Roslyn.DependencyRule("surfaceCharacteristics","surfaceCharacteristics.natureOfSurface","(surfaceCharacteristics) => surfaceCharacteristics.natureOfSurface is null && !surfaceCharacteristics.natureOfSurfaceQualifyingTerms.Any()", typeof(ConditionalUnknownDependencyAttribute)),                    
+                    new S100Framework.Applications.Roslyn.DependencyRule("surfaceCharacteristics","surfaceCharacteristics.natureOfSurface","(surfaceCharacteristics) => surfaceCharacteristics.natureOfSurface is null && !surfaceCharacteristics.natureOfSurfaceQualifyingTerms.Any()", typeof(ConditionalUnknownDependencyAttribute)),
                 };
 
                 var validationChecks = new S100Framework.Applications.Roslyn.ValidationCheck[] {
@@ -610,8 +609,6 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_Default() {
-                var decimalValue1 = default(decimal?);
-                decimal? decimalValue2 = default;
 
                 //var spanFixed = new S100Framework.DomainModel.S101.FeatureTypes.SpanFixed {
                 //    verticalClearanceFixed = new S100Framework.DomainModel.S101.ComplexAttributes.verticalClearanceFixed {

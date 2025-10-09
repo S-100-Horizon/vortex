@@ -128,7 +128,7 @@ namespace TestNisImporter
                         }
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     continue; // keep on
                 }
             }
@@ -169,7 +169,7 @@ namespace TestNisImporter
 
                     gml.Add(content);
                 }
-                catch (HttpRequestException ex) {
+                catch (HttpRequestException) {
                     // Rate limit hit, waiting...
                     await Task.Delay(5000);
                     var res = await client.GetAsync($"S-124/messages/{e}");
@@ -180,7 +180,7 @@ namespace TestNisImporter
 
                     gml.Add(content);
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     continue;   // keep on
                 }
 

@@ -290,7 +290,7 @@ namespace S100Framework.GML
                         break;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 // Never dont stop!
                 //System.Diagnostics.Debugger.Break();
             }
