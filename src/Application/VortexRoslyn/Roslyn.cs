@@ -498,6 +498,9 @@ namespace S100Framework.Applications
                         var constructor = new StringBuilder();
                         constructor.AppendLine($"new {code} {{");
 
+                        var regionShouldSerialize = new StringBuilder();
+                        var regionSerializableEnumeration = new StringBuilder();                        
+
                         var isFirst = true;
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             if (!isFirst)
@@ -617,33 +620,44 @@ namespace S100Framework.Applications
                                 builderDomainModel.AppendLine("\t\t\t}");
                             }
                             if (enumTypes.Contains(referenceCode)) {
-                                builderDomainModel.AppendLine();
-                                builderDomainModel.AppendLine("\t\t\t[JsonIgnore]");
-                                builderDomainModel.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+                                regionSerializableEnumeration.AppendLine();
+                                regionSerializableEnumeration.AppendLine("\t\t\t[JsonIgnore]");
+                                regionSerializableEnumeration.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                                 if (lower == 0 && upper.HasValue && upper.Value == 1)
-                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                    regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                                 else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                                     if (productFormat == ProductFormat.ISO8211)
-                                        builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
+                                        regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
                                     else
-                                        builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                                        regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                                 }
                                 else
-                                    builderDomainModel.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
+                                    regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
                             }
 
                             if (lower == 0 && upper.HasValue && upper.Value == 1) {
-                                builderDomainModel.AppendLine();
-                                builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {shouldSerialize[prefix](referenceCode)}; }}");
+                                regionShouldSerialize.AppendLine();
+                                regionShouldSerialize.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {shouldSerialize[prefix](referenceCode)}; }}");
                             }
                             if (prefix.StartsWith("List<")) {
-                                builderDomainModel.AppendLine();
-                                builderDomainModel.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
+                                regionShouldSerialize.AppendLine();
+                                regionShouldSerialize.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
                             }
                         }
 
                         builderDomainModel.AppendLine();
+                        builderDomainModel.AppendLine("\t\t\t#region ShouldSerialize");
+                        builderDomainModel.AppendLine(regionShouldSerialize.ToString().Trim(Environment.NewLine.ToArray()));
+                        builderDomainModel.AppendLine("\t\t\t#endregion");
+
+                        builderDomainModel.AppendLine();
+                        builderDomainModel.AppendLine("\t\t\t#region SerializableEnumeration");
+                        builderDomainModel.AppendLine(regionSerializableEnumeration.ToString().Trim(Environment.NewLine.ToArray()));
+                        builderDomainModel.AppendLine("\t\t\t#endregion");
+
+                        builderDomainModel.AppendLine();
+                        builderDomainModel.AppendLine("\t\t\t#region Validation");
                         builderDomainModel.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                         builderDomainModel.AppendLine();
                         builderDomainModel.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -657,7 +671,7 @@ namespace S100Framework.Applications
                         foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
                             builderDomainModel.AppendLine($"\t\t\t\t{d.Check}");
                         builderDomainModel.AppendLine("\t\t\t}");
-
+                        builderDomainModel.AppendLine("\t\t\t#endregion");
 
                         builderDomainModel.AppendLine("\t\t}");
                         builderDomainModel.AppendLine();
@@ -888,6 +902,7 @@ namespace S100Framework.Applications
 
                                 if (superType is null) {
                                     builder.AppendLine();
+                                    builder.AppendLine("\t\t\t#region Validation");
                                     builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                     builder.AppendLine();
                                     builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -901,9 +916,11 @@ namespace S100Framework.Applications
                                     foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
                                         builder.AppendLine($"\t\t\t\t{d.Check}");
                                     builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine("\t\t\t#endregion");
                                 }
                                 else {
                                     builder.AppendLine();
+                                    builder.AppendLine("\t\t\t#region Validation");
                                     builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                     builder.AppendLine();
                                     builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -919,6 +936,7 @@ namespace S100Framework.Applications
                                     foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
                                         builder.AppendLine($"\t\t\t\t{d.Check}");
                                     builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine("\t\t\t#endregion");
                                 }
                             }
                         });
@@ -1018,6 +1036,7 @@ namespace S100Framework.Applications
                                 }
                                 if (superType is null) {
                                     builder.AppendLine();
+                                    builder.AppendLine("\t\t\t#region Validation");
                                     builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                     builder.AppendLine();
                                     builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -1031,9 +1050,11 @@ namespace S100Framework.Applications
                                     foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
                                         builder.AppendLine($"\t\t\t\t{d.Check}");
                                     builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine("\t\t\t#endregion");
                                 }
                                 else {
                                     builder.AppendLine();
+                                    builder.AppendLine("\t\t\t#region Validation");
                                     builder.AppendLine($"\t\t\tpublic override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);");
                                     builder.AppendLine();
                                     builder.AppendLine($"\t\t\tprivate IReadOnlyDictionary<string, Func<{code}, bool>> _conditionalUnknown = new Dictionary<string,Func<{code}, bool>> {{");
@@ -1049,6 +1070,7 @@ namespace S100Framework.Applications
                                     foreach (var d in validationChecks.Where(e => e.Code.Equals(code)))
                                         builder.AppendLine($"\t\t\t\t{d.Check}");
                                     builder.AppendLine("\t\t\t}");
+                                    builder.AppendLine("\t\t\t#endregion");
                                 }
                             }
 
@@ -1494,6 +1516,9 @@ namespace S100Framework.Applications
 
             //if (code.Equals("DistanceMark")) System.Diagnostics.Debugger.Break();
 
+            var regionShouldSerialize = new StringBuilder();
+            var regionSerializableEnumeration = new StringBuilder();
+
             var isFirst = true;
             foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                 if (!isFirst)
@@ -1597,40 +1622,53 @@ namespace S100Framework.Applications
                     builder.AppendLine("\t\t\t}");
                 }
                 if (client.KnownEnumTypes.Contains(referenceCode)) {
-                    builder.AppendLine();
-                    builder.AppendLine("\t\t\t[JsonIgnore]");
-                    builder.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
+                    regionSerializableEnumeration.AppendLine();
+                    regionSerializableEnumeration.AppendLine("\t\t\t[JsonIgnore]");
+                    regionSerializableEnumeration.AppendLine($"\t\t\t[XmlElement(\"{referenceCode}\")]");
 
                     if (lower == 0 && upper.HasValue && upper.Value == 1)
-                        builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                        regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                     else if (lower == 1 && upper.HasValue && upper.Value == 1) {
                         if (client.ProductFormat == ProductFormat.ISO8211)
-                            builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
+                            regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>? {referenceCode}Element {{ get {{ return {referenceCode}.HasValue ? {referenceCode} : default; }} set {{ }} }}");
                         else
-                            builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
+                            regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}> {referenceCode}Element {{ get {{ return {referenceCode}; }} set {{ }} }}");
                     }
                     else
-                        builder.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
+                        regionSerializableEnumeration.AppendLine($"\t\t\tpublic SerializableEnumeration<{referenceCode}>[] {referenceCode}Element {{ get {{ return [.. {referenceCode}]; }} set {{ }} }}");
                 }
 
                 if (lower == 0 && upper.HasValue && upper.Value == 1) {
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {client.ShouldSerialize[prefix](referenceCode)}; }}");
+                    regionShouldSerialize.AppendLine();
+                    regionShouldSerialize.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {client.ShouldSerialize[prefix](referenceCode)}; }}");
                 }
                 if (prefix.StartsWith("List<")) {
-                    builder.AppendLine();
-                    builder.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
+                    regionShouldSerialize.AppendLine();
+                    regionShouldSerialize.AppendLine($"\t\t\tpublic bool ShouldSerialize{referenceCode}() {{ return {referenceCode}.Any(); }}");
                 }
             }
 
             if (!isFirst)
                 builder.AppendLine();
+
+            builder.AppendLine();
+            builder.AppendLine("\t\t\t#region ShouldSerialize");
+            builder.AppendLine(regionShouldSerialize.ToString().Trim(Environment.NewLine.ToArray()));
+            builder.AppendLine("\t\t\t#endregion");
+
+            builder.AppendLine();
+            builder.AppendLine("\t\t\t#region SerializableEnumeration");
+            builder.AppendLine(regionSerializableEnumeration.ToString().Trim(Environment.NewLine.ToArray()));
+            builder.AppendLine("\t\t\t#endregion");
+            builder.AppendLine();
+
             builder.AppendLine("\t\t\t[JsonIgnore]");
             builder.AppendLine("\t\t\t[XmlIgnore]");
             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t#region InformationBindings");
                 builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine("\t\t\t[XmlIgnore]");
                 if (superType != null)
@@ -1702,10 +1740,12 @@ namespace S100Framework.Applications
 
                 informationBindings.AppendLine("\t\t\t];");
                 builder.AppendLine(informationBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
+                builder.AppendLine("\t\t\t#endregion");                
             }
 
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 builder.AppendLine();
+                builder.AppendLine("\t\t\t#region IFeatureBindings");
                 builder.AppendLine("\t\t\t[JsonIgnore]");
                 builder.AppendLine("\t\t\t[XmlIgnore]");
                 if (superType != null)
@@ -1768,6 +1808,7 @@ namespace S100Framework.Applications
                 builder.AppendLine();
 
                 builder.AppendLine(featureBindings.ToString().TrimEnd(Environment.NewLine.ToArray()));
+                builder.AppendLine("\t\t\t#endregion");                
             }
 
             postBuilder?.Invoke(builder);
@@ -1975,7 +2016,7 @@ namespace S100Framework.Applications
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
                         //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }
-                    
+
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
 
@@ -2031,7 +2072,7 @@ namespace S100Framework.Applications
                     //builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
                         //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
-                    }                    
+                    }
                     if (upper.HasValue) {
                         if (lower == 0 && upper == 1)
                             builder.AppendLine($"\t\t[Optional]");
