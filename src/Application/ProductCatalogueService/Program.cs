@@ -13,9 +13,7 @@ namespace ProductCatalogueService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             //builder.Services.AddSwaggerGen(c => {
@@ -41,9 +39,6 @@ namespace ProductCatalogueService
                 options.LowercaseUrls = true;
             });
 
-
-
-
             // Setup ArcGIS and ProductManager
             ArcGIS.Core.Hosting.Host.Initialize();
 
@@ -64,14 +59,12 @@ namespace ProductCatalogueService
             builder.Services.AddSingleton(productManager);
 
 
-
-
             // Caching
             builder.Services.AddMemoryCache();
 
             // Problem details & Exception handling
-            builder.Services.AddProblemDetails();
-            builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+            //builder.Services.AddProblemDetails();
+            //builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
             var app = builder.Build();
 
@@ -79,10 +72,6 @@ namespace ProductCatalogueService
             // Configure the HTTP request pipeline.
             app.UseSwagger();
             app.UseSwaggerUI();
-            //app.UseSwaggerUI(options =>              
-            //{
-            //    options.RoutePrefix = string.Empty;     // Default to this
-            //});
 
             app.UseHttpsRedirection();
 
