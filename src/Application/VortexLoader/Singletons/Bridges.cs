@@ -257,7 +257,7 @@ namespace S100Framework.Applications.Singletons
                             };
                             featureBindings.Add(featureBinding);
                         }
-                        row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+                        row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
 
                         // Update opening bridge
                         var canOpen = bindings.Any(obj => {
