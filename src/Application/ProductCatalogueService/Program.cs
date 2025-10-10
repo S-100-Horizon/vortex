@@ -15,22 +15,10 @@ namespace ProductCatalogueService
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 
-            if (!(System.Diagnostics.Debugger.IsAttached)) {
-                Log.Logger = new LoggerConfiguration().MinimumLevel.Verbose().WriteTo.File(
-                        System.IO.Path.Combine(@"\\nas.gst.dk\public\applications\serilog\Applications\ProductCatalogueAPI", $"{Environment.MachineName}", "bootstrap.log"),
-                        rollingInterval: RollingInterval.Infinite,
-                        retainedFileCountLimit: 1,
-                        shared: true,
-                        flushToDiskInterval: TimeSpan.FromMinutes(10),
-                        outputTemplate: outputTemplate).CreateLogger();
-            }
-
             // logging 
             builder.Host.UseSerilog((context, loggerConfiguration) => {
                 loggerConfiguration.MinimumLevel.Verbose()
                      .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                     .MinimumLevel.Override("Geodatastyrelsen", LogEventLevel.Verbose)
-
                      .Enrich.FromLogContext()
                      .Enrich.WithProperty("MachineName", Environment.MachineName)
                      .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose);
@@ -38,20 +26,11 @@ namespace ProductCatalogueService
                 if (System.Diagnostics.Debugger.IsAttached) {
                     loggerConfiguration = loggerConfiguration
                         .WriteTo.File(
-                             System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Geodatastyrelsen", "ProductCatalogueAPI", "ProductCatalogueAPI-developer.log"),
+                            System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProductCatalogue", "ProductCatalogueAPI-developer.log"),
                             rollingInterval: RollingInterval.Month,
                             retainedFileCountLimit: 1,
-                             shared: true,
-                             outputTemplate: outputTemplate);
-                }
-                else {
-                    loggerConfiguration = loggerConfiguration.WriteTo.File(
-                        System.IO.Path.Combine(@"\\nas.gst.dk\public\applications\serilog\Applications\ProductCatalogueAPI", $"{Environment.MachineName}", "ProductCatalogueAPI.log"),
-                        rollingInterval: RollingInterval.Day,
-                        retainedFileCountLimit: 180,
-                        shared: true,
-                        flushToDiskInterval: TimeSpan.FromMinutes(10),
-                        outputTemplate: outputTemplate);
+                            shared: true,
+                            outputTemplate: outputTemplate);
                 }
             });
 
