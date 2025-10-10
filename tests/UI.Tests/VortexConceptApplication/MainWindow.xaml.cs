@@ -187,7 +187,7 @@ namespace VortexConceptApplication
             //};
 
 
-            var viewModel = viewModel3;
+            var viewModel = viewModel1;
 
             SelectedProperty = viewModel;
 

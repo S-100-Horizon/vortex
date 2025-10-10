@@ -1,18 +1,9 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using System.Text.Json;
-
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using WinRT;
 using Xunit.Abstractions;
 namespace TestS100Framework
 {
@@ -31,7 +22,7 @@ namespace TestS100Framework
             using Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(@".\..\..\..\..\..\..\artifacts\Workspaces\s100ed8.gdb")));
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
-            foreach(var d in definitions) {
+            foreach (var d in definitions) {
                 using var fc = geodatabase.OpenDataset<FeatureClass>(d.GetName());
             }
         }
@@ -73,10 +64,10 @@ namespace TestS100Framework
 
             buffer["ps"] = "S-XXX";
             buffer["code"] = "test";
-            
+
             var id = cursor.Insert(buffer);
-            
-            cursor.Flush();            
+
+            cursor.Flush();
 
             System.Diagnostics.Debugger.Break();
 

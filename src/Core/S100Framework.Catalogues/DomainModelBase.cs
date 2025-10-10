@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Schema;
@@ -200,7 +199,7 @@ namespace S100Framework.DomainModel
         [XmlIgnore]
         public virtual string Code { get; set; } = string.Empty;
         public abstract bool ConditionalUnknown(string name);
-        public abstract void RunValidationChecks();        
+        public abstract void RunValidationChecks();
     }
 
     [System.SerializableAttribute()]

@@ -1,8 +1,5 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.WPF.ViewModel;
-using System;
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -11,7 +8,6 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
-using Xceed.Wpf.Toolkit.Primitives;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -52,6 +48,19 @@ namespace S100Framework.WPF.Editors
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is null)
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            return System.Windows.Media.Brushes.Transparent;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class DependentUnknownValueConvertor(string propertyName) : IValueConverter
+    {
+        public string PropertyName { get; } = propertyName;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             return System.Windows.Media.Brushes.Transparent;
         }
 
@@ -105,7 +114,6 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
-
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -117,6 +125,19 @@ namespace S100Framework.WPF.Editors
                     Mode = BindingMode.OneWay,
                 };
                 newBinding.Converter = new BrushUnknownConvertor();
+                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+            }
+
+
+            var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
+            if(dependentUnknownValue is not null) {
+                var propertyName = dependentUnknownValue.PropertyName;
+
+                Binding newBinding = new Binding() {
+                    Source = propertyItem.Instance,
+                    Mode = BindingMode.OneWay,
+                };
+                newBinding.Converter = new DependentUnknownValueConvertor(propertyName);
                 panel.SetBinding(Grid.BackgroundProperty, newBinding);
             }
 

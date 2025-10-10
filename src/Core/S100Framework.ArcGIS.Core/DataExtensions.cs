@@ -1,6 +1,4 @@
-﻿using ArcGIS.Core.Geometry;
-
-namespace ArcGIS.Core.Data
+﻿namespace ArcGIS.Core.Data
 {
     public static class DataExtensions
     {

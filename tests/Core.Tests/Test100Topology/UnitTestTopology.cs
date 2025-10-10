@@ -4,12 +4,11 @@ using GeoAPI.Geometries;
 using ICSharpCode.SharpZipLib.Zip;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using S100Framework.ProductCatalogue;
 using System.Globalization;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
-using S100Framework.Topology;
-using S100Framework.ProductCatalogue;
 
 namespace Test100Topology
 {
@@ -530,9 +529,9 @@ namespace Test100Topology
             var e1452235 = composite.SingleOrDefault(e => e.Id == s1452235.Exterior.Id);
 
 
-            var iMatch = e1452182!.Curves.Any(e => e1452235!.Curves.Select(f=>f.Id)!.Contains(e.Id));
+            var iMatch = e1452182!.Curves.Any(e => e1452235!.Curves.Select(f => f.Id)!.Contains(e.Id));
 
-            var hit1452182 = e1452182!.Curves.Where(e => e1452235!.Curves.Select(f => f.Id)!.Contains(e.Id)).Select(e=>e.Id).ToArray();
+            var hit1452182 = e1452182!.Curves.Where(e => e1452235!.Curves.Select(f => f.Id)!.Contains(e.Id)).Select(e => e.Id).ToArray();
             var hit1452235 = e1452235!.Curves.Where(e => e1452182!.Curves.Select(f => f.Id)!.Contains(e.Id)).Select(e => e.Id).ToArray();
 
             using (var target = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri($"file://{IO.Path.GetFullPath(@"s100ed7.gdb")}")))) {
@@ -615,8 +614,6 @@ namespace Test100Topology
 
             using var buffer = topology.CreateRowBuffer();
             using var cursor = topology.CreateInsertCursor();
-
-            int id = 0;
             foreach (var e in lineStrings) {
                 buffer["id"] = $"{e.Id}";
 
