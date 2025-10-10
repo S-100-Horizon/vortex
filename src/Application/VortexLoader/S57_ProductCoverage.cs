@@ -189,13 +189,13 @@ namespace S100Framework.Applications
                                     Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage","Calculated", "Optimumdisplayscale must be set");
                             } 
 
-
-
                             {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                buffer["informationbindings"] = "[]";
+
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE!.Value);
 
@@ -214,12 +214,12 @@ namespace S100Framework.Applications
 
                                 vdat.verticalDatum = GetVerticalDatum<VerticalDatumOfData>(current.VDAT ?? 3);
 
-
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                buffer["informationbindings"] = "[]";
+
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
 
@@ -242,10 +242,15 @@ namespace S100Framework.Applications
                 }
 
                 {
+
+
+
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
                     ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
                     var featureN = featureClass.CreateRow(buffer);

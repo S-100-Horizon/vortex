@@ -185,6 +185,7 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;

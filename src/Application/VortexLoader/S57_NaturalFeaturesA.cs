@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
@@ -142,6 +143,7 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
 
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
@@ -196,6 +198,8 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                             SetShape(bufferSurface, current.Shape);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
@@ -241,6 +245,8 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
@@ -297,6 +303,8 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
@@ -363,6 +371,8 @@ namespace S100Framework.Applications
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                             SetShape(bufferSurface, current.SHAPE);
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 

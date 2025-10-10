@@ -112,6 +112,8 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, item);
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMQuals[0]);
                     dissolved_M_QUAL_Count++;
@@ -135,6 +137,8 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, item.Geometry);
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMSdats[0]);
 

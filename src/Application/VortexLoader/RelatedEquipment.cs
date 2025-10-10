@@ -219,9 +219,11 @@ namespace S100Framework.Applications
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         if (instance is FeatureNode) {
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                        } else {
+                            ;
                         }
 
-                        ImporterNIS.SetShape(buffer, shape);
+                            ImporterNIS.SetShape(buffer, shape);
                         ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object!.PLTS_COMP_SCALE!.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
@@ -286,6 +288,9 @@ namespace S100Framework.Applications
                 if (instance is FeatureNode) {
                     buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
                 }
+                else {
+                    ;
+                }
 
 
                 ImporterNIS.SetShape(buffer, s57master.Shape);
@@ -335,6 +340,9 @@ namespace S100Framework.Applications
 
                     if (instance is FeatureNode) {
                         buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                    }
+                    else {
+                        ;
                     }
 
                     ImporterNIS.SetShape(buffer, s57master.Shape);
