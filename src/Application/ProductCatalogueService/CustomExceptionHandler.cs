@@ -7,27 +7,19 @@ namespace ProductCatalogueService
     {
         private readonly ILogger<CustomExceptionHandler> _logger = logger;
 
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext,
-            Exception exception, CancellationToken cancellationToken)
-        {
-            var statusCode = exception switch
-            {
+        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken) {
+            var statusCode = exception switch {
                 BadHttpRequestException => StatusCodes.Status400BadRequest,
                 UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
-                
+
                 _ => StatusCodes.Status500InternalServerError
             };
 
             _logger.LogError(exception, "An exception occurred. Message: {Message}", exception.Message);
 
-            var problemDetails = new ProblemDetails
-            {
-                Title = statusCode == StatusCodes.Status500InternalServerError
-                    ? "Internal Server Error"
-                    : "A handled exception occurred",
+            var problemDetails = new ProblemDetails {
+                Title = "An error occurred while processing your request.",
                 Status = statusCode,
-                Type = exception?.GetType().Name,
-                //Detail = exception?.Message,
                 Instance = httpContext.Request.Path,
             };
 

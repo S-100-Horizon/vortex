@@ -217,7 +217,7 @@ namespace S100Framework.ProductCatalogue
 
             var result = await this.GetElectronicProductAsync(name);
 
-            if (!(result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue))
+            if ((result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue))
                 throw new InvalidOperationException();
 
             return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.NewDataset);
@@ -241,8 +241,6 @@ namespace S100Framework.ProductCatalogue
         }
 
         async Task<YAML.Dataset> IElectronicProductManager.CreateNewUpdateAsync(string name) {
-            throw new NotImplementedException();
-
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
@@ -340,7 +338,7 @@ namespace S100Framework.ProductCatalogue
         }
 
        // ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts.TryGetValue(name.ToUpperInvariant(), return out var value);
-        ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => _electronicProducts.TryGetValue(name.ToUpperInvariant(), out var value) ? value : null;
+        ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => _electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
 
         IEnumerator<string> IEnumerable<string>.GetEnumerator() {
             foreach (var p in this._electronicProducts)

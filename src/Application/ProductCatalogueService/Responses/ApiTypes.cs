@@ -30,6 +30,8 @@ namespace ProductCatalogueService
             public typeOfProductFormat TypeOfProductFormat { get; set; }
             public productSpecification? ProductSpecification { get; set; } = default;
             public string Code => nameof(ElectronicProduct);
+            public int EditionNumber { get; set; }
+            public int UpdateNumber { get; set; }
         }
     }
     [JsonConverter(typeof(JsonStringEnumConverter))]
