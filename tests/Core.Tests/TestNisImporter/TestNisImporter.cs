@@ -1,11 +1,6 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
-using ArcGIS.Core.Geometry;
-using ArcGIS.Core.Internal.Geometry;
 using S100Framework.Applications;
-using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -36,8 +31,7 @@ namespace TestNisImporter
 
         [Fact]
         public void TestStatus() {
-            var status = "2,15";
-           // Assert.True(ImporterNIS.GetStatus(status).Count == 2, "");
+            // Assert.True(ImporterNIS.GetStatus(status).Count == 2, "");
         }
 
         [Fact]
@@ -83,7 +77,7 @@ namespace TestNisImporter
             "Speed limit is 12 knots outside the channel",
             "Speedlimit 5 knots",
             "During the period from 1st July to 30th September the speed limit is 10 Knots."
-            
+
             };
 
             foreach (var text in inputs) {
@@ -237,7 +231,7 @@ namespace TestNisImporter
             var featureClass = source.OpenDataset<FeatureClass>("MetadataP");
             string shapeType = "Point"; // Area | Point | Line
 
-            var subtypes = featureClass.GetDefinition().GetSubtypes(); 
+            var subtypes = featureClass.GetDefinition().GetSubtypes();
 
             var sortedDict = new SortedDictionary<int, string>();
 
@@ -736,7 +730,7 @@ namespace TestNisImporter
 
             var regex = new Regex(@"\d{3}$");
 
-            if(!folder.GetFiles("*.000", SearchOption.TopDirectoryOnly).Any()) {
+            if (!folder.GetFiles("*.000", SearchOption.TopDirectoryOnly).Any()) {
                 folder = folder.GetDirectories().OrderByDescending(e => e.Name).First();
             }
 

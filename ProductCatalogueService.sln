@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 17.10.0.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.Catalogues", "src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj", "{FC277E10-106E-4985-A520-23782561460F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.ArcGIS.Core", "src\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj", "{413260A1-3D58-4258-96A0-8CB07A02B34B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{83D42794-241F-4EED-99E4-C6309BA88041}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0A3B2562-DD1E-4E0C-B170-AEE80FF4DD0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S100Framework", "S100Framework", "{50685D39-00FF-4EDD-B55F-B37D1B24A5DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.GML", "src\Core\S100Framework.GML\S100Framework.GML.csproj", "{25D9743B-2E63-447A-B772-C7E527215829}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.WPF", "src\UI\S100Framework.WPF\S100Framework.WPF.csproj", "{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.YAML", "src\Core\S100Framework.YAML\S100Framework.YAML.csproj", "{4B7CD27B-CED0-4E0A-A90C-86411445ED13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.ProductCatalogue", "src\Core\S100Framework.ProductCatalogue\S100Framework.ProductCatalogue.csproj", "{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.Topology", "src\Core\S100Framework.Topology\S100Framework.Topology.csproj", "{2B3783EE-ABDB-4A6E-9677-C826CD253FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalogueService", "src\Application\ProductCatalogueService\ProductCatalogueService.csproj", "{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProductCatalogue", "tests\Core.Tests\TestProductCatalogue\TestProductCatalogue.csproj", "{CF65EF05-C31C-C736-F115-6C87539976F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC277E10-106E-4985-A520-23782561460F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FC277E10-106E-4985-A520-23782561460F}.Release|x64.ActiveCfg = Release|Any CPU
+		{413260A1-3D58-4258-96A0-8CB07A02B34B}.Debug|x64.ActiveCfg = Debug|x64
+		{413260A1-3D58-4258-96A0-8CB07A02B34B}.Debug|x64.Build.0 = Debug|x64
+		{413260A1-3D58-4258-96A0-8CB07A02B34B}.Release|x64.ActiveCfg = Release|x64
+		{413260A1-3D58-4258-96A0-8CB07A02B34B}.Release|x64.Build.0 = Release|x64
+		{25D9743B-2E63-447A-B772-C7E527215829}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{25D9743B-2E63-447A-B772-C7E527215829}.Debug|x64.Build.0 = Debug|Any CPU
+		{25D9743B-2E63-447A-B772-C7E527215829}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}.Debug|x64.ActiveCfg = Debug|x64
+		{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}.Debug|x64.Build.0 = Debug|x64
+		{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3}.Release|x64.ActiveCfg = Release|x64
+		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD}.Debug|x64.Build.0 = Debug|Any CPU
+		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD}.Release|x64.ActiveCfg = Release|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Debug|x64.Build.0 = Debug|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Release|x64.ActiveCfg = Release|Any CPU
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3}.Release|x64.Build.0 = Release|Any CPU
+		{CF65EF05-C31C-C736-F115-6C87539976F5}.Debug|x64.ActiveCfg = Debug|x64
+		{CF65EF05-C31C-C736-F115-6C87539976F5}.Debug|x64.Build.0 = Debug|x64
+		{CF65EF05-C31C-C736-F115-6C87539976F5}.Release|x64.ActiveCfg = Release|x64
+		{CF65EF05-C31C-C736-F115-6C87539976F5}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC277E10-106E-4985-A520-23782561460F} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{413260A1-3D58-4258-96A0-8CB07A02B34B} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{25D9743B-2E63-447A-B772-C7E527215829} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{4B7CD27B-CED0-4E0A-A90C-86411445ED13} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{EC9FE7C0-5D4D-477D-9D7C-5F15CBC355F3} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{4A71D3B7-5A62-4F33-8862-9C6F889DD7F3} = {83D42794-241F-4EED-99E4-C6309BA88041}
+		{CF65EF05-C31C-C736-F115-6C87539976F5} = {0A3B2562-DD1E-4E0C-B170-AEE80FF4DD0C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E973A0E9-A7CE-469B-A225-A426A3E0FAAF}
+	EndGlobalSection
+EndGlobal

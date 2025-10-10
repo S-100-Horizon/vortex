@@ -3,7 +3,6 @@ using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using S100Framework.YAML;
 using System.Diagnostics;
-using System.IO;
 using System.Text.Json;
 using Xunit.Abstractions;
 using IO = System.IO;
@@ -121,6 +120,8 @@ namespace TestProductCatalogue
             });
             Assert.NotNull(productManager);
 
+            var tasks = new List<Task>();
+
             //  S-57 ProductDefinitions
             await productManager.Dispatch(() => {
                 var connectionFile = new Uri(IO.Path.GetFullPath(s57));
@@ -139,8 +140,6 @@ namespace TestProductCatalogue
                     name = S100Framework.DomainModel.S101.Summary.ProductId,
                     version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
                 };
-
-                var tasks = new List<Task>();
 
                 using var geodatabase = createGeodatabase();
 
@@ -187,10 +186,129 @@ namespace TestProductCatalogue
 
                         tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                     }
-
-                    Task.WaitAll([.. tasks]);
                 }
             });
+
+            await Task.WhenAll([.. tasks]);
+        }
+
+        [Fact]
+        public async Task Test_LoadElectronicProducts2() {
+            var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
+            Assert.False(string.IsNullOrEmpty(s57));
+
+            FastZip fastZip = new();
+
+            var zipFileS100ed9 = new IO.DirectoryInfo(@"s100ed9.gdb");
+
+            if (zipFileS100ed9.Exists) {
+                zipFileS100ed9.Delete(true);
+            }
+
+
+            fastZip.ExtractZip(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb.zip"), zipFileS100ed9.FullName, null);
+
+            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed9.gdb")));
+
+                var geodatabase = new Geodatabase(connectionFile);
+
+                using (var table = geodatabase.OpenDataset<Table>("configuration")) {
+                    var skrrt = new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!));
+                    using var buffer = table.CreateRowBuffer();
+                    buffer["ps"] = "S-128.Horizon";
+                    buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
+                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
+                    });
+                    table.CreateRow(buffer);
+                }
+
+                return geodatabase;
+            });
+            Assert.NotNull(productManager);
+
+            var tasks = new List<Task>();
+
+            //  S-57 ProductDefinitions
+            await productManager.Dispatch(async () => {
+                var connectionFile = new Uri(IO.Path.GetFullPath(s57));
+
+                Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
+
+                if (IO.File.Exists(s57) && ".sde".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
+                }
+                else if (IO.Directory.Exists(s57) && ".gdb".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
+                }
+
+                var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
+                    name = S100Framework.DomainModel.S101.Summary.ProductId,
+                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
+                };
+
+
+
+                using var geodatabase = createGeodatabase();
+
+                var definitionTables = geodatabase.GetDefinitions<TableDefinition>();
+                var definitionFeatureClasses = geodatabase.GetDefinitions<FeatureClassDefinition>();
+
+                using var tableProductCoverage = geodatabase.OpenDataset<FeatureClass>(definitionFeatureClasses.Single(e => e.GetName().EndsWith("ProductCoverage")).GetName());
+
+                using (var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName())) {
+                    using var cursor = tableProductDefinitions.Search(new QueryFilter {
+                        //WhereClause = "upper(ExportType) <> 'CANCEL'",
+                        WhereClause = "1 = 1",
+                    }, true);
+
+                    while (cursor.MoveNext()) {
+                        var c = cursor.Current;
+
+                        var series = Convert.ToString(c["series"])!.ToString();
+
+                        var name = "101DK00" + Convert.ToString(c["DSNM"])!.Substring(2);
+                        var specificUsage = name[7] switch {
+                            '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
+                            '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
+                            '3' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
+                            '2' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
+                            '1' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                            _ => throw new InvalidDataException(),
+                        };
+
+                        using var coverage = tableProductCoverage.Search(new QueryFilter {
+                            WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
+                        }, true);
+
+                        var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
+                        while (coverage.MoveNext()) {
+                            var current = (ArcGIS.Core.Data.Feature)coverage.Current;
+                            var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+
+                            polygons.Add(polygon);
+                            continue;
+                        }
+                        Debug.Assert(polygons.Any());
+
+                        var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
+
+                        // todo: kald med s57
+                        tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
+                    }
+                }
+            });
+
+            await Task.WhenAll([.. tasks]);
+
+            // 101DK0040349E
+
+            var p = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
+            await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
+
+            System.Diagnostics.Debugger.Break();
         }
 
         [Fact]
@@ -228,7 +346,7 @@ namespace TestProductCatalogue
             var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
             Assert.False(string.IsNullOrEmpty(s101));
 
-            s101 = @"g:\vortex\connections\s100ed8.sde";
+            //s101 = @"g:\vortex\connections\s100ed8.sde";
 
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 

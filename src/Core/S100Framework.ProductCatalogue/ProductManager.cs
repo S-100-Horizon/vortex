@@ -5,7 +5,6 @@ using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
 using Serilog;
-using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -600,7 +599,7 @@ namespace S100Framework.ProductCatalogue
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
                         DatasetName = electronicProduct.datasetName!,
                         Edition = electronicProduct.editionNumber!.Value,
-                        Update = electronicProduct.updateNumber!.Value,
+                        Update = electronicProduct.updateNumber ?? 0,
                         ExportTypes = exportType,
                         TimestampUTC = timestamp
                     });

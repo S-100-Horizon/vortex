@@ -5067,32 +5067,39 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? deliveryPoint {get;set;} = default;
 
-			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
-
 			[XmlElement("cityName")]
 			[Optional]
 			public String? cityName {get;set;} = default;
-
-			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
 
 			[XmlElement("administrativeDivision")]
 			[Optional]
 			public String? administrativeDivision {get;set;} = default;
 
-			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
-
 			[XmlElement("countryName")]
 			[Optional]
 			public String? countryName {get;set;} = default;
-
-			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
 
 			[XmlElement("postalCode")]
 			[Optional]
 			public String? postalCode {get;set;} = default;
 
-			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
+			#region ShouldSerialize
+			public bool ShouldSerializedeliveryPoint() { return !string.IsNullOrEmpty(deliveryPoint); }
 
+			public bool ShouldSerializecityName() { return !string.IsNullOrEmpty(cityName); }
+
+			public bool ShouldSerializeadministrativeDivision() { return !string.IsNullOrEmpty(administrativeDivision); }
+
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
+
+			public bool ShouldSerializepostalCode() { return !string.IsNullOrEmpty(postalCode); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<contactAddress, bool>> _conditionalUnknown = new Dictionary<string,Func<contactAddress, bool>> {
@@ -5100,6 +5107,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5112,18 +5120,25 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public Boolean? displayName {get;set;} = default;
 
-			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
-
 			[XmlElement("language")]
 			[Optional]
 			public String? language {get;set;} = default;
-
-			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
 
 			[XmlElement("name")]
 			[Mandatory]
 			public String name {get;set;} = string.Empty;
 
+			#region ShouldSerialize
+			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
+
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<featureName, bool>> _conditionalUnknown = new Dictionary<string,Func<featureName, bool>> {
@@ -5131,6 +5146,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5146,14 +5162,21 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? dateEnd {get;set;} = default;
 
-			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
-
 			[XmlElement("dateStart")]
 			[Optional]
 			public String? dateStart {get;set;} = default;
 
-			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
+			#region ShouldSerialize
+			public bool ShouldSerializedateEnd() { return !string.IsNullOrEmpty(dateEnd); }
 
+			public bool ShouldSerializedateStart() { return !string.IsNullOrEmpty(dateStart); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<fixedDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<fixedDateRange, bool>> {
@@ -5161,6 +5184,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5177,8 +5201,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public int? numberOfFeatures {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializenumberOfFeatures() { return numberOfFeatures.HasValue; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<multiplicityOfFeatures, bool>> _conditionalUnknown = new Dictionary<string,Func<multiplicityOfFeatures, bool>> {
@@ -5186,6 +5217,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5198,12 +5230,19 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
-			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
-
 			[XmlElement("orientationValue")]
 			[Mandatory]
 			public double orientationValue {get;set;} = default;
 
+			#region ShouldSerialize
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<orientation, bool>> _conditionalUnknown = new Dictionary<string,Func<orientation, bool>> {
@@ -5211,6 +5250,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5227,6 +5267,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public String dateStart {get;set;} = string.Empty;
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<periodicDateRange, bool>> _conditionalUnknown = new Dictionary<string,Func<periodicDateRange, bool>> {
@@ -5234,6 +5283,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5250,6 +5300,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public double waveLengthValue {get;set;} = default;
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<radarWaveLength, bool>> _conditionalUnknown = new Dictionary<string,Func<radarWaveLength, bool>> {
@@ -5257,6 +5316,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5269,12 +5329,19 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
-
 			[XmlElement("text")]
 			[Mandatory]
 			public String text {get;set;} = string.Empty;
 
+			#region ShouldSerialize
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sectorInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorInformation, bool>> {
@@ -5282,6 +5349,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5298,8 +5366,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public int? sectorLineLength {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sectorLimitOne, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimitOne, bool>> {
@@ -5307,6 +5382,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5323,8 +5399,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public int? sectorLineLength {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializesectorLineLength() { return sectorLineLength.HasValue; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sectorLimitTwo, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimitTwo, bool>> {
@@ -5332,6 +5415,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5347,12 +5431,19 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? language {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
-
 			[XmlElement("text")]
 			[Mandatory]
 			public String text {get;set;} = string.Empty;
 
+			#region ShouldSerialize
+			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<shapeInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<shapeInformation, bool>> {
@@ -5360,6 +5451,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5377,10 +5469,17 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public signalStatus signalStatus {get;set;}
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("signalStatus")]
 			public SerializableEnumeration<signalStatus> signalStatusElement { get { return signalStatus; } set { } }
+			#endregion
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<signalSequence, bool>> _conditionalUnknown = new Dictionary<string,Func<signalSequence, bool>> {
@@ -5388,6 +5487,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5408,14 +5508,21 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public heightLengthUnits heightLengthUnits {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("heightLengthUnits")]
-			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
-
 			[XmlElement("diameter")]
 			[Mandatory]
 			public double diameter {get;set;} = default;
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("heightLengthUnits")]
+			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<CableDimensions, bool>> _conditionalUnknown = new Dictionary<string,Func<CableDimensions, bool>> {
@@ -5423,6 +5530,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5439,89 +5547,94 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public atonCommissioning? atonCommissioning {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("atonCommissioning")]
-			public SerializableEnumeration<atonCommissioning>? atonCommissioningElement { get { return atonCommissioning; } set { } }
-
-			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27])]
 			[Optional]
 			public atonRemoval? atonRemoval {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("atonRemoval")]
-			public SerializableEnumeration<atonRemoval>? atonRemovalElement { get { return atonRemoval; } set { } }
-
-			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
 			[Optional]
 			public atonReplacement? atonReplacement {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("atonReplacement")]
-			public SerializableEnumeration<atonReplacement>? atonReplacementElement { get { return atonReplacement; } set { } }
-
-			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public fixedAtonChange? fixedAtonChange {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("fixedAtonChange")]
-			public SerializableEnumeration<fixedAtonChange>? fixedAtonChangeElement { get { return fixedAtonChange; } set { } }
-
-			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26])]
 			[Optional]
 			public floatingAtonChange? floatingAtonChange {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("floatingAtonChange")]
-			public SerializableEnumeration<floatingAtonChange>? floatingAtonChangeElement { get { return floatingAtonChange; } set { } }
-
-			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
 			public audibleSignalAtonChange? audibleSignalAtonChange {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("audibleSignalAtonChange")]
-			public SerializableEnumeration<audibleSignalAtonChange>? audibleSignalAtonChangeElement { get { return audibleSignalAtonChange; } set { } }
-
-			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])]
 			[Optional]
 			public lightedAtonChange? lightedAtonChange {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("lightedAtonChange")]
-			public SerializableEnumeration<lightedAtonChange>? lightedAtonChangeElement { get { return lightedAtonChange; } set { } }
-
-			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])]
 			[Optional]
 			public electronicAtonChange? electronicAtonChange {get;set;} = default;
 
+			#region ShouldSerialize
+			public bool ShouldSerializeatonCommissioning() { return atonCommissioning.HasValue; }
+
+			public bool ShouldSerializeatonRemoval() { return atonRemoval.HasValue; }
+
+			public bool ShouldSerializeatonReplacement() { return atonReplacement.HasValue; }
+
+			public bool ShouldSerializefixedAtonChange() { return fixedAtonChange.HasValue; }
+
+			public bool ShouldSerializefloatingAtonChange() { return floatingAtonChange.HasValue; }
+
+			public bool ShouldSerializeaudibleSignalAtonChange() { return audibleSignalAtonChange.HasValue; }
+
+			public bool ShouldSerializelightedAtonChange() { return lightedAtonChange.HasValue; }
+
+			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("atonCommissioning")]
+			public SerializableEnumeration<atonCommissioning>? atonCommissioningElement { get { return atonCommissioning; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("atonRemoval")]
+			public SerializableEnumeration<atonRemoval>? atonRemovalElement { get { return atonRemoval; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("atonReplacement")]
+			public SerializableEnumeration<atonReplacement>? atonReplacementElement { get { return atonReplacement; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("fixedAtonChange")]
+			public SerializableEnumeration<fixedAtonChange>? fixedAtonChangeElement { get { return fixedAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("floatingAtonChange")]
+			public SerializableEnumeration<floatingAtonChange>? floatingAtonChangeElement { get { return floatingAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("audibleSignalAtonChange")]
+			public SerializableEnumeration<audibleSignalAtonChange>? audibleSignalAtonChangeElement { get { return audibleSignalAtonChange; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("lightedAtonChange")]
+			public SerializableEnumeration<lightedAtonChange>? lightedAtonChangeElement { get { return lightedAtonChange; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("electronicAtonChange")]
 			public SerializableEnumeration<electronicAtonChange>? electronicAtonChangeElement { get { return electronicAtonChange; } set { } }
+			#endregion
 
-			public bool ShouldSerializeelectronicAtonChange() { return electronicAtonChange.HasValue; }
-
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<ChangeDetails, bool>> _conditionalUnknown = new Dictionary<string,Func<ChangeDetails, bool>> {
@@ -5529,6 +5642,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5545,28 +5659,33 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public heightLengthUnits heightLengthUnits {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("heightLengthUnits")]
-			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
-
 			[XmlElement("horizontalLength")]
 			[Optional]
 			public double? horizontalLength {get;set;} = default;
-
-			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
 			[Optional]
 			public double? horizontalWidth {get;set;} = default;
 
-			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
 
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+			#region ShouldSerialize
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("heightLengthUnits")]
+			public SerializableEnumeration<heightLengthUnits> heightLengthUnitsElement { get { return heightLengthUnits; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sinkerDimensions, bool>> _conditionalUnknown = new Dictionary<string,Func<sinkerDimensions, bool>> {
@@ -5574,6 +5693,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5590,14 +5710,21 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public positioningEquipment positioningEquipment {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("positioningEquipment")]
-			public SerializableEnumeration<positioningEquipment> positioningEquipmentElement { get { return positioningEquipment; } set { } }
-
 			[XmlElement("NMEAString")]
 			[Mandatory]
 			public String NMEAString {get;set;} = string.Empty;
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("positioningEquipment")]
+			public SerializableEnumeration<positioningEquipment> positioningEquipmentElement { get { return positioningEquipment; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<positioningMethod, bool>> _conditionalUnknown = new Dictionary<string,Func<positioningMethod, bool>> {
@@ -5605,6 +5732,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5624,8 +5752,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? uncertaintyVariableFactor {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<horizontalPositionUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<horizontalPositionUncertainty, bool>> {
@@ -5633,6 +5768,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5648,19 +5784,13 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? fileLocator {get;set;} = default;
 
-			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
-
 			[XmlElement("fileReference")]
 			[Optional]
 			public String? fileReference {get;set;} = default;
 
-			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
-
 			[XmlElement("headline")]
 			[Optional]
 			public String? headline {get;set;} = default;
-
-			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
 
 			[XmlElement("language")]
 			[Mandatory]
@@ -5670,8 +5800,21 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? text {get;set;} = default;
 
-			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+			#region ShouldSerialize
+			public bool ShouldSerializefileLocator() { return !string.IsNullOrEmpty(fileLocator); }
 
+			public bool ShouldSerializefileReference() { return !string.IsNullOrEmpty(fileReference); }
+
+			public bool ShouldSerializeheadline() { return !string.IsNullOrEmpty(headline); }
+
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<information, bool>> _conditionalUnknown = new Dictionary<string,Func<information, bool>> {
@@ -5679,6 +5822,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5695,8 +5839,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? language {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<textualDescription, bool>> _conditionalUnknown = new Dictionary<string,Func<textualDescription, bool>> {
@@ -5704,6 +5855,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5723,8 +5875,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? uncertaintyVariableFactor {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializeuncertaintyVariableFactor() { return uncertaintyVariableFactor.HasValue; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<verticalUncertainty, bool>> _conditionalUnknown = new Dictionary<string,Func<verticalUncertainty, bool>> {
@@ -5732,6 +5891,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5744,14 +5904,21 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public Boolean? moireEffect {get;set;} = default;
 
-			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
-
 			[XmlElement("orientation")]
 			[Mandatory]
 			public orientation orientation {get;set;} = new orientation {
 				orientationValue = default,
 			};
 
+			#region ShouldSerialize
+			public bool ShouldSerializemoireEffect() { return moireEffect.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<directionalCharacter, bool>> _conditionalUnknown = new Dictionary<string,Func<directionalCharacter, bool>> {
@@ -5759,6 +5926,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5772,28 +5940,33 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("lightCharacteristic")]
-			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
-
 			[XmlElement("signalGroup")]
 			[Multiplicity(0, 10)]
 			public List<String> signalGroup {get;set;} = [];
-
-			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
 			[XmlElement("signalPeriod")]
 			[Optional]
 			public double? signalPeriod {get;set;} = default;
 
-			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
-
 			[XmlElement("signalSequence")]
 			[Multiplicity(0, 10)]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
-			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
+			#region ShouldSerialize
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
 
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
+
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<rhythmOfLight, bool>> _conditionalUnknown = new Dictionary<string,Func<rhythmOfLight, bool>> {
@@ -5801,6 +5974,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5821,6 +5995,15 @@ namespace S100Framework.DomainModel.S201 {
 				sectorBearing = default,
 			};
 
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sectorLimit, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorLimit, bool>> {
@@ -5828,6 +6011,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5840,20 +6024,27 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
 
-			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
-
 			[XmlElement("horizontalPositionUncertainty")]
 			[Optional]
 			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
-
-			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			[XmlElement("verticalUncertainty")]
 			[Optional]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
-			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+			#region ShouldSerialize
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
+			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<spatialAccuracy, bool>> _conditionalUnknown = new Dictionary<string,Func<spatialAccuracy, bool>> {
@@ -5861,6 +6052,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5887,8 +6079,15 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public sectorInformation? sectorInformation {get;set;} = default;
 
+			#region ShouldSerialize
 			public bool ShouldSerializesectorInformation() { return sectorInformation!=default; }
+			#endregion
 
+			#region SerializableEnumeration
+
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<ObscuredSector, bool>> _conditionalUnknown = new Dictionary<string,Func<ObscuredSector, bool>> {
@@ -5896,6 +6095,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5909,53 +6109,58 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlElement("directionalCharacter")]
 			[Optional]
 			public directionalCharacter? directionalCharacter {get;set;} = default;
-
-			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("lightVisibility")]
-			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
-
-			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
-
 			[XmlElement("sectorLimit")]
 			[Optional]
 			public sectorLimit? sectorLimit {get;set;} = default;
-
-			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
 
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
 
-			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
-
 			[XmlElement("sectorInformation")]
 			[Optional]
 			public List<sectorInformation> sectorInformation {get;set;} = [];
-
-			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
 
 			[XmlElement("sectorExtension")]
 			[Optional]
 			public Boolean? sectorExtension {get;set;} = default;
 
-			public bool ShouldSerializesectorExtension() { return sectorExtension.HasValue; }
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
 
+			public bool ShouldSerializedirectionalCharacter() { return directionalCharacter!=default; }
+
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
+			public bool ShouldSerializesectorLimit() { return sectorLimit!=default; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializesectorInformation() { return sectorInformation.Any(); }
+
+			public bool ShouldSerializesectorExtension() { return sectorExtension.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("lightVisibility")]
+			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<lightSector, bool>> _conditionalUnknown = new Dictionary<string,Func<lightSector, bool>> {
@@ -5963,6 +6168,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -5976,40 +6182,45 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public lightCharacteristic lightCharacteristic {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("lightCharacteristic")]
-			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
-
 			[XmlElement("lightSector")]
 			[Multiplicity(1, 10)]
 			public List<lightSector> lightSector {get;set;} = [];
-
-			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
 			[XmlElement("signalGroup")]
 			[Multiplicity(0, 10)]
 			public List<String> signalGroup {get;set;} = [];
 
-			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
-
 			[XmlElement("signalPeriod")]
 			[Optional]
 			public double? signalPeriod {get;set;} = default;
-
-			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[XmlElement("signalSequence")]
 			[Multiplicity(0, 10)]
 			public List<signalSequence> signalSequence {get;set;} = [];
 
-			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
-
 			[XmlElement("candela")]
 			[Optional]
 			public double? candela {get;set;} = default;
 
-			public bool ShouldSerializecandela() { return candela.HasValue; }
+			#region ShouldSerialize
+			public bool ShouldSerializelightSector() { return lightSector.Any(); }
 
+			public bool ShouldSerializesignalGroup() { return signalGroup.Any(); }
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
+
+			public bool ShouldSerializesignalSequence() { return signalSequence.Any(); }
+
+			public bool ShouldSerializecandela() { return candela.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("lightCharacteristic")]
+			public SerializableEnumeration<lightCharacteristic> lightCharacteristicElement { get { return lightCharacteristic; } set { } }
+			#endregion
+
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<sectorCharacteristics, bool>> _conditionalUnknown = new Dictionary<string,Func<sectorCharacteristics, bool>> {
@@ -6017,6 +6228,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 	}
@@ -6116,6 +6328,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Atonstatus : InformationAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Atonstatus);
@@ -6127,6 +6348,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonFixingMethodAssociation : InformationAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonFixingMethodAssociation);
@@ -6138,6 +6368,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonPositioningInformationAssociation : InformationAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonPositioningInformationAssociation);
@@ -6151,6 +6390,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BuoyTopmark : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(BuoyTopmark);
@@ -6162,6 +6410,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class StructureEquipment : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(StructureEquipment);
@@ -6173,6 +6430,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PhysicalAIS : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(PhysicalAIS);
@@ -6184,6 +6450,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SyntheticAIS : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SyntheticAIS);
@@ -6195,6 +6470,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VirtualAIS : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(VirtualAIS);
@@ -6206,6 +6490,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BuoyCounterWeight : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(BuoyCounterWeight);
@@ -6217,6 +6510,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BridleConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(BridleConnection);
@@ -6228,6 +6530,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShackleConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ShackleConnection);
@@ -6239,6 +6550,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShackleConnectionFromCable : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ShackleConnectionFromCable);
@@ -6250,6 +6570,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SwivelCableConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SwivelCableConnection);
@@ -6261,6 +6590,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BridleCableConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(BridleCableConnection);
@@ -6272,6 +6610,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShackleToBridleConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ShackleToBridleConnection);
@@ -6283,6 +6630,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShackleToSwivelConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ShackleToSwivelConnection);
@@ -6294,6 +6650,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class ShackleToAnchorConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ShackleToAnchorConnection);
@@ -6305,6 +6670,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SwivelConnection : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SwivelConnection);
@@ -6316,6 +6690,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAggregations : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonAggregations);
@@ -6327,6 +6710,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AtonAssociations : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonAssociations);
@@ -6338,6 +6730,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class RangeSystem : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(RangeSystem);
@@ -6349,6 +6750,15 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DangerousFeatureAssociation : FeatureAssociation {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(DangerousFeatureAssociation);
@@ -6373,18 +6783,10 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? referencePoint {get;set;} = default;
 
-			public bool ShouldSerializereferencePoint() { return !string.IsNullOrEmpty(referencePoint); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131])]
 			[Optional]
 			public horizontalDatum? horizontalDatum {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("horizontalDatum")]
-			public SerializableEnumeration<horizontalDatum>? horizontalDatumElement { get { return horizontalDatum; } set { } }
-
-			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
 
 			[XmlIgnore]
 			[Mandatory]
@@ -6402,20 +6804,36 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public String positioningProcedure {get;set;} = string.Empty;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializereferencePoint() { return !string.IsNullOrEmpty(referencePoint); }
+
+			public bool ShouldSerializehorizontalDatum() { return horizontalDatum.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("horizontalDatum")]
+			public SerializableEnumeration<horizontalDatum>? horizontalDatumElement { get { return horizontalDatum; } set { } }
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtoNFixingMethod);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => AtoNFixingMethod._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AtoNFixingMethod, bool>> _conditionalUnknown = new Dictionary<string,Func<AtoNFixingMethod, bool>> {
@@ -6423,6 +6841,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -6441,26 +6860,34 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public ChangeTypes? ChangeTypes {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeChangeTypes() { return ChangeTypes.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("ChangeTypes")]
 			public SerializableEnumeration<ChangeTypes>? ChangeTypesElement { get { return ChangeTypes; } set { } }
-
-			public bool ShouldSerializeChangeTypes() { return ChangeTypes.HasValue; }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonStatusInformation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => AtonStatusInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AtonStatusInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonStatusInformation, bool>> {
@@ -6468,6 +6895,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -6484,22 +6912,32 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public positioningMethod? positioningMethod {get;set;} = default;
 
+
+			#region ShouldSerialize
 			public bool ShouldSerializepositioningMethod() { return positioningMethod!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(PositioningInformation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => PositioningInformation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<PositioningInformation, bool>> _conditionalUnknown = new Dictionary<string,Func<PositioningInformation, bool>> {
@@ -6507,6 +6945,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -6520,32 +6959,40 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("qualityOfHorizontalMeasurement")]
-			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
-
-			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
-
 			[XmlElement("spatialAccuracy")]
 			[Optional]
 			public spatialAccuracy? spatialAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializequalityOfHorizontalMeasurement() { return qualityOfHorizontalMeasurement.HasValue; }
+
 			public bool ShouldSerializespatialAccuracy() { return spatialAccuracy!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("qualityOfHorizontalMeasurement")]
+			public SerializableEnumeration<qualityOfHorizontalMeasurement>? qualityOfHorizontalMeasurementElement { get { return qualityOfHorizontalMeasurement; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SpatialQuality);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
 			public string? gmlId { get; set; }
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SpatialQuality, bool>> _conditionalUnknown = new Dictionary<string,Func<SpatialQuality, bool>> {
@@ -6553,6 +7000,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 	}
 	namespace FeatureTypes {
@@ -6571,90 +7019,98 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? iDCode {get;set;} = default;
 
-			public bool ShouldSerializeiDCode() { return !string.IsNullOrEmpty(iDCode); }
-
 			[XmlElement("information")]
 			[Optional]
 			public List<information> information {get;set;} = [];
-
-			public bool ShouldSerializeinformation() { return information.Any(); }
 
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
 
-			public bool ShouldSerializefeatureName() { return featureName.Any(); }
-
 			[XmlElement("scaleMinimum")]
 			[Optional]
 			public int? scaleMinimum {get;set;} = default;
-
-			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 
 			[XmlIgnore]
 			[Optional]
 			public DateOnly? sourceDate {get;set;} = default;
 
-			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
-
 			[XmlElement("source")]
 			[Optional]
 			public String? source {get;set;} = default;
-
-			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
 
 			[XmlElement("pictorialRepresentation")]
 			[Optional]
 			public String? pictorialRepresentation {get;set;} = default;
 
-			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
-
 			[XmlElement("inspectionFrequency")]
 			[Optional]
 			public String? inspectionFrequency {get;set;} = default;
-
-			public bool ShouldSerializeinspectionFrequency() { return !string.IsNullOrEmpty(inspectionFrequency); }
 
 			[XmlElement("inspectionRequirements")]
 			[Optional]
 			public String? inspectionRequirements {get;set;} = default;
 
-			public bool ShouldSerializeinspectionRequirements() { return !string.IsNullOrEmpty(inspectionRequirements); }
-
 			[XmlElement("aToNMaintenanceRecord")]
 			[Optional]
 			public String? aToNMaintenanceRecord {get;set;} = default;
-
-			public bool ShouldSerializeaToNMaintenanceRecord() { return !string.IsNullOrEmpty(aToNMaintenanceRecord); }
 
 			[XmlIgnore]
 			[Optional]
 			public DateOnly? installationDate {get;set;} = default;
 
-			public bool ShouldSerializeinstallationDate() { return installationDate.HasValue; }
-
 			[XmlElement("fixedDateRange")]
 			[Optional]
 			public fixedDateRange? fixedDateRange {get;set;} = default;
-
-			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
 
 			[XmlElement("periodicDateRange")]
 			[Optional]
 			public periodicDateRange? periodicDateRange {get;set;} = default;
 
-			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
-
 			[XmlElement("SeasonalActionRequired")]
 			[Optional]
 			public List<String> SeasonalActionRequired {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeiDCode() { return !string.IsNullOrEmpty(iDCode); }
+
+			public bool ShouldSerializeinformation() { return information.Any(); }
+
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+
+			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
+
+			public bool ShouldSerializesourceDate() { return sourceDate.HasValue; }
+
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
+
+			public bool ShouldSerializepictorialRepresentation() { return !string.IsNullOrEmpty(pictorialRepresentation); }
+
+			public bool ShouldSerializeinspectionFrequency() { return !string.IsNullOrEmpty(inspectionFrequency); }
+
+			public bool ShouldSerializeinspectionRequirements() { return !string.IsNullOrEmpty(inspectionRequirements); }
+
+			public bool ShouldSerializeaToNMaintenanceRecord() { return !string.IsNullOrEmpty(aToNMaintenanceRecord); }
+
+			public bool ShouldSerializeinstallationDate() { return installationDate.HasValue; }
+
+			public bool ShouldSerializefixedDateRange() { return fixedDateRange!=default; }
+
+			public bool ShouldSerializeperiodicDateRange() { return periodicDateRange!=default; }
+
 			public bool ShouldSerializeSeasonalActionRequired() { return SeasonalActionRequired.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AidsToNavigation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => AidsToNavigation._informationBindingDefinitions;
@@ -6669,7 +7125,9 @@ namespace S100Framework.DomainModel.S201 {
 					primitives = [],
 				},
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => AidsToNavigation._featureBindingDefinitions;
@@ -6698,6 +7156,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -6715,33 +7174,39 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public aidAvailabilityCategory? aidAvailabilityCategory {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("aidAvailabilityCategory")]
-			public SerializableEnumeration<aidAvailabilityCategory>? aidAvailabilityCategoryElement { get { return aidAvailabilityCategory; } set { } }
-
-			public bool ShouldSerializeaidAvailabilityCategory() { return aidAvailabilityCategory.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5])]
 			[Optional]
 			public condition? condition {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("condition")]
-			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
-
-			public bool ShouldSerializecondition() { return condition.HasValue; }
-
 			[XmlElement("contactAddress")]
 			[Optional]
 			public contactAddress? contactAddress {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeaidAvailabilityCategory() { return aidAvailabilityCategory.HasValue; }
+
+			public bool ShouldSerializecondition() { return condition.HasValue; }
+
 			public bool ShouldSerializecontactAddress() { return contactAddress!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("aidAvailabilityCategory")]
+			public SerializableEnumeration<aidAvailabilityCategory>? aidAvailabilityCategoryElement { get { return aidAvailabilityCategory; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("condition")]
+			public SerializableEnumeration<condition>? conditionElement { get { return condition; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(StructureObject);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..StructureObject._informationBindingDefinitions];
@@ -6765,7 +7230,9 @@ namespace S100Framework.DomainModel.S201 {
 					primitives = [],
 				},
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..StructureObject._featureBindingDefinitions];
@@ -6786,6 +7253,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(Equipment)],
 				},
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -6798,18 +7266,28 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<String> remoteMonitoringSystem {get;set;} = [];
 
+
+			#region ShouldSerialize
 			public bool ShouldSerializeremoteMonitoringSystem() { return remoteMonitoringSystem.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Equipment);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Equipment._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Equipment._featureBindingDefinitions];
@@ -6830,6 +7308,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(StructureObject)],
 				},
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -6842,8 +7321,6 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? AtoNNumber {get;set;} = default;
 
-			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
-
 			[XmlElement("mMSICode")]
 			[Mandatory]
 			public String mMSICode {get;set;} = string.Empty;
@@ -6852,22 +7329,32 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<status> status {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeAtoNNumber() { return !string.IsNullOrEmpty(AtoNNumber); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("status")]
 			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(ElectronicAton);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..ElectronicAton._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..ElectronicAton._featureBindingDefinitions];
@@ -6880,6 +7367,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -6893,116 +7381,124 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public beaconShape beaconShape {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("beaconShape")]
-			public SerializableEnumeration<beaconShape> beaconShapeElement { get { return beaconShape; } set { } }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("elevation")]
 			[Optional]
 			public double? elevation {get;set;} = default;
 
-			public bool ShouldSerializeelevation() { return elevation.HasValue; }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("beaconShape")]
+			public SerializableEnumeration<beaconShape> beaconShapeElement { get { return beaconShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(GenericBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBeacon._featureBindingDefinitions];
@@ -7015,6 +7511,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -7028,99 +7525,107 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public buoyShape buoyShape {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("buoyShape")]
-			public SerializableEnumeration<buoyShape> buoyShapeElement { get { return buoyShape; } set { } }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("typeOfBuoy")]
 			[Optional]
 			public String? typeOfBuoy {get;set;} = default;
-
-			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
 
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
 
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializetypeOfBuoy() { return !string.IsNullOrEmpty(typeOfBuoy); }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("buoyShape")]
+			public SerializableEnumeration<buoyShape> buoyShapeElement { get { return buoyShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(GenericBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..GenericBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..GenericBuoy._featureBindingDefinitions];
@@ -7165,6 +7670,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(CounterWeight)],
 				},
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -7178,68 +7684,76 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("effectiveIntensity")]
 			[Optional]
 			public double? effectiveIntensity {get;set;} = default;
 
-			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
-
 			[XmlElement("peakIntensity")]
 			[Optional]
 			public double? peakIntensity {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializeeffectiveIntensity() { return effectiveIntensity.HasValue; }
+
 			public bool ShouldSerializepeakIntensity() { return peakIntensity.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(GenericLight);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..GenericLight._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..GenericLight._featureBindingDefinitions];
@@ -7252,6 +7766,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 		}
 
 		/// <summary>
@@ -7265,133 +7780,141 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<categoryOfLandmark> categoryOfLandmark {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("categoryOfLandmark")]
-			public SerializableEnumeration<categoryOfLandmark>[] categoryOfLandmarkElement { get { return [.. categoryOfLandmark]; } set { } }
-
-			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48])]
 			[Optional]
 			public List<function> function {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("function")]
-			public SerializableEnumeration<function>[] functionElement { get { return [.. function]; } set { } }
-
-			public bool ShouldSerializefunction() { return function.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Mandatory]
 			public visualProminence visualProminence {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence> visualProminenceElement { get { return visualProminence; } set { } }
-
 			[XmlElement("elevation")]
 			[Optional]
 			public double? elevation {get;set;} = default;
-
-			public bool ShouldSerializeelevation() { return elevation.HasValue; }
 
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
 
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
 			[XmlElement("mannedStructure")]
 			[Optional]
 			public Boolean? mannedStructure {get;set;} = default;
-
-			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
 
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfLandmark() { return categoryOfLandmark.Any(); }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializefunction() { return function.Any(); }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfLandmark")]
+			public SerializableEnumeration<categoryOfLandmark>[] categoryOfLandmarkElement { get { return [.. categoryOfLandmark]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("function")]
+			public SerializableEnumeration<function>[] functionElement { get { return [.. function]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence> visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Landmark);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Landmark._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Landmark._featureBindingDefinitions];
@@ -7404,6 +7927,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7413,6 +7937,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Landmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Landmark, bool>> {
@@ -7420,6 +7945,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7433,20 +7959,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfLateralMark")]
 			public SerializableEnumeration<categoryOfLateralMark> categoryOfLateralMarkElement { get { return categoryOfLateralMark; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LateralBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..LateralBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..LateralBeacon._featureBindingDefinitions];
@@ -7459,6 +7995,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7468,6 +8005,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LateralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBeacon, bool>> {
@@ -7475,6 +8013,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7488,20 +8027,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfLateralMark categoryOfLateralMark {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfLateralMark")]
 			public SerializableEnumeration<categoryOfLateralMark> categoryOfLateralMarkElement { get { return categoryOfLateralMark; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LateralBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..LateralBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..LateralBuoy._featureBindingDefinitions];
@@ -7514,6 +8063,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7523,6 +8073,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LateralBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<LateralBuoy, bool>> {
@@ -7530,6 +8081,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7543,20 +8095,10 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfNavigationLine categoryOfNavigationLine {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("categoryOfNavigationLine")]
-			public SerializableEnumeration<categoryOfNavigationLine> categoryOfNavigationLineElement { get { return categoryOfNavigationLine; } set { } }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlElement("orientation")]
 			[Mandatory]
@@ -7564,16 +8106,34 @@ namespace S100Framework.DomainModel.S201 {
 				orientationValue = default,
 			};
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfNavigationLine")]
+			public SerializableEnumeration<categoryOfNavigationLine> categoryOfNavigationLineElement { get { return categoryOfNavigationLine; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(NavigationLine);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..NavigationLine._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..NavigationLine._featureBindingDefinitions];
@@ -7594,6 +8154,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RecommendedTrack)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7603,6 +8164,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<NavigationLine, bool>> _conditionalUnknown = new Dictionary<string,Func<NavigationLine, bool>> {
@@ -7610,6 +8172,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7626,35 +8189,19 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? depthRangeMinimumValue {get;set;} = default;
 
-			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
-
 			[XmlElement("maximalPermittedDraught")]
 			[Optional]
 			public double? maximalPermittedDraught {get;set;} = default;
-
-			public bool ShouldSerializemaximalPermittedDraught() { return maximalPermittedDraught.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
 
 			[XmlElement("orientation")]
 			[Mandatory]
@@ -7666,49 +8213,73 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
-			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11])]
 			[Optional]
 			public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("qualityOfVerticalMeasurement")]
-			public SerializableEnumeration<qualityOfVerticalMeasurement>[] qualityOfVerticalMeasurementElement { get { return [.. qualityOfVerticalMeasurement]; } set { } }
-
-			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17])]
 			[Optional]
 			public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("techniqueOfVerticalMeasurement")]
-			public SerializableEnumeration<techniqueOfVerticalMeasurement>[] techniqueOfVerticalMeasurementElement { get { return [.. techniqueOfVerticalMeasurement]; } set { } }
-
-			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Mandatory]
 			public trafficFlow trafficFlow {get;set;}
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializedepthRangeMinimumValue() { return depthRangeMinimumValue.HasValue; }
+
+			public bool ShouldSerializemaximalPermittedDraught() { return maximalPermittedDraught.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+
+			public bool ShouldSerializequalityOfVerticalMeasurement() { return qualityOfVerticalMeasurement.Any(); }
+
+			public bool ShouldSerializetechniqueOfVerticalMeasurement() { return techniqueOfVerticalMeasurement.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("qualityOfVerticalMeasurement")]
+			public SerializableEnumeration<qualityOfVerticalMeasurement>[] qualityOfVerticalMeasurementElement { get { return [.. qualityOfVerticalMeasurement]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("techniqueOfVerticalMeasurement")]
+			public SerializableEnumeration<techniqueOfVerticalMeasurement>[] techniqueOfVerticalMeasurementElement { get { return [.. techniqueOfVerticalMeasurement]; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("trafficFlow")]
 			public SerializableEnumeration<trafficFlow> trafficFlowElement { get { return trafficFlow; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(RecommendedTrack);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..RecommendedTrack._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..RecommendedTrack._featureBindingDefinitions];
@@ -7729,6 +8300,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(NavigationLine)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7738,6 +8310,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<RecommendedTrack, bool>> _conditionalUnknown = new Dictionary<string,Func<RecommendedTrack, bool>> {
@@ -7745,6 +8318,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7758,67 +8332,75 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("categoryOfLight")]
-			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
-
-			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("exhibitionConditionOfLight")]
-			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
-
-			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
 			public List<marksNavigationalSystemOf> marksNavigationalSystemOf {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>[] marksNavigationalSystemOfElement { get { return [.. marksNavigationalSystemOf]; } set { } }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("signalGeneration")]
-			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
-
-			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
-
 			[XmlElement("ObscuredSector")]
 			[Optional]
 			public List<ObscuredSector> ObscuredSector {get;set;} = [];
-
-			public bool ShouldSerializeObscuredSector() { return ObscuredSector.Any(); }
 
 			[XmlElement("sectorCharacteristics")]
 			[Multiplicity(1)]
 			public List<sectorCharacteristics> sectorCharacteristics {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.Any(); }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
+			public bool ShouldSerializeObscuredSector() { return ObscuredSector.Any(); }
+
 			public bool ShouldSerializesectorCharacteristics() { return sectorCharacteristics.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfLight")]
+			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("exhibitionConditionOfLight")]
+			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>[] marksNavigationalSystemOfElement { get { return [.. marksNavigationalSystemOf]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("signalGeneration")]
+			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightSectored);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightSectored._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightSectored._featureBindingDefinitions];
@@ -7831,6 +8413,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7840,6 +8423,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightSectored, bool>> _conditionalUnknown = new Dictionary<string,Func<LightSectored, bool>> {
@@ -7847,6 +8431,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7860,73 +8445,37 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<categoryOfLight> categoryOfLight {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("categoryOfLight")]
-			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
-
-			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
 			public List<exhibitionConditionOfLight> exhibitionConditionOfLight {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("exhibitionConditionOfLight")]
-			public SerializableEnumeration<exhibitionConditionOfLight>[] exhibitionConditionOfLightElement { get { return [.. exhibitionConditionOfLight]; } set { } }
-
-			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public lightVisibility? lightVisibility {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("lightVisibility")]
-			public SerializableEnumeration<lightVisibility>? lightVisibilityElement { get { return lightVisibility; } set { } }
-
-			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
-
 			[XmlElement("majorLight")]
 			[Optional]
 			public Boolean? majorLight {get;set;} = default;
-
-			public bool ShouldSerializemajorLight() { return majorLight.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("signalGeneration")]
-			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
-
-			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
-
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
 
-			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
-
 			[XmlElement("multiplicityOfFeatures")]
 			[Optional]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[XmlElement("rhythmOfLight")]
 			[Mandatory]
@@ -7938,18 +8487,62 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public int? flareBearing {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfLight() { return categoryOfLight.Any(); }
+
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.Any(); }
+
+			public bool ShouldSerializelightVisibility() { return lightVisibility.HasValue; }
+
+			public bool ShouldSerializemajorLight() { return majorLight.HasValue; }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
+
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfLight")]
+			public SerializableEnumeration<categoryOfLight>[] categoryOfLightElement { get { return [.. categoryOfLight]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("exhibitionConditionOfLight")]
+			public SerializableEnumeration<exhibitionConditionOfLight>[] exhibitionConditionOfLightElement { get { return [.. exhibitionConditionOfLight]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("lightVisibility")]
+			public SerializableEnumeration<lightVisibility>? lightVisibilityElement { get { return lightVisibility; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("signalGeneration")]
+			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightAllAround);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightAllAround._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAllAround._featureBindingDefinitions];
@@ -7962,6 +8555,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -7971,6 +8565,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightAllAround, bool>> _conditionalUnknown = new Dictionary<string,Func<LightAllAround, bool>> {
@@ -7978,6 +8573,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -7991,46 +8587,26 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public exhibitionConditionOfLight? exhibitionConditionOfLight {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("exhibitionConditionOfLight")]
-			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
-
-			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<lightVisibility> lightVisibility {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("lightVisibility")]
-			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
-
-			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
-
 			[XmlElement("valueOfGeographicRange")]
 			[Optional]
 			public double? valueOfGeographicRange {get;set;} = default;
-
-			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
 
 			[XmlElement("valueOfLuminousRange")]
 			[Optional]
 			public double? valueOfLuminousRange {get;set;} = default;
 
-			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
-
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
 
-			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
-
 			[XmlElement("multiplicityOfFeatures")]
 			[Optional]
 			public multiplicityOfFeatures? multiplicityOfFeatures {get;set;} = default;
-
-			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
 
 			[XmlElement("rhythmOfLight")]
 			[Mandatory]
@@ -8042,18 +8618,46 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public int? flareBearing {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeexhibitionConditionOfLight() { return exhibitionConditionOfLight.HasValue; }
+
+			public bool ShouldSerializelightVisibility() { return lightVisibility.Any(); }
+
+			public bool ShouldSerializevalueOfGeographicRange() { return valueOfGeographicRange.HasValue; }
+
+			public bool ShouldSerializevalueOfLuminousRange() { return valueOfLuminousRange.HasValue; }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializemultiplicityOfFeatures() { return multiplicityOfFeatures!=default; }
+
 			public bool ShouldSerializeflareBearing() { return flareBearing.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("exhibitionConditionOfLight")]
+			public SerializableEnumeration<exhibitionConditionOfLight>? exhibitionConditionOfLightElement { get { return exhibitionConditionOfLight; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("lightVisibility")]
+			public SerializableEnumeration<lightVisibility>[] lightVisibilityElement { get { return [.. lightVisibility]; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightAirObstruction);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightAirObstruction._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightAirObstruction._featureBindingDefinitions];
@@ -8066,6 +8670,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8075,6 +8680,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightAirObstruction, bool>> _conditionalUnknown = new Dictionary<string,Func<LightAirObstruction, bool>> {
@@ -8082,6 +8688,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8095,28 +8702,36 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("signalGeneration")]
-			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
-
-			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
-
 			[XmlElement("rhythmOfLight")]
 			[Mandatory]
 			public rhythmOfLight rhythmOfLight {get;set;} = new rhythmOfLight {
 				lightCharacteristic = Enum.GetValues<lightCharacteristic>()[0],
 			};
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("signalGeneration")]
+			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightFogDetector);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericLight._informationBindingDefinitions, ..LightFogDetector._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericLight._featureBindingDefinitions, ..LightFogDetector._featureBindingDefinitions];
@@ -8129,6 +8744,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8138,6 +8754,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightFogDetector, bool>> _conditionalUnknown = new Dictionary<string,Func<LightFogDetector, bool>> {
@@ -8145,6 +8762,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8157,46 +8775,54 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? height {get;set;} = default;
 
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(RadarReflector);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadarReflector._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarReflector._featureBindingDefinitions];
@@ -8209,6 +8835,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8218,6 +8845,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<RadarReflector, bool>> _conditionalUnknown = new Dictionary<string,Func<RadarReflector, bool>> {
@@ -8225,6 +8853,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8238,78 +8867,86 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfFogSignal categoryOfFogSignal {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("categoryOfFogSignal")]
-			public SerializableEnumeration<categoryOfFogSignal> categoryOfFogSignalElement { get { return categoryOfFogSignal; } set { } }
-
 			[XmlElement("signalFrequency")]
 			[Optional]
 			public int? signalFrequency {get;set;} = default;
-
-			public bool ShouldSerializesignalFrequency() { return signalFrequency.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public signalGeneration? signalGeneration {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("signalGeneration")]
-			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
-
-			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
-
 			[XmlElement("signalGroup")]
 			[Optional]
 			public String? signalGroup {get;set;} = default;
-
-			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[XmlElement("signalOutput")]
 			[Optional]
 			public double? signalOutput {get;set;} = default;
 
-			public bool ShouldSerializesignalOutput() { return signalOutput.HasValue; }
-
 			[XmlElement("signalPeriod")]
 			[Optional]
 			public double? signalPeriod {get;set;} = default;
-
-			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("valueOfMaximumRange")]
 			[Optional]
 			public double? valueOfMaximumRange {get;set;} = default;
-
-			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
 
 			[XmlElement("signalSequence")]
 			[Optional]
 			public signalSequence? signalSequence {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializesignalFrequency() { return signalFrequency.HasValue; }
+
+			public bool ShouldSerializesignalGeneration() { return signalGeneration.HasValue; }
+
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
+
+			public bool ShouldSerializesignalOutput() { return signalOutput.HasValue; }
+
+			public bool ShouldSerializesignalPeriod() { return signalPeriod.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializevalueOfMaximumRange() { return valueOfMaximumRange.HasValue; }
+
 			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfFogSignal")]
+			public SerializableEnumeration<categoryOfFogSignal> categoryOfFogSignalElement { get { return categoryOfFogSignal; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("signalGeneration")]
+			public SerializableEnumeration<signalGeneration>? signalGenerationElement { get { return signalGeneration; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(FogSignal);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..FogSignal._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..FogSignal._featureBindingDefinitions];
@@ -8322,6 +8959,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8331,6 +8969,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<FogSignal, bool>> _conditionalUnknown = new Dictionary<string,Func<FogSignal, bool>> {
@@ -8338,6 +8977,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8350,35 +8990,43 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public double? height {get;set;} = default;
 
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("typeOfEnvironmentalObservationEquipment")]
 			[Multiplicity(1)]
 			public List<String> typeOfEnvironmentalObservationEquipment {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public bool ShouldSerializetypeOfEnvironmentalObservationEquipment() { return typeOfEnvironmentalObservationEquipment.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(EnvironmentObservationEquipment);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..EnvironmentObservationEquipment._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..EnvironmentObservationEquipment._featureBindingDefinitions];
@@ -8391,6 +9039,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8400,6 +9049,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<EnvironmentObservationEquipment, bool>> _conditionalUnknown = new Dictionary<string,Func<EnvironmentObservationEquipment, bool>> {
@@ -8407,6 +9057,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8420,37 +9071,45 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfRadioStation categoryOfRadioStation {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("categoryOfRadioStation")]
-			public SerializableEnumeration<categoryOfRadioStation> categoryOfRadioStationElement { get { return categoryOfRadioStation; } set { } }
-
 			[XmlElement("estimatedRangeOfTransmission")]
 			[Optional]
 			public double? estimatedRangeOfTransmission {get;set;} = default;
-
-			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public status? status {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeestimatedRangeOfTransmission() { return estimatedRangeOfTransmission.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfRadioStation")]
+			public SerializableEnumeration<categoryOfRadioStation> categoryOfRadioStationElement { get { return categoryOfRadioStation; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("status")]
 			public SerializableEnumeration<status>? statusElement { get { return status; } set { } }
-
-			public bool ShouldSerializestatus() { return status.HasValue; }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(RadioStation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadioStation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadioStation._featureBindingDefinitions];
@@ -8487,6 +9146,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(VirtualAISAidToNavigation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8496,6 +9156,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<RadioStation, bool>> _conditionalUnknown = new Dictionary<string,Func<RadioStation, bool>> {
@@ -8503,6 +9164,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8516,120 +9178,128 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public categoryOfSpecialPurposeMark? categoryOfSpecialPurposeMark {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("categoryOfSpecialPurposeMark")]
-			public SerializableEnumeration<categoryOfSpecialPurposeMark>? categoryOfSpecialPurposeMarkElement { get { return categoryOfSpecialPurposeMark; } set { } }
-
-			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("elevation")]
 			[Optional]
 			public double? elevation {get;set;} = default;
 
-			public bool ShouldSerializeelevation() { return elevation.HasValue; }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("orientationValue")]
 			[Optional]
 			public double? orientationValue {get;set;} = default;
-
-			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Mandatory]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
-
-			[JsonIgnore]
-			[XmlElement("topmarkDaymarkShape")]
-			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlElement("shapeInformation")]
 			[Optional]
 			public shapeInformation? shapeInformation {get;set;} = default;
 
-			public bool ShouldSerializeshapeInformation() { return shapeInformation!=default; }
-
 			[XmlElement("isSlatted")]
 			[Mandatory]
 			public Boolean isSlatted {get;set;} = false;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.HasValue; }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeorientationValue() { return orientationValue.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializeshapeInformation() { return shapeInformation!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfSpecialPurposeMark")]
+			public SerializableEnumeration<categoryOfSpecialPurposeMark>? categoryOfSpecialPurposeMarkElement { get { return categoryOfSpecialPurposeMark; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("topmarkDaymarkShape")]
+			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Daymark);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..Daymark._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Daymark._featureBindingDefinitions];
@@ -8642,6 +9312,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8651,6 +9322,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Daymark, bool>> _conditionalUnknown = new Dictionary<string,Func<Daymark, bool>> {
@@ -8658,6 +9330,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8671,78 +9344,86 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,9,10,11,12,13,14,15])]
 			[Optional]
 			public marksNavigationalSystemOf? marksNavigationalSystemOf {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("marksNavigationalSystemOf")]
-			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
-
-			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializemarksNavigationalSystemOf() { return marksNavigationalSystemOf.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("marksNavigationalSystemOf")]
+			public SerializableEnumeration<marksNavigationalSystemOf>? marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Retroreflector);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..Retroreflector._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..Retroreflector._featureBindingDefinitions];
@@ -8755,6 +9436,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8764,6 +9446,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Retroreflector, bool>> _conditionalUnknown = new Dictionary<string,Func<Retroreflector, bool>> {
@@ -8771,6 +9454,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8784,73 +9468,81 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("categoryOfRadarTransponderBeacon")]
-			public SerializableEnumeration<categoryOfRadarTransponderBeacon> categoryOfRadarTransponderBeaconElement { get { return categoryOfRadarTransponderBeacon; } set { } }
-
 			[XmlElement("radarWaveLength")]
 			[Optional]
 			public radarWaveLength? radarWaveLength {get;set;} = default;
 
-			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
-
 			[XmlElement("signalGroup")]
 			[Optional]
 			public String? signalGroup {get;set;} = default;
-
-			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("valueOfNominalRange")]
 			[Optional]
 			public double? valueOfNominalRange {get;set;} = default;
-
-			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
 
 			[XmlElement("manufactorer")]
 			[Optional]
 			public String? manufactorer {get;set;} = default;
 
-			public bool ShouldSerializemanufactorer() { return !string.IsNullOrEmpty(manufactorer); }
-
 			[XmlElement("sectorLimitOne")]
 			[Optional]
 			public sectorLimitOne? sectorLimitOne {get;set;} = default;
-
-			public bool ShouldSerializesectorLimitOne() { return sectorLimitOne!=default; }
 
 			[XmlElement("sectorLimitTwo")]
 			[Optional]
 			public sectorLimitTwo? sectorLimitTwo {get;set;} = default;
 
-			public bool ShouldSerializesectorLimitTwo() { return sectorLimitTwo!=default; }
-
 			[XmlElement("signalSequence")]
 			[Optional]
 			public signalSequence? signalSequence {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeradarWaveLength() { return radarWaveLength!=default; }
+
+			public bool ShouldSerializesignalGroup() { return !string.IsNullOrEmpty(signalGroup); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializevalueOfNominalRange() { return valueOfNominalRange.HasValue; }
+
+			public bool ShouldSerializemanufactorer() { return !string.IsNullOrEmpty(manufactorer); }
+
+			public bool ShouldSerializesectorLimitOne() { return sectorLimitOne!=default; }
+
+			public bool ShouldSerializesectorLimitTwo() { return sectorLimitTwo!=default; }
+
 			public bool ShouldSerializesignalSequence() { return signalSequence!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfRadarTransponderBeacon")]
+			public SerializableEnumeration<categoryOfRadarTransponderBeacon> categoryOfRadarTransponderBeaconElement { get { return categoryOfRadarTransponderBeacon; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(RadarTransponderBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..RadarTransponderBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..RadarTransponderBeacon._featureBindingDefinitions];
@@ -8863,6 +9555,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8872,6 +9565,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<RadarTransponderBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<RadarTransponderBeacon, bool>> {
@@ -8879,6 +9573,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8892,20 +9587,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("virtualAISAidToNavigationType")]
 			public SerializableEnumeration<virtualAISAidToNavigationType> virtualAISAidToNavigationTypeElement { get { return virtualAISAidToNavigationType; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(VirtualAISAidToNavigation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..VirtualAISAidToNavigation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..VirtualAISAidToNavigation._featureBindingDefinitions];
@@ -8926,6 +9631,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8935,6 +9641,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<VirtualAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<VirtualAISAidToNavigation, bool>> {
@@ -8942,6 +9649,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -8955,20 +9663,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public CategoryOfPhysicalAISAidToNavigation CategoryOfPhysicalAISAidToNavigation {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("CategoryOfPhysicalAISAidToNavigation")]
 			public SerializableEnumeration<CategoryOfPhysicalAISAidToNavigation> CategoryOfPhysicalAISAidToNavigationElement { get { return CategoryOfPhysicalAISAidToNavigation; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(PhysicalAISAidToNavigation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..PhysicalAISAidToNavigation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..PhysicalAISAidToNavigation._featureBindingDefinitions];
@@ -8989,6 +9707,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -8998,6 +9717,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<PhysicalAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<PhysicalAISAidToNavigation, bool>> {
@@ -9005,6 +9725,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9018,29 +9739,39 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public CategoryOfSyntheticAISAidtoNavigation CategoryOfSyntheticAISAidtoNavigation {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("CategoryOfSyntheticAISAidtoNavigation")]
-			public SerializableEnumeration<CategoryOfSyntheticAISAidtoNavigation> CategoryOfSyntheticAISAidtoNavigationElement { get { return CategoryOfSyntheticAISAidtoNavigation; } set { } }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12])]
 			[Mandatory]
 			public virtualAISAidToNavigationType virtualAISAidToNavigationType {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("CategoryOfSyntheticAISAidtoNavigation")]
+			public SerializableEnumeration<CategoryOfSyntheticAISAidtoNavigation> CategoryOfSyntheticAISAidtoNavigationElement { get { return CategoryOfSyntheticAISAidtoNavigation; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("virtualAISAidToNavigationType")]
 			public SerializableEnumeration<virtualAISAidToNavigationType> virtualAISAidToNavigationTypeElement { get { return virtualAISAidToNavigationType; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SyntheticAISAidToNavigation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..ElectronicAton._informationBindingDefinitions, ..SyntheticAISAidToNavigation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..ElectronicAton._featureBindingDefinitions, ..SyntheticAISAidToNavigation._featureBindingDefinitions];
@@ -9061,6 +9792,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(RadioStation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9070,6 +9802,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SyntheticAISAidToNavigation, bool>> _conditionalUnknown = new Dictionary<string,Func<SyntheticAISAidToNavigation, bool>> {
@@ -9077,6 +9810,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9090,31 +9824,39 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public CategoryOfPowerSource CategoryOfPowerSource {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("CategoryOfPowerSource")]
-			public SerializableEnumeration<CategoryOfPowerSource> CategoryOfPowerSourceElement { get { return CategoryOfPowerSource; } set { } }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("CategoryOfPowerSource")]
+			public SerializableEnumeration<CategoryOfPowerSource> CategoryOfPowerSourceElement { get { return CategoryOfPowerSource; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("status")]
 			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(PowerSource);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Equipment._informationBindingDefinitions, ..PowerSource._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Equipment._featureBindingDefinitions, ..PowerSource._featureBindingDefinitions];
@@ -9127,6 +9869,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9136,6 +9879,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<PowerSource, bool>> _conditionalUnknown = new Dictionary<string,Func<PowerSource, bool>> {
@@ -9143,6 +9887,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9151,16 +9896,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBeacon : GenericBeacon {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(IsolatedDangerBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..IsolatedDangerBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..IsolatedDangerBeacon._featureBindingDefinitions];
@@ -9173,6 +9930,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9182,6 +9940,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<IsolatedDangerBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBeacon, bool>> {
@@ -9189,6 +9948,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9202,20 +9962,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfCardinalMark")]
 			public SerializableEnumeration<categoryOfCardinalMark> categoryOfCardinalMarkElement { get { return categoryOfCardinalMark; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(CardinalBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..CardinalBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..CardinalBeacon._featureBindingDefinitions];
@@ -9228,6 +9998,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9237,6 +10008,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<CardinalBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBeacon, bool>> {
@@ -9244,6 +10016,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9252,16 +10025,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class IsolatedDangerBuoy : GenericBuoy {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(IsolatedDangerBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..IsolatedDangerBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..IsolatedDangerBuoy._featureBindingDefinitions];
@@ -9274,6 +10059,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9283,6 +10069,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<IsolatedDangerBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<IsolatedDangerBuoy, bool>> {
@@ -9290,6 +10077,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9303,20 +10091,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfCardinalMark categoryOfCardinalMark {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfCardinalMark")]
 			public SerializableEnumeration<categoryOfCardinalMark> categoryOfCardinalMarkElement { get { return categoryOfCardinalMark; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(CardinalBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..CardinalBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..CardinalBuoy._featureBindingDefinitions];
@@ -9329,6 +10127,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9338,6 +10137,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<CardinalBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<CardinalBuoy, bool>> {
@@ -9345,6 +10145,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9358,20 +10159,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfInstallationBuoy categoryOfInstallationBuoy {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfInstallationBuoy")]
 			public SerializableEnumeration<categoryOfInstallationBuoy> categoryOfInstallationBuoyElement { get { return categoryOfInstallationBuoy; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(InstallationBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..InstallationBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..InstallationBuoy._featureBindingDefinitions];
@@ -9384,6 +10195,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9393,6 +10205,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<InstallationBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<InstallationBuoy, bool>> {
@@ -9400,6 +10213,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9408,16 +10222,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringBuoy : GenericBuoy {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(MooringBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..MooringBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..MooringBuoy._featureBindingDefinitions];
@@ -9430,6 +10256,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9439,6 +10266,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<MooringBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringBuoy, bool>> {
@@ -9446,6 +10274,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9454,16 +10283,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class EmergencyWreckMarkingBuoy : GenericBuoy {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..EmergencyWreckMarkingBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..EmergencyWreckMarkingBuoy._featureBindingDefinitions];
@@ -9476,6 +10317,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9485,6 +10327,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<EmergencyWreckMarkingBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<EmergencyWreckMarkingBuoy, bool>> {
@@ -9492,6 +10335,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9500,16 +10344,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Lighthouse : Landmark {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Lighthouse);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..Landmark._informationBindingDefinitions, ..Lighthouse._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..Landmark._featureBindingDefinitions, ..Lighthouse._featureBindingDefinitions];
@@ -9522,7 +10378,9 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Lighthouse, bool>> _conditionalUnknown = new Dictionary<string,Func<Lighthouse, bool>> {
@@ -9531,6 +10389,7 @@ namespace S100Framework.DomainModel.S201 {
 			public override void RunValidationChecks() {
 				base.RunValidationChecks();
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9544,108 +10403,116 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("horizontalLength")]
 			[Optional]
 			public double? horizontalLength {get;set;} = default;
-
-			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
 			[Optional]
 			public double? horizontalWidth {get;set;} = default;
 
-			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
-
 			[XmlElement("mannedStructure")]
 			[Optional]
 			public Boolean? mannedStructure {get;set;} = default;
-
-			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
-
-			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[XmlElement("horizontalAccuracy")]
 			[Optional]
 			public double? horizontalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
+
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+
 			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightFloat);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightFloat._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightFloat._featureBindingDefinitions];
@@ -9658,6 +10525,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9667,6 +10535,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightFloat, bool>> _conditionalUnknown = new Dictionary<string,Func<LightFloat, bool>> {
@@ -9674,6 +10543,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9687,108 +10557,116 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("horizontalLength")]
 			[Optional]
 			public double? horizontalLength {get;set;} = default;
-
-			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
 
 			[XmlElement("horizontalWidth")]
 			[Optional]
 			public double? horizontalWidth {get;set;} = default;
 
-			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
-
 			[XmlElement("mannedStructure")]
 			[Optional]
 			public Boolean? mannedStructure {get;set;} = default;
-
-			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
-
-			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
 
 			[XmlElement("horizontalAccuracy")]
 			[Optional]
 			public double? horizontalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializehorizontalLength() { return horizontalLength.HasValue; }
+
+			public bool ShouldSerializehorizontalWidth() { return horizontalWidth.HasValue; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
+			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+
 			public bool ShouldSerializehorizontalAccuracy() { return horizontalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LightVessel);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..LightVessel._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..LightVessel._featureBindingDefinitions];
@@ -9801,6 +10679,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9810,6 +10689,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LightVessel, bool>> _conditionalUnknown = new Dictionary<string,Func<LightVessel, bool>> {
@@ -9817,6 +10697,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9830,129 +10711,137 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<categoryOfOffshorePlatform> categoryOfOffshorePlatform {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("categoryOfOffshorePlatform")]
-			public SerializableEnumeration<categoryOfOffshorePlatform>[] categoryOfOffshorePlatformElement { get { return [.. categoryOfOffshorePlatform]; } set { } }
-
-			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
 
-			public bool ShouldSerializeheight() { return height.HasValue; }
-
 			[XmlElement("mannedStructure")]
 			[Optional]
 			public Boolean? mannedStructure {get;set;} = default;
-
-			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25])]
 			[Optional]
 			public List<product> product {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("product")]
-			public SerializableEnumeration<product>[] productElement { get { return [.. product]; } set { } }
-
-			public bool ShouldSerializeproduct() { return product.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfOffshorePlatform() { return categoryOfOffshorePlatform.Any(); }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializemannedStructure() { return mannedStructure.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeproduct() { return product.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfOffshorePlatform")]
+			public SerializableEnumeration<categoryOfOffshorePlatform>[] categoryOfOffshorePlatformElement { get { return [.. categoryOfOffshorePlatform]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("product")]
+			public SerializableEnumeration<product>[] productElement { get { return [.. product]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(OffshorePlatform);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..OffshorePlatform._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..OffshorePlatform._featureBindingDefinitions];
@@ -9965,6 +10854,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -9974,6 +10864,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<OffshorePlatform, bool>> _conditionalUnknown = new Dictionary<string,Func<OffshorePlatform, bool>> {
@@ -9981,6 +10872,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -9994,129 +10886,137 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public buildingShape? buildingShape {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("buildingShape")]
-			public SerializableEnumeration<buildingShape>? buildingShapeElement { get { return buildingShape; } set { } }
-
-			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4])]
 			[Optional]
 			public categoryOfSiloTank? categoryOfSiloTank {get;set;} = default;
-
-			[JsonIgnore]
-			[XmlElement("categoryOfSiloTank")]
-			public SerializableEnumeration<categoryOfSiloTank>? categoryOfSiloTankElement { get { return categoryOfSiloTank; } set { } }
-
-			public bool ShouldSerializecategoryOfSiloTank() { return categoryOfSiloTank.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("elevation")]
 			[Optional]
 			public double? elevation {get;set;} = default;
 
-			public bool ShouldSerializeelevation() { return elevation.HasValue; }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
 			[Optional]
 			public List<natureOfConstruction> natureOfConstruction {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
-
 			[XmlElement("radarConspicuous")]
 			[Optional]
 			public Boolean? radarConspicuous {get;set;} = default;
-
-			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializebuildingShape() { return buildingShape.HasValue; }
+
+			public bool ShouldSerializecategoryOfSiloTank() { return categoryOfSiloTank.HasValue; }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeelevation() { return elevation.HasValue; }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.Any(); }
+
+			public bool ShouldSerializeradarConspicuous() { return radarConspicuous.HasValue; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("buildingShape")]
+			public SerializableEnumeration<buildingShape>? buildingShapeElement { get { return buildingShape; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfSiloTank")]
+			public SerializableEnumeration<categoryOfSiloTank>? categoryOfSiloTankElement { get { return categoryOfSiloTank; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>[] natureOfConstructionElement { get { return [.. natureOfConstruction]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SiloTank);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..SiloTank._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..SiloTank._featureBindingDefinitions];
@@ -10129,6 +11029,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10138,6 +11039,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SiloTank, bool>> _conditionalUnknown = new Dictionary<string,Func<SiloTank, bool>> {
@@ -10145,6 +11047,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10158,84 +11061,92 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public categoryOfPile? categoryOfPile {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("categoryOfPile")]
-			public SerializableEnumeration<categoryOfPile>? categoryOfPileElement { get { return categoryOfPile; } set { } }
-
-			public bool ShouldSerializecategoryOfPile() { return categoryOfPile.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13])]
 			[Optional]
 			public List<colour> colour {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
-
 			[XmlElement("height")]
 			[Optional]
 			public double? height {get;set;} = default;
-
-			public bool ShouldSerializeheight() { return height.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45])]
 			[Optional]
 			public verticalDatum? verticalDatum {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("verticalDatum")]
-			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
-
-			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
-
-			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public visualProminence? visualProminence {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("visualProminence")]
-			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
-
-			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
-
 			[XmlElement("verticalAccuracy")]
 			[Optional]
 			public double? verticalAccuracy {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfPile() { return categoryOfPile.HasValue; }
+
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializeverticalDatum() { return verticalDatum.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisualProminence() { return visualProminence.HasValue; }
+
 			public bool ShouldSerializeverticalAccuracy() { return verticalAccuracy.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfPile")]
+			public SerializableEnumeration<categoryOfPile>? categoryOfPileElement { get { return categoryOfPile; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("verticalDatum")]
+			public SerializableEnumeration<verticalDatum>? verticalDatumElement { get { return verticalDatum; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("visualProminence")]
+			public SerializableEnumeration<visualProminence>? visualProminenceElement { get { return visualProminence; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Pile);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Pile._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Pile._featureBindingDefinitions];
@@ -10248,6 +11159,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10257,6 +11169,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Pile, bool>> _conditionalUnknown = new Dictionary<string,Func<Pile, bool>> {
@@ -10264,6 +11177,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10272,16 +11186,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Building : StructureObject {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Building);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Building._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Building._featureBindingDefinitions];
@@ -10294,6 +11220,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10303,6 +11230,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Building, bool>> _conditionalUnknown = new Dictionary<string,Func<Building, bool>> {
@@ -10310,6 +11238,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10318,16 +11247,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class Bridge : StructureObject {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Bridge);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..StructureObject._informationBindingDefinitions, ..Bridge._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..StructureObject._featureBindingDefinitions, ..Bridge._featureBindingDefinitions];
@@ -10340,6 +11281,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10349,6 +11291,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Bridge, bool>> _conditionalUnknown = new Dictionary<string,Func<Bridge, bool>> {
@@ -10356,6 +11299,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10369,17 +11313,9 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
-
 			[XmlElement("sinkerDimensions")]
 			[Optional]
 			public sinkerDimensions? sinkerDimensions {get;set;} = default;
-
-			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
 
 			[XmlElement("weight")]
 			[Mandatory]
@@ -10389,18 +11325,34 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? sinkerType {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
+			public bool ShouldSerializesinkerDimensions() { return sinkerDimensions!=default; }
+
 			public bool ShouldSerializesinkerType() { return !string.IsNullOrEmpty(sinkerType); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SinkerAnchor);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..SinkerAnchor._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..SinkerAnchor._featureBindingDefinitions];
@@ -10421,6 +11373,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10430,6 +11383,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SinkerAnchor, bool>> _conditionalUnknown = new Dictionary<string,Func<SinkerAnchor, bool>> {
@@ -10437,6 +11391,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10450,39 +11405,47 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Optional]
 			public ShackleType? ShackleType {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("ShackleType")]
-			public SerializableEnumeration<ShackleType>? ShackleTypeElement { get { return ShackleType; } set { } }
-
-			public bool ShouldSerializeShackleType() { return ShackleType.HasValue; }
-
 			[XmlElement("weight")]
 			[Optional]
 			public double? weight {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
+			public bool ShouldSerializeShackleType() { return ShackleType.HasValue; }
+
 			public bool ShouldSerializeweight() { return weight.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("ShackleType")]
+			public SerializableEnumeration<ShackleType>? ShackleTypeElement { get { return ShackleType; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(MooringShackle);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..MooringShackle._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..MooringShackle._featureBindingDefinitions];
@@ -10535,6 +11498,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(SinkerAnchor)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10544,6 +11508,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<MooringShackle, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringShackle, bool>> {
@@ -10551,6 +11516,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10563,38 +11529,46 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public CableDimensions? CableDimensions {get;set;} = default;
 
-			public bool ShouldSerializeCableDimensions() { return CableDimensions!=default; }
-
 			[XmlIgnore]
 			[EnumerationValue([1,3,4,5,6,7,8])]
 			[Mandatory]
 			public categoryOfCable categoryOfCable {get;set;}
-
-			[JsonIgnore]
-			[XmlElement("categoryOfCable")]
-			public SerializableEnumeration<categoryOfCable> categoryOfCableElement { get { return categoryOfCable; } set { } }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeCableDimensions() { return CableDimensions!=default; }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfCable")]
+			public SerializableEnumeration<categoryOfCable> categoryOfCableElement { get { return categoryOfCable; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("status")]
 			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(CableSubmarine);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..CableSubmarine._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CableSubmarine._featureBindingDefinitions];
@@ -10631,6 +11605,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10640,6 +11615,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<CableSubmarine, bool>> _conditionalUnknown = new Dictionary<string,Func<CableSubmarine, bool>> {
@@ -10647,6 +11623,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10660,34 +11637,42 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
-
 			[XmlElement("weight")]
 			[Optional]
 			public double? weight {get;set;} = default;
-
-			public bool ShouldSerializeweight() { return weight.HasValue; }
 
 			[XmlElement("swivelType")]
 			[Optional]
 			public String? swivelType {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
+			public bool ShouldSerializeweight() { return weight.HasValue; }
+
 			public bool ShouldSerializeswivelType() { return !string.IsNullOrEmpty(swivelType); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Swivel);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Swivel._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Swivel._featureBindingDefinitions];
@@ -10724,6 +11709,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(MooringShackle)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10733,6 +11719,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Swivel, bool>> _conditionalUnknown = new Dictionary<string,Func<Swivel, bool>> {
@@ -10740,6 +11727,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10752,24 +11740,34 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? bridleLinkType {get;set;} = default;
 
-			public bool ShouldSerializebridleLinkType() { return !string.IsNullOrEmpty(bridleLinkType); }
-
 			[XmlElement("legsDetails")]
 			[Optional]
 			public String? legsDetails {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializebridleLinkType() { return !string.IsNullOrEmpty(bridleLinkType); }
+
 			public bool ShouldSerializelegsDetails() { return !string.IsNullOrEmpty(legsDetails); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Bridle);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Bridle._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Bridle._featureBindingDefinitions];
@@ -10814,6 +11812,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(CableSubmarine)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10823,6 +11822,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Bridle, bool>> _conditionalUnknown = new Dictionary<string,Func<Bridle, bool>> {
@@ -10830,6 +11830,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10843,12 +11844,6 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public natureOfConstruction? natureOfConstruction {get;set;} = default;
 
-			[JsonIgnore]
-			[XmlElement("natureOfConstruction")]
-			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
-
-			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
-
 			[XmlElement("weight")]
 			[Mandatory]
 			public double weight {get;set;} = default;
@@ -10857,18 +11852,32 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public String? counterWeightType {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializenatureOfConstruction() { return natureOfConstruction.HasValue; }
+
 			public bool ShouldSerializecounterWeightType() { return !string.IsNullOrEmpty(counterWeightType); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("natureOfConstruction")]
+			public SerializableEnumeration<natureOfConstruction>? natureOfConstructionElement { get { return natureOfConstruction; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(CounterWeight);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..CounterWeight._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..CounterWeight._featureBindingDefinitions];
@@ -10889,6 +11898,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(GenericBuoy)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -10898,6 +11908,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<CounterWeight, bool>> _conditionalUnknown = new Dictionary<string,Func<CounterWeight, bool>> {
@@ -10905,6 +11916,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -10918,59 +11930,67 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<colour> colour {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("colour")]
-			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
-
-			public bool ShouldSerializecolour() { return colour.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9])]
 			[Optional]
 			public List<colourPattern> colourPattern {get;set;} = [];
-
-			[JsonIgnore]
-			[XmlElement("colourPattern")]
-			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
-
-			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43])]
 			[Optional]
 			public List<status> status {get;set;} = [];
 
-			[JsonIgnore]
-			[XmlElement("status")]
-			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
-
-			public bool ShouldSerializestatus() { return status.Any(); }
-
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34])]
 			[Mandatory]
 			public topmarkDaymarkShape topmarkDaymarkShape {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("topmarkDaymarkShape")]
-			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
-
 			[XmlElement("verticalLength")]
 			[Optional]
 			public double? verticalLength {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecolour() { return colour.Any(); }
+
+			public bool ShouldSerializecolourPattern() { return colourPattern.Any(); }
+
+			public bool ShouldSerializestatus() { return status.Any(); }
+
 			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("colour")]
+			public SerializableEnumeration<colour>[] colourElement { get { return [.. colour]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("colourPattern")]
+			public SerializableEnumeration<colourPattern>[] colourPatternElement { get { return [.. colourPattern]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("status")]
+			public SerializableEnumeration<status>[] statusElement { get { return [.. status]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("topmarkDaymarkShape")]
+			public SerializableEnumeration<topmarkDaymarkShape> topmarkDaymarkShapeElement { get { return topmarkDaymarkShape; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(Topmark);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AidsToNavigation._informationBindingDefinitions, ..Topmark._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..AidsToNavigation._featureBindingDefinitions, ..Topmark._featureBindingDefinitions];
@@ -10991,6 +12011,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(GenericBuoy)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11000,6 +12021,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<Topmark, bool>> _conditionalUnknown = new Dictionary<string,Func<Topmark, bool>> {
@@ -11007,6 +12029,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11015,16 +12038,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBeacon : GenericBeacon {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SafeWaterBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SafeWaterBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SafeWaterBeacon._featureBindingDefinitions];
@@ -11037,6 +12072,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11046,6 +12082,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SafeWaterBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBeacon, bool>> {
@@ -11053,6 +12090,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11066,22 +12104,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfSpecialPurposeMark")]
 			public SerializableEnumeration<categoryOfSpecialPurposeMark>[] categoryOfSpecialPurposeMarkElement { get { return [.. categoryOfSpecialPurposeMark]; } set { } }
-
-			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBeacon._informationBindingDefinitions, ..SpecialPurposeGeneralBeacon._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBeacon._featureBindingDefinitions, ..SpecialPurposeGeneralBeacon._featureBindingDefinitions];
@@ -11094,6 +12140,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11103,6 +12150,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBeacon, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBeacon, bool>> {
@@ -11110,6 +12158,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11118,16 +12167,28 @@ namespace S100Framework.DomainModel.S201 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class SafeWaterBuoy : GenericBuoy {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SafeWaterBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..SafeWaterBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SafeWaterBuoy._featureBindingDefinitions];
@@ -11140,6 +12201,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11149,6 +12211,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SafeWaterBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<SafeWaterBuoy, bool>> {
@@ -11156,6 +12219,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11169,22 +12233,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Multiplicity(1)]
 			public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark {get;set;} = [];
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfSpecialPurposeMark")]
 			public SerializableEnumeration<categoryOfSpecialPurposeMark>[] categoryOfSpecialPurposeMarkElement { get { return [.. categoryOfSpecialPurposeMark]; } set { } }
-
-			public bool ShouldSerializecategoryOfSpecialPurposeMark() { return categoryOfSpecialPurposeMark.Any(); }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..GenericBuoy._informationBindingDefinitions, ..SpecialPurposeGeneralBuoy._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => [..GenericBuoy._featureBindingDefinitions, ..SpecialPurposeGeneralBuoy._featureBindingDefinitions];
@@ -11197,6 +12269,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public new static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11206,6 +12279,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SpecialPurposeGeneralBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<SpecialPurposeGeneralBuoy, bool>> {
@@ -11213,6 +12287,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11225,18 +12300,28 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public List<information> information {get;set;} = [];
 
+
+			#region ShouldSerialize
 			public bool ShouldSerializeinformation() { return information.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(DangerousFeature);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => DangerousFeature._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => DangerousFeature._featureBindingDefinitions;
@@ -11257,6 +12342,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AtonAssociation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11266,6 +12352,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DangerousFeature, bool>> _conditionalUnknown = new Dictionary<string,Func<DangerousFeature, bool>> {
@@ -11273,6 +12360,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11286,16 +12374,28 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public CategoryOfAggregation CategoryOfAggregation {get;set;} = default;
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonAggregation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => AtonAggregation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => AtonAggregation._featureBindingDefinitions;
@@ -11316,6 +12416,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AidsToNavigation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11325,6 +12426,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AtonAggregation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAggregation, bool>> {
@@ -11332,6 +12434,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11345,16 +12448,28 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public CategoryOfAssociation CategoryOfAssociation {get;set;} = default;
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(AtonAssociation);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => AtonAssociation._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => AtonAssociation._featureBindingDefinitions;
@@ -11383,6 +12498,7 @@ namespace S100Framework.DomainModel.S201 {
 					featureTypes = [nameof(AidsToNavigation)],
 				},
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11392,6 +12508,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<AtonAssociation, bool>> _conditionalUnknown = new Dictionary<string,Func<AtonAssociation, bool>> {
@@ -11399,6 +12516,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11412,21 +12530,13 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public categoryOfTemporalVariation categoryOfTemporalVariation {get;set;}
 
-			[JsonIgnore]
-			[XmlElement("categoryOfTemporalVariation")]
-			public SerializableEnumeration<categoryOfTemporalVariation> categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
-
 			[XmlElement("orientationUncertainty")]
 			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
-			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
-
 			[XmlElement("horizontalDistanceUncertainty")]
 			[Optional]
 			public double? horizontalDistanceUncertainty {get;set;} = default;
-
-			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
 
 			[XmlElement("horizontalPositionUncertainty")]
 			[Mandatory]
@@ -11438,36 +12548,52 @@ namespace S100Framework.DomainModel.S201 {
 			[Optional]
 			public information? information {get;set;} = default;
 
-			public bool ShouldSerializeinformation() { return information!=default; }
-
 			[XmlElement("informationInNationalLanguage")]
 			[Optional]
 			public String? informationInNationalLanguage {get;set;} = default;
-
-			public bool ShouldSerializeinformationInNationalLanguage() { return !string.IsNullOrEmpty(informationInNationalLanguage); }
 
 			[XmlElement("textualDescription")]
 			[Optional]
 			public textualDescription? textualDescription {get;set;} = default;
 
-			public bool ShouldSerializetextualDescription() { return textualDescription!=default; }
-
 			[XmlElement("verticalUncertainty")]
 			[Optional]
 			public verticalUncertainty? verticalUncertainty {get;set;} = default;
 
+
+			#region ShouldSerialize
+			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
+
+			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
+
+			public bool ShouldSerializeinformation() { return information!=default; }
+
+			public bool ShouldSerializeinformationInNationalLanguage() { return !string.IsNullOrEmpty(informationInNationalLanguage); }
+
+			public bool ShouldSerializetextualDescription() { return textualDescription!=default; }
+
 			public bool ShouldSerializeverticalUncertainty() { return verticalUncertainty!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfTemporalVariation")]
+			public SerializableEnumeration<categoryOfTemporalVariation> categoryOfTemporalVariationElement { get { return categoryOfTemporalVariation; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(QualityOfNonBathymetricData);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => QualityOfNonBathymetricData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
@@ -11480,6 +12606,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11489,6 +12616,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<QualityOfNonBathymetricData, bool>> _conditionalUnknown = new Dictionary<string,Func<QualityOfNonBathymetricData, bool>> {
@@ -11496,6 +12624,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11512,16 +12641,28 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public int minimumDisplayScale {get;set;} = default;
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(DataCoverage);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
@@ -11534,6 +12675,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11543,6 +12685,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DataCoverage, bool>> _conditionalUnknown = new Dictionary<string,Func<DataCoverage, bool>> {
@@ -11550,6 +12693,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11564,16 +12708,28 @@ namespace S100Framework.DomainModel.S201 {
 				orientationValue = default,
 			};
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(LocalDirectionOfBuoyage);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => LocalDirectionOfBuoyage._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => LocalDirectionOfBuoyage._featureBindingDefinitions;
@@ -11586,6 +12742,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11595,6 +12752,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<LocalDirectionOfBuoyage, bool>> _conditionalUnknown = new Dictionary<string,Func<LocalDirectionOfBuoyage, bool>> {
@@ -11602,6 +12760,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11615,20 +12774,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public marksNavigationalSystemOf marksNavigationalSystemOf {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("marksNavigationalSystemOf")]
 			public SerializableEnumeration<marksNavigationalSystemOf> marksNavigationalSystemOfElement { get { return marksNavigationalSystemOf; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(NavigationalSystemOfMarks);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => NavigationalSystemOfMarks._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => NavigationalSystemOfMarks._featureBindingDefinitions;
@@ -11641,6 +12810,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11650,6 +12820,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<NavigationalSystemOfMarks, bool>> _conditionalUnknown = new Dictionary<string,Func<NavigationalSystemOfMarks, bool>> {
@@ -11657,6 +12828,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11670,20 +12842,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("verticalDatum")]
 			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(SoundingDatum);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => SoundingDatum._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => SoundingDatum._featureBindingDefinitions;
@@ -11696,6 +12878,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11705,6 +12888,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<SoundingDatum, bool>> _conditionalUnknown = new Dictionary<string,Func<SoundingDatum, bool>> {
@@ -11712,6 +12896,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 
 		/// <summary>
@@ -11725,20 +12910,30 @@ namespace S100Framework.DomainModel.S201 {
 			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("verticalDatum")]
 			public SerializableEnumeration<verticalDatum> verticalDatumElement { get { return verticalDatum; } set { } }
+			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
 			public override string Code => nameof(VerticalDatumOfData);
 
+			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => VerticalDatumOfData._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
 			];
+			#endregion
 
+			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
 			public override featureBindingDefinition[] featureBindingDefinitions => VerticalDatumOfData._featureBindingDefinitions;
@@ -11751,6 +12946,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 			];
+			#endregion
 
 			[JsonIgnore]
 			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
@@ -11760,6 +12956,7 @@ namespace S100Framework.DomainModel.S201 {
 			[XmlAnyElement]
 			public XElement[]? Geometry { get; set; } = default;
 
+			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<VerticalDatumOfData, bool>> _conditionalUnknown = new Dictionary<string,Func<VerticalDatumOfData, bool>> {
@@ -11767,6 +12964,7 @@ namespace S100Framework.DomainModel.S201 {
 
 			public override void RunValidationChecks() {
 			}
+			#endregion
 		}
 	}
 

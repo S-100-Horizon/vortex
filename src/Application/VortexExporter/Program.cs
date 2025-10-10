@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using S100Framework.Catalogues;
 using S100Framework.DomainModel;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
@@ -497,7 +496,7 @@ namespace S100Framework.Applications
                     var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
- 
+
                     File.WriteAllText(IO.Path.Combine(output, $"{datasetName}.yaml"), yaml);
                     File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 

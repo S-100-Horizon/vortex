@@ -215,16 +215,16 @@ namespace S100Framework.WPF.ViewModel
                     }
                 }
 
-                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
-                if (attribute != default) {
-                    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
-                    if (value is null) {
-                        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
-                        if (dependentValue is null) {
-                            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
-                        }
-                    }
-                }
+                //var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                //if (attribute != default) {
+                //    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
+                //    if (value is null) {
+                //        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
+                //        if (dependentValue is null) {
+                //            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
+                //        }
+                //    }
+                //}
             }
 
             //foreach (var e in this.GetErrors().Where(e => !errors.Contains(e)))

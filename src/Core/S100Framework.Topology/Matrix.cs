@@ -2,8 +2,6 @@
 using NetTopologySuite.Geometries;
 using NetTopologySuite.LinearReferencing;
 using NetTopologySuite.Operation.Linemerge;
-using NetTopologySuite.Triangulate;
-using System;
 using System.Collections.Concurrent;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -70,7 +68,7 @@ namespace S100Framework.Topology
         }
     }
 
-    public class CompositeCurveFeature : FeatureType        
+    public class CompositeCurveFeature : FeatureType
     {
         public CompositeCurveFeature(FeatureRef[] curves) {
             Curves = curves;
@@ -623,7 +621,7 @@ namespace S100Framework.Topology
             Parallel.ForEach(this._bagPolylines, ParallelOptions, (polyline) => {
                 if (!polyline.LineStrings.Any()) return;
                 //if (polyline.Name.Equals("C1371117")) System.Diagnostics.Debugger.Break();
-                
+
                 var text = polyline.LineString.ToText();
 
                 //if (polyline.Name.Equals("C1373970")) {
