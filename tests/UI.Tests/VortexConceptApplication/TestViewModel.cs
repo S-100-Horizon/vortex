@@ -1,9 +1,11 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureAssociations;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.Converters;
 using S100Framework.WPF.Editors;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S101;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
@@ -22,6 +24,11 @@ namespace VortexConceptApplication
     public class TestQualityOfBathymetricData : QualityOfBathymetricData
     {
     }
+
+    public class TestIslandGroupViewModel : IslandGroupViewModel {
+    }
+
+
 
     public class TestViewModel : UnderwaterAwashRockViewModel
     {

@@ -211,20 +211,20 @@ namespace S100Framework.WPF.ViewModel
                 if (required != default) {
                     var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
                     if (value is null) {
-                        this.AddError(p.Name, $"{p.Name} is required.");
+                        // UNKNOWN, this.AddError(p.Name, $"{p.Name} is required.");
                     }
                 }
 
-                var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
-                if (attribute != default) {
-                    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
-                    if (value is null) {
-                        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
-                        if (dependentValue is null) {
-                            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
-                        }
-                    }
-                }
+                //var attribute = p.GetCustomAttribute<DependentUnknownValueAttribute>();
+                //if (attribute != default) {
+                //    var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
+                //    if (value is null) {
+                //        var dependentValue = viewmodelProperties.Single(e => e.Name == attribute.PropertyName)?.GetValue(this);
+                //        if (dependentValue is null) {
+                //            this.AddError(p.Name, $"attribute {p.Name} must be populated with a value, which must not be an empty (null) value, if the attribute {attribute.PropertyName} is populated with an empty (null) value!");
+                //        }
+                //    }
+                //}
             }
 
             //foreach (var e in this.GetErrors().Where(e => !errors.Contains(e)))
@@ -238,6 +238,66 @@ namespace S100Framework.WPF.ViewModel
         public string? Name { get; set; } = default;
 
         protected override void Validate() {
+        }
+    }
+
+    public interface IInformationBindings
+    {
+        abstract informationBindingDefinition[] informationBindings { get; }
+    }
+
+    public abstract class InformationAssociationViewModel : AssociationViewModel
+    {
+        private String _role = string.Empty;
+
+        [Editor(typeof(Editors.InformationAssociationRoleEditor), typeof(Editors.InformationAssociationRoleEditor))]
+        public String role {
+            get { return _role; }
+            set {
+                SetValue(ref _role, value);
+            }
+        }
+
+        private String _informationId = string.Empty;
+
+        public String informationId {
+            get {
+                return _informationId;
+            }
+
+            set {
+                SetValue(ref _informationId, value);
+            }
+        }
+    }
+
+    public interface IFeatureBindings
+    {
+        abstract featureBindingDefinition[] featureBindings { get; }
+    }
+
+    public abstract class FeatureAssociationViewModel : AssociationViewModel
+    {
+        private String _role = string.Empty;
+
+        [Editor(typeof(Editors.FeatureAssociationRoleEditor), typeof(Editors.FeatureAssociationRoleEditor))]
+        public String role {
+            get { return _role; }
+            set {
+                SetValue(ref _role, value);
+            }
+        }
+
+        private String _featureId = string.Empty;
+
+        public String featureId {
+            get {
+                return _featureId;
+            }
+
+            set {
+                SetValue(ref _featureId, value);
+            }
         }
     }
 

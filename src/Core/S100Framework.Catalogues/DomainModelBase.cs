@@ -100,7 +100,7 @@ namespace S100Framework.DomainModel
     {
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    [System.AttributeUsage(System.AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class OptionalAttribute() : System.Attribute
     {
     }

@@ -60,7 +60,7 @@ namespace TestS100Framework
 
                 Build_S124();
 
-                Build_S127();
+                //Build_S127();
 
                 Build_S128();
 
@@ -89,9 +89,9 @@ namespace TestS100Framework
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_ViewModel.cs"));
 
-                Build_S127();
-                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
-                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
+                //Build_S127();
+                //File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
+                //File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
 
                 Build_S128();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_FC.cs"));

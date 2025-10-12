@@ -241,16 +241,18 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
+    public interface IInformationBindings
+    {
+        abstract informationBindingDefinition[] informationBindings { get; }
+    }
+
     public abstract class InformationAssociationViewModel : AssociationViewModel
-    {        
+    {
         private String _role = string.Empty;
 
         [Editor(typeof(Editors.InformationAssociationRoleEditor), typeof(Editors.InformationAssociationRoleEditor))]
         public String role {
-            get {
-                return _role;
-            }
-
+            get { return _role; }
             set {
                 SetValue(ref _role, value);
             }
@@ -269,8 +271,23 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
+    public interface IFeatureBindings
+    {
+        abstract featureBindingDefinition[] featureBindings { get; }
+    }
+
     public abstract class FeatureAssociationViewModel : AssociationViewModel
     {
+        private String _role = string.Empty;
+
+        [Editor(typeof(Editors.FeatureAssociationRoleEditor), typeof(Editors.FeatureAssociationRoleEditor))]
+        public String role {
+            get { return _role; }
+            set {
+                SetValue(ref _role, value);
+            }
+        }
+
         private String _featureId = string.Empty;
 
         public String featureId {

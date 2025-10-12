@@ -182,12 +182,17 @@ namespace VortexConceptApplication
                 Name = "S202600",
             }.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
 
+            //  Associations
+            var viewModel4 = new TestIslandGroupViewModel() {
+                Name = "S202600",
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.IslandGroup());
+
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
 
 
-            var viewModel = viewModel1;
+            var viewModel = viewModel4;
 
             SelectedProperty = viewModel;
 

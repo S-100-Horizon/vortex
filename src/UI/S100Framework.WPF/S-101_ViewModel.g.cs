@@ -3441,55 +3441,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class AdditionalInformationViewModel : InformationAssociationViewModel {
 
 
-		public AdditionalInformationViewModel LoadAdditionalInformation(AdditionalInformation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AdditionalInformation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
-		[Browsable(false)]
-		public AdditionalInformation Model => new () {
-
-		};
-
 		public override string? ToString() => $"Additional information";
 	}
 
-    public class TestAdditionalInformationViewModel<T> : AdditionalInformationViewModel where T : FeatureNode {
-
-    }
 
 
-
-    /// <summary>
-    /// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
-    /// </summary>
-    [CategoryOrder("QualityOfBathymetricDataComposition",0)]
+	/// <summary>
+	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
+	/// </summary>
+	[CategoryOrder("QualityOfBathymetricDataComposition",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class QualityOfBathymetricDataCompositionViewModel : InformationAssociationViewModel {
 
-
-		public QualityOfBathymetricDataCompositionViewModel LoadQualityOfBathymetricDataComposition(QualityOfBathymetricDataComposition instance) {
-
-			return this;
-		}
 
 		public override string Serialize() {
 			var instance = new QualityOfBathymetricDataComposition {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public QualityOfBathymetricDataComposition Model => new () {
-
-		};
 
 		public override string? ToString() => $"Quality of bathymetric data composition";
 	}
@@ -3505,21 +3481,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class SpatialAssociationViewModel : InformationAssociationViewModel {
 
 
-		public SpatialAssociationViewModel LoadSpatialAssociation(SpatialAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new SpatialAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public SpatialAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Spatial Association";
 	}
@@ -3535,21 +3501,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class AidsToNavigationAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public AidsToNavigationAssociationViewModel LoadAidsToNavigationAssociation(AidsToNavigationAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AidsToNavigationAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public AidsToNavigationAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aids to navigation association";
 	}
@@ -3565,21 +3521,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class ASLAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public ASLAggregationViewModel LoadASLAggregation(ASLAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ASLAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ASLAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"ASL aggregation";
 	}
@@ -3595,21 +3541,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class BridgeAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public BridgeAggregationViewModel LoadBridgeAggregation(BridgeAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new BridgeAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public BridgeAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Bridge aggregation";
 	}
@@ -3625,21 +3561,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class CautionAreaAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public CautionAreaAssociationViewModel LoadCautionAreaAssociation(CautionAreaAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new CautionAreaAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public CautionAreaAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Caution area association";
 	}
@@ -3655,21 +3581,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class DeepWaterRouteAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public DeepWaterRouteAggregationViewModel LoadDeepWaterRouteAggregation(DeepWaterRouteAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new DeepWaterRouteAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public DeepWaterRouteAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Deep Water route aggregation";
 	}
@@ -3685,21 +3601,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class FairwayAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public FairwayAggregationViewModel LoadFairwayAggregation(FairwayAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new FairwayAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public FairwayAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Fairway aggregation";
 	}
@@ -3715,21 +3621,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class FairwayAuxiliaryViewModel : FeatureAssociationViewModel {
 
 
-		public FairwayAuxiliaryViewModel LoadFairwayAuxiliary(FairwayAuxiliary instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new FairwayAuxiliary {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public FairwayAuxiliary Model => new () {
-
-		};
 
 		public override string? ToString() => $"Fairway auxiliary";
 	}
@@ -3745,21 +3641,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class IslandAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public IslandAggregationViewModel LoadIslandAggregation(IslandAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new IslandAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public IslandAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Island aggregation";
 	}
@@ -3775,21 +3661,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class MooringTrotAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public MooringTrotAggregationViewModel LoadMooringTrotAggregation(MooringTrotAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new MooringTrotAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public MooringTrotAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Mooring trot aggregation";
 	}
@@ -3805,21 +3681,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class PilotageDistrictAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public PilotageDistrictAssociationViewModel LoadPilotageDistrictAssociation(PilotageDistrictAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new PilotageDistrictAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public PilotageDistrictAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Pilotage District Association";
 	}
@@ -3835,21 +3701,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class RangeSystemAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public RangeSystemAggregationViewModel LoadRangeSystemAggregation(RangeSystemAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new RangeSystemAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public RangeSystemAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Range system aggregation";
 	}
@@ -3865,21 +3721,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class RoofedStructureAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public RoofedStructureAggregationViewModel LoadRoofedStructureAggregation(RoofedStructureAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new RoofedStructureAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public RoofedStructureAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Roofed Structure Aggregation";
 	}
@@ -3895,21 +3741,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class StructureEquipmentViewModel : FeatureAssociationViewModel {
 
 
-		public StructureEquipmentViewModel LoadStructureEquipment(StructureEquipment instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new StructureEquipment {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public StructureEquipment Model => new () {
-
-		};
 
 		public override string? ToString() => $"Structure/equipment";
 	}
@@ -3925,21 +3761,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class TextAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new TextAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public TextAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Text association";
 	}
@@ -3955,21 +3781,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class TrafficSeparationSchemeAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public TrafficSeparationSchemeAggregationViewModel LoadTrafficSeparationSchemeAggregation(TrafficSeparationSchemeAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new TrafficSeparationSchemeAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public TrafficSeparationSchemeAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Traffic Separation Scheme aggregation";
 	}
@@ -3985,21 +3801,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class TwoWayRouteAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public TwoWayRouteAggregationViewModel LoadTwoWayRouteAggregation(TwoWayRouteAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new TwoWayRouteAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public TwoWayRouteAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Two-way route aggregation";
 	}
@@ -4015,21 +3821,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class UpdateAggregationViewModel : FeatureAssociationViewModel {
 
 
-		public UpdateAggregationViewModel LoadUpdateAggregation(UpdateAggregation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new UpdateAggregation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public UpdateAggregation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Update Aggregation";
 	}
@@ -4045,21 +3841,11 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class UpdatedInformationViewModel : FeatureAssociationViewModel {
 
 
-		public UpdatedInformationViewModel LoadUpdatedInformation(UpdatedInformation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new UpdatedInformation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public UpdatedInformation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Updated Information";
 	}
@@ -4713,8 +4499,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<QualityOfNonBathymetricDataViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public QualityOfNonBathymetricDataViewModel LoadQualityOfNonBathymetricData(QualityOfNonBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -4964,8 +4773,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<NavigationalSystemOfMarksViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public NavigationalSystemOfMarksViewModel LoadNavigationalSystemOfMarks(NavigationalSystemOfMarks instance) {
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -5083,8 +4915,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LocalDirectionOfBuoyageViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public LocalDirectionOfBuoyageViewModel LoadLocalDirectionOfBuoyage(LocalDirectionOfBuoyage instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5271,22 +5126,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private QualityOfBathymetricDataCompositionViewModel _qualityOfBathymetricDataComposition = new();
+		#region InformationBindings
+
+		public class QualityOfBathymetricDataCompositionViewModel : S100Framework.WPF.ViewModel.S101.QualityOfBathymetricDataCompositionViewModel, IInformationBindings {
+			public QualityOfBathymetricDataCompositionViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "QualityOfBathymetricDataComposition",
+					role = "theQualityInformation",
+					roleType = roleType.association,
+					informationTypes = ["SpatialQuality"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public QualityOfBathymetricDataCompositionViewModel QualityOfBathymetricDataComposition {
-			get {
-				return _qualityOfBathymetricDataComposition;
+		public ObservableCollection<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataCompositionViewModel> QualityOfBathymetricDataComposition { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _qualityOfBathymetricDataComposition, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<QualityOfBathymetricDataViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public QualityOfBathymetricDataViewModel LoadQualityOfBathymetricData(QualityOfBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -5410,8 +5300,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SoundingDatumViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public SoundingDatumViewModel LoadSoundingDatum(SoundingDatum instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5501,8 +5414,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<VerticalDatumOfDataViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public VerticalDatumOfDataViewModel LoadVerticalDatumOfData(VerticalDatumOfData instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5781,8 +5717,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<QualityOfSurveyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public QualityOfSurveyViewModel LoadQualityOfSurvey(QualityOfSurvey instance) {
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -6000,11 +5959,69 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Category("FeatureBindings")]
-		public ObservableCollection<UpdateAggregationViewModel> UpdateAggregation { get; set; } = new();
+		#region FeatureBindings
+
+		public class UpdateAggregationViewModel : S100Framework.WPF.ViewModel.S101.UpdateAggregationViewModel, IFeatureBindings {
+			public UpdateAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdateAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "UpdateAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdatedObject",
+					roleType = roleType.association,
+					featureTypes = ["AdministrationArea","AirportAirfield","AnchorBerth","AnchorageArea","ArchipelagicSeaLane","ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis","Berth","Bollard","Bridge","Building","BuiltUpArea","CableArea","CableOverhead","CableSubmarine","Canal","CardinalBeacon","CardinalBuoy","CargoTranshipmentArea","Causeway","CautionArea","Checkpoint","CoastGuardStation","Coastline","CollisionRegulationsLimit","ContiguousZone","ContinentalShelfArea","Conveyor","Crane","CurrentNonGravitational","CustomZone","Dam","Daymark","DeepWaterRoute","DeepWaterRouteCentreline","DeepWaterRoutePart","DepthArea","DepthContour","DepthNoBottomFound","DiscolouredWater","DistanceMark","DockArea","Dolphin","DredgedArea","DryDock","DumpingGround","Dyke","EmergencyWreckMarkingBuoy","ExclusiveEconomicZone","Fairway","FairwaySystem","FenceWall","FerryRoute","FisheryZone","FishingFacility","FishingGround","FloatingDock","FogSignal","FortifiedStructure","FoulGround","FreePortArea","Gate","Gridiron","HarbourAreaAdministrative","HarbourFacility","Helipad","Hulk","IceArea","InformationArea","InshoreTrafficZone","InstallationBuoy","IslandGroup","IsolatedDangerBeacon","IsolatedDangerBuoy","Lake","LandArea","LandElevation","LandRegion","Landmark","LateralBeacon","LateralBuoy","LightAirObstruction","LightAllAround","LightFloat","LightFogDetector","LightSectored","LightVessel","LocalDirectionOfBuoyage","LocalMagneticAnomaly","LockBasin","LogPond","MagneticVariation","MarineFarmCulture","MarinePollutionRegulationsArea","MilitaryPracticeArea","MooringArea","MooringBuoy","MooringTrot","NavigationLine","NavigationalSystemOfMarks","Obstruction","OffshorePlatform","OffshoreProductionArea","OilBarrier","PhysicalAISAidToNavigation","Pile","PilotBoardingPlace","PilotageDistrict","PipelineOverhead","PipelineSubmarineOnLand","Pontoon","PrecautionaryArea","ProductionStorageArea","PylonBridgeSupport","QualityOfBathymetricData","QualityOfNonBathymetricData","QualityOfSurvey","RadarLine","RadarRange","RadarReflector","RadarStation","RadarTransponderBeacon","RadioCallingInPoint","RadioStation","Railway","RangeSystem","Rapids","RecommendedRouteCentreline","RecommendedTrack","RecommendedTrafficLanePart","RescueStation","RestrictedArea","Retroreflector","River","Road","Runway","SafeWaterBeacon","SafeWaterBuoy","Sandwave","SeaAreaNamedWaterArea","SeabedArea","Seagrass","SeaplaneLandingArea","SeparationZoneOrLine","ShorelineConstruction","SignalStationTraffic","SignalStationWarning","SiloTank","SmallCraftFacility","SlopeTopline","SlopingGround","Sounding","SoundingDatum","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Spring","StraightTerritorialSeaBaseline","StructureOverNavigableWater","SubmarinePipelineArea","SubmarineTransitLane","SweptArea","TerritorialSeaArea","TidalStreamPanelData","TidalStreamFloodEbb","Tideway","TrafficSeparationScheme","TrafficSeparationSchemeBoundary","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeLanePart","TrafficSeparationSchemeRoundabout","Tunnel","TwoWayRoute","TwoWayRoutePart","UnderwaterAwashRock","UnsurveyedArea","UpdateInformation","Vegetation","VerticalDatumOfData","VesselTrafficServiceArea","VirtualAISAidToNavigation","WaterTurbulence","Waterfall","WeedKelp","WindTurbine","Wreck"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<UpdateInformationViewModel.UpdateAggregationViewModel> UpdateAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdateInformationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public UpdateInformationViewModel LoadUpdateInformation(UpdateInformation instance) {
 			fixedDateRange = new ();
@@ -6148,22 +6165,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MagneticVariationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MagneticVariationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public MagneticVariationViewModel LoadMagneticVariation(MagneticVariation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -6281,25 +6333,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LocalMagneticAnomalyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LocalMagneticAnomalyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LocalMagneticAnomalyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LocalMagneticAnomalyViewModel LoadLocalMagneticAnomaly(LocalMagneticAnomaly instance) {
 			featureName.Clear();
@@ -6489,25 +6595,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CoastlineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CoastlineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CoastlineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CoastlineViewModel LoadCoastline(Coastline instance) {
 			categoryOfCoastline = instance.categoryOfCoastline;
@@ -6688,38 +6848,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LandAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class IslandAggregationViewModel : S100Framework.WPF.ViewModel.S101.IslandAggregationViewModel, IFeatureBindings {
+			public IslandAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "IslandAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["IslandGroup"],
+				},
+			];
 		}
 
-		[Optional]
-		private IslandAggregationViewModel _islandAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public IslandAggregationViewModel IslandAggregation {
-			get {
-				return _islandAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _islandAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LandAreaViewModel.IslandAggregationViewModel> IslandAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LandAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LandAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LandAreaViewModel LoadLandArea(LandArea instance) {
 			condition = instance.condition;
@@ -6829,28 +7052,109 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<IslandGroupViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class IslandAggregationViewModel : S100Framework.WPF.ViewModel.S101.IslandAggregationViewModel, IFeatureBindings {
+			public IslandAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "IslandAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["LandArea","IslandGroup"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "IslandAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["IslandGroup"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<IslandAggregationViewModel> IslandAggregation { get; set; } = new();
+		public ObservableCollection<IslandGroupViewModel.IslandAggregationViewModel> IslandAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<IslandGroupViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<IslandGroupViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public IslandGroupViewModel LoadIslandGroup(IslandGroup instance) {
 			featureName.Clear();
@@ -6982,25 +7286,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LandElevationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LandElevationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LandElevationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LandElevationViewModel LoadLandElevation(LandElevation instance) {
 			elevation = instance.elevation;
@@ -7124,25 +7482,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RiverViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RiverViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RiverViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RiverViewModel LoadRiver(River instance) {
 			featureName.Clear();
@@ -7260,25 +7672,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RapidsViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RapidsViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RapidsViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RapidsViewModel LoadRapids(Rapids instance) {
 			featureName.Clear();
@@ -7413,25 +7879,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<WaterfallViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<WaterfallViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<WaterfallViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public WaterfallViewModel LoadWaterfall(Waterfall instance) {
 			featureName.Clear();
@@ -7569,25 +8089,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LakeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LakeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LakeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LakeViewModel LoadLake(Lake instance) {
 			elevation = instance.elevation;
@@ -7725,25 +8299,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LandRegionViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LandRegionViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LandRegionViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LandRegionViewModel LoadLandRegion(LandRegion instance) {
 			categoryOfLandRegion.Clear();
@@ -7943,25 +8571,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<VegetationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<VegetationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<VegetationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public VegetationViewModel LoadVegetation(Vegetation instance) {
 			categoryOfVegetation = instance.categoryOfVegetation;
@@ -8178,25 +8860,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<IceAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<IceAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<IceAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public IceAreaViewModel LoadIceArea(IceArea instance) {
 			categoryOfIce = instance.categoryOfIce;
@@ -8397,25 +9133,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SlopingGroundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SlopingGroundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SlopingGroundViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SlopingGroundViewModel LoadSlopingGround(SlopingGround instance) {
 			categoryOfSlope = instance.categoryOfSlope;
@@ -8621,25 +9411,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SlopeToplineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SlopeToplineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SlopeToplineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SlopeToplineViewModel LoadSlopeTopline(SlopeTopline instance) {
 			categoryOfSlope = instance.categoryOfSlope;
@@ -8772,25 +9616,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TidewayViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TidewayViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TidewayViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TidewayViewModel LoadTideway(Tideway instance) {
 			featureName.Clear();
@@ -9012,25 +9910,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<BuiltUpAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<BuiltUpAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<BuiltUpAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public BuiltUpAreaViewModel LoadBuiltUpArea(BuiltUpArea instance) {
 			categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
@@ -9363,54 +10315,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<BuildingViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<BuildingViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<BuildingViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<BuildingViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BuildingViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BuildingViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public BuildingViewModel LoadBuilding(Building instance) {
 			buildingShape = instance.buildingShape;
@@ -9649,25 +10692,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<AirportAirfieldViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<AirportAirfieldViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<AirportAirfieldViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public AirportAirfieldViewModel LoadAirportAirfield(AirportAirfield instance) {
 			categoryOfAirportAirfield.Clear();
@@ -9846,25 +10943,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RunwayViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RunwayViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RunwayViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RunwayViewModel LoadRunway(Runway instance) {
 			condition = instance.condition;
@@ -10050,38 +11201,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<HelipadViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Building","Landmark","OffshorePlatform"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<HelipadViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<HelipadViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<HelipadViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public HelipadViewModel LoadHelipad(Helipad instance) {
 			condition = instance.condition;
@@ -10415,44 +11629,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<BridgeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+			public BridgeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "BridgeAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["SpanFixed","SpanOpening","Pontoon","PylonBridgeSupport"],
+				},
+			];
+		}
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
+		public ObservableCollection<BridgeViewModel.BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<BridgeViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<BridgeViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<BridgeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BridgeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public BridgeViewModel LoadBridge(Bridge instance) {
 			bridgeConstruction = instance.bridgeConstruction;
@@ -10698,54 +12013,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SpanFixedViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+			public BridgeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "BridgeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["Bridge"],
+				},
+			];
 		}
 
-		[Optional]
-		private BridgeAggregationViewModel _bridgeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridgeAggregationViewModel BridgeAggregation {
-			get {
-				return _bridgeAggregation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridgeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<SpanFixedViewModel.BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SpanFixedViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SpanFixedViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpanFixedViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpanFixedViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public SpanFixedViewModel LoadSpanFixed(SpanFixed instance) {
 			fixedDateRange = new ();
@@ -10943,54 +12349,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SpanOpeningViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+			public BridgeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "BridgeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["Bridge"],
+				},
+			];
 		}
 
-		[Optional]
-		private BridgeAggregationViewModel _bridgeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridgeAggregationViewModel BridgeAggregation {
-			get {
-				return _bridgeAggregation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridgeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<SpanOpeningViewModel.BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SpanOpeningViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SpanOpeningViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpanOpeningViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpanOpeningViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public SpanOpeningViewModel LoadSpanOpening(SpanOpening instance) {
 			fixedDateRange = new ();
@@ -11343,41 +12840,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ConveyorViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<ConveyorViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ConveyorViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ConveyorViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ConveyorViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ConveyorViewModel LoadConveyor(Conveyor instance) {
 			categoryOfConveyor = instance.categoryOfConveyor;
@@ -11732,28 +13311,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CableOverheadViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["RadarReflector"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+		public ObservableCollection<CableOverheadViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CableOverheadViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CableOverheadViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CableOverheadViewModel LoadCableOverhead(CableOverhead instance) {
 			categoryOfCable = instance.categoryOfCable;
@@ -12061,41 +13713,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PipelineOverheadViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","RadarReflector"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<PipelineOverheadViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PipelineOverheadViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PipelineOverheadViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PipelineOverheadViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PipelineOverheadViewModel LoadPipelineOverhead(PipelineOverhead instance) {
 			categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
@@ -12456,67 +14190,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PylonBridgeSupportViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+			public BridgeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "BridgeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["Bridge"],
+				},
+			];
 		}
 
-		[Optional]
-		private BridgeAggregationViewModel _bridgeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridgeAggregationViewModel BridgeAggregation {
-			get {
-				return _bridgeAggregation;
+		public class RoofedStructureAggregationViewModel : S100Framework.WPF.ViewModel.S101.RoofedStructureAggregationViewModel, IFeatureBindings {
+			public RoofedStructureAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridgeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RoofedStructureAggregation",
+					role = "theRoofedStructure",
+					roleType = roleType.aggregation,
+					featureTypes = ["StructureOverNavigableWater"],
+				},
+			];
 		}
 
-		[Optional]
-		private RoofedStructureAggregationViewModel _roofedStructureAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RoofedStructureAggregationViewModel RoofedStructureAggregation {
-			get {
-				return _roofedStructureAggregation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _roofedStructureAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<PylonBridgeSupportViewModel.BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PylonBridgeSupportViewModel.RoofedStructureAggregationViewModel> RoofedStructureAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PylonBridgeSupportViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PylonBridgeSupportViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PylonBridgeSupportViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PylonBridgeSupportViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public PylonBridgeSupportViewModel LoadPylonBridgeSupport(PylonBridgeSupport instance) {
 			categoryOfPylon = instance.categoryOfPylon;
@@ -12848,25 +14682,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FenceWallViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FenceWallViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FenceWallViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FenceWallViewModel LoadFenceWall(FenceWall instance) {
 			categoryOfFence = instance.categoryOfFence;
@@ -13076,25 +14964,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RailwayViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RailwayViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RailwayViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RailwayViewModel LoadRailway(Railway instance) {
 			condition = instance.condition;
@@ -13276,25 +15218,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RoadViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RoadViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RoadViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RoadViewModel LoadRoad(Road instance) {
 			categoryOfRoad = instance.categoryOfRoad;
@@ -13521,25 +15517,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TunnelViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TunnelViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TunnelViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TunnelViewModel LoadTunnel(Tunnel instance) {
 			condition = instance.condition;
@@ -13879,67 +15929,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LandmarkViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<LandmarkViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LandmarkViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LandmarkViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LandmarkViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LandmarkViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LandmarkViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LandmarkViewModel LoadLandmark(Landmark instance) {
 			categoryOfLandmark.Clear();
@@ -14361,54 +16511,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SiloTankViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<SiloTankViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SiloTankViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SiloTankViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SiloTankViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SiloTankViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SiloTankViewModel LoadSiloTank(SiloTank instance) {
 			buildingShape = instance.buildingShape;
@@ -14837,41 +17078,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<WindTurbineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<WindTurbineViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<WindTurbineViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<WindTurbineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<WindTurbineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public WindTurbineViewModel LoadWindTurbine(WindTurbine instance) {
 			colour.Clear();
@@ -15205,54 +17528,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FortifiedStructureViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<FortifiedStructureViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FortifiedStructureViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FortifiedStructureViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FortifiedStructureViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FortifiedStructureViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FortifiedStructureViewModel LoadFortifiedStructure(FortifiedStructure instance) {
 			categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
@@ -15563,25 +17977,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ProductionStorageAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ProductionStorageAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ProductionStorageAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ProductionStorageAreaViewModel LoadProductionStorageArea(ProductionStorageArea instance) {
 			categoryOfProductionArea = instance.categoryOfProductionArea;
@@ -15759,25 +18227,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CheckpointViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CheckpointViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CheckpointViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CheckpointViewModel LoadCheckpoint(Checkpoint instance) {
 			categoryOfCheckpoint = instance.categoryOfCheckpoint;
@@ -16058,41 +18580,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<HulkViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","Bollard"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<HulkViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<HulkViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<HulkViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<HulkViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public HulkViewModel LoadHulk(Hulk instance) {
 			categoryOfHulk.Clear();
@@ -16422,67 +19026,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PileViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<PileViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PileViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PileViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PileViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PileViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PileViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PileViewModel LoadPile(Pile instance) {
 			categoryOfPile = instance.categoryOfPile;
@@ -16747,25 +19451,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DykeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DykeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DykeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DykeViewModel LoadDyke(Dyke instance) {
 			condition = instance.condition;
@@ -17118,41 +19876,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ShorelineConstructionViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<ShorelineConstructionViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ShorelineConstructionViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ShorelineConstructionViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ShorelineConstructionViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ShorelineConstructionViewModel LoadShorelineConstruction(ShorelineConstruction instance) {
 			categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
@@ -17585,44 +20425,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<StructureOverNavigableWaterViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
+		public class RoofedStructureAggregationViewModel : S100Framework.WPF.ViewModel.S101.RoofedStructureAggregationViewModel, IFeatureBindings {
+			public RoofedStructureAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "RoofedStructureAggregation",
+					role = "theSupport",
+					roleType = roleType.association,
+					featureTypes = ["PylonBridgeSupport"],
+				},
+			];
+		}
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RoofedStructureAggregationViewModel> RoofedStructureAggregation { get; set; } = new();
+		public ObservableCollection<StructureOverNavigableWaterViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+		public ObservableCollection<StructureOverNavigableWaterViewModel.RoofedStructureAggregationViewModel> RoofedStructureAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<StructureOverNavigableWaterViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<StructureOverNavigableWaterViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureOverNavigableWaterViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public StructureOverNavigableWaterViewModel LoadStructureOverNavigableWater(StructureOverNavigableWater instance) {
 			categoryOfStructure.Clear();
@@ -17889,25 +20830,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CausewayViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CausewayViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CausewayViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CausewayViewModel LoadCauseway(Causeway instance) {
 			condition = instance.condition;
@@ -18134,25 +21129,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CanalViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CanalViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CanalViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CanalViewModel LoadCanal(Canal instance) {
 			categoryOfCanal = instance.categoryOfCanal;
@@ -18329,38 +21378,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DistanceMarkViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DistanceMarkViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DistanceMarkViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DistanceMarkViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DistanceMarkViewModel LoadDistanceMark(DistanceMark instance) {
 			distanceMarkVisible = instance.distanceMarkVisible;
@@ -18604,25 +21716,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<GateViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<GateViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<GateViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public GateViewModel LoadGate(Gate instance) {
 			categoryOfGate = instance.categoryOfGate;
@@ -18945,25 +22111,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DamViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DamViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DamViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DamViewModel LoadDam(Dam instance) {
 			categoryOfDam = instance.categoryOfDam;
@@ -19349,41 +22569,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CraneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<CraneViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CraneViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CraneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CraneViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CraneViewModel LoadCrane(Crane instance) {
 			categoryOfCrane = instance.categoryOfCrane;
@@ -19661,38 +22963,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<BerthViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+			public MooringTrotAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "MooringTrotAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["MooringTrot"],
+				},
+			];
 		}
 
-		[Optional]
-		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public MooringTrotAggregationViewModel MooringTrotAggregation {
-			get {
-				return _mooringTrotAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _mooringTrotAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<BerthViewModel.MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<BerthViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BerthViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public BerthViewModel LoadBerth(Berth instance) {
 			categoryOfCargo.Clear();
@@ -20038,54 +23403,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DolphinViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<DolphinViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DolphinViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DolphinViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DolphinViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DolphinViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DolphinViewModel LoadDolphin(Dolphin instance) {
 			categoryOfDolphin.Clear();
@@ -20339,38 +23795,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<BollardViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Dolphin","FortifiedStructure","Hulk","Landmark","OffshorePlatform","Pile","PylonBridgeSupport","ShorelineConstruction"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<BollardViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<BollardViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BollardViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public BollardViewModel LoadBollard(Bollard instance) {
 			condition = instance.condition;
@@ -20663,25 +24182,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DryDockViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DryDockViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DryDockViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DryDockViewModel LoadDryDock(DryDock instance) {
 			condition = instance.condition;
@@ -21057,41 +24630,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FloatingDockViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<FloatingDockViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FloatingDockViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FloatingDockViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FloatingDockViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FloatingDockViewModel LoadFloatingDock(FloatingDock instance) {
 			colour.Clear();
@@ -21358,54 +25013,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PontoonViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+			public BridgeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "BridgeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["Bridge"],
+				},
+			];
 		}
 
-		[Optional]
-		private BridgeAggregationViewModel _bridgeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridgeAggregationViewModel BridgeAggregation {
-			get {
-				return _bridgeAggregation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridgeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<PontoonViewModel.BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PontoonViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PontoonViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PontoonViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PontoonViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PontoonViewModel LoadPontoon(Pontoon instance) {
 			condition = instance.condition;
@@ -21662,25 +25408,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DockAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DockAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DockAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DockAreaViewModel LoadDockArea(DockArea instance) {
 			categoryOfDock = instance.categoryOfDock;
@@ -21901,25 +25701,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<GridironViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<GridironViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<GridironViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public GridironViewModel LoadGridiron(Gridiron instance) {
 			featureName.Clear();
@@ -22119,25 +25973,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LockBasinViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LockBasinViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LockBasinViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LockBasinViewModel LoadLockBasin(LockBasin instance) {
 			featureName.Clear();
@@ -22290,28 +26198,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MooringTrotViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+			public MooringTrotAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "MooringTrotAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["Berth","CableSubmarine","MooringBuoy","Obstruction"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
+		public ObservableCollection<MooringTrotViewModel.MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MooringTrotViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MooringTrotViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MooringTrotViewModel LoadMooringTrot(MooringTrot instance) {
 			featureName.Clear();
@@ -22435,25 +26416,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SeaAreaNamedWaterAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SeaAreaNamedWaterAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SeaAreaNamedWaterAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SeaAreaNamedWaterAreaViewModel LoadSeaAreaNamedWaterArea(SeaAreaNamedWaterArea instance) {
 			categoryOfSeaArea = instance.categoryOfSeaArea;
@@ -22616,25 +26651,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TidalStreamFloodEbbViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TidalStreamFloodEbbViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TidalStreamFloodEbbViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TidalStreamFloodEbbViewModel LoadTidalStreamFloodEbb(TidalStreamFloodEbb instance) {
 			categoryOfTidalStream = instance.categoryOfTidalStream;
@@ -22819,25 +26908,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CurrentNonGravitationalViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CurrentNonGravitationalViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CurrentNonGravitationalViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CurrentNonGravitationalViewModel LoadCurrentNonGravitational(CurrentNonGravitational instance) {
 			featureName.Clear();
@@ -22986,25 +27129,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<WaterTurbulenceViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<WaterTurbulenceViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<WaterTurbulenceViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public WaterTurbulenceViewModel LoadWaterTurbulence(WaterTurbulence instance) {
 			categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
@@ -23140,25 +27337,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TidalStreamPanelDataViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TidalStreamPanelDataViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TidalStreamPanelDataViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TidalStreamPanelDataViewModel LoadTidalStreamPanelData(TidalStreamPanelData instance) {
 			featureName.Clear();
@@ -23320,25 +27571,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SoundingViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SoundingViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SoundingViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SoundingViewModel LoadSounding(Sounding instance) {
 			featureName.Clear();
@@ -23556,38 +27861,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DredgedAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
 		}
 
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DredgedAreaViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DredgedAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DredgedAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DredgedAreaViewModel LoadDredgedArea(DredgedArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -23760,38 +28128,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SweptAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
 		}
 
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SweptAreaViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SweptAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SweptAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SweptAreaViewModel LoadSweptArea(SweptArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -23898,22 +28329,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DepthContourViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DepthContourViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public DepthContourViewModel LoadDepthContour(DepthContour instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -24017,22 +28483,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DepthAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DepthAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public DepthAreaViewModel LoadDepthArea(DepthArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -24129,22 +28630,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DepthNoBottomFoundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DepthNoBottomFoundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public DepthNoBottomFoundViewModel LoadDepthNoBottomFound(DepthNoBottomFound instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -24227,22 +28763,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<UnsurveyedAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<UnsurveyedAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public UnsurveyedAreaViewModel LoadUnsurveyedArea(UnsurveyedArea instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -24351,25 +28922,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SeabedAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SeabedAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SeabedAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SeabedAreaViewModel LoadSeabedArea(SeabedArea instance) {
 			featureName.Clear();
@@ -24500,25 +29125,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<WeedKelpViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<WeedKelpViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<WeedKelpViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public WeedKelpViewModel LoadWeedKelp(WeedKelp instance) {
 			categoryOfWeedKelp = instance.categoryOfWeedKelp;
@@ -24622,25 +29301,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SeagrassViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SeagrassViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SeagrassViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SeagrassViewModel LoadSeagrass(Seagrass instance) {
 			featureName.Clear();
@@ -24751,22 +29484,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SandwaveViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SandwaveViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public SandwaveViewModel LoadSandwave(Sandwave instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -24860,25 +29628,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SpringViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SpringViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SpringViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SpringViewModel LoadSpring(Spring instance) {
 			featureName.Clear();
@@ -25117,25 +29939,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private TestAdditionalInformationViewModel<UnderwaterAwashRock> _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public TestAdditionalInformationViewModel<UnderwaterAwashRock> AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<UnderwaterAwashRockViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<UnderwaterAwashRockViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<UnderwaterAwashRockViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public UnderwaterAwashRockViewModel LoadUnderwaterAwashRock(UnderwaterAwashRock instance) {
 			expositionOfSounding = instance.expositionOfSounding;
@@ -25467,28 +30343,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<WreckViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+		public ObservableCollection<WreckViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<WreckViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<WreckViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public WreckViewModel LoadWreck(Wreck instance) {
 			categoryOfWreck = instance.categoryOfWreck;
@@ -25853,38 +30802,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ObstructionViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+			public MooringTrotAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "MooringTrotAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["MooringTrot"],
+				},
+			];
 		}
 
-		[Optional]
-		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public MooringTrotAggregationViewModel MooringTrotAggregation {
-			get {
-				return _mooringTrotAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _mooringTrotAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ObstructionViewModel.MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ObstructionViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ObstructionViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ObstructionViewModel LoadObstruction(Obstruction instance) {
 			categoryOfObstruction = instance.categoryOfObstruction;
@@ -26131,25 +31143,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FoulGroundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FoulGroundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FoulGroundViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FoulGroundViewModel LoadFoulGround(FoulGround instance) {
 			featureName.Clear();
@@ -26302,22 +31368,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DiscolouredWaterViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DiscolouredWaterViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public DiscolouredWaterViewModel LoadDiscolouredWater(DiscolouredWater instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -26484,41 +31585,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FishingFacilityViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<FishingFacilityViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FishingFacilityViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FishingFacilityViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FishingFacilityViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FishingFacilityViewModel LoadFishingFacility(FishingFacility instance) {
 			categoryOfFishingFacility = instance.categoryOfFishingFacility;
@@ -26801,25 +31984,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MarineFarmCultureViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MarineFarmCultureViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MarineFarmCultureViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MarineFarmCultureViewModel LoadMarineFarmCulture(MarineFarmCulture instance) {
 			categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
@@ -27187,41 +32424,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<OffshorePlatformViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
+		public ObservableCollection<OffshorePlatformViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<OffshorePlatformViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<OffshorePlatformViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<OffshorePlatformViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public OffshorePlatformViewModel LoadOffshorePlatform(OffshorePlatform instance) {
 			categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
@@ -27457,38 +32776,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CableSubmarineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+			public MooringTrotAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "MooringTrotAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["MooringTrot"],
+				},
+			];
 		}
 
-		[Optional]
-		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public MooringTrotAggregationViewModel MooringTrotAggregation {
-			get {
-				return _mooringTrotAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _mooringTrotAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CableSubmarineViewModel.MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CableSubmarineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CableSubmarineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CableSubmarineViewModel LoadCableSubmarine(CableSubmarine instance) {
 			buriedDepth = instance.buriedDepth;
@@ -27653,25 +33035,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CableAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CableAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CableAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CableAreaViewModel LoadCableArea(CableArea instance) {
 			categoryOfCable.Clear();
@@ -27961,25 +33397,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PipelineSubmarineOnLandViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PipelineSubmarineOnLandViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PipelineSubmarineOnLandViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PipelineSubmarineOnLandViewModel LoadPipelineSubmarineOnLand(PipelineSubmarineOnLand instance) {
 			buriedDepth = instance.buriedDepth;
@@ -28196,25 +33686,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SubmarinePipelineAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SubmarinePipelineAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SubmarinePipelineAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SubmarinePipelineAreaViewModel LoadSubmarinePipelineArea(SubmarinePipelineArea instance) {
 			categoryOfPipelinePipe.Clear();
@@ -28534,25 +34078,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<OffshoreProductionAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<OffshoreProductionAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<OffshoreProductionAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public OffshoreProductionAreaViewModel LoadOffshoreProductionArea(OffshoreProductionArea instance) {
 			categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
@@ -28789,35 +34387,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<NavigationLineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
 		}
 
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<NavigationLineViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<NavigationLineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public NavigationLineViewModel LoadNavigationLine(NavigationLine instance) {
 			categoryOfNavigationLine = instance.categoryOfNavigationLine;
@@ -29072,51 +34714,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RecommendedTrackViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
 		}
 
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RecommendedTrackViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RecommendedTrackViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
 		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<RecommendedTrackViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RecommendedTrackViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+		#endregion
+
 
 		public RecommendedTrackViewModel LoadRecommendedTrack(RecommendedTrack instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -29312,41 +35026,131 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RangeSystemViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "RangeSystemAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","Building","Daymark","Dolphin","FortifiedStructure","IsolatedDangerBeacon","Landmark","LateralBeacon","LightAllAround","LightSectored","NavigationLine","Pile","RadarTransponderBeacon","RangeSystem","RecommendedRouteCentreline","RecommendedTrack","SafeWaterBeacon","SiloTank","SpecialPurposeGeneralBeacon"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<RangeSystemViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RangeSystemViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RangeSystemViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RangeSystemViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RangeSystemViewModel LoadRangeSystem(RangeSystem instance) {
 			featureName.Clear();
@@ -29568,41 +35372,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FairwayViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class FairwayAggregationViewModel : S100Framework.WPF.ViewModel.S101.FairwayAggregationViewModel, IFeatureBindings {
+			public FairwayAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["FairwaySystem"],
+				},
+			];
 		}
 
-		[Optional]
-		private FairwayAggregationViewModel _fairwayAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAggregationViewModel FairwayAggregation {
-			get {
-				return _fairwayAggregation;
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _fairwayAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "FairwayAuxiliary",
+					role = "theAuxiliaryFeature",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","CautionArea","Daymark","DredgedArea","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Landmark","Pile","RangeSystem","RecommendedRouteCentreline","RecommendedTrack","RestrictedArea","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","SweptArea"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+		public ObservableCollection<FairwayViewModel.FairwayAggregationViewModel> FairwayAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FairwayViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FairwayViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FairwayViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FairwayViewModel LoadFairway(Fairway instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -29799,31 +35685,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FairwaySystemViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AidsToNavigationAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
+				},
+			];
+		}
+
+		public class FairwayAggregationViewModel : S100Framework.WPF.ViewModel.S101.FairwayAggregationViewModel, IFeatureBindings {
+			public FairwayAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "FairwayAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+		public ObservableCollection<FairwaySystemViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<FairwayAggregationViewModel> FairwayAggregation { get; set; } = new();
+		public ObservableCollection<FairwaySystemViewModel.FairwayAggregationViewModel> FairwayAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FairwaySystemViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FairwaySystemViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FairwaySystemViewModel LoadFairwaySystem(FairwaySystem instance) {
 			featureName.Clear();
@@ -30055,51 +36033,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RecommendedRouteCentrelineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
 		}
 
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
 		}
 
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RecommendedRouteCentrelineViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RecommendedRouteCentrelineViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RecommendedRouteCentrelineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RecommendedRouteCentrelineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RecommendedRouteCentrelineViewModel LoadRecommendedRouteCentreline(RecommendedRouteCentreline instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -30368,48 +36418,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TwoWayRoutePartViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TwoWayRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.TwoWayRouteAggregationViewModel, IFeatureBindings {
+			public TwoWayRouteAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TwoWayRouteAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TwoWayRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private TwoWayRouteAggregationViewModel _twoWayRouteAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TwoWayRouteAggregationViewModel TwoWayRouteAggregation {
-			get {
-				return _twoWayRouteAggregation;
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _twoWayRouteAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TwoWayRoutePartViewModel.TwoWayRouteAggregationViewModel> TwoWayRouteAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TwoWayRoutePartViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TwoWayRoutePartViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TwoWayRoutePartViewModel LoadTwoWayRoutePart(TwoWayRoutePart instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -30582,44 +36685,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TwoWayRouteViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AidsToNavigationAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
+				},
+			];
+		}
+
+		public class TwoWayRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.TwoWayRouteAggregationViewModel, IFeatureBindings {
+			public TwoWayRouteAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "TwoWayRouteAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["TwoWayRoutePart"],
+				},
+			];
+		}
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+		public ObservableCollection<TwoWayRouteViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TwoWayRouteAggregationViewModel> TwoWayRouteAggregation { get; set; } = new();
-
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
-			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
-		}
+		public ObservableCollection<TwoWayRouteViewModel.TwoWayRouteAggregationViewModel> TwoWayRouteAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TwoWayRouteViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TwoWayRouteViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TwoWayRouteViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TwoWayRouteViewModel LoadTwoWayRoute(TwoWayRoute instance) {
 			featureName.Clear();
@@ -30760,22 +36964,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RecommendedTrafficLanePartViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RecommendedTrafficLanePartViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public RecommendedTrafficLanePartViewModel LoadRecommendedTrafficLanePart(RecommendedTrafficLanePart instance) {
 			fixedDateRange = new ();
@@ -31007,51 +37246,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DeepWaterRouteCentrelineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+			public DeepWaterRouteAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "DeepWaterRouteAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private DeepWaterRouteAggregationViewModel _deepWaterRouteAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public DeepWaterRouteAggregationViewModel DeepWaterRouteAggregation {
-			get {
-				return _deepWaterRouteAggregation;
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _deepWaterRouteAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DeepWaterRouteCentrelineViewModel.DeepWaterRouteAggregationViewModel> DeepWaterRouteAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DeepWaterRouteCentrelineViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRouteCentrelineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRouteCentrelineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DeepWaterRouteCentrelineViewModel LoadDeepWaterRouteCentreline(DeepWaterRouteCentreline instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -31328,51 +37639,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DeepWaterRoutePartViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+			public DeepWaterRouteAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "DeepWaterRouteAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private DeepWaterRouteAggregationViewModel _deepWaterRouteAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public DeepWaterRouteAggregationViewModel DeepWaterRouteAggregation {
-			get {
-				return _deepWaterRouteAggregation;
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _deepWaterRouteAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DeepWaterRoutePartViewModel.DeepWaterRouteAggregationViewModel> DeepWaterRouteAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DeepWaterRoutePartViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRoutePartViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRoutePartViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DeepWaterRoutePartViewModel LoadDeepWaterRoutePart(DeepWaterRoutePart instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -31575,44 +37958,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DeepWaterRouteViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AidsToNavigationAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine"],
+				},
+			];
+		}
+
+		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+			public DeepWaterRouteAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "DeepWaterRouteAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["DeepWaterRouteCentreline","DeepWaterRoutePart"],
+				},
+			];
+		}
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+		public ObservableCollection<DeepWaterRouteViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<DeepWaterRouteAggregationViewModel> DeepWaterRouteAggregation { get; set; } = new();
-
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
-			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
-		}
+		public ObservableCollection<DeepWaterRouteViewModel.DeepWaterRouteAggregationViewModel> DeepWaterRouteAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DeepWaterRouteViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DeepWaterRouteViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRouteViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DeepWaterRouteViewModel LoadDeepWaterRoute(DeepWaterRoute instance) {
 			featureName.Clear();
@@ -31750,35 +38234,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<InshoreTrafficZoneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<InshoreTrafficZoneViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<InshoreTrafficZoneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public InshoreTrafficZoneViewModel LoadInshoreTrafficZone(InshoreTrafficZone instance) {
 			fixedDateRange = new ();
@@ -31951,38 +38479,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PrecautionaryAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PrecautionaryAreaViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PrecautionaryAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PrecautionaryAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PrecautionaryAreaViewModel LoadPrecautionaryArea(PrecautionaryArea instance) {
 			featureName.Clear();
@@ -32164,35 +38755,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TrafficSeparationSchemeLanePartViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeLanePartViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TrafficSeparationSchemeLanePartViewModel LoadTrafficSeparationSchemeLanePart(TrafficSeparationSchemeLanePart instance) {
 			fixedDateRange = new ();
@@ -32339,35 +38974,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SeparationZoneOrLineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SeparationZoneOrLineViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SeparationZoneOrLineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public SeparationZoneOrLineViewModel LoadSeparationZoneOrLine(SeparationZoneOrLine instance) {
 			fixedDateRange = new ();
@@ -32491,35 +39170,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TrafficSeparationSchemeBoundaryViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeBoundaryViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TrafficSeparationSchemeBoundaryViewModel LoadTrafficSeparationSchemeBoundary(TrafficSeparationSchemeBoundary instance) {
 			fixedDateRange = new ();
@@ -32654,35 +39377,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TrafficSeparationSchemeCrossingViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeCrossingViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TrafficSeparationSchemeCrossingViewModel LoadTrafficSeparationSchemeCrossing(TrafficSeparationSchemeCrossing instance) {
 			fixedDateRange = new ();
@@ -32837,35 +39604,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TrafficSeparationSchemeRoundaboutViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeRoundaboutViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TrafficSeparationSchemeRoundaboutViewModel LoadTrafficSeparationSchemeRoundabout(TrafficSeparationSchemeRoundabout instance) {
 			fixedDateRange = new ();
@@ -33034,44 +39845,153 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TrafficSeparationSchemeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AidsToNavigationAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
+				},
+			];
+		}
+
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["DeepWaterRoute","DeepWaterRouteCentreline","DeepWaterRoutePart","InshoreTrafficZone","PrecautionaryArea","RestrictedArea","SeparationZoneOrLine","TrafficSeparationScheme","TrafficSeparationSchemeBoundary","TrafficSeparationSchemeCrossing","TrafficSeparationSchemeLanePart","TrafficSeparationSchemeRoundabout","TwoWayRoute","TwoWayRoutePart"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
+		}
+
+		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+			public CautionAreaAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "CautionAreaAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["CautionArea"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
-
-		[Optional]
-		private CautionAreaAssociationViewModel _cautionAreaAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public CautionAreaAssociationViewModel CautionAreaAssociation {
-			get {
-				return _cautionAreaAssociation;
-			}
-			set {
-				SetValue(ref _cautionAreaAssociation, value);
-			}
-		}
+		public ObservableCollection<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeViewModel.CautionAreaAssociationViewModel> CautionAreaAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TrafficSeparationSchemeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TrafficSeparationSchemeViewModel LoadTrafficSeparationScheme(TrafficSeparationScheme instance) {
 			featureName.Clear();
@@ -33212,38 +40132,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+			public ASLAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "ASLAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane"],
+				},
+			];
 		}
 
-		[Optional]
-		private ASLAggregationViewModel _aSLAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ASLAggregationViewModel ASLAggregation {
-			get {
-				return _aSLAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _aSLAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.ASLAggregationViewModel> ASLAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ArchipelagicSeaLaneAreaViewModel LoadArchipelagicSeaLaneArea(ArchipelagicSeaLaneArea instance) {
 			featureName.Clear();
@@ -33381,38 +40364,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+			public ASLAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "ASLAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane"],
+				},
+			];
 		}
 
-		[Optional]
-		private ASLAggregationViewModel _aSLAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ASLAggregationViewModel ASLAggregation {
-			get {
-				return _aSLAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _aSLAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.ASLAggregationViewModel> ASLAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ArchipelagicSeaLaneAxisViewModel LoadArchipelagicSeaLaneAxis(ArchipelagicSeaLaneAxis instance) {
 			featureName.Clear();
@@ -33550,44 +40596,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AidsToNavigationAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy"],
+				},
+			];
+		}
+
+		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+			public ASLAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "ASLAggregation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis"],
+				},
+			];
+		}
+
+		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+			public CautionAreaAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "CautionAreaAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["CautionArea"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<ASLAggregationViewModel> ASLAggregation { get; set; } = new();
-
-		[Optional]
-		private CautionAreaAssociationViewModel _cautionAreaAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public CautionAreaAssociationViewModel CautionAreaAssociation {
-			get {
-				return _cautionAreaAssociation;
-			}
-			set {
-				SetValue(ref _cautionAreaAssociation, value);
-			}
-		}
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.ASLAggregationViewModel> ASLAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.CautionAreaAssociationViewModel> CautionAreaAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ArchipelagicSeaLaneViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ArchipelagicSeaLaneViewModel LoadArchipelagicSeaLane(ArchipelagicSeaLane instance) {
 			featureName.Clear();
@@ -33747,25 +40894,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadioCallingInPointViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadioCallingInPointViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadioCallingInPointViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RadioCallingInPointViewModel LoadRadioCallingInPoint(RadioCallingInPoint instance) {
 			communicationChannel.Clear();
@@ -33947,25 +41148,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FerryRouteViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FerryRouteViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FerryRouteViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FerryRouteViewModel LoadFerryRoute(FerryRoute instance) {
 			categoryOfFerry.Clear();
@@ -34123,25 +41378,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadarLineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadarLineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadarLineViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RadarLineViewModel LoadRadarLine(RadarLine instance) {
 			featureName.Clear();
@@ -34280,25 +41589,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadarRangeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadarRangeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadarRangeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RadarRangeViewModel LoadRadarRange(RadarRange instance) {
 			communicationChannel.Clear();
@@ -34489,25 +41852,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadarStationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadarStationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadarStationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RadarStationViewModel LoadRadarStation(RadarStation instance) {
 			callSign = instance.callSign;
@@ -34707,25 +42124,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<AnchorageAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<AnchorageAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<AnchorageAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public AnchorageAreaViewModel LoadAnchorageArea(AnchorageArea instance) {
 			categoryOfAnchorage.Clear();
@@ -34963,25 +42434,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MooringAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MooringAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MooringAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MooringAreaViewModel LoadMooringArea(MooringArea instance) {
 			categoryOfMooringArea.Clear();
@@ -35197,25 +42722,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<AnchorBerthViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<AnchorBerthViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<AnchorBerthViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public AnchorBerthViewModel LoadAnchorBerth(AnchorBerth instance) {
 			categoryOfAnchorage.Clear();
@@ -35387,25 +42966,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SeaplaneLandingAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SeaplaneLandingAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SeaplaneLandingAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SeaplaneLandingAreaViewModel LoadSeaplaneLandingArea(SeaplaneLandingArea instance) {
 			featureName.Clear();
@@ -35585,25 +43218,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DumpingGroundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DumpingGroundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DumpingGroundViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DumpingGroundViewModel LoadDumpingGround(DumpingGround instance) {
 			categoryOfDumpingGround.Clear();
@@ -35804,25 +43491,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MilitaryPracticeAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MilitaryPracticeAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MilitaryPracticeAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MilitaryPracticeAreaViewModel LoadMilitaryPracticeArea(MilitaryPracticeArea instance) {
 			categoryOfMilitaryPracticeArea.Clear();
@@ -36031,25 +43772,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<AdministrationAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<AdministrationAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<AdministrationAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public AdministrationAreaViewModel LoadAdministrationArea(AdministrationArea instance) {
 			inDispute = instance.inDispute;
@@ -36205,25 +44000,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CargoTranshipmentAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CargoTranshipmentAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CargoTranshipmentAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CargoTranshipmentAreaViewModel LoadCargoTranshipmentArea(CargoTranshipmentArea instance) {
 			featureName.Clear();
@@ -36446,38 +44295,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CautionAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+			public CautionAreaAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "CautionAreaAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["ArchipelagicSeaLane","TrafficSeparationScheme"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<CautionAreaAssociationViewModel> CautionAreaAssociation { get; set; } = new();
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<CautionAreaViewModel.CautionAreaAssociationViewModel> CautionAreaAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CautionAreaViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CautionAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public CautionAreaViewModel LoadCautionArea(CautionArea instance) {
 			condition = instance.condition;
@@ -36642,25 +44554,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<InformationAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<InformationAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<InformationAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public InformationAreaViewModel LoadInformationArea(InformationArea instance) {
 			featureName.Clear();
@@ -36811,22 +44777,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ContiguousZoneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ContiguousZoneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public ContiguousZoneViewModel LoadContiguousZone(ContiguousZone instance) {
 			fixedDateRange = new ();
@@ -36940,25 +44941,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ContinentalShelfAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ContinentalShelfAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<ContinentalShelfAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public ContinentalShelfAreaViewModel LoadContinentalShelfArea(ContinentalShelfArea instance) {
 			featureName.Clear();
@@ -37079,22 +45134,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CustomZoneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CustomZoneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public CustomZoneViewModel LoadCustomZone(CustomZone instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -37202,22 +45292,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<ExclusiveEconomicZoneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<ExclusiveEconomicZoneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public ExclusiveEconomicZoneViewModel LoadExclusiveEconomicZone(ExclusiveEconomicZone instance) {
 			inDispute = instance.inDispute;
@@ -37342,25 +45467,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FisheryZoneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FisheryZoneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FisheryZoneViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FisheryZoneViewModel LoadFisheryZone(FisheryZone instance) {
 			featureName.Clear();
@@ -37496,25 +45675,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FishingGroundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FishingGroundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FishingGroundViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FishingGroundViewModel LoadFishingGround(FishingGround instance) {
 			featureName.Clear();
@@ -37662,25 +45895,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FreePortAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FreePortAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FreePortAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FreePortAreaViewModel LoadFreePortArea(FreePortArea instance) {
 			featureName.Clear();
@@ -37798,25 +46085,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<HarbourAreaAdministrativeViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<HarbourAreaAdministrativeViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<HarbourAreaAdministrativeViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public HarbourAreaAdministrativeViewModel LoadHarbourAreaAdministrative(HarbourAreaAdministrative instance) {
 			featureName.Clear();
@@ -37938,25 +46279,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LogPondViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LogPondViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LogPondViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LogPondViewModel LoadLogPond(LogPond instance) {
 			featureName.Clear();
@@ -38146,25 +46541,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<OilBarrierViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<OilBarrierViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<OilBarrierViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public OilBarrierViewModel LoadOilBarrier(OilBarrier instance) {
 			categoryOfOilBarrier = instance.categoryOfOilBarrier;
@@ -38300,22 +46749,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<StraightTerritorialSeaBaselineViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<StraightTerritorialSeaBaselineViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public StraightTerritorialSeaBaselineViewModel LoadStraightTerritorialSeaBaseline(StraightTerritorialSeaBaseline instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -38434,22 +46918,57 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<TerritorialSeaAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<TerritorialSeaAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public TerritorialSeaAreaViewModel LoadTerritorialSeaArea(TerritorialSeaArea instance) {
 			inDispute = instance.inDispute;
@@ -38598,25 +47117,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SubmarineTransitLaneViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SubmarineTransitLaneViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SubmarineTransitLaneViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SubmarineTransitLaneViewModel LoadSubmarineTransitLane(SubmarineTransitLane instance) {
 			featureName.Clear();
@@ -38744,28 +47317,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PilotageDistrictViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class PilotageDistrictAssociationViewModel : S100Framework.WPF.ViewModel.S101.PilotageDistrictAssociationViewModel, IFeatureBindings {
+			public PilotageDistrictAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "PilotageDistrictAssociation",
+					role = "theComponent",
+					roleType = roleType.association,
+					featureTypes = ["PilotBoardingPlace"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<PilotageDistrictAssociationViewModel> PilotageDistrictAssociation { get; set; } = new();
+		public ObservableCollection<PilotageDistrictViewModel.PilotageDistrictAssociationViewModel> PilotageDistrictAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PilotageDistrictViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PilotageDistrictViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PilotageDistrictViewModel LoadPilotageDistrict(PilotageDistrict instance) {
 			communicationChannel.Clear();
@@ -38908,25 +47554,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CollisionRegulationsLimitViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CollisionRegulationsLimitViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CollisionRegulationsLimitViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CollisionRegulationsLimitViewModel LoadCollisionRegulationsLimit(CollisionRegulationsLimit instance) {
 			featureName.Clear();
@@ -39060,25 +47760,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MarinePollutionRegulationsAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MarinePollutionRegulationsAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MarinePollutionRegulationsAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MarinePollutionRegulationsAreaViewModel LoadMarinePollutionRegulationsArea(MarinePollutionRegulationsArea instance) {
 			featureName.Clear();
@@ -39225,51 +47979,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RestrictedAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
 		}
 
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
+		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+			public TrafficSeparationSchemeAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TrafficSeparationSchemeAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["TrafficSeparationScheme"],
+				},
+			];
 		}
 
-		[Optional]
-		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
-			get {
-				return _trafficSeparationSchemeAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _trafficSeparationSchemeAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RestrictedAreaViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RestrictedAreaViewModel.TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RestrictedAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RestrictedAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RestrictedAreaViewModel LoadRestrictedArea(RestrictedArea instance) {
 			categoryOfRestrictedArea.Clear();
@@ -39648,51 +48474,131 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightAllAroundViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["FogSignal","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","RadarTransponderBeacon","Retroreflector"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
 		}
 
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightAllAroundViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightAllAroundViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightAllAroundViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightAllAroundViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightAllAroundViewModel LoadLightAllAround(LightAllAround instance) {
 			categoryOfLight.Clear();
@@ -40013,41 +48919,131 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightSectoredViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["FogSignal","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","RadarTransponderBeacon","Retroreflector"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","Conveyor","Dolphin","FishingFacility","FortifiedStructure","IsolatedDangerBeacon","Landmark","LateralBeacon","OffshorePlatform","Pile","PipelineOverhead","PylonBridgeSupport","SafeWaterBeacon","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<LightSectoredViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightSectoredViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightSectoredViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightSectoredViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightSectoredViewModel LoadLightSectored(LightSectored instance) {
 			categoryOfLight.Clear();
@@ -40337,38 +49333,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightFogDetectorViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightFogDetectorViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightFogDetectorViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightFogDetectorViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightFogDetectorViewModel LoadLightFogDetector(LightFogDetector instance) {
 			colour.Clear();
@@ -40669,38 +49728,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightAirObstructionViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","Conveyor","Landmark","OffshorePlatform","PylonBridgeSupport","SpanFixed","SpanOpening","WindTurbine","LightAllAround","LightSectored"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightAirObstructionViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightAirObstructionViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightAirObstructionViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightAirObstructionViewModel LoadLightAirObstruction(LightAirObstruction instance) {
 			colour.Clear();
@@ -41037,54 +50159,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LateralBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<LateralBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LateralBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LateralBuoyViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LateralBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LateralBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LateralBuoyViewModel LoadLateralBuoy(LateralBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -41421,54 +50634,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CardinalBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<CardinalBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CardinalBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CardinalBuoyViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CardinalBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CardinalBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CardinalBuoyViewModel LoadCardinalBuoy(CardinalBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -41788,54 +51092,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<IsolatedDangerBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<IsolatedDangerBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<IsolatedDangerBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<IsolatedDangerBuoyViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IsolatedDangerBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IsolatedDangerBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public IsolatedDangerBuoyViewModel LoadIsolatedDangerBuoy(IsolatedDangerBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -42152,54 +51547,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SafeWaterBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<SafeWaterBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SafeWaterBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SafeWaterBuoyViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SafeWaterBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SafeWaterBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SafeWaterBuoyViewModel LoadSafeWaterBuoy(SafeWaterBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -42523,54 +52009,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SpecialPurposeGeneralBuoyViewModel LoadSpecialPurposeGeneralBuoy(SpecialPurposeGeneralBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -42886,41 +52463,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public EmergencyWreckMarkingBuoyViewModel LoadEmergencyWreckMarkingBuoy(EmergencyWreckMarkingBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -43213,28 +52872,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<InstallationBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+		public ObservableCollection<InstallationBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<InstallationBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<InstallationBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public InstallationBuoyViewModel LoadInstallationBuoy(InstallationBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -43552,54 +53284,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<MooringBuoyViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
 		}
 
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+			public MooringTrotAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "MooringTrotAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["MooringTrot"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public MooringTrotAggregationViewModel MooringTrotAggregation {
-			get {
-				return _mooringTrotAggregation;
-			}
-			set {
-				SetValue(ref _mooringTrotAggregation, value);
-			}
-		}
+		public ObservableCollection<MooringBuoyViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<MooringBuoyViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<MooringBuoyViewModel.MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<MooringBuoyViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<MooringBuoyViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public MooringBuoyViewModel LoadMooringBuoy(MooringBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -44006,67 +53829,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LateralBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<LateralBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LateralBeaconViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LateralBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LateralBeaconViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LateralBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LateralBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LateralBeaconViewModel LoadLateralBeacon(LateralBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -44494,67 +54417,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CardinalBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<CardinalBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CardinalBeaconViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CardinalBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CardinalBeaconViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CardinalBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CardinalBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CardinalBeaconViewModel LoadCardinalBeacon(CardinalBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -44965,67 +54988,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<IsolatedDangerBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<IsolatedDangerBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<IsolatedDangerBeaconViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<IsolatedDangerBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IsolatedDangerBeaconViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IsolatedDangerBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IsolatedDangerBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public IsolatedDangerBeaconViewModel LoadIsolatedDangerBeacon(IsolatedDangerBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -45433,67 +55556,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SafeWaterBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<SafeWaterBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SafeWaterBeaconViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SafeWaterBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SafeWaterBeaconViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SafeWaterBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SafeWaterBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SafeWaterBeaconViewModel LoadSafeWaterBeacon(SafeWaterBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -45908,67 +56131,167 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SpecialPurposeGeneralBeaconViewModel LoadSpecialPurposeGeneralBeacon(SpecialPurposeGeneralBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -46318,67 +56641,175 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<DaymarkViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["DistanceMark","FogSignal","LightAllAround","LightFogDetector","LightSectored","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<DaymarkViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<DaymarkViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<DaymarkViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DaymarkViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DaymarkViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DaymarkViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public DaymarkViewModel LoadDaymark(Daymark instance) {
 			categoryOfSpecialPurposeMark.Clear();
@@ -46723,54 +57154,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightFloatViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<LightFloatViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightFloatViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightFloatViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightFloatViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightFloatViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightFloatViewModel LoadLightFloat(LightFloat instance) {
 			colour.Clear();
@@ -47087,54 +57609,145 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<LightVesselViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "StructureEquipment",
+					role = "theEquipment",
+					roleType = roleType.association,
+					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
+				},
+			];
+		}
+
+		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+			public AidsToNavigationAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AidsToNavigationAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
+				},
+			];
+		}
+
+		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+			public FairwayAuxiliaryViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "FairwayAuxiliary",
+					role = "thePrimaryFeature",
+					roleType = roleType.aggregation,
+					featureTypes = ["Fairway"],
+				},
+			];
+		}
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
-
-		[Optional]
-		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
-			get {
-				return _aidsToNavigationAssociation;
-			}
-			set {
-				SetValue(ref _aidsToNavigationAssociation, value);
-			}
-		}
-
-		[Optional]
-		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public FairwayAuxiliaryViewModel FairwayAuxiliary {
-			get {
-				return _fairwayAuxiliary;
-			}
-			set {
-				SetValue(ref _fairwayAuxiliary, value);
-			}
-		}
+		public ObservableCollection<LightVesselViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<LightVesselViewModel.AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<LightVesselViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightVesselViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LightVesselViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public LightVesselViewModel LoadLightVessel(LightVessel instance) {
 			colour.Clear();
@@ -47361,35 +57974,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RetroreflectorViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RetroreflectorViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RetroreflectorViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public RetroreflectorViewModel LoadRetroreflector(Retroreflector instance) {
 			colour.Clear();
@@ -47557,35 +58214,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadarReflectorViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["CableOverhead","PipelineOverhead"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadarReflectorViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RadarReflectorViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		#endregion
+
 
 		public RadarReflectorViewModel LoadRadarReflector(RadarReflector instance) {
 			fixedDateRange = new ();
@@ -47824,38 +58525,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<FogSignalViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<FogSignalViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<FogSignalViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FogSignalViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public FogSignalViewModel LoadFogSignal(FogSignal instance) {
 			categoryOfFogSignal = instance.categoryOfFogSignal;
@@ -48073,38 +58837,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PhysicalAISAidToNavigationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PhysicalAISAidToNavigationViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PhysicalAISAidToNavigationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PhysicalAISAidToNavigationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PhysicalAISAidToNavigationViewModel LoadPhysicalAISAidToNavigation(PhysicalAISAidToNavigation instance) {
 			estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -48310,25 +59137,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<VirtualAISAidToNavigationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<VirtualAISAidToNavigationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<VirtualAISAidToNavigationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public VirtualAISAidToNavigationViewModel LoadVirtualAISAidToNavigation(VirtualAISAidToNavigation instance) {
 			estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -48535,25 +59416,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadioStationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
 			callSign = instance.callSign;
@@ -48804,51 +59739,123 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RadarTransponderBeaconViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
+		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+			public RangeSystemAggregationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "RangeSystemAggregation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["RangeSystem"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RadarTransponderBeaconViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RadarTransponderBeaconViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
-		[Optional]
-		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
 		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public RangeSystemAggregationViewModel RangeSystemAggregation {
-			get {
-				return _rangeSystemAggregation;
-			}
-			set {
-				SetValue(ref _rangeSystemAggregation, value);
-			}
-		}
+		public ObservableCollection<RadarTransponderBeaconViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RadarTransponderBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+		#endregion
+
 
 		public RadarTransponderBeaconViewModel LoadRadarTransponderBeacon(RadarTransponderBeacon instance) {
 			categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
@@ -49084,38 +60091,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<PilotBoardingPlaceViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class PilotageDistrictAssociationViewModel : S100Framework.WPF.ViewModel.S101.PilotageDistrictAssociationViewModel, IFeatureBindings {
+			public PilotageDistrictAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "PilotageDistrictAssociation",
+					role = "theCollection",
+					roleType = roleType.aggregation,
+					featureTypes = ["PilotageDistrict"],
+				},
+			];
 		}
 
-		[Optional]
-		private PilotageDistrictAssociationViewModel _pilotageDistrictAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public PilotageDistrictAssociationViewModel PilotageDistrictAssociation {
-			get {
-				return _pilotageDistrictAssociation;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _pilotageDistrictAssociation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<PilotBoardingPlaceViewModel.PilotageDistrictAssociationViewModel> PilotageDistrictAssociation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<PilotBoardingPlaceViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PilotBoardingPlaceViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public PilotBoardingPlaceViewModel LoadPilotBoardingPlace(PilotBoardingPlace instance) {
 			categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -49278,25 +60348,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<VesselTrafficServiceAreaViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<VesselTrafficServiceAreaViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<VesselTrafficServiceAreaViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public VesselTrafficServiceAreaViewModel LoadVesselTrafficServiceArea(VesselTrafficServiceArea instance) {
 			featureName.Clear();
@@ -49440,25 +60564,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<CoastGuardStationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<CoastGuardStationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<CoastGuardStationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public CoastGuardStationViewModel LoadCoastGuardStation(CoastGuardStation instance) {
 			communicationChannel.Clear();
@@ -49634,38 +60812,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SignalStationWarningViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SignalStationWarningViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SignalStationWarningViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SignalStationWarningViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SignalStationWarningViewModel LoadSignalStationWarning(SignalStationWarning instance) {
 			categoryOfSignalStationWarning.Clear();
@@ -49848,38 +61089,101 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SignalStationTrafficViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+			public StructureEquipmentViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "StructureEquipment",
+					role = "theStructure",
+					roleType = roleType.composition,
+					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
+				},
+			];
 		}
 
-		[Optional]
-		private StructureEquipmentViewModel _structureEquipment = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public StructureEquipmentViewModel StructureEquipment {
-			get {
-				return _structureEquipment;
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _structureEquipment, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SignalStationTrafficViewModel.StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SignalStationTrafficViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SignalStationTrafficViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SignalStationTrafficViewModel LoadSignalStationTraffic(SignalStationTraffic instance) {
 			categoryOfSignalStationTraffic.Clear();
@@ -50062,25 +61366,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<RescueStationViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<RescueStationViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<RescueStationViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public RescueStationViewModel LoadRescueStation(RescueStation instance) {
 			categoryOfRescueStation.Clear();
@@ -50343,25 +61701,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<HarbourFacilityViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<HarbourFacilityViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<HarbourFacilityViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public HarbourFacilityViewModel LoadHarbourFacility(HarbourFacility instance) {
 			categoryOfHarbourFacility.Clear();
@@ -50582,25 +61994,79 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private AdditionalInformationViewModel _additionalInformation = new();
+		#region InformationBindings
+
+		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+			public AdditionalInformationViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "AdditionalInformation",
+					role = "theInformation",
+					roleType = roleType.association,
+					informationTypes = ["ContactDetails","NauticalInformation"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public AdditionalInformationViewModel AdditionalInformation {
-			get {
-				return _additionalInformation;
+		public ObservableCollection<SmallCraftFacilityViewModel.AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+			public UpdatedInformationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _additionalInformation, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "UpdatedInformation",
+					role = "theUpdate",
+					roleType = roleType.association,
+					featureTypes = ["UpdateInformation"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+		public ObservableCollection<SmallCraftFacilityViewModel.UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<SmallCraftFacilityViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public SmallCraftFacilityViewModel LoadSmallCraftFacility(SmallCraftFacility instance) {
 			categoryOfSmallCraftFacility.Clear();
@@ -50761,18 +62227,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
-		[Optional]
-		private TextAssociationViewModel _textAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TextAssociationViewModel TextAssociation {
-			get {
-				return _textAssociation;
+		#region FeatureBindings
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _textAssociation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "TextAssociation",
+					role = "thePositionProvider",
+					roleType = roleType.composition,
+					featureTypes = ["AdministrationArea","AirportAirfield","AnchorBerth","AnchorageArea","ArchipelagicSeaLane","ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis","Berth","Bollard","Bridge","Building","BuiltUpArea","CableArea","CableOverhead","CableSubmarine","Canal","CardinalBuoy","CardinalBeacon","CargoTranshipmentArea","Causeway","Chart1Feature","Checkpoint","CoastGuardStation","Coastline","CollisionRegulationsLimit","ContinentalShelfArea","Conveyor","Crane","CurrentNonGravitational","Dam","Daymark","DeepWaterRoute","DeepWaterRouteCentreline","DeepWaterRoutePart","DistanceMark","DockArea","Dolphin","DredgedArea","DryDock","DumpingGround","Dyke","EmergencyWreckMarkingBuoy","Fairway","FairwaySystem","FenceWall","FerryRoute","FisheryZone","FishingFacility","FishingGround","FloatingDock","FogSignal","FortifiedStructure","FoulGround","FreePortArea","Gate","Gridiron","HarbourAreaAdministrative","HarbourFacility","Helipad","Hulk","IceArea","InformationArea","InstallationBuoy","IslandGroup","IsolatedDangerBeacon","IsolatedDangerBuoy","Lake","LandArea","LandElevation","LandRegion","Landmark","LateralBeacon","LateralBuoy","LightAirObstruction","LightAllAround","LightFloat","LightFogDetector","LightSectored","LightVessel","LocalMagneticAnomaly","LockBasin","LogPond","MarineFarmCulture","MarinePollutionRegulationsArea","MilitaryPracticeArea","MooringArea","MooringBuoy","MooringTrot","Obstruction","OffshorePlatform","OffshoreProductionArea","OilBarrier","PhysicalAISAidToNavigation","Pile","PilotBoardingPlace","PilotageDistrict","PipelineOverhead","PipelineSubmarineOnLand","Pontoon","PrecautionaryArea","ProductionStorageArea","PylonBridgeSupport","RadarLine","RadarRange","RadarStation","RadarTransponderBeacon","RadioCallingInPoint","RadioStation","Railway","RangeSystem","Rapids","RecommendedRouteCentreline","RecommendedTrack","RescueStation","RestrictedArea","River","Road","Runway","SafeWaterBeacon","SafeWaterBuoy","SeaAreaNamedWaterArea","SeabedArea","Seagrass","SeaplaneLandingArea","ShorelineConstruction","SignalStationTraffic","SignalStationWarning","SiloTank","SlopeTopline","SlopingGround","SmallCraftFacility","Sounding","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Spring","StructureOverNavigableWater","SubmarinePipelineArea","SubmarineTransitLane","SweptArea","TidalStreamFloodEbb","TidalStreamPanelData","Tideway","TrafficSeparationScheme","Tunnel","TwoWayRoute","UnderwaterAwashRock","Vegetation","VesselTrafficServiceArea","VirtualAISAidToNavigation","WaterTurbulence","Waterfall","WeedKelp","WindTurbine","Wreck"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			textOffsetBearing = instance.textOffsetBearing;
@@ -50841,8 +62320,31 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 2,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<Chart1FeatureViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public Chart1FeatureViewModel LoadChart1Feature(Chart1Feature instance) {
 			drawingInstruction.Clear();

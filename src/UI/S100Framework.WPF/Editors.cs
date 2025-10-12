@@ -313,17 +313,23 @@ namespace S100Framework.WPF.Editors
 
     public class InformationAssociationRoleEditor : AssociationRoleEditor {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
-
-            var type = propertyItem.Instance.GetType().GenericTypeArguments[0];
-
-            var informationBindingDefinitions = (informationBindingDefinition[])type.GetMethod("get__informationBindingDefinitions")!.Invoke(null,null)!;
-
-            var associations = informationBindingDefinitions.Where(e => e.association.Equals(propertyItem.DisplayName));
-
-            return associations.Select(e => e.role);
+            var bindings = propertyItem.Instance as IInformationBindings;
+            return bindings!.informationBindings.Select(e => e.role);
         }
     }
 
+    public class FeatureAssociationRoleEditor : AssociationRoleEditor
+    {
+        protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
+            var bindings = propertyItem.Instance as IFeatureBindings;
+            return bindings!.featureBindings.Select(e => e.role);
+
+            //var type = propertyItem.Value.GetType().GenericTypeArguments[0];
+            //var informationBindingDefinitions = (informationBindingDefinition[])type.GetMethod("get__informationBindingDefinitions")!.Invoke(null, null)!;
+            //var associations = informationBindingDefinitions.Where(e => e.association.Equals(propertyItem.DisplayName));
+            //return associations.Select(e => e.role);
+        }
+    }
 
 
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

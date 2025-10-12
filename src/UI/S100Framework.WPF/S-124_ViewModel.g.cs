@@ -1102,21 +1102,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class navwarnPreambleContentViewModel : InformationAssociationViewModel {
 
 
-		public navwarnPreambleContentViewModel LoadnavwarnPreambleContent(navwarnPreambleContent instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new navwarnPreambleContent {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public navwarnPreambleContent Model => new () {
-
-		};
 
 		public override string? ToString() => $"navwarnPreambleContent";
 	}
@@ -1132,21 +1122,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class navwarnReferencesViewModel : InformationAssociationViewModel {
 
 
-		public navwarnReferencesViewModel LoadnavwarnReferences(navwarnReferences instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new navwarnReferences {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public navwarnReferences Model => new () {
-
-		};
 
 		public override string? ToString() => $"navwarnReferences";
 	}
@@ -1162,21 +1142,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class TextAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new TextAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public TextAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Text association";
 	}
@@ -1192,21 +1162,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class areaAffectedViewModel : FeatureAssociationViewModel {
 
 
-		public areaAffectedViewModel LoadareaAffected(areaAffected instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new areaAffected {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public areaAffected Model => new () {
-
-		};
 
 		public override string? ToString() => $"Area Affected";
 	}
@@ -1256,18 +1216,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public referenceCategory[] referenceCategoryList => [(referenceCategory)1,(referenceCategory)2,(referenceCategory)3];
 
 
-		private navwarnReferencesViewModel _navwarnReferences = new();
+		#region InformationBindings
+
+		public class navwarnReferencesViewModel : S100Framework.WPF.ViewModel.S124.navwarnReferencesViewModel, IInformationBindings {
+			public navwarnReferencesViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "navwarnReferences",
+					role = "theWarning",
+					roleType = roleType.association,
+					informationTypes = ["NavwarnPreamble"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public navwarnReferencesViewModel navwarnReferences {
-			get {
-				return _navwarnReferences;
-			}
-			set {
-				SetValue(ref _navwarnReferences, value);
-			}
-		}
+		public ObservableCollection<ReferencesViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+		#endregion
+
 
 		public ReferencesViewModel LoadReferences(References instance) {
 			messageSeriesIdentifier.Clear();
@@ -1408,8 +1381,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
+		#region InformationBindings
+
+		public class navwarnReferencesViewModel : S100Framework.WPF.ViewModel.S124.navwarnReferencesViewModel, IInformationBindings {
+			public navwarnReferencesViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "navwarnReferences",
+					role = "theReferences",
+					roleType = roleType.association,
+					informationTypes = ["References"],
+				},
+			];
+		}
+
 		[Category("InformationBindings")]
-		public ObservableCollection<navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+		public ObservableCollection<NavwarnPreambleViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+		#endregion
+
 
 		public NavwarnPreambleViewModel LoadNavwarnPreamble(NavwarnPreamble instance) {
 			affectedChartPublications.Clear();
@@ -1617,24 +1613,79 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
 
 
-		private navwarnPreambleContentViewModel _navwarnPreambleContent = new();
+		#region InformationBindings
+
+		public class navwarnPreambleContentViewModel : S100Framework.WPF.ViewModel.S124.navwarnPreambleContentViewModel, IInformationBindings {
+			public navwarnPreambleContentViewModel() {
+				if (informationBindings.Length == 1)
+					base.role = informationBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public informationBindingDefinition[] informationBindings => [
+				new informationBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "navwarnPreambleContent",
+					role = "header",
+					roleType = roleType.association,
+					informationTypes = ["NavwarnPreamble"],
+				},
+			];
+		}
 
 		[Category("InformationBindings")]
-		[ExpandableObject]
-		public navwarnPreambleContentViewModel navwarnPreambleContent {
-			get {
-				return _navwarnPreambleContent;
+		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContent { get; set; } = new();
+		#endregion
+
+
+		#region FeatureBindings
+
+		public class areaAffectedViewModel : S100Framework.WPF.ViewModel.S124.areaAffectedViewModel, IFeatureBindings {
+			public areaAffectedViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _navwarnPreambleContent, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "areaAffected",
+					role = "affects",
+					roleType = roleType.association,
+					featureTypes = ["NavwarnAreaAffected"],
+				},
+			];
+		}
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S124.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "TextAssociation",
+					role = "thePositionProvider",
+					roleType = roleType.association,
+					featureTypes = ["TextPlacement"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<areaAffectedViewModel> areaAffected { get; set; } = new();
+		public ObservableCollection<NavwarnPartViewModel.areaAffectedViewModel> areaAffected { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public NavwarnPartViewModel LoadNavwarnPart(NavwarnPart instance) {
 			restriction = instance.restriction;
@@ -1713,17 +1764,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
 
-		private areaAffectedViewModel _areaAffected = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public areaAffectedViewModel areaAffected {
-			get {
-				return _areaAffected;
+		#region FeatureBindings
+
+		public class areaAffectedViewModel : S100Framework.WPF.ViewModel.S124.areaAffectedViewModel, IFeatureBindings {
+			public areaAffectedViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _areaAffected, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "areaAffected",
+					role = "impacts",
+					roleType = roleType.association,
+					featureTypes = ["NavwarnPart"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffected { get; set; } = new();
+		#endregion
+
 
 		public NavwarnAreaAffectedViewModel LoadNavwarnAreaAffected(NavwarnAreaAffected instance) {
 
@@ -1831,17 +1896,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		private TextAssociationViewModel _textAssociation = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public TextAssociationViewModel TextAssociation {
-			get {
-				return _textAssociation;
+		#region FeatureBindings
+
+		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S124.TextAssociationViewModel, IFeatureBindings {
+			public TextAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _textAssociation, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "TextAssociation",
+					role = "theCartographicText",
+					roleType = roleType.association,
+					featureTypes = ["NavwarnPart"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		#endregion
+
 
 		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			scaleMinimum = instance.scaleMinimum;

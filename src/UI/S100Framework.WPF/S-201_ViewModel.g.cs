@@ -2325,21 +2325,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class AtonstatusViewModel : InformationAssociationViewModel {
 
 
-		public AtonstatusViewModel LoadAtonstatus(Atonstatus instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new Atonstatus {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public Atonstatus Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aton Status";
 	}
@@ -2355,21 +2345,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class AtonFixingMethodAssociationViewModel : InformationAssociationViewModel {
 
 
-		public AtonFixingMethodAssociationViewModel LoadAtonFixingMethodAssociation(AtonFixingMethodAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AtonFixingMethodAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public AtonFixingMethodAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aton Fixing Method Association";
 	}
@@ -2385,21 +2365,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class AtonPositioningInformationAssociationViewModel : InformationAssociationViewModel {
 
 
-		public AtonPositioningInformationAssociationViewModel LoadAtonPositioningInformationAssociation(AtonPositioningInformationAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AtonPositioningInformationAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public AtonPositioningInformationAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aton Positioning Information Association";
 	}
@@ -2415,21 +2385,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class BuoyTopmarkViewModel : FeatureAssociationViewModel {
 
 
-		public BuoyTopmarkViewModel LoadBuoyTopmark(BuoyTopmark instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new BuoyTopmark {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public BuoyTopmark Model => new () {
-
-		};
 
 		public override string? ToString() => $"Buoy Topmark";
 	}
@@ -2445,21 +2405,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class StructureEquipmentViewModel : FeatureAssociationViewModel {
 
 
-		public StructureEquipmentViewModel LoadStructureEquipment(StructureEquipment instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new StructureEquipment {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public StructureEquipment Model => new () {
-
-		};
 
 		public override string? ToString() => $"Structure Equipment";
 	}
@@ -2475,21 +2425,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class PhysicalAISViewModel : FeatureAssociationViewModel {
 
 
-		public PhysicalAISViewModel LoadPhysicalAIS(PhysicalAIS instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new PhysicalAIS {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public PhysicalAIS Model => new () {
-
-		};
 
 		public override string? ToString() => $"Physical AIS";
 	}
@@ -2505,21 +2445,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class SyntheticAISViewModel : FeatureAssociationViewModel {
 
 
-		public SyntheticAISViewModel LoadSyntheticAIS(SyntheticAIS instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new SyntheticAIS {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public SyntheticAIS Model => new () {
-
-		};
 
 		public override string? ToString() => $"Synthetic AIS";
 	}
@@ -2535,21 +2465,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class VirtualAISViewModel : FeatureAssociationViewModel {
 
 
-		public VirtualAISViewModel LoadVirtualAIS(VirtualAIS instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new VirtualAIS {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public VirtualAIS Model => new () {
-
-		};
 
 		public override string? ToString() => $"Virtual AIS";
 	}
@@ -2565,21 +2485,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class BuoyCounterWeightViewModel : FeatureAssociationViewModel {
 
 
-		public BuoyCounterWeightViewModel LoadBuoyCounterWeight(BuoyCounterWeight instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new BuoyCounterWeight {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public BuoyCounterWeight Model => new () {
-
-		};
 
 		public override string? ToString() => $"Buoy Counter Weight";
 	}
@@ -2595,21 +2505,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class BridleConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public BridleConnectionViewModel LoadBridleConnection(BridleConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new BridleConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public BridleConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Bridle Connection";
 	}
@@ -2625,21 +2525,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class ShackleConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public ShackleConnectionViewModel LoadShackleConnection(ShackleConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ShackleConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ShackleConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Shackle Connection";
 	}
@@ -2655,21 +2545,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class ShackleConnectionFromCableViewModel : FeatureAssociationViewModel {
 
 
-		public ShackleConnectionFromCableViewModel LoadShackleConnectionFromCable(ShackleConnectionFromCable instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ShackleConnectionFromCable {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ShackleConnectionFromCable Model => new () {
-
-		};
 
 		public override string? ToString() => $"Shackle Connection From Cable";
 	}
@@ -2685,21 +2565,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class SwivelCableConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public SwivelCableConnectionViewModel LoadSwivelCableConnection(SwivelCableConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new SwivelCableConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public SwivelCableConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Swivel Cable Connection";
 	}
@@ -2715,21 +2585,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class BridleCableConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public BridleCableConnectionViewModel LoadBridleCableConnection(BridleCableConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new BridleCableConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public BridleCableConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Bridle Cable Connection";
 	}
@@ -2745,21 +2605,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class ShackleToBridleConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public ShackleToBridleConnectionViewModel LoadShackleToBridleConnection(ShackleToBridleConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ShackleToBridleConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ShackleToBridleConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Shackle To Bridle Connection";
 	}
@@ -2775,21 +2625,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class ShackleToSwivelConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public ShackleToSwivelConnectionViewModel LoadShackleToSwivelConnection(ShackleToSwivelConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ShackleToSwivelConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ShackleToSwivelConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Shackle To Swivel Connection";
 	}
@@ -2805,21 +2645,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class ShackleToAnchorConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public ShackleToAnchorConnectionViewModel LoadShackleToAnchorConnection(ShackleToAnchorConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new ShackleToAnchorConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public ShackleToAnchorConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"ShackleToAnchorConnection";
 	}
@@ -2835,21 +2665,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class SwivelConnectionViewModel : FeatureAssociationViewModel {
 
 
-		public SwivelConnectionViewModel LoadSwivelConnection(SwivelConnection instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new SwivelConnection {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public SwivelConnection Model => new () {
-
-		};
 
 		public override string? ToString() => $"Swivel Connection";
 	}
@@ -2865,21 +2685,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class AtonAggregationsViewModel : FeatureAssociationViewModel {
 
 
-		public AtonAggregationsViewModel LoadAtonAggregations(AtonAggregations instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AtonAggregations {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public AtonAggregations Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aton Aggregations";
 	}
@@ -2895,21 +2705,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class AtonAssociationsViewModel : FeatureAssociationViewModel {
 
 
-		public AtonAssociationsViewModel LoadAtonAssociations(AtonAssociations instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new AtonAssociations {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public AtonAssociations Model => new () {
-
-		};
 
 		public override string? ToString() => $"Aton Associations";
 	}
@@ -2925,21 +2725,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class RangeSystemViewModel : FeatureAssociationViewModel {
 
 
-		public RangeSystemViewModel LoadRangeSystem(RangeSystem instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new RangeSystem {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public RangeSystem Model => new () {
-
-		};
 
 		public override string? ToString() => $"Range System";
 	}
@@ -2955,21 +2745,11 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class DangerousFeatureAssociationViewModel : FeatureAssociationViewModel {
 
 
-		public DangerousFeatureAssociationViewModel LoadDangerousFeatureAssociation(DangerousFeatureAssociation instance) {
-
-			return this;
-		}
-
 		public override string Serialize() {
 			var instance = new DangerousFeatureAssociation {
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
-
-		[Browsable(false)]
-		public DangerousFeatureAssociation Model => new () {
-
-		};
 
 		public override string? ToString() => $"Dangerous Feature Association";
 	}
@@ -5220,8 +5000,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
+		#region FeatureBindings
+
+		public class RangeSystemViewModel : S100Framework.WPF.ViewModel.S201.RangeSystemViewModel, IFeatureBindings {
+			public RangeSystemViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "RangeSystem",
+					role = "navigableTrack",
+					roleType = roleType.association,
+					featureTypes = ["RecommendedTrack"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<RangeSystemViewModel> RangeSystem { get; set; } = new();
+		public ObservableCollection<NavigationLineViewModel.RangeSystemViewModel> RangeSystem { get; set; } = new();
+		#endregion
+
 
 		public NavigationLineViewModel LoadNavigationLine(NavigationLine instance) {
 			iDCode = instance.iDCode;
@@ -5639,8 +5442,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public trafficFlow[] trafficFlowList => [(trafficFlow)1,(trafficFlow)2,(trafficFlow)3,(trafficFlow)4];
 
 
+		#region FeatureBindings
+
+		public class RangeSystemViewModel : S100Framework.WPF.ViewModel.S201.RangeSystemViewModel, IFeatureBindings {
+			public RangeSystemViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = default,
+					association = "RangeSystem",
+					role = "navigationLine",
+					roleType = roleType.association,
+					featureTypes = ["NavigationLine"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<RangeSystemViewModel> RangeSystem { get; set; } = new();
+		public ObservableCollection<RecommendedTrackViewModel.RangeSystemViewModel> RangeSystem { get; set; } = new();
+		#endregion
+
 
 		public RecommendedTrackViewModel LoadRecommendedTrack(RecommendedTrack instance) {
 			iDCode = instance.iDCode;
@@ -9266,34 +9092,75 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 
-		[Optional]
-		private PhysicalAISViewModel _physicalAIS = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public PhysicalAISViewModel PhysicalAIS {
-			get {
-				return _physicalAIS;
+		#region FeatureBindings
+
+		public class PhysicalAISViewModel : S100Framework.WPF.ViewModel.S201.PhysicalAISViewModel, IFeatureBindings {
+			public PhysicalAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _physicalAIS, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "PhysicalAIS",
+					role = "physicalAISbroadcastBy",
+					roleType = roleType.association,
+					featureTypes = ["PhysicalAISAidToNavigation"],
+				},
+			];
 		}
 
-		[Optional]
-		private SyntheticAISViewModel _syntheticAIS = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public SyntheticAISViewModel SyntheticAIS {
-			get {
-				return _syntheticAIS;
+		public class SyntheticAISViewModel : S100Framework.WPF.ViewModel.S201.SyntheticAISViewModel, IFeatureBindings {
+			public SyntheticAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _syntheticAIS, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "SyntheticAIS",
+					role = "syntheticAISbroadcastBy",
+					roleType = roleType.association,
+					featureTypes = ["SyntheticAISAidToNavigation"],
+				},
+			];
+		}
+
+		public class VirtualAISViewModel : S100Framework.WPF.ViewModel.S201.VirtualAISViewModel, IFeatureBindings {
+			public VirtualAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "VirtualAIS",
+					role = "virtualAISbroadcastBy",
+					roleType = roleType.association,
+					featureTypes = ["VirtualAISAidToNavigation"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<VirtualAISViewModel> VirtualAIS { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RadioStationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RadioStationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+		#endregion
+
 
 		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
 			iDCode = instance.iDCode;
@@ -11022,18 +10889,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
 
-		[Optional]
-		private VirtualAISViewModel _virtualAIS = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public VirtualAISViewModel VirtualAIS {
-			get {
-				return _virtualAIS;
+		#region FeatureBindings
+
+		public class VirtualAISViewModel : S100Framework.WPF.ViewModel.S201.VirtualAISViewModel, IFeatureBindings {
+			public VirtualAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _virtualAIS, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "VirtualAIS",
+					role = "virtualAISbroadcasts",
+					roleType = roleType.association,
+					featureTypes = ["RadioStation"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<VirtualAISAidToNavigationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+		#endregion
+
 
 		public VirtualAISAidToNavigationViewModel LoadVirtualAISAidToNavigation(VirtualAISAidToNavigation instance) {
 			iDCode = instance.iDCode;
@@ -11378,8 +11258,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public CategoryOfPhysicalAISAidToNavigation[] CategoryOfPhysicalAISAidToNavigationList => [(CategoryOfPhysicalAISAidToNavigation)1,(CategoryOfPhysicalAISAidToNavigation)2,(CategoryOfPhysicalAISAidToNavigation)3];
 
 
+		#region FeatureBindings
+
+		public class PhysicalAISViewModel : S100Framework.WPF.ViewModel.S201.PhysicalAISViewModel, IFeatureBindings {
+			public PhysicalAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = default,
+					association = "PhysicalAIS",
+					role = "physicalAISbroadcasts",
+					roleType = roleType.association,
+					featureTypes = ["RadioStation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+		public ObservableCollection<PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+		#endregion
+
 
 		public PhysicalAISAidToNavigationViewModel LoadPhysicalAISAidToNavigation(PhysicalAISAidToNavigation instance) {
 			iDCode = instance.iDCode;
@@ -11741,8 +11644,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
 
+		#region FeatureBindings
+
+		public class SyntheticAISViewModel : S100Framework.WPF.ViewModel.S201.SyntheticAISViewModel, IFeatureBindings {
+			public SyntheticAISViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = default,
+					association = "SyntheticAIS",
+					role = "syntheticAISbroadcasts",
+					roleType = roleType.association,
+					featureTypes = ["RadioStation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+		public ObservableCollection<SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+		#endregion
+
 
 		public SyntheticAISAidToNavigationViewModel LoadSyntheticAISAidToNavigation(SyntheticAISAidToNavigation instance) {
 			iDCode = instance.iDCode;
@@ -20291,17 +20217,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		private ShackleToAnchorConnectionViewModel _shackleToAnchorConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleToAnchorConnectionViewModel ShackleToAnchorConnection {
-			get {
-				return _shackleToAnchorConnection;
+		#region FeatureBindings
+
+		public class ShackleToAnchorConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToAnchorConnectionViewModel, IFeatureBindings {
+			public ShackleToAnchorConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _shackleToAnchorConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "ShackleToAnchorConnection",
+					role = "shackleToAnchorconnected",
+					roleType = roleType.association,
+					featureTypes = ["MooringShackle"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SinkerAnchorViewModel.ShackleToAnchorConnectionViewModel> ShackleToAnchorConnection { get; set; } = new();
+		#endregion
+
 
 		public SinkerAnchorViewModel LoadSinkerAnchor(SinkerAnchor instance) {
 			iDCode = instance.iDCode;
@@ -20638,50 +20578,119 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		[Optional]
-		private ShackleConnectionViewModel _shackleConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleConnectionViewModel ShackleConnection {
-			get {
-				return _shackleConnection;
+		#region FeatureBindings
+
+		public class ShackleConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleConnectionViewModel, IFeatureBindings {
+			public ShackleConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _shackleConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "ShackleConnection",
+					role = "shackleToBuoyconnectedTo",
+					roleType = roleType.association,
+					featureTypes = ["GenericBuoy"],
+				},
+			];
 		}
 
-		[Optional]
-		private ShackleToBridleConnectionViewModel _shackleToBridleConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleToBridleConnectionViewModel ShackleToBridleConnection {
-			get {
-				return _shackleToBridleConnection;
+		public class ShackleToBridleConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToBridleConnectionViewModel, IFeatureBindings {
+			public ShackleToBridleConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _shackleToBridleConnection, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "ShackleToBridleConnection",
+					role = "shackleToBridleconnectedTo",
+					roleType = roleType.association,
+					featureTypes = ["Bridle"],
+				},
+			];
+		}
+
+		public class BridleCableConnectionViewModel : S100Framework.WPF.ViewModel.S201.BridleCableConnectionViewModel, IFeatureBindings {
+			public BridleCableConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "BridleCableConnection",
+					role = "bridleattached",
+					roleType = roleType.association,
+					featureTypes = ["CableSubmarine"],
+				},
+			];
+		}
+
+		public class ShackleToSwivelConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToSwivelConnectionViewModel, IFeatureBindings {
+			public ShackleToSwivelConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "ShackleToSwivelConnection",
+					role = "shackleToSwivelconnectedTo",
+					roleType = roleType.association,
+					featureTypes = ["Swivel"],
+				},
+			];
+		}
+
+		public class ShackleToAnchorConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToAnchorConnectionViewModel, IFeatureBindings {
+			public ShackleToAnchorConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "ShackleToAnchorConnection",
+					role = "shackleToAnchorconnectedTo",
+					roleType = roleType.association,
+					featureTypes = ["SinkerAnchor"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<BridleCableConnectionViewModel> BridleCableConnection { get; set; } = new();
+		public ObservableCollection<MooringShackleViewModel.ShackleConnectionViewModel> ShackleConnection { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<ShackleToSwivelConnectionViewModel> ShackleToSwivelConnection { get; set; } = new();
+		public ObservableCollection<MooringShackleViewModel.ShackleToBridleConnectionViewModel> ShackleToBridleConnection { get; set; } = new();
 
-		[Optional]
-		private ShackleToAnchorConnectionViewModel _shackleToAnchorConnection = new();
 		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleToAnchorConnectionViewModel ShackleToAnchorConnection {
-			get {
-				return _shackleToAnchorConnection;
-			}
-			set {
-				SetValue(ref _shackleToAnchorConnection, value);
-			}
-		}
+		public ObservableCollection<MooringShackleViewModel.BridleCableConnectionViewModel> BridleCableConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<MooringShackleViewModel.ShackleToSwivelConnectionViewModel> ShackleToSwivelConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<MooringShackleViewModel.ShackleToAnchorConnectionViewModel> ShackleToAnchorConnection { get; set; } = new();
+		#endregion
+
 
 		public MooringShackleViewModel LoadMooringShackle(MooringShackle instance) {
 			iDCode = instance.iDCode;
@@ -21002,41 +21011,75 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 
-		private BridleCableConnectionViewModel _bridleCableConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridleCableConnectionViewModel BridleCableConnection {
-			get {
-				return _bridleCableConnection;
+		#region FeatureBindings
+
+		public class BridleCableConnectionViewModel : S100Framework.WPF.ViewModel.S201.BridleCableConnectionViewModel, IFeatureBindings {
+			public BridleCableConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridleCableConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "BridleCableConnection",
+					role = "cableholds",
+					roleType = roleType.association,
+					featureTypes = ["Bridle"],
+				},
+			];
 		}
 
-		private SwivelCableConnectionViewModel _swivelCableConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public SwivelCableConnectionViewModel SwivelCableConnection {
-			get {
-				return _swivelCableConnection;
+		public class SwivelCableConnectionViewModel : S100Framework.WPF.ViewModel.S201.SwivelCableConnectionViewModel, IFeatureBindings {
+			public SwivelCableConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _swivelCableConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "SwivelCableConnection",
+					role = "cableholds",
+					roleType = roleType.association,
+					featureTypes = ["Swivel"],
+				},
+			];
 		}
 
-		private ShackleConnectionFromCableViewModel _shackleConnectionFromCable = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleConnectionFromCableViewModel ShackleConnectionFromCable {
-			get {
-				return _shackleConnectionFromCable;
+		public class ShackleConnectionFromCableViewModel : S100Framework.WPF.ViewModel.S201.ShackleConnectionFromCableViewModel, IFeatureBindings {
+			public ShackleConnectionFromCableViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _shackleConnectionFromCable, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "ShackleConnectionFromCable",
+					role = "shackleToCableconnected",
+					roleType = roleType.association,
+					featureTypes = ["MooringShackle"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CableSubmarineViewModel.BridleCableConnectionViewModel> BridleCableConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CableSubmarineViewModel.SwivelCableConnectionViewModel> SwivelCableConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CableSubmarineViewModel.ShackleConnectionFromCableViewModel> ShackleConnectionFromCable { get; set; } = new();
+		#endregion
+
 
 		public CableSubmarineViewModel LoadCableSubmarine(CableSubmarine instance) {
 			iDCode = instance.iDCode;
@@ -21374,32 +21417,75 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		private SwivelConnectionViewModel _swivelConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public SwivelConnectionViewModel SwivelConnection {
-			get {
-				return _swivelConnection;
+		#region FeatureBindings
+
+		public class SwivelConnectionViewModel : S100Framework.WPF.ViewModel.S201.SwivelConnectionViewModel, IFeatureBindings {
+			public SwivelConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _swivelConnection, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "SwivelConnection",
+					role = "swivelholds",
+					roleType = roleType.association,
+					featureTypes = ["Bridle"],
+				},
+			];
+		}
+
+		public class SwivelCableConnectionViewModel : S100Framework.WPF.ViewModel.S201.SwivelCableConnectionViewModel, IFeatureBindings {
+			public SwivelCableConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "SwivelCableConnection",
+					role = "swivelattached",
+					roleType = roleType.association,
+					featureTypes = ["CableSubmarine"],
+				},
+			];
+		}
+
+		public class ShackleToSwivelConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToSwivelConnectionViewModel, IFeatureBindings {
+			public ShackleToSwivelConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "ShackleToSwivelConnection",
+					role = "shackleToSwivelconnected",
+					roleType = roleType.association,
+					featureTypes = ["MooringShackle"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<SwivelCableConnectionViewModel> SwivelCableConnection { get; set; } = new();
+		public ObservableCollection<SwivelViewModel.SwivelConnectionViewModel> SwivelConnection { get; set; } = new();
 
-		private ShackleToSwivelConnectionViewModel _shackleToSwivelConnection = new();
 		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleToSwivelConnectionViewModel ShackleToSwivelConnection {
-			get {
-				return _shackleToSwivelConnection;
-			}
-			set {
-				SetValue(ref _shackleToSwivelConnection, value);
-			}
-		}
+		public ObservableCollection<SwivelViewModel.SwivelCableConnectionViewModel> SwivelCableConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<SwivelViewModel.ShackleToSwivelConnectionViewModel> ShackleToSwivelConnection { get; set; } = new();
+		#endregion
+
 
 		public SwivelViewModel LoadSwivel(Swivel instance) {
 			iDCode = instance.iDCode;
@@ -21710,45 +21796,97 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		private BridleConnectionViewModel _bridleConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BridleConnectionViewModel BridleConnection {
-			get {
-				return _bridleConnection;
+		#region FeatureBindings
+
+		public class BridleConnectionViewModel : S100Framework.WPF.ViewModel.S201.BridleConnectionViewModel, IFeatureBindings {
+			public BridleConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _bridleConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "BridleConnection",
+					role = "bridleholds",
+					roleType = roleType.association,
+					featureTypes = ["GenericBuoy"],
+				},
+			];
 		}
 
-		[Optional]
-		private SwivelConnectionViewModel _swivelConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public SwivelConnectionViewModel SwivelConnection {
-			get {
-				return _swivelConnection;
+		public class SwivelConnectionViewModel : S100Framework.WPF.ViewModel.S201.SwivelConnectionViewModel, IFeatureBindings {
+			public SwivelConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _swivelConnection, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = 1,
+					association = "SwivelConnection",
+					role = "bridlehangs",
+					roleType = roleType.association,
+					featureTypes = ["Swivel"],
+				},
+			];
 		}
 
-		private ShackleToBridleConnectionViewModel _shackleToBridleConnection = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public ShackleToBridleConnectionViewModel ShackleToBridleConnection {
-			get {
-				return _shackleToBridleConnection;
+		public class ShackleToBridleConnectionViewModel : S100Framework.WPF.ViewModel.S201.ShackleToBridleConnectionViewModel, IFeatureBindings {
+			public ShackleToBridleConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _shackleToBridleConnection, value);
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "ShackleToBridleConnection",
+					role = "shackleToBridleconnected",
+					roleType = roleType.association,
+					featureTypes = ["MooringShackle"],
+				},
+			];
+		}
+
+		public class BridleCableConnectionViewModel : S100Framework.WPF.ViewModel.S201.BridleCableConnectionViewModel, IFeatureBindings {
+			public BridleCableConnectionViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "BridleCableConnection",
+					role = "bridleattached",
+					roleType = roleType.association,
+					featureTypes = ["CableSubmarine"],
+				},
+			];
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<BridleCableConnectionViewModel> BridleCableConnection { get; set; } = new();
+		public ObservableCollection<BridleViewModel.BridleConnectionViewModel> BridleConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BridleViewModel.SwivelConnectionViewModel> SwivelConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BridleViewModel.ShackleToBridleConnectionViewModel> ShackleToBridleConnection { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BridleViewModel.BridleCableConnectionViewModel> BridleCableConnection { get; set; } = new();
+		#endregion
+
 
 		public BridleViewModel LoadBridle(Bridle instance) {
 			iDCode = instance.iDCode;
@@ -22073,17 +22211,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		private BuoyCounterWeightViewModel _buoyCounterWeight = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BuoyCounterWeightViewModel BuoyCounterWeight {
-			get {
-				return _buoyCounterWeight;
+		#region FeatureBindings
+
+		public class BuoyCounterWeightViewModel : S100Framework.WPF.ViewModel.S201.BuoyCounterWeightViewModel, IFeatureBindings {
+			public BuoyCounterWeightViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _buoyCounterWeight, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "BuoyCounterWeight",
+					role = "counterWeightholds",
+					roleType = roleType.association,
+					featureTypes = ["GenericBuoy"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CounterWeightViewModel.BuoyCounterWeightViewModel> BuoyCounterWeight { get; set; } = new();
+		#endregion
+
 
 		public CounterWeightViewModel LoadCounterWeight(CounterWeight instance) {
 			iDCode = instance.iDCode;
@@ -22418,17 +22570,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		}
 
 
-		private BuoyTopmarkViewModel _buoyTopmark = new();
-		[Category("FeatureBindings")]
-		[ExpandableObject]
-		public BuoyTopmarkViewModel BuoyTopmark {
-			get {
-				return _buoyTopmark;
+		#region FeatureBindings
+
+		public class BuoyTopmarkViewModel : S100Framework.WPF.ViewModel.S201.BuoyTopmarkViewModel, IFeatureBindings {
+			public BuoyTopmarkViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
 			}
-			set {
-				SetValue(ref _buoyTopmark, value);
-			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = 1,
+					association = "BuoyTopmark",
+					role = "buoyPart",
+					roleType = roleType.association,
+					featureTypes = ["GenericBuoy"],
+				},
+			];
 		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TopmarkViewModel.BuoyTopmarkViewModel> BuoyTopmark { get; set; } = new();
+		#endregion
+
 
 		public TopmarkViewModel LoadTopmark(Topmark instance) {
 			iDCode = instance.iDCode;
@@ -24786,8 +24952,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		#region FeatureBindings
+
+		public class DangerousFeatureAssociationViewModel : S100Framework.WPF.ViewModel.S201.DangerousFeatureAssociationViewModel, IFeatureBindings {
+			public DangerousFeatureAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 1,
+					upper = default,
+					association = "DangerousFeatureAssociation",
+					role = "markingAton",
+					roleType = roleType.association,
+					featureTypes = ["AtonAssociation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<DangerousFeatureAssociationViewModel> DangerousFeatureAssociation { get; set; } = new();
+		public ObservableCollection<DangerousFeatureViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociation { get; set; } = new();
+		#endregion
+
 
 		public DangerousFeatureViewModel LoadDangerousFeature(DangerousFeature instance) {
 			information.Clear();
@@ -24853,8 +25042,31 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public CategoryOfAggregation[] CategoryOfAggregationList =>  CodeList.CategoryOfAggregations.ToArray();
 
 
+		#region FeatureBindings
+
+		public class AtonAggregationsViewModel : S100Framework.WPF.ViewModel.S201.AtonAggregationsViewModel, IFeatureBindings {
+			public AtonAggregationsViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AtonAggregations",
+					role = "atonAggregationBy",
+					roleType = roleType.association,
+					featureTypes = ["AidsToNavigation"],
+				},
+			];
+		}
+
 		[Category("FeatureBindings")]
-		public ObservableCollection<AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
+		public ObservableCollection<AtonAggregationViewModel.AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
+		#endregion
+
 
 		public AtonAggregationViewModel LoadAtonAggregation(AtonAggregation instance) {
 			CategoryOfAggregation = instance.CategoryOfAggregation;
@@ -24910,11 +25122,53 @@ namespace S100Framework.WPF.ViewModel.S201 {
 		public CategoryOfAssociation[] CategoryOfAssociationList =>  CodeList.CategoryOfAssociations.ToArray();
 
 
-		[Category("FeatureBindings")]
-		public ObservableCollection<DangerousFeatureAssociationViewModel> DangerousFeatureAssociation { get; set; } = new();
+		#region FeatureBindings
+
+		public class DangerousFeatureAssociationViewModel : S100Framework.WPF.ViewModel.S201.DangerousFeatureAssociationViewModel, IFeatureBindings {
+			public DangerousFeatureAssociationViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "DangerousFeatureAssociation",
+					role = "danger",
+					roleType = roleType.association,
+					featureTypes = ["DangerousFeature"],
+				},
+			];
+		}
+
+		public class AtonAssociationsViewModel : S100Framework.WPF.ViewModel.S201.AtonAssociationsViewModel, IFeatureBindings {
+			public AtonAssociationsViewModel() {
+				if (featureBindings.Length == 1)
+					base.role = featureBindings[0].role;
+			}
+
+			[Browsable(false)]
+			public featureBindingDefinition[] featureBindings => [
+				new featureBindingDefinition {
+					lower = 0,
+					upper = default,
+					association = "AtonAssociations",
+					role = "atonAssociationBy",
+					roleType = roleType.association,
+					featureTypes = ["AidsToNavigation"],
+				},
+			];
+		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
+		public ObservableCollection<AtonAssociationViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AtonAssociationViewModel.AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
+		#endregion
+
 
 		public AtonAssociationViewModel LoadAtonAssociation(AtonAssociation instance) {
 			CategoryOfAssociation = instance.CategoryOfAssociation;
