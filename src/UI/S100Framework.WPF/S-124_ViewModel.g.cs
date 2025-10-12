@@ -1099,7 +1099,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("navwarnPreambleContent",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class navwarnPreambleContentViewModel : AssociationViewModel {
+	public partial class navwarnPreambleContentViewModel : InformationAssociationViewModel {
 
 
 		public navwarnPreambleContentViewModel LoadnavwarnPreambleContent(navwarnPreambleContent instance) {
@@ -1129,7 +1129,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("navwarnReferences",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class navwarnReferencesViewModel : AssociationViewModel {
+	public partial class navwarnReferencesViewModel : InformationAssociationViewModel {
 
 
 		public navwarnReferencesViewModel LoadnavwarnReferences(navwarnReferences instance) {
@@ -1159,7 +1159,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TextAssociationViewModel : AssociationViewModel {
+	public partial class TextAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
@@ -1189,7 +1189,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("areaAffected",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class areaAffectedViewModel : AssociationViewModel {
+	public partial class areaAffectedViewModel : FeatureAssociationViewModel {
 
 
 		public areaAffectedViewModel LoadareaAffected(areaAffected instance) {
@@ -1255,6 +1255,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		[Browsable(false)]
 		public referenceCategory[] referenceCategoryList => [(referenceCategory)1,(referenceCategory)2,(referenceCategory)3];
 
+
+		private navwarnReferencesViewModel _navwarnReferences = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public navwarnReferencesViewModel navwarnReferences {
+			get {
+				return _navwarnReferences;
+			}
+			set {
+				SetValue(ref _navwarnReferences, value);
+			}
+		}
 
 		public ReferencesViewModel LoadReferences(References instance) {
 			messageSeriesIdentifier.Clear();
@@ -1394,6 +1407,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
 
 		public NavwarnPreambleViewModel LoadNavwarnPreamble(NavwarnPreamble instance) {
 			affectedChartPublications.Clear();
@@ -1601,6 +1617,25 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<featureReferenceViewModel> featureReference  { get; set; } = new ();
 
 
+		private navwarnPreambleContentViewModel _navwarnPreambleContent = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public navwarnPreambleContentViewModel navwarnPreambleContent {
+			get {
+				return _navwarnPreambleContent;
+			}
+			set {
+				SetValue(ref _navwarnPreambleContent, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<areaAffectedViewModel> areaAffected { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public NavwarnPartViewModel LoadNavwarnPart(NavwarnPart instance) {
 			restriction = instance.restriction;
 			fixedDateRange.Clear();
@@ -1677,6 +1712,18 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
+
+		private areaAffectedViewModel _areaAffected = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public areaAffectedViewModel areaAffected {
+			get {
+				return _areaAffected;
+			}
+			set {
+				SetValue(ref _areaAffected, value);
+			}
+		}
 
 		public NavwarnAreaAffectedViewModel LoadNavwarnAreaAffected(NavwarnAreaAffected instance) {
 
@@ -1783,6 +1830,18 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+
+		private TextAssociationViewModel _textAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TextAssociationViewModel TextAssociation {
+			get {
+				return _textAssociation;
+			}
+			set {
+				SetValue(ref _textAssociation, value);
+			}
+		}
 
 		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			scaleMinimum = instance.scaleMinimum;

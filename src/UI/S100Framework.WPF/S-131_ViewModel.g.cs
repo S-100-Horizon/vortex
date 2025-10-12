@@ -2755,7 +2755,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("AdditionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AdditionalInformationViewModel : AssociationViewModel {
+	public partial class AdditionalInformationViewModel : InformationAssociationViewModel {
 
 
 		public AdditionalInformationViewModel LoadAdditionalInformation(AdditionalInformation instance) {
@@ -2785,7 +2785,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("AuthorityContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityContactViewModel : AssociationViewModel {
+	public partial class AuthorityContactViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityContactViewModel LoadAuthorityContact(AuthorityContact instance) {
@@ -2815,7 +2815,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("AuthorityHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityHoursViewModel : AssociationViewModel {
+	public partial class AuthorityHoursViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityHoursViewModel LoadAuthorityHours(AuthorityHours instance) {
@@ -2845,7 +2845,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("AssociatedRxN",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AssociatedRxNViewModel : AssociationViewModel {
+	public partial class AssociatedRxNViewModel : InformationAssociationViewModel {
 
 
 		public AssociatedRxNViewModel LoadAssociatedRxN(AssociatedRxN instance) {
@@ -2875,7 +2875,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("ExceptionalWorkday",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
+	public partial class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
 
 
 		public ExceptionalWorkdayViewModel LoadExceptionalWorkday(ExceptionalWorkday instance) {
@@ -2905,7 +2905,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("ServiceControl",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceControlViewModel : AssociationViewModel {
+	public partial class ServiceControlViewModel : InformationAssociationViewModel {
 
 
 		public ServiceControlViewModel LoadServiceControl(ServiceControl instance) {
@@ -2935,7 +2935,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("ServiceContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceContactViewModel : AssociationViewModel {
+	public partial class ServiceContactViewModel : InformationAssociationViewModel {
 
 
 		public ServiceContactViewModel LoadServiceContact(ServiceContact instance) {
@@ -2965,7 +2965,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("LocationHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class LocationHoursViewModel : AssociationViewModel {
+	public partial class LocationHoursViewModel : InformationAssociationViewModel {
 
 
 		public LocationHoursViewModel LoadLocationHours(LocationHours instance) {
@@ -2995,7 +2995,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("RelatedOrganisation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class RelatedOrganisationViewModel : AssociationViewModel {
+	public partial class RelatedOrganisationViewModel : InformationAssociationViewModel {
 
 
 		public RelatedOrganisationViewModel LoadRelatedOrganisation(RelatedOrganisation instance) {
@@ -3025,7 +3025,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InclusionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class InclusionTypeViewModel : AssociationViewModel {
+	public partial class InclusionTypeViewModel : InformationAssociationViewModel {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
@@ -3072,7 +3072,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("PermissionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PermissionTypeViewModel : AssociationViewModel {
+	public partial class PermissionTypeViewModel : InformationAssociationViewModel {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
@@ -3119,7 +3119,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("SpatialAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class SpatialAssociationViewModel : AssociationViewModel {
+	public partial class SpatialAssociationViewModel : InformationAssociationViewModel {
 
 
 		public SpatialAssociationViewModel LoadSpatialAssociation(SpatialAssociation instance) {
@@ -3149,7 +3149,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("LimitEntrance",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class LimitEntranceViewModel : AssociationViewModel {
+	public partial class LimitEntranceViewModel : InformationAssociationViewModel {
 
 
 		public LimitEntranceViewModel LoadLimitEntrance(LimitEntrance instance) {
@@ -3179,7 +3179,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("ServiceAvailability",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceAvailabilityViewModel : AssociationViewModel {
+	public partial class ServiceAvailabilityViewModel : InformationAssociationViewModel {
 
 
 		public ServiceAvailabilityViewModel LoadServiceAvailability(ServiceAvailability instance) {
@@ -3209,7 +3209,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TextAssociationViewModel : AssociationViewModel {
+	public partial class TextAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
@@ -3239,7 +3239,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("Subsection",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class SubsectionViewModel : AssociationViewModel {
+	public partial class SubsectionViewModel : FeatureAssociationViewModel {
 
 
 		public SubsectionViewModel LoadSubsection(Subsection instance) {
@@ -3269,7 +3269,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("Infrastructure",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class InfrastructureViewModel : AssociationViewModel {
+	public partial class InfrastructureViewModel : FeatureAssociationViewModel {
 
 
 		public InfrastructureViewModel LoadInfrastructure(Infrastructure instance) {
@@ -3299,7 +3299,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("PrimaryAuxiliaryFacility",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PrimaryAuxiliaryFacilityViewModel : AssociationViewModel {
+	public partial class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel {
 
 
 		public PrimaryAuxiliaryFacilityViewModel LoadPrimaryAuxiliaryFacility(PrimaryAuxiliaryFacility instance) {
@@ -3329,7 +3329,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("Demarcation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class DemarcationViewModel : AssociationViewModel {
+	public partial class DemarcationViewModel : FeatureAssociationViewModel {
 
 
 		public DemarcationViewModel LoadDemarcation(Demarcation instance) {
@@ -3359,7 +3359,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("JurisdictionalLimit",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class JurisdictionalLimitViewModel : AssociationViewModel {
+	public partial class JurisdictionalLimitViewModel : FeatureAssociationViewModel {
 
 
 		public JurisdictionalLimitViewModel LoadJurisdictionalLimit(JurisdictionalLimit instance) {
@@ -3389,7 +3389,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("LayoutDivision",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class LayoutDivisionViewModel : AssociationViewModel {
+	public partial class LayoutDivisionViewModel : FeatureAssociationViewModel {
 
 
 		public LayoutDivisionViewModel LoadLayoutDivision(LayoutDivision instance) {
@@ -3606,6 +3606,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<InclusionTypeViewModel> InclusionType { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<PermissionTypeViewModel> PermissionType { get; set; } = new();
 
 		public ApplicabilityViewModel LoadApplicability(Applicability instance) {
 			featureName.Clear();
@@ -3845,6 +3851,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RelatedOrganisationViewModel> RelatedOrganisation { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
 
 		public AuthorityViewModel LoadAuthority(Authority instance) {
 			featureName.Clear();
@@ -4474,6 +4489,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
 		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -5033,6 +5051,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AdditionalInformationViewModel> AdditionalInformation { get; set; } = new();
 
 		public NauticalInformationViewModel LoadNauticalInformation(NauticalInformation instance) {
 			featureName.Clear();
@@ -6004,6 +6025,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
 		public ServiceHoursViewModel LoadServiceHours(ServiceHours instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -6282,6 +6309,37 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PrimaryAuxiliaryFacilityViewModel> PrimaryAuxiliaryFacility { get; set; } = new();
+
 		public AnchorBerthViewModel LoadAnchorBerth(AnchorBerth instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -6558,6 +6616,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
 
 		public AnchorageAreaViewModel LoadAnchorageArea(AnchorageArea instance) {
 			locationMRN = instance.locationMRN;
@@ -7009,6 +7093,49 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DemarcationViewModel> Demarcation { get; set; } = new();
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public BerthViewModel LoadBerth(Berth instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -7395,6 +7522,21 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		private DemarcationViewModel _demarcation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public DemarcationViewModel Demarcation {
+			get {
+				return _demarcation;
+			}
+			set {
+				SetValue(ref _demarcation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PrimaryAuxiliaryFacilityViewModel> PrimaryAuxiliaryFacility { get; set; } = new();
+
 		public BerthPositionViewModel LoadBerthPosition(BerthPosition instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -7720,6 +7862,46 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public DockAreaViewModel LoadDockArea(DockArea instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -7982,6 +8164,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
 
 		public DryDockViewModel LoadDryDock(DryDock instance) {
 			locationMRN = instance.locationMRN;
@@ -8266,6 +8462,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public DumpingGroundViewModel LoadDumpingGround(DumpingGround instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -8529,6 +8751,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
 		public FloatingDockViewModel LoadFloatingDock(FloatingDock instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -8779,6 +9015,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
 
 		public GridironViewModel LoadGridiron(Gridiron instance) {
 			locationMRN = instance.locationMRN;
@@ -9084,6 +9334,50 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Optional]
+		private JurisdictionalLimitViewModel _jurisdictionalLimit = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public JurisdictionalLimitViewModel JurisdictionalLimit {
+			get {
+				return _jurisdictionalLimit;
+			}
+			set {
+				SetValue(ref _jurisdictionalLimit, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<LayoutDivisionViewModel> LayoutDivision { get; set; } = new();
+
 		public HarbourAreaAdministrativeViewModel LoadHarbourAreaAdministrative(HarbourAreaAdministrative instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -9385,6 +9679,63 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Optional]
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
+		[Optional]
+		private SubsectionViewModel _subsection = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public SubsectionViewModel Subsection {
+			get {
+				return _subsection;
+			}
+			set {
+				SetValue(ref _subsection, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<InfrastructureViewModel> Infrastructure { get; set; } = new();
+
 		public HarbourAreaSectionViewModel LoadHarbourAreaSection(HarbourAreaSection instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -9684,6 +10035,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public HarbourBasinViewModel LoadHarbourBasin(HarbourBasin instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -9939,6 +10316,20 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfHarbourFacility[] categoryOfHarbourFacilityList => [(categoryOfHarbourFacility)12,(categoryOfHarbourFacility)13];
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
 
 		public HarbourFacilityViewModel LoadHarbourFacility(HarbourFacility instance) {
 			locationMRN = instance.locationMRN;
@@ -10244,6 +10635,47 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Optional]
+		private PrimaryAuxiliaryFacilityViewModel _primaryAuxiliaryFacility = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public PrimaryAuxiliaryFacilityViewModel PrimaryAuxiliaryFacility {
+			get {
+				return _primaryAuxiliaryFacility;
+			}
+			set {
+				SetValue(ref _primaryAuxiliaryFacility, value);
+			}
+		}
+
 		public MooringWarpingFacilityViewModel LoadMooringWarpingFacility(MooringWarpingFacility instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -10510,6 +10942,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Optional]
 		public ObservableCollection<usefulMarkDescriptionViewModel> usefulMarkDescription  { get; set; } = new ();
 
+
+		[Optional]
+		private LimitEntranceViewModel _limitEntrance = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LimitEntranceViewModel LimitEntrance {
+			get {
+				return _limitEntrance;
+			}
+			set {
+				SetValue(ref _limitEntrance, value);
+			}
+		}
+
+		private JurisdictionalLimitViewModel _jurisdictionalLimit = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public JurisdictionalLimitViewModel JurisdictionalLimit {
+			get {
+				return _jurisdictionalLimit;
+			}
+			set {
+				SetValue(ref _jurisdictionalLimit, value);
+			}
+		}
 
 		public OuterLimitViewModel LoadOuterLimit(OuterLimit instance) {
 			locationMRN = instance.locationMRN;
@@ -10844,6 +11302,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public PilotBoardingPlaceViewModel LoadPilotBoardingPlace(PilotBoardingPlace instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -11138,6 +11622,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
 
 		public SeaplaneLandingAreaViewModel LoadSeaplaneLandingArea(SeaplaneLandingArea instance) {
 			locationMRN = instance.locationMRN;
@@ -11462,6 +11972,49 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 
+		[Optional]
+		private ServiceAvailabilityViewModel _serviceAvailability = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceAvailabilityViewModel ServiceAvailability {
+			get {
+				return _serviceAvailability;
+			}
+			set {
+				SetValue(ref _serviceAvailability, value);
+			}
+		}
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<InfrastructureViewModel> Infrastructure { get; set; } = new();
+
 		public TerminalViewModel LoadTerminal(Terminal instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -11774,6 +12327,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		public iSPSLevel[] iSPSLevelList => [(iSPSLevel)1,(iSPSLevel)2,(iSPSLevel)3];
 
 
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
+
 		public TurningBasinViewModel LoadTurningBasin(TurningBasin instance) {
 			locationMRN = instance.locationMRN;
 			globalLocationNumber = instance.globalLocationNumber;
@@ -12068,6 +12647,32 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		private LayoutDivisionViewModel _layoutDivision = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public LayoutDivisionViewModel LayoutDivision {
+			get {
+				return _layoutDivision;
+			}
+			set {
+				SetValue(ref _layoutDivision, value);
+			}
+		}
 
 		public WaterwayAreaViewModel LoadWaterwayArea(WaterwayArea instance) {
 			locationMRN = instance.locationMRN;
@@ -12642,6 +13247,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
+
+		private TextAssociationViewModel _textAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TextAssociationViewModel TextAssociation {
+			get {
+				return _textAssociation;
+			}
+			set {
+				SetValue(ref _textAssociation, value);
+			}
+		}
 
 		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			orientationValue = instance.orientationValue;

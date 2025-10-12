@@ -1,4 +1,5 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.WPF.ViewModel;
 using System.Collections;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -56,11 +57,24 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-    public class DependentUnknownValueConvertor(string propertyName) : IValueConverter
+    public class DependentUnknownValueConvertor(string propertyName, string dependentPropertyName) : IValueConverter
     {
+        const string ColorCode = "#e9c8ca";
+
         public string PropertyName { get; } = propertyName;
 
+        public string DependentPropertyName { get; } = dependentPropertyName;
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is null)
+                return System.Windows.Media.Brushes.Transparent;
+
+            var propertyValue = value.GetType().GetProperty(PropertyName)!.GetValue(value);
+
+            var dependentValue = value.GetType().GetProperty(DependentPropertyName)!.GetValue(value);
+
+            if (propertyValue is null && dependentValue is null)
+                return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
             return System.Windows.Media.Brushes.Transparent;
         }
 
@@ -130,14 +144,15 @@ namespace S100Framework.WPF.Editors
 
 
             var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
-            if(dependentUnknownValue is not null) {
+            if (dependentUnknownValue is not null) {
                 var propertyName = dependentUnknownValue.PropertyName;
 
                 Binding newBinding = new Binding() {
                     Source = propertyItem.Instance,
                     Mode = BindingMode.OneWay,
+                    //BindingGroupName
                 };
-                newBinding.Converter = new DependentUnknownValueConvertor(propertyName);
+                newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
                 panel.SetBinding(Grid.BackgroundProperty, newBinding);
             }
 
@@ -287,6 +302,28 @@ namespace S100Framework.WPF.Editors
             return panel;
         }
     }
+
+
+
+
+
+    public abstract class AssociationRoleEditor : ComboBoxEditor
+    {
+    }
+
+    public class InformationAssociationRoleEditor : AssociationRoleEditor {
+        protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
+
+            var type = propertyItem.Instance.GetType().GenericTypeArguments[0];
+
+            var informationBindingDefinitions = (informationBindingDefinition[])type.GetMethod("get__informationBindingDefinitions")!.Invoke(null,null)!;
+
+            var associations = informationBindingDefinitions.Where(e => e.association.Equals(propertyItem.DisplayName));
+
+            return associations.Select(e => e.role);
+        }
+    }
+
 
 
     public class S100TruncatedDateEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

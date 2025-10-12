@@ -3438,7 +3438,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("AdditionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AdditionalInformationViewModel : AssociationViewModel {
+	public partial class AdditionalInformationViewModel : InformationAssociationViewModel {
 
 
 		public AdditionalInformationViewModel LoadAdditionalInformation(AdditionalInformation instance) {
@@ -3460,15 +3460,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public override string? ToString() => $"Additional information";
 	}
 
+    public class TestAdditionalInformationViewModel<T> : AdditionalInformationViewModel where T : FeatureNode {
+
+    }
 
 
-	/// <summary>
-	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
-	/// </summary>
-	[CategoryOrder("QualityOfBathymetricDataComposition",0)]
+
+    /// <summary>
+    /// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
+    /// </summary>
+    [CategoryOrder("QualityOfBathymetricDataComposition",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class QualityOfBathymetricDataCompositionViewModel : AssociationViewModel {
+	public partial class QualityOfBathymetricDataCompositionViewModel : InformationAssociationViewModel {
 
 
 		public QualityOfBathymetricDataCompositionViewModel LoadQualityOfBathymetricDataComposition(QualityOfBathymetricDataComposition instance) {
@@ -3498,7 +3502,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("SpatialAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class SpatialAssociationViewModel : AssociationViewModel {
+	public partial class SpatialAssociationViewModel : InformationAssociationViewModel {
 
 
 		public SpatialAssociationViewModel LoadSpatialAssociation(SpatialAssociation instance) {
@@ -3528,7 +3532,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("AidsToNavigationAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AidsToNavigationAssociationViewModel : AssociationViewModel {
+	public partial class AidsToNavigationAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public AidsToNavigationAssociationViewModel LoadAidsToNavigationAssociation(AidsToNavigationAssociation instance) {
@@ -3558,7 +3562,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("ASLAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ASLAggregationViewModel : AssociationViewModel {
+	public partial class ASLAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public ASLAggregationViewModel LoadASLAggregation(ASLAggregation instance) {
@@ -3588,7 +3592,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("BridgeAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class BridgeAggregationViewModel : AssociationViewModel {
+	public partial class BridgeAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public BridgeAggregationViewModel LoadBridgeAggregation(BridgeAggregation instance) {
@@ -3618,7 +3622,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("CautionAreaAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class CautionAreaAssociationViewModel : AssociationViewModel {
+	public partial class CautionAreaAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public CautionAreaAssociationViewModel LoadCautionAreaAssociation(CautionAreaAssociation instance) {
@@ -3648,7 +3652,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("DeepWaterRouteAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class DeepWaterRouteAggregationViewModel : AssociationViewModel {
+	public partial class DeepWaterRouteAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public DeepWaterRouteAggregationViewModel LoadDeepWaterRouteAggregation(DeepWaterRouteAggregation instance) {
@@ -3678,7 +3682,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FairwayAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class FairwayAggregationViewModel : AssociationViewModel {
+	public partial class FairwayAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public FairwayAggregationViewModel LoadFairwayAggregation(FairwayAggregation instance) {
@@ -3708,7 +3712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("FairwayAuxiliary",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class FairwayAuxiliaryViewModel : AssociationViewModel {
+	public partial class FairwayAuxiliaryViewModel : FeatureAssociationViewModel {
 
 
 		public FairwayAuxiliaryViewModel LoadFairwayAuxiliary(FairwayAuxiliary instance) {
@@ -3738,7 +3742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("IslandAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class IslandAggregationViewModel : AssociationViewModel {
+	public partial class IslandAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public IslandAggregationViewModel LoadIslandAggregation(IslandAggregation instance) {
@@ -3768,7 +3772,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("MooringTrotAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class MooringTrotAggregationViewModel : AssociationViewModel {
+	public partial class MooringTrotAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public MooringTrotAggregationViewModel LoadMooringTrotAggregation(MooringTrotAggregation instance) {
@@ -3798,7 +3802,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("PilotageDistrictAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PilotageDistrictAssociationViewModel : AssociationViewModel {
+	public partial class PilotageDistrictAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public PilotageDistrictAssociationViewModel LoadPilotageDistrictAssociation(PilotageDistrictAssociation instance) {
@@ -3828,7 +3832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("RangeSystemAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class RangeSystemAggregationViewModel : AssociationViewModel {
+	public partial class RangeSystemAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public RangeSystemAggregationViewModel LoadRangeSystemAggregation(RangeSystemAggregation instance) {
@@ -3858,7 +3862,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("RoofedStructureAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class RoofedStructureAggregationViewModel : AssociationViewModel {
+	public partial class RoofedStructureAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public RoofedStructureAggregationViewModel LoadRoofedStructureAggregation(RoofedStructureAggregation instance) {
@@ -3888,7 +3892,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("StructureEquipment",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class StructureEquipmentViewModel : AssociationViewModel {
+	public partial class StructureEquipmentViewModel : FeatureAssociationViewModel {
 
 
 		public StructureEquipmentViewModel LoadStructureEquipment(StructureEquipment instance) {
@@ -3918,7 +3922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("TextAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TextAssociationViewModel : AssociationViewModel {
+	public partial class TextAssociationViewModel : FeatureAssociationViewModel {
 
 
 		public TextAssociationViewModel LoadTextAssociation(TextAssociation instance) {
@@ -3948,7 +3952,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("TrafficSeparationSchemeAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TrafficSeparationSchemeAggregationViewModel : AssociationViewModel {
+	public partial class TrafficSeparationSchemeAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public TrafficSeparationSchemeAggregationViewModel LoadTrafficSeparationSchemeAggregation(TrafficSeparationSchemeAggregation instance) {
@@ -3978,7 +3982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("TwoWayRouteAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TwoWayRouteAggregationViewModel : AssociationViewModel {
+	public partial class TwoWayRouteAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public TwoWayRouteAggregationViewModel LoadTwoWayRouteAggregation(TwoWayRouteAggregation instance) {
@@ -4008,7 +4012,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("UpdateAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class UpdateAggregationViewModel : AssociationViewModel {
+	public partial class UpdateAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public UpdateAggregationViewModel LoadUpdateAggregation(UpdateAggregation instance) {
@@ -4038,7 +4042,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("UpdatedInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class UpdatedInformationViewModel : AssociationViewModel {
+	public partial class UpdatedInformationViewModel : FeatureAssociationViewModel {
 
 
 		public UpdatedInformationViewModel LoadUpdatedInformation(UpdatedInformation instance) {
@@ -4709,6 +4713,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public QualityOfNonBathymetricDataViewModel LoadQualityOfNonBathymetricData(QualityOfNonBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
@@ -4957,6 +4964,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public NavigationalSystemOfMarksViewModel LoadNavigationalSystemOfMarks(NavigationalSystemOfMarks instance) {
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5072,6 +5082,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public LocalDirectionOfBuoyageViewModel LoadLocalDirectionOfBuoyage(LocalDirectionOfBuoyage instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5258,6 +5271,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private QualityOfBathymetricDataCompositionViewModel _qualityOfBathymetricDataComposition = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public QualityOfBathymetricDataCompositionViewModel QualityOfBathymetricDataComposition {
+			get {
+				return _qualityOfBathymetricDataComposition;
+			}
+			set {
+				SetValue(ref _qualityOfBathymetricDataComposition, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public QualityOfBathymetricDataViewModel LoadQualityOfBathymetricData(QualityOfBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			dataAssessment = instance.dataAssessment;
@@ -5380,6 +5410,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public SoundingDatumViewModel LoadSoundingDatum(SoundingDatum instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			verticalDatum = instance.verticalDatum;
@@ -5467,6 +5500,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public VerticalDatumOfDataViewModel LoadVerticalDatumOfData(VerticalDatumOfData instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5745,6 +5781,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public QualityOfSurveyViewModel LoadQualityOfSurvey(QualityOfSurvey instance) {
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -5961,6 +6000,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdateAggregationViewModel> UpdateAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public UpdateInformationViewModel LoadUpdateInformation(UpdateInformation instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -6103,6 +6148,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public MagneticVariationViewModel LoadMagneticVariation(MagneticVariation instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			referenceYearForMagneticVariation = instance.referenceYearForMagneticVariation;
@@ -6218,6 +6280,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LocalMagneticAnomalyViewModel LoadLocalMagneticAnomaly(LocalMagneticAnomaly instance) {
 			featureName.Clear();
@@ -6407,6 +6489,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CoastlineViewModel LoadCoastline(Coastline instance) {
 			categoryOfCoastline = instance.categoryOfCoastline;
 			colour.Clear();
@@ -6586,6 +6688,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private IslandAggregationViewModel _islandAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public IslandAggregationViewModel IslandAggregation {
+			get {
+				return _islandAggregation;
+			}
+			set {
+				SetValue(ref _islandAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LandAreaViewModel LoadLandArea(LandArea instance) {
 			condition = instance.condition;
 			featureName.Clear();
@@ -6693,6 +6828,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<IslandAggregationViewModel> IslandAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public IslandGroupViewModel LoadIslandGroup(IslandGroup instance) {
 			featureName.Clear();
@@ -6824,6 +6982,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LandElevationViewModel LoadLandElevation(LandElevation instance) {
 			elevation = instance.elevation;
 			featureName.Clear();
@@ -6946,6 +7124,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public RiverViewModel LoadRiver(River instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -7061,6 +7259,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RapidsViewModel LoadRapids(Rapids instance) {
 			featureName.Clear();
@@ -7194,6 +7412,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public WaterfallViewModel LoadWaterfall(Waterfall instance) {
 			featureName.Clear();
@@ -7331,6 +7569,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LakeViewModel LoadLake(Lake instance) {
 			elevation = instance.elevation;
 			featureName.Clear();
@@ -7466,6 +7724,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LandRegionViewModel LoadLandRegion(LandRegion instance) {
 			categoryOfLandRegion.Clear();
@@ -7664,6 +7942,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public VegetationViewModel LoadVegetation(Vegetation instance) {
 			categoryOfVegetation = instance.categoryOfVegetation;
@@ -7880,6 +8178,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public IceAreaViewModel LoadIceArea(IceArea instance) {
 			categoryOfIce = instance.categoryOfIce;
 			elevation = instance.elevation;
@@ -8078,6 +8396,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SlopingGroundViewModel LoadSlopingGround(SlopingGround instance) {
 			categoryOfSlope = instance.categoryOfSlope;
@@ -8283,6 +8621,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SlopeToplineViewModel LoadSlopeTopline(SlopeTopline instance) {
 			categoryOfSlope = instance.categoryOfSlope;
 			colour.Clear();
@@ -8413,6 +8771,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public TidewayViewModel LoadTideway(Tideway instance) {
 			featureName.Clear();
@@ -8633,6 +9011,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public BuiltUpAreaViewModel LoadBuiltUpArea(BuiltUpArea instance) {
 			categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
@@ -8965,6 +9363,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public BuildingViewModel LoadBuilding(Building instance) {
 			buildingShape = instance.buildingShape;
 			colour.Clear();
@@ -9202,6 +9649,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public AirportAirfieldViewModel LoadAirportAirfield(AirportAirfield instance) {
 			categoryOfAirportAirfield.Clear();
 			if (instance.categoryOfAirportAirfield is not null) {
@@ -9378,6 +9845,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RunwayViewModel LoadRunway(Runway instance) {
 			condition = instance.condition;
@@ -9562,6 +10049,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public HelipadViewModel LoadHelipad(Helipad instance) {
 			condition = instance.condition;
@@ -9895,6 +10415,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<BridgeAggregationViewModel> BridgeAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public BridgeViewModel LoadBridge(Bridge instance) {
 			bridgeConstruction = instance.bridgeConstruction;
 			bridgeFunction.Clear();
@@ -10139,6 +10698,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private BridgeAggregationViewModel _bridgeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public BridgeAggregationViewModel BridgeAggregation {
+			get {
+				return _bridgeAggregation;
+			}
+			set {
+				SetValue(ref _bridgeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public SpanFixedViewModel LoadSpanFixed(SpanFixed instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -10334,6 +10942,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private BridgeAggregationViewModel _bridgeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public BridgeAggregationViewModel BridgeAggregation {
+			get {
+				return _bridgeAggregation;
+			}
+			set {
+				SetValue(ref _bridgeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public SpanOpeningViewModel LoadSpanOpening(SpanOpening instance) {
 			fixedDateRange = new ();
@@ -10685,6 +11342,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public ConveyorViewModel LoadConveyor(Conveyor instance) {
 			categoryOfConveyor = instance.categoryOfConveyor;
@@ -11039,6 +11732,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CableOverheadViewModel LoadCableOverhead(CableOverhead instance) {
 			categoryOfCable = instance.categoryOfCable;
 			condition = instance.condition;
@@ -11344,6 +12060,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public PipelineOverheadViewModel LoadPipelineOverhead(PipelineOverhead instance) {
 			categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
@@ -11704,6 +12456,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private BridgeAggregationViewModel _bridgeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public BridgeAggregationViewModel BridgeAggregation {
+			get {
+				return _bridgeAggregation;
+			}
+			set {
+				SetValue(ref _bridgeAggregation, value);
+			}
+		}
+
+		[Optional]
+		private RoofedStructureAggregationViewModel _roofedStructureAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RoofedStructureAggregationViewModel RoofedStructureAggregation {
+			get {
+				return _roofedStructureAggregation;
+			}
+			set {
+				SetValue(ref _roofedStructureAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public PylonBridgeSupportViewModel LoadPylonBridgeSupport(PylonBridgeSupport instance) {
 			categoryOfPylon = instance.categoryOfPylon;
 			colour.Clear();
@@ -12034,6 +12848,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FenceWallViewModel LoadFenceWall(FenceWall instance) {
 			categoryOfFence = instance.categoryOfFence;
 			colour.Clear();
@@ -12242,6 +13076,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public RailwayViewModel LoadRailway(Railway instance) {
 			condition = instance.condition;
 			featureName.Clear();
@@ -12421,6 +13275,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RoadViewModel LoadRoad(Road instance) {
 			categoryOfRoad = instance.categoryOfRoad;
@@ -12646,6 +13520,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public TunnelViewModel LoadTunnel(Tunnel instance) {
 			condition = instance.condition;
@@ -12984,6 +13878,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LandmarkViewModel LoadLandmark(Landmark instance) {
 			categoryOfLandmark.Clear();
@@ -13404,6 +14360,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SiloTankViewModel LoadSiloTank(SiloTank instance) {
 			buildingShape = instance.buildingShape;
@@ -13832,6 +14837,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public WindTurbineViewModel LoadWindTurbine(WindTurbine instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -14164,6 +15205,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FortifiedStructureViewModel LoadFortifiedStructure(FortifiedStructure instance) {
 			categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
 			condition = instance.condition;
@@ -14473,6 +15563,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public ProductionStorageAreaViewModel LoadProductionStorageArea(ProductionStorageArea instance) {
 			categoryOfProductionArea = instance.categoryOfProductionArea;
 			condition = instance.condition;
@@ -14648,6 +15758,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public CheckpointViewModel LoadCheckpoint(Checkpoint instance) {
 			categoryOfCheckpoint = instance.categoryOfCheckpoint;
@@ -14927,6 +16057,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public HulkViewModel LoadHulk(Hulk instance) {
 			categoryOfHulk.Clear();
@@ -15256,6 +16422,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public PileViewModel LoadPile(Pile instance) {
 			categoryOfPile = instance.categoryOfPile;
 			colour.Clear();
@@ -15518,6 +16746,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DykeViewModel LoadDyke(Dyke instance) {
 			condition = instance.condition;
@@ -15869,6 +17117,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public ShorelineConstructionViewModel LoadShorelineConstruction(ShorelineConstruction instance) {
 			categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
@@ -16301,6 +17585,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RoofedStructureAggregationViewModel> RoofedStructureAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public StructureOverNavigableWaterViewModel LoadStructureOverNavigableWater(StructureOverNavigableWater instance) {
 			categoryOfStructure.Clear();
 			if (instance.categoryOfStructure is not null) {
@@ -16566,6 +17889,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CausewayViewModel LoadCauseway(Causeway instance) {
 			condition = instance.condition;
 			featureName.Clear();
@@ -16791,6 +18134,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CanalViewModel LoadCanal(Canal instance) {
 			categoryOfCanal = instance.categoryOfCanal;
 			condition = instance.condition;
@@ -16965,6 +18328,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DistanceMarkViewModel LoadDistanceMark(DistanceMark instance) {
 			distanceMarkVisible = instance.distanceMarkVisible;
@@ -17207,6 +18603,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public GateViewModel LoadGate(Gate instance) {
 			categoryOfGate = instance.categoryOfGate;
@@ -17528,6 +18944,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DamViewModel LoadDam(Dam instance) {
 			categoryOfDam = instance.categoryOfDam;
@@ -17913,6 +19349,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CraneViewModel LoadCrane(Crane instance) {
 			categoryOfCrane = instance.categoryOfCrane;
 			colour.Clear();
@@ -18188,6 +19660,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public MooringTrotAggregationViewModel MooringTrotAggregation {
+			get {
+				return _mooringTrotAggregation;
+			}
+			set {
+				SetValue(ref _mooringTrotAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public BerthViewModel LoadBerth(Berth instance) {
 			categoryOfCargo.Clear();
@@ -18533,6 +20038,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DolphinViewModel LoadDolphin(Dolphin instance) {
 			categoryOfDolphin.Clear();
 			if (instance.categoryOfDolphin is not null) {
@@ -18784,6 +20338,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public BollardViewModel LoadBollard(Bollard instance) {
 			condition = instance.condition;
@@ -19075,6 +20662,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DryDockViewModel LoadDryDock(DryDock instance) {
 			condition = instance.condition;
@@ -19450,6 +21057,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FloatingDockViewModel LoadFloatingDock(FloatingDock instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -19715,6 +21358,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private BridgeAggregationViewModel _bridgeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public BridgeAggregationViewModel BridgeAggregation {
+			get {
+				return _bridgeAggregation;
+			}
+			set {
+				SetValue(ref _bridgeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public PontoonViewModel LoadPontoon(Pontoon instance) {
 			condition = instance.condition;
 			featureName.Clear();
@@ -19970,6 +21662,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DockAreaViewModel LoadDockArea(DockArea instance) {
 			categoryOfDock = instance.categoryOfDock;
 			condition = instance.condition;
@@ -20189,6 +21901,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public GridironViewModel LoadGridiron(Gridiron instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -20387,6 +22119,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LockBasinViewModel LoadLockBasin(LockBasin instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -20538,6 +22290,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<MooringTrotAggregationViewModel> MooringTrotAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public MooringTrotViewModel LoadMooringTrot(MooringTrot instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -20659,6 +22434,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SeaAreaNamedWaterAreaViewModel LoadSeaAreaNamedWaterArea(SeaAreaNamedWaterArea instance) {
 			categoryOfSeaArea = instance.categoryOfSeaArea;
@@ -20820,6 +22615,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public TidalStreamFloodEbbViewModel LoadTidalStreamFloodEbb(TidalStreamFloodEbb instance) {
 			categoryOfTidalStream = instance.categoryOfTidalStream;
@@ -21004,6 +22819,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CurrentNonGravitationalViewModel LoadCurrentNonGravitational(CurrentNonGravitational instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -21151,6 +22986,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public WaterTurbulenceViewModel LoadWaterTurbulence(WaterTurbulence instance) {
 			categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
 			featureName.Clear();
@@ -21284,6 +23139,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public TidalStreamPanelDataViewModel LoadTidalStreamPanelData(TidalStreamPanelData instance) {
 			featureName.Clear();
@@ -21444,6 +23319,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SoundingViewModel LoadSounding(Sounding instance) {
 			featureName.Clear();
@@ -21661,6 +23556,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DredgedAreaViewModel LoadDredgedArea(DredgedArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -21832,6 +23760,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SweptAreaViewModel LoadSweptArea(SweptArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -21937,6 +23898,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public DepthContourViewModel LoadDepthContour(DepthContour instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			valueOfDepthContour = instance.valueOfDepthContour;
@@ -22039,6 +24017,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public DepthAreaViewModel LoadDepthArea(DepthArea instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -22134,6 +24129,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public DepthNoBottomFoundViewModel LoadDepthNoBottomFound(DepthNoBottomFound instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			techniqueOfVerticalMeasurement.Clear();
@@ -22214,6 +24226,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public UnsurveyedAreaViewModel LoadUnsurveyedArea(UnsurveyedArea instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -22321,6 +24350,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SeabedAreaViewModel LoadSeabedArea(SeabedArea instance) {
 			featureName.Clear();
@@ -22451,6 +24500,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public WeedKelpViewModel LoadWeedKelp(WeedKelp instance) {
 			categoryOfWeedKelp = instance.categoryOfWeedKelp;
 			featureName.Clear();
@@ -22552,6 +24621,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SeagrassViewModel LoadSeagrass(Seagrass instance) {
 			featureName.Clear();
@@ -22662,6 +24751,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public SandwaveViewModel LoadSandwave(Sandwave instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			verticalLength = instance.verticalLength;
@@ -22753,6 +24859,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SpringViewModel LoadSpring(Spring instance) {
 			featureName.Clear();
@@ -22990,6 +25116,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private TestAdditionalInformationViewModel<UnderwaterAwashRock> _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public TestAdditionalInformationViewModel<UnderwaterAwashRock> AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public UnderwaterAwashRockViewModel LoadUnderwaterAwashRock(UnderwaterAwashRock instance) {
 			expositionOfSounding = instance.expositionOfSounding;
@@ -23320,6 +25466,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public WreckViewModel LoadWreck(Wreck instance) {
 			categoryOfWreck = instance.categoryOfWreck;
@@ -23684,6 +25853,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public MooringTrotAggregationViewModel MooringTrotAggregation {
+			get {
+				return _mooringTrotAggregation;
+			}
+			set {
+				SetValue(ref _mooringTrotAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public ObstructionViewModel LoadObstruction(Obstruction instance) {
 			categoryOfObstruction = instance.categoryOfObstruction;
 			condition = instance.condition;
@@ -23929,6 +26131,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FoulGroundViewModel LoadFoulGround(FoulGround instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -24079,6 +26301,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public DiscolouredWaterViewModel LoadDiscolouredWater(DiscolouredWater instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -24244,6 +26483,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public FishingFacilityViewModel LoadFishingFacility(FishingFacility instance) {
 			categoryOfFishingFacility = instance.categoryOfFishingFacility;
@@ -24525,6 +26800,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public MarineFarmCultureViewModel LoadMarineFarmCulture(MarineFarmCulture instance) {
 			categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
@@ -24892,6 +27187,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public OffshorePlatformViewModel LoadOffshorePlatform(OffshorePlatform instance) {
 			categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
 			colour.Clear();
@@ -25126,6 +27457,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public MooringTrotAggregationViewModel MooringTrotAggregation {
+			get {
+				return _mooringTrotAggregation;
+			}
+			set {
+				SetValue(ref _mooringTrotAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CableSubmarineViewModel LoadCableSubmarine(CableSubmarine instance) {
 			buriedDepth = instance.buriedDepth;
 			categoryOfCable = instance.categoryOfCable;
@@ -25288,6 +27652,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public CableAreaViewModel LoadCableArea(CableArea instance) {
 			categoryOfCable.Clear();
@@ -25577,6 +27961,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public PipelineSubmarineOnLandViewModel LoadPipelineSubmarineOnLand(PipelineSubmarineOnLand instance) {
 			buriedDepth = instance.buriedDepth;
 			categoryOfPipelinePipe.Clear();
@@ -25791,6 +28195,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SubmarinePipelineAreaViewModel LoadSubmarinePipelineArea(SubmarinePipelineArea instance) {
 			categoryOfPipelinePipe.Clear();
@@ -26110,6 +28534,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public OffshoreProductionAreaViewModel LoadOffshoreProductionArea(OffshoreProductionArea instance) {
 			categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
 			condition = instance.condition;
@@ -26344,6 +28788,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public NavigationLineViewModel LoadNavigationLine(NavigationLine instance) {
 			categoryOfNavigationLine = instance.categoryOfNavigationLine;
@@ -26598,6 +29072,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
 		public RecommendedTrackViewModel LoadRecommendedTrack(RecommendedTrack instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -26791,6 +29311,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<RangeSystemAggregationViewModel> RangeSystemAggregation { get; set; } = new();
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RangeSystemViewModel LoadRangeSystem(RangeSystem instance) {
 			featureName.Clear();
@@ -27012,6 +29568,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAggregationViewModel _fairwayAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAggregationViewModel FairwayAggregation {
+			get {
+				return _fairwayAggregation;
+			}
+			set {
+				SetValue(ref _fairwayAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FairwayAuxiliaryViewModel> FairwayAuxiliary { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FairwayViewModel LoadFairway(Fairway instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			featureName.Clear();
@@ -27206,6 +29798,32 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<FairwayAggregationViewModel> FairwayAggregation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public FairwaySystemViewModel LoadFairwaySystem(FairwaySystem instance) {
 			featureName.Clear();
@@ -27436,6 +30054,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RecommendedRouteCentrelineViewModel LoadRecommendedRouteCentreline(RecommendedRouteCentreline instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -27704,6 +30368,49 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TwoWayRouteAggregationViewModel _twoWayRouteAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TwoWayRouteAggregationViewModel TwoWayRouteAggregation {
+			get {
+				return _twoWayRouteAggregation;
+			}
+			set {
+				SetValue(ref _twoWayRouteAggregation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public TwoWayRoutePartViewModel LoadTwoWayRoutePart(TwoWayRoutePart instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -27875,6 +30582,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TwoWayRouteAggregationViewModel> TwoWayRouteAggregation { get; set; } = new();
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public TwoWayRouteViewModel LoadTwoWayRoute(TwoWayRoute instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -28013,6 +30759,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public RecommendedTrafficLanePartViewModel LoadRecommendedTrafficLanePart(RecommendedTrafficLanePart instance) {
 			fixedDateRange = new ();
@@ -28243,6 +31006,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private DeepWaterRouteAggregationViewModel _deepWaterRouteAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public DeepWaterRouteAggregationViewModel DeepWaterRouteAggregation {
+			get {
+				return _deepWaterRouteAggregation;
+			}
+			set {
+				SetValue(ref _deepWaterRouteAggregation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DeepWaterRouteCentrelineViewModel LoadDeepWaterRouteCentreline(DeepWaterRouteCentreline instance) {
 			basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -28519,6 +31328,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private DeepWaterRouteAggregationViewModel _deepWaterRouteAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public DeepWaterRouteAggregationViewModel DeepWaterRouteAggregation {
+			get {
+				return _deepWaterRouteAggregation;
+			}
+			set {
+				SetValue(ref _deepWaterRouteAggregation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DeepWaterRoutePartViewModel LoadDeepWaterRoutePart(DeepWaterRoutePart instance) {
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			featureName.Clear();
@@ -28720,6 +31575,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<DeepWaterRouteAggregationViewModel> DeepWaterRouteAggregation { get; set; } = new();
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DeepWaterRouteViewModel LoadDeepWaterRoute(DeepWaterRoute instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -28855,6 +31749,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public InshoreTrafficZoneViewModel LoadInshoreTrafficZone(InshoreTrafficZone instance) {
 			fixedDateRange = new ();
@@ -29026,6 +31950,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Multiplicity(1)]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public PrecautionaryAreaViewModel LoadPrecautionaryArea(PrecautionaryArea instance) {
 			featureName.Clear();
@@ -29207,6 +32164,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public TrafficSeparationSchemeLanePartViewModel LoadTrafficSeparationSchemeLanePart(TrafficSeparationSchemeLanePart instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -29352,6 +32339,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public SeparationZoneOrLineViewModel LoadSeparationZoneOrLine(SeparationZoneOrLine instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -29473,6 +32490,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public TrafficSeparationSchemeBoundaryViewModel LoadTrafficSeparationSchemeBoundary(TrafficSeparationSchemeBoundary instance) {
 			fixedDateRange = new ();
@@ -29606,6 +32653,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public TrafficSeparationSchemeCrossingViewModel LoadTrafficSeparationSchemeCrossing(TrafficSeparationSchemeCrossing instance) {
 			fixedDateRange = new ();
@@ -29759,6 +32836,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public TrafficSeparationSchemeRoundaboutViewModel LoadTrafficSeparationSchemeRoundabout(TrafficSeparationSchemeRoundabout instance) {
 			fixedDateRange = new ();
@@ -29927,6 +33034,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TrafficSeparationSchemeAggregationViewModel> TrafficSeparationSchemeAggregation { get; set; } = new();
+
+		[Optional]
+		private CautionAreaAssociationViewModel _cautionAreaAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public CautionAreaAssociationViewModel CautionAreaAssociation {
+			get {
+				return _cautionAreaAssociation;
+			}
+			set {
+				SetValue(ref _cautionAreaAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public TrafficSeparationSchemeViewModel LoadTrafficSeparationScheme(TrafficSeparationScheme instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -30066,6 +33212,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private ASLAggregationViewModel _aSLAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public ASLAggregationViewModel ASLAggregation {
+			get {
+				return _aSLAggregation;
+			}
+			set {
+				SetValue(ref _aSLAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public ArchipelagicSeaLaneAreaViewModel LoadArchipelagicSeaLaneArea(ArchipelagicSeaLaneArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -30202,6 +33381,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private ASLAggregationViewModel _aSLAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public ASLAggregationViewModel ASLAggregation {
+			get {
+				return _aSLAggregation;
+			}
+			set {
+				SetValue(ref _aSLAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public ArchipelagicSeaLaneAxisViewModel LoadArchipelagicSeaLaneAxis(ArchipelagicSeaLaneAxis instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -30337,6 +33549,45 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<AidsToNavigationAssociationViewModel> AidsToNavigationAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ASLAggregationViewModel> ASLAggregation { get; set; } = new();
+
+		[Optional]
+		private CautionAreaAssociationViewModel _cautionAreaAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public CautionAreaAssociationViewModel CautionAreaAssociation {
+			get {
+				return _cautionAreaAssociation;
+			}
+			set {
+				SetValue(ref _cautionAreaAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public ArchipelagicSeaLaneViewModel LoadArchipelagicSeaLane(ArchipelagicSeaLane instance) {
 			featureName.Clear();
@@ -30495,6 +33746,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RadioCallingInPointViewModel LoadRadioCallingInPoint(RadioCallingInPoint instance) {
 			communicationChannel.Clear();
@@ -30676,6 +33947,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FerryRouteViewModel LoadFerryRoute(FerryRoute instance) {
 			categoryOfFerry.Clear();
 			if (instance.categoryOfFerry is not null) {
@@ -30832,6 +34123,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public RadarLineViewModel LoadRadarLine(RadarLine instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -30968,6 +34279,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RadarRangeViewModel LoadRadarRange(RadarRange instance) {
 			communicationChannel.Clear();
@@ -31157,6 +34488,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RadarStationViewModel LoadRadarStation(RadarStation instance) {
 			callSign = instance.callSign;
@@ -31355,6 +34706,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public AnchorageAreaViewModel LoadAnchorageArea(AnchorageArea instance) {
 			categoryOfAnchorage.Clear();
@@ -31592,6 +34963,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<vesselSpeedLimitViewModel> vesselSpeedLimit  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public MooringAreaViewModel LoadMooringArea(MooringArea instance) {
 			categoryOfMooringArea.Clear();
 			if (instance.categoryOfMooringArea is not null) {
@@ -31806,6 +35197,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public AnchorBerthViewModel LoadAnchorBerth(AnchorBerth instance) {
 			categoryOfAnchorage.Clear();
 			if (instance.categoryOfAnchorage is not null) {
@@ -31975,6 +35386,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SeaplaneLandingAreaViewModel LoadSeaplaneLandingArea(SeaplaneLandingArea instance) {
 			featureName.Clear();
@@ -32153,6 +35584,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public DumpingGroundViewModel LoadDumpingGround(DumpingGround instance) {
 			categoryOfDumpingGround.Clear();
@@ -32352,6 +35803,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public MilitaryPracticeAreaViewModel LoadMilitaryPracticeArea(MilitaryPracticeArea instance) {
 			categoryOfMilitaryPracticeArea.Clear();
@@ -32560,6 +36031,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public AdministrationAreaViewModel LoadAdministrationArea(AdministrationArea instance) {
 			inDispute = instance.inDispute;
 			jurisdiction = instance.jurisdiction;
@@ -32713,6 +36204,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public CargoTranshipmentAreaViewModel LoadCargoTranshipmentArea(CargoTranshipmentArea instance) {
 			featureName.Clear();
@@ -32935,6 +36446,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<CautionAreaAssociationViewModel> CautionAreaAssociation { get; set; } = new();
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public CautionAreaViewModel LoadCautionArea(CautionArea instance) {
 			condition = instance.condition;
 			fixedDateRange = new ();
@@ -33098,6 +36642,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public InformationAreaViewModel LoadInformationArea(InformationArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -33247,6 +36811,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public ContiguousZoneViewModel LoadContiguousZone(ContiguousZone instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -33358,6 +36939,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public ContinentalShelfAreaViewModel LoadContinentalShelfArea(ContinentalShelfArea instance) {
 			featureName.Clear();
@@ -33478,6 +37079,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public CustomZoneViewModel LoadCustomZone(CustomZone instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
@@ -33583,6 +37201,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public ExclusiveEconomicZoneViewModel LoadExclusiveEconomicZone(ExclusiveEconomicZone instance) {
 			inDispute = instance.inDispute;
@@ -33706,6 +37341,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public FisheryZoneViewModel LoadFisheryZone(FisheryZone instance) {
 			featureName.Clear();
@@ -33840,6 +37495,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public FishingGroundViewModel LoadFishingGround(FishingGround instance) {
 			featureName.Clear();
@@ -33987,6 +37662,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FreePortAreaViewModel LoadFreePortArea(FreePortArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -34102,6 +37797,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public HarbourAreaAdministrativeViewModel LoadHarbourAreaAdministrative(HarbourAreaAdministrative instance) {
 			featureName.Clear();
@@ -34222,6 +37937,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LogPondViewModel LoadLogPond(LogPond instance) {
 			featureName.Clear();
@@ -34411,6 +38146,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public OilBarrierViewModel LoadOilBarrier(OilBarrier instance) {
 			categoryOfOilBarrier = instance.categoryOfOilBarrier;
 			condition = instance.condition;
@@ -34545,6 +38300,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public StraightTerritorialSeaBaselineViewModel LoadStraightTerritorialSeaBaseline(StraightTerritorialSeaBaseline instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
@@ -34661,6 +38433,23 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public TerritorialSeaAreaViewModel LoadTerritorialSeaArea(TerritorialSeaArea instance) {
 			inDispute = instance.inDispute;
@@ -34809,6 +38598,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SubmarineTransitLaneViewModel LoadSubmarineTransitLane(SubmarineTransitLane instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -34934,6 +38743,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<PilotageDistrictAssociationViewModel> PilotageDistrictAssociation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public PilotageDistrictViewModel LoadPilotageDistrict(PilotageDistrict instance) {
 			communicationChannel.Clear();
@@ -35076,6 +38908,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CollisionRegulationsLimitViewModel LoadCollisionRegulationsLimit(CollisionRegulationsLimit instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -35207,6 +39059,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public MarinePollutionRegulationsAreaViewModel LoadMarinePollutionRegulationsArea(MarinePollutionRegulationsArea instance) {
 			featureName.Clear();
@@ -35352,6 +39224,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Optional]
+		private TrafficSeparationSchemeAggregationViewModel _trafficSeparationSchemeAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TrafficSeparationSchemeAggregationViewModel TrafficSeparationSchemeAggregation {
+			get {
+				return _trafficSeparationSchemeAggregation;
+			}
+			set {
+				SetValue(ref _trafficSeparationSchemeAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RestrictedAreaViewModel LoadRestrictedArea(RestrictedArea instance) {
 			categoryOfRestrictedArea.Clear();
@@ -35730,6 +39648,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LightAllAroundViewModel LoadLightAllAround(LightAllAround instance) {
 			categoryOfLight.Clear();
 			if (instance.categoryOfLight is not null) {
@@ -36049,6 +40013,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LightSectoredViewModel LoadLightSectored(LightSectored instance) {
 			categoryOfLight.Clear();
 			if (instance.categoryOfLight is not null) {
@@ -36336,6 +40336,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LightFogDetectorViewModel LoadLightFogDetector(LightFogDetector instance) {
 			colour.Clear();
@@ -36635,6 +40668,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LightAirObstructionViewModel LoadLightAirObstruction(LightAirObstruction instance) {
 			colour.Clear();
@@ -36971,6 +41037,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LateralBuoyViewModel LoadLateralBuoy(LateralBuoy instance) {
 			buoyShape = instance.buoyShape;
 			categoryOfLateralMark = instance.categoryOfLateralMark;
@@ -37306,6 +41421,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CardinalBuoyViewModel LoadCardinalBuoy(CardinalBuoy instance) {
 			buoyShape = instance.buoyShape;
 			categoryOfCardinalMark = instance.categoryOfCardinalMark;
@@ -37624,6 +41788,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public IsolatedDangerBuoyViewModel LoadIsolatedDangerBuoy(IsolatedDangerBuoy instance) {
 			buoyShape = instance.buoyShape;
 			colour.Clear();
@@ -37938,6 +42151,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SafeWaterBuoyViewModel LoadSafeWaterBuoy(SafeWaterBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -38261,6 +42523,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SpecialPurposeGeneralBuoyViewModel LoadSpecialPurposeGeneralBuoy(SpecialPurposeGeneralBuoy instance) {
 			buoyShape = instance.buoyShape;
 			categoryOfSpecialPurposeMark.Clear();
@@ -38575,6 +42886,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public EmergencyWreckMarkingBuoyViewModel LoadEmergencyWreckMarkingBuoy(EmergencyWreckMarkingBuoy instance) {
 			buoyShape = instance.buoyShape;
 			colour.Clear();
@@ -38865,6 +43212,29 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public InstallationBuoyViewModel LoadInstallationBuoy(InstallationBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -39181,6 +43551,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private MooringTrotAggregationViewModel _mooringTrotAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public MooringTrotAggregationViewModel MooringTrotAggregation {
+			get {
+				return _mooringTrotAggregation;
+			}
+			set {
+				SetValue(ref _mooringTrotAggregation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public MooringBuoyViewModel LoadMooringBuoy(MooringBuoy instance) {
 			buoyShape = instance.buoyShape;
@@ -39586,6 +44005,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public LateralBeaconViewModel LoadLateralBeacon(LateralBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -40013,6 +44494,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public CardinalBeaconViewModel LoadCardinalBeacon(CardinalBeacon instance) {
 			beaconShape = instance.beaconShape;
 			categoryOfCardinalMark = instance.categoryOfCardinalMark;
@@ -40422,6 +44965,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public IsolatedDangerBeaconViewModel LoadIsolatedDangerBeacon(IsolatedDangerBeacon instance) {
 			beaconShape = instance.beaconShape;
 			colour.Clear();
@@ -40827,6 +45432,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SafeWaterBeaconViewModel LoadSafeWaterBeacon(SafeWaterBeacon instance) {
 			beaconShape = instance.beaconShape;
@@ -41241,6 +45908,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SpecialPurposeGeneralBeaconViewModel LoadSpecialPurposeGeneralBeacon(SpecialPurposeGeneralBeacon instance) {
 			beaconShape = instance.beaconShape;
 			categoryOfSpecialPurposeMark.Clear();
@@ -41589,6 +46318,68 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public DaymarkViewModel LoadDaymark(Daymark instance) {
 			categoryOfSpecialPurposeMark.Clear();
 			if (instance.categoryOfSpecialPurposeMark is not null) {
@@ -41932,6 +46723,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LightFloatViewModel LoadLightFloat(LightFloat instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -42247,6 +47087,55 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<StructureEquipmentViewModel> StructureEquipment { get; set; } = new();
+
+		[Optional]
+		private AidsToNavigationAssociationViewModel _aidsToNavigationAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public AidsToNavigationAssociationViewModel AidsToNavigationAssociation {
+			get {
+				return _aidsToNavigationAssociation;
+			}
+			set {
+				SetValue(ref _aidsToNavigationAssociation, value);
+			}
+		}
+
+		[Optional]
+		private FairwayAuxiliaryViewModel _fairwayAuxiliary = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public FairwayAuxiliaryViewModel FairwayAuxiliary {
+			get {
+				return _fairwayAuxiliary;
+			}
+			set {
+				SetValue(ref _fairwayAuxiliary, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public LightVesselViewModel LoadLightVessel(LightVessel instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -42472,6 +47361,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
 		public RetroreflectorViewModel LoadRetroreflector(Retroreflector instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -42637,6 +47556,36 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
 
 		public RadarReflectorViewModel LoadRadarReflector(RadarReflector instance) {
 			fixedDateRange = new ();
@@ -42875,6 +47824,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public FogSignalViewModel LoadFogSignal(FogSignal instance) {
 			categoryOfFogSignal = instance.categoryOfFogSignal;
 			featureName.Clear();
@@ -43091,6 +48073,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public PhysicalAISAidToNavigationViewModel LoadPhysicalAISAidToNavigation(PhysicalAISAidToNavigation instance) {
 			estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
 			featureName.Clear();
@@ -43294,6 +48309,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public VirtualAISAidToNavigationViewModel LoadVirtualAISAidToNavigation(VirtualAISAidToNavigation instance) {
 			estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -43499,6 +48534,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
 			callSign = instance.callSign;
@@ -43749,6 +48804,52 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
+		[Optional]
+		private RangeSystemAggregationViewModel _rangeSystemAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public RangeSystemAggregationViewModel RangeSystemAggregation {
+			get {
+				return _rangeSystemAggregation;
+			}
+			set {
+				SetValue(ref _rangeSystemAggregation, value);
+			}
+		}
+
 		public RadarTransponderBeaconViewModel LoadRadarTransponderBeacon(RadarTransponderBeacon instance) {
 			categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
 			featureName.Clear();
@@ -43983,6 +49084,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private PilotageDistrictAssociationViewModel _pilotageDistrictAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public PilotageDistrictAssociationViewModel PilotageDistrictAssociation {
+			get {
+				return _pilotageDistrictAssociation;
+			}
+			set {
+				SetValue(ref _pilotageDistrictAssociation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public PilotBoardingPlaceViewModel LoadPilotBoardingPlace(PilotBoardingPlace instance) {
 			categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
 			categoryOfPreference = instance.categoryOfPreference;
@@ -44144,6 +49278,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public VesselTrafficServiceAreaViewModel LoadVesselTrafficServiceArea(VesselTrafficServiceArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -44285,6 +49439,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public CoastGuardStationViewModel LoadCoastGuardStation(CoastGuardStation instance) {
 			communicationChannel.Clear();
@@ -44459,6 +49633,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public SignalStationWarningViewModel LoadSignalStationWarning(SignalStationWarning instance) {
 			categoryOfSignalStationWarning.Clear();
@@ -44641,6 +49848,39 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Optional]
+		private StructureEquipmentViewModel _structureEquipment = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public StructureEquipmentViewModel StructureEquipment {
+			get {
+				return _structureEquipment;
+			}
+			set {
+				SetValue(ref _structureEquipment, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SignalStationTrafficViewModel LoadSignalStationTraffic(SignalStationTraffic instance) {
 			categoryOfSignalStationTraffic.Clear();
 			if (instance.categoryOfSignalStationTraffic is not null) {
@@ -44821,6 +50061,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public RescueStationViewModel LoadRescueStation(RescueStation instance) {
 			categoryOfRescueStation.Clear();
@@ -45083,6 +50343,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public HarbourFacilityViewModel LoadHarbourFacility(HarbourFacility instance) {
 			categoryOfHarbourFacility.Clear();
 			if (instance.categoryOfHarbourFacility is not null) {
@@ -45302,6 +50582,26 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private AdditionalInformationViewModel _additionalInformation = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AdditionalInformationViewModel AdditionalInformation {
+			get {
+				return _additionalInformation;
+			}
+			set {
+				SetValue(ref _additionalInformation, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<UpdatedInformationViewModel> UpdatedInformation { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
+
 		public SmallCraftFacilityViewModel LoadSmallCraftFacility(SmallCraftFacility instance) {
 			categoryOfSmallCraftFacility.Clear();
 			if (instance.categoryOfSmallCraftFacility is not null) {
@@ -45461,6 +50761,19 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		}
 
 
+		[Optional]
+		private TextAssociationViewModel _textAssociation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public TextAssociationViewModel TextAssociation {
+			get {
+				return _textAssociation;
+			}
+			set {
+				SetValue(ref _textAssociation, value);
+			}
+		}
+
 		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
 			textOffsetBearing = instance.textOffsetBearing;
 			textOffsetDistance = instance.textOffsetDistance;
@@ -45527,6 +50840,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<TextAssociationViewModel> TextAssociation { get; set; } = new();
 
 		public Chart1FeatureViewModel LoadChart1Feature(Chart1Feature instance) {
 			drawingInstruction.Clear();

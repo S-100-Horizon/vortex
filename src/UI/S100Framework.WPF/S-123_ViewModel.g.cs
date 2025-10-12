@@ -2438,7 +2438,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("AdditionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AdditionalInformationViewModel : AssociationViewModel {
+	public partial class AdditionalInformationViewModel : InformationAssociationViewModel {
 
 
 		public AdditionalInformationViewModel LoadAdditionalInformation(AdditionalInformation instance) {
@@ -2468,7 +2468,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("AssociatedRxN",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AssociatedRxNViewModel : AssociationViewModel {
+	public partial class AssociatedRxNViewModel : InformationAssociationViewModel {
 
 
 		public AssociatedRxNViewModel LoadAssociatedRxN(AssociatedRxN instance) {
@@ -2498,7 +2498,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("AuthorityContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityContactViewModel : AssociationViewModel {
+	public partial class AuthorityContactViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityContactViewModel LoadAuthorityContact(AuthorityContact instance) {
@@ -2528,7 +2528,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("AuthorityHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityHoursViewModel : AssociationViewModel {
+	public partial class AuthorityHoursViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityHoursViewModel LoadAuthorityHours(AuthorityHours instance) {
@@ -2558,7 +2558,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("AvailableQoS",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AvailableQoSViewModel : AssociationViewModel {
+	public partial class AvailableQoSViewModel : InformationAssociationViewModel {
 
 
 		public AvailableQoSViewModel LoadAvailableQoS(AvailableQoS instance) {
@@ -2588,7 +2588,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("BroadcastService",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class BroadcastServiceViewModel : AssociationViewModel {
+	public partial class BroadcastServiceViewModel : InformationAssociationViewModel {
 
 
 		public BroadcastServiceViewModel LoadBroadcastService(BroadcastService instance) {
@@ -2618,7 +2618,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("BroadcastTransmission",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class BroadcastTransmissionViewModel : AssociationViewModel {
+	public partial class BroadcastTransmissionViewModel : InformationAssociationViewModel {
 
 
 		public BroadcastTransmissionViewModel LoadBroadcastTransmission(BroadcastTransmission instance) {
@@ -2648,7 +2648,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("ConnectivityService",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ConnectivityServiceViewModel : AssociationViewModel {
+	public partial class ConnectivityServiceViewModel : InformationAssociationViewModel {
 
 
 		public ConnectivityServiceViewModel LoadConnectivityService(ConnectivityService instance) {
@@ -2678,7 +2678,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("ExceptionalWorkday",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
+	public partial class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
 
 
 		public ExceptionalWorkdayViewModel LoadExceptionalWorkday(ExceptionalWorkday instance) {
@@ -2708,7 +2708,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InclusionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class InclusionTypeViewModel : AssociationViewModel {
+	public partial class InclusionTypeViewModel : InformationAssociationViewModel {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
@@ -2755,7 +2755,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("LocationHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class LocationHoursViewModel : AssociationViewModel {
+	public partial class LocationHoursViewModel : InformationAssociationViewModel {
 
 
 		public LocationHoursViewModel LoadLocationHours(LocationHours instance) {
@@ -2785,7 +2785,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("PermissionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PermissionTypeViewModel : AssociationViewModel {
+	public partial class PermissionTypeViewModel : InformationAssociationViewModel {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
@@ -2832,7 +2832,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("RadioServiceControl",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class RadioServiceControlViewModel : AssociationViewModel {
+	public partial class RadioServiceControlViewModel : InformationAssociationViewModel {
 
 
 		public RadioServiceControlViewModel LoadRadioServiceControl(RadioServiceControl instance) {
@@ -2862,7 +2862,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("relatedOrganisation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class relatedOrganisationViewModel : AssociationViewModel {
+	public partial class relatedOrganisationViewModel : InformationAssociationViewModel {
 
 
 		public relatedOrganisationViewModel LoadrelatedOrganisation(relatedOrganisation instance) {
@@ -2892,7 +2892,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("ServiceContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceContactViewModel : AssociationViewModel {
+	public partial class ServiceContactViewModel : InformationAssociationViewModel {
 
 
 		public ServiceContactViewModel LoadServiceContact(ServiceContact instance) {
@@ -2922,7 +2922,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("ServiceCoordination",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceCoordinationViewModel : AssociationViewModel {
+	public partial class ServiceCoordinationViewModel : InformationAssociationViewModel {
 
 
 		public ServiceCoordinationViewModel LoadServiceCoordination(ServiceCoordination instance) {
@@ -2952,7 +2952,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("SpatialAssociation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class SpatialAssociationViewModel : AssociationViewModel {
+	public partial class SpatialAssociationViewModel : InformationAssociationViewModel {
 
 
 		public SpatialAssociationViewModel LoadSpatialAssociation(SpatialAssociation instance) {
@@ -2982,7 +2982,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("TMAS",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TMASViewModel : AssociationViewModel {
+	public partial class TMASViewModel : InformationAssociationViewModel {
 
 
 		public TMASViewModel LoadTMAS(TMAS instance) {
@@ -3012,7 +3012,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("TransmissionService",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class TransmissionServiceViewModel : AssociationViewModel {
+	public partial class TransmissionServiceViewModel : InformationAssociationViewModel {
 
 
 		public TransmissionServiceViewModel LoadTransmissionService(TransmissionService instance) {
@@ -3042,7 +3042,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("coreAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class coreAggregationViewModel : AssociationViewModel {
+	public partial class coreAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public coreAggregationViewModel LoadcoreAggregation(coreAggregation instance) {
@@ -3072,7 +3072,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("fuzzyZoneAggregation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class fuzzyZoneAggregationViewModel : AssociationViewModel {
+	public partial class fuzzyZoneAggregationViewModel : FeatureAssociationViewModel {
 
 
 		public fuzzyZoneAggregationViewModel LoadfuzzyZoneAggregation(fuzzyZoneAggregation instance) {
@@ -3102,7 +3102,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("ServiceProvisionArea",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceProvisionAreaViewModel : AssociationViewModel {
+	public partial class ServiceProvisionAreaViewModel : FeatureAssociationViewModel {
 
 
 		public ServiceProvisionAreaViewModel LoadServiceProvisionArea(ServiceProvisionArea instance) {
@@ -3288,6 +3288,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<InclusionTypeViewModel> InclusionType { get; set; } = new();
 
 		public ApplicabilityViewModel LoadApplicability(Applicability instance) {
 			fixedDateRange = new ();
@@ -3501,6 +3504,23 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
+		[Optional]
+		private AuthorityHoursViewModel _authorityHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AuthorityHoursViewModel AuthorityHours {
+			get {
+				return _authorityHours;
+			}
+			set {
+				SetValue(ref _authorityHours, value);
+			}
+		}
+
 		public AuthorityViewModel LoadAuthority(Authority instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -3672,6 +3692,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastTransmissionViewModel> BroadcastTransmission { get; set; } = new();
 
 		public BroadcastDetailsViewModel LoadBroadcastDetails(BroadcastDetails instance) {
 			fixedDateRange = new ();
@@ -4174,6 +4197,20 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
+		[Optional]
+		private AuthorityContactViewModel _authorityContact = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AuthorityContactViewModel AuthorityContact {
+			get {
+				return _authorityContact;
+			}
+			set {
+				SetValue(ref _authorityContact, value);
+			}
+		}
+
 		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -4564,6 +4601,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<String> dateVariable  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+
 		public NonStandardWorkingDayViewModel LoadNonStandardWorkingDay(NonStandardWorkingDay instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -4755,6 +4795,26 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
+		[Optional]
+		private AuthorityHoursViewModel _authorityHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AuthorityHoursViewModel AuthorityHours {
+			get {
+				return _authorityHours;
+			}
+			set {
+				SetValue(ref _authorityHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TMASViewModel> TMAS { get; set; } = new();
 
 		public RadioControlCentreViewModel LoadRadioControlCentre(RadioControlCentre instance) {
 			fixedDateRange = new ();
@@ -5472,6 +5532,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+
 		public ServiceHoursViewModel LoadServiceHours(ServiceHours instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -5729,6 +5795,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+
 		public TelemedicalAssistanceServiceViewModel LoadTelemedicalAssistanceService(TelemedicalAssistanceService instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
@@ -5942,6 +6011,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Multiplicity(1)]
 		public ObservableCollection<radioChannelDetailsViewModel> radioChannelDetails  { get; set; } = new ();
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastTransmissionViewModel> BroadcastTransmission { get; set; } = new();
 
 		public TransmissionDetailsViewModel LoadTransmissionDetails(TransmissionDetails instance) {
 			fixedDateRange = new ();
@@ -6180,6 +6252,43 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ConnectivityServiceViewModel> ConnectivityService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Optional]
+		private AvailableQoSViewModel _availableQoS = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public AvailableQoSViewModel AvailableQoS {
+			get {
+				return _availableQoS;
+			}
+			set {
+				SetValue(ref _availableQoS, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
 		public ConnectivitySubscriptionAreaViewModel LoadConnectivitySubscriptionArea(ConnectivitySubscriptionArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -6417,6 +6526,32 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<areaA3ServiceDescriptionViewModel> areaA3ServiceDescription  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
 		public GMDSSAreaViewModel LoadGMDSSArea(GMDSSArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -6603,6 +6738,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public informationConfidence[] informationConfidenceList => [(informationConfidence)1,(informationConfidence)2,(informationConfidence)3,(informationConfidence)4];
 
 
+		private fuzzyZoneAggregationViewModel _fuzzyZoneAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public fuzzyZoneAggregationViewModel fuzzyZoneAggregation {
+			get {
+				return _fuzzyZoneAggregation;
+			}
+			set {
+				SetValue(ref _fuzzyZoneAggregation, value);
+			}
+		}
+
 		public IndeterminateZoneViewModel LoadIndeterminateZone(IndeterminateZone instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -6773,6 +6920,35 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
 
 		public MetAreaViewModel LoadMetArea(MetArea instance) {
 			textContent.Clear();
@@ -6954,6 +7130,35 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<onlineResourceViewModel> onlineResource  { get; set; } = new ();
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
 
 		public NavAreaViewModel LoadNavArea(NavArea instance) {
 			textContent.Clear();
@@ -7194,6 +7399,35 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public status[] statusList => [(status)1,(status)4,(status)7];
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
 		public NavtexServiceAreaViewModel LoadNavtexServiceArea(NavtexServiceArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -7431,6 +7665,51 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
+		[Optional]
+		private coreAggregationViewModel _coreAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public coreAggregationViewModel coreAggregation {
+			get {
+				return _coreAggregation;
+			}
+			set {
+				SetValue(ref _coreAggregation, value);
+			}
+		}
 
 		public RadioServiceAreaViewModel LoadRadioServiceArea(RadioServiceArea instance) {
 			textContent.Clear();
@@ -7705,6 +7984,38 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
 		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -7902,6 +8213,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TMASViewModel> TMAS { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
 
 		public SARRegionViewModel LoadSARRegion(SARRegion instance) {
 			textContent.Clear();
@@ -8118,6 +8441,35 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14];
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ServiceContactViewModel> ServiceContact { get; set; } = new();
+
+		[Optional]
+		private LocationHoursViewModel _locationHours = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public LocationHoursViewModel LocationHours {
+			get {
+				return _locationHours;
+			}
+			set {
+				SetValue(ref _locationHours, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+
+		[Category("FeatureBindings")]
+		public ObservableCollection<ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+
 		public WeatherForecastAndWarningAreaViewModel LoadWeatherForecastAndWarningArea(WeatherForecastAndWarningArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
@@ -8281,6 +8633,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
+
+		private coreAggregationViewModel _coreAggregation = new();
+		[Category("FeatureBindings")]
+		[ExpandableObject]
+		public coreAggregationViewModel coreAggregation {
+			get {
+				return _coreAggregation;
+			}
+			set {
+				SetValue(ref _coreAggregation, value);
+			}
+		}
 
 		public RadioServiceAreaAggregateViewModel LoadRadioServiceAreaAggregate(RadioServiceAreaAggregate instance) {
 			textContent.Clear();

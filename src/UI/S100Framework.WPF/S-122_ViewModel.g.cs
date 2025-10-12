@@ -1839,7 +1839,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("AssociatedRxN",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AssociatedRxNViewModel : AssociationViewModel {
+	public partial class AssociatedRxNViewModel : InformationAssociationViewModel {
 
 
 		public AssociatedRxNViewModel LoadAssociatedRxN(AssociatedRxN instance) {
@@ -1869,7 +1869,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("ExceptionalWorkday",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ExceptionalWorkdayViewModel : AssociationViewModel {
+	public partial class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
 
 
 		public ExceptionalWorkdayViewModel LoadExceptionalWorkday(ExceptionalWorkday instance) {
@@ -1899,7 +1899,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("ProtectedAreaAuthority",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ProtectedAreaAuthorityViewModel : AssociationViewModel {
+	public partial class ProtectedAreaAuthorityViewModel : InformationAssociationViewModel {
 
 
 		public ProtectedAreaAuthorityViewModel LoadProtectedAreaAuthority(ProtectedAreaAuthority instance) {
@@ -1929,7 +1929,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("ServiceControl",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ServiceControlViewModel : AssociationViewModel {
+	public partial class ServiceControlViewModel : InformationAssociationViewModel {
 
 
 		public ServiceControlViewModel LoadServiceControl(ServiceControl instance) {
@@ -1959,7 +1959,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("RelatedOrganisation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class RelatedOrganisationViewModel : AssociationViewModel {
+	public partial class RelatedOrganisationViewModel : InformationAssociationViewModel {
 
 
 		public RelatedOrganisationViewModel LoadRelatedOrganisation(RelatedOrganisation instance) {
@@ -1989,7 +1989,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("PermissionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PermissionTypeViewModel : AssociationViewModel {
+	public partial class PermissionTypeViewModel : InformationAssociationViewModel {
 		private categoryOfRelationship _categoryOfRelationship  = default;
 
 		[Category("PermissionType")]
@@ -2036,7 +2036,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InclusionType",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class InclusionTypeViewModel : AssociationViewModel {
+	public partial class InclusionTypeViewModel : InformationAssociationViewModel {
 		private membership _membership  = default;
 
 		[Category("InclusionType")]
@@ -2083,7 +2083,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("AuthorityContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityContactViewModel : AssociationViewModel {
+	public partial class AuthorityContactViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityContactViewModel LoadAuthorityContact(AuthorityContact instance) {
@@ -2113,7 +2113,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("AuthorityHours",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class AuthorityHoursViewModel : AssociationViewModel {
+	public partial class AuthorityHoursViewModel : InformationAssociationViewModel {
 
 
 		public AuthorityHoursViewModel LoadAuthorityHours(AuthorityHours instance) {
@@ -2143,7 +2143,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("additionalInformation",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class additionalInformationViewModel : AssociationViewModel {
+	public partial class additionalInformationViewModel : InformationAssociationViewModel {
 
 
 		public additionalInformationViewModel LoadadditionalInformation(additionalInformation instance) {
@@ -2432,6 +2432,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<RelatedOrganisationViewModel> RelatedOrganisation { get; set; } = new();
+
 		public AbstractRxNViewModel LoadAbstractRxN(AbstractRxN instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -2636,6 +2639,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<RelatedOrganisationViewModel> RelatedOrganisation { get; set; } = new();
 
 		public NauticalInformationViewModel LoadNauticalInformation(NauticalInformation instance) {
 			featureName.Clear();
@@ -3442,6 +3448,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<RelatedOrganisationViewModel> RelatedOrganisation { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
 		public AuthorityViewModel LoadAuthority(Authority instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -3741,6 +3756,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+
 		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -4007,6 +4025,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+
 		public NonStandardWorkingDayViewModel LoadNonStandardWorkingDay(NonStandardWorkingDay instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -4204,6 +4225,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
 
 		public ServiceHoursViewModel LoadServiceHours(ServiceHours instance) {
 			featureName.Clear();
@@ -4988,6 +5015,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<designationViewModel> designation  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ProtectedAreaAuthorityViewModel> ProtectedAreaAuthority { get; set; } = new();
+
 		public MarineProtectedAreaViewModel LoadMarineProtectedArea(MarineProtectedArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
@@ -5220,6 +5250,20 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Browsable(false)]
 		public categoryOfVesselTrafficService[] categoryOfVesselTrafficServiceList => [(categoryOfVesselTrafficService)1,(categoryOfVesselTrafficService)2,(categoryOfVesselTrafficService)3,(categoryOfVesselTrafficService)4,(categoryOfVesselTrafficService)5];
 
+
+		[Optional]
+		private ServiceControlViewModel _serviceControl = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ServiceControlViewModel ServiceControl {
+			get {
+				return _serviceControl;
+			}
+			set {
+				SetValue(ref _serviceControl, value);
+			}
+		}
 
 		public VesselTrafficServiceAreaViewModel LoadVesselTrafficServiceArea(VesselTrafficServiceArea instance) {
 			featureName.Clear();

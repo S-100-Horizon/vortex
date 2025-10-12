@@ -241,6 +241,49 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
+    public abstract class InformationAssociationViewModel : AssociationViewModel
+    {        
+        private String _role = string.Empty;
+
+        [Editor(typeof(Editors.InformationAssociationRoleEditor), typeof(Editors.InformationAssociationRoleEditor))]
+        public String role {
+            get {
+                return _role;
+            }
+
+            set {
+                SetValue(ref _role, value);
+            }
+        }
+
+        private String _informationId = string.Empty;
+
+        public String informationId {
+            get {
+                return _informationId;
+            }
+
+            set {
+                SetValue(ref _informationId, value);
+            }
+        }
+    }
+
+    public abstract class FeatureAssociationViewModel : AssociationViewModel
+    {
+        private String _featureId = string.Empty;
+
+        public String featureId {
+            get {
+                return _featureId;
+            }
+
+            set {
+                SetValue(ref _featureId, value);
+            }
+        }
+    }
+
     public abstract class ComplexViewModel : ViewModelBase
     {
         protected override void Validate() {

@@ -1990,7 +1990,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("CarriageRequirement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class CarriageRequirementViewModel : AssociationViewModel {
+	public partial class CarriageRequirementViewModel : InformationAssociationViewModel {
 
 
 		public CarriageRequirementViewModel LoadCarriageRequirement(CarriageRequirement instance) {
@@ -2020,7 +2020,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("DistributionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class DistributionDetailsViewModel : AssociationViewModel {
+	public partial class DistributionDetailsViewModel : InformationAssociationViewModel {
 
 
 		public DistributionDetailsViewModel LoadDistributionDetails(DistributionDetails instance) {
@@ -2050,7 +2050,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("DistributorContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class DistributorContactViewModel : AssociationViewModel {
+	public partial class DistributorContactViewModel : InformationAssociationViewModel {
 
 
 		public DistributorContactViewModel LoadDistributorContact(DistributorContact instance) {
@@ -2080,7 +2080,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("PriceOfElement",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PriceOfElementViewModel : AssociationViewModel {
+	public partial class PriceOfElementViewModel : InformationAssociationViewModel {
 
 
 		public PriceOfElementViewModel LoadPriceOfElement(PriceOfElement instance) {
@@ -2110,7 +2110,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("PriceOfNauticalProduct",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class PriceOfNauticalProductViewModel : AssociationViewModel {
+	public partial class PriceOfNauticalProductViewModel : InformationAssociationViewModel {
 
 
 		public PriceOfNauticalProductViewModel LoadPriceOfNauticalProduct(PriceOfNauticalProduct instance) {
@@ -2140,7 +2140,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("ProducerContact",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ProducerContactViewModel : AssociationViewModel {
+	public partial class ProducerContactViewModel : InformationAssociationViewModel {
 
 
 		public ProducerContactViewModel LoadProducerContact(ProducerContact instance) {
@@ -2170,7 +2170,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("ProductionDetails",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ProductionDetailsViewModel : AssociationViewModel {
+	public partial class ProductionDetailsViewModel : InformationAssociationViewModel {
 
 
 		public ProductionDetailsViewModel LoadProductionDetails(ProductionDetails instance) {
@@ -2200,7 +2200,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("ProductPackage",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ProductPackageViewModel : AssociationViewModel {
+	public partial class ProductPackageViewModel : InformationAssociationViewModel {
 
 
 		public ProductPackageViewModel LoadProductPackage(ProductPackage instance) {
@@ -2230,7 +2230,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("ProductMapping",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class ProductMappingViewModel : AssociationViewModel {
+	public partial class ProductMappingViewModel : FeatureAssociationViewModel {
 		private categoryOfProductMapping _categoryOfProductMapping  = default;
 
 		[Category("ProductMapping")]
@@ -2278,7 +2278,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("Correlated",0)]
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
-	public partial class CorrelatedViewModel : AssociationViewModel {
+	public partial class CorrelatedViewModel : FeatureAssociationViewModel {
 
 
 		public CorrelatedViewModel LoadCorrelated(Correlated instance) {
@@ -2351,6 +2351,26 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<PriceOfNauticalProductViewModel> PriceOfNauticalProduct { get; set; } = new();
+
+		[Optional]
+		private ProductionDetailsViewModel _productionDetails = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ProductionDetailsViewModel ProductionDetails {
+			get {
+				return _productionDetails;
+			}
+			set {
+				SetValue(ref _productionDetails, value);
+			}
+		}
+
+		[Category("InformationBindings")]
+		public ObservableCollection<DistributionDetailsViewModel> DistributionDetails { get; set; } = new();
 
 		public CatalogueSectionHeaderViewModel LoadCatalogueSectionHeader(CatalogueSectionHeader instance) {
 			catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2428,6 +2448,34 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Optional]
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
+
+		[Optional]
+		private ProducerContactViewModel _producerContact = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public ProducerContactViewModel ProducerContact {
+			get {
+				return _producerContact;
+			}
+			set {
+				SetValue(ref _producerContact, value);
+			}
+		}
+
+		[Optional]
+		private DistributorContactViewModel _distributorContact = new();
+
+		[Category("InformationBindings")]
+		[ExpandableObject]
+		public DistributorContactViewModel DistributorContact {
+			get {
+				return _distributorContact;
+			}
+			set {
+				SetValue(ref _distributorContact, value);
+			}
+		}
 
 		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
 			contactInstructions = instance.contactInstructions;
@@ -2614,6 +2662,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public ObservableCollection<sourceIndicationViewModel> sourceIndication  { get; set; } = new ();
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<PriceOfNauticalProductViewModel> PriceOfNauticalProduct { get; set; } = new();
+
 		public PriceInformationViewModel LoadPriceInformation(PriceInformation instance) {
 			information.Clear();
 			if (instance.information is not null) {
@@ -2716,6 +2767,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 
+		[Category("InformationBindings")]
+		public ObservableCollection<ProducerContactViewModel> ProducerContact { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<ProductionDetailsViewModel> ProductionDetails { get; set; } = new();
+
 		public ProducerInformationViewModel LoadProducerInformation(ProducerInformation instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			agencyName = instance.agencyName;
@@ -2766,6 +2823,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+
+		[Category("InformationBindings")]
+		public ObservableCollection<DistributionDetailsViewModel> DistributionDetails { get; set; } = new();
+
+		[Category("InformationBindings")]
+		public ObservableCollection<DistributorContactViewModel> DistributorContact { get; set; } = new();
 
 		public DistributorInformationViewModel LoadDistributorInformation(DistributorInformation instance) {
 			distributorName = instance.distributorName;
