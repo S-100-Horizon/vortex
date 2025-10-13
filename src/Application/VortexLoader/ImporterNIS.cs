@@ -354,12 +354,13 @@ namespace S100Framework.Applications
             QueryFilter queryFilter = new QueryFilter {
                 WhereClause = "1=1" // Gets all rows
             };
+            table.DeleteRows(queryFilter);
+            return;
 
+            //TODO: Doesn't work!
             using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
                 while (rowCursor.MoveNext()) {
-                    using (Row row = rowCursor.Current) {
-                        row.Delete();
-                    }
+                    rowCursor.Current.Delete();
                 }
             }
         }

@@ -210,7 +210,7 @@ namespace S100Framework.Applications.Singletons
 
             var featureGrouper = new FeatureGrouper();
             //_groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA, portsAndServicesA }, ImporterNIS.QueryFilter);
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA}, ImporterNIS.QueryFilter);
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(new() { culturalFeaturesA }, ImporterNIS.QueryFilter);
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase destination) {
@@ -220,7 +220,7 @@ namespace S100Framework.Applications.Singletons
 
             lock (_lock) {
                 if (_instance == null) {
-                    _instance = new Bridges(source, destination,ImporterNIS.QueryFilter);
+                    _instance = new Bridges(source, destination, ImporterNIS.QueryFilter);
                 }
             }
         }
@@ -235,47 +235,48 @@ namespace S100Framework.Applications.Singletons
 
             using (var cursor = featuretypeTable.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Bridge'" }, useRecyclingCursor: true)) {
                 while (cursor.MoveNext()) {
-                    using (var row = cursor.Current) {
-                        long oid = row.GetObjectID();
-                        //var shape = row.GetShape();
-                        Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
+                    var row = cursor.Current;
 
-                        var bindings = _instance!.GetBindings($"{row.Crc32()}");
+                    long oid = row.GetObjectID();
+                    //var shape = row.GetShape();
+                    Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
 
-                        var featureBindings = new List<featureBinding>();
+                    var bindings = _instance!.GetBindings($"{row.Crc32()}");
+
+                    var featureBindings = new List<featureBinding>();
 
 
-                        foreach (var binding in bindings) {
-                            var relatedBridge = $"{row.Crc32()}";
-                            var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
-                            var featureBinding = new featureBinding {
-                                association = "BridgeAggregation",
-                                associationId = bridgeElement!.BridgeAggregationName,
-                                featureId = binding.ChildName,
-                                role = "theComponent",
-                                roleType = "association"
-                            };
-                            featureBindings.Add(featureBinding);
-                        }
-                        row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
-
-                        // Update opening bridge
-                        var canOpen = bindings.Any(obj => {
-                            return obj.childTypeS101 == typeof(SpanOpening);
-                        });
-
-                        var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
-                        var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
-
-                        //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
-
-                        bridge.openingBridge = canOpen;
-                        bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
-
-                        row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
-
-                        row.Store();
+                    foreach (var binding in bindings) {
+                        var relatedBridge = $"{row.Crc32()}";
+                        var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
+                        var featureBinding = new featureBinding {
+                            association = "BridgeAggregation",
+                            associationId = bridgeElement!.BridgeAggregationName,
+                            featureId = binding.ChildName,
+                            role = "theComponent",
+                            roleType = "association"
+                        };
+                        featureBindings.Add(featureBinding);
                     }
+                    row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
+
+                    // Update opening bridge
+                    var canOpen = bindings.Any(obj => {
+                        return obj.childTypeS101 == typeof(SpanOpening);
+                    });
+
+                    var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
+                    var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
+
+                    //S100Framework.DomainModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
+
+                    bridge.openingBridge = canOpen;
+                    bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
+
+                    row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
+
+                    cursor.Update(row);
+                    //row.Store();
                 }
             }
             // Note: all elements are already bound to the bridge - search for relatedBridge and follow the trail...
