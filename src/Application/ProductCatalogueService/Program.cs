@@ -2,29 +2,60 @@ using ArcGIS.Core.Data;
 using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Mvc; // Required for ApiVersion
-using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models; // Required for AddApiVersioning
+using Serilog;
+using Serilog.Events;
+using System.Reflection;
 
 namespace ProductCatalogueService
 {
     public class Program
     {
+        private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] [{SourceContext}] {Message:lj} {NewLine}{Exception}";
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // logging 
+            builder.Host.UseSerilog((context, loggerConfiguration) => {
+                loggerConfiguration.MinimumLevel.Verbose()
+                     .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                     .Enrich.FromLogContext()
+                     .Enrich.WithProperty("MachineName", Environment.MachineName)
+                     .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose);
 
+                if (System.Diagnostics.Debugger.IsAttached) {
+                    loggerConfiguration = loggerConfiguration
+                        .WriteTo.File(
+                            System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProductCatalogue", "ProductCatalogueAPI-developer.log"),
+                            rollingInterval: RollingInterval.Month,
+                            retainedFileCountLimit: 1,
+                            shared: true,
+                            outputTemplate: outputTemplate);
+                }
+            });
+
+            // Add services to the container.
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            //builder.Services.AddSwaggerGen(c => {
-            //    c.EnableAnnotations();
-            //     c.SwaggerDoc("v1", new OpenApiInfo());   //  { Title = "ProductCatalogueService", Version = "v1" }
-            //});
 
-            builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-                .AddNegotiate();
+            builder.Services.AddSwaggerGen(options => {
+                //options.SwaggerDoc("v1", new OpenApiInfo {
+                //    Title = "ProductCatalogue API",
+                //    Version = "v1",
+                //    Description = "OpenAPI 3 (Swagger)"
+                //});
+
+                // Include XML comments if generated
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                if (File.Exists(xmlPath))
+                    options.IncludeXmlComments(xmlPath);
+
+            });
+
+
+            builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme).AddNegotiate();
 
             builder.Services.AddAuthorization(options => {
                 // By default, all incoming requests will be authorized according to the default policy.
@@ -41,53 +72,60 @@ namespace ProductCatalogueService
                 options.LowercaseUrls = true;
             });
 
-
-
-
             // Setup ArcGIS and ProductManager
             ArcGIS.Core.Hosting.Host.Initialize();
 
-            // Set output path to bin
-            var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"));
+            // Use the attached .zip gdb when developing
+            if (System.Diagnostics.Debugger.IsAttached) {
+                // If no .gdb exist in bin, extract the .zip from project root
+                var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"));
 
-            if (!output.Exists)
-                new FastZip().ExtractZip("s100ed9.gdb.zip", output.FullName, null);
+                if (!output.Exists)
+                    new FastZip().ExtractZip("s100ed9.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"), null);
 
+                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(output.FullName)));
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(output.FullName)));
-
-                return new Geodatabase(connectionFile);
-            });
-
-
-            builder.Services.AddSingleton(productManager);
+                    return new Geodatabase(connectionFile);
+                });
 
 
+                builder.Services.AddSingleton(productManager);
+            }
+            else {
+                // Connect to prod DB
+                var path = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
 
+                if (string.IsNullOrEmpty(path))
+                    throw new ArgumentNullException("Environment variable is null!");
 
-            // Caching
-            builder.Services.AddMemoryCache();
+                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(path)));
+
+                    return new Geodatabase(connectionFile);
+                });
+
+                builder.Services.AddSingleton(productManager);
+            }
 
             // Problem details & Exception handling
             builder.Services.AddProblemDetails();
             builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
+            // Caching
+            builder.Services.AddMemoryCache();
+
             var app = builder.Build();
 
+            app.UseExceptionHandler();
 
             // Configure the HTTP request pipeline.
             app.UseSwagger();
             app.UseSwaggerUI();
-            //app.UseSwaggerUI(options =>              
-            //{
-            //    options.RoutePrefix = string.Empty;     // Default to this
-            //});
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -214,7 +214,6 @@ namespace TestProductCatalogue
                 var geodatabase = new Geodatabase(connectionFile);
 
                 using (var table = geodatabase.OpenDataset<Table>("configuration")) {
-                    var skrrt = new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!));
                     using var buffer = table.CreateRowBuffer();
                     buffer["ps"] = "S-128.Horizon";
                     buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);

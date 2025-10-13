@@ -1,13 +1,15 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using System.Diagnostics;
 using System.Text;
+using static ProductCatalogueService.RequestTypes;
+using static ProductCatalogueService.ResponseTypes;
 using IO = System.IO;
 
 namespace ProductCatalogueService.Controllers
@@ -21,32 +23,91 @@ namespace ProductCatalogueService.Controllers
     {
         private readonly ILogger<ElectronicProductsController> _logger = logger;
         private readonly IElectronicProductManager _electronicProductManager = productManager.ElectronicProductManager;
-
         private readonly IMemoryCache _cache = cache;
 
-        ////[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPost("export/{name}", Name = "ExportProduct")]
-        //[SwaggerOperation(Summary = "Creates an export of the specified electronic product, in YAML format", Description = "")]
-        public async Task<IActionResult> Export(string name = "101DK0040349E") {
+        /// <summary>
+        /// Get all product names in the database
+        /// </summary>
+        /// <returns>An collection with all productnames</returns>
+        [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpGet(Name = "GetAllElectronicProducts")]
+        public IActionResult GetAllElectronicProducts() {
             var sw = Stopwatch.StartNew();
-            var product = productManager.ElectronicProductManager.ElectronicProduct(name);
+            var response = new ApiResponse<string[]>();
 
-            if (product == null)
-                return StatusCode(StatusCodes.Status404NotFound);
+            var productNames = _electronicProductManager.ToArray();
 
-            var cacheKey = $"EXPORT::{name}::{product.updateNumber}::{product.editionNumber}";
+            response.Data = productNames;
+            response.TotalHits = productNames.Length;
+            response.DurationMs = sw.ElapsedMilliseconds;
+
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Get a specific electronic product
+        /// </summary>
+        /// <param name="name">The name of the dataset.</param>
+        /// <returns>The product</returns>
+        [ProducesResponseType(typeof(ApiResponse<ElectronicProductResponse>), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpGet("{name}", Name = "GetElectronicProduct")]
+        public IActionResult GetElectronicProduct(string name = "101DK0040349E") {
+            var sw = Stopwatch.StartNew();
+            var response = new ApiResponse<ElectronicProductResponse>();
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+            if (product == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return NotFound(response);
+            }
+
+            var responseObj = new ElectronicProductResponse() {
+                CompressionFlag = product.compressionFlag,
+                DatasetName = product.datasetName,
+                IssueDate = product.issueDate,
+                IssueTime = product.issueTime,
+                ProductSpecification = product.productSpecification,
+                TypeOfProductFormat = product.typeOfProductFormat,
+                EditionNumber = product.editionNumber ?? 0,
+                UpdateNumber = product.updateNumber ?? 0,
+            };
+
+            response.Data = responseObj;
+            response.TotalHits = 1;
+            response.DurationMs = sw.ElapsedMilliseconds;
+
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Creates a new dataset.
+        /// </summary>
+        /// <param name="name">The name of the dataset.</param>
+        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("{name}/newdataset", Name = "NewDataset")]
+        public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
+            var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+            if (product == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return NotFound(response);
+            }
+
+            var cacheKey = $"{nameof(NewDataset)}::{name}::{product.editionNumber}::{product.updateNumber}";
 
 
             if (!_cache.TryGetValue(cacheKey, out string? yaml)) {
-                S100Framework.YAML.Dataset dataset;
-
-                if (product.editionNumber == 1 && product.updateNumber == 0)
-                    dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-                else
-                    dataset = await _electronicProductManager.ReissueAsync(name);
+                var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
 
                 yaml = dataset.Serialize();
 
@@ -54,116 +115,129 @@ namespace ProductCatalogueService.Controllers
                     .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
             }
 
-            if (string.IsNullOrEmpty(yaml))
-                return StatusCode(StatusCodes.Status500InternalServerError);
+            if (string.IsNullOrEmpty(yaml)) {
+                response.Success = false;
+                response.Message = $"An error occured attempting to read dataset '{name}'.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
+
 
             var bytes = Encoding.UTF8.GetBytes(yaml);
-            return File(bytes, "application/x-yaml", $"{name}.yaml");
+            return File(bytes, "application/yaml", $"{name}.yaml");
         }
 
-
-        ////[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string[]>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost("export", Name = "ExportFull", Order = 3)]
-        //public async Task<IActionResult> CreateFullExport() {
-        //    var sw = Stopwatch.StartNew();
-        //    var productNames = _electronicProductManager.ToArray();
-
-        //    var cacheKey = $"FULLEXPORT::{productNames.Length}";
-
-        //    var yamls = new Dictionary<string, string>();
-
-        //    if (!_cache.TryGetValue(cacheKey, out yamls)) {
-        //        yamls = new Dictionary<string, string>();
-        //        int count = 0;
-        //        foreach (var name in productNames) {
-        //            count++;
-        //            if (count > 2)
-        //                continue;
-        //            var product = productManager.ElectronicProductManager.ElectronicProduct(name);
-
-        //            S100Framework.YAML.Dataset dataset;
-        //            if (product.editionNumber == 1 && product.updateNumber == 0)
-        //                dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-        //            else
-        //                dataset = await _electronicProductManager.ReissueAsync(name);
-
-        //            var yaml = dataset.Serialize();
-        //            yamls!.Add(name, yaml);
-        //        }
-
-        //        _cache.Set(cacheKey, yamls, new MemoryCacheEntryOptions()
-        //         .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
-        //    }
-
-        //    using var ms = new MemoryStream();
-        //    using var zipStream = new ZipOutputStream(ms);
-        //    zipStream.SetLevel(9);
-
-        //    foreach (var kvp in yamls) {
-        //        var bytes = Encoding.UTF8.GetBytes(kvp.Value);
-        //        var entry = new ZipEntry($"{kvp.Key}.yaml") {
-        //            DateTime = DateTime.Now,
-        //            Size = bytes.Length
-        //        };
-
-        //        zipStream.PutNextEntry(entry);
-        //        zipStream.Write(bytes, 0, bytes.Length);
-        //        zipStream.CloseEntry();
-        //    }
-
-        //    zipStream.Finish();
-        //    zipStream.IsStreamOwner = false;
-        //    zipStream.Close();
-
-
-        //    ms.Position = 0;
-        //    return File(ms.ToArray(), "application/zip", "datasets.zip");
-        //}
-
-        [ProducesResponseType(typeof(ResponseTypes.ApiResponse<ElectronicProduct>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpGet("{name}", Name = "GetElectronicProduct")]
-        public IActionResult GetElectronicProduct(string name = "101DK0040349E") {
+        /// <summary>
+        /// Creates a new edition.
+        /// </summary>
+        /// <param name="name">The name of the dataset.</param>
+        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("{name}/newedition", Name = "NewEdition")]
+        public async Task<IActionResult> NewEdition(string name = "101DK0040349E") {
             var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
 
             var product = _electronicProductManager.ElectronicProduct(name);
 
-            return Ok(new ResponseTypes.ApiResponse<ElectronicProduct>() {
-                Data = product,
-                DurationMs = sw.ElapsedMilliseconds,
-                TotalHits = 1
-            });
+            if (product == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return NotFound(response);
+            }
+
+            var cacheKey = $"{nameof(NewEdition)}::{name}::{product.editionNumber}::{product.updateNumber}";
+
+            if (!_cache.TryGetValue(cacheKey, out string? yaml)) {
+                var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
+
+                yaml = dataset.Serialize();
+
+                _cache.Set(cacheKey, yaml, new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
+            }
+
+            if (string.IsNullOrEmpty(yaml)) {
+                response.Success = false;
+                response.Message = $"An error occured attempting to read dataset '{name}'.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(yaml);
+            return File(bytes, "application/yaml", $"{name}.yaml");
         }
 
-
-        [ProducesResponseType(typeof(ResponseTypes.ApiResponse<string[]>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpGet(Name = "GetAllElectronicProducts")]
-        public IActionResult GetAllElectronicProducts() {
+        /// <summary>
+        /// Creates a new update.
+        /// </summary>
+        /// <param name="name">The name of the dataset.</param>
+        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("{name}/newupdate", Name = "NewUpdate")]
+        public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
             var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
+            var product = _electronicProductManager.ElectronicProduct(name);
 
-            var productNames = _electronicProductManager.ToArray();
+            if (product == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return NotFound(response);
+            }
 
-            return Ok(new ResponseTypes.ApiResponse<string[]>() {
-                Data = productNames,
-                DurationMs = sw.ElapsedMilliseconds,
-                TotalHits = productNames.Length
-            });
+            // Check if product has any updates before creating new update
+            var dirty = await _electronicProductManager.IsDirtyAsync(name);
+
+            if (!dirty) {
+                response.Success = false;
+                response.Message = $"Product has no updates.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return BadRequest(response);
+            }
+
+            var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
+
+            var yaml = dataset.Serialize();
+
+
+            if (string.IsNullOrEmpty(yaml)) {
+                response.Success = false;
+                response.Message = $"An error occured attempting to read dataset '{name}'.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
+
+            var bytes = Encoding.UTF8.GetBytes(yaml);
+            return File(bytes, "application/yaml", $"{name}.yaml");
         }
 
-        [ProducesResponseType(typeof(ResponseTypes.ApiResponse<string[]>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPost("import", Name = "ImportFull")]
-        public async Task<IActionResult> ImportElectronicProducts() {
+        /// <summary>
+        /// Imports all existing products from a S-57 database
+        /// </summary>
+        /// <returns>An collection with all imported productnames.</returns>
+        [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("load", Name = "LoadElectronicProducts")]
+        public async Task<IActionResult> LoadElectronicProducts() {
+            var response = new ApiResponse<string[]>();
             var sw = Stopwatch.StartNew();
             var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
 
-            if (string.IsNullOrEmpty(s57))
-                return StatusCode(StatusCodes.Status500InternalServerError, "No S57 Database found");
+            if (string.IsNullOrEmpty(s57)) {
+                response.Success = false;
+                response.Message = $"No S-57 database was configured";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
 
             var tasks = new List<Task>();
-            await productManager.Dispatch(async () => {
+            await productManager.Dispatch(() => {
                 var connectionFile = new Uri(IO.Path.GetFullPath(s57));
 
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -228,7 +302,7 @@ namespace ProductCatalogueService.Controllers
                     var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
                     // todo: kald med s57
-                    tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
+                    tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                 }
             });
 
@@ -236,115 +310,70 @@ namespace ProductCatalogueService.Controllers
 
             var products = _electronicProductManager.ToArray();
 
+            response.Data = products;
+            response.DurationMs = sw.ElapsedMilliseconds;
+            response.TotalHits = products.Length;
 
-            return Ok(new ResponseTypes.ApiResponse<string[]>() {
-                Data = products,
-                DurationMs = sw.ElapsedMilliseconds,
-                TotalHits = products.Length,
-            });
+            return Ok(response);
         }
 
-        //[ProducesResponseType(typeof(ResponseTypes.ApiResponse<ElectronicProduct>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost(Name = "CreateElectronicProduct")]
-        //public async Task<IActionResult> CreateElectronicProduct() {
-        //    return StatusCode(StatusCodes.Status501NotImplemented);
 
+        //[ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
+        //[HttpPost("export", Name = "ExportFull")]
+        //public async Task<IActionResult> CreateFullExport() {
+        //    return StatusCode(StatusCodes.Status501NotImplemented, "Not yet implemented");
         //    var sw = Stopwatch.StartNew();
-        //    var name = "101DK0040350E";
-        //    var specification = new productSpecification() {
-        //        editionDate = default,
-        //        editionDateField = default,
-        //        iSSN = default,
-        //        name = default!,
-        //        version = default!,
-        //    };
-        //    var usage = specificUsage.NavigationalPurposeOverview;
+        //    var response = new ApiResponse();
+        //    var productNames = _electronicProductManager.ToArray();
 
-        //    var polygon = ArcGIS.Core.Geometry.PolygonBuilderEx.CreatePolygon(new List<MapPoint>());
+        //    var cacheKey = $"FULLEXPORT::{productNames.Length}";
 
-        //    await _electronicProductManager.CreateElectronicProductAsync(name, specification, usage, polygon);
+        //    var yamls = new Dictionary<string, string>();
 
-        //    var product = _electronicProductManager.ElectronicProduct(name);
+        //    if (!_cache.TryGetValue(cacheKey, out yamls)) {
+        //        yamls = new Dictionary<string, string>();
+        //        int count = 0;
+        //        foreach (var name in productNames) {
+        //            count++;
+        //            if (count > 2)
+        //                continue;
+        //            var product = _electronicProductManager.ElectronicProduct(name);
 
-        //    sw.Stop();
-        //    return Ok(new ResponseTypes.ApiResponse<ElectronicProduct>() {
-        //        Data = product,
-        //        DurationMs = sw.ElapsedMilliseconds,
-        //        TotalHits = 1
-        //    });
-        //}
+        //            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+        //            //if (product.editionNumber == 1 && product.updateNumber == 0)
 
+        //            var yaml = dataset.Serialize();
+        //            yamls!.Add(name, yaml);
+        //        }
 
-        //[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost("{name}/newedition", Name = "NewEdition")]
-        //public async Task<IActionResult> CreateNewEdition(string name = "101DK0040349E") {
-        //    var sw = Stopwatch.StartNew();
+        //        _cache.Set(cacheKey, yamls, new MemoryCacheEntryOptions()
+        //         .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
+        //    }
 
-        //    var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
+        //    using var ms = new MemoryStream();
+        //    using var zipStream = new ZipOutputStream(ms);
+        //    zipStream.SetLevel(9);
 
-        //    var yaml = dataset.Serialize();
+        //    foreach (var kvp in yamls) {
+        //        var bytes = Encoding.UTF8.GetBytes(kvp.Value);
+        //        var entry = new ZipEntry($"{kvp.Key}.yaml") {
+        //            DateTime = DateTime.Now,
+        //            Size = bytes.Length
+        //        };
 
-        //    sw.Stop();
-        //    return Ok(new ResponseTypes.ApiResponse<string>() {
-        //        Data = yaml,
-        //        DurationMs = sw.ElapsedMilliseconds,
-        //        TotalHits = 1
-        //    });
-        //}
+        //        zipStream.PutNextEntry(entry);
+        //        zipStream.Write(bytes, 0, bytes.Length);
+        //        zipStream.CloseEntry();
+        //    }
 
-        //[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost("{name}/reissue", Name = "ReIssue")]
-        //public async Task<IActionResult> ReIssue(string name = "101DK0040349E") {
-        //    var sw = Stopwatch.StartNew();
-
-        //    var dataset = await _electronicProductManager.ReissueAsync(name);
-
-        //    var yaml = dataset.Serialize();
-
-        //    sw.Stop();
-        //    return Ok(new ResponseTypes.ApiResponse<string>() {
-        //        Data = yaml,
-        //        DurationMs = sw.ElapsedMilliseconds,
-        //        TotalHits = 1
-        //    });
-        //}
-
-        //[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost("{name}/newupdate", Name = "NewUpdate")]
-        //public async Task<IActionResult> CreateNewUpdate(string name = "101DK0040349E") {
-        //    var sw = Stopwatch.StartNew();
-        //    var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
-
-        //    var yaml = dataset.Serialize();
-
-        //    sw.Stop();
-        //    return Ok(new ResponseTypes.ApiResponse<string>() {
-        //        Data = yaml,
-        //        DurationMs = sw.ElapsedMilliseconds,
-        //        TotalHits = 1
-        //    });
-        //}
+        //    zipStream.Finish();
+        //    zipStream.IsStreamOwner = false;
+        //    zipStream.Close();
 
 
-        //[ProducesResponseType(typeof(ResponseTypes.ApiResponse<string>), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //[HttpPost("{name}/newdataset", Name = "NewDataset")]
-        //public async Task<IActionResult> CreateNewDataset(string name = "101DK0040349E") {
-        //    var sw = Stopwatch.StartNew();
-        //    var dataset = await productManager.ElectronicProductManager.CreateNewDatasetAsync(name);
-
-        //    var yaml = dataset.Serialize();
-
-        //    sw.Stop();
-        //    return Ok(new ResponseTypes.ApiResponse<string>() {
-        //        Data = yaml,
-        //        DurationMs = sw.ElapsedMilliseconds,
-        //        TotalHits = 1
-        //    });
+        //    ms.Position = 0;
+        //    return File(ms.ToArray(), "application/zip", "datasets.zip");
         //}
     }
 }
