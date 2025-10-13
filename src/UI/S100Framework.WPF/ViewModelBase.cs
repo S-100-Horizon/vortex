@@ -250,7 +250,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private String _role = string.Empty;
 
-        [Editor(typeof(Editors.InformationAssociationRoleEditor), typeof(Editors.InformationAssociationRoleEditor))]
+        [Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
         public String role {
             get { return _role; }
             set {
@@ -260,6 +260,7 @@ namespace S100Framework.WPF.ViewModel
 
         private String _informationId = string.Empty;
 
+        [Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
         public String informationId {
             get {
                 return _informationId;
@@ -280,7 +281,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private String _role = string.Empty;
 
-        [Editor(typeof(Editors.FeatureAssociationRoleEditor), typeof(Editors.FeatureAssociationRoleEditor))]
+        [Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
         public String role {
             get { return _role; }
             set {
@@ -290,6 +291,7 @@ namespace S100Framework.WPF.ViewModel
 
         private String _featureId = string.Empty;
 
+        [Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
         public String featureId {
             get {
                 return _featureId;
