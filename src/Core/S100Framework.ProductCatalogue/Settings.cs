@@ -4,6 +4,8 @@
     public class ProductCatalogue
     {
         public Connection[] Connections { get; set; } = [];
+
+        public string OutputFolder { get; set; } = @".\";
     }
 }
 
