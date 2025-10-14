@@ -52,12 +52,12 @@ namespace ProductCatalogueService.Controllers
         /// </summary>
         /// <param name="name">The name of the dataset.</param>
         /// <returns>The product</returns>
-        [ProducesResponseType(typeof(ApiResponse<ElectronicProductResponse>), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse<ElectronicProduct>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpGet("{name}", Name = "GetElectronicProduct")]
         public IActionResult GetElectronicProduct(string name = "101DK0040349E") {
             var sw = Stopwatch.StartNew();
-            var response = new ApiResponse<ElectronicProductResponse>();
+            var response = new ApiResponse<ElectronicProduct>();
             var product = _electronicProductManager.ElectronicProduct(name);
 
             if (product == null) {
@@ -67,18 +67,7 @@ namespace ProductCatalogueService.Controllers
                 return NotFound(response);
             }
 
-            var responseObj = new ElectronicProductResponse() {
-                CompressionFlag = product.compressionFlag,
-                DatasetName = product.datasetName,
-                IssueDate = product.issueDate,
-                IssueTime = product.issueTime,
-                ProductSpecification = product.productSpecification,
-                TypeOfProductFormat = product.typeOfProductFormat,
-                EditionNumber = product.editionNumber ?? 0,
-                UpdateNumber = product.updateNumber ?? 0,
-            };
-
-            response.Data = responseObj;
+            response.Data = product;
             response.TotalHits = 1;
             response.DurationMs = sw.ElapsedMilliseconds;
 
