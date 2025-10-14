@@ -1,10 +1,13 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
+using S100Framework.DomainModel.S100;
 using S100Framework.YAML;
+using Serilog;
 using System.Diagnostics;
 using System.Text.Json;
 using Xunit.Abstractions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
 namespace TestProductCatalogue
@@ -214,7 +217,6 @@ namespace TestProductCatalogue
                 var geodatabase = new Geodatabase(connectionFile);
 
                 using (var table = geodatabase.OpenDataset<Table>("configuration")) {
-                    var skrrt = new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!));
                     using var buffer = table.CreateRowBuffer();
                     buffer["ps"] = "S-128.Horizon";
                     buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
@@ -339,6 +341,41 @@ namespace TestProductCatalogue
             var yaml = dataset.Serialize();
 
             System.Diagnostics.Debugger.Break();
+        }
+
+
+        [Fact]
+        public void Test_BuildExchangeset() {
+            var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string datasetName = "101DK0040349E";
+            var edition = 1;
+
+
+            var commandline = $"-f \"{IO.Path.Combine(output, $"{datasetName}.yaml")}\" -c \"{@$"{output}\101_Feature_Catalogue_2.0.0.xml"}\" -d \"{IO.Path.Combine(output, datasetName)}\"";
+
+            // todo: figure out arguments
+
+            Log.Information("s100compiler.exe -f {dataset}.yaml -d {dataset} -C {dataset} -c 101_Feature_Catalogue_2.0.0.xml", datasetName);
+            commandline += $" -C {datasetName}";
+
+            var p = new Process();
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            p.StartInfo.FileName = @"C:\Program Files\s100compiler\s100compiler.exe";
+            p.StartInfo.Arguments = commandline;
+            p.StartInfo.WorkingDirectory = output;
+            p.EnableRaisingEvents = true;
+            p.Exited += (s, e) => {
+            };
+
+            p.Start();
+            p.WaitForExit();
+
+            if (p.ExitCode != 0) {
+                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
+                throw new ArgumentException(commandline);
+            }
         }
 
         [Fact]
