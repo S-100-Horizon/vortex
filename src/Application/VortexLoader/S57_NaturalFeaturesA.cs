@@ -92,7 +92,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -154,7 +154,7 @@ namespace S100Framework.Applications
                             LandAreas.Instance.Add(current.SHAPE!.Clone());
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -208,7 +208,7 @@ namespace S100Framework.Applications
 
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -254,7 +254,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -312,7 +312,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -380,7 +380,7 @@ namespace S100Framework.Applications
                             SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(bufferSurface);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);

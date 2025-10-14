@@ -81,7 +81,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}" ?? "Unknown name";
+                            var name = featureN.Crc32() ?? "Unknown name";
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -178,7 +178,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
@@ -240,7 +240,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);

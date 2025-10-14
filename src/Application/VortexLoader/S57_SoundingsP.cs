@@ -154,7 +154,7 @@ namespace S100Framework.Applications
 
                             var featureN = featureClass.CreateRow(bufferPointset);
 
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, sounding, featureN, sounding.scaleMinimum);
@@ -212,7 +212,7 @@ namespace S100Framework.Applications
                             bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

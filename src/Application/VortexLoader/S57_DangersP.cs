@@ -127,7 +127,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var nameN = $"{featureN.Crc32()}";
+                                var nameN = featureN.Crc32();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, nameN);
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureObs = featureClass.CreateRow(buffer);
-                            var name = $"{featureObs.Crc32()}";
+                            var name = featureObs.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, obstruction, featureObs, obstruction.scaleMinimum);
@@ -330,7 +330,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -373,7 +373,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
@@ -483,7 +483,7 @@ namespace S100Framework.Applications
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);

@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -191,7 +191,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
@@ -323,7 +323,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -448,7 +448,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -577,7 +577,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -679,7 +679,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -775,7 +775,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -872,7 +872,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -974,7 +974,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1071,7 +1071,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1170,7 +1170,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1196,7 +1196,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
 
@@ -1226,7 +1226,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1258,7 +1258,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = $"{featureN.Crc32()}";
+                                var structureName = featureN.Crc32();
                                 if (structureName == null) {
                                     throw new NotSupportedException("empty structure name");
                                 }
@@ -1280,7 +1280,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = $"{featureN.Crc32()}";
+                                var structureName = featureN.Crc32();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1298,7 +1298,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = $"{featureN.Crc32()}";
+                                var structureName = featureN.Crc32();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1316,7 +1316,7 @@ namespace S100Framework.Applications
                                 SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var structureName = $"{featureN.Crc32()}";
+                                var structureName = featureN.Crc32();
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");
                                 Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1413,7 +1413,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1507,7 +1507,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1569,7 +1569,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1595,7 +1595,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1619,7 +1619,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1644,7 +1644,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, featureN.GetGlobalID(), name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -1668,7 +1668,7 @@ namespace S100Framework.Applications
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.Crc32()}";
+                            var name = featureN.Crc32();
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
