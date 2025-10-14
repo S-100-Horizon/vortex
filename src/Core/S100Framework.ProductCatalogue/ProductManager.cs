@@ -1,13 +1,16 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S100;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
+using S100Horizon.Settings;
 using Serilog;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
 namespace S100Framework.ProductCatalogue
@@ -35,6 +38,8 @@ namespace S100Framework.ProductCatalogue
         Task<bool> IsDirtyAsync(string name);
 
         ElectronicProduct? ElectronicProduct(string name);
+
+        string OutputFolder { get; }
     }
 
     public interface IProductManager
@@ -63,6 +68,7 @@ namespace S100Framework.ProductCatalogue
         private string _databaseName = string.Empty;
         private string _ownerName = string.Empty;
 
+        public string OutputFolder { get; internal set; }
         private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
 
         record ElectronicProductKey(string ps, string name)
@@ -116,6 +122,9 @@ namespace S100Framework.ProductCatalogue
                                     _connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
                                 }
                             }
+
+                            // Add output folder
+                            OutputFolder = settings.OutputFolder;
                         }
                     }
                 }
@@ -215,8 +224,12 @@ namespace S100Framework.ProductCatalogue
 
             var result = await this.GetElectronicProductAsync(name);
 
-            if ((result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue))
+            if (result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue)
                 throw new InvalidOperationException();
+
+            // set ed/upd
+            result.ElectronicProduct.editionNumber = 1;
+            result.ElectronicProduct.updateNumber = 0;
 
             return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.NewDataset);
         }
@@ -335,7 +348,6 @@ namespace S100Framework.ProductCatalogue
             return dirty;
         }
 
-       // ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts.TryGetValue(name.ToUpperInvariant(), return out var value);
         ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => _electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
 
         IEnumerator<string> IEnumerable<string>.GetEnumerator() {

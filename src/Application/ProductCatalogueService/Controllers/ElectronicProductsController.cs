@@ -4,8 +4,10 @@ using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
+using Serilog;
 using System.Diagnostics;
 using System.Text;
 using static ProductCatalogueService.RequestTypes;
@@ -87,7 +89,7 @@ namespace ProductCatalogueService.Controllers
         /// Creates a new dataset.
         /// </summary>
         /// <param name="name">The name of the dataset.</param>
-        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/yaml")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newdataset", Name = "NewDataset")]
@@ -103,35 +105,20 @@ namespace ProductCatalogueService.Controllers
                 return NotFound(response);
             }
 
-            var cacheKey = $"{nameof(NewDataset)}::{name}::{product.editionNumber}::{product.updateNumber}";
+
+            // Create exchange set?
+            _ = await _electronicProductManager.CreateNewDatasetAsync(name);
 
 
-            if (!_cache.TryGetValue(cacheKey, out string? yaml)) {
-                var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-
-                yaml = dataset.Serialize();
-
-                _cache.Set(cacheKey, yaml, new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
-            }
-
-            if (string.IsNullOrEmpty(yaml)) {
-                response.Success = false;
-                response.Message = $"An error occured attempting to read dataset '{name}'.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status500InternalServerError, response);
-            }
-
-
-            var bytes = Encoding.UTF8.GetBytes(yaml);
-            return File(bytes, "application/yaml", $"{name}.yaml");
+            response.DurationMs = sw.ElapsedMilliseconds;
+            return Ok(response);
         }
 
         /// <summary>
         /// Creates a new edition.
         /// </summary>
         /// <param name="name">The name of the dataset.</param>
-        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newedition", Name = "NewEdition")]
@@ -140,7 +127,6 @@ namespace ProductCatalogueService.Controllers
             var response = new ApiResponse();
 
             var product = _electronicProductManager.ElectronicProduct(name);
-
             if (product == null) {
                 response.Success = false;
                 response.Message = $"No electronic product with name '{name}' was found.";
@@ -148,16 +134,10 @@ namespace ProductCatalogueService.Controllers
                 return NotFound(response);
             }
 
-            var cacheKey = $"{nameof(NewEdition)}::{name}::{product.editionNumber}::{product.updateNumber}";
+            var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
 
-            if (!_cache.TryGetValue(cacheKey, out string? yaml)) {
-                var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
+            var yaml = dataset.Serialize();
 
-                yaml = dataset.Serialize();
-
-                _cache.Set(cacheKey, yaml, new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
-            }
 
             if (string.IsNullOrEmpty(yaml)) {
                 response.Success = false;
@@ -166,15 +146,19 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var bytes = Encoding.UTF8.GetBytes(yaml);
-            return File(bytes, "application/yaml", $"{name}.yaml");
+            CreateExchangeSet(product, yaml);
+
+
+            response.DurationMs = sw.ElapsedMilliseconds;
+            return Ok(response);
+
         }
 
         /// <summary>
         /// Creates a new update.
         /// </summary>
         /// <param name="name">The name of the dataset.</param>
-        [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK, "application/yaml")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
@@ -194,17 +178,16 @@ namespace ProductCatalogueService.Controllers
             // Check if product has any updates before creating new update
             var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            if (!dirty) {
-                response.Success = false;
-                response.Message = $"Product has no updates.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return BadRequest(response);
-            }
+            //if (!dirty) {
+            //    response.Success = false;
+            //    response.Message = $"Product has no updates.";
+            //    response.DurationMs = sw.ElapsedMilliseconds;
+            //    return BadRequest(response);
+            //}
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
             var yaml = dataset.Serialize();
-
 
             if (string.IsNullOrEmpty(yaml)) {
                 response.Success = false;
@@ -213,8 +196,11 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var bytes = Encoding.UTF8.GetBytes(yaml);
-            return File(bytes, "application/yaml", $"{name}.yaml");
+
+            CreateExchangeSet(product, yaml);
+            
+            response.DurationMs = sw.ElapsedMilliseconds;
+            return Ok(response);
         }
 
         /// <summary>
@@ -317,64 +303,49 @@ namespace ProductCatalogueService.Controllers
             return Ok(response);
         }
 
+        private void CreateExchangeSet(ElectronicProduct product, string yaml) {
+            var datasetName = product.datasetName;
 
-        //[ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        //[HttpPost("export", Name = "ExportFull")]
-        //public async Task<IActionResult> CreateFullExport() {
-        //    return StatusCode(StatusCodes.Status501NotImplemented, "Not yet implemented");
-        //    var sw = Stopwatch.StartNew();
-        //    var response = new ApiResponse();
-        //    var productNames = _electronicProductManager.ToArray();
-
-        //    var cacheKey = $"FULLEXPORT::{productNames.Length}";
-
-        //    var yamls = new Dictionary<string, string>();
-
-        //    if (!_cache.TryGetValue(cacheKey, out yamls)) {
-        //        yamls = new Dictionary<string, string>();
-        //        int count = 0;
-        //        foreach (var name in productNames) {
-        //            count++;
-        //            if (count > 2)
-        //                continue;
-        //            var product = _electronicProductManager.ElectronicProduct(name);
-
-        //            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-        //            //if (product.editionNumber == 1 && product.updateNumber == 0)
-
-        //            var yaml = dataset.Serialize();
-        //            yamls!.Add(name, yaml);
-        //        }
-
-        //        _cache.Set(cacheKey, yamls, new MemoryCacheEntryOptions()
-        //         .SetAbsoluteExpiration(TimeSpan.FromHours(24)));
-        //    }
-
-        //    using var ms = new MemoryStream();
-        //    using var zipStream = new ZipOutputStream(ms);
-        //    zipStream.SetLevel(9);
-
-        //    foreach (var kvp in yamls) {
-        //        var bytes = Encoding.UTF8.GetBytes(kvp.Value);
-        //        var entry = new ZipEntry($"{kvp.Key}.yaml") {
-        //            DateTime = DateTime.Now,
-        //            Size = bytes.Length
-        //        };
-
-        //        zipStream.PutNextEntry(entry);
-        //        zipStream.Write(bytes, 0, bytes.Length);
-        //        zipStream.CloseEntry();
-        //    }
-
-        //    zipStream.Finish();
-        //    zipStream.IsStreamOwner = false;
-        //    zipStream.Close();
+            //string update = product.updateNumber?.ToString("D3") ?? "000"; // 001
 
 
-        //    ms.Position = 0;
-        //    return File(ms.ToArray(), "application/zip", "datasets.zip");
-        //}
+            var dir = IO.Directory.CreateDirectory(_electronicProductManager.OutputFolder);
+
+            var exchangeset = IO.Directory.CreateDirectory(Path.Combine(dir.FullName, datasetName, $"{product.editionNumber}"));
+
+            // Write temp YAML file for the compiler
+            IO.File.WriteAllText(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"), yaml);
+
+            var catalogue = Path.Combine(AppContext.BaseDirectory, "101_Feature_Catalogue_2.0.0.xml");
+
+
+            var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName}";
+
+
+            var p = new Process();
+            p.StartInfo.CreateNoWindow = false;
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+            p.StartInfo.FileName = @"C:\Program Files\s100compiler\s100compiler.exe";
+            p.StartInfo.Arguments = commandline;
+            p.StartInfo.WorkingDirectory = exchangeset.FullName;
+            p.EnableRaisingEvents = true;
+            p.Exited += (s, e) => {
+            };
+
+            p.Start();
+            p.WaitForExit();
+
+            if (p.ExitCode != 0) {
+                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
+                // throw new ArgumentException(commandline); hmmmmmm
+            }
+
+            // Cleanup temp yaml
+            IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+        }
+
+
     }
 }
 
