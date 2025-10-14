@@ -92,7 +92,7 @@ namespace S100Framework.Applications.Singletons
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-            var informationName = $"{informationTypeRow.GetGlobalID():N}";
+            var informationName = $"{informationTypeRow.Crc32()}";
 
             // create Association
             var informationAssociationBuffer = informationassociationTable.CreateRowBuffer();
@@ -102,7 +102,7 @@ namespace S100Framework.Applications.Singletons
             informationAssociationBuffer["edition"] = ImporterNIS.s101version;
 
             var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-            var informationAssociationName = $"{association.GetGlobalID():N}";
+            var informationAssociationName = $"{association.Crc32()}";
 
             // create binding
             var informationBinding = new informationBinding {

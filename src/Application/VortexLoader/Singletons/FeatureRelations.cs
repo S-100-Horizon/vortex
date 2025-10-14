@@ -954,7 +954,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = $"{association.GetGlobalID():N}";
+                featureAssociationName = $"{association.Crc32()}";
 
             }
             {

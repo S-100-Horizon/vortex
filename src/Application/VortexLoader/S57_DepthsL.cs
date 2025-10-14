@@ -176,7 +176,7 @@ namespace S100Framework.Applications
                                 //    informationAssociationBuffer["code"] = "association";
 
                                 //    var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-                                //    var informationAssociationName = $"{association.GetGlobalID():N}";
+                                //    var informationAssociationName = $"{association.Crc32()}";
 
                                 //    // create binding
                                 //    var informationBinding = new informationBinding {
