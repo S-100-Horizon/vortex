@@ -108,7 +108,7 @@ namespace S100Framework.Applications.Singletons
             var informationBinding = new informationBinding {
                 informationId = informationName,
                 associationId = informationAssociationName,
-                association = nameof(NauticalInformation),
+                association = nameof(AdditionalInformation),
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 roleType = roleType.association.ToString()
             };
