@@ -53,7 +53,7 @@ namespace S100Framework.Applications
                     dataCoverage_m_scl.optimumDisplayScale = displayScale.OptimumDisplayScale;
                 }
                 else {
-                   Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM","Optimumdisplayscale must be set");
+                    Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM", "Optimumdisplayscale must be set");
                 }
 
                 {
@@ -106,23 +106,23 @@ namespace S100Framework.Applications
                     _ => throw new InvalidDataException(),
                 };
 
-                //var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
-                //    catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
-                //                S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
-                //            },
-                //    editionNumber = edtn,
-                //    updateNumber = updn,
-                //    issueDate = DateOnly.FromDateTime(isdt),
-                //    notForNavigation = true,
-                //    typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
-                //    datasetName = dsnm,
-                //    specificUsage = specificUsage,
-                //    productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
-                //        editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-                //        name = S100Framework.DomainModel.S101.Summary.ProductId,
-                //        version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
-                //    },
-                //};
+                var instance = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
+                    catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
+                                S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
+                            },
+                    editionNumber = edtn,
+                    updateNumber = updn,
+                    issueDate = DateOnly.FromDateTime(isdt),
+                    notForNavigation = true,
+                    typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
+                    datasetName = dsnm,
+                    specificUsage = specificUsage,
+                    productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
+                        editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
+                        name = S100Framework.DomainModel.S101.Summary.ProductId,
+                        version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
+                    },
+                };
 
                 using var cursorCoverage = productCoverageFeatureClass.Search(new QueryFilter {
                     WhereClause = $"Product_GUID = '{globalid:B}'",
@@ -186,10 +186,8 @@ namespace S100Framework.Applications
                                 dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
                             }
                             else {
-                                    Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage","Calculated", "Optimumdisplayscale must be set");
-                            } 
-
-                            {
+                                Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage", "Calculated", "Optimumdisplayscale must be set");
+                            } {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
@@ -241,25 +239,25 @@ namespace S100Framework.Applications
                     }
                 }
 
-                //{
+                {
 
 
-                // Store S-128 polygons
-                //    buffer["ps"] = ps128;
-                //    buffer["code"] = instance.GetType().Name;
-                //    buffer["edition"] = ImporterNIS.s101version;
-                //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                //    buffer["informationbindings"] = "[]";
+                    //Store S-128 polygons
+                    buffer["ps"] = ps128;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
 
-                //    SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
-                //    ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
-                //    var featureN = featureClass.CreateRow(buffer);
-                //    var name = featureN.Crc32();
-                //    // TODO: Create relations
-                //    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
-                //}
+                    SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
+                    ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
+                    var featureN = featureClass.CreateRow(buffer);
+                    var name = featureN.Crc32();
+                    // TODO: Create relations
+                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                }
 
-                //Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
+                Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
