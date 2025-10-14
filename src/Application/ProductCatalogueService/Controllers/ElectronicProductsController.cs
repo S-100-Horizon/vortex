@@ -107,7 +107,10 @@ namespace ProductCatalogueService.Controllers
 
 
             // Create exchange set?
-            _ = await _electronicProductManager.CreateNewDatasetAsync(name);
+            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+            var yaml = dataset.Serialize();
+
+            this.CreateExchangeSet(product, yaml);
 
 
             response.DurationMs = sw.ElapsedMilliseconds;
@@ -146,7 +149,7 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            CreateExchangeSet(product, yaml);
+            this.CreateExchangeSet(product, yaml);
 
 
             response.DurationMs = sw.ElapsedMilliseconds;
@@ -196,9 +199,20 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
+            var previous = "";
 
-            CreateExchangeSet(product, yaml);
-            
+            var diff = S100Framework.YAML.DatasetComparer.Compare(previous, yaml);
+
+            // foreach var previousupdate, DatasetComparer.AppendUpdate();
+
+
+            var update = S100Framework.YAML.DatasetComparer.BuildDatasetUpdate(yaml, diff);
+
+            // re-fetch product with new update
+            product = _electronicProductManager.ElectronicProduct(name);
+
+            this.CreateExchangeSet(product, update);
+
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
         }
@@ -296,6 +310,16 @@ namespace ProductCatalogueService.Controllers
 
             var products = _electronicProductManager.ToArray();
 
+            foreach (var productName in products) {
+                var product = _electronicProductManager.ElectronicProduct(productName);
+                if (product?.editionNumber == 0) {
+                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
+                    product.editionNumber = 1;
+                    var yaml = dataset.Serialize();
+                    this.CreateExchangeSet(product, yaml);
+                }
+            }
+
             response.Data = products;
             response.DurationMs = sw.ElapsedMilliseconds;
             response.TotalHits = products.Length;
@@ -323,9 +347,9 @@ namespace ProductCatalogueService.Controllers
 
 
             var p = new Process();
-            p.StartInfo.CreateNoWindow = false;
+            p.StartInfo.CreateNoWindow = true;
             p.StartInfo.UseShellExecute = true;
-            p.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.FileName = @"C:\Program Files\s100compiler\s100compiler.exe";
             p.StartInfo.Arguments = commandline;
             p.StartInfo.WorkingDirectory = exchangeset.FullName;
