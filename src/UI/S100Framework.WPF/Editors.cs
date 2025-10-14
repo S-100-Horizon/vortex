@@ -307,18 +307,19 @@ namespace S100Framework.WPF.Editors
 
 
 
-    public abstract class AssociationRoleEditor : ComboBoxEditor
+    public abstract class BindingRoleEditor : ComboBoxEditor
     {
     }
 
-    public class InformationAssociationRoleEditor : AssociationRoleEditor {
+    public class InformationBindingRoleEditor : BindingRoleEditor
+    {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
             var bindings = propertyItem.Instance as IInformationBindings;
             return bindings!.informationBindings.Select(e => e.role);
         }
     }
 
-    public class FeatureAssociationRoleEditor : AssociationRoleEditor
+    public class FeatureBindingRoleEditor : BindingRoleEditor
     {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
             var bindings = propertyItem.Instance as IFeatureBindings;
@@ -329,6 +330,32 @@ namespace S100Framework.WPF.Editors
             //var associations = informationBindingDefinitions.Where(e => e.association.Equals(propertyItem.DisplayName));
             //return associations.Select(e => e.role);
         }
+    }
+
+    public abstract class BindingLinkEditor : ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var control = new DropDownButton {
+                Name = $"_dropDownButton{Guid.NewGuid():N}",
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { 
+                Source = propertyItem.Instance, 
+                Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay 
+            };
+
+            return control;
+        }
+    }
+
+    public class InformationBindingLinkEditor : BindingLinkEditor
+    {
+
+    }
+
+    public class FeatureBindingLinkEditor : BindingLinkEditor
+    {
+
     }
 
 
