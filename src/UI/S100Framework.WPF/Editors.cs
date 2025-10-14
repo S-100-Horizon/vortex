@@ -1,4 +1,5 @@
-﻿using S100Framework.DomainModel;
+﻿using Microsoft.Xaml.Behaviors;
+using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
 using System.Collections;
 using System.Globalization;
@@ -335,8 +336,29 @@ namespace S100Framework.WPF.Editors
     public abstract class BindingLinkEditor : ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var control = new DropDownButton {
-                Name = $"_dropDownButton{Guid.NewGuid():N}",
+            var template = 
+                @"<ControlTemplate TargetType=""xctk:DropDownButton"">
+                        <ListBox>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text=""{Binding Id}"" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ControlTemplate>"";
+                ";
+            var control = new ComboBox {
+                Name = $"_dropDownButton{Guid.NewGuid():N}",                       
+            };
+            //control.Template = (ControlTemplate)System.Windows.Markup.XamlReader.Parse(template);
+
+
+            control.DropDownOpened += (s, e) => {
+                //System.Diagnostics.Debugger.Break();
+                control.Items.Clear();
+                control.Items.Add("Hello 1");
+                control.Items.Add("Hello 2");
+
             };
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { 
@@ -344,7 +366,37 @@ namespace S100Framework.WPF.Editors
                 Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay 
             };
 
+            control.ContextMenuOpening += (s, e) => {
+                System.Diagnostics.Debugger.Break();
+            };
+
+
+
+            //Interaction.Triggers
+            //InvokeCommandAction invokeCommandAction = new InvokeCommandAction {
+            //    Command = S100AttributeEditorControl.QueryFeaturesCommand,
+            //    CommandParameter = "{Binding Path=.}" 
+            //};
+
+            //var eventTrigger = new EventTrigger() { EventName = "DropDownClosed" };
+            //eventTrigger.Actions.Add(invokeCommandAction);
+
+            //control.Triggers.Add(eventTrigger);
+            
+            //Binding binding = new Binding { Path = new PropertyPath("DataContext.DropDownCommand") };
+            //BindingOperations.SetBinding(invokeCommandAction, InvokeCommandAction.CommandProperty, binding);
+
+            //Microsoft.Xaml.Behaviors.EventTrigger eventTrigger = new Microsoft.Xaml.Behaviors.EventTrigger { EventName = "DropDownClosed" };
+            //eventTrigger.Actions.Add(invokeCommandAction);
+
+            //TriggerCollection triggers = Interaction.GetTriggers(??);
+            //triggers.Add(eventTrigger);
+
             return control;
+        }
+
+        private void Control_ContextMenuOpening(object sender, ContextMenuEventArgs e) {
+            throw new NotImplementedException();
         }
     }
 

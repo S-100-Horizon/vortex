@@ -6,6 +6,16 @@
     xmlns:local="clr-namespace:S100Framework.WPF"
     xmlns:converters="clr-namespace:S100Framework.WPF.Converters">
 
+    <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="xctk:DropDownButton">
+        <ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Id}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </ControlTemplate>
+    
     <Style TargetType="{x:Type local:S100AttributeEditorControl}">
         <Setter Property="Background"
             Value="#BCC7D8" />
