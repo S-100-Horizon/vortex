@@ -888,8 +888,8 @@ namespace S100Framework.Applications.Singletons
             else {
                 List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!)!;
                 existingBinding.AddRange(primaryBindings);
-                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
-                s101SlaveFeature.Store();
+                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
+                s101MasterFeature.Store();
             }
         }
 
