@@ -60,6 +60,8 @@ namespace TestS100Framework
 
                 Build_S124();
 
+                Build_S125_FIHO();
+
                 //Build_S127();
 
                 Build_S128();
@@ -88,6 +90,10 @@ namespace TestS100Framework
                 Build_S124();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_ViewModel.cs"));
+
+                Build_S125_FIHO();
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-125_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_FC.cs"));
+                File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-125_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_ViewModel.cs"));                
 
                 //Build_S127();
                 //File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
@@ -248,6 +254,23 @@ namespace TestS100Framework
                 var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
 
                 var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\0.0.4\FC\S125FC.xml"));
+
+                //Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
+
+                File.WriteAllText(@".\..\..\..\..\S-125_FC.cs", content.DomainModel, Encoding.UTF8);
+                File.WriteAllText(@".\..\..\..\..\S-125_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+            }
+
+            [Fact]
+            public void Build_S125_FIHO() {
+                var type1 = typeof(Test.NullableTest);
+                var type2 = typeof(bool?);
+
+                var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
+
+                var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\1.0.0_FIHO\S125FC_FIXED.xml"));
 
                 //Assert.True(VerifyProductSpecification(s100));
 

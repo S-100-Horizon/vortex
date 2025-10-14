@@ -1,0 +1,42 @@
+Testreport S-125 (and S-201)
+
+SE / FIHO 2025-10-08
+
+
+1. Download and validate
+
+- Download FC- files from IHO GITHUB (S-125 and S-201)
+- Update schema definition from 5.0 to 5.2. Both FC-files are then valid against schema.
+
+New schema definition (with local path to schemaLocation);
+<S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.2 http://localhost/navpub/fihoUpload/html/S100/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
+
+2. Import into test-environment
+
+Due to test-environment restrictions;
+- Need to rename function and parent as these are reserved keywords
+- Need to rename navigationLine due to duplicate use of the name with different casing
+- In S-201 additionally need to rename positioningMethod
+
+Due to errors in the FC-file of S-125;
+- Change supertype of ('RadioStation', 'Daymark', 'FogSignal', 'RadarReflector', 'RadarTransponderBeacon', 'Retroreflector' from GenericBuoy to Equipment
+- Change Geometry of Lighthouse from noGeometry to Point
+
+After these changes it was possible to import the datasets into test-environment and produce data.
+
+3. Update names, labels and definitions based on Concept registry (S-201 and S-125)
+
+- differences to Concept registry checked, and available updates applied (separate printouts of applied fixes as PDF)
+
+4. Check remaining issues and differences between the specifications
+
+-update fixed FC:s to reflection
+- print reflection report (PDF)
+- print human redable FC:s
+
+5. Generate test- data
+
+Test datasets were generated for S-125, S-201 and also a version based on S-101 FC.
+Small changes were needed in order to generate S-101.
+
+
