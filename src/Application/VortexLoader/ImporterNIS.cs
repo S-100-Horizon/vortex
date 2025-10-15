@@ -54,7 +54,7 @@ namespace S100Framework.Applications
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
-
+            var s128 = false;
 
             // default value - overwritten by args
             var skinOfEarthOnly = false;
@@ -92,6 +92,8 @@ namespace S100Framework.Applications
                 }
 
                 append = o.Append;
+
+                s128 = o.S128;
             });
 
             Func<Action, bool> Store = (a) => {
@@ -203,7 +205,7 @@ namespace S100Framework.Applications
                     QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40)";
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1)";
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter, s128));
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
                 }
@@ -216,7 +218,7 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
                     Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter, s128));
 
 
                     Logger.Current.Information($"Converting Sounding Datums");

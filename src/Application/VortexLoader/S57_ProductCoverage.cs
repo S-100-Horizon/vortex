@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
+        private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter, bool s128) {
             var tableName = "ProductCoverage";
 
             using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
@@ -239,9 +239,7 @@ namespace S100Framework.Applications
                     }
                 }
 
-                {
-
-
+                if (s128) {
                     //Store S-128 polygons
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
