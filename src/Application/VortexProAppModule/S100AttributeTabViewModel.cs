@@ -154,44 +154,6 @@ namespace VortexProAppModule
 
 
             Host = new S100AttributeEditorControlHost {
-                QueryAssociation = async (QueryAssociationsEventArgs e) => {
-                    return await QueuedTask.Run(() => {
-                        var inspector = base.Inspector;
-
-                        using var fc = inspector.MapMember switch {
-                            FeatureLayer l => l.GetFeatureClass(),
-                            StandaloneTable t => t.GetTable(),
-                            _ => throw new InvalidOperationException(),
-                        };
-
-                        using var geodatabase = (Geodatabase)fc.GetDatastore();
-
-                        var syntax = geodatabase.GetSQLSyntax();
-                        var tableNames = syntax.ParseTableName(fc.GetName());
-
-                        var associationName = e.type switch {
-                            QueryAssociationsEventArgs.AssociationsType.InformationAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "informationassociation"),
-                            QueryAssociationsEventArgs.AssociationsType.FeatureAssociations => syntax.QualifyTableName(tableNames.Item1, tableNames.Item2, "featureassociation"),
-                            _ => throw new InvalidOperationException(),
-                        };
-
-                        using var association = geodatabase.OpenDataset<Table>(associationName);
-
-                        var q = new QueryFilter {
-                            WhereClause = $"ps = '{inspector["ps"]}' AND code = '{e.association}'",
-                        };
-
-                        var ids = new List<AssociationId>();
-
-                        using var cursor = association.Search(q, true);
-                        while (cursor.MoveNext()) {
-                            ids.Add(new AssociationId($"{cursor.Current.GetGlobalID():N}"));
-                        }
-
-                        return ids;
-                    }, TaskCreationOptions.None);
-                },
-
                 QueryInformationTypes = async (QueryInformationTypesEventArgs e) => {
                     var informationtypes = S100Framework.WPF.Helper.InformationAssociationBindings(SelectedSchema, e.association!, e.role!);
 

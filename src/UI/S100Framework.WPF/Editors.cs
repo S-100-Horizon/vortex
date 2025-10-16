@@ -336,7 +336,7 @@ namespace S100Framework.WPF.Editors
     public abstract class BindingLinkEditor : ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var template = 
+            var template =
                 @"<ControlTemplate TargetType=""xctk:DropDownButton"">
                         <ListBox>
                             <ListBox.ItemTemplate>
@@ -348,22 +348,29 @@ namespace S100Framework.WPF.Editors
                     </ControlTemplate>"";
                 ";
             var control = new ComboBox {
-                Name = $"_dropDownButton{Guid.NewGuid():N}",                       
+                Name = $"_dropDownButton{Guid.NewGuid():N}",
             };
             //control.Template = (ControlTemplate)System.Windows.Markup.XamlReader.Parse(template);
 
+            var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
+            viewModel!.PropertyChanged += (s, e) => {
+                if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals("role"))
+                    return;
 
-            control.DropDownOpened += (s, e) => {
-                //System.Diagnostics.Debugger.Break();
                 control.Items.Clear();
-                control.Items.Add("Hello 1");
-                control.Items.Add("Hello 2");
-
             };
 
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { 
-                Source = propertyItem.Instance, 
-                Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay 
+            control.DropDownOpened += (s, e) => {
+                var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
+
+                var p = new QueryFeatureTypesEventArgs(association.roleType, association.association, viewModel.role, association.featureTypes, control);
+
+                S100AttributeEditorControl.QueryFeaturesCommand.Execute(p, S100AttributeEditorControl.Singleton);
+            };
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) {
+                Source = propertyItem.Instance,
+                Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay
             };
 
             control.ContextMenuOpening += (s, e) => {
@@ -382,7 +389,7 @@ namespace S100Framework.WPF.Editors
             //eventTrigger.Actions.Add(invokeCommandAction);
 
             //control.Triggers.Add(eventTrigger);
-            
+
             //Binding binding = new Binding { Path = new PropertyPath("DataContext.DropDownCommand") };
             //BindingOperations.SetBinding(invokeCommandAction, InvokeCommandAction.CommandProperty, binding);
 

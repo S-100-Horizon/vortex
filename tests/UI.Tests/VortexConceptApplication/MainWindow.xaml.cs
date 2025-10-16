@@ -115,21 +115,12 @@ namespace VortexConceptApplication
 
 
             S100AttributeEditor.Host = new S100AttributeEditorControlHost {
-                QueryAssociation = async (QueryAssociationsEventArgs e) => {
-                    var associations = new List<AssociationId>();
-
-                    var r = new Random(DateTime.Now.Microsecond);
-                    foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
-                        associations.Add(new AssociationId($"A{r.Next(1, 1000):0000}"));
-                    }
-                    return associations;
-                },
                 QueryInformationTypes = async (QueryInformationTypesEventArgs e) => {
                     var informations = new List<InformationTypeId>();
 
                     var r = new Random(DateTime.Now.Microsecond);
                     foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
-                        informations.Add(new InformationTypeId("ContactDetails", $"P{r.Next(1, 1000):0000}"));
+                        informations.Add(new InformationTypeId(e.informationTypes[(int)(r.NextDouble() * e.informationTypes.Length)], $"I{r.Next(1, 1000):0000}"));
                     }
                     return informations;
                 },
@@ -139,9 +130,10 @@ namespace VortexConceptApplication
                     var r = new Random(DateTime.Now.Microsecond);
                     foreach (var i in Enumerable.Range(0, r.Next(1, 8))) {
                         features.Add(r.Next(0, 2) switch {
-                            0 => new FeatureTypeId(featureTypes[0][r.Next(0, featureTypes[0].Count() - 1)], $"P{r.Next(1, 1000):0000}"),
-                            1 => new FeatureTypeId(featureTypes[1][r.Next(0, featureTypes[1].Count() - 1)], $"C{r.Next(1, 1000):0000}"),
-                            2 => new FeatureTypeId(featureTypes[2][r.Next(0, featureTypes[2].Count() - 1)], $"S{r.Next(1, 1000):0000}"),
+                            0 => new FeatureTypeId(e.featureTypes[(int)(r.NextDouble() * e.featureTypes.Length)], $"P{r.Next(1, 1000):0000}"),
+                            1 => new FeatureTypeId(e.featureTypes[(int)(r.NextDouble() * e.featureTypes.Length)], $"C{r.Next(1, 1000):0000}"),
+                            2 => new FeatureTypeId(e.featureTypes[(int)(r.NextDouble() * e.featureTypes.Length)], $"S{r.Next(1, 1000):0000}"),
+                            _ => throw new IndexOutOfRangeException(),
                         });
                     }
                     return features;
@@ -180,7 +172,8 @@ namespace VortexConceptApplication
             //  StringLengthConstraintAttribute
             var viewModel3 = new S100Framework.WPF.ViewModel.S101.FogSignalViewModel() {
                 Name = "S202600",
-            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
+            };//.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
+
 
             //  Associations
             var viewModel4 = new TestIslandGroupViewModel() {
