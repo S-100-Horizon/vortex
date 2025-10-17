@@ -449,7 +449,7 @@ namespace S100Framework.ProductCatalogue
                 ENCVer = "INT.IHO.S-101.2.0",
                 FCVer = "2.0",
                 verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                Update = (uint?)electronicProduct.updateNumber ?? 0,
+                //Update = (uint?)electronicProduct.updateNumber ?? 0, // Remove dfor now
             };
 
             var supportFiles = new List<string>();
