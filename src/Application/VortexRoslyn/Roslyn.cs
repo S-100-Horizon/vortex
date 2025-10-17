@@ -109,6 +109,22 @@ namespace S100Framework.Applications
                 }
                 builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
                 builderDomainModel.AppendLine("\t\t};");
+
+                builderDomainModel.AppendLine("\t\tpublic static Type InformationBindings(string code) => code switch {");
+                foreach (var e in productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager)) {
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => typeof(informationBinding<InformationAssociations.{code}>),");
+                }
+                builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
+                builderDomainModel.AppendLine("\t\t};");
+
+                builderDomainModel.AppendLine("\t\tpublic static Type FeatureBindings(string code) => code switch {");
+                foreach(var e in productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager)) {
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                    builderDomainModel.AppendLine($"\t\t\t\"{code}\" => typeof(featureBinding<FeatureAssociations.{code}>),");
+                }
+                builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
+                builderDomainModel.AppendLine("\t\t};");
             }
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine();
@@ -1201,6 +1217,7 @@ namespace S100Framework.Applications
                 builderViewModel.AppendLine($"using S100Framework.DomainModel.{productId}.FeatureAssociations;");
 
             builderViewModel.AppendLine("using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;");
+            builderViewModel.AppendLine("using System.Text.Json;");
             builderViewModel.AppendLine();
             builderViewModel.AppendLine("#nullable enable");
             builderViewModel.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
@@ -1243,6 +1260,8 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                         IncludeLoad = true,
                         IncludeModel = true,
+                        InformationBindingExtension = (extension) => { },
+                        FeatureBindingExtension = (extension) => { },
                     }, (b) => {
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override ComplexViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
@@ -1284,6 +1303,8 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                         IncludeLoad = false,
                         IncludeModel = false,
+                        InformationBindingExtension = (extension) => { },
+                        FeatureBindingExtension = (extension) => { },
                     }, (b) => {
                         var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
                         roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:informationBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
@@ -1348,6 +1369,8 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                         IncludeLoad = false,
                         IncludeModel = false,
+                        InformationBindingExtension = (extension) => { },
+                        FeatureBindingExtension = (extension) => { },
                     }, (b) => {
                         var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
                         roles = roles.Where(r => productSpecification.XPathSelectElements($"//S100FC:featureBinding[S100FC:association[@ref=\"{code}\"] and S100FC:role[@ref=\"{r}\"]]", xmlNamespaceManager).Any());
@@ -1390,6 +1413,8 @@ namespace S100Framework.Applications
             }
 
             //  --- S100_FC_InformationType -----------------------------------------------------
+            var informationBindingExtension = new StringBuilder();
+            informationBindingExtension.AppendLine("\tpublic static class InformationBindingExtension {");
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
 
@@ -1420,6 +1445,11 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                         IncludeLoad = true,
                         IncludeModel = true,
+                        InformationBindingExtension = (extension) => {
+                            informationBindingExtension.AppendLine(extension.ToString());
+                        },
+                        FeatureBindingExtension = (extension) => { 
+                        },
                     }, (b) => {
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
@@ -1435,6 +1465,8 @@ namespace S100Framework.Applications
             }
 
             //  --- S100_FC_FeatureType ---------------------------------------------------------
+            var featureBindingExtension = new StringBuilder();
+            featureBindingExtension.AppendLine("\tpublic static class FeatureBindingExtension {");
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
 
@@ -1465,6 +1497,12 @@ namespace S100Framework.Applications
                         Editors = client.Editors,
                         IncludeLoad = true,
                         IncludeModel = true,
+                        InformationBindingExtension = (extension) => {
+                            informationBindingExtension.AppendLine(extension.ToString());
+                        },
+                        FeatureBindingExtension = (extension) => {
+                            featureBindingExtension.AppendLine(extension.ToString());
+                        },
                     }, (b) => {
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
@@ -1481,6 +1519,13 @@ namespace S100Framework.Applications
                 }
                 builderViewModel.AppendLine();
             }
+            featureBindingExtension.AppendLine("\t}");
+
+            informationBindingExtension.AppendLine("\t}");
+
+            builderViewModel.AppendLine(informationBindingExtension.ToString());
+
+            builderViewModel.AppendLine(featureBindingExtension.ToString());
 
             builderViewModel.AppendLine("}");
 
@@ -1512,8 +1557,6 @@ namespace S100Framework.Applications
             //}
             //sw.Flush();
             //sw.Close();
-
-
 
             return builderViewModel.ToString();
         }
@@ -1903,6 +1946,9 @@ namespace S100Framework.Applications
 
             public required bool IncludeModel { get; init; }
             public required bool IncludeLoad { get; init; }
+
+            public required Action<StringBuilder> InformationBindingExtension { get; init; }
+            public required Action<StringBuilder> FeatureBindingExtension { get; init; }
         }
 
         private static string BuildViewModelClass(XElement e, BuildViewModelClassClient client, Action<StringBuilder>? postAction = null) {
@@ -1966,6 +2012,14 @@ namespace S100Framework.Applications
                 //}
             });
 
+            var informationBindingExtension = new StringBuilder();
+
+            informationBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadInformationBinding(this {client.LoadPrefix} instance, JsonDocument document) {{");
+            informationBindingExtension.AppendLine("\t\t\tforeach (var element in document.RootElement.EnumerateArray()) {");
+            informationBindingExtension.AppendLine("\t\t\t\tvar code = element.GetProperty(\"code\").GetString()!;");
+            informationBindingExtension.AppendLine("\t\t\t\tvar informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));");
+            informationBindingExtension.AppendLine();
+
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 var associations = new List<string>();
                 var bindings = new Dictionary<string, XElement[]>();
@@ -1980,6 +2034,13 @@ namespace S100Framework.Applications
                     if (!associations.Contains(association)) {
                         associations.Add(association);
                         bindings.Add(association, []);
+
+                        informationBindingExtension.AppendLine($"\t\t\t\tif(informationBinding is informationBinding<{association}> {CamelCase(association)}) {{");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationId = {CamelCase(association)}.referenceId,");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\t}});");
+                        informationBindingExtension.AppendLine($"\t\t\t\t}}");
                     }
                     bindings[association] = [.. bindings[association], informationBinding];
                 }
@@ -2029,52 +2090,27 @@ namespace S100Framework.Applications
                 foreach (var association in associations) {
                     builder.AppendLine();
                     builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
-                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {association} {{ get; set; }} = new();");
+                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
                 }
 
                 if (associations.Any())
                     builder.AppendLine("\t\t#endregion");
 
                 if (associations.Any())
-                    builder.AppendLine();
-
-                //foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
-                //    var roleType = informationBinding.Attribute("roleType")!.Value;
-                //    var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
-                //    var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
-
-                //    var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                //    var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-
-                //    int? _ = (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(upper.Value!);
-
-                //    if (!associations.Contains(association)) {
-                //        associations.Add(association);
-                //        builder.AppendLine();
-                //        if (_ == 1) {
-                //            if (lower == 0) {
-                //                builder.AppendLine("\t\t[Optional]");
-                //            }
-                //            builder.AppendLine($"\t\tprivate {association}ViewModel _{Char.ToLowerInvariant(association[0])}{association.Substring(1)} = new();");
-                //            builder.AppendLine();
-                //            builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
-                //            builder.AppendLine("\t\t[ExpandableObject]");
-                //            builder.AppendLine($"\t\tpublic {association}ViewModel {association} {{");
-                //            builder.AppendLine($"\t\t\tget {{");
-                //            builder.AppendLine($"\t\t\t\treturn _{Char.ToLowerInvariant(association[0])}{association.Substring(1)};");
-                //            builder.AppendLine($"\t\t\t}}");
-                //            builder.AppendLine($"\t\t\tset {{");
-                //            builder.AppendLine($"\t\t\t\tSetValue(ref _{Char.ToLowerInvariant(association[0])}{association.Substring(1)}, value);");
-                //            builder.AppendLine($"\t\t\t}}");
-                //            builder.AppendLine($"\t\t}}");
-                //        }
-                //        else {
-                //            builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
-                //            builder.AppendLine($"\t\tpublic ObservableCollection<{association}ViewModel> {association} {{ get; set; }} = new();");
-                //        }
-                //    }
-                //}
+                    builder.AppendLine();               
             }
+
+            informationBindingExtension.AppendLine("\t\t\t}");
+            informationBindingExtension.AppendLine("\t\t\treturn instance;");
+            informationBindingExtension.AppendLine("\t\t}");
+
+            var featureBindingExtension = new StringBuilder();
+
+            featureBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadFeatureBinding(this {client.LoadPrefix} instance, JsonDocument document) {{");
+            featureBindingExtension.AppendLine("\t\t\tforeach (var element in document.RootElement.EnumerateArray()) {");
+            featureBindingExtension.AppendLine("\t\t\t\tvar code = element.GetProperty(\"code\").GetString()!;");
+            featureBindingExtension.AppendLine("\t\t\t\tvar featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));");
+            featureBindingExtension.AppendLine();
 
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 var associations = new List<string>();
@@ -2090,6 +2126,13 @@ namespace S100Framework.Applications
                     if (!associations.Contains(association)) {
                         associations.Add(association);
                         bindings.Add(association, []);
+
+                        featureBindingExtension.AppendLine($"\t\t\t\tif(featureBinding is featureBinding<{association}> {CamelCase(association)}) {{");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureId = {CamelCase(association)}.referenceId,");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\t}});");
+                        featureBindingExtension.AppendLine($"\t\t\t\t}}");
                     }
                     bindings[association] = [.. bindings[association], featureBinding];
                 }
@@ -2139,7 +2182,7 @@ namespace S100Framework.Applications
                 foreach (var association in associations) {
                     builder.AppendLine();
                     builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
-                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {association} {{ get; set; }} = new();");
+                    builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
                 }
 
                 if (associations.Any())
@@ -2147,45 +2190,11 @@ namespace S100Framework.Applications
 
                 if (associations.Any())
                     builder.AppendLine();
-
-
-                //foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
-                //    var roleType = featureBinding.Attribute("roleType")!.Value;
-                //    var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
-                //    var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
-
-                //    var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                //    var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-
-                //    int? _ = (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(upper.Value!);
-
-                //    if (!associations.Contains(association)) {
-                //        associations.Add(association);
-                //        builder.AppendLine();
-                //        if (_ == 1) {
-                //            if (lower == 0) {
-                //                builder.AppendLine("\t\t[Optional]");
-                //            }
-                //            builder.AppendLine($"\t\tprivate {association}ViewModel _{Char.ToLowerInvariant(association[0])}{association.Substring(1)} = new();");
-
-                //            builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
-                //            builder.AppendLine("\t\t[ExpandableObject]");
-                //            builder.AppendLine($"\t\tpublic {association}ViewModel {association} {{");
-                //            builder.AppendLine($"\t\t\tget {{");
-                //            builder.AppendLine($"\t\t\t\treturn _{Char.ToLowerInvariant(association[0])}{association.Substring(1)};");
-                //            builder.AppendLine($"\t\t\t}}");
-                //            builder.AppendLine($"\t\t\tset {{");
-                //            builder.AppendLine($"\t\t\t\tSetValue(ref _{Char.ToLowerInvariant(association[0])}{association.Substring(1)}, value);");
-                //            builder.AppendLine($"\t\t\t}}");
-                //            builder.AppendLine($"\t\t}}");
-                //        }
-                //        else {
-                //            builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
-                //            builder.AppendLine($"\t\tpublic ObservableCollection<{association}ViewModel> {association} {{ get; set; }} = new();");
-                //        }
-                //    }
-                //}
             }
+
+            featureBindingExtension.AppendLine("\t\t\t}");
+            featureBindingExtension.AppendLine("\t\t\treturn instance;");
+            featureBindingExtension.AppendLine("\t\t}");
 
 
             serializeBuilder.AppendLine("\t\t\t};");
@@ -2193,8 +2202,9 @@ namespace S100Framework.Applications
 
             if (client.IncludeLoad) {
                 builder.AppendLine();
-                builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load{code}({code} instance) {{");
+                builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load{code}({code} instance, Action<{client.LoadPrefix}>? initialize = default) {{");
                 builder.AppendLine(loadBuilder.ToString().TrimEnd([.. Environment.NewLine]));
+                builder.AppendLine("\t\t\tinitialize.Invoke(this);");
                 builder.AppendLine("\t\t\treturn this;");
                 builder.AppendLine("\t\t}");
             }
@@ -2233,6 +2243,9 @@ namespace S100Framework.Applications
 
             builder.AppendLine("\t}");
             builder.AppendLine();
+
+            client.InformationBindingExtension(informationBindingExtension);
+            client.FeatureBindingExtension(featureBindingExtension);
 
             return builder.ToString();//.TrimEnd([.. Environment.NewLine]);
         }
@@ -2456,6 +2469,10 @@ namespace S100Framework.Applications
                 }
             }
             return text;
+        }
+
+        private static string CamelCase(string input) {
+            return $"{Char.ToLowerInvariant(input[0])}{input.Substring(1)}";
         }
 
         private static readonly string[] OnesEnglish = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };

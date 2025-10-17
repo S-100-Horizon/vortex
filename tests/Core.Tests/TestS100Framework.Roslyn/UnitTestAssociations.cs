@@ -1,7 +1,9 @@
-﻿using S100Framework.DomainModel;
+﻿using ArcGIS.Core.Data.UtilityNetwork;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureAssociations;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.WPF.ViewModel.S101;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +40,7 @@ namespace TestS100Framework
                 roleType = roleType.aggregation.ToString(),
                 role = Enum.GetName<Role>(Role.theComponent)!,
                 featureType = nameof(SpanFixed),
-                featureId = $"{Guid.NewGuid():N}",
+                referenceId = $"{Guid.NewGuid():N}",
             };
 
             var association2 = new featureBinding<StructureEquipment> {
@@ -48,7 +50,7 @@ namespace TestS100Framework
                 roleType = roleType.association.ToString(),
                 role = Enum.GetName<Role>(Role.theEquipment)!,
                 featureType = nameof(Daymark),
-                featureId = $"{Guid.NewGuid():N}",
+                referenceId = $"{Guid.NewGuid():N}",
             };
 
             object[] array = [association1, association2];
@@ -58,10 +60,18 @@ namespace TestS100Framework
             using var document = JsonDocument.Parse(json);
 
             foreach (var element in document.RootElement.EnumerateArray()) {
-                _ = element.TryGetProperty("code", out var code);
+                var code = element.GetProperty("code").GetString()!;
 
-                var instance = System.Text.Json.JsonSerializer.Deserialize(element!, typeof(featureBinding<BridgeAggregation>));
+                var instance = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
             }
+
+            var bridge = new BridgeViewModel {
+
+            }.LoadBridge(new Bridge {
+            }, (b) => {
+                using var document = JsonDocument.Parse(json);
+                b.LoadFeatureBinding(document);
+            });
 
             System.Diagnostics.Debugger.Break();
         }
@@ -72,6 +82,34 @@ namespace TestS100Framework
         //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBindingTest>>(json);
     }
 }
+
+//namespace S100Framework.WPF.ViewModel.S101
+//{
+//    public static class FeatureBindingExtension {
+//        public static BridgeViewModel LoadFeatureBinding(this BridgeViewModel instance, JsonDocument document) {
+//            foreach (var element in document.RootElement.EnumerateArray()) {
+//                var code = element.GetProperty("code").GetString()!;
+
+//                var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+//                if (featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
+//                    instance.BridgeAggregation.Add(new BridgeViewModel.BridgeAggregationViewModel {
+//                        featureId = bridgeAggregation.referenceId,
+//                        role = bridgeAggregation.role,
+//                    });
+//                }
+//                if (featureBinding is featureBinding<StructureEquipment> structureEquipment) {
+//                    instance.StructureEquipment.Add(new BridgeViewModel.StructureEquipmentViewModel {
+//                        featureId = structureEquipment.referenceId,
+//                        role = structureEquipment.role,
+//                    });
+//                }
+//            }
+
+//            return instance;
+//        }
+//    }
+//}
 
 
 

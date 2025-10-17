@@ -44,8 +44,8 @@ namespace S100Framework.WPF.ViewModel
             };
         }
 
-        [Browsable(false)]
-        public Guid? UID { get; set; } = default;
+        //[Browsable(false)]
+        //public Guid? UID { get; set; } = default;
 
         public abstract string Serialize();
 
