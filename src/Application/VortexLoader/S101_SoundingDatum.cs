@@ -112,11 +112,13 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, item);
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMQuals[0]);
                     dissolved_M_QUAL_Count++;
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.GetGlobalID():N}";
+                    var name = featureN.Crc32();
                 }
 
                 // Add all M_SDATs
@@ -135,11 +137,13 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, item.Geometry);
                     ImporterNIS.SetUsageBand(buffer, uniqueComscalesMSdats[0]);
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.GetGlobalID():N}";
+                    var name = featureN.Crc32();
                     M_SDAT_Count++;
                 }
             }

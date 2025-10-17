@@ -90,15 +90,15 @@ namespace S100Framework.Applications.Singletons
             using (var spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
                 var shape = spatialSearch.FindField("SHAPE");
                 while (spatialSearch.MoveNext()) {
-                    using (var row = spatialSearch.Current) {
-                        var feature = (Feature)row;
-                        if (feature != null) {
-                            var val = Activator.CreateInstance(typeof(T), feature) as T;
-                            if (val != null) {
-                                yield return val;
-                            }
+                    var row = spatialSearch.Current;
+                    var feature = (Feature)row;
+                    if (feature != null) {
+                        var val = Activator.CreateInstance(typeof(T), feature) as T;
+                        if (val != null) {
+                            yield return val;
                         }
                     }
+
                 }
             }
         }

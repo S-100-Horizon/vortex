@@ -54,6 +54,7 @@ namespace S100Framework.Applications.Singletons
             int recordCount = 0;
 
             foreach (var featureclassName in featureClasses) {
+                int tableErrorCount = 0;
                 using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
                 using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
@@ -69,7 +70,13 @@ namespace S100Framework.Applications.Singletons
 
                     if (!usageband.HasValue) {
                         errorCount++;
+                        errorCount++;
+                        tableErrorCount++;
                     }
+                }
+
+                if (tableErrorCount > 0) {
+                    Logger.Current.Information($"{tableErrorCount} errors in {tableErrorCount}");
                 }
             }
             return errorCount;
@@ -188,8 +195,9 @@ namespace S100Framework.Applications.Singletons
 
         }
 
-
-
+        internal int Check_NotesRefs() {
+            throw new NotImplementedException();
+        }
     }
 
 

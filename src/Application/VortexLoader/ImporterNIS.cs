@@ -1,6 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using ArcGIS.Desktop.Internal.Mapping;
+//using ArcGIS.Desktop.Internal.Mapping;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -36,8 +36,9 @@ namespace S100Framework.Applications
         internal static string ps101 = S100Framework.DomainModel.S101.Summary.ProductId;
         internal static string ps128 = S100Framework.DomainModel.S128.Summary.ProductId;
         internal static string s101version = S100Framework.DomainModel.S101.Summary.Version.ToString();
-
         internal static Geodatabase? _geodatabase;
+
+        internal static bool createBridgesAndRelations = true;
 
         //internal static FeatureRelations featureRelations = null;
         internal static RelatedEquipment? relatedEquipment;
@@ -53,7 +54,7 @@ namespace S100Framework.Applications
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
             // default value - overwritten by args
-
+            var s128 = false;
 
             // default value - overwritten by args
             var skinOfEarthOnly = false;
@@ -91,6 +92,8 @@ namespace S100Framework.Applications
                 }
 
                 append = o.Append;
+
+                s128 = o.S128;
             });
 
             Func<Action, bool> Store = (a) => {
@@ -183,6 +186,9 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information($"Initializing SpatialAssociations");
                 SpatialAssociations.Initialize(source, QueryFilter);
+                
+                Logger.Current.Information($"Initializing NauticalInformations");
+                NauticalInformations.Initialize(destination);
 
                 relatedEquipment = new RelatedEquipment(source, destination);
 
@@ -199,7 +205,7 @@ namespace S100Framework.Applications
                     QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (40)";
                     Store(() => S57_MetadataA(source, destination, QueryFilter));
                     QueryFilter.WhereClause = $"{whereClause} and fcsubtype in (1)";
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter, s128));
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
 
                 }
@@ -212,7 +218,7 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
                     Logger.Current.Information($"Converting Product Coverages");
-                    Store(() => S57_ProductCoverage(source, destination, QueryFilter));
+                    Store(() => S57_ProductCoverage(source, destination, QueryFilter, s128));
 
 
                     Logger.Current.Information($"Converting Sounding Datums");
@@ -338,6 +344,10 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"No defaultClearanceViolation in S-101: {status}");
 
                 Logger.Current.Information("Done");
+
+
+                Logger.Current.Information($"!: CHECK LOGS AT: {Logger.LogDir}");
+
                 return true;
             }
         }
@@ -346,17 +356,15 @@ namespace S100Framework.Applications
             QueryFilter queryFilter = new QueryFilter {
                 WhereClause = "1=1" // Gets all rows
             };
+            table.DeleteRows(queryFilter);
+            return;
 
+            //TODO: Doesn't work!
             using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
                 while (rowCursor.MoveNext()) {
-                    using (Row row = rowCursor.Current) {
-                        row.Delete();
-                    }
+                    rowCursor.Current.Delete();
                 }
             }
-
-
-
         }
 
         internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
@@ -1143,7 +1151,7 @@ namespace S100Framework.Applications
                         }
                     };
 
-                    NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
@@ -1180,7 +1188,7 @@ namespace S100Framework.Applications
                         }
                     };
 
-                    NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
                     // information.Add(instance);
                 }
@@ -1221,7 +1229,7 @@ namespace S100Framework.Applications
                                 }
                             };
 
-                            NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                            result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
                         }
                         else {
                             Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
@@ -1264,7 +1272,7 @@ namespace S100Framework.Applications
                                 }
                             };
 
-                                NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance);
+                                result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
                             }
                             else {
                                 Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
@@ -1500,33 +1508,33 @@ namespace S100Framework.Applications
             return result;
         }
 
-        internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
-            NauticalInformation nobj = new NauticalInformation();
-            if (picrep != default) {
-                nobj.pictorialRepresentation = ImporterNIS.FixFilename(picrep) ?? default;
-            }
+        //internal static NauticalInformation CreateNauticalInformation(string picrep, string datsta, string datend, string persta, string perend, List<information> information) {
+        //    NauticalInformation nobj = new NauticalInformation();
+        //    if (picrep != default) {
+        //        nobj.pictorialRepresentation = ImporterNIS.FixFilename(picrep) ?? default;
+        //    }
 
-            nobj.information = information;
-            nobj.Code = ps101;
+        //    nobj.information = information;
+        //    nobj.Code = ps101;
 
-            DateHelper.TryGetFixedDateRange(datsta, datend, out var dateRange);
-            if (dateRange != default) {
-                nobj.fixedDateRange = dateRange;
-            }
+        //    DateHelper.TryGetFixedDateRange(datsta, datend, out var dateRange);
+        //    if (dateRange != default) {
+        //        nobj.fixedDateRange = dateRange;
+        //    }
 
-            DateHelper.TryGetPeriodicDateRange(persta, perend, out var periodicDateRange);
-            if (periodicDateRange != default) {
-                nobj.periodicDateRange = periodicDateRange;
-            }
+        //    DateHelper.TryGetPeriodicDateRange(persta, perend, out var periodicDateRange);
+        //    if (periodicDateRange != default) {
+        //        nobj.periodicDateRange = periodicDateRange;
+        //    }
 
-            return nobj;
-        }
+        //    return nobj;
+        //}
 
         //internal static void AddInformation(List<information> instanceInformation, Row current) {
         //    List<information> information = CreateInformationFrom(current);
         //    instanceInformation.AddRange(information);
         //}
-        internal static void AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+        internal static List<DomainModel.informationBinding> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: TBD.
             //List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             //instanceInformation.AddRange(information);
@@ -1534,7 +1542,12 @@ namespace S100Framework.Applications
             //TODO: Fix binding
             var result = BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
 
+            
             instanceInformation.AddRange(result.information);
+
+
+
+            return result.InformationBindings;
         }
     }
 }

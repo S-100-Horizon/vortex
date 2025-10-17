@@ -91,7 +91,7 @@ namespace TestS100Framework
                         while (cursor.MoveNext()) {
                             var f = (Feature)cursor.Current;
 
-                            var name = $"{f.GetGlobalID():N}";
+                            var name = $"{System.IO.Hashing.Crc32.HashToUInt32(f.GetGlobalID().ToByteArray())}";
 
                             if (!groupFeatureAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;

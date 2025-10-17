@@ -1,7 +1,4 @@
-﻿using S100Framework.DomainModel.S128;
-using S100Framework.DomainModel.S128.ComplexAttributes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ProductCatalogueService
 {
@@ -22,17 +19,6 @@ namespace ProductCatalogueService
         }
 
 
-        public class ElectronicProductResponse {
-            public Boolean? CompressionFlag { get; set; } = default;
-            public String? DatasetName { get; set; } = default;
-            public DateOnly IssueDate { get; set; } = default;
-            public S100Framework.DomainModel.S100.Time? IssueTime { get; set; } = default;
-            public typeOfProductFormat TypeOfProductFormat { get; set; }
-            public productSpecification? ProductSpecification { get; set; } = default;
-            public string Code => nameof(ElectronicProduct);
-            public int EditionNumber { get; set; }
-            public int UpdateNumber { get; set; }
-        }
     }
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public static class RequestTypes

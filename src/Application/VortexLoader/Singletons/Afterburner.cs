@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ArcGIS.Core.Internal.Geometry;
-using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -63,7 +62,7 @@ namespace S100Framework.Applications.Singletons
                     var splitResult = SplitAtMidpoint(currentPolyline);
 
                     if (splitResult == null || splitResult.Count != 2) {
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Cannot split closingline in two. Check geometry for this curve.");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.Crc32(), $"Cannot split closingline in two. Check geometry for this curve.");
                         continue;
                     }
 
@@ -87,7 +86,7 @@ namespace S100Framework.Applications.Singletons
                         }
 
                         newFeature.Store();
-                        Logger.Current.DataError(feature.GetObjectID(), "curve", $"{feature.GetGlobalID():N}", $"Split this feature in 2. Closing line on input. NewFeature name is {feature.GetGlobalID():N}");
+                        Logger.Current.DataError(feature.GetObjectID(), "curve", feature.Crc32(), $"Split this feature in 2. Closing line on input. NewFeature name is {feature.GetGlobalID():N}");
                     }
                 }
             }

@@ -9,7 +9,7 @@ namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
-        private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
+        private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter, bool s128) {
             var tableName = "ProductCoverage";
 
             using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
@@ -52,6 +52,10 @@ namespace S100Framework.Applications
                     dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
                     dataCoverage_m_scl.optimumDisplayScale = displayScale.OptimumDisplayScale;
                 }
+                else {
+                    Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM", "Optimumdisplayscale must be set");
+                }
+
                 {
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
@@ -61,13 +65,11 @@ namespace S100Framework.Applications
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.GetGlobalID():N}";
+                    var name = featureN.Crc32();
 
                     // TODO: Create relations
                 }
             }
-
-
 
             while (cursor.MoveNext()) {
                 recordCount += 1;
@@ -86,7 +88,7 @@ namespace S100Framework.Applications
                 var updn = current.UPDN ?? default;
                 var isdt = current.ISDT ?? default;
                 var serie = current.SERIES ?? default;
-                
+
 
 
                 if (serie == default) {
@@ -166,7 +168,7 @@ namespace S100Framework.Applications
                                 //SetShape(buffer, productCoverage.SHAPE);
                                 //ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
                                 //var featureN = featureClass.CreateRow(buffer);
-                                //var name = $"{featureN.GetGlobalID():N}";
+                                //var name = featureN.Crc32();
                                 //// TODO: Create relations
                                 //ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             }
@@ -182,16 +184,21 @@ namespace S100Framework.Applications
                                 dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
                                 dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
                                 dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
+                            }
+                            else {
+                                Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage", "Calculated", "Optimumdisplayscale must be set");
                             } {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                buffer["informationbindings"] = "[]";
+
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE!.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = featureN.Crc32();
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -205,17 +212,17 @@ namespace S100Framework.Applications
 
                                 vdat.verticalDatum = GetVerticalDatum<VerticalDatumOfData>(current.VDAT ?? 3);
 
-                                
-
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                buffer["informationbindings"] = "[]";
+
                                 SetShape(buffer, productCoverage.SHAPE);
                                 ImporterNIS.SetUsageBand(buffer, productCoverage.PLTS_COMP_SCALE.Value);
 
                                 var featureN = featureClass.CreateRow(buffer);
-                                var name = $"{featureN.GetGlobalID():N}";
+                                var name = featureN.Crc32();
 
                                 // Registering vertical datum information for all areas
                                 VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.Value);
@@ -232,18 +239,22 @@ namespace S100Framework.Applications
                     }
                 }
 
-                {
+                if (s128) {
+                    //Store S-128 polygons
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["informationbindings"] = "[]";
+
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
                     ImporterNIS.SetUsageBand(buffer, polygonsCompScale);
                     var featureN = featureClass.CreateRow(buffer);
-                    var name = $"{featureN.GetGlobalID():N}";
+                    var name = featureN.Crc32();
                     // TODO: Create relations
                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                 }
+
                 Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));

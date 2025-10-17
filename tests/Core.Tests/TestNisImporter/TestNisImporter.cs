@@ -395,7 +395,7 @@ namespace TestNisImporter
 
             var prefix = "NIS.";
 
-            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\src\Application\VortexLoader\S-57.esri\status.txt"));
+            string filePath = IO.Path.GetFullPath(IO.Path.Combine(@".\..\..\..\..\..\..\status_tt.txt"));
 
             StringBuilder content = new StringBuilder();
 
@@ -405,7 +405,6 @@ namespace TestNisImporter
             }
 
             int counter = 0;
-
             using (StreamWriter file = new StreamWriter(filePath)) {
                 foreach (var dataset in datasets) {
                     if (dataset is FeatureClass) {
@@ -438,7 +437,7 @@ namespace TestNisImporter
                                 continue;
 
                             foreach (var fieldName in fieldHasData.Keys) {
-                                if (DBNull.Value != current[fieldName]) {
+                                if (DBNull.Value != current[fieldName] && current[fieldName] != null && !string.IsNullOrEmpty(current[fieldName].ToString())) {
                                     fieldHasData[fieldName] = true;
                                 }
                             }

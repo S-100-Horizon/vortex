@@ -1,9 +1,9 @@
-﻿using ArcGIS.Core.CIM;
+﻿//using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
-using S100Framework.DomainModel;
+//using S100Framework.DomainModel;
 using S100Framework.GML;
 using Serilog;
 using System.Text.Json;
@@ -51,6 +51,9 @@ namespace S100Framework.Applications
             [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
             public bool Verbose { get; set; }
 
+            [Option( "s128", Required = false, HelpText = "Create ElectronicProducts.", Default = false)]
+            public bool S128 { get; set; }
+
             [Option('n', "notespath", Required = false, HelpText = "Path to notes files references in TXTDSC.")]
             public string? NotesPath { get; set; }
 
@@ -59,6 +62,7 @@ namespace S100Framework.Applications
 
             [Option('f', "scaminfiles", Required = false, HelpText = "Path to folder with scamin files. Supports only Grønland and Denmark scamin files.")]
             public string? ScaminFilesPath { get; set; }
+
         }
 
         static void Main(string[] args) {

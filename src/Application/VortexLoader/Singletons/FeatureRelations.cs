@@ -828,7 +828,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 featureAssociationBuffer["edition"] = ImporterNIS.s101version;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = $"{association.GetGlobalID():N}";
+                featureAssociationName = association.Crc32();
             }
 
             // Store binding
@@ -888,8 +888,8 @@ namespace S100Framework.Applications.Singletons
             else {
                 List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!)!;
                 existingBinding.AddRange(primaryBindings);
-                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
-                s101SlaveFeature.Store();
+                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
+                s101MasterFeature.Store();
             }
         }
 
@@ -954,7 +954,7 @@ namespace S100Framework.Applications.Singletons
                 featureAssociationBuffer["ps"] = ImporterNIS.ps101;
                 featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
                 var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = $"{association.GetGlobalID():N}";
+                featureAssociationName = $"{association.Crc32()}";
 
             }
             {

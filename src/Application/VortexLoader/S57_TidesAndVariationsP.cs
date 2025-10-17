@@ -49,7 +49,7 @@ namespace S100Framework.Applications
                     case 5: { // LOCMAG_LocalMagneticAnomaly
                             throw new NotImplementedException("No LOCMAG_LocalMagneticAnomaly in DK | GL NIS");
                         }
-                        
+
                     case 10: { // MAGVAR_MagneticVariation
                             var instance = new MagneticVariation {
                                 referenceYearForMagneticVariation = default,
@@ -89,16 +89,19 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+
                             SetShape(buffer, current.SHAPE);
                             SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             var featureN = featureClass.CreateRow(buffer);
-                            var name = $"{featureN.GetGlobalID():N}";
+                            var name = featureN.Crc32();
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
@@ -110,44 +113,44 @@ namespace S100Framework.Applications
                     case 15: { // T_HMON_TideHarmonicPrediction
                             throw new NotImplementedException("No T_HMON_TideHarmonicPrediction in DK | GL NIS");
                         }
-                        
+
                     case 20: { // T_NHMN_TideNonHarmonicPrediction
                             throw new NotImplementedException("No T_NHMN_TideNonHarmonicPrediction in DK | GL NIS");
                         }
-                        
+
                     case 25: { // T_TIMS_TideTimeSeries
                             throw new NotImplementedException("No T_TIMS_TideTimeSeries in DK | GL NIS");
                         }
-                        
+
                     case 30: { // TIDEWY_Tideway
                             throw new NotImplementedException("No TIDEWY_Tideway in DK | GL NIS");
                         }
-                        
+
                     case 35: { // TS_FEB_TidalStreamFloodEbb
                             throw new NotImplementedException("No TS_FEB_TidalStreamFloodEbb in DK | GL NIS");
                         }
-                        
+
                     case 40: { // TS_PAD_TidalStreamPanelData
                             throw new NotImplementedException("No TS_PAD_TidalStreamPanelData in DK | GL NIS");
                         }
-                        
+
                     case 45: { // TS_PNH_TidalStreamNonHarmonicPrediction
                             throw new NotImplementedException("No TS_PNH_TidalStreamNonHarmonicPrediction in DK | GL NIS");
                         }
-                        
+
                     case 50: { // TS_PRH_TidalStreamHarmonicPrediction
                             throw new NotImplementedException("No TS_PRH_TidalStreamHarmonicPrediction in DK | GL NIS");
                         }
-                        
+
                     case 55: { // TS_TIS_TidalStreamTimeSeries
                             throw new NotImplementedException("No TS_TIS_TidalStreamTimeSeries in DK | GL NIS");
                         }
-                        
+
                     default:
                         // code block
                         //System.Diagnostics.Debugger.Break();
                         throw new NotImplementedException("Unhandled subtype");
-                        
+
 
                 }
             }

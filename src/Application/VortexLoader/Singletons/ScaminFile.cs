@@ -1,8 +1,5 @@
-﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using NetTopologySuite.Mathematics;
+﻿using ArcGIS.Core.Geometry;
 using System.Xml.Linq;
-using static ArcGIS.Desktop.Editing.Templates.EditingGroupTemplate;
 
 namespace S100Framework.Applications.Singletons
 {

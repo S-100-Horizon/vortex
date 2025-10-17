@@ -88,9 +88,11 @@ namespace S100Framework.Applications
         private static Serilog.Core.Logger _logger;
         private static string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        public static ILogger Current => _logger;
+        internal static ILogger Current => _logger;
 
-        static Logger() {
+        internal static string LogDir { get => System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}"); }
+
+        static Logger() { 
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
                 .WriteTo.Logger(lc => lc
