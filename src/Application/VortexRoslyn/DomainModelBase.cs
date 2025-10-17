@@ -262,6 +262,7 @@ namespace S100Framework.DomainModel
 
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
+        public string? featureType { get; set; } = null;
         public string? featureId { get; set; } = null;
 
         public string code => typeof(TAssociation).Name;
