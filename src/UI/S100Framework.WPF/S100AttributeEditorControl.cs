@@ -250,14 +250,6 @@ namespace S100Framework.WPF
         private featureBindingDefinition? FeatureBindingDefinitionSelected { get; set; } = default;
 
         private PropertyGrid? PropertyGrid { get; set; } = default;
-        private StackPanel? InformationBindingsStackPanel { get; set; } = default;
-        private StackPanel? FeatureBindingsStackPanel { get; set; } = default;
-        private ComboBox? InformationBindingDefinitionsCheckComboBox { get; set; } = default;
-        private ComboBox? FeatureBindingDefinitionsCheckComboBox { get; set; } = default;
-        private StackPanel? InformationBindingsStackPanelCreator { get; set; } = default;
-        private StackPanel? FeatureBindingsStackPanelCreator { get; set; } = default;
-        private ListView? FeatureBindingsListView { get; set; } = default;
-        private ListView? InformationBindingsListView { get; set; } = default;
 
         public static S100AttributeEditorControl Singleton { get; private set; }
 
@@ -286,31 +278,11 @@ namespace S100Framework.WPF
             this.CommandBindings.Add(binding);
             binding = new CommandBinding(S100AttributeEditorControl.QueryInformationsCommand, this.QueryInformationsContent);
             this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.InformationIdLoaded, this.InformationIdLoadedContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.InformationIdDoubleClick, this.InformationIdDoubleClickContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.AddInformationBindingCommand, this.AddInformationBindingCommandContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationAddSelectionCommand, this.InformationAssociationAddSelectionCommandContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.InformationAssociationRemoveFromListSelectionCommand, this.InformationAssociationRemoveFromListSelectionCommandContent);
-            this.CommandBindings.Add(binding);
 
             //  FeatureBindings
             binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationSelectedCommand, this.FeatureAssociationSelectedContent);
             this.CommandBindings.Add(binding);
             binding = new CommandBinding(S100AttributeEditorControl.QueryFeaturesCommand, this.QueryFeaturesContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.FeatureIdLoaded, this.FeatureIdLoadedContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.FeatureIdDoubleClick, this.FeatureIdDoubleClickContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.AddFeatureBindingCommand, this.AddFeatureBindingCommandContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationAddSelectionCommand, this.FeatureAssociationAddSelectionCommandContent);
-            this.CommandBindings.Add(binding);
-            binding = new CommandBinding(S100AttributeEditorControl.FeatureAssociationRemoveFromListSelectionCommand, this.FeatureAssociationRemoveFromListSelectionCommandContent);
             this.CommandBindings.Add(binding);
 
             //  Unknown/Nullable
@@ -327,37 +299,6 @@ namespace S100Framework.WPF
             PropertyGrid.IsReadOnly = !this.IsEditingEnabled;
 
             PropertyGrid.PreparePropertyItem += this.PropertyGrid_PreparePropertyItem;
-
-            InformationBindingsStackPanel = (StackPanel)GetTemplateChild(PART_InformationBindings);
-            InformationBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
-
-            FeatureBindingsStackPanel = (StackPanel)GetTemplateChild(PART_FeatureBindings);
-            FeatureBindingsStackPanel.IsEnabled = this.IsEditingEnabled;
-
-            InformationBindingDefinitionsCheckComboBox = (ComboBox)GetTemplateChild(PART_InformationBindingDefinitions);
-            FeatureBindingDefinitionsCheckComboBox = (ComboBox)GetTemplateChild(PART_FeatureBindingDefinitions);
-
-            InformationBindingsStackPanelCreator = (StackPanel)GetTemplateChild(PART_InformationBindingsCreator);
-            FeatureBindingsStackPanelCreator = (StackPanel)GetTemplateChild(PART_FeatureBindingsCreator);
-
-            InformationBindingsListView = (ListView)GetTemplateChild(PART_InformationBindingsList);
-
-            FeatureBindingsListView = (ListView)GetTemplateChild(PART_FeatureBindingsList);
-
-            //FeatureBindingsListView.Loaded += this.FeatureBindingsListView_Loaded;
-            //FeatureBindingsListView.SizeChanged += this.FeatureBindingsListView_SizeChanged;
-
-            InformationBindingDefinitionsCheckComboBox.SelectionChanged += (object sender, SelectionChangedEventArgs e) => {
-                if (e.AddedItems.Count > 0) {
-                    InformationBindingDefinitionSelected = e.AddedItems[0] as informationBindingDefinition;
-                }
-            };
-
-            FeatureBindingDefinitionsCheckComboBox.SelectionChanged += (object sender, SelectionChangedEventArgs e) => {
-                if (e.AddedItems.Count > 0) {
-                    FeatureBindingDefinitionSelected = e.AddedItems[0] as featureBindingDefinition;
-                }
-            };
         }
 
         private void PropertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
@@ -406,9 +347,6 @@ namespace S100Framework.WPF
 
         private object? _selectedObject = default;
 
-        private ICollection<InformationBindingViewModel>? _selectedInformationBindings = default;
-        private ICollection<FeatureBindingViewModel>? _selectedFeatureBindings = default;
-
         #region DependencyProperties       
 
         public static readonly DependencyProperty HostProperty =
@@ -444,12 +382,6 @@ namespace S100Framework.WPF
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.IsReadOnly = !(Boolean)args.NewValue;
             }
-            if (control.InformationBindingsStackPanel != null) {
-                control.InformationBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
-            }
-            if (control.FeatureBindingsStackPanel != null) {
-                control.FeatureBindingsStackPanel.IsEnabled = (Boolean)args.NewValue;
-            }
         }
 
         public static readonly DependencyProperty SelectedInformationObjectProperty =
@@ -483,43 +415,14 @@ namespace S100Framework.WPF
                 return;
 
             control._selectedObject = control.SelectedInformationObject.InformationObject;
-            control._selectedInformationBindings = control.SelectedInformationObject.InformationObject.InformationBindings;
-            control._selectedFeatureBindings = default;
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
                 control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
-            var informationStackPanel = Visibility.Collapsed;
-
             if (control.SelectedInformationObject.InformationObject != null) {
                 control.SelectedInformationObject.InformationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
-            }
-            if (control.InformationBindingsStackPanelCreator != null)
-                control.InformationBindingsStackPanelCreator.IsEnabled = true;
-            //if (control.SelectedInformationObject.InformationBindings != null)
-            {
-                informationStackPanel = Visibility.Visible;
-
-                if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedInformationObject.informationBindingDefinitions;
-
-                    if (!control.SelectedInformationObject.informationBindingDefinitions.Any()) {
-                        informationStackPanel = Visibility.Collapsed;
-                    }
-                }
-
-                if (control.InformationBindingsListView != null) {
-                    control.InformationBindingsListView.ItemsSource = control._selectedInformationBindings;
-                }
-            }
-
-            if (control.InformationBindingsStackPanel != null) {
-                control.InformationBindingsStackPanel.Visibility = informationStackPanel;
-            }
-            if (control.FeatureBindingsStackPanel != null) {
-                control.FeatureBindingsStackPanel.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -554,62 +457,14 @@ namespace S100Framework.WPF
                 return;
 
             control._selectedObject = control.SelectedFeatureObject.FeatureObject;
-            control._selectedInformationBindings = control.SelectedFeatureObject.FeatureObject.InformationBindings;
-            control._selectedFeatureBindings = control.SelectedFeatureObject.FeatureObject.FeatureBindings;
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
                 control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
-            var informationStackPanel = Visibility.Collapsed;
-            var featureStackPanel = Visibility.Collapsed;
-
             if (control.SelectedFeatureObject.FeatureObject != null) {
                 control.SelectedFeatureObject.FeatureObject.PropertyChanged += control.SelectedObject_PropertyChanged;
-            }
-            if (control.InformationBindingsStackPanelCreator != null)
-                control.InformationBindingsStackPanelCreator.IsEnabled = true;
-            //if (control.SelectedFeatureObject.InformationBindings != null) 
-            {
-                informationStackPanel = Visibility.Visible;
-
-                if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.informationBindingDefinitions;
-
-                    if (!control.SelectedFeatureObject.informationBindingDefinitions.Any()) {
-                        informationStackPanel = Visibility.Collapsed;
-                    }
-                }
-
-                if (control.InformationBindingsListView != null) {
-                    control.InformationBindingsListView.ItemsSource = control._selectedInformationBindings;
-                }
-            }
-            if (control.FeatureBindingsStackPanelCreator != null)
-                control.FeatureBindingsStackPanelCreator.IsEnabled = true;
-            //if (control.SelectedFeatureObject.FeatureBindings != null) 
-            {
-                featureStackPanel = Visibility.Visible;
-
-                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedFeatureObject.featureBindingDefinitions;
-
-                    if (!control.SelectedFeatureObject.featureBindingDefinitions.Any()) {
-                        featureStackPanel = Visibility.Collapsed;
-                    }
-                }
-
-                if (control.FeatureBindingsListView != null) {
-                    control.FeatureBindingsListView.ItemsSource = control._selectedFeatureBindings;
-                }
-            }
-
-            if (control.InformationBindingsStackPanel != null) {
-                control.InformationBindingsStackPanel.Visibility = informationStackPanel;
-            }
-            if (control.FeatureBindingsStackPanel != null) {
-                control.FeatureBindingsStackPanel.Visibility = featureStackPanel;
             }
         }
 
@@ -642,70 +497,15 @@ namespace S100Framework.WPF
                 return;
 
             control._selectedObject = control.SelectedAssociationObject.AssociationObject;
-            control._selectedInformationBindings = default;
-            control._selectedFeatureBindings = default;
 
             if (control.PropertyGrid != null) {
                 control.PropertyGrid.SelectedObject = control._selectedObject;
                 control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
             }
 
-            var informationStackPanel = Visibility.Collapsed;
-            var featureStackPanel = Visibility.Collapsed;
-
             if (control.SelectedAssociationObject.AssociationObject != null) {
                 control.SelectedAssociationObject.AssociationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
-            }
-            if (control.InformationBindingsStackPanelCreator != null)
-                control.InformationBindingsStackPanelCreator.IsEnabled = true;
-            if (control.SelectedAssociationObject.InformationBindings != null && control.SelectedAssociationObject.InformationBindings.Any()) {
-                informationStackPanel = Visibility.Visible;
-
-                if (control.InformationBindingDefinitionsCheckComboBox != null) {
-                    control.InformationBindingDefinitionsCheckComboBox.ItemsSource = null;
-                    //control.InformationBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedAssociationObject.FeatureBinding.informationBindingDefinitions;
-
-                    //if (!control.SelectedAssociationObject.FeatureBinding.informationBindingDefinitions.Any()) {
-                    //    informationStackPanel = Visibility.Collapsed;
-                    //}
-
-                    if (control.InformationBindingsStackPanelCreator != null)
-                        control.InformationBindingsStackPanelCreator.IsEnabled = false;
-                }
-
-                if (control.InformationBindingsListView != null) {
-                    control.InformationBindingsListView.ItemsSource = control.SelectedAssociationObject.InformationBindings;
-                }
-            }
-
-            if (control.FeatureBindingsStackPanelCreator != null)
-                control.FeatureBindingsStackPanelCreator.IsEnabled = true;
-            if (control.SelectedAssociationObject.FeatureBindings != null && control.SelectedAssociationObject.FeatureBindings.Any()) {
-                featureStackPanel = Visibility.Visible;
-
-                if (control.FeatureBindingDefinitionsCheckComboBox != null) {
-                    control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = null;
-                    //control.FeatureBindingDefinitionsCheckComboBox.ItemsSource = control.SelectedAssociationObject.FeatureBinding.featureBindingDefinitions;
-
-                    //if (!control.SelectedAssociationObject.FeatureBinding.featureBindingDefinitions.Any()) {
-                    //    featureStackPanel = Visibility.Collapsed;
-                    //}
-
-                    if (control.FeatureBindingsStackPanelCreator != null)
-                        control.FeatureBindingsStackPanelCreator.IsEnabled = false;
-                }
-
-                if (control.FeatureBindingsListView != null) {
-                    control.FeatureBindingsListView.ItemsSource = control.SelectedAssociationObject.FeatureBindings;
-                }
-            }
-
-            if (control.InformationBindingsStackPanel != null) {
-                control.InformationBindingsStackPanel.Visibility = informationStackPanel;
-            }
-            if (control.FeatureBindingsStackPanel != null) {
-                control.FeatureBindingsStackPanel.Visibility = featureStackPanel;
-            }
+            }           
         }
 
         private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
@@ -748,73 +548,6 @@ namespace S100Framework.WPF
             }
         }
 
-        public static RoutedUICommand InformationIdLoaded = new("InformationIdLoaded", "InformationIdLoadedContent", typeof(S100AttributeEditorControl));
-
-        private void InformationIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
-            var control = e.Parameter as ListView;
-            if (control != null) {
-                control.ItemsSource = _informationsDropdown;
-            }
-        }
-
-        public static RoutedUICommand InformationIdDoubleClick = new("InformationIdDoubleClick", "InformationIdDoubleClickContent", typeof(S100AttributeEditorControl));
-
-        private void InformationIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
-            var control = e.Parameter as ListView;
-            if (control != null) {
-                var selectedItem = (InformationTypeId)control.SelectedItem;
-
-                if (selectedItem != null) {
-                    var informationBinding = InformationBindingsListView?.SelectedItem as InformationBindingViewModel;
-                    if (informationBinding != null) {
-                        informationBinding.informationId = selectedItem.Id;
-
-                        if (_activeDropDownButton != null) {
-                            _activeDropDownButton.IsOpen = false;
-                        }
-                    }
-                }
-            }
-        }
-
-        private ObservableCollection<InformationTypeId> _informationsDropdown = new ObservableCollection<InformationTypeId>();
-
-        public static RoutedUICommand AddInformationBindingCommand = new("Add information binding.", "AddInformationBindingCommandContent", typeof(S100AttributeEditorControl));
-
-        private void AddInformationBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (InformationBindingDefinitionSelected != null) {
-                var binding = new informationBinding {
-                    association = InformationBindingDefinitionSelected.association,
-                    roleType = Enum.GetName<roleType>(InformationBindingDefinitionSelected.roleType)!,
-                    role = InformationBindingDefinitionSelected.role,
-                };
-
-                this._selectedInformationBindings!.Add(new InformationBindingViewModel {
-                    //UID = uuid,
-                }.Load(binding));
-            }
-        }
-
-        public static RoutedUICommand InformationAssociationAddSelectionCommand = new("Add information type to selection", "InformationAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
-
-        private void InformationAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = (InformationBindingViewModel)e.Parameter;
-            if (viewModel != null) {
-                this.Host.SelectInformationBinding(new SelectInformationBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.informationId));
-            }
-        }
-
-        public static RoutedUICommand InformationAssociationRemoveFromListSelectionCommand = new("Delete information binding.", "InformationAssociationRemoveFromListSelectionCommandContent", typeof(S100AttributeEditorControl));
-
-        private void InformationAssociationRemoveFromListSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (InformationBindingDefinitionSelected != null) {
-                var viewModel = (InformationBindingViewModel)e.Parameter;
-                if (viewModel != null) {
-                    this._selectedInformationBindings!.Remove(viewModel);
-                }
-            }
-        }
-
         #endregion
 
 
@@ -835,73 +568,6 @@ namespace S100Framework.WPF
             control.Items.Clear();
             foreach (var id in await Host.QueryFeatureTypes(eventArgs)) {
                 control.Items.Add(id);
-            }
-        }
-
-        public static RoutedUICommand FeatureIdLoaded = new("FeatureIdLoaded", "FeatureIdLoadedContent", typeof(S100AttributeEditorControl));
-
-        private void FeatureIdLoadedContent(object sender, ExecutedRoutedEventArgs e) {
-            var control = e.Parameter as ListView;
-            if (control != null) {
-                control.ItemsSource = _featuresDropdown;
-            }
-        }
-
-        public static RoutedUICommand FeatureIdDoubleClick = new("FeatureIdDoubleClick", "FeatureIdDoubleClickContent", typeof(S100AttributeEditorControl));
-
-        private void FeatureIdDoubleClickContent(object sender, ExecutedRoutedEventArgs e) {
-            var control = e.Parameter as ListView;
-            if (control != null) {
-                var selectedItem = (FeatureTypeId)control.SelectedItem;
-
-                if (selectedItem != null) {
-                    var featureBinding = FeatureBindingsListView?.SelectedItem as FeatureBindingViewModel;
-                    if (featureBinding != null) {
-                        featureBinding.featureId = selectedItem.Id;
-
-                        if (_activeDropDownButton != null) {
-                            _activeDropDownButton.IsOpen = false;
-                        }
-                    }
-                }
-            }
-        }
-
-        private ObservableCollection<FeatureTypeId> _featuresDropdown = new ObservableCollection<FeatureTypeId>();
-
-        public static RoutedUICommand AddFeatureBindingCommand = new("Add feature binding.", "AddFeatureBindingCommandContent", typeof(S100AttributeEditorControl));
-
-        private void AddFeatureBindingCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (FeatureBindingDefinitionSelected != null) {
-                var binding = new featureBinding {
-                    association = FeatureBindingDefinitionSelected.association,
-                    roleType = Enum.GetName<roleType>(FeatureBindingDefinitionSelected.roleType)!,
-                    role = FeatureBindingDefinitionSelected.role,
-                };
-
-                this._selectedFeatureBindings!.Add(new FeatureBindingViewModel {
-                    //UID = uuid,
-                }.Load(binding));
-            }
-        }
-
-        public static RoutedUICommand FeatureAssociationAddSelectionCommand = new("Add feature type to selection", "FeatureAssociationAddSelectionCommandContent", typeof(S100AttributeEditorControl));
-
-        private void FeatureAssociationAddSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            var viewModel = (FeatureBindingViewModel)e.Parameter;
-            if (viewModel != null) {
-                this.Host.SelectFeatureBinding(new SelectFeatureBindingEventArgs(viewModel.roleType, viewModel.association, viewModel.role, viewModel.associationId, viewModel.featureId));
-            }
-        }
-
-        public static RoutedUICommand FeatureAssociationRemoveFromListSelectionCommand = new("Delete feature binding.", "FeatureAssociationRemoveFromListSelectionCommandContent", typeof(S100AttributeEditorControl));
-
-        private void FeatureAssociationRemoveFromListSelectionCommandContent(object sender, ExecutedRoutedEventArgs e) {
-            if (FeatureBindingDefinitionSelected != null) {
-                var viewModel = (FeatureBindingViewModel)e.Parameter;
-                if (viewModel != null) {
-                    this._selectedFeatureBindings!.Remove(viewModel);
-                }
             }
         }
 

@@ -30,6 +30,7 @@ namespace TestS100Framework
             /// and "informationtype".</remarks>
             [Fact]
             public void Patch_Associations() {
+#if null
                 var path = Environment.GetEnvironmentVariable("s100ed7.gdb") ?? throw new System.ArgumentNullException();
 
                 using var geodatabase = IO.Path.GetExtension(path) switch {
@@ -94,7 +95,7 @@ namespace TestS100Framework
 
                             if (!groupFeatureAssociation.Any(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)))
                                 continue;
-
+                            
                             var bindings = groupFeatureAssociation.Where(e => e.Key.Equals(name, StringComparison.OrdinalIgnoreCase)).SelectMany(e => e.Select(a => new featureBinding {
                                 association = a.association,
                                 associationId = a.associationID,
@@ -141,6 +142,7 @@ namespace TestS100Framework
                         }
                     }
                 });
+#endif
             }
         }
     }

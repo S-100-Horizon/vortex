@@ -366,52 +366,9 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
 
-        public ObservableCollection<InformationBindingViewModel> InformationBindings = [];
-
-        public ObservableCollection<FeatureBindingViewModel> FeatureBindings = [];
-
         public FeatureViewModel() {
-            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
-            this.FeatureBindings.CollectionChanged += this.OnFeatureBindings_CollectionChanged;
-        }
-
-        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
-                }
-            }
-            base.OnPropertyChanged(nameof(InformationBindings));
-        }
-
-        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
-            base.OnPropertyChanged(nameof(InformationBindings));
-        }
-
-        protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged -= OnFeatureBindings_CollectionItemChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged += OnFeatureBindings_CollectionItemChanged;
-                }
-            }
-            base.OnPropertyChanged(nameof(FeatureBindings));
-        }
-
-        protected void OnFeatureBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
-            base.OnPropertyChanged(nameof(FeatureBindings));
         }
     }
-
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
         public abstract InformationViewModel<TInformationType> Load(TInformationType instance);

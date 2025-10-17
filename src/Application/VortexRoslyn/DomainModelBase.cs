@@ -256,14 +256,26 @@ namespace S100Framework.DomainModel
         public override string ToString() => $"{association}, {role}";
     }
 
-    public class featureBinding
-    {
+
+    public class featureBinding<TAssociation> where TAssociation : FeatureAssociation {
+        public TAssociation? association { get; set; } = default;
+
         public string roleType { get; set; } = string.Empty;
-        public string association { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
-        public string? associationId { get; set; } = null;
         public string? featureId { get; set; } = null;
+
+        public string code => typeof(TAssociation).Name;
     }
+
+
+    //public class featureBinding
+    //{
+    //    public string roleType { get; set; } = string.Empty;
+    //    public string association { get; set; } = string.Empty;
+    //    public string role { get; set; } = string.Empty;
+    //    public string? associationId { get; set; } = null;
+    //    public string? featureId { get; set; } = null;
+    //}
 
     public class featureBindingDefinition
     {
