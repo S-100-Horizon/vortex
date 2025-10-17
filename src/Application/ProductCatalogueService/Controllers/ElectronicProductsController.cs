@@ -188,11 +188,12 @@ namespace ProductCatalogueService.Controllers
         /// <summary>
         /// Imports all existing products from a S-57 database
         /// </summary>
+        /// <param createAll="createAll"> Creates a new dataset for each product, may take up to 5 minutes to run</param>
         /// <returns>An collection with all imported productnames.</returns>
         [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("load", Name = "LoadElectronicProducts")]
-        public async Task<IActionResult> LoadElectronicProducts() {
+        public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
             var response = new ApiResponse<string[]>();
             var sw = Stopwatch.StartNew();
             var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
@@ -234,7 +235,6 @@ namespace ProductCatalogueService.Controllers
 
                 using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
                 using var cursor = tableProductDefinitions.Search(new QueryFilter {
-                    //WhereClause = "upper(ExportType) <> 'CANCEL'",
                     WhereClause = "1 = 1",
                 }, true);
 
@@ -278,12 +278,14 @@ namespace ProductCatalogueService.Controllers
 
             var products = _electronicProductManager.ToArray();
 
-            foreach (var productName in products) {
-                var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
-                var product = _electronicProductManager.ElectronicProduct(productName);
+            if (createAll) {
+                foreach (var productName in products) {
+                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
+                    var product = _electronicProductManager.ElectronicProduct(productName);
 
-                var yaml = dataset.Serialize();
-                this.CreateExchangeSet(product, yaml);
+                    var yaml = dataset.Serialize();
+                    this.CreateExchangeSet(product, yaml);
+                }
             }
 
             response.Data = products;
@@ -295,9 +297,6 @@ namespace ProductCatalogueService.Controllers
 
         private void CreateExchangeSet(ElectronicProduct product, string yaml) {
             var datasetName = product.datasetName;
-
-            //string update = product.updateNumber?.ToString("D3") ?? "000"; // 001
-
 
             var dir = IO.Directory.CreateDirectory(_electronicProductManager.OutputFolder);
 
@@ -328,11 +327,11 @@ namespace ProductCatalogueService.Controllers
 
             if (p.ExitCode != 0) {
                 Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
-                // throw new ArgumentException(commandline); hmmmmmm
+                 throw new ArgumentException(commandline); 
             }
 
             // Cleanup temp yaml
-            //IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+            IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
         }
 
 
