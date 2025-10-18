@@ -146,9 +146,7 @@ namespace S100Framework.Applications
                         using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
 
                         //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
-                        //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));
-                        using var featureAssociation = destination.OpenDataset<Table>(destination.GetName("featureassociation"));
-                        using var informationAssociation = destination.OpenDataset<Table>(destination.GetName("InformationAssociation"));
+                        //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
                         using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
 
@@ -166,10 +164,6 @@ namespace S100Framework.Applications
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
                         //attributeBinding.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {featureAssociation.GetName()}");
-                        DeleteAll(featureAssociation); // featureAssociation.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {informationAssociation.GetName()}");
-                        DeleteAll(informationAssociation); // informationAssociation.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
                         DeleteAll(informationtype); // informationtype.DeleteRows(query);
                     }

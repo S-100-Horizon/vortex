@@ -232,7 +232,15 @@ namespace S100Framework.DomainModel
     {
     }
 
-    public class informationBinding<TAssociation> where TAssociation : InformationAssociation
+    public interface IInformationBinding
+    {
+        string roleType { get; set; }
+        string role { get; set; }
+        string informationType { get; set; }
+        string referenceId { get; set; }
+    }
+
+    public class informationBinding<TAssociation> : IInformationBinding where TAssociation : InformationAssociation
     {
         public TAssociation? association { get; set; } = default;
 
@@ -259,8 +267,16 @@ namespace S100Framework.DomainModel
         public override string ToString() => $"{association}, {role}";
     }
 
+    public interface IFeatureBinding
+    {
+        string roleType { get; set; }
+        string role { get; set; }
+        string featureType { get; set; }
+        string referenceId { get; set; }
+    }
 
-    public class featureBinding<TAssociation> where TAssociation : FeatureAssociation {
+    public class featureBinding<TAssociation> : IFeatureBinding where TAssociation : FeatureAssociation
+    {
         public TAssociation? association { get; set; } = default;
 
         public string roleType { get; set; } = string.Empty;

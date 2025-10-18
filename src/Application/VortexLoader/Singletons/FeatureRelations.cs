@@ -761,7 +761,7 @@ namespace S100Framework.Applications.Singletons
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
-        internal void AddRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, Table featureAssociation) {
+        internal void AddRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature) {
             //if (_relationCount > 0) {
             //    return;
             //}
@@ -781,10 +781,10 @@ namespace S100Framework.Applications.Singletons
             // Legacy - is not in use... to be deleted.
             _relations.Add(relation);
 
-            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature, featureAssociation);
+            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature);
         }
 
-        private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, Table featureAssociation) {
+        private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature) {
             Relation relation = new(master, slave);
 
             if (relation.Master == null) {
@@ -800,7 +800,6 @@ namespace S100Framework.Applications.Singletons
             var featureBindingsPrimary = TPrimary?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
             var featureBindingsForeign = TForeign?.GetProperty("_featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
 
-            string featureAssociationName;
             featureBindingDefinition? bindingDefinitionForeign;
             featureBindingDefinition? bindingDefinitionPrimary;
 
@@ -818,17 +817,6 @@ namespace S100Framework.Applications.Singletons
                     return;
                     //throw new NotSupportedException(msg);
                 }
-                
-                // s101SlaveFeature["ps"] = ImporterNIS.ps101;
-                //                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
-
-                var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
-
-                featureAssociationBuffer["ps"] = ImporterNIS.ps101;
-                featureAssociationBuffer["code"] = bindingDefinitionForeign.association;
-                featureAssociationBuffer["edition"] = ImporterNIS.s101version;
-                var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                featureAssociationName = association.Crc32();
             }
 
             // Store binding

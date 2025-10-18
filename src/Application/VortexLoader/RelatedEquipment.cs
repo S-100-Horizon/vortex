@@ -19,13 +19,9 @@ namespace S100Framework.Applications
 
         HashSet<string> _relations = new();
 
-        //RowBuffer _featureAssociationBuffer = null;
-        Table _featureAssociation = null!;
-
         public RelatedEquipment(Geodatabase source, Geodatabase target) {
             this._source = source;
             this._target = target;
-            this._featureAssociation = _target.OpenDataset<Table>(_target.GetName("featureassociation"));
         }
 
         internal topmark? GetTopMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
@@ -198,7 +194,7 @@ namespace S100Framework.Applications
                     // Add relation between s57master polygon and slave equipment
 
                     // TODO: ENABLE THIS 
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature, this._featureAssociation);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature);
 
                 }
                 // 
@@ -232,7 +228,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException("empty equipment name");
                         }
 
-                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature, this._featureAssociation);
+                        FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(relatedObject.S101Type, equipmentName), featureN, s101MasterFeature);
 
                         if (relatedObject.S57Object.TableName != null) {
                             ConversionAnalytics.Instance.AddConverted(relatedObject.S57Object.TableName, relatedObject.GlobalId, equipmentName ?? "Unknown equipment name");
@@ -311,7 +307,7 @@ namespace S100Framework.Applications
                     throw new NotSupportedException("empty equipment name");
                 }
 
-                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
 
                 // return;
             }
@@ -362,8 +358,8 @@ namespace S100Framework.Applications
                         throw new NotSupportedException("empty equipment name");
                     }
 
-                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure, _featureAssociation);
-                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature, _featureAssociation);
+                    //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), s101MasterFeature["name"].ToString()),buffer, s101structure);
+                    FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.Crc32()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
                     featureN.Store();
 
                     Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));

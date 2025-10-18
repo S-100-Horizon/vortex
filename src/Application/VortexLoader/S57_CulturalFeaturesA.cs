@@ -23,7 +23,6 @@ namespace S100Framework.Applications
             Subtypes.Instance.RegisterSubtypes(culturalFeaturesA);
 
             using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
-            using var featureAssociation = target.OpenDataset<Table>(target.GetName("featureassociation"));
             using var featureType = target.OpenDataset<Table>(target.GetName("featuretype"));
 
             using var bufferFeatureType = featureType.CreateRowBuffer();
@@ -50,18 +49,18 @@ namespace S100Framework.Applications
 
                     bridge.Name = name;
 
-                    // Create association to use in bridge relations
-                    var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
+                    //// Create association to use in bridge relations
+                    //var featureAssociationBuffer = featureAssociation.CreateRowBuffer();
 
-                    featureAssociationBuffer["ps"] = ImporterNIS.ps101;
-                    featureAssociationBuffer["code"] = "BridgeAggregation";
-                    featureAssociationBuffer["edition"] = ImporterNIS.s101version;
+                    //featureAssociationBuffer["ps"] = ImporterNIS.ps101;
+                    //featureAssociationBuffer["code"] = "BridgeAggregation";
+                    //featureAssociationBuffer["edition"] = ImporterNIS.s101version;
 
-                    var association = featureAssociation.CreateRow(featureAssociationBuffer);
-                    string featureAssociationName = association.Crc32();
-                    bridge.BridgeAggregationName = featureAssociationName;
+                    //var association = featureAssociation.CreateRow(featureAssociationBuffer);
+                    //string featureAssociationName = association.Crc32();
+                    //bridge.BridgeAggregationName = featureAssociationName;
 
-                    ConversionAnalytics.Instance.AddConverted("DerivedBridgeElement", Guid.Empty, name);
+                    //ConversionAnalytics.Instance.AddConverted("DerivedBridgeElement", Guid.Empty, name);
 
                 }
             }

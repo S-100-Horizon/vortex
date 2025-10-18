@@ -125,9 +125,7 @@ namespace S100Framework.Applications.Singletons
                 "pointset",
                 "attachment",
                 "configuration",
-                "featureassociation",
                 "featuretype",
-                "informationassociation",
                 "informationtype",
                 "messages"
             };
