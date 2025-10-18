@@ -85,22 +85,14 @@ namespace ProductCatalogueService.Controllers
         public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
-            var product = _electronicProductManager.ElectronicProduct(name);
-
-            if (product == null) {
-                response.Success = false;
-                response.Message = $"No electronic product with name '{name}' was found.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return NotFound(response);
-            }
-
 
             // Create exchange set?
             var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
             var yaml = dataset.Serialize();
 
-            this.CreateExchangeSet(product, yaml);
+            var product = _electronicProductManager.ElectronicProduct(name);
 
+            this.CreateExchangeSet(product, yaml);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
@@ -118,14 +110,6 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-            var product = _electronicProductManager.ElectronicProduct(name);
-            if (product == null) {
-                response.Success = false;
-                response.Message = $"No electronic product with name '{name}' was found.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return NotFound(response);
-            }
-
             var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
 
             var yaml = dataset.Serialize();
@@ -138,12 +122,12 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            this.CreateExchangeSet(product, yaml);
+            var product = _electronicProductManager.ElectronicProduct(name);
 
+            this.CreateExchangeSet(product!, yaml);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
-
         }
 
         /// <summary>
@@ -156,16 +140,11 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newupdate", Name = "NewUpdate")]
         public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
+            if (!System.Diagnostics.Debugger.IsAttached)
+                return StatusCode(StatusCodes.Status501NotImplemented);
+
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
-            var product = _electronicProductManager.ElectronicProduct(name);
-
-            if (product == null) {
-                response.Success = false;
-                response.Message = $"No electronic product with name '{name}' was found.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return NotFound(response);
-            }
 
             // Check if product has any updates before creating new update
             var dirty = await _electronicProductManager.IsDirtyAsync(name);
@@ -179,27 +158,27 @@ namespace ProductCatalogueService.Controllers
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
-            var yaml = dataset.Serialize();
+            var incoming = dataset.Serialize();
 
-            if (string.IsNullOrEmpty(yaml)) {
+            if (string.IsNullOrEmpty(incoming)) {
                 response.Success = false;
                 response.Message = $"An error occured attempting to read dataset '{name}'.";
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var previous = "";
+            var latest = await _electronicProductManager.GetLatestDatasetYAML(name);
 
-            var diff = S100Framework.YAML.DatasetComparer.Compare(previous, yaml);
+            var delta = S100Framework.YAML.DatasetComparer.Compare(latest, incoming);
 
-            // foreach var previousupdate, DatasetComparer.AppendUpdate();
+            // foreach var previousupdate, DatasetComparer.AppendUpdate();                              // Nessecary to append previous yaml deltas?
+            //var update = S100Framework.YAML.DatasetComparer.BuildDatasetUpdate(incoming, diff);       // Entire yaml file + delta
 
+            var update = S100Framework.YAML.Converter.Serialize(delta);                                  // Only delta
 
-            var update = S100Framework.YAML.DatasetComparer.BuildDatasetUpdate(yaml, diff);
+            var product = _electronicProductManager.ElectronicProduct(name);
 
-            // re-fetch product with new update
-            product = _electronicProductManager.ElectronicProduct(name);
-
+            // Argument for updates? Like create a 001 file
             this.CreateExchangeSet(product, update);
 
             response.DurationMs = sw.ElapsedMilliseconds;
@@ -209,11 +188,12 @@ namespace ProductCatalogueService.Controllers
         /// <summary>
         /// Imports all existing products from a S-57 database
         /// </summary>
+        /// <param createAll="createAll"> Creates a new dataset for each product, may take up to 5 minutes to run</param>
         /// <returns>An collection with all imported productnames.</returns>
         [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("load", Name = "LoadElectronicProducts")]
-        public async Task<IActionResult> LoadElectronicProducts() {
+        public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
             var response = new ApiResponse<string[]>();
             var sw = Stopwatch.StartNew();
             var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
@@ -255,7 +235,6 @@ namespace ProductCatalogueService.Controllers
 
                 using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
                 using var cursor = tableProductDefinitions.Search(new QueryFilter {
-                    //WhereClause = "upper(ExportType) <> 'CANCEL'",
                     WhereClause = "1 = 1",
                 }, true);
 
@@ -299,11 +278,11 @@ namespace ProductCatalogueService.Controllers
 
             var products = _electronicProductManager.ToArray();
 
-            foreach (var productName in products) {
-                var product = _electronicProductManager.ElectronicProduct(productName);
-                if (product?.editionNumber == 0) {
+            if (createAll) {
+                foreach (var productName in products) {
                     var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
-                    product.editionNumber = 1;
+                    var product = _electronicProductManager.ElectronicProduct(productName);
+
                     var yaml = dataset.Serialize();
                     this.CreateExchangeSet(product, yaml);
                 }
@@ -318,9 +297,6 @@ namespace ProductCatalogueService.Controllers
 
         private void CreateExchangeSet(ElectronicProduct product, string yaml) {
             var datasetName = product.datasetName;
-
-            //string update = product.updateNumber?.ToString("D3") ?? "000"; // 001
-
 
             var dir = IO.Directory.CreateDirectory(_electronicProductManager.OutputFolder);
 
@@ -351,7 +327,7 @@ namespace ProductCatalogueService.Controllers
 
             if (p.ExitCode != 0) {
                 Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
-                // throw new ArgumentException(commandline); hmmmmmm
+                 throw new ArgumentException(commandline); 
             }
 
             // Cleanup temp yaml

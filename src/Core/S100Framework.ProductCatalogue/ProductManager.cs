@@ -3,6 +3,7 @@ using ArcGIS.Core.Data.UtilityNetwork;
 using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S100;
+using S100Framework.DomainModel.S128.ComplexAttributes;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
 using S100Horizon.Settings;
@@ -10,7 +11,11 @@ using Serilog;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection.Metadata;
 using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
@@ -39,6 +44,8 @@ namespace S100Framework.ProductCatalogue
         Task<bool> IsDirtyAsync(string name);
 
         ElectronicProduct? ElectronicProduct(string name);
+
+        Task<string> GetLatestDatasetYAML(string name);
 
         string OutputFolder { get; }
     }
@@ -82,6 +89,7 @@ namespace S100Framework.ProductCatalogue
         private ProductManager() {
             this._singleThreadTaskScheduler = new SingleThreadTaskScheduler();
             this._taskFactory = new TaskFactory(this._singleThreadTaskScheduler);
+            this.OutputFolder = string.Empty;
         }
 
         protected async Task<ProductManager> InitializeAsync(Func<Geodatabase> creator) {
@@ -348,7 +356,26 @@ namespace S100Framework.ProductCatalogue
 
             return dirty;
         }
+        public async Task<string> GetLatestDatasetYAML(string name) {
+            return await this.Dispatch(() => {
+                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+                using var cursor = attachment.Search(new QueryFilter {
+                    WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
+                    PostfixClause = "ORDER BY created_date DESC",
+                }, true);
 
+                if (!cursor.MoveNext())
+                    return "";
+
+                if (cursor.Current["data"] is not MemoryStream stream)
+                    return "";
+
+                stream.Position = 0;
+                using var reader = new StreamReader(stream);
+
+                return reader.ReadToEnd();
+            });
+        }
         ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => _electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
 
         IEnumerator<string> IEnumerable<string>.GetEnumerator() {
@@ -408,6 +435,9 @@ namespace S100Framework.ProductCatalogue
 
             var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
+            var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+            var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+
             var connection = this._connections["S-101"]!;
 
             electronicProduct.issueDate = DateOnly.FromDateTime(timestamp);
@@ -419,12 +449,26 @@ namespace S100Framework.ProductCatalogue
                 ENCVer = "INT.IHO.S-101.2.0",
                 FCVer = "2.0",
                 verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                Update = (uint?)electronicProduct.updateNumber,
+                //Update = (uint?)electronicProduct.updateNumber ?? 0, // Remove dfor now
             };
 
+            var supportFiles = new List<string>();
+            var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
+            var spatialAssociations = new Dictionary<string, S100Framework.YAML.Association>();
+            var informationTypes = new List<YAML.Information>();
+            var informationsTypesAdded = new List<string>();
+            var featureTypes = new List<YAML.Feature>();
+            var featureTypesAdded = new List<string>();
+
             return await this.Dispatch(() => {
+                // TEMP
+                var directoryNotesEnv = Environment.GetEnvironmentVariable("ENC_NotesAndPictures");
+                if (string.IsNullOrEmpty(directoryNotesEnv))
+                    throw new ArgumentNullException("Empty environment variable for ENC NotesAndPictures");
+
+                var directoryNotes = new IO.DirectoryInfo(directoryNotesEnv);
+
                 var topology = connection.BuildTopology(filter)!;
-                dataset.AddTopology(topology);
 
                 //  InformationTypes
                 {
@@ -445,16 +489,111 @@ namespace S100Framework.ProductCatalogue
                         var information = new YAML.Information {
                             Name = code,
                             ID = name,
-                            Attributes = (InformationNode)instance!,
                         };
+                        // Only emit attributes if feature contains any non-static properties
+                        if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                            information.Attributes = (InformationNode)instance!;
 
-                        dataset.AddInformation(information);
+                        informationTypes.Add(information);
+
+
+                        // Support Files
+                        if (regFileReference.IsMatch(json)) {
+                            var matches = regFileReference.Matches(json);
+                            foreach (Match m in matches) {
+                                var filename = m.Groups["filename"].Value;
+
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
+                                }
+                            }
+                        }
+                        if (regPictorialRepresentation.IsMatch(json)) {
+                            var matches = regPictorialRepresentation.Matches(json);
+                            foreach (Match m in matches) {
+                                var filename = m.Groups["filename"].Value;
+
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
+                                }
+                            }
+                        }
                     }
                 }
 
-                var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
+                // FeatureType
+                try {
+                    using var featureType = connection.OpenDataset<Table>(this.QualifyTableName("featuretype"));
 
-                //  FeatureTypes
+                    using var featureCursor = featureType.Search();
+                    while (featureCursor.MoveNext()) {
+                        var current = featureCursor.Current;
+
+                        var name = $"{current.Crc32()}";
+                        var code = current["code"].ToString()!;
+                        var json = current["json"].ToString()!;
+
+                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                        var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+
+                        var feature = new YAML.Feature {
+                            Prim = Primitive.NoGeometry,
+                            Name = code,
+                            Foid = foid,
+                        };
+                        // Only emit attributes if feature contains any non-static properties
+                        if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                            feature.Attributes = (FeatureNode)instance!;
+                        featureTypes.Add(feature);
+
+                        // Support Files
+                        if (regFileReference.IsMatch(json)) {
+                            var matches = regFileReference.Matches(json);
+                            foreach (Match m in matches) {
+                                var filename = m.Groups["filename"].Value;
+
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
+                                }
+                            }
+                        }
+                        if (regPictorialRepresentation.IsMatch(json)) {
+                            var matches = regPictorialRepresentation.Matches(json);
+                            foreach (Match m in matches) {
+                                var filename = m.Groups["filename"].Value;
+
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    Log.Information("Table: featuretype: {message} ", ex.Message);
+                }
+
+
+                //  Features
                 foreach (var def in connection.GetDefinitions<FeatureClassDefinition>()) {
                     var tableName = def.GetAliasName();
 
@@ -471,121 +610,162 @@ namespace S100Framework.ProductCatalogue
                         continue;
                     }
 
-                    using (var fc = connection.OpenDataset<FeatureClass>(def.GetName())) {
-                        using var featureCursor = fc.Search(filter, true);
-                        while (featureCursor.MoveNext()) {
-                            var current = (ArcGIS.Core.Data.Feature)featureCursor.Current;
-                            var name = $"{current.Crc32()}";
+                    using var fc = connection.OpenDataset<FeatureClass>(def.GetName());
+                    using var featureCursor = fc.Search(filter, true);
+                    while (featureCursor.MoveNext()) {
+                        var current = (ArcGIS.Core.Data.Feature)featureCursor.Current;
+                        var name = $"{current.Crc32()}";
 
-                            // Only map geometry, and keep name seperate so foids remain unique
-                            var geometry = name;
+                        // Only map geometry, and keep name seperate so foids remain unique
+                        var geometry = name;
 
-                            if (topology.Mapping.TryGetValue(name!, out var value))
-                                geometry = value;
+                        if (topology.Mapping.TryGetValue(name!, out var value))
+                            geometry = value;
 
-                            var shapetype = def.GetShapeType();
+                        var shapetype = def.GetShapeType();
 
-                            var code = Convert.ToString(current["code"]);
+                        var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{name[1..]}:1";       // Geodatastyrelsen: 110 
+                        var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
-                            var prim = shapetype switch {
-                                GeometryType.Point => Primitive.Point,
-                                GeometryType.Multipoint => Primitive.Point,
-                                GeometryType.Polyline => Primitive.Curve,
-                                GeometryType.Polygon => Primitive.Surface,
-                                _ => throw new InvalidOperationException(),
-                            };
+                        var prim = shapetype switch {
+                            GeometryType.Point => Primitive.Point,
+                            GeometryType.Multipoint => Primitive.Point,
+                            GeometryType.Polyline => Primitive.Curve,
+                            GeometryType.Polygon => Primitive.Surface,
+                            _ => throw new InvalidOperationException(),
+                        };
 
-                            try {
-                                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
+                        try {
+                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
 
-                                if (type == default) {
-                                    Log.Error("Could not get type: {type} for feature: {name}", code, name);
-                                    continue;
+                            if (type == default) {
+                                Log.Error("Could not get type: {type} for feature: {name}", code, name);
+                                continue;
+                            }
+
+                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+
+                            var json = Convert.ToString(current["json"])!;
+
+                            // Support Files
+                            if (regFileReference.IsMatch(json)) {
+                                var matches = regFileReference.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
+
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
                                 }
+                            }
+                            if (regPictorialRepresentation.IsMatch(json)) {
+                                var matches = regPictorialRepresentation.Matches(json);
+                                foreach (Match m in matches) {
+                                    var filename = m.Groups["filename"].Value;
 
-                                var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
 
-                                // Surface Masks
-                                var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
 
-                                // Build comma seperated string of masks, with :1 or :2 indicating which mask it is. Should be null/omitted if empty.
-                                var masks = new[] {
+
+                            // Surface Masks
+                            var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+
+                            // Build comma seperated string of masks, with :1 or :2 indicating which mask it is. Should be null/omitted if empty.
+                            var masks = new[] {
                                     topologySurface?.Masks1?.Select(e => $"C{e}:1"),
                                     topologySurface?.Masks2?.Select(e => $"C{e}:2")
                                 }.Where(m => m != null).SelectMany(m => m!);
 
-                                var feature = new YAML.Feature {
-                                    Name = code,
-                                    Foid = foid,
-                                    Prim = prim,
-                                    Geometry = geometry,
-                                    Masks = masks.Any() ? string.Join(",", masks) : null
-                                };
+                            var feature = new YAML.Feature {
+                                Name = code,
+                                Foid = foid,
+                                Prim = prim,
+                                Geometry = geometry,
+                                Masks = masks.Any() ? string.Join(",", masks) : null
+                            };
 
-                                // Only emit attributes if feature contains any non-static properties
-                                if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                                    feature.Attributes = (FeatureNode)instance!;
+                            // Only emit attributes if feature contains any non-static properties
+                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
+                                feature.Attributes = (FeatureNode)instance!;
 
-                                // Information Associations
-                                if (!current.IsNull("informationbindings")) {
-                                    throw new NotImplementedException();
-                                    //var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
+                            // Information Associations
+                            if (!current.IsNull("informationbindings")) {
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
 
-                                    //if (informationBindings != default && informationBindings.Any()) {
-                                    //    foreach (var binding in informationBindings) {
-                                    //        var asso = new YAML.Association {
-                                    //            Name = binding.association,
-                                    //            Role = binding.role,
-                                    //            To = binding.informationId!,
-                                    //        };
+                                if (informationBindings != default && informationBindings.Any()) {
+                                    foreach (var binding in informationBindings) {
+                                        var asso = new YAML.Association {
+                                            Name = binding.association,
+                                            Role = binding.role,
+                                            To = binding.informationId!,
+                                        };
 
-                                    //        // Special case for SpatialAssociation
-                                    //        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase)) {
-                                    //            var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == geometry);
+                                        // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                            spatialAssociations.TryAdd(geometry, asso);
+                                        else
+                                            feature?.AddAssociation(asso);
 
-                                    //            curve?.AddAssociation(asso);
-                                    //        }
-                                    //        else {
-                                    //            feature?.AddAssociation(asso);
-                                    //        }
-                                    //    }
-                                    //}
+                                        if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                            informationsTypesAdded.Add(binding.informationId!);
+                                            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
+                                        }
+                                    }
                                 }
+                            }
 
-                                // Feature Associations
-                                if (!current.IsNull("featurebindings")) {
-                                    throw new NotImplementedException();
-                                    //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
+                            // Feature Associations
+                            if (!current.IsNull("featurebindings")) {
+                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
 
-                                    //if (featureBindings != default && featureBindings.Any()) {
-                                    //    foreach (var binding in featureBindings) {
-                                    //        var roleType = binding.roleType;
+                                if (featureBindings != default && featureBindings.Any()) {
+                                    foreach (var binding in featureBindings) {
+                                        var roleType = binding.roleType;
 
-                                    //        // Skip association roleType for now
-                                    //        if (roleType == "association")
-                                    //            continue;
+                                        // Skip association roleType for now
+                                        if (roleType == "association")
+                                            continue;
 
-                                    //        var asso = new YAML.Association {
-                                    //            Name = binding.association,
-                                    //            Role = binding.role,
-                                    //            To = $"110:{binding.featureId![1..]}:1"
-                                    //        };
+                                        var asso = new YAML.Association {
+                                            Name = binding.association,
+                                            Role = binding.role,
+                                            //To = $"110:{binding.featureId![1..]}:1"
+                                            To = $"110:{binding.featureId}:1"
+                                        };
 
-                                    //        feature?.AddFeatureAssociation(asso);
-                                    //    }
-                                    //}
+                                        feature?.AddFeatureAssociation(asso);
+
+
+                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                            featureTypesAdded.Add(binding.featureId);
+                                            dataset?.AddFeature(noGeometry);
+                                        }
+
+
+                                    }
                                 }
-
-                                dataset?.AddFeature(feature!);
-
-                                geometries.Add(new(current.GetShape(), name!));
                             }
-                            catch (Exception ex) {
-                                Log.Error(ex, ex.Message);
-                                throw;
-                            }
+
+                            dataset?.AddFeature(feature!);
+
+                            geometries.Add(new(current.GetShape(), name!));
+                        }
+                        catch (Exception ex) {
+                            Log.Error(ex, ex.Message);
+                            throw;
                         }
                     }
                 }
@@ -595,6 +775,15 @@ namespace S100Framework.ProductCatalogue
                     if (geometry.GeometryType == GeometryType.Polygon) continue;    // Skip polygons after topology
                     dataset?.AddGeometry(geometry, name!);
                     Log.Verbose("Adding {geometryType} with ID: {name}", geometry.GeometryType, name);
+                }
+
+                dataset!.AddTopology(topology);
+
+                // Add Spatial Association Informationbindings. Must be handled after curves are added to dataset.
+                foreach (var sa in spatialAssociations) {
+                    var curve = dataset?.Curves?.FirstOrDefault(e => e.Name == sa.Key);
+
+                    curve?.AddAssociation(sa.Value);
                 }
 
                 this._geodatabase!.ApplyEdits(() => {
