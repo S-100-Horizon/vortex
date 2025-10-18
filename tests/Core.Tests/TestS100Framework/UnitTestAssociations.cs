@@ -81,7 +81,13 @@ namespace TestS100Framework
                 referenceId = "123456",
             };
 
-            var json = System.Text.Json.JsonSerializer.Serialize(aggregation);
+            object[] array = [aggregation];
+
+            var json = System.Text.Json.JsonSerializer.Serialize(array);
+
+            var instance1 = System.Text.Json.JsonSerializer.Deserialize<featureBinding<BridgeAggregation>[]>(json);
+
+            var instance2 = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json);
 
             System.Diagnostics.Debugger.Break();
 

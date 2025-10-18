@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -232,7 +233,7 @@ namespace S100Framework.DomainModel
     {
     }
 
-    public abstract class InformationBinding
+    public abstract class informationBinding
     {
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
@@ -240,7 +241,7 @@ namespace S100Framework.DomainModel
         public string referenceId { get; set; } = string.Empty;
     }
 
-    public class informationBinding<TAssociation> : InformationBinding where TAssociation : InformationAssociation, new()
+    public class informationBinding<TAssociation> : informationBinding where TAssociation : InformationAssociation, new()
     {        
         public TAssociation association { get; set; } = new TAssociation();
 
@@ -262,7 +263,7 @@ namespace S100Framework.DomainModel
         public override string ToString() => $"{association}, {role}";
     }
 
-    public abstract class FeatureBinding
+    public abstract class featureBinding
     {
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
@@ -271,7 +272,7 @@ namespace S100Framework.DomainModel
 
     }
 
-    public class featureBinding<TAssociation> : FeatureBinding where TAssociation : FeatureAssociation, new()
+    public class featureBinding<TAssociation> : featureBinding where TAssociation : FeatureAssociation, new()
     {
         public TAssociation association { get; set; } = new TAssociation();
 

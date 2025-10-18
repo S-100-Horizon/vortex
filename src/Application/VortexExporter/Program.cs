@@ -28,6 +28,9 @@ namespace S100Framework.Applications
             [Option('e', "exchangeset", Required = false, Default = false, HelpText = "Build exchangeset.")]
             public bool ExchangeSet { get; set; } = false;
 
+            [Option('n', "notespath", Required = false, HelpText = "Path to notes files references in TXTDSC.")]
+            public string? NotesPath { get; set; }
+
             [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
             public bool Verbose { get; set; }
         }
@@ -73,6 +76,8 @@ namespace S100Framework.Applications
                 string? dsnm = default;
                 bool exchangeset = false;
 
+                IO.DirectoryInfo? directoryNotes = default;
+
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
                 arguments.WithParsed<Options>(o => {
@@ -89,6 +94,8 @@ namespace S100Framework.Applications
 
                     dsnm = o.Dataset;
                     exchangeset = o.ExchangeSet;
+
+                    directoryNotes = new IO.DirectoryInfo(o.NotesPath!);
                 });
 
                 using Geodatabase source = createGeodatabase();
@@ -136,8 +143,6 @@ namespace S100Framework.Applications
                 }
 
                 //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
-
-                var directoryNotes = new IO.DirectoryInfo(@"\\nas.gst.dk\ncps\production\indigo\ENC\NotesAndPictures");
 
                 var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
