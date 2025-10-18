@@ -215,7 +215,6 @@ namespace S100Framework.Applications
             SpatialQuality spatialQuality101 = new SpatialQuality();
 
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
-            using var informationassociationTable = target.OpenDataset<Table>(target.GetName("informationassociation"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
             spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue<SpatialQuality, qualityOfHorizontalMeasurement>(4);
@@ -227,17 +226,6 @@ namespace S100Framework.Applications
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
             var informationName = informationTypeRow.Crc32();
-
-            // create Association
-
-            var informationAssociationBuffer = informationassociationTable.CreateRowBuffer();
-
-            informationAssociationBuffer["ps"] = ImporterNIS.ps101;
-            informationAssociationBuffer["code"] = "association";
-            informationAssociationBuffer["edition"] = ImporterNIS.s101version;
-
-            var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-            var informationAssociationName = association.Crc32();
 
             // create binding
             var informationBinding = new informationBinding<SpatialAssociation> {

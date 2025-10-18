@@ -240,9 +240,9 @@ namespace S100Framework.DomainModel
         string referenceId { get; set; }
     }
 
-    public class informationBinding<TAssociation> : IInformationBinding where TAssociation : InformationAssociation
+    public class informationBinding<TAssociation> : IInformationBinding where TAssociation : InformationAssociation, new()
     {
-        public TAssociation? association { get; set; } = default;
+        public TAssociation association { get; set; } = new();
 
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
@@ -275,9 +275,9 @@ namespace S100Framework.DomainModel
         string referenceId { get; set; }
     }
 
-    public class featureBinding<TAssociation> : IFeatureBinding where TAssociation : FeatureAssociation
+    public class featureBinding<TAssociation> : IFeatureBinding where TAssociation : FeatureAssociation, new()
     {
-        public TAssociation? association { get; set; } = default;
+        public TAssociation association { get; set; } = new();
 
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;

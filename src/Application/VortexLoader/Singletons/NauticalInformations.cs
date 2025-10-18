@@ -82,8 +82,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         private static informationBinding<AdditionalInformation> CreateInformationType(Geodatabase target, NauticalInformation nauticalInformation) {
-            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
-            using var informationassociationTable = target.OpenDataset<Table>(target.GetName("informationassociation"));
+            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));            
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
             bufferInformationType["ps"] = ImporterNIS.ps101;
@@ -93,16 +92,6 @@ namespace S100Framework.Applications.Singletons
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
             var informationName = $"{informationTypeRow.Crc32()}";
-
-            // create Association
-            var informationAssociationBuffer = informationassociationTable.CreateRowBuffer();
-
-            informationAssociationBuffer["ps"] = ImporterNIS.ps101;
-            informationAssociationBuffer["code"] = "association";
-            informationAssociationBuffer["edition"] = ImporterNIS.s101version;
-
-            var association = informationassociationTable.CreateRow(informationAssociationBuffer);
-            var informationAssociationName = $"{association.Crc32()}";
 
             // create binding
             var informationBinding = new informationBinding<AdditionalInformation> {
