@@ -18,6 +18,6 @@ namespace S100Framework.Applications
         internal List<NauticalInformation> NauticalInformation { get; set; } = new();
 
 
-        internal List<informationBinding> InformationBindings { get; set; } = new();
+        internal List<object> InformationBindings { get; set; } = new();
     }
 }

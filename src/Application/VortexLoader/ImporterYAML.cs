@@ -95,30 +95,32 @@ namespace S100Framework.Applications
 
                     // Feature Association
                     if (feature.FeatureAssociation != null && feature.FeatureAssociation.Count != 0) {
-                        var featureAssociations = feature.FeatureAssociation.Select(e => new featureBinding {
-                            association = e.Name,
-                            role = e.Role,
-                            featureId = feature.Geometry,
-                            //roleType = ??,         Skip for now
-                        });
+                        throw new NotImplementedException();
+                        //var featureAssociations = feature.FeatureAssociation.Select(e => new featureBinding {
+                        //    association = e.Name,
+                        //    role = e.Role,
+                        //    featureId = feature.Geometry,
+                        //    //roleType = ??,         Skip for now
+                        //});
 
-                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
+                        //var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
 
-                        rowbuffer["featurebindings"] = featureAssociationJSON;
+                        //rowbuffer["featurebindings"] = featureAssociationJSON;
                     }
 
                     // Information Association
                     if (feature.Association != null && feature.Association.Count != 0) {
-                        var informationAssociations = feature.Association.Select(e => new informationBinding {
-                            association = e.Name,
-                            role = e.Role,
-                            informationId = e.To,
-                            //roleType = ??,        Skip for now
-                        });
+                        throw new NotImplementedException();
+                        //var informationAssociations = feature.Association.Select(e => new informationBinding {
+                        //    association = e.Name,
+                        //    role = e.Role,
+                        //    informationId = e.To,
+                        //    //roleType = ??,        Skip for now
+                        //});
 
-                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
+                        //var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
 
-                        rowbuffer["informationbindings"] = informationAssociationJSON;
+                        //rowbuffer["informationbindings"] = informationAssociationJSON;
                     }
 
                     // Set Usageband

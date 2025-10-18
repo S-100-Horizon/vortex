@@ -1534,7 +1534,7 @@ namespace S100Framework.Applications
         //    List<information> information = CreateInformationFrom(current);
         //    instanceInformation.AddRange(information);
         //}
-        internal static List<DomainModel.informationBinding> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+        internal static List<object> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: TBD.
             //List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             //instanceInformation.AddRange(information);

@@ -832,8 +832,8 @@ namespace S100Framework.Applications.Singletons
             }
 
             // Store binding
-            List<featureBinding> primaryBindings = new List<featureBinding>();
-            List<featureBinding> foreignBindings = new List<featureBinding>();
+            List<object> primaryBindings = new List<object>();
+            List<object> foreignBindings = new List<object>();
 
             // Create binding
             {
@@ -842,14 +842,12 @@ namespace S100Framework.Applications.Singletons
                 if (bindingDefinitionPrimary == null) {
                     throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
                 }
-                featureBinding featureBindingPrimary = new() {
-                    association = bindingDefinitionPrimary.association,
-                    associationId = featureAssociationName,
-                    featureId = relation?.Slave?.Name,
-                    role = bindingDefinitionPrimary.role,
-                    roleType = bindingDefinitionPrimary.roleType.ToString()
 
-                };
+                var featureBindingPrimary = (IFeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
+                featureBindingPrimary.referenceId = relation!.Slave!.Name;
+                featureBindingPrimary.role = bindingDefinitionPrimary.role;
+                featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
+
                 primaryBindings.Add(featureBindingPrimary);
             }
             {
@@ -860,13 +858,10 @@ namespace S100Framework.Applications.Singletons
                     throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
                 }
 
-                featureBinding featureBindingForeign = new() {
-                    association = bindingDefinitionForeign.association,
-                    associationId = featureAssociationName,
-                    featureId = relation?.Master?.Name,
-                    role = bindingDefinitionForeign.role,
-                    roleType = bindingDefinitionForeign.roleType.ToString()
-                };
+                var featureBindingForeign = (IFeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
+                featureBindingForeign.referenceId = relation!.Master!.Name;
+                featureBindingForeign.role = bindingDefinitionForeign.role;
+                featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
 
                 foreignBindings.Add(featureBindingForeign);
             }
@@ -875,7 +870,7 @@ namespace S100Framework.Applications.Singletons
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
                 s101SlaveFeature.Store();
             } else {
-                List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!)!;
+                List<object> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<object>>(Convert.ToString(s101SlaveFeature["featurebindings"])!)!;
                 existingBinding.AddRange(foreignBindings);
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
                 s101SlaveFeature.Store();
@@ -886,7 +881,7 @@ namespace S100Framework.Applications.Singletons
                 s101MasterFeature.Store();
             }
             else {
-                List<S100Framework.DomainModel.featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<S100Framework.DomainModel.featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!)!;
+                List<object> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<object>>(Convert.ToString(s101MasterFeature["featurebindings"])!)!;
                 existingBinding.AddRange(primaryBindings);
                 s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding);
                 s101MasterFeature.Store();

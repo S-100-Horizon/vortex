@@ -210,7 +210,7 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-        private static List<informationBinding> CreateAssociationSpatialQuality(Geodatabase target) {
+        private static List<informationBinding<SpatialAssociation>> CreateAssociationSpatialQuality(Geodatabase target) {
             // create spatial quality
             SpatialQuality spatialQuality101 = new SpatialQuality();
 
@@ -240,10 +240,10 @@ namespace S100Framework.Applications
             var informationAssociationName = association.Crc32();
 
             // create binding
-            var informationBinding = new informationBinding {
-                informationId = informationName,
-                associationId = informationAssociationName,
-                association = nameof(SpatialAssociation),
+            var informationBinding = new informationBinding<SpatialAssociation> {
+                referenceId = informationName,                
+                //association = nameof(SpatialAssociation),
+                informationType = nameof(SpatialQuality),
                 role = Enum.GetName<Role>(Role.theQualityInformation)!,
                 roleType = roleType.association.ToString()
             };

@@ -22,7 +22,7 @@ namespace S100Framework.Applications.Singletons
         private static Geodatabase? _destination;
 
         private readonly Dictionary<string, NauticalInformation> _nauticalInformations = new();
-        private readonly Dictionary<string, informationBinding> _nauticalBindings = new();
+        private readonly Dictionary<string, informationBinding<AdditionalInformation>> _nauticalBindings = new();
 
         /// <summary>
         /// Initializes
@@ -64,7 +64,7 @@ namespace S100Framework.Applications.Singletons
         /// <summary>
         /// Adds a polygon geometry to the collection.
         /// </summary>
-        public informationBinding Add(string fileName, NauticalInformation nauticalInformation) {
+        public informationBinding<AdditionalInformation> Add(string fileName, NauticalInformation nauticalInformation) {
             if (fileName == null)
                 throw new ArgumentNullException(nameof(fileName));
             if (nauticalInformation == null)
@@ -81,7 +81,7 @@ namespace S100Framework.Applications.Singletons
 
         }
 
-        private static informationBinding CreateInformationType(Geodatabase target, NauticalInformation nauticalInformation) {
+        private static informationBinding<AdditionalInformation> CreateInformationType(Geodatabase target, NauticalInformation nauticalInformation) {
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
             using var informationassociationTable = target.OpenDataset<Table>(target.GetName("informationassociation"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
@@ -105,10 +105,10 @@ namespace S100Framework.Applications.Singletons
             var informationAssociationName = $"{association.Crc32()}";
 
             // create binding
-            var informationBinding = new informationBinding {
-                informationId = informationName,
-                associationId = informationAssociationName,
-                association = nameof(AdditionalInformation),
+            var informationBinding = new informationBinding<AdditionalInformation> {
+                referenceId = informationName,
+                //association = nameof(AdditionalInformation),
+                informationType = nameof(NauticalInformation),
                 role = Enum.GetName<Role>(Role.theInformation)!,
                 roleType = roleType.association.ToString()
             };

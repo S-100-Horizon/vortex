@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureAssociations;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System.Diagnostics;
 using System.Reflection;
@@ -243,16 +244,14 @@ namespace S100Framework.Applications.Singletons
 
                     var bindings = _instance!.GetBindings(row.Crc32());
 
-                    var featureBindings = new List<featureBinding>();
-
+                    var featureBindings = new List<object>();
 
                     foreach (var binding in bindings) {
                         var relatedBridge = row.Crc32();
                         var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
-                        var featureBinding = new featureBinding {
-                            association = "BridgeAggregation",
-                            associationId = bridgeElement!.BridgeAggregationName,
-                            featureId = binding.ChildName,
+                        var featureBinding = new featureBinding<BridgeAggregation> {
+                            referenceId = binding.ChildName!,
+                            featureType = name,
                             role = "theComponent",
                             roleType = "association"
                         };
