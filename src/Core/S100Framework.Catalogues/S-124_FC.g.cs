@@ -35,6 +35,16 @@ namespace S100Framework.DomainModel.S124 {
 			"TextPlacement" => [Primitives.point],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"navwarnPreambleContent" => typeof(informationBinding<InformationAssociations.navwarnPreambleContent>),
+			"navwarnReferences" => typeof(informationBinding<InformationAssociations.navwarnReferences>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"TextAssociation" => typeof(featureBinding<FeatureAssociations.TextAssociation>),
+			"areaAffected" => typeof(featureBinding<FeatureAssociations.areaAffected>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

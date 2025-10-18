@@ -13,6 +13,7 @@ using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.DomainModel.S124.InformationAssociations;
 using S100Framework.DomainModel.S124.FeatureAssociations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using System.Text.Json;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -136,10 +137,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public affectedChartPublicationsViewModel LoadaffectedChartPublications(affectedChartPublications instance) {
+		public affectedChartPublicationsViewModel Load(affectedChartPublications instance) {
 			chartAffected = new ();
 			if (instance.chartAffected != default) {
-				chartAffected.LoadchartAffected(instance.chartAffected);
+				chartAffected.Load(instance.chartAffected);
 			}
 			chartPublicationIdentifier = instance.chartPublicationIdentifier;
 			internationalChartAffected = instance.internationalChartAffected;
@@ -167,8 +168,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			language = this._language,
 			publicationAffected = this._publicationAffected,
 		};
-
-		public override ComplexViewModel<affectedChartPublications> Load(affectedChartPublications instance) => this.LoadaffectedChartPublications(instance);
 
 		public override string? ToString() => $"Affected Chart Publications";
 	}
@@ -234,7 +233,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public chartAffectedViewModel LoadchartAffected(chartAffected instance) {
+		public chartAffectedViewModel Load(chartAffected instance) {
 			chartNumber = instance.chartNumber;
 			chartPlanNumber = instance.chartPlanNumber;
 			editionDate = instance.editionDate;
@@ -259,8 +258,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			editionDate = this._editionDate,
 			lastNoticeDate = this._lastNoticeDate,
 		};
-
-		public override ComplexViewModel<chartAffected> Load(chartAffected instance) => this.LoadchartAffected(instance);
 
 		public override string? ToString() => $"Chart Affected";
 	}
@@ -326,7 +323,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public fixedDateRangeViewModel LoadfixedDateRange(fixedDateRange instance) {
+		public fixedDateRangeViewModel Load(fixedDateRange instance) {
 			dateEnd = instance.dateEnd;
 			dateStart = instance.dateStart;
 			timeOfDayEnd = instance.timeOfDayEnd;
@@ -351,8 +348,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			timeOfDayEnd = this._timeOfDayEnd,
 			timeOfDayStart = this._timeOfDayStart,
 		};
-
-		public override ComplexViewModel<fixedDateRange> Load(fixedDateRange instance) => this.LoadfixedDateRange(instance);
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
@@ -383,12 +378,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
 
-		public generalAreaViewModel LoadgeneralArea(generalArea instance) {
+		public generalAreaViewModel Load(generalArea instance) {
 			localityIdentifier = instance.localityIdentifier;
 			locationName.Clear();
 			if (instance.locationName is not null) {
 				foreach(var e in instance.locationName)
-					locationName.Add(new locationNameViewModel().LoadlocationName(e));
+					locationName.Add(new locationNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -406,8 +401,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			localityIdentifier = this._localityIdentifier,
 			locationName = this.locationName.Select(e => e.Model).ToList(),
 		};
-
-		public override ComplexViewModel<generalArea> Load(generalArea instance) => this.LoadgeneralArea(instance);
 
 		public override string? ToString() => $"General Area";
 
@@ -453,7 +446,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public informationViewModel Loadinformation(information instance) {
+		public informationViewModel Load(information instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -472,8 +465,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			language = this._language,
 			text = this._text,
 		};
-
-		public override ComplexViewModel<information> Load(information instance) => this.Loadinformation(instance);
 
 		public override string? ToString() => $"Information";
 	}
@@ -504,12 +495,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
 
-		public localityViewModel Loadlocality(locality instance) {
+		public localityViewModel Load(locality instance) {
 			localityIdentifier = instance.localityIdentifier;
 			locationName.Clear();
 			if (instance.locationName is not null) {
 				foreach(var e in instance.locationName)
-					locationName.Add(new locationNameViewModel().LoadlocationName(e));
+					locationName.Add(new locationNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -527,8 +518,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			localityIdentifier = this._localityIdentifier,
 			locationName = this.locationName.Select(e => e.Model).ToList(),
 		};
-
-		public override ComplexViewModel<locality> Load(locality instance) => this.Loadlocality(instance);
 
 		public override string? ToString() => $"Locality";
 
@@ -574,7 +563,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public locationNameViewModel LoadlocationName(locationName instance) {
+		public locationNameViewModel Load(locationName instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -593,8 +582,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			language = this._language,
 			text = this._text,
 		};
-
-		public override ComplexViewModel<locationName> Load(locationName instance) => this.LoadlocationName(instance);
 
 		public override string? ToString() => $"Location Name";
 	}
@@ -702,7 +689,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public messageSeriesIdentifierViewModel LoadmessageSeriesIdentifier(messageSeriesIdentifier instance) {
+		public messageSeriesIdentifierViewModel Load(messageSeriesIdentifier instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nameOfSeries = instance.nameOfSeries;
@@ -736,8 +723,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			warningType = this._warningType,
 			year = this._year,
 		};
-
-		public override ComplexViewModel<messageSeriesIdentifier> Load(messageSeriesIdentifier instance) => this.LoadmessageSeriesIdentifier(instance);
 
 		public override string? ToString() => $"Message Series Identifier";
 	}
@@ -777,7 +762,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public navwarnTitleViewModel LoadnavwarnTitle(navwarnTitle instance) {
+		public navwarnTitleViewModel Load(navwarnTitle instance) {
 			language = instance.language;
 			text = instance.text;
 			return this;
@@ -796,8 +781,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			language = this._language,
 			text = this._text,
 		};
-
-		public override ComplexViewModel<navwarnTitle> Load(navwarnTitle instance) => this.LoadnavwarnTitle(instance);
 
 		public override string? ToString() => $"NAVWARN Title";
 	}
@@ -819,11 +802,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
 
-		public warningInformationViewModel LoadwarningInformation(warningInformation instance) {
+		public warningInformationViewModel Load(warningInformation instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			navwarnTypeDetails.Clear();
 			if (instance.navwarnTypeDetails is not null) {
@@ -846,8 +829,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			information = this.information.Select(e => e.Model).ToList(),
 			navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
 		};
-
-		public override ComplexViewModel<warningInformation> Load(warningInformation instance) => this.LoadwarningInformation(instance);
 
 		public override string? ToString() => $"Warning Information";
 
@@ -878,7 +859,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
 
-		public featureReferenceViewModel LoadfeatureReference(featureReference instance) {
+		public featureReferenceViewModel Load(featureReference instance) {
 			atoNNumber.Clear();
 			if (instance.atoNNumber is not null) {
 				foreach(var e in instance.atoNNumber)
@@ -905,8 +886,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			atoNNumber = this.atoNNumber.ToList(),
 			interoperabilityIdentifier = this.interoperabilityIdentifier.ToList(),
 		};
-
-		public override ComplexViewModel<featureReference> Load(featureReference instance) => this.LoadfeatureReference(instance);
 
 		public override string? ToString() => $"Feature Reference";
 
@@ -971,7 +950,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
-		public featureNameViewModel LoadfeatureName(featureName instance) {
+		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
 			name = instance.name;
 			nameUsage = instance.nameUsage;
@@ -993,8 +972,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			name = this._name,
 			nameUsage = this._nameUsage,
 		};
-
-		public override ComplexViewModel<featureName> Load(featureName instance) => this.LoadfeatureName(instance);
 
 		public override string? ToString() => $"Feature Name";
 	}
@@ -1021,7 +998,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public horizontalPositionUncertaintyViewModel LoadhorizontalPositionUncertainty(horizontalPositionUncertainty instance) {
+		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			return this;
 		}
@@ -1037,8 +1014,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public horizontalPositionUncertainty Model => new () {
 			uncertaintyFixed = this._uncertaintyFixed,
 		};
-
-		public override ComplexViewModel<horizontalPositionUncertainty> Load(horizontalPositionUncertainty instance) => this.LoadhorizontalPositionUncertainty(instance);
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
@@ -1066,10 +1041,10 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public spatialAccuracyViewModel LoadspatialAccuracy(spatialAccuracy instance) {
+		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			return this;
 		}
@@ -1085,8 +1060,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public spatialAccuracy Model => new () {
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 		};
-
-		public override ComplexViewModel<spatialAccuracy> Load(spatialAccuracy instance) => this.LoadspatialAccuracy(instance);
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
@@ -1242,11 +1215,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		#endregion
 
 
-		public ReferencesViewModel LoadReferences(References instance) {
+		public ReferencesViewModel Load(References instance) {
 			messageSeriesIdentifier.Clear();
 			if (instance.messageSeriesIdentifier is not null) {
 				foreach(var e in instance.messageSeriesIdentifier)
-					messageSeriesIdentifier.Add(new messageSeriesIdentifierViewModel().LoadmessageSeriesIdentifier(e));
+					messageSeriesIdentifier.Add(new messageSeriesIdentifierViewModel().Load(e));
 			}
 			noMessageOnHand = instance.noMessageOnHand;
 			referenceCategory = instance.referenceCategory;
@@ -1271,7 +1244,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 
-		public override InformationViewModel<References> Load(References instance) => this.LoadReferences(instance);
+		public ReferencesViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"References";
 
@@ -1407,30 +1385,30 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		#endregion
 
 
-		public NavwarnPreambleViewModel LoadNavwarnPreamble(NavwarnPreamble instance) {
+		public NavwarnPreambleViewModel Load(NavwarnPreamble instance) {
 			affectedChartPublications.Clear();
 			if (instance.affectedChartPublications is not null) {
 				foreach(var e in instance.affectedChartPublications)
-					affectedChartPublications.Add(new affectedChartPublicationsViewModel().LoadaffectedChartPublications(e));
+					affectedChartPublications.Add(new affectedChartPublicationsViewModel().Load(e));
 			}
 			generalArea.Clear();
 			if (instance.generalArea is not null) {
 				foreach(var e in instance.generalArea)
-					generalArea.Add(new generalAreaViewModel().LoadgeneralArea(e));
+					generalArea.Add(new generalAreaViewModel().Load(e));
 			}
 			locality.Clear();
 			if (instance.locality is not null) {
 				foreach(var e in instance.locality)
-					locality.Add(new localityViewModel().Loadlocality(e));
+					locality.Add(new localityViewModel().Load(e));
 			}
 			messageSeriesIdentifier = new ();
 			if (instance.messageSeriesIdentifier != default) {
-				messageSeriesIdentifier.LoadmessageSeriesIdentifier(instance.messageSeriesIdentifier);
+				messageSeriesIdentifier.Load(instance.messageSeriesIdentifier);
 			}
 			navwarnTitle.Clear();
 			if (instance.navwarnTitle is not null) {
 				foreach(var e in instance.navwarnTitle)
-					navwarnTitle.Add(new navwarnTitleViewModel().LoadnavwarnTitle(e));
+					navwarnTitle.Add(new navwarnTitleViewModel().Load(e));
 			}
 			cancellationDate = instance.cancellationDate;
 			intService = instance.intService;
@@ -1469,7 +1447,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
 
-		public override InformationViewModel<NavwarnPreamble> Load(NavwarnPreamble instance) => this.LoadNavwarnPreamble(instance);
+		public NavwarnPreambleViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"NAVWARN Preamble";
 
@@ -1530,11 +1513,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 
-		public SpatialQualityViewModel LoadSpatialQuality(SpatialQuality instance) {
+		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			spatialAccuracy = new ();
 			if (instance.spatialAccuracy != default) {
-				spatialAccuracy.LoadspatialAccuracy(instance.spatialAccuracy);
+				spatialAccuracy.Load(instance.spatialAccuracy);
 			}
 			return this;
 		}
@@ -1555,7 +1538,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
-		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) => this.LoadSpatialQuality(instance);
+		public SpatialQualityViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Spatial Quality";
 	}
@@ -1635,7 +1623,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContent { get; set; } = new();
+		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContents { get; set; } = new();
 		#endregion
 
 
@@ -1680,33 +1668,33 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnPartViewModel.areaAffectedViewModel> areaAffected { get; set; } = new();
+		public ObservableCollection<NavwarnPartViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 		#endregion
 
 
-		public NavwarnPartViewModel LoadNavwarnPart(NavwarnPart instance) {
+		public NavwarnPartViewModel Load(NavwarnPart instance) {
 			restriction = instance.restriction;
 			fixedDateRange.Clear();
 			if (instance.fixedDateRange is not null) {
 				foreach(var e in instance.fixedDateRange)
-					fixedDateRange.Add(new fixedDateRangeViewModel().LoadfixedDateRange(e));
+					fixedDateRange.Add(new fixedDateRangeViewModel().Load(e));
 			}
 			warningInformation = new ();
 			if (instance.warningInformation != default) {
-				warningInformation.LoadwarningInformation(instance.warningInformation);
+				warningInformation.Load(instance.warningInformation);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			featureReference.Clear();
 			if (instance.featureReference is not null) {
 				foreach(var e in instance.featureReference)
-					featureReference.Add(new featureReferenceViewModel().LoadfeatureReference(e));
+					featureReference.Add(new featureReferenceViewModel().Load(e));
 			}
 			return this;
 		}
@@ -1736,7 +1724,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
-		public override FeatureViewModel<NavwarnPart> Load(NavwarnPart instance) => this.LoadNavwarnPart(instance);
+		public NavwarnPartViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NavwarnPartViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"NAVWARN Part";
 
@@ -1786,11 +1786,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffected { get; set; } = new();
+		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
 		#endregion
 
 
-		public NavwarnAreaAffectedViewModel LoadNavwarnAreaAffected(NavwarnAreaAffected instance) {
+		public NavwarnAreaAffectedViewModel Load(NavwarnAreaAffected instance) {
 
 			return this;
 		}
@@ -1811,7 +1811,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
-		public override FeatureViewModel<NavwarnAreaAffected> Load(NavwarnAreaAffected instance) => this.LoadNavwarnAreaAffected(instance);
+		public NavwarnAreaAffectedViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NavwarnAreaAffectedViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"NAVWARN Area Affected";
 	}
@@ -1918,11 +1930,11 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociation { get; set; } = new();
+		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 		#endregion
 
 
-		public TextPlacementViewModel LoadTextPlacement(TextPlacement instance) {
+		public TextPlacementViewModel Load(TextPlacement instance) {
 			scaleMinimum = instance.scaleMinimum;
 			text = instance.text;
 			textOffsetBearing = instance.textOffsetBearing;
@@ -1956,11 +1968,152 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
-		public override FeatureViewModel<TextPlacement> Load(TextPlacement instance) => this.LoadTextPlacement(instance);
+		public TextPlacementViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TextPlacementViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Text Placement";
 	}
 
 
+
+	public static class InformationBindingExtension {
+		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
+					instance.navwarnReferences.Add(new ReferencesViewModel.navwarnReferencesViewModel {
+						informationId = navwarnReferences.referenceId,
+						role = navwarnReferences.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
+					instance.navwarnReferences.Add(new NavwarnPreambleViewModel.navwarnReferencesViewModel {
+						informationId = navwarnReferences.referenceId,
+						role = navwarnReferences.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<navwarnPreambleContent> navwarnPreambleContent) {
+					instance.navwarnPreambleContents.Add(new NavwarnPartViewModel.navwarnPreambleContentViewModel {
+						informationId = navwarnPreambleContent.referenceId,
+						role = navwarnPreambleContent.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavwarnAreaAffectedViewModel LoadInformationBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+	}
+
+	public static class FeatureBindingExtension {
+		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<areaAffected> areaAffected) {
+					instance.areaAffecteds.Add(new NavwarnPartViewModel.areaAffectedViewModel {
+						featureId = areaAffected.referenceId,
+						role = areaAffected.role,
+					});
+				}
+				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
+					instance.TextAssociations.Add(new NavwarnPartViewModel.TextAssociationViewModel {
+						featureId = textAssociation.referenceId,
+						role = textAssociation.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<areaAffected> areaAffected) {
+					instance.areaAffecteds.Add(new NavwarnAreaAffectedViewModel.areaAffectedViewModel {
+						featureId = areaAffected.referenceId,
+						role = areaAffected.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
+					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
+						featureId = textAssociation.referenceId,
+						role = textAssociation.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+	}
 
 }

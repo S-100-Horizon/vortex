@@ -1,12 +1,17 @@
-﻿using S100Framework.DomainModel;
+﻿using ArcGIS.Core.Data.UtilityNetwork;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureAssociations;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.WPF.ViewModel.S101;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Xml.Serialization;
 using Xunit.Abstractions;
 
@@ -28,36 +33,41 @@ namespace TestS100Framework
         /// </summary>
         [Fact]
         public void Test_Serialization() {
-            //var ass1 = new featureBinding<BridgeAggregation> {
+            var association1 = new featureBinding<BridgeAggregation> {
+                association = new BridgeAggregation {
+                    //  no attributes
+                },
+                roleType = roleType.aggregation.ToString(),
+                role = Enum.GetName<Role>(Role.theComponent)!,
+                featureType = nameof(SpanFixed),
+                referenceId = $"{Guid.NewGuid():N}",
+            };
 
-            //};
+            var association2 = new featureBinding<StructureEquipment> {
+                association = new StructureEquipment {
+                    //  no attributes
+                },
+                roleType = roleType.association.ToString(),
+                role = Enum.GetName<Role>(Role.theEquipment)!,
+                featureType = nameof(Daymark),
+                referenceId = $"{Guid.NewGuid():N}",
+            };
 
+            object[] array = [association1, association2];
 
+            var json = System.Text.Json.JsonSerializer.Serialize(array);
 
+            using var document = JsonDocument.Parse(json);
 
-            //var association1 = new featureBindingNew<BridgeAggregationTest> {
-            //    roleType = roleType.aggregation.ToString(),
-            //    role = Enum.GetName<Role>(Role.theComponent)!,
-            //    association = new BridgeAggregationTest {
-            //        name = "NoName",
-            //    },
-            //    featureId = "123456",
-            //    featureType = nameof(SpanFixed),
-            //};
+            foreach (var element in document.RootElement.EnumerateArray()) {
+                var code = element.GetProperty("code").GetString()!;
 
-            //var association2 = new featureBindingNew<StructureEquipmentTest> {
-            //    roleType = roleType.association.ToString(),
-            //    role = Enum.GetName<Role>(Role.theEquipment)!,
-            //    association = new StructureEquipmentTest {
-            //        interoperabilityIdentifier = "Hello World",
-            //    },
-            //    featureId = "123444",
-            //    featureType = nameof(Daymark),
-            //};
+                var instance = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+            }
 
-            //object[] array = [association1, association2];
-
-            //var json = System.Text.Json.JsonSerializer.Serialize(array);            
+            var bridge = new BridgeViewModel {
+            }.Load(new Bridge {
+            }).ParseFeatureBindings(json);
 
             System.Diagnostics.Debugger.Break();
         }
@@ -68,3 +78,66 @@ namespace TestS100Framework
         //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBindingTest>>(json);
     }
 }
+
+//namespace S100Framework.WPF.ViewModel.S101
+//{
+//    public static class FeatureBindingExtension {
+//        public static BridgeViewModel LoadFeatureBinding(this BridgeViewModel instance, JsonDocument document) {
+//            foreach (var element in document.RootElement.EnumerateArray()) {
+//                var code = element.GetProperty("code").GetString()!;
+
+//                var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+//                if (featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
+//                    instance.BridgeAggregation.Add(new BridgeViewModel.BridgeAggregationViewModel {
+//                        featureId = bridgeAggregation.referenceId,
+//                        role = bridgeAggregation.role,
+//                    });
+//                }
+//                if (featureBinding is featureBinding<StructureEquipment> structureEquipment) {
+//                    instance.StructureEquipment.Add(new BridgeViewModel.StructureEquipmentViewModel {
+//                        featureId = structureEquipment.referenceId,
+//                        role = structureEquipment.role,
+//                    });
+//                }
+//            }
+
+//            return instance;
+//        }
+//    }
+//}
+
+
+
+/*
+            var lightAllAround = new LightAllAround {
+                height = 54,
+                valueOfNominalRange = 9,
+            };
+            var qualityOfBathymetricData = new QualityOfBathymetricData {
+                interoperabilityIdentifier = "Yes"
+            };
+
+            object[] arr = [lightAllAround, qualityOfBathymetricData];
+            var json = System.Text.Json.JsonSerializer.Serialize(arr);
+
+
+
+
+            using var doc = JsonDocument.Parse(json);
+
+            if (doc.RootElement.ValueKind != JsonValueKind.Array) throw new InvalidCastException();
+
+            foreach (var element in doc.RootElement.EnumerateArray()) {
+                _ = element.TryGetProperty("Code", out var code);
+
+                var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+
+                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+
+                var instance = System.Text.Json.JsonSerializer.Deserialize(element!, type);
+
+                System.Diagnostics.Debugger.Break();
+            }
+
+ */

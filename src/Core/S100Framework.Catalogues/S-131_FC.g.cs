@@ -63,6 +63,33 @@ namespace S100Framework.DomainModel.S131 {
 			"TextPlacement" => [Primitives.point],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"AdditionalInformation" => typeof(informationBinding<InformationAssociations.AdditionalInformation>),
+			"AuthorityContact" => typeof(informationBinding<InformationAssociations.AuthorityContact>),
+			"AuthorityHours" => typeof(informationBinding<InformationAssociations.AuthorityHours>),
+			"AssociatedRxN" => typeof(informationBinding<InformationAssociations.AssociatedRxN>),
+			"ExceptionalWorkday" => typeof(informationBinding<InformationAssociations.ExceptionalWorkday>),
+			"ServiceControl" => typeof(informationBinding<InformationAssociations.ServiceControl>),
+			"ServiceContact" => typeof(informationBinding<InformationAssociations.ServiceContact>),
+			"LocationHours" => typeof(informationBinding<InformationAssociations.LocationHours>),
+			"RelatedOrganisation" => typeof(informationBinding<InformationAssociations.RelatedOrganisation>),
+			"InclusionType" => typeof(informationBinding<InformationAssociations.InclusionType>),
+			"PermissionType" => typeof(informationBinding<InformationAssociations.PermissionType>),
+			"SpatialAssociation" => typeof(informationBinding<InformationAssociations.SpatialAssociation>),
+			"LimitEntrance" => typeof(informationBinding<InformationAssociations.LimitEntrance>),
+			"ServiceAvailability" => typeof(informationBinding<InformationAssociations.ServiceAvailability>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"TextAssociation" => typeof(featureBinding<FeatureAssociations.TextAssociation>),
+			"Subsection" => typeof(featureBinding<FeatureAssociations.Subsection>),
+			"Infrastructure" => typeof(featureBinding<FeatureAssociations.Infrastructure>),
+			"PrimaryAuxiliaryFacility" => typeof(featureBinding<FeatureAssociations.PrimaryAuxiliaryFacility>),
+			"Demarcation" => typeof(featureBinding<FeatureAssociations.Demarcation>),
+			"JurisdictionalLimit" => typeof(featureBinding<FeatureAssociations.JurisdictionalLimit>),
+			"LayoutDivision" => typeof(featureBinding<FeatureAssociations.LayoutDivision>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

@@ -35,6 +35,22 @@ namespace S100Framework.DomainModel.S128 {
 			"S100Service" => [Primitives.surface],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"CarriageRequirement" => typeof(informationBinding<InformationAssociations.CarriageRequirement>),
+			"DistributionDetails" => typeof(informationBinding<InformationAssociations.DistributionDetails>),
+			"DistributorContact" => typeof(informationBinding<InformationAssociations.DistributorContact>),
+			"PriceOfElement" => typeof(informationBinding<InformationAssociations.PriceOfElement>),
+			"PriceOfNauticalProduct" => typeof(informationBinding<InformationAssociations.PriceOfNauticalProduct>),
+			"ProducerContact" => typeof(informationBinding<InformationAssociations.ProducerContact>),
+			"ProductionDetails" => typeof(informationBinding<InformationAssociations.ProductionDetails>),
+			"ProductPackage" => typeof(informationBinding<InformationAssociations.ProductPackage>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"ProductMapping" => typeof(featureBinding<FeatureAssociations.ProductMapping>),
+			"Correlated" => typeof(featureBinding<FeatureAssociations.Correlated>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

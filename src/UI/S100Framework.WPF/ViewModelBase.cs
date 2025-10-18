@@ -44,8 +44,8 @@ namespace S100Framework.WPF.ViewModel
             };
         }
 
-        [Browsable(false)]
-        public Guid? UID { get; set; } = default;
+        //[Browsable(false)]
+        //public Guid? UID { get; set; } = default;
 
         public abstract string Serialize();
 
@@ -311,8 +311,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class ComplexViewModel<TComplexType> : ComplexViewModel where TComplexType : ComplexType
     {
-        public abstract ComplexViewModel<TComplexType> Load(TComplexType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TComplexType).GetProperties(), this.GetType().GetProperties());
         }
@@ -327,28 +325,7 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
-        public ObservableCollection<InformationBindingViewModel> InformationBindings = [];
-
         public InformationViewModel() {
-            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
-        }
-
-        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= OnInformationBindings_CollectionItemChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += OnInformationBindings_CollectionItemChanged;
-                }
-            }
-            base.OnPropertyChanged(nameof(InformationBindings));
-        }
-
-        protected void OnInformationBindings_CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
-            base.OnPropertyChanged(nameof(InformationBindings));
         }
     }
 
@@ -371,8 +348,6 @@ namespace S100Framework.WPF.ViewModel
     }
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
-        public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TInformationType).GetProperties(), this.GetType().GetProperties());
         }
@@ -380,132 +355,11 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
-        public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TFeatureType).GetProperties(), this.GetType().GetProperties());
         }
     }
 
-    public class InformationBindingViewModel : INotifyPropertyChanged
-    {
-        public Guid? UID { get; set; } = default;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        public roleType? roleType => string.IsNullOrEmpty(_informationBindingDefintion?.roleType) ? default : Enum.Parse<roleType>(_informationBindingDefintion.roleType);
-
-        public String? association => _informationBindingDefintion?.association;
-
-        public String? role => _informationBindingDefintion?.role;
-
-        private informationBinding? _informationBindingDefintion;
-
-        private String? _associationId = string.Empty;
-
-        public String? associationId {
-            get {
-                return _associationId;
-            }
-
-            set {
-                SetValue(ref _associationId, value);
-            }
-        }
-
-        private String? _informationId = string.Empty;
-
-        public String? informationId {
-            get {
-                return _informationId;
-            }
-
-            set {
-                SetValue(ref _informationId, value);
-            }
-        }
-
-        public InformationBindingViewModel Load(informationBinding binding) {
-            _informationBindingDefintion = binding;
-            _associationId = binding.associationId;
-            _informationId = binding.informationId;
-            return this;
-        }
-
-        //public abstract InformationAssociation Save(InformationAssociation featureAssociation, string role);
-    }
-
-    public class FeatureBindingViewModel : INotifyPropertyChanged
-    {
-        public Guid? UID { get; set; } = default;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        public roleType? roleType => string.IsNullOrEmpty(_featureBindingDefintion?.roleType) ? default : Enum.Parse<roleType>(_featureBindingDefintion.roleType);
-
-        public String? association => _featureBindingDefintion?.association;
-
-        public String? role => _featureBindingDefintion?.role;
-
-        private featureBinding? _featureBindingDefintion;
-
-        private String? _associationId = string.Empty;
-
-        public String? associationId {
-            get {
-                return _associationId;
-            }
-
-            set {
-                SetValue(ref _associationId, value);
-            }
-        }
-
-        private String? _featureId = string.Empty;
-
-        public String? featureId {
-            get {
-                return _featureId;
-            }
-
-            set {
-                SetValue(ref _featureId, value);
-            }
-        }
-
-        public FeatureBindingViewModel Load(featureBinding binding) {
-            _featureBindingDefintion = binding;
-            _associationId = binding.associationId;
-            _featureId = binding.featureId;
-            return this;
-        }
-
-        //public abstract FeatureAssociation Save(FeatureAssociation featureAssociation, string role);
-    }
 
     //    public class TristateViewModel<T> : ViewModelBase
     //    {

@@ -43,22 +43,11 @@ namespace VortexConceptApplication
         public void AddFeatureBinding() {
         }
 
-        public ObservableCollection<FeatureBindingViewModel> FeatureBindings { get; set; } = new ObservableCollection<FeatureBindingViewModel>();
-
-        public ObservableCollection<InformationBindingViewModel> InformationBindings { get; set; } = new ObservableCollection<InformationBindingViewModel>();
 
         private static void OnSelectedPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
             var propertyGrid = sender as S100AttributeEditorView;
             if (propertyGrid != null) {
                 //propertyGrid.OnSelectedPropertyChanged((object)args.OldValue, (object)args.NewValue);
-            }
-        }
-
-        private async void _listViewFeatureBindings_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (OnFeatureAssociationsChanged is not null && e.AddedItems.Count > 0) {
-                if (e.AddedItems[0] is not FeatureBindingViewModel)
-                    return;
-                var item = (e.AddedItems[0] as FeatureBindingViewModel)!;
             }
         }
 

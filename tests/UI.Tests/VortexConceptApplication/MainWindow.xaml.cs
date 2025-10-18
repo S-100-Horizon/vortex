@@ -172,7 +172,7 @@ namespace VortexConceptApplication
             //  StringLengthConstraintAttribute
             var viewModel3 = new S100Framework.WPF.ViewModel.S101.FogSignalViewModel() {
                 Name = "S202600",
-            };//.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.FogSignal());
 
 
             //  Associations

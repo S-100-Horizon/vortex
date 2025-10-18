@@ -1263,8 +1263,8 @@ namespace S100Framework.Applications
                         InformationBindingExtension = (extension) => { },
                         FeatureBindingExtension = (extension) => { },
                     }, (b) => {
-                        b.AppendLine();
-                        b.AppendLine($"\t\tpublic override ComplexViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
+                        //LOAD b.AppendLine();
+                        //LOAD b.AppendLine($"\t\tpublic override ComplexViewModel<{code}> Load({code} instance) => this.Load(instance);");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1453,8 +1453,14 @@ namespace S100Framework.Applications
                     }, (b) => {
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
+                        
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic override InformationViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(string json) {{");
+                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
+                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\t\treturn this;");
+                        b.AppendLine($"\t\t}}");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -1509,8 +1515,22 @@ namespace S100Framework.Applications
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. {code}._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
+                        
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic override FeatureViewModel<{code}> Load({code} instance) => this.Load{code}(instance);");
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(string json) {{");
+                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
+                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\t\treturn this;");
+                        b.AppendLine($"\t\t}}");
+
+                        b.AppendLine();
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseFeatureBindings(string json) {{");
+                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        b.AppendLine($"\t\t\t\tthis.LoadFeatureBinding(document);");
+                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\t\treturn this;");
+                        b.AppendLine($"\t\t}}");
                     });
 
                     builderViewModel.AppendLine(s);
@@ -2202,9 +2222,8 @@ namespace S100Framework.Applications
 
             if (client.IncludeLoad) {
                 builder.AppendLine();
-                builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load{code}({code} instance, Action<{client.LoadPrefix}>? initialize = default) {{");
+                builder.AppendLine($"\t\tpublic {client.LoadPrefix} Load({code} instance) {{");
                 builder.AppendLine(loadBuilder.ToString().TrimEnd([.. Environment.NewLine]));
-                builder.AppendLine("\t\t\tinitialize.Invoke(this);");
                 builder.AppendLine("\t\t\treturn this;");
                 builder.AppendLine("\t\t}");
             }
@@ -2359,7 +2378,7 @@ namespace S100Framework.Applications
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
                         loadBuilder.AppendLine($"\t\t\t{referenceCode} = new ();");
                         loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} != default) {{");
-                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load{referenceCode}(instance.{referenceCode});");
+                        loadBuilder.AppendLine($"\t\t\t\t{referenceCode}.Load(instance.{referenceCode});");
                         loadBuilder.AppendLine($"\t\t\t}}");
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}?.Model,");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this._{referenceCode}?.Model,");
@@ -2404,7 +2423,7 @@ namespace S100Framework.Applications
                     loadBuilder.AppendLine($"\t\t\tif (instance.{referenceCode} is not null) {{");
                     loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{referenceCode})");
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)) {
-                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load{referenceCode}(e));");
+                        loadBuilder.AppendLine($"\t\t\t\t\t{referenceCode}.Add(new {referenceCode}ViewModel().Load(e));");
                         serializeBuilder.AppendLine($"\t\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
                         modelBuilder.AppendLine($"\t\t\t{referenceCode} = this.{referenceCode}.Select(e => e.Model).ToList(),");
                     }

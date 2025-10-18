@@ -39,6 +39,22 @@ namespace S100Framework.DomainModel.S122 {
 			"TextPlacement" => [Primitives.point],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"AssociatedRxN" => typeof(informationBinding<InformationAssociations.AssociatedRxN>),
+			"ExceptionalWorkday" => typeof(informationBinding<InformationAssociations.ExceptionalWorkday>),
+			"ProtectedAreaAuthority" => typeof(informationBinding<InformationAssociations.ProtectedAreaAuthority>),
+			"ServiceControl" => typeof(informationBinding<InformationAssociations.ServiceControl>),
+			"RelatedOrganisation" => typeof(informationBinding<InformationAssociations.RelatedOrganisation>),
+			"PermissionType" => typeof(informationBinding<InformationAssociations.PermissionType>),
+			"InclusionType" => typeof(informationBinding<InformationAssociations.InclusionType>),
+			"AuthorityContact" => typeof(informationBinding<InformationAssociations.AuthorityContact>),
+			"AuthorityHours" => typeof(informationBinding<InformationAssociations.AuthorityHours>),
+			"additionalInformation" => typeof(informationBinding<InformationAssociations.additionalInformation>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]

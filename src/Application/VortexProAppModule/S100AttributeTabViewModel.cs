@@ -57,22 +57,6 @@ namespace VortexProAppModule
 
         private InspectorHandle _inspectorHandle = default;
 
-        private InspectorHandle _inspectorHandleInformationAssociation => new() {
-            TypeSelector = this.InformationAssociationTypeSelector,
-            Types = (fc, p) => fc.InformationAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type, pid) => {
-                return S100Framework.WPF.Helper.CreateInformationAssociationViewModel(schema, code, pid);
-            },
-        };
-
-        private InspectorHandle _inspectorHandleFeatureAssociation => new() {
-            TypeSelector = this.FeatureAssociationTypeSelector,
-            Types = (fc, p) => fc.FeatureAssociationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type, pid) => {
-                return S100Framework.WPF.Helper.CreateFeatureAssociationViewModel(schema, code, pid);
-            },
-        };
-
         private InspectorHandle _inspectorHandleInformationType => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (fc, p) => fc.InformationTypes.Select(e => e.Code),
@@ -467,8 +451,8 @@ namespace VortexProAppModule
                         "surface" => _inspectorHandleFeatureType,
                         "informationtype" => _inspectorHandleInformationType,
                         "featuretype" => _inspectorHandleFeatureType,
-                        "featureassociation" => _inspectorHandleFeatureAssociation,
-                        "informationassociation" => _inspectorHandleInformationAssociation,
+                        //"featureassociation" => _inspectorHandleFeatureAssociation,
+                        //"informationassociation" => _inspectorHandleInformationAssociation,
 
                         _ => throw new NotImplementedException(),
                     };
@@ -558,19 +542,18 @@ namespace VortexProAppModule
                     methodInfo.Invoke(viewmodel, new object[1] { instance });
 
                     SelectedObjectViewModel selectedObjectViewModel = null;
-                    if (instance is IInformationBindingDefinition) {
-                        var informationViewModel = (InformationViewModel)viewmodel;
-
+                    
+                    if(viewmodel is InformationViewModel informationViewModel) { 
                         if (!inspector.IsNull("informationbindings")) {
-                            var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(inspector["informationbindings"]));
-                            foreach (var e in informationBindings)
-                                informationViewModel.InformationBindings.Add(new InformationBindingViewModel().Load(e));
+                            var json = Convert.ToString(inspector["informationbindings"]);
+                            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                            parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
                         }
 
-                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel);//, (IInformationBindingDefinition)instance);
+                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel);
                         selectedObjectViewModel = this.SelectedInformationProperty;
                     }
-                    if (instance is IFeatureBindingDefinition) {
+                    if (viewmodel is FeatureViewModel featureViewModel) {
                         var primitive = inspector.Shape?.GeometryType switch {
                             ArcGIS.Core.Geometry.GeometryType.Point => Primitives.point,
                             ArcGIS.Core.Geometry.GeometryType.Multipoint => Primitives.pointSet,
@@ -578,90 +561,25 @@ namespace VortexProAppModule
                             ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
                             null => Primitives.noGeometry,
                             _ => throw new InvalidOperationException()
-                        };
-
-                        var featureViewModel = (FeatureViewModel)viewmodel;
+                        };                        
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
                             var json = Convert.ToString(inspector["informationbindings"]);
-                            if (!string.IsNullOrEmpty(json)) {
-                            }
+                            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                            parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
                         }
 
                         //  featureBinding                        
                         if (!inspector.IsNull("featurebindings")) {
                             var json = Convert.ToString(inspector["featurebindings"]);
-                            if (!string.IsNullOrEmpty(json)) {
-                            }
+                            var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
+                            parseFeatureBindingsInfo.Invoke(viewmodel, new object[1] { json });
                         }
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
-                    }
-                    if (instance is Association) {
-                        var association = (AssociationViewModel)viewmodel;
-
-                        var selectedAssociationproperty = new SelectedAssociationObjectViewModel(association);
-
-                        if (instance is FeatureAssociation) {
-                            var associationViewModel = (AssociationViewModel)viewmodel;
-
-                            //  featureBinding
-                            {
-                                string[] tableNames = ["point", "pointset", "curve", "surface"];
-
-                                var query = new QueryFilter {
-                                    WhereClause = $"lower(featurebindings) LIKE '%\"associationid\":%\"{associationViewModel.Name.ToLowerInvariant()}\"%'",
-                                };
-                                foreach (var tableName in tableNames) {
-                                    using var table = inspector.OpenDataset<FeatureClass>(tableName);
-                                    using var cursor = table.Search(query, true);
-                                    while (cursor.MoveNext()) {
-                                        var row = cursor.Current;
-
-                                        var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(row["featurebindings"]));
-                                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                                            foreach (var e in featureBindings.Where(e => e.associationId == associationViewModel.Name))
-                                                selectedAssociationproperty.FeatureBindings.Add(new FeatureBindingViewModel().Load(e));
-                                        }, System.Windows.Threading.DispatcherPriority.Normal);
-                                    }
-
-                                }
-                            }
-                        }
-
-                        if (instance is InformationAssociation) {
-                            var associationViewModel = (AssociationViewModel)viewmodel;
-
-                            //  informationBinding
-                            {
-                                string[] tableNames = ["point", "pointset", "curve", "surface", "informationtype"];
-
-                                var query = new QueryFilter {
-                                    WhereClause = $"lower(informationbindings) LIKE '%\"associationid\":%\"{associationViewModel.Name.ToLowerInvariant()}\"%'",
-                                };
-                                foreach (var tableName in tableNames) {
-                                    using var table = inspector.OpenDataset<Table>(tableName);
-                                    using var cursor = table.Search(query, true);
-                                    while (cursor.MoveNext()) {
-                                        var row = cursor.Current;
-
-                                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(row["informationbindings"]));
-                                        System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                                            foreach (var e in informationBindings.Where(e => e.associationId == associationViewModel.Name))
-                                                selectedAssociationproperty.InformationBindings.Add(new InformationBindingViewModel().Load(e));
-                                        }, System.Windows.Threading.DispatcherPriority.Normal);
-                                    }
-
-                                }
-                            }
-                        }
-
-                        this.SelectedAssociationProperty = selectedAssociationproperty;
-                        selectedObjectViewModel = this.SelectedAssociationProperty;
-
-                    }
+                    }                    
 
                     if (selectedObjectViewModel != null) {
                         selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
@@ -695,31 +613,31 @@ namespace VortexProAppModule
 
         private async void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
             await QueuedTask.Run(() => {
-                if (sender is ICollection<FeatureBindingViewModel> featureBindings) {
-                    var f = featureBindings.Select(e => new featureBinding {
-                        association = e.association,
-                        associationId = e.associationId,
-                        featureId = e.featureId,
-                        role = e.role,
-                        roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
-                    });
-                    Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
-                }
+                //if (sender is ICollection<FeatureBindingViewModel> featureBindings) {
+                //    var f = featureBindings.Select(e => new featureBinding {
+                //        association = e.association,
+                //        associationId = e.associationId,
+                //        featureId = e.featureId,
+                //        role = e.role,
+                //        roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
+                //    });
+                //    Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
+                //}
             }, TaskCreationOptions.None);
         }
 
         private async void OnCollectionItemChanged(object sender, object item, PropertyChangedEventArgs e) {
             await QueuedTask.Run(() => {
-                if (sender is ICollection<FeatureBindingViewModel> featureBindings) {
-                    var f = featureBindings.Select(e => new featureBinding {
-                        association = e.association,
-                        associationId = e.associationId,
-                        featureId = e.featureId,
-                        role = e.role,
-                        roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
-                    });
-                    Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
-                }
+                //if (sender is ICollection<FeatureBindingViewModel> featureBindings) {
+                //    var f = featureBindings.Select(e => new featureBinding {
+                //        association = e.association,
+                //        associationId = e.associationId,
+                //        featureId = e.featureId,
+                //        role = e.role,
+                //        roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
+                //    });
+                //    Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
+                //}
             }, TaskCreationOptions.None);
         }
 
@@ -739,29 +657,33 @@ namespace VortexProAppModule
                         updated |= true;
                     }
                 }
-                if (sender is InformationBindingViewModel informationBinding) {
-                    var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
-                    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
-                    if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
-                        Inspector["informationbindings"] = json;
-                        updated |= true;
-                    }
-                    else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
-                        Inspector["informationbindings"] = json;
-                        updated |= true;
-                    }
+                
+                //  informationBindings
+                {
+                    //var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
+                    //var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
+                    //if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
+                    //    Inspector["informationbindings"] = json;
+                    //    updated |= true;
+                    //}
+                    //else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
+                    //    Inspector["informationbindings"] = json;
+                    //    updated |= true;
+                    //}
                 }
-                if (sender is FeatureBindingViewModel featureBinding) {
-                    var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
-                    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-                    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
-                        Inspector["featurebindings"] = json;
-                        updated |= true;
-                    }
-                    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
-                        Inspector["featurebindings"] = json;
-                        updated |= true;
-                    }
+                
+                //  featureBindings
+                {
+                    //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
+                    //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+                    //if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                    //    Inspector["featurebindings"] = json;
+                    //    updated |= true;
+                    //}
+                    //else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                    //    Inspector["featurebindings"] = json;
+                    //    updated |= true;
+                    //}
                 }
             }, TaskCreationOptions.None);
         }

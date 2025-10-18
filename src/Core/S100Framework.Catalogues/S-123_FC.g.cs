@@ -47,6 +47,34 @@ namespace S100Framework.DomainModel.S123 {
 			"QualityOfNonBathymetricData" => [Primitives.surface],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"AdditionalInformation" => typeof(informationBinding<InformationAssociations.AdditionalInformation>),
+			"AssociatedRxN" => typeof(informationBinding<InformationAssociations.AssociatedRxN>),
+			"AuthorityContact" => typeof(informationBinding<InformationAssociations.AuthorityContact>),
+			"AuthorityHours" => typeof(informationBinding<InformationAssociations.AuthorityHours>),
+			"AvailableQoS" => typeof(informationBinding<InformationAssociations.AvailableQoS>),
+			"BroadcastService" => typeof(informationBinding<InformationAssociations.BroadcastService>),
+			"BroadcastTransmission" => typeof(informationBinding<InformationAssociations.BroadcastTransmission>),
+			"ConnectivityService" => typeof(informationBinding<InformationAssociations.ConnectivityService>),
+			"ExceptionalWorkday" => typeof(informationBinding<InformationAssociations.ExceptionalWorkday>),
+			"InclusionType" => typeof(informationBinding<InformationAssociations.InclusionType>),
+			"LocationHours" => typeof(informationBinding<InformationAssociations.LocationHours>),
+			"PermissionType" => typeof(informationBinding<InformationAssociations.PermissionType>),
+			"RadioServiceControl" => typeof(informationBinding<InformationAssociations.RadioServiceControl>),
+			"relatedOrganisation" => typeof(informationBinding<InformationAssociations.relatedOrganisation>),
+			"ServiceContact" => typeof(informationBinding<InformationAssociations.ServiceContact>),
+			"ServiceCoordination" => typeof(informationBinding<InformationAssociations.ServiceCoordination>),
+			"SpatialAssociation" => typeof(informationBinding<InformationAssociations.SpatialAssociation>),
+			"TMAS" => typeof(informationBinding<InformationAssociations.TMAS>),
+			"TransmissionService" => typeof(informationBinding<InformationAssociations.TransmissionService>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"coreAggregation" => typeof(featureBinding<FeatureAssociations.coreAggregation>),
+			"fuzzyZoneAggregation" => typeof(featureBinding<FeatureAssociations.fuzzyZoneAggregation>),
+			"ServiceProvisionArea" => typeof(featureBinding<FeatureAssociations.ServiceProvisionArea>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

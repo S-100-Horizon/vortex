@@ -311,8 +311,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class ComplexViewModel<TComplexType> : ComplexViewModel where TComplexType : ComplexType
     {
-        public abstract ComplexViewModel<TComplexType> Load(TComplexType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TComplexType).GetProperties(), this.GetType().GetProperties());
         }
@@ -350,8 +348,6 @@ namespace S100Framework.WPF.ViewModel
     }
     public abstract class InformationViewModel<TInformationType> : InformationViewModel where TInformationType : InformationNode
     {
-        public abstract InformationViewModel<TInformationType> Load(TInformationType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TInformationType).GetProperties(), this.GetType().GetProperties());
         }
@@ -359,8 +355,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class FeatureViewModel<TFeatureType> : FeatureViewModel where TFeatureType : FeatureNode
     {
-        public abstract FeatureViewModel<TFeatureType> Load(TFeatureType instance);
-
         protected override void Validate() {
             base.Validate(typeof(TFeatureType).GetProperties(), this.GetType().GetProperties());
         }

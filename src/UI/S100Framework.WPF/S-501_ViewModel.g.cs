@@ -11,6 +11,7 @@ using S100Framework.DomainModel.S501.ComplexAttributes;
 using S100Framework.DomainModel.S501.InformationTypes;
 using S100Framework.DomainModel.S501.FeatureTypes;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using System.Text.Json;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -155,7 +156,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public qRouteChannelWidthViewModel LoadqRouteChannelWidth(qRouteChannelWidth instance) {
+		public qRouteChannelWidthViewModel Load(qRouteChannelWidth instance) {
 			rightQRouteWidth = instance.rightQRouteWidth;
 			return this;
 		}
@@ -171,8 +172,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public qRouteChannelWidth Model => new () {
 			rightQRouteWidth = this._rightQRouteWidth,
 		};
-
-		public override ComplexViewModel<qRouteChannelWidth> Load(qRouteChannelWidth instance) => this.LoadqRouteChannelWidth(instance);
 
 		public override string? ToString() => $"Q-Route Channel Width";
 	}
@@ -212,7 +211,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public detectionDateRangeViewModel LoaddetectionDateRange(detectionDateRange instance) {
+		public detectionDateRangeViewModel Load(detectionDateRange instance) {
 			lastDetectionYear = instance.lastDetectionYear;
 			firstDetectionYear = instance.firstDetectionYear;
 			return this;
@@ -231,8 +230,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			lastDetectionYear = this._lastDetectionYear,
 			firstDetectionYear = this._firstDetectionYear,
 		};
-
-		public override ComplexViewModel<detectionDateRange> Load(detectionDateRange instance) => this.LoaddetectionDateRange(instance);
 
 		public override string? ToString() => $"Detection Date Range";
 	}
@@ -272,7 +269,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public multiplicityOfFeaturesViewModel LoadmultiplicityOfFeatures(multiplicityOfFeatures instance) {
+		public multiplicityOfFeaturesViewModel Load(multiplicityOfFeatures instance) {
 			numberOfFeatures = instance.numberOfFeatures;
 			multiplicityKnown = instance.multiplicityKnown;
 			return this;
@@ -291,8 +288,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			numberOfFeatures = this._numberOfFeatures,
 			multiplicityKnown = this._multiplicityKnown,
 		};
-
-		public override ComplexViewModel<multiplicityOfFeatures> Load(multiplicityOfFeatures instance) => this.LoadmultiplicityOfFeatures(instance);
 
 		public override string? ToString() => $"Multiplicity of Features";
 	}
@@ -345,7 +340,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public onlineResourceViewModel LoadonlineResource(onlineResource instance) {
+		public onlineResourceViewModel Load(onlineResource instance) {
 			headline = instance.headline;
 			linkage = instance.linkage;
 			nameOfResource = instance.nameOfResource;
@@ -367,8 +362,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			linkage = this._linkage,
 			nameOfResource = this._nameOfResource,
 		};
-
-		public override ComplexViewModel<onlineResource> Load(onlineResource instance) => this.LoadonlineResource(instance);
 
 		public override string? ToString() => $"Online Resource";
 	}
@@ -434,14 +427,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
 
-		public topmarkViewModel Loadtopmark(topmark instance) {
+		public topmarkViewModel Load(topmark instance) {
 			topmarkDaymarkShape = instance.topmarkDaymarkShape;
 			colourPattern = instance.colourPattern;
 			colour = instance.colour;
 			shapeInformation.Clear();
 			if (instance.shapeInformation is not null) {
 				foreach(var e in instance.shapeInformation)
-					shapeInformation.Add(new shapeInformationViewModel().LoadshapeInformation(e));
+					shapeInformation.Add(new shapeInformationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -463,8 +456,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			colour = this._colour,
 			shapeInformation = this.shapeInformation.Select(e => e.Model).ToList(),
 		};
-
-		public override ComplexViewModel<topmark> Load(topmark instance) => this.Loadtopmark(instance);
 
 		public override string? ToString() => $"Topmark";
 
@@ -526,7 +517,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public featureNameViewModel LoadfeatureName(featureName instance) {
+		public featureNameViewModel Load(featureName instance) {
 			nameUsage = instance.nameUsage;
 			name = instance.name;
 			language = instance.language;
@@ -548,8 +539,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			name = this._name,
 			language = this._language,
 		};
-
-		public override ComplexViewModel<featureName> Load(featureName instance) => this.LoadfeatureName(instance);
 
 		public override string? ToString() => $"Feature Name";
 	}
@@ -589,7 +578,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public fixedDateRangeViewModel LoadfixedDateRange(fixedDateRange instance) {
+		public fixedDateRangeViewModel Load(fixedDateRange instance) {
 			dateStart = instance.dateStart;
 			dateEnd = instance.dateEnd;
 			return this;
@@ -608,8 +597,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			dateStart = this._dateStart,
 			dateEnd = this._dateEnd,
 		};
-
-		public override ComplexViewModel<fixedDateRange> Load(fixedDateRange instance) => this.LoadfixedDateRange(instance);
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
@@ -649,7 +636,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public altitudeRangeViewModel LoadaltitudeRange(altitudeRange instance) {
+		public altitudeRangeViewModel Load(altitudeRange instance) {
 			minimumAltitude = instance.minimumAltitude;
 			maximumAltitude = instance.maximumAltitude;
 			return this;
@@ -668,8 +655,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			minimumAltitude = this._minimumAltitude,
 			maximumAltitude = this._maximumAltitude,
 		};
-
-		public override ComplexViewModel<altitudeRange> Load(altitudeRange instance) => this.LoadaltitudeRange(instance);
 
 		public override string? ToString() => $"Altitude Range";
 	}
@@ -709,7 +694,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public altitudeViewModel Loadaltitude(altitude instance) {
+		public altitudeViewModel Load(altitude instance) {
 			minimumAltitude = instance.minimumAltitude;
 			maximumAltitude = instance.maximumAltitude;
 			return this;
@@ -728,8 +713,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			minimumAltitude = this._minimumAltitude,
 			maximumAltitude = this._maximumAltitude,
 		};
-
-		public override ComplexViewModel<altitude> Load(altitude instance) => this.Loadaltitude(instance);
 
 		public override string? ToString() => $"Altitude";
 	}
@@ -780,11 +763,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
 
-		public rythmOfLightViewModel LoadrythmOfLight(rythmOfLight instance) {
+		public rythmOfLightViewModel Load(rythmOfLight instance) {
 			signalSequence.Clear();
 			if (instance.signalSequence is not null) {
 				foreach(var e in instance.signalSequence)
-					signalSequence.Add(new signalSequenceViewModel().LoadsignalSequence(e));
+					signalSequence.Add(new signalSequenceViewModel().Load(e));
 			}
 			signalPeriod = instance.signalPeriod;
 			signalGroup.Clear();
@@ -813,8 +796,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			signalGroup = this.signalGroup.ToList(),
 			lightCharacteristic = this._lightCharacteristic,
 		};
-
-		public override ComplexViewModel<rythmOfLight> Load(rythmOfLight instance) => this.LoadrythmOfLight(instance);
 
 		public override string? ToString() => $"rythmOfLight (missing name)";
 
@@ -864,10 +845,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public verticalClearanceSafeViewModel LoadverticalClearanceSafe(verticalClearanceSafe instance) {
+		public verticalClearanceSafeViewModel Load(verticalClearanceSafe instance) {
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			verticalClearanceValue = instance.verticalClearanceValue;
 			return this;
@@ -886,8 +867,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			verticalUncertainty = this._verticalUncertainty?.Model,
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
-
-		public override ComplexViewModel<verticalClearanceSafe> Load(verticalClearanceSafe instance) => this.LoadverticalClearanceSafe(instance);
 
 		public override string? ToString() => $"Vertical Clearance Safe";
 	}
@@ -943,7 +922,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public lastSourceInformationViewModel LoadlastSourceInformation(lastSourceInformation instance) {
+		public lastSourceInformationViewModel Load(lastSourceInformation instance) {
 			lastSensor = instance.lastSensor;
 			lastSource = instance.lastSource;
 			reportedDate = instance.reportedDate;
@@ -965,8 +944,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			lastSource = this._lastSource,
 			reportedDate = this._reportedDate,
 		};
-
-		public override ComplexViewModel<lastSourceInformation> Load(lastSourceInformation instance) => this.LoadlastSourceInformation(instance);
 
 		public override string? ToString() => $"Last Source Information";
 	}
@@ -1045,7 +1022,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public informationViewModel Loadinformation(information instance) {
+		public informationViewModel Load(information instance) {
 			headline = instance.headline;
 			language = instance.language;
 			fileLocator = instance.fileLocator;
@@ -1073,8 +1050,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			text = this._text,
 			fileReference = this._fileReference,
 		};
-
-		public override ComplexViewModel<information> Load(information instance) => this.Loadinformation(instance);
 
 		public override string? ToString() => $"Information";
 	}
@@ -1130,7 +1105,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public firstSourceInformationViewModel LoadfirstSourceInformation(firstSourceInformation instance) {
+		public firstSourceInformationViewModel Load(firstSourceInformation instance) {
 			firstSensor = instance.firstSensor;
 			firstSource = instance.firstSource;
 			reportedDate = instance.reportedDate;
@@ -1152,8 +1127,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			firstSource = this._firstSource,
 			reportedDate = this._reportedDate,
 		};
-
-		public override ComplexViewModel<firstSourceInformation> Load(firstSourceInformation instance) => this.LoadfirstSourceInformation(instance);
 
 		public override string? ToString() => $"First Source Information";
 	}
@@ -1193,7 +1166,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public horizontalClearanceFixedViewModel LoadhorizontalClearanceFixed(horizontalClearanceFixed instance) {
+		public horizontalClearanceFixedViewModel Load(horizontalClearanceFixed instance) {
 			horizontalClearanceValue = instance.horizontalClearanceValue;
 			horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
 			return this;
@@ -1212,8 +1185,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			horizontalClearanceValue = this._horizontalClearanceValue,
 			horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
 		};
-
-		public override ComplexViewModel<horizontalClearanceFixed> Load(horizontalClearanceFixed instance) => this.LoadhorizontalClearanceFixed(instance);
 
 		public override string? ToString() => $"Horizontal Clearance Fixed";
 	}
@@ -1253,7 +1224,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public verticalUncertaintyViewModel LoadverticalUncertainty(verticalUncertainty instance) {
+		public verticalUncertaintyViewModel Load(verticalUncertainty instance) {
 			uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
 			uncertaintyFixed = instance.uncertaintyFixed;
 			return this;
@@ -1272,8 +1243,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
 			uncertaintyFixed = this._uncertaintyFixed,
 		};
-
-		public override ComplexViewModel<verticalUncertainty> Load(verticalUncertainty instance) => this.LoadverticalUncertainty(instance);
 
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
@@ -1313,7 +1282,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public frequencyPairViewModel LoadfrequencyPair(frequencyPair instance) {
+		public frequencyPairViewModel Load(frequencyPair instance) {
 			frequencyShoreStationReceives = instance.frequencyShoreStationReceives;
 			frequencyShoreStationTransmits = instance.frequencyShoreStationTransmits;
 			return this;
@@ -1332,8 +1301,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
 			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
 		};
-
-		public override ComplexViewModel<frequencyPair> Load(frequencyPair instance) => this.LoadfrequencyPair(instance);
 
 		public override string? ToString() => $"Frequency Pair";
 	}
@@ -1408,7 +1375,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
 
 
-		public vesselMeasurementsSpecificationViewModel LoadvesselMeasurementsSpecification(vesselMeasurementsSpecification instance) {
+		public vesselMeasurementsSpecificationViewModel Load(vesselMeasurementsSpecification instance) {
 			vesselsCharacteristicsValue = instance.vesselsCharacteristicsValue;
 			vesselsCharacteristics = instance.vesselsCharacteristics;
 			vesselsCharacteristicsUnit = instance.vesselsCharacteristicsUnit;
@@ -1433,8 +1400,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
 			comparisonOperator = this._comparisonOperator,
 		};
-
-		public override ComplexViewModel<vesselMeasurementsSpecification> Load(vesselMeasurementsSpecification instance) => this.LoadvesselMeasurementsSpecification(instance);
 
 		public override string? ToString() => $"Vessel Measurements Specification";
 	}
@@ -1484,7 +1449,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 
 
-		public surfaceCharacteristicsViewModel LoadsurfaceCharacteristics(surfaceCharacteristics instance) {
+		public surfaceCharacteristicsViewModel Load(surfaceCharacteristics instance) {
 			underlyingLayer = instance.underlyingLayer;
 			natureOfSurfaceQualifyingTerms.Clear();
 			if (instance.natureOfSurfaceQualifyingTerms is not null) {
@@ -1510,8 +1475,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			natureOfSurfaceQualifyingTerms = this.natureOfSurfaceQualifyingTerms.ToList(),
 			natureOfSurface = this._natureOfSurface,
 		};
-
-		public override ComplexViewModel<surfaceCharacteristics> Load(surfaceCharacteristics instance) => this.LoadsurfaceCharacteristics(instance);
 
 		public override string? ToString() => $"Surface Characteristics";
 
@@ -1576,7 +1539,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public magneticAnomalyDetectorSignature[] magneticAnomalyDetectorSignatureList => [(magneticAnomalyDetectorSignature)501,(magneticAnomalyDetectorSignature)502,(magneticAnomalyDetectorSignature)503,(magneticAnomalyDetectorSignature)504];
 
 
-		public magneticInformationViewModel LoadmagneticInformation(magneticInformation instance) {
+		public magneticInformationViewModel Load(magneticInformation instance) {
 			strengthOfMagneticAnomaly = instance.strengthOfMagneticAnomaly;
 			magneticIntensity = instance.magneticIntensity;
 			magneticAnomalyDetectorSignature = instance.magneticAnomalyDetectorSignature;
@@ -1598,8 +1561,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			magneticIntensity = this._magneticIntensity,
 			magneticAnomalyDetectorSignature = this._magneticAnomalyDetectorSignature,
 		};
-
-		public override ComplexViewModel<magneticInformation> Load(magneticInformation instance) => this.LoadmagneticInformation(instance);
 
 		public override string? ToString() => $"Magnetic Information";
 	}
@@ -1639,7 +1600,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public speedViewModel Loadspeed(speed instance) {
+		public speedViewModel Load(speed instance) {
 			speedMinimum = instance.speedMinimum;
 			speedMaximum = instance.speedMaximum;
 			return this;
@@ -1658,8 +1619,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			speedMinimum = this._speedMinimum,
 			speedMaximum = this._speedMaximum,
 		};
-
-		public override ComplexViewModel<speed> Load(speed instance) => this.Loadspeed(instance);
 
 		public override string? ToString() => $"Speed";
 	}
@@ -1700,10 +1659,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public verticalClearanceFixedViewModel LoadverticalClearanceFixed(verticalClearanceFixed instance) {
+		public verticalClearanceFixedViewModel Load(verticalClearanceFixed instance) {
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			verticalClearanceValue = instance.verticalClearanceValue;
 			return this;
@@ -1722,8 +1681,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			verticalUncertainty = this._verticalUncertainty?.Model,
 			verticalClearanceValue = this._verticalClearanceValue,
 		};
-
-		public override ComplexViewModel<verticalClearanceFixed> Load(verticalClearanceFixed instance) => this.LoadverticalClearanceFixed(instance);
 
 		public override string? ToString() => $"Vertical Clearance Fixed";
 	}
@@ -1789,7 +1746,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public sourceIdentificationViewModel LoadsourceIdentification(sourceIdentification instance) {
+		public sourceIdentificationViewModel Load(sourceIdentification instance) {
 			producerNation = instance.producerNation;
 			sourceType = instance.sourceType;
 			productionAgency = instance.productionAgency;
@@ -1814,8 +1771,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			productionAgency = this._productionAgency,
 			sourceID = this._sourceID,
 		};
-
-		public override ComplexViewModel<sourceIdentification> Load(sourceIdentification instance) => this.LoadsourceIdentification(instance);
 
 		public override string? ToString() => $"Source Identification";
 	}
@@ -1855,7 +1810,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public horizontalPositionUncertaintyViewModel LoadhorizontalPositionUncertainty(horizontalPositionUncertainty instance) {
+		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
 			return this;
@@ -1874,8 +1829,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			uncertaintyFixed = this._uncertaintyFixed,
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
 		};
-
-		public override ComplexViewModel<horizontalPositionUncertainty> Load(horizontalPositionUncertainty instance) => this.LoadhorizontalPositionUncertainty(instance);
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
@@ -1930,17 +1883,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
 
-		public sectorCharacteristicsViewModel LoadsectorCharacteristics(sectorCharacteristics instance) {
+		public sectorCharacteristicsViewModel Load(sectorCharacteristics instance) {
 			signalSequence.Clear();
 			if (instance.signalSequence is not null) {
 				foreach(var e in instance.signalSequence)
-					signalSequence.Add(new signalSequenceViewModel().LoadsignalSequence(e));
+					signalSequence.Add(new signalSequenceViewModel().Load(e));
 			}
 			signalPeriod = instance.signalPeriod;
 			lightSector.Clear();
 			if (instance.lightSector is not null) {
 				foreach(var e in instance.lightSector)
-					lightSector.Add(new lightSectorViewModel().LoadlightSector(e));
+					lightSector.Add(new lightSectorViewModel().Load(e));
 			}
 			lightCharacteristic = instance.lightCharacteristic;
 			signalGroup.Clear();
@@ -1970,8 +1923,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			lightCharacteristic = this._lightCharacteristic,
 			signalGroup = this.signalGroup.ToList(),
 		};
-
-		public override ComplexViewModel<sectorCharacteristics> Load(sectorCharacteristics instance) => this.LoadsectorCharacteristics(instance);
 
 		public override string? ToString() => $"Sector Characteristics";
 
@@ -2023,7 +1974,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public orientationViewModel Loadorientation(orientation instance) {
+		public orientationViewModel Load(orientation instance) {
 			orientationValue = instance.orientationValue;
 			orientationUncertainty = instance.orientationUncertainty;
 			return this;
@@ -2042,8 +1993,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			orientationValue = this._orientationValue,
 			orientationUncertainty = this._orientationUncertainty,
 		};
-
-		public override ComplexViewModel<orientation> Load(orientation instance) => this.Loadorientation(instance);
 
 		public override string? ToString() => $"Orientation";
 	}
@@ -2083,7 +2032,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public directionHeadingViewModel LoaddirectionHeading(directionHeading instance) {
+		public directionHeadingViewModel Load(directionHeading instance) {
 			headingDownBearing = instance.headingDownBearing;
 			headingUpBearing = instance.headingUpBearing;
 			return this;
@@ -2102,8 +2051,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			headingDownBearing = this._headingDownBearing,
 			headingUpBearing = this._headingUpBearing,
 		};
-
-		public override ComplexViewModel<directionHeading> Load(directionHeading instance) => this.LoaddirectionHeading(instance);
 
 		public override string? ToString() => $"Direction Heading";
 	}
@@ -2143,7 +2090,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public flightLevelViewModel LoadflightLevel(flightLevel instance) {
+		public flightLevelViewModel Load(flightLevel instance) {
 			minimumFlightLevel = instance.minimumFlightLevel;
 			maximumFlightLevel = instance.maximumFlightLevel;
 			return this;
@@ -2162,8 +2109,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			minimumFlightLevel = this._minimumFlightLevel,
 			maximumFlightLevel = this._maximumFlightLevel,
 		};
-
-		public override ComplexViewModel<flightLevel> Load(flightLevel instance) => this.LoadflightLevel(instance);
 
 		public override string? ToString() => $"Flight Level ";
 	}
@@ -2219,7 +2164,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public vesselSpeedLimitViewModel LoadvesselSpeedLimit(vesselSpeedLimit instance) {
+		public vesselSpeedLimitViewModel Load(vesselSpeedLimit instance) {
 			speedUnits = instance.speedUnits;
 			vesselClass = instance.vesselClass;
 			speedLimit = instance.speedLimit;
@@ -2241,8 +2186,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselClass = this._vesselClass,
 			speedLimit = this._speedLimit,
 		};
-
-		public override ComplexViewModel<vesselSpeedLimit> Load(vesselSpeedLimit instance) => this.LoadvesselSpeedLimit(instance);
 
 		public override string? ToString() => $"Vessel Speed Limit";
 	}
@@ -2308,7 +2251,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public periodicDateRangeViewModel LoadperiodicDateRange(periodicDateRange instance) {
+		public periodicDateRangeViewModel Load(periodicDateRange instance) {
 			dateStart = instance.dateStart;
 			dateEnd = instance.dateEnd;
 			periodicDateEnd = instance.periodicDateEnd;
@@ -2333,8 +2276,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateEnd = this._periodicDateEnd,
 			periodicDateStart = this._periodicDateStart,
 		};
-
-		public override ComplexViewModel<periodicDateRange> Load(periodicDateRange instance) => this.LoadperiodicDateRange(instance);
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
@@ -2374,7 +2315,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public shapeInformationViewModel LoadshapeInformation(shapeInformation instance) {
+		public shapeInformationViewModel Load(shapeInformation instance) {
 			text = instance.text;
 			language = instance.language;
 			return this;
@@ -2393,8 +2334,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			text = this._text,
 			language = this._language,
 		};
-
-		public override ComplexViewModel<shapeInformation> Load(shapeInformation instance) => this.LoadshapeInformation(instance);
 
 		public override string? ToString() => $"Shape Information";
 	}
@@ -2480,15 +2419,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11];
 
 
-		public lightSectorViewModel LoadlightSector(lightSector instance) {
+		public lightSectorViewModel Load(lightSector instance) {
 			sectorLimit = new ();
 			if (instance.sectorLimit != default) {
-				sectorLimit.LoadsectorLimit(instance.sectorLimit);
+				sectorLimit.Load(instance.sectorLimit);
 			}
 			sectorInformation.Clear();
 			if (instance.sectorInformation is not null) {
 				foreach(var e in instance.sectorInformation)
-					sectorInformation.Add(new sectorInformationViewModel().LoadsectorInformation(e));
+					sectorInformation.Add(new sectorInformationViewModel().Load(e));
 			}
 			lightVisibility.Clear();
 			if (instance.lightVisibility is not null) {
@@ -2499,7 +2438,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			sectorArcExtension = instance.sectorArcExtension;
 			directionalCharacter = new ();
 			if (instance.directionalCharacter != default) {
-				directionalCharacter.LoaddirectionalCharacter(instance.directionalCharacter);
+				directionalCharacter.Load(instance.directionalCharacter);
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -2532,8 +2471,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			directionalCharacter = this._directionalCharacter?.Model,
 			colour = this.colour.ToList(),
 		};
-
-		public override ComplexViewModel<lightSector> Load(lightSector instance) => this.LoadlightSector(instance);
 
 		public override string? ToString() => $"Light Sector";
 
@@ -2588,7 +2525,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public signalSequenceViewModel LoadsignalSequence(signalSequence instance) {
+		public signalSequenceViewModel Load(signalSequence instance) {
 			signalStatus = instance.signalStatus;
 			signalDuration = instance.signalDuration;
 			return this;
@@ -2607,8 +2544,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			signalStatus = this._signalStatus,
 			signalDuration = this._signalDuration,
 		};
-
-		public override ComplexViewModel<signalSequence> Load(signalSequence instance) => this.LoadsignalSequence(instance);
 
 		public override string? ToString() => $"Signal Sequence";
 	}
@@ -2648,7 +2583,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public sectorInformationViewModel LoadsectorInformation(sectorInformation instance) {
+		public sectorInformationViewModel Load(sectorInformation instance) {
 			text = instance.text;
 			language = instance.language;
 			return this;
@@ -2667,8 +2602,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			text = this._text,
 			language = this._language,
 		};
-
-		public override ComplexViewModel<sectorInformation> Load(sectorInformation instance) => this.LoadsectorInformation(instance);
 
 		public override string? ToString() => $"Sector Information";
 	}
@@ -2709,10 +2642,10 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public directionalCharacterViewModel LoaddirectionalCharacter(directionalCharacter instance) {
+		public directionalCharacterViewModel Load(directionalCharacter instance) {
 			orientation = new ();
 			if (instance.orientation != default) {
-				orientation.Loadorientation(instance.orientation);
+				orientation.Load(instance.orientation);
 			}
 			moireEffect = instance.moireEffect;
 			return this;
@@ -2731,8 +2664,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			orientation = this._orientation?.Model,
 			moireEffect = this._moireEffect,
 		};
-
-		public override ComplexViewModel<directionalCharacter> Load(directionalCharacter instance) => this.LoaddirectionalCharacter(instance);
 
 		public override string? ToString() => $"Directional Character";
 	}
@@ -2774,14 +2705,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public sectorLimitViewModel LoadsectorLimit(sectorLimit instance) {
+		public sectorLimitViewModel Load(sectorLimit instance) {
 			sectorLimitOne = new ();
 			if (instance.sectorLimitOne != default) {
-				sectorLimitOne.LoadsectorLimitOne(instance.sectorLimitOne);
+				sectorLimitOne.Load(instance.sectorLimitOne);
 			}
 			sectorLimitTwo = new ();
 			if (instance.sectorLimitTwo != default) {
-				sectorLimitTwo.LoadsectorLimitTwo(instance.sectorLimitTwo);
+				sectorLimitTwo.Load(instance.sectorLimitTwo);
 			}
 			return this;
 		}
@@ -2799,8 +2730,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			sectorLimitOne = this._sectorLimitOne?.Model,
 			sectorLimitTwo = this._sectorLimitTwo?.Model,
 		};
-
-		public override ComplexViewModel<sectorLimit> Load(sectorLimit instance) => this.LoadsectorLimit(instance);
 
 		public override string? ToString() => $"Sector Limit";
 	}
@@ -2840,7 +2769,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public sectorLimitTwoViewModel LoadsectorLimitTwo(sectorLimitTwo instance) {
+		public sectorLimitTwoViewModel Load(sectorLimitTwo instance) {
 			sectorLineLength = instance.sectorLineLength;
 			sectorBearing = instance.sectorBearing;
 			return this;
@@ -2859,8 +2788,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			sectorLineLength = this._sectorLineLength,
 			sectorBearing = this._sectorBearing,
 		};
-
-		public override ComplexViewModel<sectorLimitTwo> Load(sectorLimitTwo instance) => this.LoadsectorLimitTwo(instance);
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
@@ -2900,7 +2827,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public sectorLimitOneViewModel LoadsectorLimitOne(sectorLimitOne instance) {
+		public sectorLimitOneViewModel Load(sectorLimitOne instance) {
 			sectorLineLength = instance.sectorLineLength;
 			sectorBearing = instance.sectorBearing;
 			return this;
@@ -2919,8 +2846,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			sectorLineLength = this._sectorLineLength,
 			sectorBearing = this._sectorBearing,
 		};
-
-		public override ComplexViewModel<sectorLimitOne> Load(sectorLimitOne instance) => this.LoadsectorLimitOne(instance);
 
 		public override string? ToString() => $"Sector Limit One";
 	}
@@ -2973,18 +2898,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public ReferenceToAPublicationViewModel LoadReferenceToAPublication(ReferenceToAPublication instance) {
+		public ReferenceToAPublicationViewModel Load(ReferenceToAPublication instance) {
 			editionDate = instance.editionDate;
 			editionNumber = instance.editionNumber;
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -3009,7 +2934,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
 
-		public override InformationViewModel<ReferenceToAPublication> Load(ReferenceToAPublication instance) => this.LoadReferenceToAPublication(instance);
+		public ReferenceToAPublicationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"ReferenceToAPublication (missing Name)";
 
@@ -3211,11 +3141,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
 
-		public InstallationBuoyViewModel LoadInstallationBuoy(InstallationBuoy instance) {
+		public InstallationBuoyViewModel Load(InstallationBuoy instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			colourPattern = instance.colourPattern;
 			product.Clear();
@@ -3225,7 +3155,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -3236,7 +3166,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -3247,7 +3177,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			buoyShape = instance.buoyShape;
@@ -3309,7 +3239,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<InstallationBuoy> Load(InstallationBuoy instance) => this.LoadInstallationBuoy(instance);
+		public InstallationBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public InstallationBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Installation Buoy";
 
@@ -3408,18 +3350,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public DepthAreaViewModel LoadDepthArea(DepthArea instance) {
+		public DepthAreaViewModel Load(DepthArea instance) {
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			return this;
 		}
@@ -3449,7 +3391,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<DepthArea> Load(DepthArea instance) => this.LoadDepthArea(instance);
+		public DepthAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DepthAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Depth Area";
 
@@ -3573,12 +3527,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public trafficFlow[] trafficFlowList => [(trafficFlow)1,(trafficFlow)2,(trafficFlow)3,(trafficFlow)4];
 
 
-		public RadioCallingInPointViewModel LoadRadioCallingInPoint(RadioCallingInPoint instance) {
+		public RadioCallingInPointViewModel Load(RadioCallingInPoint instance) {
 			categoryOfReportingRadioCallingInPoint = instance.categoryOfReportingRadioCallingInPoint;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			communicationChannel.Clear();
@@ -3589,7 +3543,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			orientationValue.Clear();
@@ -3605,11 +3559,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			trafficFlow = instance.trafficFlow;
 			return this;
@@ -3652,7 +3606,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadioCallingInPoint> Load(RadioCallingInPoint instance) => this.LoadRadioCallingInPoint(instance);
+		public RadioCallingInPointViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadioCallingInPointViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Calling-In Point";
 
@@ -3790,7 +3756,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)1,(status)501];
 
 
-		public PatrolAreaViewModel LoadPatrolArea(PatrolArea instance) {
+		public PatrolAreaViewModel Load(PatrolArea instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			reportedDate = instance.reportedDate;
 			nationality = instance.nationality;
@@ -3798,17 +3764,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			categoryOfPatrolArea = instance.categoryOfPatrolArea;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -3851,7 +3817,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<PatrolArea> Load(PatrolArea instance) => this.LoadPatrolArea(instance);
+		public PatrolAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public PatrolAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Patrol Area";
 
@@ -3966,12 +3944,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1,(categoryOfCheckpoint)501];
 
 
-		public CheckpointViewModel LoadCheckpoint(Checkpoint instance) {
+		public CheckpointViewModel Load(Checkpoint instance) {
 			controllingAuthority = instance.controllingAuthority;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			status.Clear();
@@ -3982,7 +3960,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			scaleMinimum = instance.scaleMinimum;
@@ -4021,7 +3999,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
-		public override FeatureViewModel<Checkpoint> Load(Checkpoint instance) => this.LoadCheckpoint(instance);
+		public CheckpointViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CheckpointViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Checkpoint";
 
@@ -4216,11 +4206,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> species  { get; set; } = new ();
 
 
-		public MarineManagementAreaViewModel LoadMarineManagementArea(MarineManagementArea instance) {
+		public MarineManagementAreaViewModel Load(MarineManagementArea instance) {
 			restriction = instance.restriction;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			speciesGrouping.Clear();
 			if (instance.speciesGrouping is not null) {
@@ -4236,7 +4226,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			categoryofMarineProtectedArea = instance.categoryofMarineProtectedArea;
 			reportedDate = instance.reportedDate;
@@ -4244,7 +4234,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			controllingAuthority = instance.controllingAuthority;
 			pictorialRepresentation = instance.pictorialRepresentation;
@@ -4307,7 +4297,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<MarineManagementArea> Load(MarineManagementArea instance) => this.LoadMarineManagementArea(instance);
+		public MarineManagementAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MarineManagementAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Marine Management Area";
 
@@ -4431,19 +4433,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public DepthContourViewModel LoadDepthContour(DepthContour instance) {
+		public DepthContourViewModel Load(DepthContour instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			valueOfDepthContour = instance.valueOfDepthContour;
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -4481,7 +4483,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 
-		public override FeatureViewModel<DepthContour> Load(DepthContour instance) => this.LoadDepthContour(instance);
+		public DepthContourViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DepthContourViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Depth Contour";
 
@@ -4524,17 +4538,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public EnvironmentallySensitiveSeaAreaViewModel LoadEnvironmentallySensitiveSeaArea(EnvironmentallySensitiveSeaArea instance) {
+		public EnvironmentallySensitiveSeaAreaViewModel Load(EnvironmentallySensitiveSeaArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			controllingAuthority = instance.controllingAuthority;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -4560,7 +4574,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<EnvironmentallySensitiveSeaArea> Load(EnvironmentallySensitiveSeaArea instance) => this.LoadEnvironmentallySensitiveSeaArea(instance);
+		public EnvironmentallySensitiveSeaAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public EnvironmentallySensitiveSeaAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Environmentally Sensitive Sea Area";
 
@@ -4696,7 +4722,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public RoadViewModel LoadRoad(Road instance) {
+		public RoadViewModel Load(Road instance) {
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
 				foreach(var e in instance.natureOfConstruction)
@@ -4705,7 +4731,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			reportedDate = instance.reportedDate;
@@ -4715,7 +4741,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -4761,7 +4787,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 
-		public override FeatureViewModel<Road> Load(Road instance) => this.LoadRoad(instance);
+		public RoadViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RoadViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Road";
 
@@ -4834,12 +4872,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public RiverViewModel LoadRiver(River instance) {
+		public RiverViewModel Load(River instance) {
 			scaleMinimum = instance.scaleMinimum;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -4850,7 +4888,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -4880,7 +4918,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
-		public override FeatureViewModel<River> Load(River instance) => this.LoadRiver(instance);
+		public RiverViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RiverViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"River";
 
@@ -5180,17 +5230,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public MilitaryPracticeAreaViewModel LoadMilitaryPracticeArea(MilitaryPracticeArea instance) {
+		public MilitaryPracticeAreaViewModel Load(MilitaryPracticeArea instance) {
 			altitudeRange = new ();
 			if (instance.altitudeRange != default) {
-				altitudeRange.LoadaltitudeRange(instance.altitudeRange);
+				altitudeRange.Load(instance.altitudeRange);
 			}
 			depthRestriction = instance.depthRestriction;
 			depthUnits = instance.depthUnits;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			nationality = instance.nationality;
 			restriction.Clear();
@@ -5202,7 +5252,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			typeofMilitaryActivity.Clear();
 			if (instance.typeofMilitaryActivity is not null) {
@@ -5213,7 +5263,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			minimumSafeDepth = instance.minimumSafeDepth;
 			categoryofMilitaryPracticeArea.Clear();
@@ -5228,7 +5278,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			verticalDatum = instance.verticalDatum;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			reportedDate = instance.reportedDate;
 			status.Clear();
@@ -5238,7 +5288,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			controllingAuthority = instance.controllingAuthority;
 			return this;
@@ -5305,7 +5355,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<MilitaryPracticeArea> Load(MilitaryPracticeArea instance) => this.LoadMilitaryPracticeArea(instance);
+		public MilitaryPracticeAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MilitaryPracticeAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Military Practice Area";
 
@@ -5376,11 +5438,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public DiscolouredWaterViewModel LoadDiscolouredWater(DiscolouredWater instance) {
+		public DiscolouredWaterViewModel Load(DiscolouredWater instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			reportedDate = instance.reportedDate;
@@ -5408,7 +5470,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
-		public override FeatureViewModel<DiscolouredWater> Load(DiscolouredWater instance) => this.LoadDiscolouredWater(instance);
+		public DiscolouredWaterViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DiscolouredWaterViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Discoloured Water";
 
@@ -5656,16 +5730,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public CardinalBuoyViewModel LoadCardinalBuoy(CardinalBuoy instance) {
+		public CardinalBuoyViewModel Load(CardinalBuoy instance) {
 			categoryOfCardinalMark = instance.categoryOfCardinalMark;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			natureOfConstruction.Clear();
@@ -5686,7 +5760,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			colour.Clear();
@@ -5697,16 +5771,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			colourPattern = instance.colourPattern;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			return this;
@@ -5765,7 +5839,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<CardinalBuoy> Load(CardinalBuoy instance) => this.LoadCardinalBuoy(instance);
+		public CardinalBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CardinalBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Cardinal Buoy";
 
@@ -6011,7 +6097,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public SafeWaterBuoyViewModel LoadSafeWaterBuoy(SafeWaterBuoy instance) {
+		public SafeWaterBuoyViewModel Load(SafeWaterBuoy instance) {
 			buoyShape = instance.buoyShape;
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -6023,11 +6109,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -6037,11 +6123,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			natureOfConstruction.Clear();
@@ -6052,7 +6138,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			reportedDate = instance.reportedDate;
@@ -6061,7 +6147,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -6117,7 +6203,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<SafeWaterBuoy> Load(SafeWaterBuoy instance) => this.LoadSafeWaterBuoy(instance);
+		public SafeWaterBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SafeWaterBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Safe Water Buoy";
 
@@ -6305,31 +6403,31 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
+		public RadioStationViewModel Load(RadioStation instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			reportedDate = instance.reportedDate;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			frequencyPair = new ();
 			if (instance.frequencyPair != default) {
-				frequencyPair.LoadfrequencyPair(instance.frequencyPair);
+				frequencyPair.Load(instance.frequencyPair);
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			callsign = instance.callsign;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			communicationChannel = instance.communicationChannel;
 			status.Clear();
@@ -6345,7 +6443,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			estimatedRangeofTransmission = instance.estimatedRangeofTransmission;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -6395,7 +6493,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadioStation> Load(RadioStation instance) => this.LoadRadioStation(instance);
+		public RadioStationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadioStationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Station";
 
@@ -6520,28 +6630,28 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public MilitaryExerciseAirspaceViewModel LoadMilitaryExerciseAirspace(MilitaryExerciseAirspace instance) {
+		public MilitaryExerciseAirspaceViewModel Load(MilitaryExerciseAirspace instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			controllingAuthority = instance.controllingAuthority;
 			activePeriod = instance.activePeriod;
 			altitude = new ();
 			if (instance.altitude != default) {
-				altitude.Loadaltitude(instance.altitude);
+				altitude.Load(instance.altitude);
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			flightLevel = new ();
 			if (instance.flightLevel != default) {
-				flightLevel.LoadflightLevel(instance.flightLevel);
+				flightLevel.Load(instance.flightLevel);
 			}
 			return this;
 		}
@@ -6577,7 +6687,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
 
-		public override FeatureViewModel<MilitaryExerciseAirspace> Load(MilitaryExerciseAirspace instance) => this.LoadMilitaryExerciseAirspace(instance);
+		public MilitaryExerciseAirspaceViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MilitaryExerciseAirspaceViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Military Exercise Airspace";
 
@@ -6704,14 +6826,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public ContiguousZoneViewModel LoadContiguousZone(ContiguousZone instance) {
+		public ContiguousZoneViewModel Load(ContiguousZone instance) {
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			scaleMinimum = instance.scaleMinimum;
@@ -6735,7 +6857,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -6775,7 +6897,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 
-		public override FeatureViewModel<ContiguousZone> Load(ContiguousZone instance) => this.LoadContiguousZone(instance);
+		public ContiguousZoneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ContiguousZoneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Contiguous Zone";
 
@@ -6896,11 +7030,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public NormalBaselineViewModel LoadNormalBaseline(NormalBaseline instance) {
+		public NormalBaselineViewModel Load(NormalBaseline instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			reportedDate = instance.reportedDate;
@@ -6909,7 +7043,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			status = instance.status;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			return this;
 		}
@@ -6943,7 +7077,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
 
-		public override FeatureViewModel<NormalBaseline> Load(NormalBaseline instance) => this.LoadNormalBaseline(instance);
+		public NormalBaselineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NormalBaselineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Normal Baseline";
 
@@ -7067,11 +7213,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)7,(categoryOfCable)10];
 
 
-		public CableAreaViewModel LoadCableArea(CableArea instance) {
+		public CableAreaViewModel Load(CableArea instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -7080,21 +7226,21 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			scaleMinimum = instance.scaleMinimum;
@@ -7149,7 +7295,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<CableArea> Load(CableArea instance) => this.LoadCableArea(instance);
+		public CableAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CableAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Cable Area";
 
@@ -7274,12 +7432,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ContinentalShelfAreaViewModel LoadContinentalShelfArea(ContinentalShelfArea instance) {
+		public ContinentalShelfAreaViewModel Load(ContinentalShelfArea instance) {
 			status = instance.status;
 			inDispute = instance.inDispute;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			nationalMaritimeAuthority.Clear();
 			if (instance.nationalMaritimeAuthority is not null) {
@@ -7290,12 +7448,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			nationality.Clear();
 			if (instance.nationality is not null) {
@@ -7339,7 +7497,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<ContinentalShelfArea> Load(ContinentalShelfArea instance) => this.LoadContinentalShelfArea(instance);
+		public ContinentalShelfAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ContinentalShelfAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Continental Shelf Area";
 
@@ -7468,7 +7638,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)502,(status)504,(status)520];
 
 
-		public InternalWatersViewModel LoadInternalWaters(InternalWaters instance) {
+		public InternalWatersViewModel Load(InternalWaters instance) {
 			nationality.Clear();
 			if (instance.nationality is not null) {
 				foreach(var e in instance.nationality)
@@ -7483,12 +7653,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			lineTypeGeodesic = instance.lineTypeGeodesic;
 			reportedDate = instance.reportedDate;
@@ -7529,7 +7699,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
 
-		public override FeatureViewModel<InternalWaters> Load(InternalWaters instance) => this.LoadInternalWaters(instance);
+		public InternalWatersViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public InternalWatersViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Internal Waters";
 
@@ -7627,7 +7809,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 
-		public AdministrationAreaViewModel LoadAdministrationArea(AdministrationArea instance) {
+		public AdministrationAreaViewModel Load(AdministrationArea instance) {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			inDispute = instance.inDispute;
 			jurisdiction = instance.jurisdiction;
@@ -7635,12 +7817,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			nationality.Clear();
 			if (instance.nationality is not null) {
@@ -7679,7 +7861,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<AdministrationArea> Load(AdministrationArea instance) => this.LoadAdministrationArea(instance);
+		public AdministrationAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public AdministrationAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Administration Area";
 
@@ -7798,27 +7992,27 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)1,(status)3,(status)4,(status)6,(status)7,(status)8,(status)12,(status)14,(status)18];
 
 
-		public BollardViewModel LoadBollard(Bollard instance) {
+		public BollardViewModel Load(Bollard instance) {
 			scaleMinimum = instance.scaleMinimum;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			reportedDate = instance.reportedDate;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			condition = instance.condition;
@@ -7863,7 +8057,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
-		public override FeatureViewModel<Bollard> Load(Bollard instance) => this.LoadBollard(instance);
+		public BollardViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public BollardViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Bollard";
 
@@ -8106,7 +8312,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7];
 
 
-		public DolphinViewModel LoadDolphin(Dolphin instance) {
+		public DolphinViewModel Load(Dolphin instance) {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			verticalLength = instance.verticalLength;
 			colourPattern = instance.colourPattern;
@@ -8114,7 +8320,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			visualProminence = instance.visualProminence;
 			colour.Clear();
@@ -8125,7 +8331,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			elevation = instance.elevation;
 			status.Clear();
@@ -8136,14 +8342,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			radarConspicuous = instance.radarConspicuous;
 			reportedDate = instance.reportedDate;
 			condition = instance.condition;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			height = instance.height;
@@ -8206,7 +8412,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 
-		public override FeatureViewModel<Dolphin> Load(Dolphin instance) => this.LoadDolphin(instance);
+		public DolphinViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DolphinViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Dolphin";
 
@@ -8303,21 +8521,21 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7];
 
 
-		public RadarRangeViewModel LoadRadarRange(RadarRange instance) {
+		public RadarRangeViewModel Load(RadarRange instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			communicationChannel.Clear();
@@ -8362,7 +8580,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadarRange> Load(RadarRange instance) => this.LoadRadarRange(instance);
+		public RadarRangeViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadarRangeViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radar Range";
 
@@ -8678,12 +8908,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
 
-		public IsolatedDangerBeaconViewModel LoadIsolatedDangerBeacon(IsolatedDangerBeacon instance) {
+		public IsolatedDangerBeaconViewModel Load(IsolatedDangerBeacon instance) {
 			condition = instance.condition;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			beaconShape = instance.beaconShape;
@@ -8701,7 +8931,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			elevation = instance.elevation;
@@ -8709,11 +8939,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			height = instance.height;
@@ -8727,11 +8957,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			colourPattern = instance.colourPattern;
@@ -8799,7 +9029,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 
-		public override FeatureViewModel<IsolatedDangerBeacon> Load(IsolatedDangerBeacon instance) => this.LoadIsolatedDangerBeacon(instance);
+		public IsolatedDangerBeaconViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public IsolatedDangerBeaconViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Isolated Danger Beacon";
 
@@ -9017,19 +9259,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)7,(status)8,(status)18];
 
 
-		public IsolatedDangerBuoyViewModel LoadIsolatedDangerBuoy(IsolatedDangerBuoy instance) {
+		public IsolatedDangerBuoyViewModel Load(IsolatedDangerBuoy instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			radarConspicuous = instance.radarConspicuous;
 			verticalLength = instance.verticalLength;
@@ -9042,14 +9284,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			buoyShape = instance.buoyShape;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			colourPattern = instance.colourPattern;
 			scaleMinimum = instance.scaleMinimum;
@@ -9114,7 +9356,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<IsolatedDangerBuoy> Load(IsolatedDangerBuoy instance) => this.LoadIsolatedDangerBuoy(instance);
+		public IsolatedDangerBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public IsolatedDangerBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Isolated Danger Buoy";
 
@@ -9267,11 +9521,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public SubmarineTransitLaneViewModel LoadSubmarineTransitLane(SubmarineTransitLane instance) {
+		public SubmarineTransitLaneViewModel Load(SubmarineTransitLane instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
@@ -9279,13 +9533,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			controllingAuthority = instance.controllingAuthority;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			restriction.Clear();
 			if (instance.restriction is not null) {
@@ -9335,7 +9589,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 
-		public override FeatureViewModel<SubmarineTransitLane> Load(SubmarineTransitLane instance) => this.LoadSubmarineTransitLane(instance);
+		public SubmarineTransitLaneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SubmarineTransitLaneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Submarine Transit Lane";
 
@@ -9415,22 +9681,22 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public MaritimeSafetyInformationAreaViewModel LoadMaritimeSafetyInformationArea(MaritimeSafetyInformationArea instance) {
+		public MaritimeSafetyInformationAreaViewModel Load(MaritimeSafetyInformationArea instance) {
 			reportedDate = instance.reportedDate;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -9460,7 +9726,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<MaritimeSafetyInformationArea> Load(MaritimeSafetyInformationArea instance) => this.LoadMaritimeSafetyInformationArea(instance);
+		public MaritimeSafetyInformationAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MaritimeSafetyInformationAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"MaritimeSafetyInformationArea (missing Name)";
 
@@ -9627,31 +9905,31 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public catagoryOfAirspaceRestriction[] catagoryOfAirspaceRestrictionList => [(catagoryOfAirspaceRestriction)501,(catagoryOfAirspaceRestriction)502,(catagoryOfAirspaceRestriction)503];
 
 
-		public AirspaceRestrictionViewModel LoadAirspaceRestriction(AirspaceRestriction instance) {
+		public AirspaceRestrictionViewModel Load(AirspaceRestriction instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			flightLevel = new ();
 			if (instance.flightLevel != default) {
-				flightLevel.LoadflightLevel(instance.flightLevel);
+				flightLevel.Load(instance.flightLevel);
 			}
 			controllingAuthority = instance.controllingAuthority;
 			altitudeRange = new ();
 			if (instance.altitudeRange != default) {
-				altitudeRange.LoadaltitudeRange(instance.altitudeRange);
+				altitudeRange.Load(instance.altitudeRange);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			verticalDatum = instance.verticalDatum;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			reportedDate = instance.reportedDate;
 			heightLengthUnits = instance.heightLengthUnits;
@@ -9696,7 +9974,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
 
-		public override FeatureViewModel<AirspaceRestriction> Load(AirspaceRestriction instance) => this.LoadAirspaceRestriction(instance);
+		public AirspaceRestrictionViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public AirspaceRestrictionViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Airspace Restriction";
 
@@ -9815,7 +10105,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public SoundingViewModel LoadSounding(Sounding instance) {
+		public SoundingViewModel Load(Sounding instance) {
 			status = instance.status;
 			techniqueOfVerticalMeasurement.Clear();
 			if (instance.techniqueOfVerticalMeasurement is not null) {
@@ -9826,7 +10116,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			qualityOfVerticalMeasurement.Clear();
 			if (instance.qualityOfVerticalMeasurement is not null) {
@@ -9836,11 +10126,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			reportedDate = instance.reportedDate;
 			displayUncertainties = instance.displayUncertainties;
@@ -9880,7 +10170,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 
-		public override FeatureViewModel<Sounding> Load(Sounding instance) => this.LoadSounding(instance);
+		public SoundingViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SoundingViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Sounding";
 
@@ -9991,7 +10293,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public TrafficSeparationSchemeBoundaryViewModel LoadTrafficSeparationSchemeBoundary(TrafficSeparationSchemeBoundary instance) {
+		public TrafficSeparationSchemeBoundaryViewModel Load(TrafficSeparationSchemeBoundary instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
 			if (instance.status is not null) {
@@ -10002,15 +10304,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			return this;
@@ -10045,7 +10347,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
-		public override FeatureViewModel<TrafficSeparationSchemeBoundary> Load(TrafficSeparationSchemeBoundary instance) => this.LoadTrafficSeparationSchemeBoundary(instance);
+		public TrafficSeparationSchemeBoundaryViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TrafficSeparationSchemeBoundaryViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Traffic Separation Scheme Boundary";
 
@@ -10126,7 +10440,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public DumpingGroundViewModel LoadDumpingGround(DumpingGround instance) {
+		public DumpingGroundViewModel Load(DumpingGround instance) {
 			categoryOfDumpingGround.Clear();
 			if (instance.categoryOfDumpingGround is not null) {
 				foreach(var e in instance.categoryOfDumpingGround)
@@ -10147,12 +10461,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -10186,7 +10500,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
-		public override FeatureViewModel<DumpingGround> Load(DumpingGround instance) => this.LoadDumpingGround(instance);
+		public DumpingGroundViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DumpingGroundViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Dumping Ground";
 
@@ -10436,7 +10762,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public AirportAirfieldViewModel LoadAirportAirfield(AirportAirfield instance) {
+		public AirportAirfieldViewModel Load(AirportAirfield instance) {
 			categoryOfAirportAirfield.Clear();
 			if (instance.categoryOfAirportAirfield is not null) {
 				foreach(var e in instance.categoryOfAirportAirfield)
@@ -10444,12 +10770,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			condition = instance.condition;
 			runwayLength = instance.runwayLength;
@@ -10464,12 +10790,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -10532,7 +10858,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 
-		public override FeatureViewModel<AirportAirfield> Load(AirportAirfield instance) => this.LoadAirportAirfield(instance);
+		public AirportAirfieldViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public AirportAirfieldViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Airport/Airfield";
 
@@ -10650,7 +10988,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public FoulGroundViewModel LoadFoulGround(FoulGround instance) {
+		public FoulGroundViewModel Load(FoulGround instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -10671,17 +11009,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			scaleMinimum = instance.scaleMinimum;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -10719,7 +11057,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
-		public override FeatureViewModel<FoulGround> Load(FoulGround instance) => this.LoadFoulGround(instance);
+		public FoulGroundViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public FoulGroundViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Foul Ground";
 
@@ -11018,25 +11368,25 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11];
 
 
-		public LightAirObstructionViewModel LoadLightAirObstruction(LightAirObstruction instance) {
+		public LightAirObstructionViewModel Load(LightAirObstruction instance) {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			valueOfNominalRange = instance.valueOfNominalRange;
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
-				multiplicityOfFeatures.LoadmultiplicityOfFeatures(instance.multiplicityOfFeatures);
+				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			rythmOfLight = new ();
 			if (instance.rythmOfLight != default) {
-				rythmOfLight.LoadrythmOfLight(instance.rythmOfLight);
+				rythmOfLight.Load(instance.rythmOfLight);
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -11056,12 +11406,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			relativeHorizontalAccuracy = instance.relativeHorizontalAccuracy;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			verticalDatum = instance.verticalDatum;
@@ -11070,7 +11420,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -11139,7 +11489,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 
-		public override FeatureViewModel<LightAirObstruction> Load(LightAirObstruction instance) => this.LoadLightAirObstruction(instance);
+		public LightAirObstructionViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LightAirObstructionViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Light Air Obstruction";
 
@@ -11354,13 +11716,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public MooringBuoyViewModel LoadMooringBuoy(MooringBuoy instance) {
+		public MooringBuoyViewModel Load(MooringBuoy instance) {
 			maximumPermittedVesselLength = instance.maximumPermittedVesselLength;
 			maximumPermittedDraught = instance.maximumPermittedDraught;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
@@ -11381,7 +11743,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			buoyShape = instance.buoyShape;
@@ -11392,11 +11754,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			return this;
 		}
@@ -11448,7 +11810,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<MooringBuoy> Load(MooringBuoy instance) => this.LoadMooringBuoy(instance);
+		public MooringBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MooringBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Mooring Buoy";
 
@@ -11756,11 +12130,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 
 
-		public UnderwaterAwashRockViewModel LoadUnderwaterAwashRock(UnderwaterAwashRock instance) {
+		public UnderwaterAwashRockViewModel Load(UnderwaterAwashRock instance) {
 			valueOfSounding = instance.valueOfSounding;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			horizontalWidth = instance.horizontalWidth;
 			waterLevelEffect = instance.waterLevelEffect;
@@ -11768,7 +12142,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			natureOfSurface = instance.natureOfSurface;
 			scaleMinimum = instance.scaleMinimum;
@@ -11789,21 +12163,21 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			horizontalLength = instance.horizontalLength;
 			reportedDate = instance.reportedDate;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			firstSourceInformation = new ();
 			if (instance.firstSourceInformation != default) {
-				firstSourceInformation.LoadfirstSourceInformation(instance.firstSourceInformation);
+				firstSourceInformation.Load(instance.firstSourceInformation);
 			}
 			lastSourceInformation = new ();
 			if (instance.lastSourceInformation != default) {
-				lastSourceInformation.LoadlastSourceInformation(instance.lastSourceInformation);
+				lastSourceInformation.Load(instance.lastSourceInformation);
 			}
 			qualityOfVerticalMeasurement = instance.qualityOfVerticalMeasurement;
 			return this;
@@ -11866,7 +12240,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 
-		public override FeatureViewModel<UnderwaterAwashRock> Load(UnderwaterAwashRock instance) => this.LoadUnderwaterAwashRock(instance);
+		public UnderwaterAwashRockViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public UnderwaterAwashRockViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Underwater/Awash Rock";
 
@@ -12091,7 +12477,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public CableOverheadViewModel LoadCableOverhead(CableOverhead instance) {
+		public CableOverheadViewModel Load(CableOverhead instance) {
 			condition = instance.condition;
 			status.Clear();
 			if (instance.status is not null) {
@@ -12100,33 +12486,33 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			verticalDatum = instance.verticalDatum;
 			categoryOfCable = instance.categoryOfCable;
 			verticalClearanceSafe = new ();
 			if (instance.verticalClearanceSafe != default) {
-				verticalClearanceSafe.LoadverticalClearanceSafe(instance.verticalClearanceSafe);
+				verticalClearanceSafe.Load(instance.verticalClearanceSafe);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			verticalClearanceFixed = new ();
 			if (instance.verticalClearanceFixed != default) {
-				verticalClearanceFixed.LoadverticalClearanceFixed(instance.verticalClearanceFixed);
+				verticalClearanceFixed.Load(instance.verticalClearanceFixed);
 			}
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
-				multiplicityOfFeatures.LoadmultiplicityOfFeatures(instance.multiplicityOfFeatures);
+				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
 			visualProminence = instance.visualProminence;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			radarConspicuous = instance.radarConspicuous;
@@ -12179,7 +12565,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 
-		public override FeatureViewModel<CableOverhead> Load(CableOverhead instance) => this.LoadCableOverhead(instance);
+		public CableOverheadViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CableOverheadViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Cable Overhead";
 
@@ -12366,27 +12764,27 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ControlledAirspaceViewModel LoadControlledAirspace(ControlledAirspace instance) {
+		public ControlledAirspaceViewModel Load(ControlledAirspace instance) {
 			controlledAirspaceClassDesignation = instance.controlledAirspaceClassDesignation;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			categoryOfControlledAirspace = instance.categoryOfControlledAirspace;
 			controllingAuthority = instance.controllingAuthority;
 			altitude = new ();
 			if (instance.altitude != default) {
-				altitude.Loadaltitude(instance.altitude);
+				altitude.Load(instance.altitude);
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			verticalDatum = instance.verticalDatum;
 			heightLengthUnits = instance.heightLengthUnits;
@@ -12394,7 +12792,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			reportedDate = instance.reportedDate;
 			flightLevel = new ();
 			if (instance.flightLevel != default) {
-				flightLevel.LoadflightLevel(instance.flightLevel);
+				flightLevel.Load(instance.flightLevel);
 			}
 			return this;
 		}
@@ -12438,7 +12836,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
 
-		public override FeatureViewModel<ControlledAirspace> Load(ControlledAirspace instance) => this.LoadControlledAirspace(instance);
+		public ControlledAirspaceViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ControlledAirspaceViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Controlled Airspace";
 
@@ -13071,7 +13481,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ObstructionViewModel LoadObstruction(Obstruction instance) {
+		public ObstructionViewModel Load(Obstruction instance) {
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
 				foreach(var e in instance.natureOfConstruction)
@@ -13087,30 +13497,30 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
 			lastSourceInformation = new ();
 			if (instance.lastSourceInformation != default) {
-				lastSourceInformation.LoadlastSourceInformation(instance.lastSourceInformation);
+				lastSourceInformation.Load(instance.lastSourceInformation);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			expositionOfSounding = instance.expositionOfSounding;
 			firstSourceInformation = new ();
 			if (instance.firstSourceInformation != default) {
-				firstSourceInformation.LoadfirstSourceInformation(instance.firstSourceInformation);
+				firstSourceInformation.Load(instance.firstSourceInformation);
 			}
 			abandonmentDate = instance.abandonmentDate;
 			verticalLength = instance.verticalLength;
 			soundingDepth = instance.soundingDepth;
 			orientation = new ();
 			if (instance.orientation != default) {
-				orientation.Loadorientation(instance.orientation);
+				orientation.Load(instance.orientation);
 			}
 			soundingDatum = instance.soundingDatum;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			magneticInformation = new ();
 			if (instance.magneticInformation != default) {
-				magneticInformation.LoadmagneticInformation(instance.magneticInformation);
+				magneticInformation.Load(instance.magneticInformation);
 			}
 			horizontalWidth = instance.horizontalWidth;
 			status.Clear();
@@ -13120,7 +13530,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			condition = instance.condition;
 			generalWaterDepth = instance.generalWaterDepth;
@@ -13131,7 +13541,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			detectionDateRange = new ();
 			if (instance.detectionDateRange != default) {
-				detectionDateRange.LoaddetectionDateRange(instance.detectionDateRange);
+				detectionDateRange.Load(instance.detectionDateRange);
 			}
 			oprtor = instance.oprtor;
 			verticalDatum = instance.verticalDatum;
@@ -13152,11 +13562,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			currentScourDimensions = instance.currentScourDimensions;
 			techniqueOfVerticalMeasurement.Clear();
@@ -13281,7 +13691,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 
-		public override FeatureViewModel<Obstruction> Load(Obstruction instance) => this.LoadObstruction(instance);
+		public ObstructionViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ObstructionViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Obstruction";
 
@@ -13409,7 +13831,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public FishingGroundViewModel LoadFishingGround(FishingGround instance) {
+		public FishingGroundViewModel Load(FishingGround instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -13420,22 +13842,22 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			restriction.Clear();
 			if (instance.restriction is not null) {
@@ -13445,7 +13867,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -13485,7 +13907,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
-		public override FeatureViewModel<FishingGround> Load(FishingGround instance) => this.LoadFishingGround(instance);
+		public FishingGroundViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public FishingGroundViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Fishing Ground";
 
@@ -13630,16 +14064,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public FishingFacilityViewModel LoadFishingFacility(FishingFacility instance) {
+		public FishingFacilityViewModel Load(FishingFacility instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			condition = instance.condition;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -13654,7 +14088,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			return this;
@@ -13695,7 +14129,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 
-		public override FeatureViewModel<FishingFacility> Load(FishingFacility instance) => this.LoadFishingFacility(instance);
+		public FishingFacilityViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public FishingFacilityViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Fishing Facility";
 
@@ -13834,15 +14280,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public NavigationSystemViewModel LoadNavigationSystem(NavigationSystem instance) {
+		public NavigationSystemViewModel Load(NavigationSystem instance) {
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			categoryOfRadioStation = instance.categoryOfRadioStation;
@@ -13851,7 +14297,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			communicationChannel = instance.communicationChannel;
 			signalFrequency = instance.signalFrequency;
@@ -13891,7 +14337,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
 
-		public override FeatureViewModel<NavigationSystem> Load(NavigationSystem instance) => this.LoadNavigationSystem(instance);
+		public NavigationSystemViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NavigationSystemViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Navigation System";
 
@@ -14007,7 +14465,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public TrafficSeparationSchemeCrossingViewModel LoadTrafficSeparationSchemeCrossing(TrafficSeparationSchemeCrossing instance) {
+		public TrafficSeparationSchemeCrossingViewModel Load(TrafficSeparationSchemeCrossing instance) {
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -14016,12 +14474,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
@@ -14031,12 +14489,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			return this;
@@ -14075,7 +14533,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
-		public override FeatureViewModel<TrafficSeparationSchemeCrossing> Load(TrafficSeparationSchemeCrossing instance) => this.LoadTrafficSeparationSchemeCrossing(instance);
+		public TrafficSeparationSchemeCrossingViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TrafficSeparationSchemeCrossingViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Traffic Separation Scheme Crossing";
 
@@ -14211,17 +14681,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public TrafficSeparationSchemeLanePartViewModel LoadTrafficSeparationSchemeLanePart(TrafficSeparationSchemeLanePart instance) {
+		public TrafficSeparationSchemeLanePartViewModel Load(TrafficSeparationSchemeLanePart instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			restriction.Clear();
@@ -14231,7 +14701,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			orientationValue = instance.orientationValue;
 			status.Clear();
@@ -14241,7 +14711,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			return this;
@@ -14282,7 +14752,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
-		public override FeatureViewModel<TrafficSeparationSchemeLanePart> Load(TrafficSeparationSchemeLanePart instance) => this.LoadTrafficSeparationSchemeLanePart(instance);
+		public TrafficSeparationSchemeLanePartViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TrafficSeparationSchemeLanePartViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Traffic Separation Scheme Lane Part";
 
@@ -14426,7 +14908,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public TerritorialSeaAreaViewModel LoadTerritorialSeaArea(TerritorialSeaArea instance) {
+		public TerritorialSeaAreaViewModel Load(TerritorialSeaArea instance) {
 			nationality.Clear();
 			if (instance.nationality is not null) {
 				foreach(var e in instance.nationality)
@@ -14435,7 +14917,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status = instance.status;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -14443,11 +14925,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			reportedDate = instance.reportedDate;
 			restriction.Clear();
@@ -14464,7 +14946,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -14508,7 +14990,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<TerritorialSeaArea> Load(TerritorialSeaArea instance) => this.LoadTerritorialSeaArea(instance);
+		public TerritorialSeaAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TerritorialSeaAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Territorial Sea Area";
 
@@ -14833,7 +15327,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
 
-		public LateralBeaconViewModel LoadLateralBeacon(LateralBeacon instance) {
+		public LateralBeaconViewModel Load(LateralBeacon instance) {
 			elevation = instance.elevation;
 			beaconShape = instance.beaconShape;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -14848,35 +15342,35 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			visualProminence = instance.visualProminence;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			verticalLength = instance.verticalLength;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			radarConspicuous = instance.radarConspicuous;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			colourPattern = instance.colourPattern;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			height = instance.height;
 			condition = instance.condition;
@@ -14954,7 +15448,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 
-		public override FeatureViewModel<LateralBeacon> Load(LateralBeacon instance) => this.LoadLateralBeacon(instance);
+		public LateralBeaconViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LateralBeaconViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Lateral Beacon";
 
@@ -15055,7 +15561,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> communicationsChannel  { get; set; } = new ();
 
 
-		public CoastGuardStationViewModel LoadCoastGuardStation(CoastGuardStation instance) {
+		public CoastGuardStationViewModel Load(CoastGuardStation instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -15065,22 +15571,22 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			isMRCC = instance.isMRCC;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			communicationsChannel.Clear();
 			if (instance.communicationsChannel is not null) {
@@ -15121,7 +15627,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
-		public override FeatureViewModel<CoastGuardStation> Load(CoastGuardStation instance) => this.LoadCoastGuardStation(instance);
+		public CoastGuardStationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CoastGuardStationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Coast Guard Station";
 
@@ -15235,7 +15753,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public SeparationZoneOrLineViewModel LoadSeparationZoneOrLine(SeparationZoneOrLine instance) {
+		public SeparationZoneOrLineViewModel Load(SeparationZoneOrLine instance) {
 			reportedDate = instance.reportedDate;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			status.Clear();
@@ -15246,16 +15764,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			return this;
 		}
@@ -15289,7 +15807,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 
-		public override FeatureViewModel<SeparationZoneOrLine> Load(SeparationZoneOrLine instance) => this.LoadSeparationZoneOrLine(instance);
+		public SeparationZoneOrLineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SeparationZoneOrLineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Separation Zone or Line";
 
@@ -15394,17 +15924,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public BottomFeatureViewModel LoadBottomFeature(BottomFeature instance) {
+		public BottomFeatureViewModel Load(BottomFeature instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			migrationDirection = instance.migrationDirection;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			horizontalLength = instance.horizontalLength;
 			bottomFeatureClassification = instance.bottomFeatureClassification;
@@ -15442,7 +15972,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
 
-		public override FeatureViewModel<BottomFeature> Load(BottomFeature instance) => this.LoadBottomFeature(instance);
+		public BottomFeatureViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public BottomFeatureViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Bottom Feature";
 
@@ -15571,7 +16113,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ArchipelagicBaselineViewModel LoadArchipelagicBaseline(ArchipelagicBaseline instance) {
+		public ArchipelagicBaselineViewModel Load(ArchipelagicBaseline instance) {
 			reportedDate = instance.reportedDate;
 			status = instance.status;
 			inDispute = instance.inDispute;
@@ -15579,11 +16121,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			scaleMinimum = instance.scaleMinimum;
@@ -15621,7 +16163,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
 
-		public override FeatureViewModel<ArchipelagicBaseline> Load(ArchipelagicBaseline instance) => this.LoadArchipelagicBaseline(instance);
+		public ArchipelagicBaselineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ArchipelagicBaselineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Archipelagic Baseline";
 
@@ -15695,18 +16249,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public SmallBottomObjectViewModel LoadSmallBottomObject(SmallBottomObject instance) {
+		public SmallBottomObjectViewModel Load(SmallBottomObject instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			statusOfSmallBottomObject = instance.statusOfSmallBottomObject;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			valueOfSounding = instance.valueOfSounding;
 			return this;
@@ -15737,7 +16291,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
 
-		public override FeatureViewModel<SmallBottomObject> Load(SmallBottomObject instance) => this.LoadSmallBottomObject(instance);
+		public SmallBottomObjectViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SmallBottomObjectViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Small Bottom Object ";
 
@@ -15847,7 +16413,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
 
-		public ExclusiveEconomicZoneViewModel LoadExclusiveEconomicZone(ExclusiveEconomicZone instance) {
+		public ExclusiveEconomicZoneViewModel Load(ExclusiveEconomicZone instance) {
 			nationalMaritimeAuthority.Clear();
 			if (instance.nationalMaritimeAuthority is not null) {
 				foreach(var e in instance.nationalMaritimeAuthority)
@@ -15856,18 +16422,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			scaleMinimum = instance.scaleMinimum;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			inDispute = instance.inDispute;
@@ -15912,7 +16478,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
-		public override FeatureViewModel<ExclusiveEconomicZone> Load(ExclusiveEconomicZone instance) => this.LoadExclusiveEconomicZone(instance);
+		public ExclusiveEconomicZoneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ExclusiveEconomicZoneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Exclusive Economic Zone";
 
@@ -16052,7 +16630,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public RadarStationViewModel LoadRadarStation(RadarStation instance) {
+		public RadarStationViewModel Load(RadarStation instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -16065,18 +16643,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
@@ -16124,7 +16702,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadarStation> Load(RadarStation instance) => this.LoadRadarStation(instance);
+		public RadarStationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadarStationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radar Station";
 
@@ -16192,12 +16782,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public divingActivity[] divingActivityList => [(divingActivity)501,(divingActivity)502,(divingActivity)503];
 
 
-		public DivingLocationViewModel LoadDivingLocation(DivingLocation instance) {
+		public DivingLocationViewModel Load(DivingLocation instance) {
 			waterClarity = instance.waterClarity;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			divingActivity = instance.divingActivity;
 			return this;
@@ -16224,7 +16814,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
 
-		public override FeatureViewModel<DivingLocation> Load(DivingLocation instance) => this.LoadDivingLocation(instance);
+		public DivingLocationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DivingLocationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Diving Location";
 
@@ -16352,11 +16954,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39,(restriction)42];
 
 
-		public RestrictedAreaViewModel LoadRestrictedArea(RestrictedArea instance) {
+		public RestrictedAreaViewModel Load(RestrictedArea instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			categoryOfRestrictedArea.Clear();
@@ -16366,7 +16968,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			nationality = instance.nationality;
 			status.Clear();
@@ -16377,17 +16979,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			controllingAuthority = instance.controllingAuthority;
@@ -16438,7 +17040,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<RestrictedArea> Load(RestrictedArea instance) => this.LoadRestrictedArea(instance);
+		public RestrictedAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RestrictedAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Restricted Area";
 
@@ -16638,7 +17252,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public CableSubmarineViewModel LoadCableSubmarine(CableSubmarine instance) {
+		public CableSubmarineViewModel Load(CableSubmarine instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -16649,12 +17263,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			reportedDate = instance.reportedDate;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			categoryOfCable = instance.categoryOfCable;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -16662,13 +17276,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			return this;
 		}
@@ -16714,7 +17328,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
-		public override FeatureViewModel<CableSubmarine> Load(CableSubmarine instance) => this.LoadCableSubmarine(instance);
+		public CableSubmarineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CableSubmarineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Cable Submarine";
 
@@ -17274,7 +17900,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public WreckViewModel LoadWreck(Wreck instance) {
+		public WreckViewModel Load(Wreck instance) {
 			surroundingDepth = instance.surroundingDepth;
 			techniqueOfVerticalMeasurement.Clear();
 			if (instance.techniqueOfVerticalMeasurement is not null) {
@@ -17283,7 +17909,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			visualProminence = instance.visualProminence;
 			reportedDate = instance.reportedDate;
@@ -17299,11 +17925,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			magneticInformation = new ();
 			if (instance.magneticInformation != default) {
-				magneticInformation.LoadmagneticInformation(instance.magneticInformation);
+				magneticInformation.Load(instance.magneticInformation);
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			natureOfConstruction.Clear();
@@ -17321,7 +17947,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			height = instance.height;
 			scaleMinimum = instance.scaleMinimum;
@@ -17333,20 +17959,20 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			lastSourceInformation = new ();
 			if (instance.lastSourceInformation != default) {
-				lastSourceInformation.LoadlastSourceInformation(instance.lastSourceInformation);
+				lastSourceInformation.Load(instance.lastSourceInformation);
 			}
 			qualityOfVerticalMeasurement = instance.qualityOfVerticalMeasurement;
 			cardinalPointOrientation = instance.cardinalPointOrientation;
 			vesselMeasurementsSpecification.Clear();
 			if (instance.vesselMeasurementsSpecification is not null) {
 				foreach(var e in instance.vesselMeasurementsSpecification)
-					vesselMeasurementsSpecification.Add(new vesselMeasurementsSpecificationViewModel().LoadvesselMeasurementsSpecification(e));
+					vesselMeasurementsSpecification.Add(new vesselMeasurementsSpecificationViewModel().Load(e));
 			}
 			existenceOfRestrictedArea = instance.existenceOfRestrictedArea;
 			dateSunk = instance.dateSunk;
 			firstSourceInformation = new ();
 			if (instance.firstSourceInformation != default) {
-				firstSourceInformation.LoadfirstSourceInformation(instance.firstSourceInformation);
+				firstSourceInformation.Load(instance.firstSourceInformation);
 			}
 			horizontalWidth = instance.horizontalWidth;
 			valueOfSounding = instance.valueOfSounding;
@@ -17361,7 +17987,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -17463,7 +18089,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 
-		public override FeatureViewModel<Wreck> Load(Wreck instance) => this.LoadWreck(instance);
+		public WreckViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public WreckViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Wreck";
 
@@ -17576,17 +18214,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public QRouteViewModel LoadQRoute(QRoute instance) {
+		public QRouteViewModel Load(QRoute instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -17595,11 +18233,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			qRouteChannelWidth = new ();
 			if (instance.qRouteChannelWidth != default) {
-				qRouteChannelWidth.LoadqRouteChannelWidth(instance.qRouteChannelWidth);
+				qRouteChannelWidth.Load(instance.qRouteChannelWidth);
 			}
 			directionHeading = new ();
 			if (instance.directionHeading != default) {
-				directionHeading.LoaddirectionHeading(instance.directionHeading);
+				directionHeading.Load(instance.directionHeading);
 			}
 			nationality = instance.nationality;
 			return this;
@@ -17634,7 +18272,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
 
-		public override FeatureViewModel<QRoute> Load(QRoute instance) => this.LoadQRoute(instance);
+		public QRouteViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public QRouteViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Q-Route";
 
@@ -17738,19 +18388,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public CompletenessOfProductSpecificationViewModel LoadCompletenessOfProductSpecification(CompletenessOfProductSpecification instance) {
+		public CompletenessOfProductSpecificationViewModel Load(CompletenessOfProductSpecification instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			categoryOfCompleteness = instance.categoryOfCompleteness;
 			copyrightStatement = instance.copyrightStatement;
 			reportedDate = instance.reportedDate;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -17782,7 +18432,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
 
-		public override FeatureViewModel<CompletenessOfProductSpecification> Load(CompletenessOfProductSpecification instance) => this.LoadCompletenessOfProductSpecification(instance);
+		public CompletenessOfProductSpecificationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CompletenessOfProductSpecificationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"CompletenessOfProductSpecification (missing Name)";
 
@@ -17875,7 +18537,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public RescueStationViewModel LoadRescueStation(RescueStation instance) {
+		public RescueStationViewModel Load(RescueStation instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -17884,7 +18546,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
@@ -17893,12 +18555,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			categoryOfRescueStation.Clear();
@@ -17910,7 +18572,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -17948,7 +18610,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
-		public override FeatureViewModel<RescueStation> Load(RescueStation instance) => this.LoadRescueStation(instance);
+		public RescueStationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RescueStationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Rescue Station";
 
@@ -18259,11 +18933,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public CardinalBeaconViewModel LoadCardinalBeacon(CardinalBeacon instance) {
+		public CardinalBeaconViewModel Load(CardinalBeacon instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
@@ -18275,7 +18949,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			beaconShape = instance.beaconShape;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			categoryOfCardinalMark = instance.categoryOfCardinalMark;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -18288,11 +18962,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			verticalLength = instance.verticalLength;
 			scaleMinimum = instance.scaleMinimum;
@@ -18310,7 +18984,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -18374,7 +19048,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 
-		public override FeatureViewModel<CardinalBeacon> Load(CardinalBeacon instance) => this.LoadCardinalBeacon(instance);
+		public CardinalBeaconViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CardinalBeaconViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Cardinal Beacon";
 
@@ -18589,7 +19275,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public LightVesselViewModel LoadLightVessel(LightVessel instance) {
+		public LightVesselViewModel Load(LightVessel instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -18602,14 +19288,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			horizontalLength = instance.horizontalLength;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
@@ -18618,7 +19304,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -18629,7 +19315,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			horizontalWidth = instance.horizontalWidth;
 			verticalLength = instance.verticalLength;
@@ -18683,7 +19369,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 
-		public override FeatureViewModel<LightVessel> Load(LightVessel instance) => this.LoadLightVessel(instance);
+		public LightVesselViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LightVesselViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Light Vessel";
 
@@ -18808,7 +19506,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)1,(status)5,(status)6,(status)7,(status)501,(status)502,(status)504,(status)519,(status)521];
 
 
-		public FisheryZoneViewModel LoadFisheryZone(FisheryZone instance) {
+		public FisheryZoneViewModel Load(FisheryZone instance) {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			nationality = instance.nationality;
 			nationalMaritimeAuthority.Clear();
@@ -18825,16 +19523,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status = instance.status;
 			return this;
@@ -18873,7 +19571,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
-		public override FeatureViewModel<FisheryZone> Load(FisheryZone instance) => this.LoadFisheryZone(instance);
+		public FisheryZoneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public FisheryZoneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Fishery Zone";
 
@@ -19012,17 +19722,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public DredgedAreaViewModel LoadDredgedArea(DredgedArea instance) {
+		public DredgedAreaViewModel Load(DredgedArea instance) {
 			maximumPermittedDraught = instance.maximumPermittedDraught;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			dredgedDate = instance.dredgedDate;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			depthRangeMaximumValue = instance.depthRangeMaximumValue;
 			qualityOfVerticalMeasurement = instance.qualityOfVerticalMeasurement;
@@ -19040,7 +19750,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -19080,7 +19790,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<DredgedArea> Load(DredgedArea instance) => this.LoadDredgedArea(instance);
+		public DredgedAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DredgedAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Dredged Area";
 
@@ -19234,7 +19956,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public FerryRouteViewModel LoadFerryRoute(FerryRoute instance) {
+		public FerryRouteViewModel Load(FerryRoute instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -19245,16 +19967,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			pictorialRepresentation = instance.pictorialRepresentation;
@@ -19267,11 +19989,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			return this;
 		}
@@ -19315,7 +20037,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
-		public override FeatureViewModel<FerryRoute> Load(FerryRoute instance) => this.LoadFerryRoute(instance);
+		public FerryRouteViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public FerryRouteViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Ferry Route";
 
@@ -19619,13 +20353,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ShorelineConstructionViewModel LoadShorelineConstruction(ShorelineConstruction instance) {
+		public ShorelineConstructionViewModel Load(ShorelineConstruction instance) {
 			horizontalLength = instance.horizontalLength;
 			gradientOfSlope = instance.gradientOfSlope;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			condition = instance.condition;
 			visualProminence = instance.visualProminence;
@@ -19639,7 +20373,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			scaleMinimum = instance.scaleMinimum;
 			horizontalClearanceFixed = new ();
 			if (instance.horizontalClearanceFixed != default) {
-				horizontalClearanceFixed.LoadhorizontalClearanceFixed(instance.horizontalClearanceFixed);
+				horizontalClearanceFixed.Load(instance.horizontalClearanceFixed);
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			status.Clear();
@@ -19651,7 +20385,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			waterLevelEffect = instance.waterLevelEffect;
 			natureOfConstruction.Clear();
@@ -19661,7 +20395,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
 			colourPattern = instance.colourPattern;
@@ -19727,7 +20461,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 
-		public override FeatureViewModel<ShorelineConstruction> Load(ShorelineConstruction instance) => this.LoadShorelineConstruction(instance);
+		public ShorelineConstructionViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ShorelineConstructionViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Shoreline Construction";
 
@@ -19858,16 +20604,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public CautionAreaViewModel LoadCautionArea(CautionArea instance) {
+		public CautionAreaViewModel Load(CautionArea instance) {
 			reportedDate = instance.reportedDate;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			status = instance.status;
 			condition = instance.condition;
@@ -19876,7 +20622,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -19912,7 +20658,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<CautionArea> Load(CautionArea instance) => this.LoadCautionArea(instance);
+		public CautionAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CautionAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Caution Area";
 
@@ -20091,27 +20849,27 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7];
 
 
-		public DeepWaterRoutePartViewModel LoadDeepWaterRoutePart(DeepWaterRoutePart instance) {
+		public DeepWaterRoutePartViewModel Load(DeepWaterRoutePart instance) {
 			imoAdopted = instance.imoAdopted;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			trafficFlow = instance.trafficFlow;
 			scaleMinimum = instance.scaleMinimum;
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20123,7 +20881,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -20189,7 +20947,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 
-		public override FeatureViewModel<DeepWaterRoutePart> Load(DeepWaterRoutePart instance) => this.LoadDeepWaterRoutePart(instance);
+		public DeepWaterRoutePartViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DeepWaterRoutePartViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Deep Water Route Part";
 
@@ -20313,34 +21083,34 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public status[] statusList => [(status)5];
 
 
-		public CurrentNonGravitationalViewModel LoadCurrentNonGravitational(CurrentNonGravitational instance) {
+		public CurrentNonGravitationalViewModel Load(CurrentNonGravitational instance) {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			orientation = new ();
 			if (instance.orientation != default) {
-				orientation.Loadorientation(instance.orientation);
+				orientation.Load(instance.orientation);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			speed = new ();
 			if (instance.speed != default) {
-				speed.Loadspeed(instance.speed);
+				speed.Load(instance.speed);
 			}
 			status = instance.status;
 			return this;
@@ -20377,7 +21147,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 
-		public override FeatureViewModel<CurrentNonGravitational> Load(CurrentNonGravitational instance) => this.LoadCurrentNonGravitational(instance);
+		public CurrentNonGravitationalViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CurrentNonGravitationalViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Current - Non-Gravitational";
 
@@ -20495,7 +21277,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public DataCoverageViewModel LoadDataCoverage(DataCoverage instance) {
+		public DataCoverageViewModel Load(DataCoverage instance) {
 			drawingIndex = instance.drawingIndex;
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			categoryOfCoverage = instance.categoryOfCoverage;
@@ -20504,7 +21286,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			maximumDisplayScale = instance.maximumDisplayScale;
 			return this;
@@ -20539,7 +21321,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) => this.LoadDataCoverage(instance);
+		public DataCoverageViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DataCoverageViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Data Coverage";
 
@@ -20631,11 +21425,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public SeabedAreaViewModel LoadSeabedArea(SeabedArea instance) {
+		public SeabedAreaViewModel Load(SeabedArea instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
 			scaleMinimum = instance.scaleMinimum;
@@ -20643,12 +21437,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			surfaceCharacteristics.Clear();
 			if (instance.surfaceCharacteristics is not null) {
 				foreach(var e in instance.surfaceCharacteristics)
-					surfaceCharacteristics.Add(new surfaceCharacteristicsViewModel().LoadsurfaceCharacteristics(e));
+					surfaceCharacteristics.Add(new surfaceCharacteristicsViewModel().Load(e));
 			}
 			attenuation = instance.attenuation;
 			return this;
@@ -20683,7 +21477,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<SeabedArea> Load(SeabedArea instance) => this.LoadSeabedArea(instance);
+		public SeabedAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SeabedAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Seabed Area";
 
@@ -20903,22 +21709,22 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 
-		public SpecialPurposeGeneralBuoyViewModel LoadSpecialPurposeGeneralBuoy(SpecialPurposeGeneralBuoy instance) {
+		public SpecialPurposeGeneralBuoyViewModel Load(SpecialPurposeGeneralBuoy instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			buoyShape = instance.buoyShape;
 			scaleMinimum = instance.scaleMinimum;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			colourPattern = instance.colourPattern;
 			categoryOfSpecialPurposeMark.Clear();
@@ -20936,7 +21742,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			radarConspicuous = instance.radarConspicuous;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -20952,13 +21758,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			fixedDateRange.Clear();
 			if (instance.fixedDateRange is not null) {
 				foreach(var e in instance.fixedDateRange)
-					fixedDateRange.Add(new fixedDateRangeViewModel().LoadfixedDateRange(e));
+					fixedDateRange.Add(new fixedDateRangeViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -21014,7 +21820,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<SpecialPurposeGeneralBuoy> Load(SpecialPurposeGeneralBuoy instance) => this.LoadSpecialPurposeGeneralBuoy(instance);
+		public SpecialPurposeGeneralBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SpecialPurposeGeneralBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Special Purpose/General Buoy";
 
@@ -21297,7 +22115,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public LightSectoredViewModel LoadLightSectored(LightSectored instance) {
+		public LightSectoredViewModel Load(LightSectored instance) {
 			status.Clear();
 			if (instance.status is not null) {
 				foreach(var e in instance.status)
@@ -21306,12 +22124,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			relativeHorizontalAccuracy = instance.relativeHorizontalAccuracy;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			relativeVerticalAccuracy = instance.relativeVerticalAccuracy;
 			categoryOfLight.Clear();
@@ -21325,7 +22143,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			pictorialRepresentation = instance.pictorialRepresentation;
 			height = instance.height;
@@ -21334,19 +22152,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			sectorCharacteristics.Clear();
 			if (instance.sectorCharacteristics is not null) {
 				foreach(var e in instance.sectorCharacteristics)
-					sectorCharacteristics.Add(new sectorCharacteristicsViewModel().LoadsectorCharacteristics(e));
+					sectorCharacteristics.Add(new sectorCharacteristicsViewModel().Load(e));
 			}
 			verticalDatum = instance.verticalDatum;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			signalGeneration = instance.signalGeneration;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -21406,7 +22224,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 
-		public override FeatureViewModel<LightSectored> Load(LightSectored instance) => this.LoadLightSectored(instance);
+		public LightSectoredViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LightSectoredViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Light Sectored";
 
@@ -21450,16 +22280,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public IceLineViewModel LoadIceLine(IceLine instance) {
+		public IceLineViewModel Load(IceLine instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -21483,7 +22313,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
 
-		public override FeatureViewModel<IceLine> Load(IceLine instance) => this.LoadIceLine(instance);
+		public IceLineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public IceLineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Ice Line";
 
@@ -21585,7 +22427,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
 
-		public AnchorageAreaViewModel LoadAnchorageArea(AnchorageArea instance) {
+		public AnchorageAreaViewModel Load(AnchorageArea instance) {
 			restriction.Clear();
 			if (instance.restriction is not null) {
 				foreach(var e in instance.restriction)
@@ -21593,16 +22435,16 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange = new ();
 			if (instance.periodicDateRange != default) {
-				periodicDateRange.LoadperiodicDateRange(instance.periodicDateRange);
+				periodicDateRange.Load(instance.periodicDateRange);
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			categoryOfAnchorage.Clear();
 			if (instance.categoryOfAnchorage is not null) {
@@ -21618,7 +22460,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			categoryOfCargo.Clear();
 			if (instance.categoryOfCargo is not null) {
@@ -21661,7 +22503,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<AnchorageArea> Load(AnchorageArea instance) => this.LoadAnchorageArea(instance);
+		public AnchorageAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public AnchorageAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Anchorage Area";
 
@@ -21910,11 +22764,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public LateralBuoyViewModel LoadLateralBuoy(LateralBuoy instance) {
+		public LateralBuoyViewModel Load(LateralBuoy instance) {
 			radarConspicuous = instance.radarConspicuous;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -21926,12 +22780,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -21942,13 +22796,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			colourPattern = instance.colourPattern;
 			buoyShape = instance.buoyShape;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			natureOfConstruction.Clear();
@@ -21959,7 +22813,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			verticalLength = instance.verticalLength;
 			return this;
@@ -22016,7 +22870,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 
-		public override FeatureViewModel<LateralBuoy> Load(LateralBuoy instance) => this.LoadLateralBuoy(instance);
+		public LateralBuoyViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LateralBuoyViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Lateral Buoy";
 
@@ -22144,26 +23010,26 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
 
-		public TrafficSeparationSchemeRoundaboutViewModel LoadTrafficSeparationSchemeRoundabout(TrafficSeparationSchemeRoundabout instance) {
+		public TrafficSeparationSchemeRoundaboutViewModel Load(TrafficSeparationSchemeRoundabout instance) {
 			vesselSpeedLimit.Clear();
 			if (instance.vesselSpeedLimit is not null) {
 				foreach(var e in instance.vesselSpeedLimit)
-					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().LoadvesselSpeedLimit(e));
+					vesselSpeedLimit.Add(new vesselSpeedLimitViewModel().Load(e));
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -22212,7 +23078,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
-		public override FeatureViewModel<TrafficSeparationSchemeRoundabout> Load(TrafficSeparationSchemeRoundabout instance) => this.LoadTrafficSeparationSchemeRoundabout(instance);
+		public TrafficSeparationSchemeRoundaboutViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public TrafficSeparationSchemeRoundaboutViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Traffic Separation Scheme Roundabout";
 
@@ -22400,7 +23278,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
 
 
-		public DeepWaterRouteCentrelineViewModel LoadDeepWaterRouteCentreline(DeepWaterRouteCentreline instance) {
+		public DeepWaterRouteCentrelineViewModel Load(DeepWaterRouteCentreline instance) {
 			qualityOfVerticalMeasurement.Clear();
 			if (instance.qualityOfVerticalMeasurement is not null) {
 				foreach(var e in instance.qualityOfVerticalMeasurement)
@@ -22410,12 +23288,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			trafficFlow = instance.trafficFlow;
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			status.Clear();
@@ -22427,11 +23305,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -22487,7 +23365,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
-		public override FeatureViewModel<DeepWaterRouteCentreline> Load(DeepWaterRouteCentreline instance) => this.LoadDeepWaterRouteCentreline(instance);
+		public DeepWaterRouteCentrelineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DeepWaterRouteCentrelineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Deep Water Route Centreline";
 
@@ -22713,7 +23603,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public LightFloatViewModel LoadLightFloat(LightFloat instance) {
+		public LightFloatViewModel Load(LightFloat instance) {
 			verticalLength = instance.verticalLength;
 			status.Clear();
 			if (instance.status is not null) {
@@ -22724,7 +23614,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
@@ -22739,7 +23629,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			horizontalWidth = instance.horizontalWidth;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			horizontalLength = instance.horizontalLength;
 			visualProminence = instance.visualProminence;
@@ -22748,18 +23638,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			scaleMinimum = instance.scaleMinimum;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -22813,7 +23703,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
-		public override FeatureViewModel<LightFloat> Load(LightFloat instance) => this.LoadLightFloat(instance);
+		public LightFloatViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LightFloatViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Light Float";
 
@@ -23138,7 +24040,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
 
-		public LightAllAroundViewModel LoadLightAllAround(LightAllAround instance) {
+		public LightAllAroundViewModel Load(LightAllAround instance) {
 			verticalLength = instance.verticalLength;
 			marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
 			signalGeneration = instance.signalGeneration;
@@ -23151,12 +24053,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			scaleMinimum = instance.scaleMinimum;
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
-				multiplicityOfFeatures.LoadmultiplicityOfFeatures(instance.multiplicityOfFeatures);
+				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
 			exhibitionConditionOfLight = instance.exhibitionConditionOfLight;
 			height = instance.height;
@@ -23165,7 +24067,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			majorLight = instance.majorLight;
 			lightVisibility = instance.lightVisibility;
@@ -23178,7 +24080,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 			rythmOfLight = new ();
 			if (instance.rythmOfLight != default) {
-				rythmOfLight.LoadrythmOfLight(instance.rythmOfLight);
+				rythmOfLight.Load(instance.rythmOfLight);
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -23188,12 +24090,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			return this;
 		}
@@ -23259,7 +24161,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 
-		public override FeatureViewModel<LightAllAround> Load(LightAllAround instance) => this.LoadLightAllAround(instance);
+		public LightAllAroundViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LightAllAroundViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Light All Around";
 
@@ -23435,7 +24349,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public CoastlineViewModel LoadCoastline(Coastline instance) {
+		public CoastlineViewModel Load(Coastline instance) {
 			colour.Clear();
 			if (instance.colour is not null) {
 				foreach(var e in instance.colour)
@@ -23444,13 +24358,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			categoryOfCoastline = instance.categoryOfCoastline;
 			elevation = instance.elevation;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			natureOfSurface.Clear();
@@ -23461,7 +24375,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			visualProminence = instance.visualProminence;
 			pictorialRepresentation = instance.pictorialRepresentation;
@@ -23509,7 +24423,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 
-		public override FeatureViewModel<Coastline> Load(Coastline instance) => this.LoadCoastline(instance);
+		public CoastlineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public CoastlineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Coastline";
 
@@ -23626,18 +24552,18 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
 
-		public SeaAreaNamedWaterAreaViewModel LoadSeaAreaNamedWaterArea(SeaAreaNamedWaterArea instance) {
+		public SeaAreaNamedWaterAreaViewModel Load(SeaAreaNamedWaterArea instance) {
 			categoryOfSeaArea = instance.categoryOfSeaArea;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			gradient = instance.gradient;
 			scaleMinimum = instance.scaleMinimum;
@@ -23674,7 +24600,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<SeaAreaNamedWaterArea> Load(SeaAreaNamedWaterArea instance) => this.LoadSeaAreaNamedWaterArea(instance);
+		public SeaAreaNamedWaterAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SeaAreaNamedWaterAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Sea Area/Named Water Area";
 
@@ -23702,11 +24640,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public DropZoneViewModel LoadDropZone(DropZone instance) {
+		public DropZoneViewModel Load(DropZone instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -23728,7 +24666,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
 
-		public override FeatureViewModel<DropZone> Load(DropZone instance) => this.LoadDropZone(instance);
+		public DropZoneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DropZoneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Drop Zone";
 
@@ -24003,12 +24953,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public ConveyorViewModel LoadConveyor(Conveyor instance) {
+		public ConveyorViewModel Load(Conveyor instance) {
 			categoryOfConveyor = instance.categoryOfConveyor;
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			condition = instance.condition;
 			reportedDate = instance.reportedDate;
@@ -24020,14 +24970,14 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			visualProminence = instance.visualProminence;
 			height = instance.height;
 			radarConspicuous = instance.radarConspicuous;
 			multiplicityOfFeatures = new ();
 			if (instance.multiplicityOfFeatures != default) {
-				multiplicityOfFeatures.LoadmultiplicityOfFeatures(instance.multiplicityOfFeatures);
+				multiplicityOfFeatures.Load(instance.multiplicityOfFeatures);
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -24037,13 +24987,13 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			liftingCapacity = instance.liftingCapacity;
 			verticalClearanceFixed = new ();
 			if (instance.verticalClearanceFixed != default) {
-				verticalClearanceFixed.LoadverticalClearanceFixed(instance.verticalClearanceFixed);
+				verticalClearanceFixed.Load(instance.verticalClearanceFixed);
 			}
 			verticalDatum = instance.verticalDatum;
 			pictorialRepresentation = instance.pictorialRepresentation;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			colourPattern = instance.colourPattern;
 			scaleMinimum = instance.scaleMinimum;
@@ -24111,7 +25061,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 
-		public override FeatureViewModel<Conveyor> Load(Conveyor instance) => this.LoadConveyor(instance);
+		public ConveyorViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ConveyorViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Conveyor";
 
@@ -24245,7 +25207,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public LineOfDelimitationViewModel LoadLineOfDelimitation(LineOfDelimitation instance) {
+		public LineOfDelimitationViewModel Load(LineOfDelimitation instance) {
 			nationalMaritimeAuthority.Clear();
 			if (instance.nationalMaritimeAuthority is not null) {
 				foreach(var e in instance.nationalMaritimeAuthority)
@@ -24255,12 +25217,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			reportedDate = instance.reportedDate;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			jurisdiction = instance.jurisdiction;
 			categoryofBoundaryLine = instance.categoryofBoundaryLine;
@@ -24299,7 +25261,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
 
-		public override FeatureViewModel<LineOfDelimitation> Load(LineOfDelimitation instance) => this.LoadLineOfDelimitation(instance);
+		public LineOfDelimitationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public LineOfDelimitationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Line of Delimitation";
 
@@ -24428,17 +25402,17 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		}
 
 
-		public StraightTerritorialSeaBaselineViewModel LoadStraightTerritorialSeaBaseline(StraightTerritorialSeaBaseline instance) {
+		public StraightTerritorialSeaBaselineViewModel Load(StraightTerritorialSeaBaseline instance) {
 			nationality = instance.nationality;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			reportedDate = instance.reportedDate;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			status = instance.status;
 			inDispute = instance.inDispute;
@@ -24478,7 +25452,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
-		public override FeatureViewModel<StraightTerritorialSeaBaseline> Load(StraightTerritorialSeaBaseline instance) => this.LoadStraightTerritorialSeaBaseline(instance);
+		public StraightTerritorialSeaBaselineViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public StraightTerritorialSeaBaselineViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Straight Territorial Sea Baseline";
 
@@ -24771,23 +25757,23 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
 
-		public SafeWaterBeaconViewModel LoadSafeWaterBeacon(SafeWaterBeacon instance) {
+		public SafeWaterBeaconViewModel Load(SafeWaterBeacon instance) {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			elevation = instance.elevation;
 			scaleMinimum = instance.scaleMinimum;
 			height = instance.height;
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			natureOfConstruction.Clear();
 			if (instance.natureOfConstruction is not null) {
@@ -24800,7 +25786,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			colourPattern = instance.colourPattern;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			verticalLength = instance.verticalLength;
 			beaconShape = instance.beaconShape;
@@ -24814,12 +25800,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			interoperabilityIdentifier = instance.interoperabilityIdentifier;
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			colour.Clear();
 			if (instance.colour is not null) {
@@ -24889,7 +25875,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
-		public override FeatureViewModel<SafeWaterBeacon> Load(SafeWaterBeacon instance) => this.LoadSafeWaterBeacon(instance);
+		public SafeWaterBeaconViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SafeWaterBeaconViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Safe Water Beacon";
 
@@ -25204,15 +26202,15 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
 
-		public SpecialPurposeGeneralBeaconViewModel LoadSpecialPurposeGeneralBeacon(SpecialPurposeGeneralBeacon instance) {
+		public SpecialPurposeGeneralBeaconViewModel Load(SpecialPurposeGeneralBeacon instance) {
 			sourceIdentification = new ();
 			if (instance.sourceIdentification != default) {
-				sourceIdentification.LoadsourceIdentification(instance.sourceIdentification);
+				sourceIdentification.Load(instance.sourceIdentification);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			status.Clear();
 			if (instance.status is not null) {
@@ -25236,11 +26234,11 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			beaconShape = instance.beaconShape;
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			topmark = new ();
 			if (instance.topmark != default) {
-				topmark.Loadtopmark(instance.topmark);
+				topmark.Load(instance.topmark);
 			}
 			categoryOfSpecialPurposeMark.Clear();
 			if (instance.categoryOfSpecialPurposeMark is not null) {
@@ -25258,12 +26256,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -25329,7 +26327,19 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
-		public override FeatureViewModel<SpecialPurposeGeneralBeacon> Load(SpecialPurposeGeneralBeacon instance) => this.LoadSpecialPurposeGeneralBeacon(instance);
+		public SpecialPurposeGeneralBeaconViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SpecialPurposeGeneralBeaconViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Special Purpose/General Beacon";
 
@@ -25359,5 +26369,1640 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	}
 
 
+
+	public static class InformationBindingExtension {
+		public static ReferenceToAPublicationViewModel LoadInformationBinding(this ReferenceToAPublicationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static InstallationBuoyViewModel LoadInformationBinding(this InstallationBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DepthAreaViewModel LoadInformationBinding(this DepthAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadioCallingInPointViewModel LoadInformationBinding(this RadioCallingInPointViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static PatrolAreaViewModel LoadInformationBinding(this PatrolAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CheckpointViewModel LoadInformationBinding(this CheckpointViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MarineManagementAreaViewModel LoadInformationBinding(this MarineManagementAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DepthContourViewModel LoadInformationBinding(this DepthContourViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static EnvironmentallySensitiveSeaAreaViewModel LoadInformationBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RoadViewModel LoadInformationBinding(this RoadViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RiverViewModel LoadInformationBinding(this RiverViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MilitaryPracticeAreaViewModel LoadInformationBinding(this MilitaryPracticeAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DiscolouredWaterViewModel LoadInformationBinding(this DiscolouredWaterViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CardinalBuoyViewModel LoadInformationBinding(this CardinalBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SafeWaterBuoyViewModel LoadInformationBinding(this SafeWaterBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MilitaryExerciseAirspaceViewModel LoadInformationBinding(this MilitaryExerciseAirspaceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ContiguousZoneViewModel LoadInformationBinding(this ContiguousZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NormalBaselineViewModel LoadInformationBinding(this NormalBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableAreaViewModel LoadInformationBinding(this CableAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ContinentalShelfAreaViewModel LoadInformationBinding(this ContinentalShelfAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static InternalWatersViewModel LoadInformationBinding(this InternalWatersViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AdministrationAreaViewModel LoadInformationBinding(this AdministrationAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static BollardViewModel LoadInformationBinding(this BollardViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DolphinViewModel LoadInformationBinding(this DolphinViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadarRangeViewModel LoadInformationBinding(this RadarRangeViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IsolatedDangerBeaconViewModel LoadInformationBinding(this IsolatedDangerBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IsolatedDangerBuoyViewModel LoadInformationBinding(this IsolatedDangerBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SubmarineTransitLaneViewModel LoadInformationBinding(this SubmarineTransitLaneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MaritimeSafetyInformationAreaViewModel LoadInformationBinding(this MaritimeSafetyInformationAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AirspaceRestrictionViewModel LoadInformationBinding(this AirspaceRestrictionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SoundingViewModel LoadInformationBinding(this SoundingViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeBoundaryViewModel LoadInformationBinding(this TrafficSeparationSchemeBoundaryViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DumpingGroundViewModel LoadInformationBinding(this DumpingGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AirportAirfieldViewModel LoadInformationBinding(this AirportAirfieldViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FoulGroundViewModel LoadInformationBinding(this FoulGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightAirObstructionViewModel LoadInformationBinding(this LightAirObstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MooringBuoyViewModel LoadInformationBinding(this MooringBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static UnderwaterAwashRockViewModel LoadInformationBinding(this UnderwaterAwashRockViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableOverheadViewModel LoadInformationBinding(this CableOverheadViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ControlledAirspaceViewModel LoadInformationBinding(this ControlledAirspaceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ObstructionViewModel LoadInformationBinding(this ObstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FishingGroundViewModel LoadInformationBinding(this FishingGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FishingFacilityViewModel LoadInformationBinding(this FishingFacilityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NavigationSystemViewModel LoadInformationBinding(this NavigationSystemViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeCrossingViewModel LoadInformationBinding(this TrafficSeparationSchemeCrossingViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeLanePartViewModel LoadInformationBinding(this TrafficSeparationSchemeLanePartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TerritorialSeaAreaViewModel LoadInformationBinding(this TerritorialSeaAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LateralBeaconViewModel LoadInformationBinding(this LateralBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CoastGuardStationViewModel LoadInformationBinding(this CoastGuardStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeparationZoneOrLineViewModel LoadInformationBinding(this SeparationZoneOrLineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static BottomFeatureViewModel LoadInformationBinding(this BottomFeatureViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ArchipelagicBaselineViewModel LoadInformationBinding(this ArchipelagicBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SmallBottomObjectViewModel LoadInformationBinding(this SmallBottomObjectViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ExclusiveEconomicZoneViewModel LoadInformationBinding(this ExclusiveEconomicZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadarStationViewModel LoadInformationBinding(this RadarStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DivingLocationViewModel LoadInformationBinding(this DivingLocationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RestrictedAreaViewModel LoadInformationBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableSubmarineViewModel LoadInformationBinding(this CableSubmarineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static WreckViewModel LoadInformationBinding(this WreckViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static QRouteViewModel LoadInformationBinding(this QRouteViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CompletenessOfProductSpecificationViewModel LoadInformationBinding(this CompletenessOfProductSpecificationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RescueStationViewModel LoadInformationBinding(this RescueStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CardinalBeaconViewModel LoadInformationBinding(this CardinalBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightVesselViewModel LoadInformationBinding(this LightVesselViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FisheryZoneViewModel LoadInformationBinding(this FisheryZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DredgedAreaViewModel LoadInformationBinding(this DredgedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FerryRouteViewModel LoadInformationBinding(this FerryRouteViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ShorelineConstructionViewModel LoadInformationBinding(this ShorelineConstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CautionAreaViewModel LoadInformationBinding(this CautionAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DeepWaterRoutePartViewModel LoadInformationBinding(this DeepWaterRoutePartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CurrentNonGravitationalViewModel LoadInformationBinding(this CurrentNonGravitationalViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeabedAreaViewModel LoadInformationBinding(this SeabedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SpecialPurposeGeneralBuoyViewModel LoadInformationBinding(this SpecialPurposeGeneralBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightSectoredViewModel LoadInformationBinding(this LightSectoredViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IceLineViewModel LoadInformationBinding(this IceLineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AnchorageAreaViewModel LoadInformationBinding(this AnchorageAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LateralBuoyViewModel LoadInformationBinding(this LateralBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeRoundaboutViewModel LoadInformationBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DeepWaterRouteCentrelineViewModel LoadInformationBinding(this DeepWaterRouteCentrelineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightFloatViewModel LoadInformationBinding(this LightFloatViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightAllAroundViewModel LoadInformationBinding(this LightAllAroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CoastlineViewModel LoadInformationBinding(this CoastlineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeaAreaNamedWaterAreaViewModel LoadInformationBinding(this SeaAreaNamedWaterAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DropZoneViewModel LoadInformationBinding(this DropZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ConveyorViewModel LoadInformationBinding(this ConveyorViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LineOfDelimitationViewModel LoadInformationBinding(this LineOfDelimitationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static StraightTerritorialSeaBaselineViewModel LoadInformationBinding(this StraightTerritorialSeaBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SafeWaterBeaconViewModel LoadInformationBinding(this SafeWaterBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SpecialPurposeGeneralBeaconViewModel LoadInformationBinding(this SpecialPurposeGeneralBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+	}
+
+	public static class FeatureBindingExtension {
+		public static InstallationBuoyViewModel LoadFeatureBinding(this InstallationBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DepthAreaViewModel LoadFeatureBinding(this DepthAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadioCallingInPointViewModel LoadFeatureBinding(this RadioCallingInPointViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static PatrolAreaViewModel LoadFeatureBinding(this PatrolAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CheckpointViewModel LoadFeatureBinding(this CheckpointViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MarineManagementAreaViewModel LoadFeatureBinding(this MarineManagementAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DepthContourViewModel LoadFeatureBinding(this DepthContourViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static EnvironmentallySensitiveSeaAreaViewModel LoadFeatureBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RoadViewModel LoadFeatureBinding(this RoadViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RiverViewModel LoadFeatureBinding(this RiverViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MilitaryPracticeAreaViewModel LoadFeatureBinding(this MilitaryPracticeAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DiscolouredWaterViewModel LoadFeatureBinding(this DiscolouredWaterViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CardinalBuoyViewModel LoadFeatureBinding(this CardinalBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SafeWaterBuoyViewModel LoadFeatureBinding(this SafeWaterBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MilitaryExerciseAirspaceViewModel LoadFeatureBinding(this MilitaryExerciseAirspaceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ContiguousZoneViewModel LoadFeatureBinding(this ContiguousZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NormalBaselineViewModel LoadFeatureBinding(this NormalBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableAreaViewModel LoadFeatureBinding(this CableAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ContinentalShelfAreaViewModel LoadFeatureBinding(this ContinentalShelfAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static InternalWatersViewModel LoadFeatureBinding(this InternalWatersViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AdministrationAreaViewModel LoadFeatureBinding(this AdministrationAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static BollardViewModel LoadFeatureBinding(this BollardViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DolphinViewModel LoadFeatureBinding(this DolphinViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadarRangeViewModel LoadFeatureBinding(this RadarRangeViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IsolatedDangerBeaconViewModel LoadFeatureBinding(this IsolatedDangerBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IsolatedDangerBuoyViewModel LoadFeatureBinding(this IsolatedDangerBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SubmarineTransitLaneViewModel LoadFeatureBinding(this SubmarineTransitLaneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MaritimeSafetyInformationAreaViewModel LoadFeatureBinding(this MaritimeSafetyInformationAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AirspaceRestrictionViewModel LoadFeatureBinding(this AirspaceRestrictionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SoundingViewModel LoadFeatureBinding(this SoundingViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeBoundaryViewModel LoadFeatureBinding(this TrafficSeparationSchemeBoundaryViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DumpingGroundViewModel LoadFeatureBinding(this DumpingGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AirportAirfieldViewModel LoadFeatureBinding(this AirportAirfieldViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FoulGroundViewModel LoadFeatureBinding(this FoulGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightAirObstructionViewModel LoadFeatureBinding(this LightAirObstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MooringBuoyViewModel LoadFeatureBinding(this MooringBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static UnderwaterAwashRockViewModel LoadFeatureBinding(this UnderwaterAwashRockViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableOverheadViewModel LoadFeatureBinding(this CableOverheadViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ControlledAirspaceViewModel LoadFeatureBinding(this ControlledAirspaceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ObstructionViewModel LoadFeatureBinding(this ObstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FishingGroundViewModel LoadFeatureBinding(this FishingGroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FishingFacilityViewModel LoadFeatureBinding(this FishingFacilityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NavigationSystemViewModel LoadFeatureBinding(this NavigationSystemViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeCrossingViewModel LoadFeatureBinding(this TrafficSeparationSchemeCrossingViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeLanePartViewModel LoadFeatureBinding(this TrafficSeparationSchemeLanePartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TerritorialSeaAreaViewModel LoadFeatureBinding(this TerritorialSeaAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LateralBeaconViewModel LoadFeatureBinding(this LateralBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CoastGuardStationViewModel LoadFeatureBinding(this CoastGuardStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeparationZoneOrLineViewModel LoadFeatureBinding(this SeparationZoneOrLineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static BottomFeatureViewModel LoadFeatureBinding(this BottomFeatureViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ArchipelagicBaselineViewModel LoadFeatureBinding(this ArchipelagicBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SmallBottomObjectViewModel LoadFeatureBinding(this SmallBottomObjectViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ExclusiveEconomicZoneViewModel LoadFeatureBinding(this ExclusiveEconomicZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RadarStationViewModel LoadFeatureBinding(this RadarStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DivingLocationViewModel LoadFeatureBinding(this DivingLocationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RestrictedAreaViewModel LoadFeatureBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CableSubmarineViewModel LoadFeatureBinding(this CableSubmarineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static WreckViewModel LoadFeatureBinding(this WreckViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static QRouteViewModel LoadFeatureBinding(this QRouteViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CompletenessOfProductSpecificationViewModel LoadFeatureBinding(this CompletenessOfProductSpecificationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RescueStationViewModel LoadFeatureBinding(this RescueStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CardinalBeaconViewModel LoadFeatureBinding(this CardinalBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightVesselViewModel LoadFeatureBinding(this LightVesselViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FisheryZoneViewModel LoadFeatureBinding(this FisheryZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DredgedAreaViewModel LoadFeatureBinding(this DredgedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static FerryRouteViewModel LoadFeatureBinding(this FerryRouteViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ShorelineConstructionViewModel LoadFeatureBinding(this ShorelineConstructionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CautionAreaViewModel LoadFeatureBinding(this CautionAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DeepWaterRoutePartViewModel LoadFeatureBinding(this DeepWaterRoutePartViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CurrentNonGravitationalViewModel LoadFeatureBinding(this CurrentNonGravitationalViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeabedAreaViewModel LoadFeatureBinding(this SeabedAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SpecialPurposeGeneralBuoyViewModel LoadFeatureBinding(this SpecialPurposeGeneralBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightSectoredViewModel LoadFeatureBinding(this LightSectoredViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static IceLineViewModel LoadFeatureBinding(this IceLineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static AnchorageAreaViewModel LoadFeatureBinding(this AnchorageAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LateralBuoyViewModel LoadFeatureBinding(this LateralBuoyViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TrafficSeparationSchemeRoundaboutViewModel LoadFeatureBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DeepWaterRouteCentrelineViewModel LoadFeatureBinding(this DeepWaterRouteCentrelineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightFloatViewModel LoadFeatureBinding(this LightFloatViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LightAllAroundViewModel LoadFeatureBinding(this LightAllAroundViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static CoastlineViewModel LoadFeatureBinding(this CoastlineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SeaAreaNamedWaterAreaViewModel LoadFeatureBinding(this SeaAreaNamedWaterAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DropZoneViewModel LoadFeatureBinding(this DropZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ConveyorViewModel LoadFeatureBinding(this ConveyorViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static LineOfDelimitationViewModel LoadFeatureBinding(this LineOfDelimitationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static StraightTerritorialSeaBaselineViewModel LoadFeatureBinding(this StraightTerritorialSeaBaselineViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SafeWaterBeaconViewModel LoadFeatureBinding(this SafeWaterBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static SpecialPurposeGeneralBeaconViewModel LoadFeatureBinding(this SpecialPurposeGeneralBeaconViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+	}
 
 }

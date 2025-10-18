@@ -21,6 +21,7 @@
   <ItemGroup>
     <Compile Remove="DomainModelBase.cs" />
     <Compile Remove="TestClassBuilder.cs" />
+    <Compile Remove="UnitTestAssociations.cs" />
     <Compile Remove="UnitTestDataset.cs" />
     <Compile Remove="UnitTestRoslyn.cs" />
   </ItemGroup>

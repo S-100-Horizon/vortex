@@ -232,13 +232,16 @@ namespace S100Framework.DomainModel
     {
     }
 
-    public class informationBinding
+    public class informationBinding<TAssociation> where TAssociation : InformationAssociation
     {
+        public TAssociation? association { get; set; } = default;
+
         public string roleType { get; set; } = string.Empty;
-        public string association { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
-        public string? associationId { get; set; } = null;
-        public string? informationId { get; set; } = null;
+        public string? informationType { get; set; } = null;
+        public string referenceId { get; set; } = string.Empty;
+
+        public string code => typeof(TAssociation).Name;
     }
 
     public class informationBindingDefinition
@@ -256,14 +259,28 @@ namespace S100Framework.DomainModel
         public override string ToString() => $"{association}, {role}";
     }
 
-    public class featureBinding
+
+    public class featureBinding<TAssociation> where TAssociation : FeatureAssociation
     {
+        public TAssociation? association { get; set; } = default;
+
         public string roleType { get; set; } = string.Empty;
-        public string association { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
-        public string? associationId { get; set; } = null;
-        public string? featureId { get; set; } = null;
+        public string? featureType { get; set; } = null;
+        public string referenceId { get; set; } = string.Empty;
+
+        public string code => typeof(TAssociation).Name;
     }
+
+
+    //public class featureBinding
+    //{
+    //    public string roleType { get; set; } = string.Empty;
+    //    public string association { get; set; } = string.Empty;
+    //    public string role { get; set; } = string.Empty;
+    //    public string? associationId { get; set; } = null;
+    //    public string? featureId { get; set; } = null;
+    //}
 
     public class featureBindingDefinition
     {

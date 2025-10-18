@@ -95,6 +95,34 @@ namespace S100Framework.DomainModel.S201 {
 			"VerticalDatumOfData" => [Primitives.surface],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"Atonstatus" => typeof(informationBinding<InformationAssociations.Atonstatus>),
+			"AtonFixingMethodAssociation" => typeof(informationBinding<InformationAssociations.AtonFixingMethodAssociation>),
+			"AtonPositioningInformationAssociation" => typeof(informationBinding<InformationAssociations.AtonPositioningInformationAssociation>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"BuoyTopmark" => typeof(featureBinding<FeatureAssociations.BuoyTopmark>),
+			"StructureEquipment" => typeof(featureBinding<FeatureAssociations.StructureEquipment>),
+			"PhysicalAIS" => typeof(featureBinding<FeatureAssociations.PhysicalAIS>),
+			"SyntheticAIS" => typeof(featureBinding<FeatureAssociations.SyntheticAIS>),
+			"VirtualAIS" => typeof(featureBinding<FeatureAssociations.VirtualAIS>),
+			"BuoyCounterWeight" => typeof(featureBinding<FeatureAssociations.BuoyCounterWeight>),
+			"BridleConnection" => typeof(featureBinding<FeatureAssociations.BridleConnection>),
+			"ShackleConnection" => typeof(featureBinding<FeatureAssociations.ShackleConnection>),
+			"ShackleConnectionFromCable" => typeof(featureBinding<FeatureAssociations.ShackleConnectionFromCable>),
+			"SwivelCableConnection" => typeof(featureBinding<FeatureAssociations.SwivelCableConnection>),
+			"BridleCableConnection" => typeof(featureBinding<FeatureAssociations.BridleCableConnection>),
+			"ShackleToBridleConnection" => typeof(featureBinding<FeatureAssociations.ShackleToBridleConnection>),
+			"ShackleToSwivelConnection" => typeof(featureBinding<FeatureAssociations.ShackleToSwivelConnection>),
+			"ShackleToAnchorConnection" => typeof(featureBinding<FeatureAssociations.ShackleToAnchorConnection>),
+			"SwivelConnection" => typeof(featureBinding<FeatureAssociations.SwivelConnection>),
+			"AtonAggregations" => typeof(featureBinding<FeatureAssociations.AtonAggregations>),
+			"AtonAssociations" => typeof(featureBinding<FeatureAssociations.AtonAssociations>),
+			"RangeSystem" => typeof(featureBinding<FeatureAssociations.RangeSystem>),
+			"DangerousFeatureAssociation" => typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

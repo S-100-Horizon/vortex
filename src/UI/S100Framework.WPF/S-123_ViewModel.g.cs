@@ -13,6 +13,7 @@ using S100Framework.DomainModel.S123.FeatureTypes;
 using S100Framework.DomainModel.S123.InformationAssociations;
 using S100Framework.DomainModel.S123.FeatureAssociations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using System.Text.Json;
 
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
@@ -165,7 +166,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public areaA3ServiceDescriptionViewModel LoadareaA3ServiceDescription(areaA3ServiceDescription instance) {
+		public areaA3ServiceDescriptionViewModel Load(areaA3ServiceDescription instance) {
 			servingMobileSatelliteService.Clear();
 			if (instance.servingMobileSatelliteService is not null) {
 				foreach(var e in instance.servingMobileSatelliteService)
@@ -191,8 +192,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			satelliteOceanRegion = this._satelliteOceanRegion,
 			mSICoastalWarningArea = this._mSICoastalWarningArea,
 		};
-
-		public override ComplexViewModel<areaA3ServiceDescription> Load(areaA3ServiceDescription instance) => this.LoadareaA3ServiceDescription(instance);
 
 		public override string? ToString() => $"Area A3 Service Description";
 
@@ -265,7 +264,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public transmissionRegularity[] transmissionRegularityList => [(transmissionRegularity)1,(transmissionRegularity)2,(transmissionRegularity)3,(transmissionRegularity)4,(transmissionRegularity)5];
 
 
-		public broadcastContentViewModel LoadbroadcastContent(broadcastContent instance) {
+		public broadcastContentViewModel Load(broadcastContent instance) {
 			typeOfBroadcastContent.Clear();
 			if (instance.typeOfBroadcastContent is not null) {
 				foreach(var e in instance.typeOfBroadcastContent)
@@ -301,8 +300,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			observationTime = this._observationTime,
 			transmissionRegularity = this._transmissionRegularity,
 		};
-
-		public override ComplexViewModel<broadcastContent> Load(broadcastContent instance) => this.LoadbroadcastContent(instance);
 
 		public override string? ToString() => $"Broadcast Content";
 
@@ -390,7 +387,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public contactAddressViewModel LoadcontactAddress(contactAddress instance) {
+		public contactAddressViewModel Load(contactAddress instance) {
 			deliveryPoint = instance.deliveryPoint;
 			cityName = instance.cityName;
 			administrativeDivision = instance.administrativeDivision;
@@ -418,8 +415,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			countryName = this._countryName,
 			postalCode = this._postalCode,
 		};
-
-		public override ComplexViewModel<contactAddress> Load(contactAddress instance) => this.LoadcontactAddress(instance);
 
 		public override string? ToString() => $"Contact Address";
 	}
@@ -483,7 +478,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<String> text  { get; set; } = new ();
 
 
-		public coverageIndicationViewModel LoadcoverageIndication(coverageIndication instance) {
+		public coverageIndicationViewModel Load(coverageIndication instance) {
 			minimumReceivedPower = instance.minimumReceivedPower;
 			presumedReceiverAntennaHeight = instance.presumedReceiverAntennaHeight;
 			minimumSignalToInterferenceNoiseRatio = instance.minimumSignalToInterferenceNoiseRatio;
@@ -519,8 +514,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			status = this.status.ToList(),
 			text = this.text.ToList(),
 		};
-
-		public override ComplexViewModel<coverageIndication> Load(coverageIndication instance) => this.LoadcoverageIndication(instance);
 
 		public override string? ToString() => $"Coverage Indication";
 
@@ -585,7 +578,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public nameUsage[] nameUsageList => [(nameUsage)1,(nameUsage)2,(nameUsage)3];
 
 
-		public featureNameViewModel LoadfeatureName(featureName instance) {
+		public featureNameViewModel Load(featureName instance) {
 			language = instance.language;
 			name = instance.name;
 			nameUsage = instance.nameUsage;
@@ -607,8 +600,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			name = this._name,
 			nameUsage = this._nameUsage,
 		};
-
-		public override ComplexViewModel<featureName> Load(featureName instance) => this.LoadfeatureName(instance);
 
 		public override string? ToString() => $"Feature Name";
 	}
@@ -674,7 +665,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public fixedDateRangeViewModel LoadfixedDateRange(fixedDateRange instance) {
+		public fixedDateRangeViewModel Load(fixedDateRange instance) {
 			dateStart = instance.dateStart;
 			dateEnd = instance.dateEnd;
 			timeOfDayStart = instance.timeOfDayStart;
@@ -699,8 +690,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			timeOfDayStart = this._timeOfDayStart,
 			timeOfDayEnd = this._timeOfDayEnd,
 		};
-
-		public override ComplexViewModel<fixedDateRange> Load(fixedDateRange instance) => this.LoadfixedDateRange(instance);
 
 		public override string? ToString() => $"Fixed Date Range";
 	}
@@ -740,7 +729,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public frequencyPairViewModel LoadfrequencyPair(frequencyPair instance) {
+		public frequencyPairViewModel Load(frequencyPair instance) {
 			frequencyShoreStationReceives = instance.frequencyShoreStationReceives;
 			frequencyShoreStationTransmits = instance.frequencyShoreStationTransmits;
 			return this;
@@ -759,8 +748,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			frequencyShoreStationReceives = this._frequencyShoreStationReceives,
 			frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
 		};
-
-		public override ComplexViewModel<frequencyPair> Load(frequencyPair instance) => this.LoadfrequencyPair(instance);
 
 		public override string? ToString() => $"Frequency Pair";
 	}
@@ -800,7 +787,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public frequencyRangeViewModel LoadfrequencyRange(frequencyRange instance) {
+		public frequencyRangeViewModel Load(frequencyRange instance) {
 			frequencyLimitLower = instance.frequencyLimitLower;
 			frequencyLimitUpper = instance.frequencyLimitUpper;
 			return this;
@@ -819,8 +806,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			frequencyLimitLower = this._frequencyLimitLower,
 			frequencyLimitUpper = this._frequencyLimitUpper,
 		};
-
-		public override ComplexViewModel<frequencyRange> Load(frequencyRange instance) => this.LoadfrequencyRange(instance);
 
 		public override string? ToString() => $"Frequency Range";
 	}
@@ -886,7 +871,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public graphicViewModel Loadgraphic(graphic instance) {
+		public graphicViewModel Load(graphic instance) {
 			pictorialRepresentation = instance.pictorialRepresentation;
 			pictureCaption = instance.pictureCaption;
 			sourceDate = instance.sourceDate;
@@ -911,8 +896,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			sourceDate = this._sourceDate,
 			pictureInformation = this._pictureInformation,
 		};
-
-		public override ComplexViewModel<graphic> Load(graphic instance) => this.Loadgraphic(instance);
 
 		public override string? ToString() => $"Graphic";
 	}
@@ -952,7 +935,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public horizontalPositionUncertaintyViewModel LoadhorizontalPositionUncertainty(horizontalPositionUncertainty instance) {
+		public horizontalPositionUncertaintyViewModel Load(horizontalPositionUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
 			return this;
@@ -971,8 +954,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			uncertaintyFixed = this._uncertaintyFixed,
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
 		};
-
-		public override ComplexViewModel<horizontalPositionUncertainty> Load(horizontalPositionUncertainty instance) => this.LoadhorizontalPositionUncertainty(instance);
 
 		public override string? ToString() => $"Horizontal Position Uncertainty";
 	}
@@ -1051,7 +1032,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public informationViewModel Loadinformation(information instance) {
+		public informationViewModel Load(information instance) {
 			fileLocator = instance.fileLocator;
 			fileReference = instance.fileReference;
 			headline = instance.headline;
@@ -1079,8 +1060,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			language = this._language,
 			text = this._text,
 		};
-
-		public override ComplexViewModel<information> Load(information instance) => this.Loadinformation(instance);
 
 		public override string? ToString() => $"Information";
 	}
@@ -1133,7 +1112,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public onlineResourceViewModel LoadonlineResource(onlineResource instance) {
+		public onlineResourceViewModel Load(onlineResource instance) {
 			headline = instance.headline;
 			linkage = instance.linkage;
 			nameOfResource = instance.nameOfResource;
@@ -1155,8 +1134,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			linkage = this._linkage,
 			nameOfResource = this._nameOfResource,
 		};
-
-		public override ComplexViewModel<onlineResource> Load(onlineResource instance) => this.LoadonlineResource(instance);
 
 		public override string? ToString() => $"Online Resource";
 	}
@@ -1196,7 +1173,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public periodicDateRangeViewModel LoadperiodicDateRange(periodicDateRange instance) {
+		public periodicDateRangeViewModel Load(periodicDateRange instance) {
 			dateStart = instance.dateStart;
 			dateEnd = instance.dateEnd;
 			return this;
@@ -1215,8 +1192,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			dateStart = this._dateStart,
 			dateEnd = this._dateEnd,
 		};
-
-		public override ComplexViewModel<periodicDateRange> Load(periodicDateRange instance) => this.LoadperiodicDateRange(instance);
 
 		public override string? ToString() => $"Periodic Date Range";
 	}
@@ -1268,7 +1243,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public radioChannelDetailsViewModel LoadradioChannelDetails(radioChannelDetails instance) {
+		public radioChannelDetailsViewModel Load(radioChannelDetails instance) {
 			communicationChannel.Clear();
 			if (instance.communicationChannel is not null) {
 				foreach(var e in instance.communicationChannel)
@@ -1277,7 +1252,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			frequencyPair.Clear();
 			if (instance.frequencyPair is not null) {
 				foreach(var e in instance.frequencyPair)
-					frequencyPair.Add(new frequencyPairViewModel().LoadfrequencyPair(e));
+					frequencyPair.Add(new frequencyPairViewModel().Load(e));
 			}
 			dataTransmissionRate.Clear();
 			if (instance.dataTransmissionRate is not null) {
@@ -1308,8 +1283,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			transmissionOfTrafficLists = this._transmissionOfTrafficLists,
 			hoursOfWatch = this._hoursOfWatch,
 		};
-
-		public override ComplexViewModel<radioChannelDetails> Load(radioChannelDetails instance) => this.LoadradioChannelDetails(instance);
 
 		public override string? ToString() => $"Radio Channel Details";
 
@@ -1351,7 +1324,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<String> coastStationIdentificationCode  { get; set; } = new ();
 
 
-		public radiocommunicationIdentifierViewModel LoadradiocommunicationIdentifier(radiocommunicationIdentifier instance) {
+		public radiocommunicationIdentifierViewModel Load(radiocommunicationIdentifier instance) {
 			callSign.Clear();
 			if (instance.callSign is not null) {
 				foreach(var e in instance.callSign)
@@ -1392,8 +1365,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			selectiveCallNumber = this.selectiveCallNumber.ToList(),
 			coastStationIdentificationCode = this.coastStationIdentificationCode.ToList(),
 		};
-
-		public override ComplexViewModel<radiocommunicationIdentifier> Load(radiocommunicationIdentifier instance) => this.LoadradiocommunicationIdentifier(instance);
 
 		public override string? ToString() => $"Radiocommunication Identifier";
 
@@ -1461,7 +1432,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public rxNCodeViewModel LoadrxNCode(rxNCode instance) {
+		public rxNCodeViewModel Load(rxNCode instance) {
 			headline = instance.headline;
 			categoryOfRxN = instance.categoryOfRxN;
 			actionOrActivity = instance.actionOrActivity;
@@ -1483,8 +1454,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			categoryOfRxN = this._categoryOfRxN,
 			actionOrActivity = this._actionOrActivity,
 		};
-
-		public override ComplexViewModel<rxNCode> Load(rxNCode instance) => this.LoadrxNCode(instance);
 
 		public override string? ToString() => $"RxN Code";
 	}
@@ -1518,12 +1487,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
 
-		public scheduleByDayOfWeekViewModel LoadscheduleByDayOfWeek(scheduleByDayOfWeek instance) {
+		public scheduleByDayOfWeekViewModel Load(scheduleByDayOfWeek instance) {
 			categoryOfSchedule = instance.categoryOfSchedule;
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
-					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().LoadtimeIntervalsByDayOfWeek(e));
+					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().Load(e));
 			}
 			return this;
 		}
@@ -1541,8 +1510,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			categoryOfSchedule = this._categoryOfSchedule,
 			timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.Select(e => e.Model).ToList(),
 		};
-
-		public override ComplexViewModel<scheduleByDayOfWeek> Load(scheduleByDayOfWeek instance) => this.LoadscheduleByDayOfWeek(instance);
 
 		public override string? ToString() => $"Schedule by Day of Week";
 
@@ -1590,14 +1557,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public sectorLimitViewModel LoadsectorLimit(sectorLimit instance) {
+		public sectorLimitViewModel Load(sectorLimit instance) {
 			sectorLimitOne = new ();
 			if (instance.sectorLimitOne != default) {
-				sectorLimitOne.LoadsectorLimitOne(instance.sectorLimitOne);
+				sectorLimitOne.Load(instance.sectorLimitOne);
 			}
 			sectorLimitTwo = new ();
 			if (instance.sectorLimitTwo != default) {
-				sectorLimitTwo.LoadsectorLimitTwo(instance.sectorLimitTwo);
+				sectorLimitTwo.Load(instance.sectorLimitTwo);
 			}
 			return this;
 		}
@@ -1615,8 +1582,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			sectorLimitOne = this._sectorLimitOne?.Model,
 			sectorLimitTwo = this._sectorLimitTwo?.Model,
 		};
-
-		public override ComplexViewModel<sectorLimit> Load(sectorLimit instance) => this.LoadsectorLimit(instance);
 
 		public override string? ToString() => $"Sector Limit";
 	}
@@ -1656,7 +1621,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public sectorLimitOneViewModel LoadsectorLimitOne(sectorLimitOne instance) {
+		public sectorLimitOneViewModel Load(sectorLimitOne instance) {
 			sectorBearing = instance.sectorBearing;
 			sectorLineLength = instance.sectorLineLength;
 			return this;
@@ -1675,8 +1640,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
 		};
-
-		public override ComplexViewModel<sectorLimitOne> Load(sectorLimitOne instance) => this.LoadsectorLimitOne(instance);
 
 		public override string? ToString() => $"Sector Limit One";
 	}
@@ -1716,7 +1679,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public sectorLimitTwoViewModel LoadsectorLimitTwo(sectorLimitTwo instance) {
+		public sectorLimitTwoViewModel Load(sectorLimitTwo instance) {
 			sectorBearing = instance.sectorBearing;
 			sectorLineLength = instance.sectorLineLength;
 			return this;
@@ -1735,8 +1698,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			sectorBearing = this._sectorBearing,
 			sectorLineLength = this._sectorLineLength,
 		};
-
-		public override ComplexViewModel<sectorLimitTwo> Load(sectorLimitTwo instance) => this.LoadsectorLimitTwo(instance);
 
 		public override string? ToString() => $"Sector Limit Two";
 	}
@@ -1792,18 +1753,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public spatialAccuracyViewModel LoadspatialAccuracy(spatialAccuracy instance) {
+		public spatialAccuracyViewModel Load(spatialAccuracy instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			return this;
 		}
@@ -1823,8 +1784,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
 			verticalUncertainty = this._verticalUncertainty?.Model,
 		};
-
-		public override ComplexViewModel<spatialAccuracy> Load(spatialAccuracy instance) => this.LoadspatialAccuracy(instance);
 
 		public override string? ToString() => $"Spatial Accuracy";
 	}
@@ -1864,7 +1823,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public surveyDateRangeViewModel LoadsurveyDateRange(surveyDateRange instance) {
+		public surveyDateRangeViewModel Load(surveyDateRange instance) {
 			dateStart = instance.dateStart;
 			dateEnd = instance.dateEnd;
 			return this;
@@ -1883,8 +1842,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			dateStart = this._dateStart,
 			dateEnd = this._dateEnd,
 		};
-
-		public override ComplexViewModel<surveyDateRange> Load(surveyDateRange instance) => this.LoadsurveyDateRange(instance);
 
 		public override string? ToString() => $"Survey Date Range";
 	}
@@ -1940,7 +1897,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public telecommunicationService[] telecommunicationServiceList => [(telecommunicationService)1,(telecommunicationService)2,(telecommunicationService)3,(telecommunicationService)4,(telecommunicationService)5,(telecommunicationService)6,(telecommunicationService)7,(telecommunicationService)8];
 
 
-		public telecommunicationsViewModel Loadtelecommunications(telecommunications instance) {
+		public telecommunicationsViewModel Load(telecommunications instance) {
 			contactInstructions = instance.contactInstructions;
 			telecommunicationIdentifier = instance.telecommunicationIdentifier;
 			telecommunicationService = instance.telecommunicationService;
@@ -1962,8 +1919,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			telecommunicationIdentifier = this._telecommunicationIdentifier,
 			telecommunicationService = this._telecommunicationService,
 		};
-
-		public override ComplexViewModel<telecommunications> Load(telecommunications instance) => this.Loadtelecommunications(instance);
 
 		public override string? ToString() => $"Telecommunications";
 	}
@@ -2037,16 +1992,16 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public textContentViewModel LoadtextContent(textContent instance) {
+		public textContentViewModel Load(textContent instance) {
 			categoryOfText = instance.categoryOfText;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			onlineResource = new ();
 			if (instance.onlineResource != default) {
-				onlineResource.LoadonlineResource(instance.onlineResource);
+				onlineResource.Load(instance.onlineResource);
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -2072,8 +2027,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			source = this._source,
 			reportedDate = this._reportedDate,
 		};
-
-		public override ComplexViewModel<textContent> Load(textContent instance) => this.LoadtextContent(instance);
 
 		public override string? ToString() => $"Text Content";
 
@@ -2121,7 +2074,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
 
-		public timeIntervalsByDayOfWeekViewModel LoadtimeIntervalsByDayOfWeek(timeIntervalsByDayOfWeek instance) {
+		public timeIntervalsByDayOfWeekViewModel Load(timeIntervalsByDayOfWeek instance) {
 			dayOfWeek.Clear();
 			if (instance.dayOfWeek is not null) {
 				foreach(var e in instance.dayOfWeek)
@@ -2158,8 +2111,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			timeOfDayStart = this.timeOfDayStart.ToList(),
 			timeOfDayEnd = this.timeOfDayEnd.ToList(),
 		};
-
-		public override ComplexViewModel<timeIntervalsByDayOfWeek> Load(timeIntervalsByDayOfWeek instance) => this.LoadtimeIntervalsByDayOfWeek(instance);
 
 		public override string? ToString() => $"Time Intervals by Day of Week";
 
@@ -2228,7 +2179,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> transmissionTime  { get; set; } = new ();
 
 
-		public timesOfTransmissionViewModel LoadtimesOfTransmission(timesOfTransmission instance) {
+		public timesOfTransmissionViewModel Load(timesOfTransmission instance) {
 			minutePastEvenHours = instance.minutePastEvenHours;
 			minutePastOddHours = instance.minutePastOddHours;
 			minutePastEveryHour = instance.minutePastEveryHour;
@@ -2257,8 +2208,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			minutePastEveryHour = this._minutePastEveryHour,
 			transmissionTime = this.transmissionTime.ToList(),
 		};
-
-		public override ComplexViewModel<timesOfTransmission> Load(timesOfTransmission instance) => this.LoadtimesOfTransmission(instance);
 
 		public override string? ToString() => $"Times of Transmission";
 
@@ -2304,7 +2253,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public verticalUncertaintyViewModel LoadverticalUncertainty(verticalUncertainty instance) {
+		public verticalUncertaintyViewModel Load(verticalUncertainty instance) {
 			uncertaintyFixed = instance.uncertaintyFixed;
 			uncertaintyVariableFactor = instance.uncertaintyVariableFactor;
 			return this;
@@ -2323,8 +2272,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			uncertaintyFixed = this._uncertaintyFixed,
 			uncertaintyVariableFactor = this._uncertaintyVariableFactor,
 		};
-
-		public override ComplexViewModel<verticalUncertainty> Load(verticalUncertainty instance) => this.LoadverticalUncertainty(instance);
 
 		public override string? ToString() => $"Vertical Uncertainty";
 	}
@@ -2399,7 +2346,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public comparisonOperator[] comparisonOperatorList => [(comparisonOperator)1,(comparisonOperator)2,(comparisonOperator)3,(comparisonOperator)4,(comparisonOperator)5,(comparisonOperator)6];
 
 
-		public vesselMeasurementsSpecificationViewModel LoadvesselMeasurementsSpecification(vesselMeasurementsSpecification instance) {
+		public vesselMeasurementsSpecificationViewModel Load(vesselMeasurementsSpecification instance) {
 			vesselsCharacteristics = instance.vesselsCharacteristics;
 			vesselsCharacteristicsValue = instance.vesselsCharacteristicsValue;
 			vesselsCharacteristicsUnit = instance.vesselsCharacteristicsUnit;
@@ -2424,8 +2371,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
 			comparisonOperator = this._comparisonOperator,
 		};
-
-		public override ComplexViewModel<vesselMeasurementsSpecification> Load(vesselMeasurementsSpecification instance) => this.LoadvesselMeasurementsSpecification(instance);
 
 		public override string? ToString() => $"Vessel Measurements Specification";
 	}
@@ -3091,24 +3036,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<ApplicabilityViewModel.InclusionTypeViewModel> InclusionType { get; set; } = new();
+		public ObservableCollection<ApplicabilityViewModel.InclusionTypeViewModel> InclusionTypes { get; set; } = new();
 		#endregion
 
 
-		public ApplicabilityViewModel LoadApplicability(Applicability instance) {
+		public ApplicabilityViewModel Load(Applicability instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -3135,12 +3080,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			vesselMeasurementsSpecification.Clear();
 			if (instance.vesselMeasurementsSpecification is not null) {
 				foreach(var e in instance.vesselMeasurementsSpecification)
-					vesselMeasurementsSpecification.Add(new vesselMeasurementsSpecificationViewModel().LoadvesselMeasurementsSpecification(e));
+					vesselMeasurementsSpecification.Add(new vesselMeasurementsSpecificationViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -3187,7 +3132,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
-		public override InformationViewModel<Applicability> Load(Applicability instance) => this.LoadApplicability(instance);
+		public ApplicabilityViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Applicability";
 
@@ -3348,34 +3298,34 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<AuthorityViewModel.AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+		public ObservableCollection<AuthorityViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
 		#endregion
 
 
-		public AuthorityViewModel LoadAuthority(Authority instance) {
+		public AuthorityViewModel Load(Authority instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.LoadtextContent(instance.textContent);
+				textContent.Load(instance.textContent);
 			}
 			return this;
 		}
@@ -3406,7 +3356,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
-		public override InformationViewModel<Authority> Load(Authority instance) => this.LoadAuthority(instance);
+		public AuthorityViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Authority";
 
@@ -3549,24 +3504,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<BroadcastDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmission { get; set; } = new();
+		public ObservableCollection<BroadcastDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
 		#endregion
 
 
-		public BroadcastDetailsViewModel LoadBroadcastDetails(BroadcastDetails instance) {
+		public BroadcastDetailsViewModel Load(BroadcastDetails instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -3579,21 +3534,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			broadcastContent.Clear();
 			if (instance.broadcastContent is not null) {
 				foreach(var e in instance.broadcastContent)
-					broadcastContent.Add(new broadcastContentViewModel().LoadbroadcastContent(e));
+					broadcastContent.Add(new broadcastContentViewModel().Load(e));
 			}
 			timesOfTransmission.Clear();
 			if (instance.timesOfTransmission is not null) {
 				foreach(var e in instance.timesOfTransmission)
-					timesOfTransmission.Add(new timesOfTransmissionViewModel().LoadtimesOfTransmission(e));
+					timesOfTransmission.Add(new timesOfTransmissionViewModel().Load(e));
 			}
 			timeIntervalsByDayOfWeek.Clear();
 			if (instance.timeIntervalsByDayOfWeek is not null) {
 				foreach(var e in instance.timeIntervalsByDayOfWeek)
-					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().LoadtimeIntervalsByDayOfWeek(e));
+					timeIntervalsByDayOfWeek.Add(new timeIntervalsByDayOfWeekViewModel().Load(e));
 			}
 			onlineResource = new ();
 			if (instance.onlineResource != default) {
-				onlineResource.LoadonlineResource(instance.onlineResource);
+				onlineResource.Load(instance.onlineResource);
 			}
 			return this;
 		}
@@ -3632,7 +3587,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => BroadcastDetails._informationBindingDefinitions;
 
-		public override InformationViewModel<BroadcastDetails> Load(BroadcastDetails instance) => this.LoadBroadcastDetails(instance);
+		public BroadcastDetailsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Broadcast Details";
 
@@ -3792,20 +3752,20 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public ConnectivityQualityOfServiceViewModel LoadConnectivityQualityOfService(ConnectivityQualityOfService instance) {
+		public ConnectivityQualityOfServiceViewModel Load(ConnectivityQualityOfService instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -3826,7 +3786,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -3867,7 +3827,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ConnectivityQualityOfService._informationBindingDefinitions;
 
-		public override InformationViewModel<ConnectivityQualityOfService> Load(ConnectivityQualityOfService instance) => this.LoadConnectivityQualityOfService(instance);
+		public ConnectivityQualityOfServiceViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Connectivity Quality of Service";
 
@@ -4076,24 +4041,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
 		#endregion
 
 
-		public ContactDetailsViewModel LoadContactDetails(ContactDetails instance) {
+		public ContactDetailsViewModel Load(ContactDetails instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -4101,26 +4066,26 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			contactAddress.Clear();
 			if (instance.contactAddress is not null) {
 				foreach(var e in instance.contactAddress)
-					contactAddress.Add(new contactAddressViewModel().LoadcontactAddress(e));
+					contactAddress.Add(new contactAddressViewModel().Load(e));
 			}
 			frequencyPair.Clear();
 			if (instance.frequencyPair is not null) {
 				foreach(var e in instance.frequencyPair)
-					frequencyPair.Add(new frequencyPairViewModel().LoadfrequencyPair(e));
+					frequencyPair.Add(new frequencyPairViewModel().Load(e));
 			}
 			information = new ();
 			if (instance.information != default) {
-				information.Loadinformation(instance.information);
+				information.Load(instance.information);
 			}
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
 			}
 			telecommunications.Clear();
 			if (instance.telecommunications is not null) {
 				foreach(var e in instance.telecommunications)
-					telecommunications.Add(new telecommunicationsViewModel().Loadtelecommunications(e));
+					telecommunications.Add(new telecommunicationsViewModel().Load(e));
 			}
 			callName = instance.callName;
 			callSign = instance.callSign;
@@ -4178,7 +4143,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-		public override InformationViewModel<ContactDetails> Load(ContactDetails instance) => this.LoadContactDetails(instance);
+		public ContactDetailsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Contact Details";
 
@@ -4317,36 +4287,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
-		public NauticalInformationViewModel LoadNauticalInformation(NauticalInformation instance) {
+		public NauticalInformationViewModel Load(NauticalInformation instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.LoadtextContent(instance.textContent);
+				textContent.Load(instance.textContent);
 			}
 			graphic = new ();
 			if (instance.graphic != default) {
-				graphic.Loadgraphic(instance.graphic);
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -4381,7 +4351,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
-		public override InformationViewModel<NauticalInformation> Load(NauticalInformation instance) => this.LoadNauticalInformation(instance);
+		public NauticalInformationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Nautical Information";
 
@@ -4492,31 +4467,31 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 		#endregion
 
 
-		public NonStandardWorkingDayViewModel LoadNonStandardWorkingDay(NonStandardWorkingDay instance) {
+		public NonStandardWorkingDayViewModel Load(NonStandardWorkingDay instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			dateFixed.Clear();
 			if (instance.dateFixed is not null) {
@@ -4559,7 +4534,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
-		public override InformationViewModel<NonStandardWorkingDay> Load(NonStandardWorkingDay instance) => this.LoadNonStandardWorkingDay(instance);
+		public NonStandardWorkingDayViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Non-Standard Working Day";
 
@@ -4748,7 +4728,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioControlCentreViewModel.AuthorityContactViewModel> AuthorityContact { get; set; } = new();
+		public ObservableCollection<RadioControlCentreViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioControlCentreViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
@@ -4758,20 +4738,20 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		#endregion
 
 
-		public RadioControlCentreViewModel LoadRadioControlCentre(RadioControlCentre instance) {
+		public RadioControlCentreViewModel Load(RadioControlCentre instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -4780,7 +4760,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			hoursOfWatch = instance.hoursOfWatch;
 			return this;
@@ -4816,7 +4796,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => RadioControlCentre._informationBindingDefinitions;
 
-		public override InformationViewModel<RadioControlCentre> Load(RadioControlCentre instance) => this.LoadRadioControlCentre(instance);
+		public RadioControlCentreViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Control Centre";
 
@@ -4943,36 +4928,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
-		public RecommendationsViewModel LoadRecommendations(Recommendations instance) {
+		public RecommendationsViewModel Load(Recommendations instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.LoadtextContent(instance.textContent);
+				textContent.Load(instance.textContent);
 			}
 			graphic = new ();
 			if (instance.graphic != default) {
-				graphic.Loadgraphic(instance.graphic);
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -5007,7 +4992,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
-		public override InformationViewModel<Recommendations> Load(Recommendations instance) => this.LoadRecommendations(instance);
+		public RecommendationsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Recommendations";
 
@@ -5134,36 +5124,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
-		public RegulationsViewModel LoadRegulations(Regulations instance) {
+		public RegulationsViewModel Load(Regulations instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.LoadtextContent(instance.textContent);
+				textContent.Load(instance.textContent);
 			}
 			graphic = new ();
 			if (instance.graphic != default) {
-				graphic.Loadgraphic(instance.graphic);
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -5198,7 +5188,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
-		public override InformationViewModel<Regulations> Load(Regulations instance) => this.LoadRegulations(instance);
+		public RegulationsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Regulations";
 
@@ -5325,36 +5320,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
-		public RestrictionsViewModel LoadRestrictions(Restrictions instance) {
+		public RestrictionsViewModel Load(Restrictions instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			categoryOfAuthority = instance.categoryOfAuthority;
 			textContent = new ();
 			if (instance.textContent != default) {
-				textContent.LoadtextContent(instance.textContent);
+				textContent.Load(instance.textContent);
 			}
 			graphic = new ();
 			if (instance.graphic != default) {
-				graphic.Loadgraphic(instance.graphic);
+				graphic.Load(instance.graphic);
 			}
 			rxNCode.Clear();
 			if (instance.rxNCode is not null) {
 				foreach(var e in instance.rxNCode)
-					rxNCode.Add(new rxNCodeViewModel().LoadrxNCode(e));
+					rxNCode.Add(new rxNCodeViewModel().Load(e));
 			}
 			return this;
 		}
@@ -5389,7 +5384,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
-		public override InformationViewModel<Restrictions> Load(Restrictions instance) => this.LoadRestrictions(instance);
+		public RestrictionsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Restrictions";
 
@@ -5518,36 +5518,36 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<ServiceHoursViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkday { get; set; } = new();
+		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 		#endregion
 
 
-		public ServiceHoursViewModel LoadServiceHours(ServiceHours instance) {
+		public ServiceHoursViewModel Load(ServiceHours instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			scheduleByDayOfWeek.Clear();
 			if (instance.scheduleByDayOfWeek is not null) {
 				foreach(var e in instance.scheduleByDayOfWeek)
-					scheduleByDayOfWeek.Add(new scheduleByDayOfWeekViewModel().LoadscheduleByDayOfWeek(e));
+					scheduleByDayOfWeek.Add(new scheduleByDayOfWeekViewModel().Load(e));
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -5578,7 +5578,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
-		public override InformationViewModel<ServiceHours> Load(ServiceHours instance) => this.LoadServiceHours(instance);
+		public ServiceHoursViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Service Hours";
 
@@ -5639,11 +5644,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 
-		public SpatialQualityViewModel LoadSpatialQuality(SpatialQuality instance) {
+		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
 			spatialAccuracy = new ();
 			if (instance.spatialAccuracy != default) {
-				spatialAccuracy.LoadspatialAccuracy(instance.spatialAccuracy);
+				spatialAccuracy.Load(instance.spatialAccuracy);
 			}
 			return this;
 		}
@@ -5664,7 +5669,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
-		public override InformationViewModel<SpatialQuality> Load(SpatialQuality instance) => this.LoadSpatialQuality(instance);
+		public SpatialQualityViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Spatial Quality";
 	}
@@ -5801,41 +5811,41 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+		public ObservableCollection<TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 		#endregion
 
 
-		public TelemedicalAssistanceServiceViewModel LoadTelemedicalAssistanceService(TelemedicalAssistanceService instance) {
+		public TelemedicalAssistanceServiceViewModel Load(TelemedicalAssistanceService instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
 			contactInstructions = instance.contactInstructions;
 			information = new ();
 			if (instance.information != default) {
-				information.Loadinformation(instance.information);
+				information.Load(instance.information);
 			}
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
 			}
 			telecommunications.Clear();
 			if (instance.telecommunications is not null) {
 				foreach(var e in instance.telecommunications)
-					telecommunications.Add(new telecommunicationsViewModel().Loadtelecommunications(e));
+					telecommunications.Add(new telecommunicationsViewModel().Load(e));
 			}
 			languageInformation = instance.languageInformation;
 			return this;
@@ -5873,7 +5883,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => TelemedicalAssistanceService._informationBindingDefinitions;
 
-		public override InformationViewModel<TelemedicalAssistanceService> Load(TelemedicalAssistanceService instance) => this.LoadTelemedicalAssistanceService(instance);
+		public TelemedicalAssistanceServiceViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Telemedical Assistance Service";
 
@@ -6041,24 +6056,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<TransmissionDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmission { get; set; } = new();
+		public ObservableCollection<TransmissionDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
 		#endregion
 
 
-		public TransmissionDetailsViewModel LoadTransmissionDetails(TransmissionDetails instance) {
+		public TransmissionDetailsViewModel Load(TransmissionDetails instance) {
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -6069,7 +6084,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			radioChannelDetails.Clear();
 			if (instance.radioChannelDetails is not null) {
 				foreach(var e in instance.radioChannelDetails)
-					radioChannelDetails.Add(new radioChannelDetailsViewModel().LoadradioChannelDetails(e));
+					radioChannelDetails.Add(new radioChannelDetailsViewModel().Load(e));
 			}
 			return this;
 		}
@@ -6106,7 +6121,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => TransmissionDetails._informationBindingDefinitions;
 
-		public override InformationViewModel<TransmissionDetails> Load(TransmissionDetails instance) => this.LoadTransmissionDetails(instance);
+		public TransmissionDetailsViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Transmission Details";
 
@@ -6361,10 +6381,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ConnectivityServiceViewModel> ConnectivityService { get; set; } = new();
+		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ConnectivityServiceViewModel> ConnectivityServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
@@ -6396,29 +6416,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public ConnectivitySubscriptionAreaViewModel LoadConnectivitySubscriptionArea(ConnectivitySubscriptionArea instance) {
+		public ConnectivitySubscriptionAreaViewModel Load(ConnectivitySubscriptionArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -6430,16 +6450,16 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			frequencyRange.Clear();
 			if (instance.frequencyRange is not null) {
 				foreach(var e in instance.frequencyRange)
-					frequencyRange.Add(new frequencyRangeViewModel().LoadfrequencyRange(e));
+					frequencyRange.Add(new frequencyRangeViewModel().Load(e));
 			}
 			sectorLimit.Clear();
 			if (instance.sectorLimit is not null) {
 				foreach(var e in instance.sectorLimit)
-					sectorLimit.Add(new sectorLimitViewModel().LoadsectorLimit(e));
+					sectorLimit.Add(new sectorLimitViewModel().Load(e));
 			}
 			coverageIndication = new ();
 			if (instance.coverageIndication != default) {
-				coverageIndication.LoadcoverageIndication(instance.coverageIndication);
+				coverageIndication.Load(instance.coverageIndication);
 			}
 			return this;
 		}
@@ -6487,7 +6507,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ConnectivitySubscriptionArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<ConnectivitySubscriptionArea> Load(ConnectivitySubscriptionArea instance) => this.LoadConnectivitySubscriptionArea(instance);
+		public ConnectivitySubscriptionAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public ConnectivitySubscriptionAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Connectivity Subscription Area";
 
@@ -6716,13 +6748,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<GMDSSAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<GMDSSAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<GMDSSAreaViewModel.RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+		public ObservableCollection<GMDSSAreaViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<GMDSSAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<GMDSSAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
@@ -6751,29 +6783,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<GMDSSAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<GMDSSAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public GMDSSAreaViewModel LoadGMDSSArea(GMDSSArea instance) {
+		public GMDSSAreaViewModel Load(GMDSSArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -6784,7 +6816,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			areaA3ServiceDescription.Clear();
 			if (instance.areaA3ServiceDescription is not null) {
 				foreach(var e in instance.areaA3ServiceDescription)
-					areaA3ServiceDescription.Add(new areaA3ServiceDescriptionViewModel().LoadareaA3ServiceDescription(e));
+					areaA3ServiceDescription.Add(new areaA3ServiceDescriptionViewModel().Load(e));
 			}
 			return this;
 		}
@@ -6826,7 +6858,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => GMDSSArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<GMDSSArea> Load(GMDSSArea instance) => this.LoadGMDSSArea(instance);
+		public GMDSSAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public GMDSSAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"GMDSS Area";
 
@@ -6963,29 +7007,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel> fuzzyZoneAggregation { get; set; } = new();
+		public ObservableCollection<IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel> fuzzyZoneAggregations { get; set; } = new();
 		#endregion
 
 
-		public IndeterminateZoneViewModel LoadIndeterminateZone(IndeterminateZone instance) {
+		public IndeterminateZoneViewModel Load(IndeterminateZone instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -7025,7 +7069,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => IndeterminateZone._featureBindingDefinitions;
 
-		public override FeatureViewModel<IndeterminateZone> Load(IndeterminateZone instance) => this.LoadIndeterminateZone(instance);
+		public IndeterminateZoneViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public IndeterminateZoneViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Indeterminate Zone";
 
@@ -7236,19 +7292,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<MetAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<MetAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MetAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<MetAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -7274,29 +7330,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public MetAreaViewModel LoadMetArea(MetArea instance) {
+		public MetAreaViewModel Load(MetArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -7305,7 +7361,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
 			}
 			return this;
 		}
@@ -7343,7 +7399,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MetArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<MetArea> Load(MetArea instance) => this.LoadMetArea(instance);
+		public MetAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public MetAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"METAREA";
 
@@ -7557,19 +7625,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<NavAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<NavAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<NavAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -7595,29 +7663,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public NavAreaViewModel LoadNavArea(NavArea instance) {
+		public NavAreaViewModel Load(NavArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -7626,7 +7694,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			onlineResource.Clear();
 			if (instance.onlineResource is not null) {
 				foreach(var e in instance.onlineResource)
-					onlineResource.Add(new onlineResourceViewModel().LoadonlineResource(e));
+					onlineResource.Add(new onlineResourceViewModel().Load(e));
 			}
 			return this;
 		}
@@ -7664,7 +7732,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<NavArea> Load(NavArea instance) => this.LoadNavArea(instance);
+		public NavAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NavAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"NAVAREA";
 
@@ -7936,19 +8016,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<NavtexServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<NavtexServiceAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<NavtexServiceAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -7974,29 +8054,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public NavtexServiceAreaViewModel LoadNavtexServiceArea(NavtexServiceArea instance) {
+		public NavtexServiceAreaViewModel Load(NavtexServiceArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -8048,7 +8128,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavtexServiceArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<NavtexServiceArea> Load(NavtexServiceArea instance) => this.LoadNavtexServiceArea(instance);
+		public NavtexServiceAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public NavtexServiceAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"NAVTEX Service Area";
 
@@ -8333,22 +8425,22 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -8393,32 +8485,32 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioServiceAreaViewModel.coreAggregationViewModel> coreAggregation { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
 		#endregion
 
 
-		public RadioServiceAreaViewModel LoadRadioServiceArea(RadioServiceArea instance) {
+		public RadioServiceAreaViewModel Load(RadioServiceArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -8470,7 +8562,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioServiceArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadioServiceArea> Load(RadioServiceArea instance) => this.LoadRadioServiceArea(instance);
+		public RadioServiceAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadioServiceAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Service Area";
 
@@ -8790,22 +8894,22 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioStationViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioStationViewModel.RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioStationViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioStationViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioStationViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<RadioStationViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -8831,29 +8935,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioStationViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<RadioStationViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public RadioStationViewModel LoadRadioStation(RadioStation instance) {
+		public RadioStationViewModel Load(RadioStation instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -8865,12 +8969,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			status = instance.status;
 			radiocommunicationIdentifier = new ();
 			if (instance.radiocommunicationIdentifier != default) {
-				radiocommunicationIdentifier.LoadradiocommunicationIdentifier(instance.radiocommunicationIdentifier);
+				radiocommunicationIdentifier.Load(instance.radiocommunicationIdentifier);
 			}
 			sectorLimit.Clear();
 			if (instance.sectorLimit is not null) {
 				foreach(var e in instance.sectorLimit)
-					sectorLimit.Add(new sectorLimitViewModel().LoadsectorLimit(e));
+					sectorLimit.Add(new sectorLimitViewModel().Load(e));
 			}
 			hoursOfWatch = instance.hoursOfWatch;
 			return this;
@@ -8921,7 +9025,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadioStation> Load(RadioStation instance) => this.LoadRadioStation(instance);
+		public RadioStationViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadioStationViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Station";
 
@@ -9112,38 +9228,38 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<SARRegionViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.RadioServiceControlViewModel> RadioServiceControl { get; set; } = new();
+		public ObservableCollection<SARRegionViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<SARRegionViewModel.TMASViewModel> TMAS { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 		#endregion
 
 
-		public SARRegionViewModel LoadSARRegion(SARRegion instance) {
+		public SARRegionViewModel Load(SARRegion instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -9183,7 +9299,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SARRegion._featureBindingDefinitions;
 
-		public override FeatureViewModel<SARRegion> Load(SARRegion instance) => this.LoadSARRegion(instance);
+		public SARRegionViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public SARRegionViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Search and Rescue Region";
 
@@ -9438,19 +9566,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("InformationBindings")]
-		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceCoordinationViewModel> ServiceCoordination { get; set; } = new();
+		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceCoordinationViewModel> ServiceCoordinations { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceContactViewModel> ServiceContact { get; set; } = new();
+		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
 		[Category("InformationBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.BroadcastServiceViewModel> BroadcastService { get; set; } = new();
+		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.BroadcastServiceViewModel> BroadcastServices { get; set; } = new();
 
 		[Category("InformationBindings")]
-		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel> TransmissionService { get; set; } = new();
+		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 		#endregion
 
 
@@ -9476,29 +9604,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionArea { get; set; } = new();
+		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 		#endregion
 
 
-		public WeatherForecastAndWarningAreaViewModel LoadWeatherForecastAndWarningArea(WeatherForecastAndWarningArea instance) {
+		public WeatherForecastAndWarningAreaViewModel Load(WeatherForecastAndWarningArea instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -9547,7 +9675,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => WeatherForecastAndWarningArea._featureBindingDefinitions;
 
-		public override FeatureViewModel<WeatherForecastAndWarningArea> Load(WeatherForecastAndWarningArea instance) => this.LoadWeatherForecastAndWarningArea(instance);
+		public WeatherForecastAndWarningAreaViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public WeatherForecastAndWarningAreaViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Weather Forecast and Warning Area";
 
@@ -9666,29 +9806,29 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		}
 
 		[Category("FeatureBindings")]
-		public ObservableCollection<RadioServiceAreaAggregateViewModel.coreAggregationViewModel> coreAggregation { get; set; } = new();
+		public ObservableCollection<RadioServiceAreaAggregateViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
 		#endregion
 
 
-		public RadioServiceAreaAggregateViewModel LoadRadioServiceAreaAggregate(RadioServiceAreaAggregate instance) {
+		public RadioServiceAreaAggregateViewModel Load(RadioServiceAreaAggregate instance) {
 			textContent.Clear();
 			if (instance.textContent is not null) {
 				foreach(var e in instance.textContent)
-					textContent.Add(new textContentViewModel().LoadtextContent(e));
+					textContent.Add(new textContentViewModel().Load(e));
 			}
 			featureName.Clear();
 			if (instance.featureName is not null) {
 				foreach(var e in instance.featureName)
-					featureName.Add(new featureNameViewModel().LoadfeatureName(e));
+					featureName.Add(new featureNameViewModel().Load(e));
 			}
 			fixedDateRange = new ();
 			if (instance.fixedDateRange != default) {
-				fixedDateRange.LoadfixedDateRange(instance.fixedDateRange);
+				fixedDateRange.Load(instance.fixedDateRange);
 			}
 			periodicDateRange.Clear();
 			if (instance.periodicDateRange is not null) {
 				foreach(var e in instance.periodicDateRange)
-					periodicDateRange.Add(new periodicDateRangeViewModel().LoadperiodicDateRange(e));
+					periodicDateRange.Add(new periodicDateRangeViewModel().Load(e));
 			}
 			source = instance.source;
 			reportedDate = instance.reportedDate;
@@ -9725,7 +9865,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioServiceAreaAggregate._featureBindingDefinitions;
 
-		public override FeatureViewModel<RadioServiceAreaAggregate> Load(RadioServiceAreaAggregate instance) => this.LoadRadioServiceAreaAggregate(instance);
+		public RadioServiceAreaAggregateViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public RadioServiceAreaAggregateViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Radio Service Area Aggregate";
 
@@ -9798,14 +9950,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public DataCoverageViewModel LoadDataCoverage(DataCoverage instance) {
+		public DataCoverageViewModel Load(DataCoverage instance) {
 			maximumDisplayScale = instance.maximumDisplayScale;
 			minimumDisplayScale = instance.minimumDisplayScale;
 			optimumDisplayScale = instance.optimumDisplayScale;
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -9833,7 +9985,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-		public override FeatureViewModel<DataCoverage> Load(DataCoverage instance) => this.LoadDataCoverage(instance);
+		public DataCoverageViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public DataCoverageViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Data Coverage";
 
@@ -9945,26 +10109,26 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 
-		public QualityOfNonBathymetricDataViewModel LoadQualityOfNonBathymetricData(QualityOfNonBathymetricData instance) {
+		public QualityOfNonBathymetricDataViewModel Load(QualityOfNonBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
 			horizontalDistanceUncertainty = instance.horizontalDistanceUncertainty;
 			horizontalPositionUncertainty = new ();
 			if (instance.horizontalPositionUncertainty != default) {
-				horizontalPositionUncertainty.LoadhorizontalPositionUncertainty(instance.horizontalPositionUncertainty);
+				horizontalPositionUncertainty.Load(instance.horizontalPositionUncertainty);
 			}
 			orientationUncertainty = instance.orientationUncertainty;
 			surveyDateRange = new ();
 			if (instance.surveyDateRange != default) {
-				surveyDateRange.LoadsurveyDateRange(instance.surveyDateRange);
+				surveyDateRange.Load(instance.surveyDateRange);
 			}
 			verticalUncertainty = new ();
 			if (instance.verticalUncertainty != default) {
-				verticalUncertainty.LoadverticalUncertainty(instance.verticalUncertainty);
+				verticalUncertainty.Load(instance.verticalUncertainty);
 			}
 			information.Clear();
 			if (instance.information is not null) {
 				foreach(var e in instance.information)
-					information.Add(new informationViewModel().Loadinformation(e));
+					information.Add(new informationViewModel().Load(e));
 			}
 			return this;
 		}
@@ -9998,7 +10162,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
-		public override FeatureViewModel<QualityOfNonBathymetricData> Load(QualityOfNonBathymetricData instance) => this.LoadQualityOfNonBathymetricData(instance);
+		public QualityOfNonBathymetricDataViewModel ParseInformationBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadInformationBinding(document);
+			}
+			return this;
+		}
+
+		public QualityOfNonBathymetricDataViewModel ParseFeatureBindings(string json) {
+			using (var document = JsonDocument.Parse(json)) {
+				this.LoadFeatureBinding(document);
+			}
+			return this;
+		}
 
 		public override string? ToString() => $"Quality of Non-Bathymetric Data";
 
@@ -10010,5 +10186,788 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	}
 
 
+
+	public static class InformationBindingExtension {
+		public static ApplicabilityViewModel LoadInformationBinding(this ApplicabilityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<InclusionType> inclusionType) {
+					instance.InclusionTypes.Add(new ApplicabilityViewModel.InclusionTypeViewModel {
+						informationId = inclusionType.referenceId,
+						role = inclusionType.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static AuthorityViewModel LoadInformationBinding(this AuthorityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
+					instance.AuthorityContacts.Add(new AuthorityViewModel.AuthorityContactViewModel {
+						informationId = authorityContact.referenceId,
+						role = authorityContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
+					instance.AuthorityHours.Add(new AuthorityViewModel.AuthorityHoursViewModel {
+						informationId = authorityHours.referenceId,
+						role = authorityHours.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static BroadcastDetailsViewModel LoadInformationBinding(this BroadcastDetailsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<BroadcastTransmission> broadcastTransmission) {
+					instance.BroadcastTransmissions.Add(new BroadcastDetailsViewModel.BroadcastTransmissionViewModel {
+						informationId = broadcastTransmission.referenceId,
+						role = broadcastTransmission.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static ConnectivityQualityOfServiceViewModel LoadInformationBinding(this ConnectivityQualityOfServiceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
+					instance.AuthorityContacts.Add(new ContactDetailsViewModel.AuthorityContactViewModel {
+						informationId = authorityContact.referenceId,
+						role = authorityContact.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NauticalInformationViewModel LoadInformationBinding(this NauticalInformationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static NonStandardWorkingDayViewModel LoadInformationBinding(this NonStandardWorkingDayViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
+					instance.ExceptionalWorkdays.Add(new NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel {
+						informationId = exceptionalWorkday.referenceId,
+						role = exceptionalWorkday.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioControlCentreViewModel LoadInformationBinding(this RadioControlCentreViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
+					instance.AuthorityContacts.Add(new RadioControlCentreViewModel.AuthorityContactViewModel {
+						informationId = authorityContact.referenceId,
+						role = authorityContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
+					instance.AuthorityHours.Add(new RadioControlCentreViewModel.AuthorityHoursViewModel {
+						informationId = authorityHours.referenceId,
+						role = authorityHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<TMAS> tMAS) {
+					instance.TMAS.Add(new RadioControlCentreViewModel.TMASViewModel {
+						informationId = tMAS.referenceId,
+						role = tMAS.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RecommendationsViewModel LoadInformationBinding(this RecommendationsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RegulationsViewModel LoadInformationBinding(this RegulationsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static RestrictionsViewModel LoadInformationBinding(this RestrictionsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static ServiceHoursViewModel LoadInformationBinding(this ServiceHoursViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
+					instance.AuthorityHours.Add(new ServiceHoursViewModel.AuthorityHoursViewModel {
+						informationId = authorityHours.referenceId,
+						role = authorityHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
+					instance.ExceptionalWorkdays.Add(new ServiceHoursViewModel.ExceptionalWorkdayViewModel {
+						informationId = exceptionalWorkday.referenceId,
+						role = exceptionalWorkday.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static TelemedicalAssistanceServiceViewModel LoadInformationBinding(this TelemedicalAssistanceServiceViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
+					instance.RadioServiceControls.Add(new TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel {
+						informationId = radioServiceControl.referenceId,
+						role = radioServiceControl.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static TransmissionDetailsViewModel LoadInformationBinding(this TransmissionDetailsViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<BroadcastTransmission> broadcastTransmission) {
+					instance.BroadcastTransmissions.Add(new TransmissionDetailsViewModel.BroadcastTransmissionViewModel {
+						informationId = broadcastTransmission.referenceId,
+						role = broadcastTransmission.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static ConnectivitySubscriptionAreaViewModel LoadInformationBinding(this ConnectivitySubscriptionAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ConnectivityService> connectivityService) {
+					instance.ConnectivityServices.Add(new ConnectivitySubscriptionAreaViewModel.ConnectivityServiceViewModel {
+						informationId = connectivityService.referenceId,
+						role = connectivityService.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new ConnectivitySubscriptionAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new ConnectivitySubscriptionAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<AvailableQoS> availableQoS) {
+					instance.AvailableQoS.Add(new ConnectivitySubscriptionAreaViewModel.AvailableQoSViewModel {
+						informationId = availableQoS.referenceId,
+						role = availableQoS.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static GMDSSAreaViewModel LoadInformationBinding(this GMDSSAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new GMDSSAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
+					instance.RadioServiceControls.Add(new GMDSSAreaViewModel.RadioServiceControlViewModel {
+						informationId = radioServiceControl.referenceId,
+						role = radioServiceControl.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new GMDSSAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new GMDSSAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static IndeterminateZoneViewModel LoadInformationBinding(this IndeterminateZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static MetAreaViewModel LoadInformationBinding(this MetAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new MetAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new MetAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new MetAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new MetAreaViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new MetAreaViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavAreaViewModel LoadInformationBinding(this NavAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new NavAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new NavAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new NavAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new NavAreaViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new NavAreaViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavtexServiceAreaViewModel LoadInformationBinding(this NavtexServiceAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new NavtexServiceAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new NavtexServiceAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new NavtexServiceAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new NavtexServiceAreaViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new NavtexServiceAreaViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioServiceAreaViewModel LoadInformationBinding(this RadioServiceAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new RadioServiceAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
+					instance.RadioServiceControls.Add(new RadioServiceAreaViewModel.RadioServiceControlViewModel {
+						informationId = radioServiceControl.referenceId,
+						role = radioServiceControl.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new RadioServiceAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new RadioServiceAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new RadioServiceAreaViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new RadioServiceAreaViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new RadioStationViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
+					instance.RadioServiceControls.Add(new RadioStationViewModel.RadioServiceControlViewModel {
+						informationId = radioServiceControl.referenceId,
+						role = radioServiceControl.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new RadioStationViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new RadioStationViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new RadioStationViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new RadioStationViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static SARRegionViewModel LoadInformationBinding(this SARRegionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new SARRegionViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
+					instance.RadioServiceControls.Add(new SARRegionViewModel.RadioServiceControlViewModel {
+						informationId = radioServiceControl.referenceId,
+						role = radioServiceControl.role,
+					});
+				}
+				if(informationBinding is informationBinding<TMAS> tMAS) {
+					instance.TMAS.Add(new SARRegionViewModel.TMASViewModel {
+						informationId = tMAS.referenceId,
+						role = tMAS.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new SARRegionViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static WeatherForecastAndWarningAreaViewModel LoadInformationBinding(this WeatherForecastAndWarningAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
+					instance.ServiceCoordinations.Add(new WeatherForecastAndWarningAreaViewModel.ServiceCoordinationViewModel {
+						informationId = serviceCoordination.referenceId,
+						role = serviceCoordination.role,
+					});
+				}
+				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
+					instance.ServiceContacts.Add(new WeatherForecastAndWarningAreaViewModel.ServiceContactViewModel {
+						informationId = serviceContact.referenceId,
+						role = serviceContact.role,
+					});
+				}
+				if(informationBinding is informationBinding<LocationHours> locationHours) {
+					instance.LocationHours.Add(new WeatherForecastAndWarningAreaViewModel.LocationHoursViewModel {
+						informationId = locationHours.referenceId,
+						role = locationHours.role,
+					});
+				}
+				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
+					instance.BroadcastServices.Add(new WeatherForecastAndWarningAreaViewModel.BroadcastServiceViewModel {
+						informationId = broadcastService.referenceId,
+						role = broadcastService.role,
+					});
+				}
+				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
+					instance.TransmissionServices.Add(new WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel {
+						informationId = transmissionService.referenceId,
+						role = transmissionService.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioServiceAreaAggregateViewModel LoadInformationBinding(this RadioServiceAreaAggregateViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static QualityOfNonBathymetricDataViewModel LoadInformationBinding(this QualityOfNonBathymetricDataViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
+
+			}
+			return instance;
+		}
+
+	}
+
+	public static class FeatureBindingExtension {
+		public static ConnectivitySubscriptionAreaViewModel LoadFeatureBinding(this ConnectivitySubscriptionAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static GMDSSAreaViewModel LoadFeatureBinding(this GMDSSAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new GMDSSAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static IndeterminateZoneViewModel LoadFeatureBinding(this IndeterminateZoneViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<fuzzyZoneAggregation> fuzzyZoneAggregation) {
+					instance.fuzzyZoneAggregations.Add(new IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel {
+						featureId = fuzzyZoneAggregation.referenceId,
+						role = fuzzyZoneAggregation.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static MetAreaViewModel LoadFeatureBinding(this MetAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new MetAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavAreaViewModel LoadFeatureBinding(this NavAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new NavAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static NavtexServiceAreaViewModel LoadFeatureBinding(this NavtexServiceAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioServiceAreaViewModel LoadFeatureBinding(this RadioServiceAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new RadioServiceAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+				if(featureBinding is featureBinding<coreAggregation> coreAggregation) {
+					instance.coreAggregations.Add(new RadioServiceAreaViewModel.coreAggregationViewModel {
+						featureId = coreAggregation.referenceId,
+						role = coreAggregation.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new RadioStationViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static SARRegionViewModel LoadFeatureBinding(this SARRegionViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static WeatherForecastAndWarningAreaViewModel LoadFeatureBinding(this WeatherForecastAndWarningAreaViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
+					instance.ServiceProvisionAreas.Add(new WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel {
+						featureId = serviceProvisionArea.referenceId,
+						role = serviceProvisionArea.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static RadioServiceAreaAggregateViewModel LoadFeatureBinding(this RadioServiceAreaAggregateViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+				if(featureBinding is featureBinding<coreAggregation> coreAggregation) {
+					instance.coreAggregations.Add(new RadioServiceAreaAggregateViewModel.coreAggregationViewModel {
+						featureId = coreAggregation.referenceId,
+						role = coreAggregation.role,
+					});
+				}
+			}
+			return instance;
+		}
+
+		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+		public static QualityOfNonBathymetricDataViewModel LoadFeatureBinding(this QualityOfNonBathymetricDataViewModel instance, JsonDocument document) {
+			foreach (var element in document.RootElement.EnumerateArray()) {
+				var code = element.GetProperty("code").GetString()!;
+				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
+
+			}
+			return instance;
+		}
+
+	}
 
 }

@@ -164,45 +164,9 @@ namespace S100Framework.WPF
     {
         public SelectedAssociationObjectViewModel(AssociationViewModel associationObject) {
             this.AssociationObject = associationObject;
-
-            this.InformationBindings.CollectionChanged += this.OnInformationBindings_CollectionChanged;
-            this.FeatureBindings.CollectionChanged += this.OnFeatureBindings_CollectionChanged;
         }
 
         public AssociationViewModel AssociationObject { get; private set; }
-
-        public ObservableCollection<FeatureBindingViewModel> FeatureBindings = new ObservableCollection<FeatureBindingViewModel>();
-
-        public ObservableCollection<InformationBindingViewModel> InformationBindings = new ObservableCollection<InformationBindingViewModel>();
-
-        protected void OnInformationBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((InformationBindingViewModel)i).PropertyChanged += OnPropertyChanged;
-                }
-            }
-            //base.OnCollectionChanged(sender, e);
-        }
-
-        protected void OnFeatureBindings_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
-            if (e.OldItems != null) {
-                foreach (var i in e.OldItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged -= OnPropertyChanged;
-                }
-            }
-            if (e.NewItems != null) {
-                foreach (var i in e.NewItems) {
-                    ((FeatureBindingViewModel)i).PropertyChanged += OnPropertyChanged;
-                }
-            }
-            //base.OnCollectionChanged(sender, e);
-        }
-
     }
 
     public class S100AttributeEditorControlHost

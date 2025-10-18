@@ -123,6 +123,12 @@ namespace S100Framework.DomainModel.S501 {
 			"SpecialPurposeGeneralBeacon" => [Primitives.point],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

@@ -83,6 +83,7 @@
     <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.GML\S100Framework.GML.csproj" />
     <ProjectReference Include="..\..\..\src\Core\S100Framework.YAML\S100Framework.YAML.csproj" />
+    <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
   </ItemGroup>
 
   <ItemGroup>

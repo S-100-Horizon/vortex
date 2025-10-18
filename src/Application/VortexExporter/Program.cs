@@ -406,57 +406,59 @@ namespace S100Framework.Applications
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
+                                    throw new NotImplementedException();
+                                    //var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
 
-                                    if (informationBindings != default && informationBindings.Any()) {
-                                        foreach (var binding in informationBindings) {
-                                            var asso = new YAML.Association {
-                                                Name = binding.association,
-                                                Role = binding.role,
-                                                To = binding.informationId!,
-                                            };
+                                    //if (informationBindings != default && informationBindings.Any()) {
+                                    //    foreach (var binding in informationBindings) {
+                                    //        var asso = new YAML.Association {
+                                    //            Name = binding.association,
+                                    //            Role = binding.role,
+                                    //            To = binding.informationId!,
+                                    //        };
 
-                                            // Special case for SpatialAssociation. Add to dictionary for later processing.
-                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
-                                                spatialAssociations.TryAdd(geometry, asso);
-                                            else
-                                                feature?.AddAssociation(asso);
+                                    //        // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                    //        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                    //            spatialAssociations.TryAdd(geometry, asso);
+                                    //        else
+                                    //            feature?.AddAssociation(asso);
 
-                                            if (!informationsTypesAdded.Contains(binding.informationId!)) {
-                                                informationsTypesAdded.Add(binding.informationId!);
-                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
-                                            }
-                                        }
-                                    }
+                                    //        if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                    //            informationsTypesAdded.Add(binding.informationId!);
+                                    //            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
+                                    //        }
+                                    //    }
+                                    //}
                                 }
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
+                                    throw new NotImplementedException();
+                                    //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
 
-                                    if (featureBindings != default && featureBindings.Any()) {
-                                        foreach (var binding in featureBindings) {
-                                            var roleType = binding.roleType;
+                                    //if (featureBindings != default && featureBindings.Any()) {
+                                    //    foreach (var binding in featureBindings) {
+                                    //        var roleType = binding.roleType;
 
-                                            // Skip association roleType for now
-                                            if (roleType == "association")
-                                                continue;
+                                    //        // Skip association roleType for now
+                                    //        if (roleType == "association")
+                                    //            continue;
 
-                                            var asso = new YAML.Association {
-                                                Name = binding.association,
-                                                Role = binding.role,
-                                                To = $"110:{binding!.featureId!}:1"
-                                            };
+                                    //        var asso = new YAML.Association {
+                                    //            Name = binding.association,
+                                    //            Role = binding.role,
+                                    //            To = $"110:{binding!.featureId!}:1"
+                                    //        };
 
-                                            feature?.AddFeatureAssociation(asso);
+                                    //        feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
-                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
-                                                featureTypesAdded.Add(binding.featureId);
-                                                dataset?.AddFeature(noGeometry);
-                                            }
-                                        }
-                                    }
+                                    //        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                    //        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                    //            featureTypesAdded.Add(binding.featureId);
+                                    //            dataset?.AddFeature(noGeometry);
+                                    //        }
+                                    //    }
+                                    //}
                                 }
 
                                 dataset?.AddFeature(feature!);

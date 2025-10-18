@@ -224,6 +224,33 @@ namespace S100Framework.DomainModel.S101 {
 			"Chart1Feature" => [Primitives.point,Primitives.pointSet,Primitives.curve,Primitives.surface],
 			_ or "" => throw new InvalidOperationException(),
 		};
+		public static Type InformationBindings(string code) => code switch {
+			"AdditionalInformation" => typeof(informationBinding<InformationAssociations.AdditionalInformation>),
+			"QualityOfBathymetricDataComposition" => typeof(informationBinding<InformationAssociations.QualityOfBathymetricDataComposition>),
+			"SpatialAssociation" => typeof(informationBinding<InformationAssociations.SpatialAssociation>),
+			_ or "" => throw new InvalidOperationException(),
+		};
+		public static Type FeatureBindings(string code) => code switch {
+			"AidsToNavigationAssociation" => typeof(featureBinding<FeatureAssociations.AidsToNavigationAssociation>),
+			"ASLAggregation" => typeof(featureBinding<FeatureAssociations.ASLAggregation>),
+			"BridgeAggregation" => typeof(featureBinding<FeatureAssociations.BridgeAggregation>),
+			"CautionAreaAssociation" => typeof(featureBinding<FeatureAssociations.CautionAreaAssociation>),
+			"DeepWaterRouteAggregation" => typeof(featureBinding<FeatureAssociations.DeepWaterRouteAggregation>),
+			"FairwayAggregation" => typeof(featureBinding<FeatureAssociations.FairwayAggregation>),
+			"FairwayAuxiliary" => typeof(featureBinding<FeatureAssociations.FairwayAuxiliary>),
+			"IslandAggregation" => typeof(featureBinding<FeatureAssociations.IslandAggregation>),
+			"MooringTrotAggregation" => typeof(featureBinding<FeatureAssociations.MooringTrotAggregation>),
+			"PilotageDistrictAssociation" => typeof(featureBinding<FeatureAssociations.PilotageDistrictAssociation>),
+			"RangeSystemAggregation" => typeof(featureBinding<FeatureAssociations.RangeSystemAggregation>),
+			"RoofedStructureAggregation" => typeof(featureBinding<FeatureAssociations.RoofedStructureAggregation>),
+			"StructureEquipment" => typeof(featureBinding<FeatureAssociations.StructureEquipment>),
+			"TextAssociation" => typeof(featureBinding<FeatureAssociations.TextAssociation>),
+			"TrafficSeparationSchemeAggregation" => typeof(featureBinding<FeatureAssociations.TrafficSeparationSchemeAggregation>),
+			"TwoWayRouteAggregation" => typeof(featureBinding<FeatureAssociations.TwoWayRouteAggregation>),
+			"UpdateAggregation" => typeof(featureBinding<FeatureAssociations.UpdateAggregation>),
+			"UpdatedInformation" => typeof(featureBinding<FeatureAssociations.UpdatedInformation>),
+			_ or "" => throw new InvalidOperationException(),
+		};
 	}
 
 	/// <summary>

@@ -21,6 +21,11 @@
     <Compile Remove="S-922_ViewModel.g.cs" />
     <Compile Remove="S-924_ViewModel.g.cs" />
     <Compile Remove="S100AttributeEditor.cs" />
+    <Compile Remove="S100AttributeEditorView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="S100AttributeEditorView.xaml" />
   </ItemGroup>
 
   <ItemGroup>
