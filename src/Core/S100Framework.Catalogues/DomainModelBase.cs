@@ -232,22 +232,17 @@ namespace S100Framework.DomainModel
     {
     }
 
-    public interface IInformationBinding
+    public abstract class InformationBinding
     {
-        string roleType { get; set; }
-        string role { get; set; }
-        string informationType { get; set; }
-        string referenceId { get; set; }
-    }
-
-    public class informationBinding<TAssociation> : IInformationBinding where TAssociation : InformationAssociation, new()
-    {
-        public TAssociation association { get; set; } = new();
-
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
         public string? informationType { get; set; } = null;
         public string referenceId { get; set; } = string.Empty;
+    }
+
+    public class informationBinding<TAssociation> : InformationBinding where TAssociation : InformationAssociation, new()
+    {        
+        public TAssociation association { get; set; } = new TAssociation();
 
         public string code => typeof(TAssociation).Name;
     }
@@ -267,22 +262,18 @@ namespace S100Framework.DomainModel
         public override string ToString() => $"{association}, {role}";
     }
 
-    public interface IFeatureBinding
+    public abstract class FeatureBinding
     {
-        string roleType { get; set; }
-        string role { get; set; }
-        string featureType { get; set; }
-        string referenceId { get; set; }
-    }
-
-    public class featureBinding<TAssociation> : IFeatureBinding where TAssociation : FeatureAssociation, new()
-    {
-        public TAssociation association { get; set; } = new();
-
         public string roleType { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
         public string? featureType { get; set; } = null;
         public string referenceId { get; set; } = string.Empty;
+
+    }
+
+    public class featureBinding<TAssociation> : FeatureBinding where TAssociation : FeatureAssociation, new()
+    {
+        public TAssociation association { get; set; } = new TAssociation();
 
         public string code => typeof(TAssociation).Name;
     }

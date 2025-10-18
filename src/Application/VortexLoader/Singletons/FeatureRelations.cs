@@ -831,7 +831,7 @@ namespace S100Framework.Applications.Singletons
                     throw new NotSupportedException($"no bindingdefinition on {TPrimary?.Name} for {TForeign?.Name}");
                 }
 
-                var featureBindingPrimary = (IFeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
+                var featureBindingPrimary = (FeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
                 featureBindingPrimary.referenceId = relation!.Slave!.Name;
                 featureBindingPrimary.role = bindingDefinitionPrimary.role;
                 featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
@@ -846,7 +846,7 @@ namespace S100Framework.Applications.Singletons
                     throw new NotSupportedException($"no bindingdefinition on {TForeign?.Name} for {TPrimary?.Name}");
                 }
 
-                var featureBindingForeign = (IFeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
+                var featureBindingForeign = (FeatureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
                 featureBindingForeign.referenceId = relation!.Master!.Name;
                 featureBindingForeign.role = bindingDefinitionForeign.role;
                 featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();

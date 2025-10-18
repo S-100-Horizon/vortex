@@ -72,6 +72,20 @@ namespace TestS100Framework
             System.Diagnostics.Debugger.Break();
         }
 
+        [Fact]
+        public void Test_BridgeAggregation() {
+            var aggregation = new featureBinding<BridgeAggregation> {
+                featureType = nameof(SpanOpening),
+                role = "theCollection",
+                roleType = "aggregation",
+                referenceId = "123456",
+            };
+
+            var json = System.Text.Json.JsonSerializer.Serialize(aggregation);
+
+            System.Diagnostics.Debugger.Break();
+
+        }
 
         const string json = "[{\"roleType\":\"aggregation\",\"association\":\"BridgeAggregation\",\"role\":\"theCollection\",\"associationId\":\"988364506\",\"featureId\":\"3313401958\"}]";
 
