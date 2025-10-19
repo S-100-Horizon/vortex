@@ -7,6 +7,7 @@ using S100Framework.YAML;
 using Serilog;
 using System.Diagnostics;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -17,6 +18,7 @@ namespace S100Framework.Applications
     internal class VortexExporter
     {
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
+
         public class Options
         {
             [Option('d', "dnsm", Required = false, HelpText = "")]
@@ -411,7 +413,17 @@ namespace S100Framework.Applications
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    throw new NotImplementedException();
+                                    var informationbindings = Convert.ToString(current["informationbindings"])!;
+                                    using (var document = JsonDocument.Parse(informationbindings)) {
+                                        foreach (var element in document.RootElement.EnumerateArray()) {
+                                            var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, typeof(informationBinding));
+
+
+                                        }                                            
+                                    }
+
+//                                  var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
+
                                     //var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
 
                                     //if (informationBindings != default && informationBindings.Any()) {
@@ -438,7 +450,15 @@ namespace S100Framework.Applications
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    throw new NotImplementedException();
+                                    var featurebindings = Convert.ToString(current["featurebindings"])!;
+                                    using (var document = JsonDocument.Parse(featurebindings)) {
+                                        foreach (var element in document.RootElement.EnumerateArray()) {
+                                            var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, typeof(featureBinding));
+
+
+                                        }
+                                    }
+
                                     //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
 
                                     //if (featureBindings != default && featureBindings.Any()) {

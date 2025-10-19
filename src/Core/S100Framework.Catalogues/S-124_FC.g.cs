@@ -45,6 +45,37 @@ namespace S100Framework.DomainModel.S124 {
 			"areaAffected" => typeof(featureBinding<FeatureAssociations.areaAffected>),
 			_ or "" => throw new InvalidOperationException(),
 		};
+
+		public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver InformationBindingResolver() {
+			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(informationBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$type",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.navwarnPreambleContent>), typeDiscriminator: "informationBinding::navwarnPreambleContent"));
+				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.navwarnReferences>), typeDiscriminator: "informationBinding::navwarnReferences"));
+				}
+			});
+			return resolver;
+		}
+
+
+		public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver FeatureBindingResolver() {
+			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(featureBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$type",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.TextAssociation>), typeDiscriminator: "featureBinding::TextAssociation"));
+				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.areaAffected>), typeDiscriminator: "featureBinding::areaAffected"));
+				}
+			});
+			return resolver;
+		}
 	}
 
 	/// <summary>

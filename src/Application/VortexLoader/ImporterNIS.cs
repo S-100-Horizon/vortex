@@ -4,6 +4,7 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
@@ -26,6 +27,7 @@ namespace S100Framework.Applications
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
+            TypeInfoResolver = Summary.FeatureBindingResolver(),
         };
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
@@ -1528,7 +1530,7 @@ namespace S100Framework.Applications
         //    List<information> information = CreateInformationFrom(current);
         //    instanceInformation.AddRange(information);
         //}
-        internal static List<object> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+        internal static List<informationBinding> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: TBD.
             //List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             //instanceInformation.AddRange(information);

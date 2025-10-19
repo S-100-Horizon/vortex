@@ -10,10 +10,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml.Serialization;
 using Xunit.Abstractions;
+using static TestS100Framework.UnitTestAssociations;
 
 namespace TestS100Framework
 {
@@ -81,19 +84,112 @@ namespace TestS100Framework
                 referenceId = "123456",
             };
 
-            object[] array = [aggregation];
+            var resolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver();
 
-            var json = System.Text.Json.JsonSerializer.Serialize(array);
+            var options = new JsonSerializerOptions {
+                WriteIndented = true,
+                TypeInfoResolver = resolver,
+            };
 
-            var instance1 = System.Text.Json.JsonSerializer.Deserialize<featureBinding<BridgeAggregation>[]>(json);
+            S100Framework.DomainModel.featureBinding[] array = [aggregation];
 
-            var instance2 = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json);
+            var json = System.Text.Json.JsonSerializer.Serialize(array, options);
+
+            var instance = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, options);
 
             System.Diagnostics.Debugger.Break();
 
         }
 
         const string json = "[{\"roleType\":\"aggregation\",\"association\":\"BridgeAggregation\",\"role\":\"theCollection\",\"associationId\":\"988364506\",\"featureId\":\"3313401958\"}]";
+
+        public static Func<string> Crc32 = () => {
+            return $"{System.IO.Hashing.Crc32.HashToUInt32(Guid.NewGuid().ToByteArray())}";
+        };
+
+        public static DefaultJsonTypeInfoResolver Resolver() {
+            return null;
+        }
+
+
+
+        [Fact]
+        public void Test_MixingObjects() {
+            var mixedVehicles = new List<Vehicle> {
+                new Car<Node1> { Name = "Sedan", Year = 2020, NumberOfDoors = 4, HasSunroof = true },
+                new Bicycle<Node2> { Name = "Mountain Bike", Year = 2023, NumberOfGears = 21, Type = "Mountain" },
+                new Car<Node1> { Name = "Sports Car", Year = 2022, NumberOfDoors = 2, HasSunroof = false },
+            };
+
+
+            var resolver = new DefaultJsonTypeInfoResolver();
+            resolver.Modifiers.Add(typeInfo => {
+                // Apply this modification only to the 'Vehicle' base type
+                if (typeInfo.Type == typeof(Vehicle)) {
+                    // Ensure polymorphic serialization is enabled for the base type
+                    // This tells the serializer to expect derived types.
+                    typeInfo.PolymorphismOptions = new JsonPolymorphismOptions {
+                        TypeDiscriminatorPropertyName = "$type", // Optional: Customize discriminator property name
+                        IgnoreUnrecognizedTypeDiscriminators = true, // Good practice
+                                                                     //UnknownTypeHandling = JsonUnknownTypeHandling.JsonElement // How to handle unknown types
+                        UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
+                    };
+
+                    // Manually add the derived types with their discriminators
+                    typeInfo.PolymorphismOptions.DerivedTypes.Add(
+                        new JsonDerivedType(typeof(Car<Node1>), typeDiscriminator: "Car::Node1"));
+                    typeInfo.PolymorphismOptions.DerivedTypes.Add(
+                        new JsonDerivedType(typeof(Bicycle<Node2>), typeDiscriminator: "Bicycle::Node2"));
+                }
+            });
+
+            var options = new JsonSerializerOptions {
+                WriteIndented = true,
+                TypeInfoResolver = resolver // Assign our custom resolver
+            };
+
+            string jsonString = JsonSerializer.Serialize(mixedVehicles, options);
+
+            var deserializedVehicles = JsonSerializer.Deserialize<List<Vehicle>>(jsonString, options);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+        public abstract class Node
+        {
+
+        }
+
+        public class Node1 : Node { }
+        public class Node2 : Node { }
+
+
+        //[JsonDerivedType(typeof(Car<Node1>), typeDiscriminator: "Car<Node1>")]
+        //[JsonDerivedType(typeof(Bicycle<Node2>), typeDiscriminator: "Bicycle<Node2>")]
+        public abstract class Vehicle
+        {
+            public string Name { get; set; }
+            public int Year { get; set; }
+
+            public override string ToString() => $"Name: {Name}, Year: {Year}";
+        }
+
+        public class Car<T> : Vehicle where T : Node
+        {
+            public int NumberOfDoors { get; set; }
+            public bool HasSunroof { get; set; }
+
+            public override string ToString() => $"Car - {base.ToString()}, Doors: {NumberOfDoors}, Sunroof: {HasSunroof}";
+        }
+
+        public class Bicycle<T> : Vehicle where T : Node
+        {
+            public int NumberOfGears { get; set; }
+            public string Type { get; set; } // e.g., "Mountain", "Road"
+
+            public override string ToString() => $"Bicycle - {base.ToString()}, Gears: {NumberOfGears}, Type: {Type}";
+        }
 
         //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<List<featureBindingTest>>(json);
     }

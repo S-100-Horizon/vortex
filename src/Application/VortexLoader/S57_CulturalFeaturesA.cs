@@ -324,7 +324,7 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - SpanOpening
-                                    DomainModel.featureBinding<BridgeAggregation>[] bindings = [
+                                    DomainModel.featureBinding[] bindings = [
                                         new DomainModel.featureBinding<BridgeAggregation> {
                                             featureType = nameof(SpanOpening),
                                             referenceId = relatedBridge.Name,
@@ -333,7 +333,7 @@ namespace S100Framework.Applications
                                         }
                                     ];
 
-                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonSerializerOptions);
                                     featureN.Store();
                                 }
 
@@ -415,7 +415,7 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - Spanfixed
-                                    DomainModel.featureBinding<BridgeAggregation>[] bindings = [
+                                    DomainModel.featureBinding[] bindings = [
                                         new DomainModel.featureBinding<BridgeAggregation>() {
                                             referenceId = relatedBridge.Name,
                                             featureType=nameof(SpanFixed),
@@ -424,7 +424,7 @@ namespace S100Framework.Applications
                                         }
                                     ];
 
-                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                    featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonSerializerOptions);
                                     featureN.Store();
 
                                 }
@@ -1220,7 +1220,7 @@ namespace S100Framework.Applications
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
 
                                 // Create link to bridge - PylonBridgeSupport
-                                DomainModel.featureBinding<BridgeAggregation>[] bindings = [
+                                DomainModel.featureBinding[] bindings = [
                                     new DomainModel.featureBinding<BridgeAggregation>() {
                                         referenceId = relatedBridge.Name,
                                         featureType = nameof(PylonBridgeSupport),
@@ -1229,7 +1229,7 @@ namespace S100Framework.Applications
                                     }
                                 ];
 
-                                featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings);
+                                featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonSerializerOptions);
                                 featureN.Store();
 
                             }

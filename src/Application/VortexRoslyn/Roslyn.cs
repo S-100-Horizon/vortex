@@ -1,5 +1,6 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -124,8 +125,11 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine($"\t\t\t\"{code}\" => typeof(featureBinding<FeatureAssociations.{code}>),");
                 }
                 builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
-                builderDomainModel.AppendLine("\t\t};");
+                builderDomainModel.AppendLine("\t\t};");                
             }
+
+            var indexBindings = builderDomainModel.Length;
+
             builderDomainModel.AppendLine("\t}");
             builderDomainModel.AppendLine();
 
@@ -168,6 +172,7 @@ namespace S100Framework.Applications
             };
 
             var objectConstructors = new Dictionary<string, StringBuilder>();
+            
 
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
@@ -723,12 +728,25 @@ namespace S100Framework.Applications
                 }
             }
 
+            var informationBindingBuilder = new StringBuilder();
             //  --- S100_FC_InformationAssociations ---------------------------------------------
-            {
+            {                
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
                 if (elements.Any())
                     builderDomainModel.AppendLine("\tnamespace InformationAssociations {");
+
+                var index = builderDomainModel.Length;
+
+                informationBindingBuilder.AppendLine();
+                informationBindingBuilder.AppendLine("\t\tpublic static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver InformationBindingResolver() {");
+                informationBindingBuilder.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
+                informationBindingBuilder.AppendLine("\t\t\tresolver.Modifiers.Add(typeInfo => {");
+                informationBindingBuilder.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(informationBinding)) {");
+                informationBindingBuilder.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
+                informationBindingBuilder.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$type\",");
+                informationBindingBuilder.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
+                informationBindingBuilder.AppendLine("\t\t\t\t\t};");
 
                 var isFirst = true;
                 foreach (var e in elements) {
@@ -765,7 +783,15 @@ namespace S100Framework.Applications
                     });
 
                     builderDomainModel.AppendLine(s);
+
+                    informationBindingBuilder.AppendLine($"\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
                 }
+
+
+                informationBindingBuilder.AppendLine("\t\t\t\t}");
+                informationBindingBuilder.AppendLine("\t\t\t});");
+                informationBindingBuilder.AppendLine("\t\t\treturn resolver;");
+                informationBindingBuilder.AppendLine("\t\t}");
 
                 if (elements.Any()) {
                     builderDomainModel.AppendLine("\t}");
@@ -773,12 +799,25 @@ namespace S100Framework.Applications
                 }
             }
 
+            var featureBindingBuilder = new StringBuilder();
             //  --- S100_FC_FeatureAssociations -------------------------------------------------
-            {
+            {                
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
 
                 if (elements.Any())
                     builderDomainModel.AppendLine("\tnamespace FeatureAssociations {");
+
+                var index = builderDomainModel.Length;
+
+                featureBindingBuilder.AppendLine();
+                featureBindingBuilder.AppendLine("\t\tpublic static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver FeatureBindingResolver() {");
+                featureBindingBuilder.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
+                featureBindingBuilder.AppendLine("\t\t\tresolver.Modifiers.Add(typeInfo => {");
+                featureBindingBuilder.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(featureBinding)) {");
+                featureBindingBuilder.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
+                featureBindingBuilder.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$type\",");
+                featureBindingBuilder.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
+                featureBindingBuilder.AppendLine("\t\t\t\t\t};");
 
                 var isFirst = true;
                 foreach (var e in elements) {
@@ -815,13 +854,22 @@ namespace S100Framework.Applications
 
                         builderDomainModel.AppendLine(s);
                     }
+
+                    featureBindingBuilder.AppendLine($"\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
                 }
+
+                featureBindingBuilder.AppendLine("\t\t\t\t}");
+                featureBindingBuilder.AppendLine("\t\t\t});");
+                featureBindingBuilder.AppendLine("\t\t\treturn resolver;");
+                featureBindingBuilder.AppendLine("\t\t}");                
 
                 if (elements.Any()) {
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
                 }
             }
+
+            builderDomainModel.Insert(indexBindings, string.Join(Environment.NewLine, [informationBindingBuilder.ToString(), featureBindingBuilder.ToString()]));
 
             //  --- S100_FC_SpatialAssociations -------------------------------------------------
 

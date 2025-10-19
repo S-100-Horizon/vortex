@@ -244,7 +244,7 @@ namespace S100Framework.Applications.Singletons
 
                     var bindings = _instance!.GetBindings(row.Crc32());
 
-                    var featureBindings = new List<object>();
+                    var featureBindings = new List<featureBinding>();
 
                     foreach (var binding in bindings) {
                         var relatedBridge = row.Crc32();
