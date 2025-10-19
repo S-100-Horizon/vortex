@@ -2,6 +2,7 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureAssociations;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using Serilog;
@@ -9,6 +10,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using WinRT;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -160,6 +162,21 @@ namespace S100Framework.Applications
                     var filter = e.Filter;
 
                     var datasetName = dataset.CellName.Split('.')[0];
+
+                    JsonSerializerOptions jsonSerializerOptionsInformationBindings = new() {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                        TypeInfoResolver = DomainModel.S101.Summary.InformationBindingResolver(),
+                    };
+
+                    JsonSerializerOptions jsonSerializerOptionsFeatureBindings = new() {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                        TypeInfoResolver = DomainModel.S101.Summary.FeatureBindingResolver(),
+                    };
+
 
                     //if (datasetName.Equals("101DK40751E")) continue;
                     //if (datasetName.Equals("101DK40545E")) continue;
@@ -413,77 +430,57 @@ namespace S100Framework.Applications
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    var informationbindings = Convert.ToString(current["informationbindings"])!;
-                                    using (var document = JsonDocument.Parse(informationbindings)) {
-                                        foreach (var element in document.RootElement.EnumerateArray()) {
-                                            var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, typeof(informationBinding));
+                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsInformationBindings);
 
+                                    if (informationBindings != default && informationBindings.Any()) {
+                                        foreach (var binding in informationBindings) {
+                                            var asso = new YAML.Association {
+                                                Name = binding.GetType().GenericTypeArguments[0].Name,
+                                                Role = binding.role,
+                                                To = binding.referenceId!,
+                                            };
 
-                                        }                                            
+                                            // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                                spatialAssociations.TryAdd(geometry, asso);
+                                            else
+                                                feature?.AddAssociation(asso);
+
+                                            if (!informationsTypesAdded.Contains(binding.referenceId!)) {
+                                                informationsTypesAdded.Add(binding.referenceId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.referenceId!)));
+                                            }
+                                        }
                                     }
-
-//                                  var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
-
-                                    //var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
-
-                                    //if (informationBindings != default && informationBindings.Any()) {
-                                    //    foreach (var binding in informationBindings) {
-                                    //        var asso = new YAML.Association {
-                                    //            Name = binding.association,
-                                    //            Role = binding.role,
-                                    //            To = binding.informationId!,
-                                    //        };
-
-                                    //        // Special case for SpatialAssociation. Add to dictionary for later processing.
-                                    //        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
-                                    //            spatialAssociations.TryAdd(geometry, asso);
-                                    //        else
-                                    //            feature?.AddAssociation(asso);
-
-                                    //        if (!informationsTypesAdded.Contains(binding.informationId!)) {
-                                    //            informationsTypesAdded.Add(binding.informationId!);
-                                    //            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
-                                    //        }
-                                    //    }
-                                    //}
                                 }
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    var featurebindings = Convert.ToString(current["featurebindings"])!;
-                                    using (var document = JsonDocument.Parse(featurebindings)) {
-                                        foreach (var element in document.RootElement.EnumerateArray()) {
-                                            var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, typeof(featureBinding));
+                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsInformationBindings);
 
+                                    if (featureBindings != default && featureBindings.Any()) {
+                                        foreach (var binding in featureBindings) {
+                                            var roleType = binding.roleType;
 
+                                            // Skip association roleType for now
+                                            if (roleType == "association")
+                                                continue;
+
+                                            var asso = new YAML.Association {
+                                                Name = binding.GetType().GenericTypeArguments[0].Name,
+                                                Role = binding.role,
+                                                To = $"110:{binding!.referenceId!}:1"
+                                            };
+
+                                            feature?.AddFeatureAssociation(asso);
+
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.referenceId}:1"));
+                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.referenceId)) {
+                                                featureTypesAdded.Add(binding.referenceId);
+                                                dataset?.AddFeature(noGeometry);
+                                            }
                                         }
                                     }
-
-                                    //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
-
-                                    //if (featureBindings != default && featureBindings.Any()) {
-                                    //    foreach (var binding in featureBindings) {
-                                    //        var roleType = binding.roleType;
-
-                                    //        // Skip association roleType for now
-                                    //        if (roleType == "association")
-                                    //            continue;
-
-                                    //        var asso = new YAML.Association {
-                                    //            Name = binding.association,
-                                    //            Role = binding.role,
-                                    //            To = $"110:{binding!.featureId!}:1"
-                                    //        };
-
-                                    //        feature?.AddFeatureAssociation(asso);
-
-                                    //        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
-                                    //        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
-                                    //            featureTypesAdded.Add(binding.featureId);
-                                    //            dataset?.AddFeature(noGeometry);
-                                    //        }
-                                    //    }
-                                    //}
                                 }
 
                                 dataset?.AddFeature(feature!);
