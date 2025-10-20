@@ -27,6 +27,19 @@ namespace S100Framework.Applications
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
+        };
+
+        internal static readonly JsonSerializerOptions jsonInformationTypeSerializerOptions = new() {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
+            TypeInfoResolver = Summary.InformationBindingResolver(),
+        };
+
+        internal static readonly JsonSerializerOptions jsonFeatureTypeSerializerOptions = new() {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
             TypeInfoResolver = Summary.FeatureBindingResolver(),
         };
 
