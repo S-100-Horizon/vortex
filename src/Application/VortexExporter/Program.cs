@@ -178,7 +178,7 @@ namespace S100Framework.Applications
                         while (informationCursor.MoveNext()) {
                             var current = informationCursor.Current;
 
-                            var name = $"{current.Crc32()}";
+                            var name = Convert.ToString(current["name"]);
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -243,7 +243,7 @@ namespace S100Framework.Applications
                         while (featureCursor.MoveNext()) {
                             var current = featureCursor.Current;
 
-                            var name = $"{current.Crc32()}";
+                            var name = Convert.ToString(current["name"]);
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
@@ -321,19 +321,19 @@ namespace S100Framework.Applications
                         using var cursor = fc.Search(filter, true);
                         while (cursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
-                            var name = $"{current.Crc32()}";
+                            var name = Convert.ToString(current["name"]);
 
                             // Only map geometry, and keep name seperate so foids remain unique
                             var geometry = name;
 
-                            if (topology.Mapping.TryGetValue(name!, out var value))
+                            if (topology.Mapping.TryGetValue(current.Crc32()!, out var value))
                                 geometry = value;
 
                             var shapetype = def.GetShapeType();
 
                             var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                             var prim = shapetype switch {
                                 GeometryType.Point => Primitive.Point,
@@ -442,15 +442,18 @@ namespace S100Framework.Applications
                                             if (roleType == "association")
                                                 continue;
 
+                                            //var id = topology.Mapping.Single(e => e.Value.Equals(binding!.featureId!));
+
                                             var asso = new YAML.Association {
                                                 Name = binding.association,
                                                 Role = binding.role,
-                                                To = $"110:{binding!.featureId!}:1"
+                                                To = $"110:{binding!.featureId!.Substring(1)}:1"
+                                                //To = $"110:{id.Key}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.Substring(1)}:1"));
                                             if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                                 featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
