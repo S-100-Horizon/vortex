@@ -251,7 +251,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                             var feature = new YAML.Feature {
                                 Prim = Primitive.NoGeometry,
@@ -442,13 +442,15 @@ namespace S100Framework.Applications
                                             if (roleType == "association")
                                                 continue;
 
-                                            //var id = topology.Mapping.Single(e => e.Value.Equals(binding!.featureId!));
+                                            //var id = topology.Mapping.SingleOrDefault(e => e.Value.Equals(binding!.featureId!));
+
+                                            //var _id = default(KeyValuePair<string, string>).Equals(id) ? binding!.featureId.Substring(1) : id.Key;
 
                                             var asso = new YAML.Association {
                                                 Name = binding.association,
                                                 Role = binding.role,
                                                 To = $"110:{binding!.featureId!.Substring(1)}:1"
-                                                //To = $"110:{id.Key}:1"
+                                                //To = $"110:{_id}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
