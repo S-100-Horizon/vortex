@@ -150,7 +150,7 @@ namespace S100Framework.Applications
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = sounding.GetType().Name;
                             bufferPointset["edition"] = ImporterNIS.s101version;
-                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings());
+                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
 
@@ -209,7 +209,7 @@ namespace S100Framework.Applications
                             bufferPointset["ps"] = ps101;
                             bufferPointset["code"] = instance.GetType().Name;
                             bufferPointset["edition"] = ImporterNIS.s101version;
-                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+                            bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                             var featureN = featureClass.CreateRow(bufferPointset);
                             var name = featureN.Crc32();

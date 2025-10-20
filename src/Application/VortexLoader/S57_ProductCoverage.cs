@@ -164,7 +164,7 @@ namespace S100Framework.Applications
                                 //buffer["ps"] = ps128;
                                 //buffer["code"] = instance.GetType().Name;
                                 //buffer["version"] = ImporterNIS.s101version;
-                                //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonTestSerializerOptions);
                                 //SetShape(buffer, productCoverage.SHAPE);
                                 //ImporterNIS.SetUsageBand(buffer, productCoverage!.PLTS_COMP_SCALE!.Value);
                                 //var featureN = featureClass.CreateRow(buffer);
