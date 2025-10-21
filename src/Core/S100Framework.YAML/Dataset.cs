@@ -1,6 +1,9 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureAssociations;
+using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.Topology;
 using System.Globalization;
+using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
@@ -27,21 +30,21 @@ namespace S100Framework.YAML
 
         public Metadata Metadata { get; set; } = new Metadata();
 
-        public ICollection<Information>? InformationTypes => _informationTypes.Any() ? _informationTypes : null;
-        public ICollection<Point>? Points => _points.Any() ? _points : null;
-        public ICollection<Curve>? Curves => _curves.Any() ? _curves : null;
-        public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Any() ? _compositeCurves : null;
-        public ICollection<PointSet>? Depths => _pointSets.Any() ? _pointSets : null;
-        public ICollection<Surface>? Surfaces => _surfaces.Any() ? _surfaces : null;
-        public ICollection<Feature>? Features => _features.Any() ? SortedFeatures() : null;
+        public ICollection<Information>? InformationTypes => _informationTypes.Count != 0 ? _informationTypes : null;
+        public ICollection<Point>? Points => _points.Count != 0 ? _points : null;
+        public ICollection<Curve>? Curves => _curves.Count != 0 ? _curves : null;
+        public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Count != 0 ? _compositeCurves : null;
+        public ICollection<PointSet>? Depths => _pointSets.Count != 0 ? _pointSets : null;
+        public ICollection<Surface>? Surfaces => _surfaces.Count != 0 ? _surfaces : null;
+        public ICollection<Feature>? Features => _features.Count != 0 ? SortedFeatures() : null;
 
-        private ICollection<Information> _informationTypes = new HashSet<Information>();
-        private ICollection<Point> _points = new HashSet<Point>();
-        private ICollection<PointSet> _pointSets = new HashSet<PointSet>();
-        private ICollection<Curve> _curves = new HashSet<Curve>();
-        private ICollection<CompositeCurve> _compositeCurves = new HashSet<CompositeCurve>();
-        private ICollection<Surface> _surfaces = new HashSet<Surface>();
-        private ICollection<Feature> _features = new HashSet<Feature>();
+        private readonly ICollection<Information> _informationTypes = new HashSet<Information>();
+        private readonly ICollection<Point> _points = new HashSet<Point>();
+        private readonly ICollection<PointSet> _pointSets = new HashSet<PointSet>();
+        private readonly ICollection<Curve> _curves = new HashSet<Curve>();
+        private readonly ICollection<CompositeCurve> _compositeCurves = new HashSet<CompositeCurve>();
+        private readonly ICollection<Surface> _surfaces = new HashSet<Surface>();
+        private readonly ICollection<Feature> _features = new HashSet<Feature>();
 
         public Dataset AddPoint(Point point) {
             _points.Add(point);
@@ -153,7 +156,7 @@ namespace S100Framework.YAML
         Dictionary<string, Geometry> Deleted
     );
 
-    public class DatasetDiff(GeometryDiff points,
+    public class DatasetDelta(GeometryDiff points,
                              GeometryDiff depths,
                              GeometryDiff curves,
                              GeometryDiff compositeCurves,
@@ -162,28 +165,37 @@ namespace S100Framework.YAML
                              FeatureDiff features,
                              InformationTypeDiff informationTypes)
     {
-        [YamlMember(Alias = "infAdd", ApplyNamingConventions = false)]
+        public string? CellName { get; set; }
+        public string? Comment { get; set; }
+        public int? Edition { get; set; }
+        public int? Update { get; set; }
+        [YamlMember(Alias = "encver", ApplyNamingConventions = false)]
+        public string? ENCVer { get; set; }
+        [YamlMember(Alias = "FCVer", ApplyNamingConventions = false)]
+        public string? FCVer { get; set; }
+
+
+        [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false)]
         public ICollection<object>? InformationTypesAdded => InformationTypes.Added.Count != 0 ? InformationTypes?.Added.Values : null;
-        [YamlMember(Alias = "infDel", ApplyNamingConventions = false)]
+        [YamlMember(Alias = "InfDel", ApplyNamingConventions = false)]
         public ICollection<string>? InformationTypesDeleted => InformationTypes.Deleted.Count != 0 ? InformationTypes?.Deleted.Keys : null;
-        [YamlMember(Alias = "fAdd", ApplyNamingConventions = false)]
+        [YamlMember(Alias = "Features", ApplyNamingConventions = false)]
         public ICollection<object>? FeaturesAdded => Features.Added.Count != 0 ? Features?.Added.Values : null;
-        [YamlMember(Alias = "fDel", ApplyNamingConventions = false)]
+        [YamlMember(Alias = "FDel", ApplyNamingConventions = false)]
         public ICollection<string>? FeaturesDeleted => Features.Deleted.Count != 0 ? Features?.Deleted.Keys : null;
-        [YamlMember(Alias = "gAdd", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? GeometriesAdded {
-            get {
-                var all = Points.Added.Values
-                    .Concat(Depths.Added.Values)
-                    .Concat(Curves.Added.Values)
-                    .Concat(CompositeCurves.Added.Values)
-                    .Concat(Surfaces.Added.Values);
 
-                return all.Any() ? [.. all] : null;
-            }
-        }
+        [YamlMember(Alias = "Points", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? PointsAdded => Points.Added.Count != 0 ? Points?.Added.Values : null;
+        [YamlMember(Alias = "Depths", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? DepthsAdded => Depths.Added.Count != 0 ? Depths?.Added.Values : null;
+        [YamlMember(Alias = "Curves", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? CurvesAdded => Curves.Added.Count != 0 ? Curves?.Added.Values : null;
+        [YamlMember(Alias = "CompositeCurves", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? CompositeCurvesAdded => CompositeCurves.Added.Count != 0 ? CompositeCurves?.Added.Values : null;
+        [YamlMember(Alias = "Surfaces", ApplyNamingConventions = false)]
+        public ICollection<Geometry>? SurfacesAdded => Surfaces.Added.Count != 0 ? Surfaces?.Added.Values : null;
 
-        [YamlMember(Alias = "gDel", ApplyNamingConventions = false)]
+        [YamlMember(Alias = "GDel", ApplyNamingConventions = false)]
         public ICollection<string>? GeometriesDeleted {
             get {
                 var all = Points.Deleted.Keys
@@ -221,7 +233,11 @@ namespace S100Framework.YAML
 
     public static class DatasetComparer
     {
-        public static DatasetDiff Compare(string root, string update) {
+        /// <summary>
+        /// Compares two YAML datasets and build a delta object
+        /// </summary>
+        /// <returns>A DatasetDelta object, which can be serialized to a delta yaml dataset</returns>
+        public static DatasetDelta Compare(string root, string update) {
             var rootDataset = ReadDataset(root);
             var updateDataset = ReadDataset(update);
 
@@ -250,9 +266,8 @@ namespace S100Framework.YAML
             // Compare Surfaces
             var surfaceDiff = GeometryEquals<Surface>(rootDataset.Surfaces!, updateDataset.Surfaces!);
 
-
             // Build result return it
-            var result = new DatasetDiff(
+            var result = new DatasetDelta(
                 points: pointDiff,
                 depths: depthDiff,
                 curves: curveDiff,
@@ -271,12 +286,14 @@ namespace S100Framework.YAML
             var rawDictionary = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(dataset);
 
             // Read InformationTypes
-            var informationTypes = (rawDictionary["InformationTypes"] as List<object>)!
+            rawDictionary.TryGetValue("InformationTypes", out var infoTypesObj);
+
+            var informationTypes = (infoTypesObj as List<object>)?
                 .OfType<Dictionary<object, object>>()
                 .ToDictionary(
                     dict => dict["ID"]!.ToString()!,
                     dict => dict as object
-                );
+                ) ?? [];
 
             // Read Features
             var features = (rawDictionary["Features"] as List<object>)!
@@ -474,35 +491,7 @@ namespace S100Framework.YAML
                 Surfaces = surfaces
             };
         }
-        public static string BuildDatasetUpdate(string dataset, DatasetDiff updates) {
-            var rawDictionary = Converter.Deserialize<Dictionary<object, object>>(dataset);
 
-            // Features
-            if (updates.FeaturesDeleted != null)
-                rawDictionary.Add("fDel", updates.FeaturesDeleted);
-            if (updates.FeaturesAdded != null)
-                rawDictionary.Add("fAdd", updates.FeaturesAdded);
-
-            // Support files
-            if (updates.SupportFilesDeleted != null)
-                rawDictionary.Add("fileDel", updates.SupportFilesDeleted);
-            if (updates.SupportFilesAdded != null)
-                rawDictionary.Add("fileAdd", updates.SupportFilesAdded);
-
-            // InformationTypes
-            if (updates.InformationTypesDeleted != null)
-                rawDictionary.Add("infDel", updates.InformationTypesDeleted);
-            if (updates.InformationTypesAdded != null)
-                rawDictionary.Add("infAdd", updates.InformationTypesAdded);
-
-            // Geometry
-            if (updates.GeometriesDeleted != null)
-                rawDictionary.Add("gDel", updates.GeometriesDeleted);
-            if (updates.GeometriesAdded != null)
-                rawDictionary.Add("gAdd", updates.GeometriesAdded);
-
-            return Converter.Serialize(rawDictionary);
-        }
         public static string AppendUpdate(string root, string update) {
             var supportFiles = new List<Dictionary<object, object>>();
 
@@ -777,8 +766,8 @@ namespace S100Framework.YAML
 
         public string Producer { get; set; } = "GST";
         public string ProducerCode { get; set; } = "DK00";
-        public ICollection<SupportFile>? SupportFiles => _supportFiles.Any() ? _supportFiles : null;
-        private ICollection<SupportFile> _supportFiles = [];
+        public ICollection<SupportFile>? SupportFiles => _supportFiles.Count != 0 ? _supportFiles : null;
+        private readonly ICollection<SupportFile> _supportFiles = [];
 
         public void AddSupportFile(string name, string content) => _supportFiles.Add(new(name, content));
 
@@ -862,7 +851,7 @@ namespace S100Framework.YAML
     {
         [YamlMember(Order = 1)]
         public string? Location => Coordinate is null ? string.Empty :
-            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',');
+            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',');
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
@@ -887,7 +876,7 @@ namespace S100Framework.YAML
     {
         [YamlMember(Order = 1)]
         public string? Location => Points is null ? string.Empty :
-            string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
+            string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
 
         [YamlMember(Order = 2)]
         public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
@@ -939,7 +928,7 @@ namespace S100Framework.YAML
         public string? End => _end;
         [YamlMember(Order = 3)]
         public string? Vertices => Coordinate is null ? string.Empty :
-            string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText().Substring("Point (".Length).Trim(')').Replace(' ', ',')));
+            string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }

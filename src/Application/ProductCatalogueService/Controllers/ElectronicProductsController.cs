@@ -86,11 +86,18 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
+            if (_electronicProductManager.ElectronicProduct(name) == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status404NotFound, response);
+            }
+
             // Create exchange set?
             var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
             var yaml = dataset.Serialize();
 
-            var product = _electronicProductManager.ElectronicProduct(name);
+            var product = _electronicProductManager.ElectronicProduct(name)!;
 
             this.CreateExchangeSet(product, yaml);
 
@@ -110,6 +117,13 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
+            if (_electronicProductManager.ElectronicProduct(name) == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status404NotFound, response);
+            }
+
             var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
 
             var yaml = dataset.Serialize();
@@ -122,9 +136,9 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var product = _electronicProductManager.ElectronicProduct(name);
+            var product = _electronicProductManager.ElectronicProduct(name)!;
 
-            this.CreateExchangeSet(product!, yaml);
+            this.CreateExchangeSet(product, yaml);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
@@ -140,21 +154,25 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newupdate", Name = "NewUpdate")]
         public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
-            if (!System.Diagnostics.Debugger.IsAttached)
-                return StatusCode(StatusCodes.Status501NotImplemented);
-
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
+
+            if (_electronicProductManager.ElectronicProduct(name) == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status404NotFound, response);
+            }
 
             // Check if product has any updates before creating new update
             var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            //if (!dirty) {
-            //    response.Success = false;
-            //    response.Message = $"Product has no updates.";
-            //    response.DurationMs = sw.ElapsedMilliseconds;
-            //    return BadRequest(response);
-            //}
+            if (!dirty) {
+                response.Success = false;
+                response.Message = $"Product has no updates.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return BadRequest(response);
+            }
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
@@ -167,18 +185,23 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
+            var product = _electronicProductManager.ElectronicProduct(name)!;
+
             var latest = await _electronicProductManager.GetLatestDatasetYAML(name);
 
+            // Build YAML Delta
             var delta = S100Framework.YAML.DatasetComparer.Compare(latest, incoming);
 
-            // foreach var previousupdate, DatasetComparer.AppendUpdate();                              // Nessecary to append previous yaml deltas?
-            //var update = S100Framework.YAML.DatasetComparer.BuildDatasetUpdate(incoming, diff);       // Entire yaml file + delta
+            // Populate metadata
+            delta.CellName = product.datasetName;
+            delta.Comment = "Not for navigation!";
+            delta.Edition = product.editionNumber!.Value;
+            //delta.Update = product.updateNumber!.Value;       // Hide for now until bugfix in s100compiler
+            delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
+            delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
 
-            var update = S100Framework.YAML.Converter.Serialize(delta);                                  // Only delta
+            var update = S100Framework.YAML.Converter.Serialize(delta);     // Only delta
 
-            var product = _electronicProductManager.ElectronicProduct(name);
-
-            // Argument for updates? Like create a 001 file
             this.CreateExchangeSet(product, update);
 
             response.DurationMs = sw.ElapsedMilliseconds;
@@ -243,7 +266,7 @@ namespace ProductCatalogueService.Controllers
 
                     var series = Convert.ToString(c["series"])!.ToString();
 
-                    var name = "101DK00" + Convert.ToString(c["DSNM"])!.Substring(2);
+                    var name = "101DK00" + Convert.ToString(c["DSNM"])![2..];
                     var specificUsage = name[7] switch {
                         '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
                         '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
@@ -327,7 +350,7 @@ namespace ProductCatalogueService.Controllers
 
             if (p.ExitCode != 0) {
                 Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
-                 throw new ArgumentException(commandline); 
+                throw new ArgumentException(commandline);
             }
 
             // Cleanup temp yaml

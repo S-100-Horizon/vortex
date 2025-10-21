@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork;
 using ArcGIS.Core.Geometry;
+using Microsoft.AspNetCore.Components.Forms;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S100;
 using S100Framework.DomainModel.S128.ComplexAttributes;
@@ -75,6 +76,13 @@ namespace S100Framework.ProductCatalogue
 
         private string _databaseName = string.Empty;
         private string _ownerName = string.Empty;
+
+        JsonSerializerOptions jsonSerializerOptionsSharedBindings = new() {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
+            TypeInfoResolver = DomainModel.S101.Summary.SharedBindingResolver(),
+        };
 
         public string OutputFolder { get; internal set; }
         private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
@@ -323,6 +331,9 @@ namespace S100Framework.ProductCatalogue
         }
 
         async Task<bool> IElectronicProductManager.IsDirtyAsync(string name) {
+            // TODO: return true for now.
+            return true;
+
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
@@ -365,10 +376,10 @@ namespace S100Framework.ProductCatalogue
                 }, true);
 
                 if (!cursor.MoveNext())
-                    return "";
+                    throw new ArgumentNullException("cursor found no hits");
 
                 if (cursor.Current["data"] is not MemoryStream stream)
-                    return "";
+                    throw new ArgumentNullException("Column 'data' is not a memory stream");
 
                 stream.Position = 0;
                 using var reader = new StreamReader(stream);
@@ -449,7 +460,7 @@ namespace S100Framework.ProductCatalogue
                 ENCVer = "INT.IHO.S-101.2.0",
                 FCVer = "2.0",
                 verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                //Update = (uint?)electronicProduct.updateNumber ?? 0, // Remove dfor now
+                //Update = (uint?)electronicProduct.updateNumber,   // Bug in s100ocompiler and must always be null 
             };
 
             var supportFiles = new List<string>();
@@ -702,63 +713,59 @@ namespace S100Framework.ProductCatalogue
 
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
-                                throw new NotImplementedException();    //TODO: informationbindings
-                                //var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]?>(Convert.ToString(current["informationbindings"])!);
+                                // throw new NotImplementedException();    //TODO: informationbindings
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
 
-                                //if (informationBindings != default && informationBindings.Any()) {
-                                //    foreach (var binding in informationBindings) {
-                                //        var asso = new YAML.Association {
-                                //            Name = binding.association,
-                                //            Role = binding.role,
-                                //            To = binding.informationId!,
-                                //        };
+                                if (informationBindings != default && informationBindings.Length != 0) {
+                                    foreach (var binding in informationBindings) {
+                                        var asso = new YAML.Association {
+                                            Name = binding.GetType().GenericTypeArguments[0].Name,
+                                            Role = binding.role,
+                                            To = binding.referenceId!,
+                                        };
 
-                                //        // Special case for SpatialAssociation. Add to dictionary for later processing.
-                                //        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
-                                //            spatialAssociations.TryAdd(geometry, asso);
-                                //        else
-                                //            feature?.AddAssociation(asso);
+                                        // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                            spatialAssociations.TryAdd(geometry, asso);
+                                        else
+                                            feature?.AddAssociation(asso);
 
-                                //        if (!informationsTypesAdded.Contains(binding.informationId!)) {
-                                //            informationsTypesAdded.Add(binding.informationId!);
-                                //            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
-                                //        }
-                                //    }
-                                //}
+                                        if (!informationsTypesAdded.Contains(binding.referenceId!)) {
+                                            informationsTypesAdded.Add(binding.referenceId!);
+                                            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.referenceId!)));
+                                        }
+                                    }
+                                }
                             }
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
-                                throw new NotImplementedException();    //TODO: featurebindings
-                                //var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]?>(Convert.ToString(current["featurebindings"])!);
+                                //throw new NotImplementedException();    //TODO: featurebindings
+                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsSharedBindings);
 
-                                //if (featureBindings != default && featureBindings.Any()) {
-                                //    foreach (var binding in featureBindings) {
-                                //        var roleType = binding.roleType;
+                                if (featureBindings != default && featureBindings.Length != 0) {
+                                    foreach (var binding in featureBindings) {
+                                        var roleType = binding.roleType;
 
-                                //        // Skip association roleType for now
-                                //        if (roleType == "association")
-                                //            continue;
+                                        // Skip association roleType for now
+                                        if (roleType == "association")
+                                            continue;
 
-                                //        var asso = new YAML.Association {
-                                //            Name = binding.association,
-                                //            Role = binding.role,
-                                //            //To = $"110:{binding.featureId![1..]}:1"
-                                //            To = $"110:{binding.featureId}:1"
-                                //        };
+                                        var asso = new YAML.Association {
+                                            Name = binding.GetType().GenericTypeArguments[0].Name,
+                                            Role = binding.role,
+                                            To = $"110:{binding!.referenceId!}:1"
+                                        };
 
-                                //        feature?.AddFeatureAssociation(asso);
+                                        feature?.AddFeatureAssociation(asso);
 
-
-                                //        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
-                                //        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
-                                //            featureTypesAdded.Add(binding.featureId);
-                                //            dataset?.AddFeature(noGeometry);
-                                //        }
-
-
-                                //    }
-                                //}
+                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.referenceId}:1"));
+                                        if (noGeometry != null && !featureTypesAdded.Contains(binding.referenceId)) {
+                                            featureTypesAdded.Add(binding.referenceId);
+                                            dataset?.AddFeature(noGeometry);
+                                        }
+                                    }
+                                }
                             }
 
                             dataset?.AddFeature(feature!);
@@ -788,6 +795,7 @@ namespace S100Framework.ProductCatalogue
                     curve?.AddAssociation(sa.Value);
                 }
 
+                // Apply Edits
                 this._geodatabase!.ApplyEdits(() => {
                     using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 

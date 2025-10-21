@@ -75,6 +75,32 @@ namespace S100Framework.DomainModel.S100
         Update,
     }
 
+    [Serializable]
+    [XmlType(Namespace = "http://www.iho.int/s100/xc/5.2")]
+    public enum S100_SupportFileFormat {
+        [XmlEnum("TXT_UTF-8")]
+        TXT,
+        [XmlEnum("JPEG2000")]
+        JPEG2000,
+        [XmlEnum("HTML")]
+        HTML,
+        [XmlEnum("XML")]
+        XML,
+        [XmlEnum("XSLT")]
+        XSLT,
+        [XmlEnum("VIDEO")]
+        VIDEO,
+        [XmlEnum("TIFF")]
+        TIFF,
+        [XmlEnum("PDF/AorUA")]
+        PDF,
+        [XmlEnum("LUA")]
+        LUA,
+        [XmlEnum("other")]
+        other,
+
+    }
+
     #endregion
 
 

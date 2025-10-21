@@ -1,20 +1,12 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using NetTopologySuite.Utilities;
-using S100Framework.Applications;
-using S100Framework.Applications.S57.esri;
-using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using Serilog;
-using System.Globalization;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 
@@ -69,6 +61,8 @@ namespace S100Framework.Applications
                     fcSurface.DeleteRows(filter);
                 }
 
+                var foreignFoids = new Dictionary<string, string>();
+
                 foreach (var feature in dataset.Features!) {
                     // 1) Cast feature.Attributes to S101 Model
                     var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Name}", true) ?? default;
@@ -95,32 +89,60 @@ namespace S100Framework.Applications
 
                     // Feature Association
                     if (feature.FeatureAssociation != null && feature.FeatureAssociation.Count != 0) {
-                        throw new NotImplementedException();
-                        //var featureAssociations = feature.FeatureAssociation.Select(e => new featureBinding {
-                        //    association = e.Name,
-                        //    role = e.Role,
-                        //    featureId = feature.Geometry,
-                        //    //roleType = ??,         Skip for now
-                        //});
+                        var featureAssociations = new List<featureBinding>();
 
-                        //var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
+                        foreach (var fa in feature.FeatureAssociation) {
+                            if (!foreignFoids.TryGetValue(fa.To, out var featureType)) {
+                                featureType = dataset.Features.First(e => e.Foid == fa.To).Name;
+                                foreignFoids.TryAdd(fa.To, featureType!);
+                            }
 
-                        //rowbuffer["featurebindings"] = featureAssociationJSON;
+                            var instance = Activator.CreateInstance(type);
+                            var casted = instance as IFeatureBindingDefinition;
+                            var featurebindingdefinition = casted!.featureBindingDefinitions.Single(e => e.association == fa.Name && e.role == fa.Role);
+
+                            var theType = Summary.FeatureBindings(fa.Name);
+                            var fb = Activator.CreateInstance(theType) as featureBinding;
+
+                            fb!.featureType = featureType; 
+                            fb.role = fa.Role;
+                            fb.roleType = featurebindingdefinition.roleType.ToString(); 
+                            fb.referenceId = fa.To;
+
+                            featureAssociations.Add(fb);
+                        }
+
+                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations);
+                        rowbuffer["featurebindings"] = featureAssociationJSON;
                     }
 
                     // Information Association
                     if (feature.Association != null && feature.Association.Count != 0) {
-                        throw new NotImplementedException();
-                        //var informationAssociations = feature.Association.Select(e => new informationBinding {
-                        //    association = e.Name,
-                        //    role = e.Role,
-                        //    informationId = e.To,
-                        //    //roleType = ??,        Skip for now
-                        //});
+                        var informationAssociations = new List<informationBinding>();
 
-                        //var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
+                        foreach (var ia in feature.Association) {
+                            if (!foreignFoids.TryGetValue(ia.To, out var informationType)) {
+                                informationType = dataset.InformationTypes!.First(e => e.ID == ia.To).Name;
+                                foreignFoids.TryAdd(ia.To, informationType!);
+                            }
 
-                        //rowbuffer["informationbindings"] = informationAssociationJSON;
+                            var instance = Activator.CreateInstance(type);
+                            var casted = instance as IFeatureBindingDefinition;
+                            var informationBindingDefinitions = casted!.informationBindingDefinitions.Single(e => e.association == ia.Name && e.role == ia.Role);
+
+                            var theType = Summary.InformationBindings(ia.Name);
+                            var ib = Activator.CreateInstance(theType) as informationBinding;
+
+                            ib!.informationType = informationType;    
+                            ib.role = ia.Role;
+                            ib.roleType = informationBindingDefinitions.roleType.ToString();
+                            ib.referenceId = ia.To;
+
+                            informationAssociations.Add(ib);
+                        }
+
+                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations);
+                        rowbuffer["informationbindings"] = informationAssociationJSON;
                     }
 
                     // Set Usageband
@@ -176,6 +198,5 @@ namespace S100Framework.Applications
             });
             return true;
         }
-
     }
 }
