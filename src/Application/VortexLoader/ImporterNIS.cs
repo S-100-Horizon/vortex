@@ -325,6 +325,10 @@ namespace S100Framework.Applications
                     Logger.Current.Information($"Converting Aids to Navigation");
                     Store(() => S57_AidsToNavigationP(source, destination, QueryFilter));
 
+                    Logger.Current.Information($"Converting Note files");
+                    Store(() => NauticalInformations.Instance.Flush(destination));
+
+
                     //Store(() => FeatureRelations.Instance.CreateRelations(destination));
                 }
                 //#endif
