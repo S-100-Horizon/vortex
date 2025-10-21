@@ -7,8 +7,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <NoWarn>CA1416</NoWarn>
     <RootNamespace>VortexProAppModule</RootNamespace>
-    <AssemblyVersion>1.0.609.0</AssemblyVersion>
-    <FileVersion>1.0.609.0</FileVersion>
+    <AssemblyVersion>1.0.615.0</AssemblyVersion>
+    <FileVersion>1.0.615.0</FileVersion>
     <Platforms>x64</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -55,9 +55,11 @@
     <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
     <PackageReference Include="Serilog.Enrichers.ExceptionData" Version="1.0.0" />
+    <PackageReference Include="System.IO.Hashing" Version="9.0.10" />
     <PackageReference Include="System.Text.Json" Version="8.0.6" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\S100Framework.ArcGIS.Core\S100Framework.ArcGIS.Core.csproj" />
     <ProjectReference Include="..\..\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
     <ProjectReference Include="..\..\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
   </ItemGroup>

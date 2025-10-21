@@ -171,7 +171,7 @@ namespace VortexProAppModule
                                     if (!informationtypes.Contains(code))
                                         continue;
 
-                                    ids.Add(new InformationTypeId(code, $"{local["GlobalID"]:N}"));
+                                    ids.Add(new InformationTypeId(code, $"{local.Crc32()}"));
                                 }
                             }
 
@@ -235,7 +235,7 @@ namespace VortexProAppModule
                                     if (!features.Contains(code))
                                         continue;
 
-                                    ids.Add(new FeatureTypeId(code, $"{local["GlobalID"]:N}"));
+                                    ids.Add(new FeatureTypeId(code, $"{local.Crc32()}"));
                                 }
                             }
 
@@ -257,7 +257,7 @@ namespace VortexProAppModule
                             using var cursor = f.Search(q, true);
                             while (cursor.MoveNext() && top > 0) {
                                 var feature = cursor.Current;
-                                ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), $"{feature.GetGlobalID():N}"));
+                                ids.Add(new FeatureTypeId(Convert.ToString(feature["code"]), $"{feature.Crc32()}"));
 
                                 top -= 1;
                             }
@@ -430,8 +430,6 @@ namespace VortexProAppModule
                 return;
 
             try {
-                var uuid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
-
                 var catalogue = await QueuedTask.Run(() => {
                     var fc = inspector.MapMember switch {
                         FeatureLayer l => l.GetFeatureClass(),
@@ -502,7 +500,6 @@ namespace VortexProAppModule
                 });
 
                 this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
-                    var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
                     var schema = Convert.ToString(inspector["ps"]);
 
                     if (string.IsNullOrEmpty(schema)) {
@@ -519,7 +516,7 @@ namespace VortexProAppModule
 
                     var code = Convert.ToString(inspector["code"]);
 
-                    var name = $"{inspector["GlobalID"]:N}";
+                    var name = $"{inspector.Crc32()}";
 
                     var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
@@ -689,8 +686,6 @@ namespace VortexProAppModule
         }
 
         private Type FeatureTypeSelector(Inspector inspector, string schema) {
-            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
-
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
@@ -715,36 +710,7 @@ namespace VortexProAppModule
             return type;
         }
 
-        private Type FeatureAssociationTypeSelector(Inspector inspector, string schema) {
-            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
-
-            var featureCatalogue = _module.GetFeatureCatalogue(schema);
-
-            var code = Convert.ToString(inspector["code"]);
-            if (string.IsNullOrEmpty(code))
-                return null;
-
-            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
-                SelectedSchema = schema;
-
-                var types = featureCatalogue.FeatureAssociationTypes.Select(e => e.Code);
-
-                System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    ModelTypes.Clear();
-                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
-                });
-
-                SelectedModelType = ModelTypes.Single(e => e.Code == code);
-            }
-
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureAssociations")}.{code}", true);
-
-            return type;
-        }
-
         private Type InformationTypeSelector(Inspector inspector, string schema) {
-            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
-
             var featureCatalogue = _module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
@@ -767,34 +733,6 @@ namespace VortexProAppModule
             var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
 
             return type;
-        }
-
-        private Type InformationAssociationTypeSelector(Inspector inspector, string schema) {
-            var featureid = Convert.ToString(inspector["GlobalID"]).ToUpperInvariant();
-
-            var featureCatalogue = _module.GetFeatureCatalogue(schema);
-
-            var code = Convert.ToString(inspector["code"]);
-            if (string.IsNullOrEmpty(code))
-                return null;
-
-            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
-                SelectedSchema = schema;
-
-                var types = featureCatalogue.InformationAssociationTypes.Select(e => e.Code);
-
-                System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    ModelTypes.Clear();
-                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
-                });
-
-                SelectedModelType = ModelTypes.Single(e => e.Code == code);
-            }
-
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InfromationAssociations")}.{code}", true);
-
-            return type;
-
         }
 
         public ICommand CreateInstance { get; set; }

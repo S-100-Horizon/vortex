@@ -10,5 +10,10 @@ namespace ArcGIS.Desktop.Editing.Attributes
             return false;
 
         }
+
+        public static string Crc32(this Inspector inspector) {
+            return $"{System.IO.Hashing.Crc32.HashToUInt32(Guid.Parse(Convert.ToString(inspector["GlobalID"])).ToByteArray())}";
+        }
     }
 }
+
