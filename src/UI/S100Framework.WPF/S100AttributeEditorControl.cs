@@ -12,7 +12,6 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace S100Framework.WPF
 {
-    public record AssociationId(string Id);
     public record InformationTypeId(string Code, string Id);
     public record FeatureTypeId(string Code, string Id);
 
@@ -179,9 +178,9 @@ namespace S100Framework.WPF
 
         public required Action<SelectFeatureBindingEventArgs> SelectFeatureBinding { get; set; }
 
-        public required Action<SelectAssociationEventArgs> SelectInformationAssociation { get; set; }
+        //public required Action<SelectAssociationEventArgs> SelectInformationAssociation { get; set; }
 
-        public required Action<SelectAssociationEventArgs> SelectFeatureAssociation { get; set; }
+        //public required Action<SelectAssociationEventArgs> SelectFeatureAssociation { get; set; }
     }
 
 

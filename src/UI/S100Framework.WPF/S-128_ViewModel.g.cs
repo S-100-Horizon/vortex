@@ -2309,10 +2309,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 
-		public CatalogueSectionHeaderViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public CatalogueSectionHeaderViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2465,10 +2462,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-		public ContactDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2564,10 +2558,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 
-		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2676,10 +2667,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 
-		public PriceInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public PriceInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2809,10 +2797,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 
-		public ProducerInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ProducerInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2910,10 +2895,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 
-		public DistributorInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public DistributorInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -3519,10 +3501,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return this;
 		}
 
-		public ElectronicProductViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public ElectronicProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -4155,10 +4134,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return this;
 		}
 
-		public PhysicalProductViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public PhysicalProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -4531,10 +4507,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return this;
 		}
 
-		public S100ServiceViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public S100ServiceViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 

@@ -142,10 +142,6 @@ namespace VortexConceptApplication
                 },
                 SelectFeatureBinding = (SelectFeatureBindingEventArgs e) => {
                 },
-                SelectInformationAssociation = (SelectAssociationEventArgs e) => {
-                },
-                SelectFeatureAssociation = (SelectAssociationEventArgs e) => {
-                },
             };
 
             var model = new TestQualityOfBathymetricData() {

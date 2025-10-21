@@ -305,37 +305,37 @@ namespace VortexProAppModule
                     }, TaskCreationOptions.None);
                 },
 
-                SelectInformationAssociation = async (SelectAssociationEventArgs e) => {
-                    if (MapView.Active is null)
-                        return;
-                    await QueuedTask.Run(() => {
-                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
-                            if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.OrdinalIgnoreCase)) {
-                                    table.Select(new QueryFilter {
-                                        WhereClause = $"upper(name) = '{e.associationId}'"
-                                    }, SelectionCombinationMethod.Add);
-                                }
-                            }
-                        }
-                    }, TaskCreationOptions.None);
-                },
+                //SelectInformationAssociation = async (SelectAssociationEventArgs e) => {
+                //    if (MapView.Active is null)
+                //        return;
+                //    await QueuedTask.Run(() => {
+                //        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                //            if (layer is StandaloneTable table) {
+                //                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.OrdinalIgnoreCase)) {
+                //                    table.Select(new QueryFilter {
+                //                        WhereClause = $"upper(name) = '{e.associationId}'"
+                //                    }, SelectionCombinationMethod.Add);
+                //                }
+                //            }
+                //        }
+                //    }, TaskCreationOptions.None);
+                //},
 
-                SelectFeatureAssociation = async (SelectAssociationEventArgs e) => {
-                    if (MapView.Active is null)
-                        return;
-                    await QueuedTask.Run(() => {
-                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
-                            if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.OrdinalIgnoreCase)) {
-                                    table.Select(new QueryFilter {
-                                        WhereClause = $"upper(name) = '{e.associationId}'"
-                                    }, SelectionCombinationMethod.Add);
-                                }
-                            }
-                        }
-                    }, TaskCreationOptions.None);
-                },
+                //SelectFeatureAssociation = async (SelectAssociationEventArgs e) => {
+                //    if (MapView.Active is null)
+                //        return;
+                //    await QueuedTask.Run(() => {
+                //        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                //            if (layer is StandaloneTable table) {
+                //                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.OrdinalIgnoreCase)) {
+                //                    table.Select(new QueryFilter {
+                //                        WhereClause = $"upper(name) = '{e.associationId}'"
+                //                    }, SelectionCombinationMethod.Add);
+                //                }
+                //            }
+                //        }
+                //    }, TaskCreationOptions.None);
+                //},
             };
         }
 
@@ -514,6 +514,8 @@ namespace VortexProAppModule
                         return default;
                     }
 
+                    var featureCatalogue = _module.GetFeatureCatalogue(schema);
+
                     var code = Convert.ToString(inspector["code"]);
 
                     var name = $"{inspector.Crc32()}";
@@ -562,7 +564,8 @@ namespace VortexProAppModule
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
-                            var json = Convert.ToString(inspector["informationbindings"]);
+                            var json = "";
+                            var value = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(inspector["informationbindings"]), featureCatalogue.DefaultJsonOptions);
                             var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
                             parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
                         }
@@ -570,6 +573,7 @@ namespace VortexProAppModule
                         //  featureBinding                        
                         if (!inspector.IsNull("featurebindings")) {
                             var json = Convert.ToString(inspector["featurebindings"]);
+                            var value = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(inspector["featurebindings"]), featureCatalogue.DefaultJsonOptions);
                             var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
                             parseFeatureBindingsInfo.Invoke(viewmodel, new object[1] { json });
                         }

@@ -1530,10 +1530,10 @@ namespace S100Framework.Applications
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
                         
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(string json) {{");
-                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
-                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
+                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        //b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
+                        //b.AppendLine($"\t\t\t}}");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
                     });
@@ -1600,10 +1600,10 @@ namespace S100Framework.Applications
                         b.AppendLine($"\t\t}}");
 
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic {code}ViewModel ParseFeatureBindings(string json) {{");
-                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        b.AppendLine($"\t\t\t\tthis.LoadFeatureBinding(document);");
-                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseFeatureBindings(featureBinding[] bindings) {{");
+                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        //b.AppendLine($"\t\t\t\tthis.LoadFeatureBinding(document);");
+                        //b.AppendLine($"\t\t\t}}");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
                     });

@@ -2160,10 +2160,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
 
-		public InformationTypeViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public InformationTypeViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2392,10 +2389,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => AbstractRxN._informationBindingDefinitions;
 
-		public AbstractRxNViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public AbstractRxNViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2628,10 +2622,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
-		public NauticalInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NauticalInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -2838,10 +2829,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
-		public RegulationsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RegulationsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -3048,10 +3036,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
-		public RestrictionsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RestrictionsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -3258,10 +3243,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
-		public RecommendationsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RecommendationsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -3517,10 +3499,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
-		public AuthorityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public AuthorityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -3917,10 +3896,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-		public ContactDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4155,10 +4131,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
-		public NonStandardWorkingDayViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NonStandardWorkingDayViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4398,10 +4371,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
-		public ServiceHoursViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ServiceHoursViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4717,10 +4687,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
-		public ApplicabilityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ApplicabilityViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4953,10 +4920,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return this;
 		}
 
-		public RestrictedAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public RestrictedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -5263,10 +5227,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return this;
 		}
 
-		public MarineProtectedAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public MarineProtectedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -5503,10 +5464,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return this;
 		}
 
-		public VesselTrafficServiceAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public VesselTrafficServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -5564,10 +5522,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return this;
 		}
 
-		public DataCoverageViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public DataCoverageViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
@@ -5613,10 +5568,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return this;
 		}
 
-		public TextPlacementViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public TextPlacementViewModel ParseFeatureBindings(featureBinding[] bindings) {
 			return this;
 		}
 
