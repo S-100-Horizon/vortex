@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="exports\**" />
     <Compile Remove="s100ed9.gdb\**" />
+    <Content Remove="exports\**" />
     <Content Remove="s100ed9.gdb\**" />
+    <EmbeddedResource Remove="exports\**" />
     <EmbeddedResource Remove="s100ed9.gdb\**" />
+    <None Remove="exports\**" />
     <None Remove="s100ed9.gdb\**" />
   </ItemGroup>
 
