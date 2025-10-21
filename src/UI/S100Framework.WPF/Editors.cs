@@ -287,6 +287,12 @@ namespace S100Framework.WPF.Editors
                 var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
                 BindingOperations.SetBinding(editor, PropertyGridEditorIntegerUpDown.ValueProperty, bindingSelectedItemProperty);
             }
+            else if (propertyItem.PropertyType == typeof(bool) || propertyItem.PropertyType == typeof(bool?) || propertyItem.PropertyType == typeof(Boolean) || propertyItem.PropertyType == typeof(Boolean?)) {
+                var editorCheckbox = new PropertyGridEditorCheckBox {
+                    IsThreeState = propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>),
+                };
+                editor = editorCheckbox;
+            }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
                 var specific = new EnumComboBoxEditor();

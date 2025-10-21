@@ -60,14 +60,14 @@ namespace S100Framework.DomainModel.S128 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.CarriageRequirement>), typeDiscriminator: "informationBinding::CarriageRequirement"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributionDetails>), typeDiscriminator: "informationBinding::DistributionDetails"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributorContact>), typeDiscriminator: "informationBinding::DistributorContact"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfElement>), typeDiscriminator: "informationBinding::PriceOfElement"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfNauticalProduct>), typeDiscriminator: "informationBinding::PriceOfNauticalProduct"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProducerContact>), typeDiscriminator: "informationBinding::ProducerContact"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductionDetails>), typeDiscriminator: "informationBinding::ProductionDetails"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductPackage>), typeDiscriminator: "informationBinding::ProductPackage"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.CarriageRequirement>), typeDiscriminator: "informationBinding::CarriageRequirement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributionDetails>), typeDiscriminator: "informationBinding::DistributionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributorContact>), typeDiscriminator: "informationBinding::DistributorContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfElement>), typeDiscriminator: "informationBinding::PriceOfElement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfNauticalProduct>), typeDiscriminator: "informationBinding::PriceOfNauticalProduct"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProducerContact>), typeDiscriminator: "informationBinding::ProducerContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductionDetails>), typeDiscriminator: "informationBinding::ProductionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductPackage>), typeDiscriminator: "informationBinding::ProductPackage"));
 				}
 			});
 			return resolver;
@@ -82,8 +82,38 @@ namespace S100Framework.DomainModel.S128 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ProductMapping>), typeDiscriminator: "featureBinding::ProductMapping"));
-				typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.Correlated>), typeDiscriminator: "featureBinding::Correlated"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ProductMapping>), typeDiscriminator: "featureBinding::ProductMapping"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.Correlated>), typeDiscriminator: "featureBinding::Correlated"));
+				}
+			});
+			return resolver;
+		}
+
+
+		public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver SharedBindingResolver() {
+			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(informationBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$type",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.CarriageRequirement>), typeDiscriminator: "informationBinding::CarriageRequirement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributionDetails>), typeDiscriminator: "informationBinding::DistributionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.DistributorContact>), typeDiscriminator: "informationBinding::DistributorContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfElement>), typeDiscriminator: "informationBinding::PriceOfElement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.PriceOfNauticalProduct>), typeDiscriminator: "informationBinding::PriceOfNauticalProduct"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProducerContact>), typeDiscriminator: "informationBinding::ProducerContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductionDetails>), typeDiscriminator: "informationBinding::ProductionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.ProductPackage>), typeDiscriminator: "informationBinding::ProductPackage"));
+				}
+				if (typeInfo.Type == typeof(featureBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$type",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ProductMapping>), typeDiscriminator: "featureBinding::ProductMapping"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.Correlated>), typeDiscriminator: "featureBinding::Correlated"));
 				}
 			});
 			return resolver;

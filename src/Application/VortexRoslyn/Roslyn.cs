@@ -728,6 +728,19 @@ namespace S100Framework.Applications
                 }
             }
 
+            var sharedBindingBuilder = new StringBuilder();
+
+            sharedBindingBuilder.AppendLine();
+            sharedBindingBuilder.AppendLine("\t\tpublic static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver SharedBindingResolver() {");
+            sharedBindingBuilder.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
+            sharedBindingBuilder.AppendLine("\t\t\tresolver.Modifiers.Add(typeInfo => {");
+            sharedBindingBuilder.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(informationBinding)) {");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$type\",");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t};");
+
+
             var informationBindingBuilder = new StringBuilder();
             //  --- S100_FC_InformationAssociations ---------------------------------------------
             {                
@@ -784,9 +797,11 @@ namespace S100Framework.Applications
 
                     builderDomainModel.AppendLine(s);
 
-                    informationBindingBuilder.AppendLine($"\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
+                    informationBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
+                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
                 }
 
+                sharedBindingBuilder.AppendLine("\t\t\t\t}");
 
                 informationBindingBuilder.AppendLine("\t\t\t\t}");
                 informationBindingBuilder.AppendLine("\t\t\t});");
@@ -798,6 +813,12 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine();
                 }
             }
+
+            sharedBindingBuilder.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(featureBinding)) {");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$type\",");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
+            sharedBindingBuilder.AppendLine("\t\t\t\t\t};");
 
             var featureBindingBuilder = new StringBuilder();
             //  --- S100_FC_FeatureAssociations -------------------------------------------------
@@ -855,13 +876,19 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine(s);
                     }
 
-                    featureBindingBuilder.AppendLine($"\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
+                    featureBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
+                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
                 }
 
                 featureBindingBuilder.AppendLine("\t\t\t\t}");
                 featureBindingBuilder.AppendLine("\t\t\t});");
                 featureBindingBuilder.AppendLine("\t\t\treturn resolver;");
-                featureBindingBuilder.AppendLine("\t\t}");                
+                featureBindingBuilder.AppendLine("\t\t}");
+
+                sharedBindingBuilder.AppendLine("\t\t\t\t}");
+                sharedBindingBuilder.AppendLine("\t\t\t});");
+                sharedBindingBuilder.AppendLine("\t\t\treturn resolver;");
+                sharedBindingBuilder.AppendLine("\t\t}");
 
                 if (elements.Any()) {
                     builderDomainModel.AppendLine("\t}");
@@ -869,7 +896,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            builderDomainModel.Insert(indexBindings, string.Join(Environment.NewLine, [informationBindingBuilder.ToString(), featureBindingBuilder.ToString()]));
+            builderDomainModel.Insert(indexBindings, string.Join(Environment.NewLine, [informationBindingBuilder.ToString(), featureBindingBuilder.ToString(), sharedBindingBuilder.ToString()]));
 
             //  --- S100_FC_SpatialAssociations -------------------------------------------------
 
