@@ -23,6 +23,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 using IO = System.IO;
@@ -564,18 +565,22 @@ namespace VortexProAppModule
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
-                            var json = "";
-                            var value = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(inspector["informationbindings"]), featureCatalogue.DefaultJsonOptions);
-                            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
-                            parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
+                            var json = Convert.ToString(inspector["informationbindings"]);
+                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                                var bindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                                var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                                parseInformationBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                            }
                         }
 
                         //  featureBinding                        
                         if (!inspector.IsNull("featurebindings")) {
                             var json = Convert.ToString(inspector["featurebindings"]);
-                            var value = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(inspector["featurebindings"]), featureCatalogue.DefaultJsonOptions);
-                            var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
-                            parseFeatureBindingsInfo.Invoke(viewmodel, new object[1] { json });
+                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                                var bindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                                var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
+                                parseFeatureBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                            }
                         }
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);

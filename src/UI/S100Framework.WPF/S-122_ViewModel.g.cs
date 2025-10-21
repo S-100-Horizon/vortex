@@ -4913,10 +4913,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
-		public RestrictedAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RestrictedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -5220,10 +5217,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MarineProtectedArea._featureBindingDefinitions;
 
-		public MarineProtectedAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public MarineProtectedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -5457,10 +5451,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 
-		public VesselTrafficServiceAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public VesselTrafficServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -5515,10 +5506,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-		public DataCoverageViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public DataCoverageViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -5561,10 +5549,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
-		public TextPlacementViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 

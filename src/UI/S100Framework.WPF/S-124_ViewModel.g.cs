@@ -1715,10 +1715,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
-		public NavwarnPartViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavwarnPartViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -1799,10 +1796,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
-		public NavwarnAreaAffectedViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavwarnAreaAffectedViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -1953,10 +1947,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
-		public TextPlacementViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 

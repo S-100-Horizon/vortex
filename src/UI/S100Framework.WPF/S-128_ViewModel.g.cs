@@ -3494,10 +3494,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
-		public ElectronicProductViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ElectronicProductViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4127,10 +4124,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
 
-		public PhysicalProductViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public PhysicalProductViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 
@@ -4500,10 +4494,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 
-		public S100ServiceViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public S100ServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
 			return this;
 		}
 

@@ -1592,10 +1592,10 @@ namespace S100Framework.Applications
                         b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
                         
                         b.AppendLine();
-                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(string json) {{");
-                        b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
-                        b.AppendLine($"\t\t\t}}");
+                        b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
+                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
+                        //b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
+                        //b.AppendLine($"\t\t\t}}");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
 
