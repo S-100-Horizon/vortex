@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Core.Internal.Geometry;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
@@ -91,7 +92,7 @@ namespace S100Framework.Applications.Singletons
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
-            var informationName = $"{informationTypeRow.Crc32()}";
+            var informationName = informationTypeRow.Crc32();
 
             // create binding
             var informationBinding = new informationBinding<AdditionalInformation> {
@@ -112,6 +113,40 @@ namespace S100Framework.Applications.Singletons
         public bool Bind(string fileName, out NauticalInformation? nauticalInformation) {
             return _nauticalInformations.TryGetValue(fileName, out nauticalInformation);
         }
+
+        internal void Flush(Geodatabase destination) {
+            using (Table attachment = destination.OpenDataset<Table>(destination.GetName("attachment"))) {
+                // Use InsertCursor to efficiently insert multiple features
+                using (var rowBuffer = attachment.CreateRowBuffer())
+                using (var insertCursor = attachment.CreateInsertCursor()) {
+                    foreach (var nauticalInformation in NauticalInformations.Instance._nauticalInformations.Values) {
+                        
+                        foreach (var info in nauticalInformation.information) {
+                            var supportFile = new S100Horizon.Settings.SupportFile();
+                            supportFile.FileName = info.fileReference!;
+
+                            var s57FileName = info.fileReference!.Clone().ToString()!.Replace("101DK00", "DK");
+
+                            string? filePath = Directory.EnumerateFiles(ImporterNIS._notesPath, s57FileName, SearchOption.AllDirectories).FirstOrDefault();
+
+                            if (filePath == default) {
+                                Logger.Current.Error($"Cannot find NauticalInformation fileref: {s57FileName} in {ImporterNIS._notesPath}");
+                                continue;
+                            }
+
+                            rowBuffer["ps"] = "S-100.Horizon";
+                            rowBuffer["code"] = "supportfile";
+                            rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
+                            rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
+
+                            insertCursor.Insert(rowBuffer);
+                        }
+                    }
+                }
+            };
+
+        }
+
 
     }
 }

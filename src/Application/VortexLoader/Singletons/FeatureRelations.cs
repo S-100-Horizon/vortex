@@ -855,7 +855,7 @@ namespace S100Framework.Applications.Singletons
             }
 
             if (s101SlaveFeature["featurebindings"] is null) {
-                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings);
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
                 s101SlaveFeature.Store();
             } else {
                 List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!, ImporterNIS.jsonFeatureTypeSerializerOptions)!;

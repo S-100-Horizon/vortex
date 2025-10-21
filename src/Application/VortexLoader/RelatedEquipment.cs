@@ -82,57 +82,57 @@ namespace S100Framework.Applications
 
 
 
-        internal Daymark? GetDayMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
-            var daymarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
+        //internal Daymark? GetDayMark<TType>(AidsToNavigationP structure) where TType : DomainModel.FeatureNode {
+        //    var daymarks = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(Daymark), structure.GLOBALID);
 
-            if (daymarks == null || daymarks.Count() == 0) {
-                return null;
-            }
+        //    if (daymarks == null || daymarks.Count() == 0) {
+        //        return null;
+        //    }
 
-            if (daymarks.Count() > 1) {
-                throw new NotSupportedException("Multiple related daymarks");
-            }
+        //    if (daymarks.Count() > 1) {
+        //        throw new NotSupportedException("Multiple related daymarks");
+        //    }
 
-            var relatedDaymark = daymarks.First();
+        //    var relatedDaymark = daymarks.First();
 
-            if (relatedDaymark != null) {
+        //    if (relatedDaymark != null) {
 
-                List<colour>? daymarkColours = null;
+        //        List<colour>? daymarkColours = null;
 
-                colourPattern? daymarkColourPattern = null;
+        //        colourPattern? daymarkColourPattern = null;
 
-                if (relatedDaymark.COLOUR != default) {
-                    daymarkColours = ImporterNIS.GetColours<TType>(relatedDaymark.COLOUR);
-                }
+        //        if (relatedDaymark.COLOUR != default) {
+        //            daymarkColours = ImporterNIS.GetColours<TType>(relatedDaymark.COLOUR);
+        //        }
 
-                if (relatedDaymark.COLPAT != default) {
-                    daymarkColourPattern = ImporterNIS.GetColourPattern(relatedDaymark.COLPAT);
-                }
+        //        if (relatedDaymark.COLPAT != default) {
+        //            daymarkColourPattern = ImporterNIS.GetColourPattern(relatedDaymark.COLPAT);
+        //        }
 
-                var daymark = new Daymark {
-                    topmarkDaymarkShape = default,
-                    // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
+        //        var daymark = new Daymark {
+        //            topmarkDaymarkShape = default,
+        //            // TODO: shapeinformation #15 @https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/5070028848/S-57+to+S-101+Conversion+Action+Points?force_transition=910d1b59-0dc5-42d7-bd2c-a81edd431caf,
 
-                };
+        //        };
 
-                if (daymarkColours != null) {
-                    daymark.colour = daymarkColours;
-                }
+        //        if (daymarkColours != null) {
+        //            daymark.colour = daymarkColours;
+        //        }
 
-                if (daymarkColourPattern.HasValue) {
-                    daymark.colourPattern = daymarkColourPattern.Value;
-                }
+        //        if (daymarkColourPattern.HasValue) {
+        //            daymark.colourPattern = daymarkColourPattern.Value;
+        //        }
 
-                if (relatedDaymark.TOPSHP.HasValue) {
-                    daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType, topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
-                }
+        //        if (relatedDaymark.TOPSHP.HasValue) {
+        //            daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType, topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+        //        }
 
-                ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
+        //        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");
 
-                return daymark;
-            }
-            return null;
-        }
+        //        return daymark;
+        //    }
+        //    return null;
+        //}
 
         internal void CreateRelatedLineEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
             throw new NotImplementedException();
