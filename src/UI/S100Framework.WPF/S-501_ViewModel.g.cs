@@ -2935,6 +2935,7 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ReferenceToAPublication._informationBindingDefinitions;
 
 		public ReferenceToAPublicationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3237,10 +3238,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => InstallationBuoy._featureBindingDefinitions;
 
 		public InstallationBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public InstallationBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -3383,10 +3386,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DepthArea._featureBindingDefinitions;
 
 		public DepthAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DepthAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -3592,10 +3597,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioCallingInPoint._featureBindingDefinitions;
 
 		public RadioCallingInPointViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RadioCallingInPointViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -3797,10 +3804,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => PatrolArea._featureBindingDefinitions;
 
 		public PatrolAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public PatrolAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -3973,10 +3982,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Checkpoint._featureBindingDefinitions;
 
 		public CheckpointViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CheckpointViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4265,10 +4276,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MarineManagementArea._featureBindingDefinitions;
 
 		public MarineManagementAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MarineManagementAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4445,10 +4458,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DepthContour._featureBindingDefinitions;
 
 		public DepthContourViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DepthContourViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4530,10 +4545,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => EnvironmentallySensitiveSeaArea._featureBindingDefinitions;
 
 		public EnvironmentallySensitiveSeaAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public EnvironmentallySensitiveSeaAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4737,10 +4754,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Road._featureBindingDefinitions;
 
 		public RoadViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RoadViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4862,10 +4881,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => River._featureBindingDefinitions;
 
 		public RiverViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RiverViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5293,10 +5314,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryPracticeArea._featureBindingDefinitions;
 
 		public MilitaryPracticeAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MilitaryPracticeAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5402,10 +5425,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DiscolouredWater._featureBindingDefinitions;
 
 		public DiscolouredWaterViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DiscolouredWaterViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5765,10 +5790,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CardinalBuoy._featureBindingDefinitions;
 
 		public CardinalBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CardinalBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6123,10 +6150,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBuoy._featureBindingDefinitions;
 
 		public SafeWaterBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SafeWaterBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6407,10 +6436,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
 		public RadioStationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RadioStationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6595,10 +6626,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MilitaryExerciseAirspace._featureBindingDefinitions;
 
 		public MilitaryExerciseAirspaceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MilitaryExerciseAirspaceViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6799,10 +6832,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ContiguousZone._featureBindingDefinitions;
 
 		public ContiguousZoneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ContiguousZoneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6973,10 +7008,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NormalBaseline._featureBindingDefinitions;
 
 		public NormalBaselineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public NormalBaselineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7185,10 +7222,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CableArea._featureBindingDefinitions;
 
 		public CableAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CableAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7381,10 +7420,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ContinentalShelfArea._featureBindingDefinitions;
 
 		public ContinentalShelfAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ContinentalShelfAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7577,10 +7618,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => InternalWaters._featureBindingDefinitions;
 
 		public InternalWatersViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public InternalWatersViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7733,10 +7776,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AdministrationArea._featureBindingDefinitions;
 
 		public AdministrationAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public AdministrationAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7923,10 +7968,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Bollard._featureBindingDefinitions;
 
 		public BollardViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public BollardViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -8272,10 +8319,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Dolphin._featureBindingDefinitions;
 
 		public DolphinViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DolphinViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -8434,10 +8483,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarRange._featureBindingDefinitions;
 
 		public RadarRangeViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RadarRangeViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -8877,10 +8928,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBeacon._featureBindingDefinitions;
 
 		public IsolatedDangerBeaconViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public IsolatedDangerBeaconViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9198,10 +9251,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => IsolatedDangerBuoy._featureBindingDefinitions;
 
 		public IsolatedDangerBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public IsolatedDangerBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9425,10 +9480,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SubmarineTransitLane._featureBindingDefinitions;
 
 		public SubmarineTransitLaneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SubmarineTransitLaneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9556,10 +9613,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MaritimeSafetyInformationArea._featureBindingDefinitions;
 
 		public MaritimeSafetyInformationAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MaritimeSafetyInformationAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9798,10 +9857,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AirspaceRestriction._featureBindingDefinitions;
 
 		public AirspaceRestrictionViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public AirspaceRestrictionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9988,10 +10049,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Sounding._featureBindingDefinitions;
 
 		public SoundingViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SoundingViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10159,10 +10222,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeBoundary._featureBindingDefinitions;
 
 		public TrafficSeparationSchemeBoundaryViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TrafficSeparationSchemeBoundaryViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10306,10 +10371,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DumpingGround._featureBindingDefinitions;
 
 		public DumpingGroundViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DumpingGroundViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10658,10 +10725,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AirportAirfield._featureBindingDefinitions;
 
 		public AirportAirfieldViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public AirportAirfieldViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10851,10 +10920,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FoulGround._featureBindingDefinitions;
 
 		public FoulGroundViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public FoulGroundViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -11277,10 +11348,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightAirObstruction._featureBindingDefinitions;
 
 		public LightAirObstructionViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LightAirObstructionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -11592,10 +11665,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MooringBuoy._featureBindingDefinitions;
 
 		public MooringBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MooringBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -12016,10 +12091,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => UnderwaterAwashRock._featureBindingDefinitions;
 
 		public UnderwaterAwashRockViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public UnderwaterAwashRockViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -12335,10 +12412,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CableOverhead._featureBindingDefinitions;
 
 		public CableOverheadViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CableOverheadViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -12600,10 +12679,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ControlledAirspace._featureBindingDefinitions;
 
 		public ControlledAirspaceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ControlledAirspaceViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -13449,10 +13530,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Obstruction._featureBindingDefinitions;
 
 		public ObstructionViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ObstructionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -13659,10 +13742,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FishingGround._featureBindingDefinitions;
 
 		public FishingGroundViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public FishingGroundViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -13875,10 +13960,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FishingFacility._featureBindingDefinitions;
 
 		public FishingFacilityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public FishingFacilityViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -14077,10 +14164,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavigationSystem._featureBindingDefinitions;
 
 		public NavigationSystemViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public NavigationSystemViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -14267,10 +14356,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeCrossing._featureBindingDefinitions;
 
 		public TrafficSeparationSchemeCrossingViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TrafficSeparationSchemeCrossingViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -14480,10 +14571,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeLanePart._featureBindingDefinitions;
 
 		public TrafficSeparationSchemeLanePartViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TrafficSeparationSchemeLanePartViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -14712,10 +14805,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TerritorialSeaArea._featureBindingDefinitions;
 
 		public TerritorialSeaAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TerritorialSeaAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15164,10 +15259,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LateralBeacon._featureBindingDefinitions;
 
 		public LateralBeaconViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LateralBeaconViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15337,10 +15434,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CoastGuardStation._featureBindingDefinitions;
 
 		public CoastGuardStationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CoastGuardStationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15511,10 +15610,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SeparationZoneOrLine._featureBindingDefinitions;
 
 		public SeparationZoneOrLineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SeparationZoneOrLineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15670,10 +15771,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => BottomFeature._featureBindingDefinitions;
 
 		public BottomFeatureViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public BottomFeatureViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15855,10 +15958,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ArchipelagicBaseline._featureBindingDefinitions;
 
 		public ArchipelagicBaselineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ArchipelagicBaselineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -15977,10 +16082,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SmallBottomObject._featureBindingDefinitions;
 
 		public SmallBottomObjectViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SmallBottomObjectViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -16158,10 +16265,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ExclusiveEconomicZone._featureBindingDefinitions;
 
 		public ExclusiveEconomicZoneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ExclusiveEconomicZoneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -16376,10 +16485,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RadarStation._featureBindingDefinitions;
 
 		public RadarStationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RadarStationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -16482,10 +16593,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DivingLocation._featureBindingDefinitions;
 
 		public DivingLocationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DivingLocationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -16702,10 +16815,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
 		public RestrictedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RestrictedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -16984,10 +17099,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CableSubmarine._featureBindingDefinitions;
 
 		public CableSubmarineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CableSubmarineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -17739,10 +17856,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Wreck._featureBindingDefinitions;
 
 		public WreckViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public WreckViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -17916,10 +18035,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => QRoute._featureBindingDefinitions;
 
 		public QRouteViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public QRouteViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -18070,10 +18191,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CompletenessOfProductSpecification._featureBindingDefinitions;
 
 		public CompletenessOfProductSpecificationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CompletenessOfProductSpecificationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -18242,10 +18365,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RescueStation._featureBindingDefinitions;
 
 		public RescueStationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RescueStationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -18674,10 +18799,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CardinalBeacon._featureBindingDefinitions;
 
 		public CardinalBeaconViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CardinalBeaconViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -18989,10 +19116,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightVessel._featureBindingDefinitions;
 
 		public LightVesselViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LightVesselViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -19185,10 +19314,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FisheryZone._featureBindingDefinitions;
 
 		public FisheryZoneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public FisheryZoneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -19398,10 +19529,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DredgedArea._featureBindingDefinitions;
 
 		public DredgedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DredgedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -19639,10 +19772,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => FerryRoute._featureBindingDefinitions;
 
 		public FerryRouteViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public FerryRouteViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -20057,10 +20192,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ShorelineConstruction._featureBindingDefinitions;
 
 		public ShorelineConstructionViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ShorelineConstructionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -20248,10 +20385,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CautionArea._featureBindingDefinitions;
 
 		public CautionAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CautionAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -20531,10 +20670,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRoutePart._featureBindingDefinitions;
 
 		public DeepWaterRoutePartViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DeepWaterRoutePartViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -20725,10 +20866,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => CurrentNonGravitational._featureBindingDefinitions;
 
 		public CurrentNonGravitationalViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CurrentNonGravitationalViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -20893,10 +21036,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
 		public DataCoverageViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DataCoverageViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -21043,10 +21188,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SeabedArea._featureBindingDefinitions;
 
 		public SeabedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SeabedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -21380,10 +21527,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBuoy._featureBindingDefinitions;
 
 		public SpecialPurposeGeneralBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SpecialPurposeGeneralBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -21778,10 +21927,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightSectored._featureBindingDefinitions;
 
 		public LightSectoredViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LightSectoredViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -21861,10 +22012,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => IceLine._featureBindingDefinitions;
 
 		public IceLineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public IceLineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -22045,10 +22198,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => AnchorageArea._featureBindingDefinitions;
 
 		public AnchorageAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public AnchorageAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -22406,10 +22561,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LateralBuoy._featureBindingDefinitions;
 
 		public LateralBuoyViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LateralBuoyViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -22608,10 +22765,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TrafficSeparationSchemeRoundabout._featureBindingDefinitions;
 
 		public TrafficSeparationSchemeRoundaboutViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TrafficSeparationSchemeRoundaboutViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -22889,10 +23048,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DeepWaterRouteCentreline._featureBindingDefinitions;
 
 		public DeepWaterRouteCentrelineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DeepWaterRouteCentrelineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -23221,10 +23382,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightFloat._featureBindingDefinitions;
 
 		public LightFloatViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LightFloatViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -23673,10 +23836,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LightAllAround._featureBindingDefinitions;
 
 		public LightAllAroundViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LightAllAroundViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -23929,10 +24094,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Coastline._featureBindingDefinitions;
 
 		public CoastlineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public CoastlineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -24100,10 +24267,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SeaAreaNamedWaterArea._featureBindingDefinitions;
 
 		public SeaAreaNamedWaterAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SeaAreaNamedWaterAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -24160,10 +24329,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DropZone._featureBindingDefinitions;
 
 		public DropZoneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DropZoneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -24549,10 +24720,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => Conveyor._featureBindingDefinitions;
 
 		public ConveyorViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ConveyorViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -24743,10 +24916,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => LineOfDelimitation._featureBindingDefinitions;
 
 		public LineOfDelimitationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public LineOfDelimitationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -24928,10 +25103,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => StraightTerritorialSeaBaseline._featureBindingDefinitions;
 
 		public StraightTerritorialSeaBaselineViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public StraightTerritorialSeaBaselineViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -25345,10 +25522,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SafeWaterBeacon._featureBindingDefinitions;
 
 		public SafeWaterBeaconViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SafeWaterBeaconViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -25791,10 +25970,12 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		public override featureBindingDefinition[] featureBindingDefinitions => SpecialPurposeGeneralBeacon._featureBindingDefinitions;
 
 		public SpecialPurposeGeneralBeaconViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public SpecialPurposeGeneralBeaconViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -25828,821 +26009,548 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 
 	public static class InformationBindingExtension {
-		public static ReferenceToAPublicationViewModel LoadInformationBinding(this ReferenceToAPublicationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ReferenceToAPublicationViewModel LoadInformationBinding(this ReferenceToAPublicationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static InstallationBuoyViewModel LoadInformationBinding(this InstallationBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static InstallationBuoyViewModel LoadInformationBinding(this InstallationBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DepthAreaViewModel LoadInformationBinding(this DepthAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DepthAreaViewModel LoadInformationBinding(this DepthAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadioCallingInPointViewModel LoadInformationBinding(this RadioCallingInPointViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadioCallingInPointViewModel LoadInformationBinding(this RadioCallingInPointViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static PatrolAreaViewModel LoadInformationBinding(this PatrolAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static PatrolAreaViewModel LoadInformationBinding(this PatrolAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CheckpointViewModel LoadInformationBinding(this CheckpointViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CheckpointViewModel LoadInformationBinding(this CheckpointViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MarineManagementAreaViewModel LoadInformationBinding(this MarineManagementAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MarineManagementAreaViewModel LoadInformationBinding(this MarineManagementAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DepthContourViewModel LoadInformationBinding(this DepthContourViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static DepthContourViewModel LoadInformationBinding(this DepthContourViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static EnvironmentallySensitiveSeaAreaViewModel LoadInformationBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static EnvironmentallySensitiveSeaAreaViewModel LoadInformationBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RoadViewModel LoadInformationBinding(this RoadViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RoadViewModel LoadInformationBinding(this RoadViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static RiverViewModel LoadInformationBinding(this RiverViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static RiverViewModel LoadInformationBinding(this RiverViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MilitaryPracticeAreaViewModel LoadInformationBinding(this MilitaryPracticeAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MilitaryPracticeAreaViewModel LoadInformationBinding(this MilitaryPracticeAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DiscolouredWaterViewModel LoadInformationBinding(this DiscolouredWaterViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static DiscolouredWaterViewModel LoadInformationBinding(this DiscolouredWaterViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CardinalBuoyViewModel LoadInformationBinding(this CardinalBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CardinalBuoyViewModel LoadInformationBinding(this CardinalBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SafeWaterBuoyViewModel LoadInformationBinding(this SafeWaterBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SafeWaterBuoyViewModel LoadInformationBinding(this SafeWaterBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MilitaryExerciseAirspaceViewModel LoadInformationBinding(this MilitaryExerciseAirspaceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MilitaryExerciseAirspaceViewModel LoadInformationBinding(this MilitaryExerciseAirspaceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ContiguousZoneViewModel LoadInformationBinding(this ContiguousZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContiguousZoneViewModel LoadInformationBinding(this ContiguousZoneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static NormalBaselineViewModel LoadInformationBinding(this NormalBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static NormalBaselineViewModel LoadInformationBinding(this NormalBaselineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CableAreaViewModel LoadInformationBinding(this CableAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CableAreaViewModel LoadInformationBinding(this CableAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ContinentalShelfAreaViewModel LoadInformationBinding(this ContinentalShelfAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContinentalShelfAreaViewModel LoadInformationBinding(this ContinentalShelfAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static InternalWatersViewModel LoadInformationBinding(this InternalWatersViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static InternalWatersViewModel LoadInformationBinding(this InternalWatersViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AdministrationAreaViewModel LoadInformationBinding(this AdministrationAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AdministrationAreaViewModel LoadInformationBinding(this AdministrationAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static BollardViewModel LoadInformationBinding(this BollardViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static BollardViewModel LoadInformationBinding(this BollardViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DolphinViewModel LoadInformationBinding(this DolphinViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DolphinViewModel LoadInformationBinding(this DolphinViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadarRangeViewModel LoadInformationBinding(this RadarRangeViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadarRangeViewModel LoadInformationBinding(this RadarRangeViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static IsolatedDangerBeaconViewModel LoadInformationBinding(this IsolatedDangerBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static IsolatedDangerBeaconViewModel LoadInformationBinding(this IsolatedDangerBeaconViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static IsolatedDangerBuoyViewModel LoadInformationBinding(this IsolatedDangerBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static IsolatedDangerBuoyViewModel LoadInformationBinding(this IsolatedDangerBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SubmarineTransitLaneViewModel LoadInformationBinding(this SubmarineTransitLaneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SubmarineTransitLaneViewModel LoadInformationBinding(this SubmarineTransitLaneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static MaritimeSafetyInformationAreaViewModel LoadInformationBinding(this MaritimeSafetyInformationAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static MaritimeSafetyInformationAreaViewModel LoadInformationBinding(this MaritimeSafetyInformationAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AirspaceRestrictionViewModel LoadInformationBinding(this AirspaceRestrictionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AirspaceRestrictionViewModel LoadInformationBinding(this AirspaceRestrictionViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SoundingViewModel LoadInformationBinding(this SoundingViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SoundingViewModel LoadInformationBinding(this SoundingViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static TrafficSeparationSchemeBoundaryViewModel LoadInformationBinding(this TrafficSeparationSchemeBoundaryViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static TrafficSeparationSchemeBoundaryViewModel LoadInformationBinding(this TrafficSeparationSchemeBoundaryViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DumpingGroundViewModel LoadInformationBinding(this DumpingGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DumpingGroundViewModel LoadInformationBinding(this DumpingGroundViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AirportAirfieldViewModel LoadInformationBinding(this AirportAirfieldViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AirportAirfieldViewModel LoadInformationBinding(this AirportAirfieldViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static FoulGroundViewModel LoadInformationBinding(this FoulGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static FoulGroundViewModel LoadInformationBinding(this FoulGroundViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static LightAirObstructionViewModel LoadInformationBinding(this LightAirObstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static LightAirObstructionViewModel LoadInformationBinding(this LightAirObstructionViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MooringBuoyViewModel LoadInformationBinding(this MooringBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MooringBuoyViewModel LoadInformationBinding(this MooringBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static UnderwaterAwashRockViewModel LoadInformationBinding(this UnderwaterAwashRockViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static UnderwaterAwashRockViewModel LoadInformationBinding(this UnderwaterAwashRockViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CableOverheadViewModel LoadInformationBinding(this CableOverheadViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CableOverheadViewModel LoadInformationBinding(this CableOverheadViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ControlledAirspaceViewModel LoadInformationBinding(this ControlledAirspaceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ControlledAirspaceViewModel LoadInformationBinding(this ControlledAirspaceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static ObstructionViewModel LoadInformationBinding(this ObstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static ObstructionViewModel LoadInformationBinding(this ObstructionViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FishingGroundViewModel LoadInformationBinding(this FishingGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static FishingGroundViewModel LoadInformationBinding(this FishingGroundViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FishingFacilityViewModel LoadInformationBinding(this FishingFacilityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static FishingFacilityViewModel LoadInformationBinding(this FishingFacilityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static NavigationSystemViewModel LoadInformationBinding(this NavigationSystemViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static NavigationSystemViewModel LoadInformationBinding(this NavigationSystemViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TrafficSeparationSchemeCrossingViewModel LoadInformationBinding(this TrafficSeparationSchemeCrossingViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TrafficSeparationSchemeCrossingViewModel LoadInformationBinding(this TrafficSeparationSchemeCrossingViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static TrafficSeparationSchemeLanePartViewModel LoadInformationBinding(this TrafficSeparationSchemeLanePartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static TrafficSeparationSchemeLanePartViewModel LoadInformationBinding(this TrafficSeparationSchemeLanePartViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TerritorialSeaAreaViewModel LoadInformationBinding(this TerritorialSeaAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TerritorialSeaAreaViewModel LoadInformationBinding(this TerritorialSeaAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static LateralBeaconViewModel LoadInformationBinding(this LateralBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static LateralBeaconViewModel LoadInformationBinding(this LateralBeaconViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CoastGuardStationViewModel LoadInformationBinding(this CoastGuardStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static CoastGuardStationViewModel LoadInformationBinding(this CoastGuardStationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SeparationZoneOrLineViewModel LoadInformationBinding(this SeparationZoneOrLineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SeparationZoneOrLineViewModel LoadInformationBinding(this SeparationZoneOrLineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static BottomFeatureViewModel LoadInformationBinding(this BottomFeatureViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static BottomFeatureViewModel LoadInformationBinding(this BottomFeatureViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static ArchipelagicBaselineViewModel LoadInformationBinding(this ArchipelagicBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static ArchipelagicBaselineViewModel LoadInformationBinding(this ArchipelagicBaselineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SmallBottomObjectViewModel LoadInformationBinding(this SmallBottomObjectViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SmallBottomObjectViewModel LoadInformationBinding(this SmallBottomObjectViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ExclusiveEconomicZoneViewModel LoadInformationBinding(this ExclusiveEconomicZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ExclusiveEconomicZoneViewModel LoadInformationBinding(this ExclusiveEconomicZoneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static RadarStationViewModel LoadInformationBinding(this RadarStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static RadarStationViewModel LoadInformationBinding(this RadarStationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DivingLocationViewModel LoadInformationBinding(this DivingLocationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DivingLocationViewModel LoadInformationBinding(this DivingLocationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RestrictedAreaViewModel LoadInformationBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RestrictedAreaViewModel LoadInformationBinding(this RestrictedAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CableSubmarineViewModel LoadInformationBinding(this CableSubmarineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static CableSubmarineViewModel LoadInformationBinding(this CableSubmarineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static WreckViewModel LoadInformationBinding(this WreckViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static WreckViewModel LoadInformationBinding(this WreckViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static QRouteViewModel LoadInformationBinding(this QRouteViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static QRouteViewModel LoadInformationBinding(this QRouteViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CompletenessOfProductSpecificationViewModel LoadInformationBinding(this CompletenessOfProductSpecificationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static CompletenessOfProductSpecificationViewModel LoadInformationBinding(this CompletenessOfProductSpecificationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RescueStationViewModel LoadInformationBinding(this RescueStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RescueStationViewModel LoadInformationBinding(this RescueStationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CardinalBeaconViewModel LoadInformationBinding(this CardinalBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CardinalBeaconViewModel LoadInformationBinding(this CardinalBeaconViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightVesselViewModel LoadInformationBinding(this LightVesselViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static LightVesselViewModel LoadInformationBinding(this LightVesselViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FisheryZoneViewModel LoadInformationBinding(this FisheryZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static FisheryZoneViewModel LoadInformationBinding(this FisheryZoneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DredgedAreaViewModel LoadInformationBinding(this DredgedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DredgedAreaViewModel LoadInformationBinding(this DredgedAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static FerryRouteViewModel LoadInformationBinding(this FerryRouteViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static FerryRouteViewModel LoadInformationBinding(this FerryRouteViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ShorelineConstructionViewModel LoadInformationBinding(this ShorelineConstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ShorelineConstructionViewModel LoadInformationBinding(this ShorelineConstructionViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CautionAreaViewModel LoadInformationBinding(this CautionAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static CautionAreaViewModel LoadInformationBinding(this CautionAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DeepWaterRoutePartViewModel LoadInformationBinding(this DeepWaterRoutePartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DeepWaterRoutePartViewModel LoadInformationBinding(this DeepWaterRoutePartViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CurrentNonGravitationalViewModel LoadInformationBinding(this CurrentNonGravitationalViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CurrentNonGravitationalViewModel LoadInformationBinding(this CurrentNonGravitationalViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SeabedAreaViewModel LoadInformationBinding(this SeabedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SeabedAreaViewModel LoadInformationBinding(this SeabedAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SpecialPurposeGeneralBuoyViewModel LoadInformationBinding(this SpecialPurposeGeneralBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SpecialPurposeGeneralBuoyViewModel LoadInformationBinding(this SpecialPurposeGeneralBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightSectoredViewModel LoadInformationBinding(this LightSectoredViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static LightSectoredViewModel LoadInformationBinding(this LightSectoredViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static IceLineViewModel LoadInformationBinding(this IceLineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static IceLineViewModel LoadInformationBinding(this IceLineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AnchorageAreaViewModel LoadInformationBinding(this AnchorageAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AnchorageAreaViewModel LoadInformationBinding(this AnchorageAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LateralBuoyViewModel LoadInformationBinding(this LateralBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static LateralBuoyViewModel LoadInformationBinding(this LateralBuoyViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TrafficSeparationSchemeRoundaboutViewModel LoadInformationBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TrafficSeparationSchemeRoundaboutViewModel LoadInformationBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DeepWaterRouteCentrelineViewModel LoadInformationBinding(this DeepWaterRouteCentrelineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DeepWaterRouteCentrelineViewModel LoadInformationBinding(this DeepWaterRouteCentrelineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightFloatViewModel LoadInformationBinding(this LightFloatViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static LightFloatViewModel LoadInformationBinding(this LightFloatViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static LightAllAroundViewModel LoadInformationBinding(this LightAllAroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static LightAllAroundViewModel LoadInformationBinding(this LightAllAroundViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CoastlineViewModel LoadInformationBinding(this CoastlineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CoastlineViewModel LoadInformationBinding(this CoastlineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SeaAreaNamedWaterAreaViewModel LoadInformationBinding(this SeaAreaNamedWaterAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static SeaAreaNamedWaterAreaViewModel LoadInformationBinding(this SeaAreaNamedWaterAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DropZoneViewModel LoadInformationBinding(this DropZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DropZoneViewModel LoadInformationBinding(this DropZoneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ConveyorViewModel LoadInformationBinding(this ConveyorViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ConveyorViewModel LoadInformationBinding(this ConveyorViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LineOfDelimitationViewModel LoadInformationBinding(this LineOfDelimitationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static LineOfDelimitationViewModel LoadInformationBinding(this LineOfDelimitationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static StraightTerritorialSeaBaselineViewModel LoadInformationBinding(this StraightTerritorialSeaBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static StraightTerritorialSeaBaselineViewModel LoadInformationBinding(this StraightTerritorialSeaBaselineViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SafeWaterBeaconViewModel LoadInformationBinding(this SafeWaterBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SafeWaterBeaconViewModel LoadInformationBinding(this SafeWaterBeaconViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SpecialPurposeGeneralBeaconViewModel LoadInformationBinding(this SpecialPurposeGeneralBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
 
+		public static SpecialPurposeGeneralBeaconViewModel LoadInformationBinding(this SpecialPurposeGeneralBeaconViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -26650,812 +26558,542 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static InstallationBuoyViewModel LoadFeatureBinding(this InstallationBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static InstallationBuoyViewModel LoadFeatureBinding(this InstallationBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DepthAreaViewModel LoadFeatureBinding(this DepthAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static DepthAreaViewModel LoadFeatureBinding(this DepthAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadioCallingInPointViewModel LoadFeatureBinding(this RadioCallingInPointViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadioCallingInPointViewModel LoadFeatureBinding(this RadioCallingInPointViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PatrolAreaViewModel LoadFeatureBinding(this PatrolAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static PatrolAreaViewModel LoadFeatureBinding(this PatrolAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CheckpointViewModel LoadFeatureBinding(this CheckpointViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CheckpointViewModel LoadFeatureBinding(this CheckpointViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MarineManagementAreaViewModel LoadFeatureBinding(this MarineManagementAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static MarineManagementAreaViewModel LoadFeatureBinding(this MarineManagementAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DepthContourViewModel LoadFeatureBinding(this DepthContourViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DepthContourViewModel LoadFeatureBinding(this DepthContourViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static EnvironmentallySensitiveSeaAreaViewModel LoadFeatureBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static EnvironmentallySensitiveSeaAreaViewModel LoadFeatureBinding(this EnvironmentallySensitiveSeaAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RoadViewModel LoadFeatureBinding(this RoadViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RoadViewModel LoadFeatureBinding(this RoadViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RiverViewModel LoadFeatureBinding(this RiverViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RiverViewModel LoadFeatureBinding(this RiverViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static MilitaryPracticeAreaViewModel LoadFeatureBinding(this MilitaryPracticeAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static MilitaryPracticeAreaViewModel LoadFeatureBinding(this MilitaryPracticeAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DiscolouredWaterViewModel LoadFeatureBinding(this DiscolouredWaterViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DiscolouredWaterViewModel LoadFeatureBinding(this DiscolouredWaterViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CardinalBuoyViewModel LoadFeatureBinding(this CardinalBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CardinalBuoyViewModel LoadFeatureBinding(this CardinalBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SafeWaterBuoyViewModel LoadFeatureBinding(this SafeWaterBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SafeWaterBuoyViewModel LoadFeatureBinding(this SafeWaterBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static MilitaryExerciseAirspaceViewModel LoadFeatureBinding(this MilitaryExerciseAirspaceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static MilitaryExerciseAirspaceViewModel LoadFeatureBinding(this MilitaryExerciseAirspaceViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ContiguousZoneViewModel LoadFeatureBinding(this ContiguousZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ContiguousZoneViewModel LoadFeatureBinding(this ContiguousZoneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static NormalBaselineViewModel LoadFeatureBinding(this NormalBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NormalBaselineViewModel LoadFeatureBinding(this NormalBaselineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CableAreaViewModel LoadFeatureBinding(this CableAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CableAreaViewModel LoadFeatureBinding(this CableAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ContinentalShelfAreaViewModel LoadFeatureBinding(this ContinentalShelfAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ContinentalShelfAreaViewModel LoadFeatureBinding(this ContinentalShelfAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static InternalWatersViewModel LoadFeatureBinding(this InternalWatersViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static InternalWatersViewModel LoadFeatureBinding(this InternalWatersViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static AdministrationAreaViewModel LoadFeatureBinding(this AdministrationAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static AdministrationAreaViewModel LoadFeatureBinding(this AdministrationAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static BollardViewModel LoadFeatureBinding(this BollardViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static BollardViewModel LoadFeatureBinding(this BollardViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DolphinViewModel LoadFeatureBinding(this DolphinViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static DolphinViewModel LoadFeatureBinding(this DolphinViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadarRangeViewModel LoadFeatureBinding(this RadarRangeViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadarRangeViewModel LoadFeatureBinding(this RadarRangeViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static IsolatedDangerBeaconViewModel LoadFeatureBinding(this IsolatedDangerBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static IsolatedDangerBeaconViewModel LoadFeatureBinding(this IsolatedDangerBeaconViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static IsolatedDangerBuoyViewModel LoadFeatureBinding(this IsolatedDangerBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static IsolatedDangerBuoyViewModel LoadFeatureBinding(this IsolatedDangerBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SubmarineTransitLaneViewModel LoadFeatureBinding(this SubmarineTransitLaneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SubmarineTransitLaneViewModel LoadFeatureBinding(this SubmarineTransitLaneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MaritimeSafetyInformationAreaViewModel LoadFeatureBinding(this MaritimeSafetyInformationAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static MaritimeSafetyInformationAreaViewModel LoadFeatureBinding(this MaritimeSafetyInformationAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static AirspaceRestrictionViewModel LoadFeatureBinding(this AirspaceRestrictionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static AirspaceRestrictionViewModel LoadFeatureBinding(this AirspaceRestrictionViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SoundingViewModel LoadFeatureBinding(this SoundingViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SoundingViewModel LoadFeatureBinding(this SoundingViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TrafficSeparationSchemeBoundaryViewModel LoadFeatureBinding(this TrafficSeparationSchemeBoundaryViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TrafficSeparationSchemeBoundaryViewModel LoadFeatureBinding(this TrafficSeparationSchemeBoundaryViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DumpingGroundViewModel LoadFeatureBinding(this DumpingGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static DumpingGroundViewModel LoadFeatureBinding(this DumpingGroundViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AirportAirfieldViewModel LoadFeatureBinding(this AirportAirfieldViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static AirportAirfieldViewModel LoadFeatureBinding(this AirportAirfieldViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FoulGroundViewModel LoadFeatureBinding(this FoulGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static FoulGroundViewModel LoadFeatureBinding(this FoulGroundViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightAirObstructionViewModel LoadFeatureBinding(this LightAirObstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LightAirObstructionViewModel LoadFeatureBinding(this LightAirObstructionViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MooringBuoyViewModel LoadFeatureBinding(this MooringBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static MooringBuoyViewModel LoadFeatureBinding(this MooringBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static UnderwaterAwashRockViewModel LoadFeatureBinding(this UnderwaterAwashRockViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static UnderwaterAwashRockViewModel LoadFeatureBinding(this UnderwaterAwashRockViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CableOverheadViewModel LoadFeatureBinding(this CableOverheadViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CableOverheadViewModel LoadFeatureBinding(this CableOverheadViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ControlledAirspaceViewModel LoadFeatureBinding(this ControlledAirspaceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ControlledAirspaceViewModel LoadFeatureBinding(this ControlledAirspaceViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ObstructionViewModel LoadFeatureBinding(this ObstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ObstructionViewModel LoadFeatureBinding(this ObstructionViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static FishingGroundViewModel LoadFeatureBinding(this FishingGroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static FishingGroundViewModel LoadFeatureBinding(this FishingGroundViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FishingFacilityViewModel LoadFeatureBinding(this FishingFacilityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static FishingFacilityViewModel LoadFeatureBinding(this FishingFacilityViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static NavigationSystemViewModel LoadFeatureBinding(this NavigationSystemViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavigationSystemViewModel LoadFeatureBinding(this NavigationSystemViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static TrafficSeparationSchemeCrossingViewModel LoadFeatureBinding(this TrafficSeparationSchemeCrossingViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static TrafficSeparationSchemeCrossingViewModel LoadFeatureBinding(this TrafficSeparationSchemeCrossingViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TrafficSeparationSchemeLanePartViewModel LoadFeatureBinding(this TrafficSeparationSchemeLanePartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TrafficSeparationSchemeLanePartViewModel LoadFeatureBinding(this TrafficSeparationSchemeLanePartViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static TerritorialSeaAreaViewModel LoadFeatureBinding(this TerritorialSeaAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static TerritorialSeaAreaViewModel LoadFeatureBinding(this TerritorialSeaAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static LateralBeaconViewModel LoadFeatureBinding(this LateralBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static LateralBeaconViewModel LoadFeatureBinding(this LateralBeaconViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CoastGuardStationViewModel LoadFeatureBinding(this CoastGuardStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static CoastGuardStationViewModel LoadFeatureBinding(this CoastGuardStationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SeparationZoneOrLineViewModel LoadFeatureBinding(this SeparationZoneOrLineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static SeparationZoneOrLineViewModel LoadFeatureBinding(this SeparationZoneOrLineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static BottomFeatureViewModel LoadFeatureBinding(this BottomFeatureViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static BottomFeatureViewModel LoadFeatureBinding(this BottomFeatureViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ArchipelagicBaselineViewModel LoadFeatureBinding(this ArchipelagicBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ArchipelagicBaselineViewModel LoadFeatureBinding(this ArchipelagicBaselineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SmallBottomObjectViewModel LoadFeatureBinding(this SmallBottomObjectViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static SmallBottomObjectViewModel LoadFeatureBinding(this SmallBottomObjectViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ExclusiveEconomicZoneViewModel LoadFeatureBinding(this ExclusiveEconomicZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ExclusiveEconomicZoneViewModel LoadFeatureBinding(this ExclusiveEconomicZoneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RadarStationViewModel LoadFeatureBinding(this RadarStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadarStationViewModel LoadFeatureBinding(this RadarStationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DivingLocationViewModel LoadFeatureBinding(this DivingLocationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static DivingLocationViewModel LoadFeatureBinding(this DivingLocationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RestrictedAreaViewModel LoadFeatureBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RestrictedAreaViewModel LoadFeatureBinding(this RestrictedAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CableSubmarineViewModel LoadFeatureBinding(this CableSubmarineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CableSubmarineViewModel LoadFeatureBinding(this CableSubmarineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static WreckViewModel LoadFeatureBinding(this WreckViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static WreckViewModel LoadFeatureBinding(this WreckViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static QRouteViewModel LoadFeatureBinding(this QRouteViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static QRouteViewModel LoadFeatureBinding(this QRouteViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CompletenessOfProductSpecificationViewModel LoadFeatureBinding(this CompletenessOfProductSpecificationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CompletenessOfProductSpecificationViewModel LoadFeatureBinding(this CompletenessOfProductSpecificationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RescueStationViewModel LoadFeatureBinding(this RescueStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RescueStationViewModel LoadFeatureBinding(this RescueStationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CardinalBeaconViewModel LoadFeatureBinding(this CardinalBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static CardinalBeaconViewModel LoadFeatureBinding(this CardinalBeaconViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightVesselViewModel LoadFeatureBinding(this LightVesselViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LightVesselViewModel LoadFeatureBinding(this LightVesselViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static FisheryZoneViewModel LoadFeatureBinding(this FisheryZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static FisheryZoneViewModel LoadFeatureBinding(this FisheryZoneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DredgedAreaViewModel LoadFeatureBinding(this DredgedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DredgedAreaViewModel LoadFeatureBinding(this DredgedAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static FerryRouteViewModel LoadFeatureBinding(this FerryRouteViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static FerryRouteViewModel LoadFeatureBinding(this FerryRouteViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ShorelineConstructionViewModel LoadFeatureBinding(this ShorelineConstructionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ShorelineConstructionViewModel LoadFeatureBinding(this ShorelineConstructionViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static CautionAreaViewModel LoadFeatureBinding(this CautionAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static CautionAreaViewModel LoadFeatureBinding(this CautionAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DeepWaterRoutePartViewModel LoadFeatureBinding(this DeepWaterRoutePartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DeepWaterRoutePartViewModel LoadFeatureBinding(this DeepWaterRoutePartViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CurrentNonGravitationalViewModel LoadFeatureBinding(this CurrentNonGravitationalViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static CurrentNonGravitationalViewModel LoadFeatureBinding(this CurrentNonGravitationalViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SeabedAreaViewModel LoadFeatureBinding(this SeabedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SeabedAreaViewModel LoadFeatureBinding(this SeabedAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SpecialPurposeGeneralBuoyViewModel LoadFeatureBinding(this SpecialPurposeGeneralBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SpecialPurposeGeneralBuoyViewModel LoadFeatureBinding(this SpecialPurposeGeneralBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightSectoredViewModel LoadFeatureBinding(this LightSectoredViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LightSectoredViewModel LoadFeatureBinding(this LightSectoredViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static IceLineViewModel LoadFeatureBinding(this IceLineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static IceLineViewModel LoadFeatureBinding(this IceLineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AnchorageAreaViewModel LoadFeatureBinding(this AnchorageAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static AnchorageAreaViewModel LoadFeatureBinding(this AnchorageAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LateralBuoyViewModel LoadFeatureBinding(this LateralBuoyViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LateralBuoyViewModel LoadFeatureBinding(this LateralBuoyViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TrafficSeparationSchemeRoundaboutViewModel LoadFeatureBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TrafficSeparationSchemeRoundaboutViewModel LoadFeatureBinding(this TrafficSeparationSchemeRoundaboutViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DeepWaterRouteCentrelineViewModel LoadFeatureBinding(this DeepWaterRouteCentrelineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DeepWaterRouteCentrelineViewModel LoadFeatureBinding(this DeepWaterRouteCentrelineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LightFloatViewModel LoadFeatureBinding(this LightFloatViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LightFloatViewModel LoadFeatureBinding(this LightFloatViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static LightAllAroundViewModel LoadFeatureBinding(this LightAllAroundViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static LightAllAroundViewModel LoadFeatureBinding(this LightAllAroundViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static CoastlineViewModel LoadFeatureBinding(this CoastlineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static CoastlineViewModel LoadFeatureBinding(this CoastlineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SeaAreaNamedWaterAreaViewModel LoadFeatureBinding(this SeaAreaNamedWaterAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static SeaAreaNamedWaterAreaViewModel LoadFeatureBinding(this SeaAreaNamedWaterAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DropZoneViewModel LoadFeatureBinding(this DropZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DropZoneViewModel LoadFeatureBinding(this DropZoneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ConveyorViewModel LoadFeatureBinding(this ConveyorViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ConveyorViewModel LoadFeatureBinding(this ConveyorViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static LineOfDelimitationViewModel LoadFeatureBinding(this LineOfDelimitationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static LineOfDelimitationViewModel LoadFeatureBinding(this LineOfDelimitationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static StraightTerritorialSeaBaselineViewModel LoadFeatureBinding(this StraightTerritorialSeaBaselineViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static StraightTerritorialSeaBaselineViewModel LoadFeatureBinding(this StraightTerritorialSeaBaselineViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static SafeWaterBeaconViewModel LoadFeatureBinding(this SafeWaterBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SafeWaterBeaconViewModel LoadFeatureBinding(this SafeWaterBeaconViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
-
-		public static SpecialPurposeGeneralBeaconViewModel LoadFeatureBinding(this SpecialPurposeGeneralBeaconViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
 
+		public static SpecialPurposeGeneralBeaconViewModel LoadFeatureBinding(this SpecialPurposeGeneralBeaconViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

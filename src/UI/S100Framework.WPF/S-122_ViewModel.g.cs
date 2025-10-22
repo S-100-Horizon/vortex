@@ -2161,6 +2161,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
 
 		public InformationTypeViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2390,6 +2391,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => AbstractRxN._informationBindingDefinitions;
 
 		public AbstractRxNViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2623,6 +2625,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
 		public NauticalInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2830,6 +2833,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
 		public RegulationsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3037,6 +3041,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
 		public RestrictionsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3244,6 +3249,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
 		public RecommendationsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3500,6 +3506,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
 		public AuthorityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3897,6 +3904,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
 		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4132,6 +4140,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
 		public NonStandardWorkingDayViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4372,6 +4381,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
 		public ServiceHoursViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4688,6 +4698,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
 		public ApplicabilityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4914,10 +4925,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => RestrictedArea._featureBindingDefinitions;
 
 		public RestrictedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public RestrictedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5218,10 +5231,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => MarineProtectedArea._featureBindingDefinitions;
 
 		public MarineProtectedAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public MarineProtectedAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5452,10 +5467,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => VesselTrafficServiceArea._featureBindingDefinitions;
 
 		public VesselTrafficServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public VesselTrafficServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5507,10 +5524,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
 		public DataCoverageViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public DataCoverageViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5550,10 +5569,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TextPlacementViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -5563,20 +5584,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 
 	public static class InformationBindingExtension {
-		public static InformationTypeViewModel LoadInformationBinding(this InformationTypeViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static InformationTypeViewModel LoadInformationBinding(this InformationTypeViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AbstractRxNViewModel LoadInformationBinding(this AbstractRxNViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AbstractRxNViewModel LoadInformationBinding(this AbstractRxNViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new AbstractRxNViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
@@ -5587,11 +5602,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static NauticalInformationViewModel LoadInformationBinding(this NauticalInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NauticalInformationViewModel LoadInformationBinding(this NauticalInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new NauticalInformationViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
@@ -5602,38 +5614,26 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static RegulationsViewModel LoadInformationBinding(this RegulationsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RegulationsViewModel LoadInformationBinding(this RegulationsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RestrictionsViewModel LoadInformationBinding(this RestrictionsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RestrictionsViewModel LoadInformationBinding(this RestrictionsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RecommendationsViewModel LoadInformationBinding(this RecommendationsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RecommendationsViewModel LoadInformationBinding(this RecommendationsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static AuthorityViewModel LoadInformationBinding(this AuthorityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AuthorityViewModel LoadInformationBinding(this AuthorityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new AuthorityViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
@@ -5656,11 +5656,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new ContactDetailsViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
@@ -5671,11 +5668,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static NonStandardWorkingDayViewModel LoadInformationBinding(this NonStandardWorkingDayViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NonStandardWorkingDayViewModel LoadInformationBinding(this NonStandardWorkingDayViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
@@ -5686,11 +5680,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static ServiceHoursViewModel LoadInformationBinding(this ServiceHoursViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ServiceHoursViewModel LoadInformationBinding(this ServiceHoursViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new ServiceHoursViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
@@ -5707,29 +5698,20 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static ApplicabilityViewModel LoadInformationBinding(this ApplicabilityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ApplicabilityViewModel LoadInformationBinding(this ApplicabilityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RestrictedAreaViewModel LoadInformationBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RestrictedAreaViewModel LoadInformationBinding(this RestrictedAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MarineProtectedAreaViewModel LoadInformationBinding(this MarineProtectedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MarineProtectedAreaViewModel LoadInformationBinding(this MarineProtectedAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ProtectedAreaAuthority> protectedAreaAuthority) {
 					instance.ProtectedAreaAuthorities.Add(new MarineProtectedAreaViewModel.ProtectedAreaAuthorityViewModel {
 						informationId = protectedAreaAuthority.referenceId,
@@ -5740,11 +5722,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static VesselTrafficServiceAreaViewModel LoadInformationBinding(this VesselTrafficServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static VesselTrafficServiceAreaViewModel LoadInformationBinding(this VesselTrafficServiceAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceControl> serviceControl) {
 					instance.ServiceControls.Add(new VesselTrafficServiceAreaViewModel.ServiceControlViewModel {
 						informationId = serviceControl.referenceId,
@@ -5755,20 +5734,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			return instance;
 		}
 
-		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -5776,47 +5749,32 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static RestrictedAreaViewModel LoadFeatureBinding(this RestrictedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RestrictedAreaViewModel LoadFeatureBinding(this RestrictedAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MarineProtectedAreaViewModel LoadFeatureBinding(this MarineProtectedAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static MarineProtectedAreaViewModel LoadFeatureBinding(this MarineProtectedAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static VesselTrafficServiceAreaViewModel LoadFeatureBinding(this VesselTrafficServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static VesselTrafficServiceAreaViewModel LoadFeatureBinding(this VesselTrafficServiceAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

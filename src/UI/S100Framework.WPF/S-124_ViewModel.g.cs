@@ -1245,6 +1245,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 
 		public ReferencesViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1445,6 +1446,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
 
 		public NavwarnPreambleViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1533,6 +1535,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
 		public SpatialQualityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1716,10 +1719,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
 		public NavwarnPartViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public NavwarnPartViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -1797,10 +1802,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
 		public NavwarnAreaAffectedViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public NavwarnAreaAffectedViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -1948,10 +1955,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
 		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public TextPlacementViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -1961,11 +1970,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 
 	public static class InformationBindingExtension {
-		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
 					instance.navwarnReferences.Add(new ReferencesViewModel.navwarnReferencesViewModel {
 						informationId = navwarnReferences.referenceId,
@@ -1976,11 +1982,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
 					instance.navwarnReferences.Add(new NavwarnPreambleViewModel.navwarnReferencesViewModel {
 						informationId = navwarnReferences.referenceId,
@@ -1991,20 +1994,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnPreambleContent> navwarnPreambleContent) {
 					instance.navwarnPreambleContents.Add(new NavwarnPartViewModel.navwarnPreambleContentViewModel {
 						informationId = navwarnPreambleContent.referenceId,
@@ -2015,20 +2012,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnAreaAffectedViewModel LoadInformationBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnAreaAffectedViewModel LoadInformationBinding(this NavwarnAreaAffectedViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -2036,11 +2027,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
 					instance.areaAffecteds.Add(new NavwarnPartViewModel.areaAffectedViewModel {
 						featureId = areaAffected.referenceId,
@@ -2057,11 +2045,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
 					instance.areaAffecteds.Add(new NavwarnAreaAffectedViewModel.areaAffectedViewModel {
 						featureId = areaAffected.referenceId,
@@ -2072,11 +2057,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,

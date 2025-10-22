@@ -1531,9 +1531,7 @@ namespace S100Framework.Applications
                         
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
-                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        //b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
-                        //b.AppendLine($"\t\t\t}}");
+                        b.AppendLine("\t\t\tthis.LoadInformationBinding(bindings);");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
                     });
@@ -1593,17 +1591,13 @@ namespace S100Framework.Applications
                         
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
-                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        //b.AppendLine($"\t\t\t\tthis.LoadInformationBinding(document);");
-                        //b.AppendLine($"\t\t\t}}");
+                        b.AppendLine("\t\t\tthis.LoadInformationBinding(bindings);");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
 
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseFeatureBindings(featureBinding[] bindings) {{");
-                        //b.AppendLine($"\t\t\tusing (var document = JsonDocument.Parse(json)) {{");
-                        //b.AppendLine($"\t\t\t\tthis.LoadFeatureBinding(document);");
-                        //b.AppendLine($"\t\t\t}}");
+                        b.AppendLine("\t\t\tthis.LoadFeatureBinding(bindings);");
                         b.AppendLine($"\t\t\treturn this;");
                         b.AppendLine($"\t\t}}");
                     });
@@ -2109,12 +2103,8 @@ namespace S100Framework.Applications
 
             var informationBindingExtension = new StringBuilder();
 
-            informationBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadInformationBinding(this {client.LoadPrefix} instance, JsonDocument document) {{");
-            informationBindingExtension.AppendLine("\t\t\tforeach (var element in document.RootElement.EnumerateArray()) {");
-            informationBindingExtension.AppendLine("\t\t\t\tvar code = element.GetProperty(\"code\").GetString()!;");
-            informationBindingExtension.AppendLine("\t\t\t\tvar informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));");
-            informationBindingExtension.AppendLine();
-
+            informationBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadInformationBinding(this {client.LoadPrefix} instance, informationBinding[] bindings) {{");
+            informationBindingExtension.AppendLine("\t\t\tforeach (var informationBinding in bindings) {");
             if (new string[] { "S100_FC_InformationType", "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 var associations = new List<string>();
                 var bindings = new Dictionary<string, XElement[]>();
@@ -2201,12 +2191,8 @@ namespace S100Framework.Applications
 
             var featureBindingExtension = new StringBuilder();
 
-            featureBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadFeatureBinding(this {client.LoadPrefix} instance, JsonDocument document) {{");
-            featureBindingExtension.AppendLine("\t\t\tforeach (var element in document.RootElement.EnumerateArray()) {");
-            featureBindingExtension.AppendLine("\t\t\t\tvar code = element.GetProperty(\"code\").GetString()!;");
-            featureBindingExtension.AppendLine("\t\t\t\tvar featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));");
-            featureBindingExtension.AppendLine();
-
+            featureBindingExtension.AppendLine($"\t\tpublic static {client.LoadPrefix} LoadFeatureBinding(this {client.LoadPrefix} instance, featureBinding[] bindings) {{");
+            featureBindingExtension.AppendLine("\t\t\tforeach (var featureBinding in bindings) {");
             if (new string[] { "S100_FC_FeatureType" }.Contains(e.Name.LocalName)) {
                 var associations = new List<string>();
                 var bindings = new Dictionary<string, XElement[]>();

@@ -2310,6 +2310,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 
 		public CatalogueSectionHeaderViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2463,6 +2464,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
 		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2559,6 +2561,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 
 		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2668,6 +2671,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 
 		public PriceInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2798,6 +2802,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 
 		public ProducerInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2896,6 +2901,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 
 		public DistributorInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3495,10 +3501,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
 		public ElectronicProductViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public ElectronicProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4125,10 +4133,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
 
 		public PhysicalProductViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public PhysicalProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4495,10 +4505,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 
 		public S100ServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public S100ServiceViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4526,11 +4538,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 	public static class InformationBindingExtension {
-		public static CatalogueSectionHeaderViewModel LoadInformationBinding(this CatalogueSectionHeaderViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CatalogueSectionHeaderViewModel LoadInformationBinding(this CatalogueSectionHeaderViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new CatalogueSectionHeaderViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
@@ -4553,11 +4562,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ContactDetailsViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
@@ -4574,20 +4580,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static IndicationOfCarriageRequirementViewModel LoadInformationBinding(this IndicationOfCarriageRequirementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static IndicationOfCarriageRequirementViewModel LoadInformationBinding(this IndicationOfCarriageRequirementViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PriceInformationViewModel LoadInformationBinding(this PriceInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static PriceInformationViewModel LoadInformationBinding(this PriceInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new PriceInformationViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
@@ -4598,11 +4598,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ProducerInformationViewModel LoadInformationBinding(this ProducerInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ProducerInformationViewModel LoadInformationBinding(this ProducerInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ProducerInformationViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
@@ -4619,11 +4616,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static DistributorInformationViewModel LoadInformationBinding(this DistributorInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DistributorInformationViewModel LoadInformationBinding(this DistributorInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<DistributionDetails> distributionDetails) {
 					instance.DistributionDetails.Add(new DistributorInformationViewModel.DistributionDetailsViewModel {
 						informationId = distributionDetails.referenceId,
@@ -4640,29 +4634,20 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ElectronicProductViewModel LoadInformationBinding(this ElectronicProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ElectronicProductViewModel LoadInformationBinding(this ElectronicProductViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PhysicalProductViewModel LoadInformationBinding(this PhysicalProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static PhysicalProductViewModel LoadInformationBinding(this PhysicalProductViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static S100ServiceViewModel LoadInformationBinding(this S100ServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static S100ServiceViewModel LoadInformationBinding(this S100ServiceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -4670,29 +4655,20 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static ElectronicProductViewModel LoadFeatureBinding(this ElectronicProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ElectronicProductViewModel LoadFeatureBinding(this ElectronicProductViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PhysicalProductViewModel LoadFeatureBinding(this PhysicalProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static PhysicalProductViewModel LoadFeatureBinding(this PhysicalProductViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static S100ServiceViewModel LoadFeatureBinding(this S100ServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static S100ServiceViewModel LoadFeatureBinding(this S100ServiceViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
