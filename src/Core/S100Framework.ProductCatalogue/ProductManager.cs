@@ -331,9 +331,6 @@ namespace S100Framework.ProductCatalogue
         }
 
         async Task<bool> IElectronicProductManager.IsDirtyAsync(string name) {
-            // TODO: return true for now.
-            return true;
-
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
@@ -918,7 +915,7 @@ namespace S100Framework.ProductCatalogue
                 if (cursorS128.Current.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(dataset.DatasetName));
 
-                var whereClause = $"upper(ps) = 'S-101' AND (created_data > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR las_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
+                var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
 
                 whereClause += specificUsage switch {
                     DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
