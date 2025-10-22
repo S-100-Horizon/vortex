@@ -352,7 +352,7 @@ namespace S100Framework.ProductCatalogue
             var dirty = await this.Dispatch(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}")); // TODO  _H
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
@@ -889,7 +889,7 @@ namespace S100Framework.ProductCatalogue
                 using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                 using var cursor = attachment.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                    WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
                     PostfixClause = "ORDER BY created_date DESC",
                 }, true);
 
