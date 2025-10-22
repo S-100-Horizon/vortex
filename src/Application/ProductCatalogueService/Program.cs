@@ -40,12 +40,6 @@ namespace ProductCatalogueService
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSwaggerGen(options => {
-                //options.SwaggerDoc("v1", new OpenApiInfo {
-                //    Title = "ProductCatalogue API",
-                //    Version = "v1",
-                //    Description = "OpenAPI 3 (Swagger)"
-                //});
-
                 // Include XML comments if generated
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -72,41 +66,8 @@ namespace ProductCatalogueService
                 options.LowercaseUrls = true;
             });
 
-            // Setup ArcGIS and ProductManager
-            ArcGIS.Core.Hosting.Host.Initialize();
-
-            // Use the attached .zip gdb when developing
-            if (System.Diagnostics.Debugger.IsAttached) {
-                // If no .gdb exist in bin, extract the .zip from project root
-                var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"));
-
-                if (!output.Exists)
-                    new FastZip().ExtractZip("s100ed9.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"), null);
-
-                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(output.FullName)));
-
-                    return new Geodatabase(connectionFile);
-                });
-
-
-                builder.Services.AddSingleton(productManager);
-            }
-            else {
-                // Connect to prod DB
-                var path = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
-
-                if (string.IsNullOrEmpty(path))
-                    throw new ArgumentNullException("Environment variable is null!");
-
-                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(path)));
-
-                    return new Geodatabase(connectionFile);
-                });
-
-                builder.Services.AddSingleton(productManager);
-            }
+            // Configure ArcGIS and ProductManager
+            await builder.Services.AddS100();
 
             // Problem details & Exception handling
             builder.Services.AddProblemDetails();
