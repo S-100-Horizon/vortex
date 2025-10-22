@@ -714,7 +714,7 @@ namespace S100Framework.ProductCatalogue
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
                                 // throw new NotImplementedException();    //TODO: informationbindings
-                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
 
                                 if (informationBindings != default && informationBindings.Length != 0) {
                                     foreach (var binding in informationBindings) {
@@ -740,6 +740,8 @@ namespace S100Framework.ProductCatalogue
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
+                                // if (prim != Primitive.Point) {
+                                var fb = current["featurebindings"];
                                 //throw new NotImplementedException();    //TODO: featurebindings
                                 var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsSharedBindings);
 
@@ -766,6 +768,12 @@ namespace S100Framework.ProductCatalogue
                                         }
                                     }
                                 }
+                                //}
+                                //else {
+                                //    var f = current["featurebindings"];
+
+                                //    var g = "";
+                                //}
                             }
 
                             dataset?.AddFeature(feature!);
