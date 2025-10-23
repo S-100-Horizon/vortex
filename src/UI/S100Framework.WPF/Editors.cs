@@ -358,9 +358,9 @@ namespace S100Framework.WPF.Editors
 
             var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
 
-            control.Items.Add(new FeatureTypeId("code", viewModel!.featureId));
-            control.SelectedIndex = 0;
-            //control.SelectedItem = viewModel;
+            var featureId = new FeatureTypeId("code", viewModel!.featureId);
+            control.Items.Add(featureId);
+            control.SelectedItem = featureId;
 
             control.DropDownOpened += (s, e) => {
                 var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
