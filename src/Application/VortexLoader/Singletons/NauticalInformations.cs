@@ -114,7 +114,10 @@ namespace S100Framework.Applications.Singletons
             return _nauticalInformations.TryGetValue(fileName, out nauticalInformation);
         }
 
+
         internal void Flush(Geodatabase destination) {
+            var fileCount = 0;
+            Logger.Current.Information($"Flushing Nautical Information support files");
             using (Table attachment = destination.OpenDataset<Table>(destination.GetName("attachment"))) {
                 // Use InsertCursor to efficiently insert multiple features
                 using (var rowBuffer = attachment.CreateRowBuffer())
@@ -142,17 +145,39 @@ namespace S100Framework.Applications.Singletons
                                 Logger.Current.DataError(-1,"","",$"NauticalInformation fileref: {s57FileName} found in subfolder in notes folder: {fileDirectory}");
                             }
 
+                            supportFile.date = DateOnly.FromDateTime(File.GetLastWriteTimeUtc(filePath));
+
+                            supportFile.s100_SupportFileFormat = Path.GetExtension(filePath).ToLower() switch {
+                                ".txt" => DomainModel.S100.S100_SupportFileFormat.TXT,
+                                ".mp4" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".mov" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".avi" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".flv" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".webm" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".mkv" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".mpeg" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".mpg" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
+                                ".xml" => DomainModel.S100.S100_SupportFileFormat.XML,
+                                ".xslt" => DomainModel.S100.S100_SupportFileFormat.XSLT,
+                                _ => throw new NotSupportedException($"Illegal file extension for support files: {Path.GetExtension(filePath).ToLower()}")
+                            };
+                            
                             rowBuffer["ps"] = "S-100.Horizon";
                             rowBuffer["code"] = "supportfile";
                             rowBuffer["edition"] = ImporterNIS.s101version;
                             rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
+                            rowBuffer["data_size"] = new FileInfo(filePath).Length;
                             rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
                             insertCursor.Insert(rowBuffer);
+                            fileCount++;
+
+                            
+
                         }
                     }
                 }
             };
-
+            Logger.Current.Information($"Flushed {fileCount} nautical information support file references");
         }
 
 
