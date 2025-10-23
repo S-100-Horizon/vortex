@@ -292,6 +292,9 @@ namespace S100Framework.WPF.Editors
                     IsThreeState = propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>),
                 };
                 editor = editorCheckbox;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
@@ -352,40 +355,52 @@ namespace S100Framework.WPF.Editors
                 Name = $"_dropDownButton{Guid.NewGuid():N}",
                 IsEditable = false,
                 IsDropDownOpen = false,
-                //DisplayMemberPath = nameof(FeatureTypeId.Id),
-                
+                DisplayMemberPath = nameof(FeatureTypeId.Id),
             };
 
-            var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
+            var viewModel = (featureBindingViewModel)propertyItem.Instance;
 
-            var featureId = new FeatureTypeId("code", viewModel!.featureId);
+            control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
+
+            viewModel.PropertyChanged += (s,e) => {
+                if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
+                    return;
+                control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
+            };
+
+            var featureId = new FeatureTypeId(viewModel.featureType!, viewModel.featureId!);
             control.Items.Add(featureId);
             control.SelectedItem = featureId;
 
             control.DropDownOpened += (s, e) => {
                 var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
 
-                var p = new QueryFeatureTypesEventArgs(association.roleType, association.association, viewModel.role, association.featureTypes, control);
+                var parameter = new QueryFeatureTypesEventArgs(association.roleType, association.association, viewModel.role, association.featureTypes);
 
-                S100AttributeEditorControl.QueryFeaturesCommand.Execute(p, S100AttributeEditorControl.Singleton);
+                S100AttributeEditorControl.QueryFeaturesCommand.Execute(parameter, S100AttributeEditorControl.Singleton);
+
+                if (control.Items.Count > 1)
+                    control.Items.RemoveAt(1);
+
+                foreach (var item in parameter.items) {
+                    if (item.Code.Equals(featureId.Code) && item.Id.Equals(featureId.Id))
+                        continue;
+                    control.Items.Add(item);
+                }
             };
 
-            //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) {
-            //    Source = propertyItem.Instance,
-            //    Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay
-            //};
-            //BindingOperations.SetBinding(control, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+            control.DropDownClosed += (s, e) => {                
+                var featureId = (FeatureTypeId)control.SelectedItem;
 
-            if (!string.IsNullOrEmpty(viewModel?.featureId)) {
-                //control.SelectedItem = viewModel;
-                //control.SelectedValue = viewModel?.featureId;
-                //control.SelectedIndex = 0;
-            }
+                viewModel.featureId = featureId.Id;
+                viewModel.featureType = featureId.Code;
+                
+            };
 
             return control;
         }
 
-
+#if null
         public FrameworkElement ResolveEditor2(PropertyItem propertyItem) {
             var template =
                 @"<ControlTemplate TargetType=""xctk:DropDownButton"">
@@ -458,7 +473,7 @@ namespace S100Framework.WPF.Editors
 
             return control;
         }
-
+#endif
         private void Control_ContextMenuOpening(object sender, ContextMenuEventArgs e) {
             throw new NotImplementedException();
         }

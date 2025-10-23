@@ -12,7 +12,10 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace S100Framework.WPF
 {
-    public record InformationTypeId(string Code, string Id);
+    public record InformationTypeId(string Code, string Id) {
+        public override string ToString() => $"{Code}::{Id}";
+    }
+
     public record FeatureTypeId(string Code, string Id) {
         public override string ToString() => $"{Code}::{Id}";
     }
@@ -38,18 +41,17 @@ namespace S100Framework.WPF
 
     public class QueryFeatureTypesEventArgs
     {
-        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, string[] featureTypes, object source) {
+        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, string[] featureTypes) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
             this.featureTypes = featureTypes;
-            this.source = source;
         }
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
         public string[] featureTypes { get; }
-        public object source { get; }
+        public ICollection<FeatureTypeId> items { get; } = new HashSet<FeatureTypeId>();
     }
 
     public class SelectInformationBindingEventArgs
@@ -108,6 +110,10 @@ namespace S100Framework.WPF
 
         public event NotifyCollectionItemEventHandler? CollectionItemChanged;
 
+        public event PropertyChangedEventHandler? InformationBindingCollectionChanged;
+
+        public event PropertyChangedEventHandler? FeatureBindingCollectionChanged;
+
         protected void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
             if ("HasErrors".Equals(e.PropertyName)) return;
             this.PropertyChanged?.Invoke(sender, e);
@@ -119,6 +125,14 @@ namespace S100Framework.WPF
 
         protected void OnCollectionItemChanged(object? sender, object? item, PropertyChangedEventArgs e) {
             this.CollectionItemChanged?.Invoke(sender, item, e);
+        }
+
+        protected void SelectedObject_InformationBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+            this.InformationBindingCollectionChanged?.Invoke(sender, e);
+        }
+
+        protected void SelectedObject_FeatureBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+            this.FeatureBindingCollectionChanged?.Invoke(sender, e);
         }
     }
 
@@ -219,6 +233,10 @@ namespace S100Framework.WPF
         public static S100AttributeEditorControl Singleton { get; private set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        public event PropertyChangedEventHandler? InformationBindingCollectionChanged;
+
+        public event PropertyChangedEventHandler? FeatureBindingCollectionChanged;
 
         public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
@@ -364,9 +382,9 @@ namespace S100Framework.WPF
                 //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 //}
                 if (SelectedInformationObject != null) {
+                    this.SelectedInformationObject.InformationObject.InformationBindingCollectionChanged -= this.SelectedObject_InformationBindingCollectionChanged;
                     this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
-                SetValue(SelectedAssociationObjectProperty, default);
                 SetValue(SelectedInformationObjectProperty, value);
             }
         }
@@ -388,6 +406,7 @@ namespace S100Framework.WPF
 
             if (control.SelectedInformationObject.InformationObject != null) {
                 control.SelectedInformationObject.InformationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
+                control.SelectedInformationObject.InformationObject.InformationBindingCollectionChanged += control.SelectedObject_InformationBindingCollectionChanged;
             }
         }
 
@@ -403,12 +422,13 @@ namespace S100Framework.WPF
                 //SelectedAssociationObject = default;
 
                 if (SelectedFeatureObject != null) {
+                    this.SelectedFeatureObject.FeatureObject.InformationBindingCollectionChanged -= this.SelectedObject_InformationBindingCollectionChanged;
+                    this.SelectedFeatureObject.FeatureObject.FeatureBindingCollectionChanged -= this.SelectedObject_FeatureBindingCollectionChanged;
                     this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 }
                 //if (SelectedInformationObject != null) {
                 //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
                 //}
-                SetValue(SelectedAssociationObjectProperty, default);
                 SetValue(SelectedFeatureObjectProperty, value);
             }
         }
@@ -430,51 +450,21 @@ namespace S100Framework.WPF
 
             if (control.SelectedFeatureObject.FeatureObject != null) {
                 control.SelectedFeatureObject.FeatureObject.PropertyChanged += control.SelectedObject_PropertyChanged;
+                control.SelectedFeatureObject.FeatureObject.InformationBindingCollectionChanged += control.SelectedObject_InformationBindingCollectionChanged;
+                control.SelectedFeatureObject.FeatureObject.FeatureBindingCollectionChanged += control.SelectedObject_FeatureBindingCollectionChanged;
             }
-        }
-
-        public static readonly DependencyProperty SelectedAssociationObjectProperty =
-                    DependencyProperty.Register("SelectedAssociationObject", typeof(SelectedAssociationObjectViewModel), typeof(S100AttributeEditorControl), new UIPropertyMetadata(null, OnSelectedAssociationChanged));
-
-        public SelectedAssociationObjectViewModel? SelectedAssociationObject {
-            get {
-                return (SelectedAssociationObjectViewModel)GetValue(SelectedAssociationObjectProperty);
-            }
-            set {
-                SelectedFeatureObject = default;
-                SelectedInformationObject = default;
-                //if (SelectedFeatureObject != null) {
-                //    this.SelectedFeatureObject.FeatureObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                //}
-                //if (SelectedInformationObject != null) {
-                //    this.SelectedInformationObject.InformationObject.PropertyChanged -= this.SelectedObject_PropertyChanged;
-                //}
-                SetValue(SelectedAssociationObjectProperty, value);
-            }
-        }
-
-        private static void OnSelectedAssociationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
-            var control = sender as S100AttributeEditorControl;
-            if (control is null)
-                return;
-
-            if (control.SelectedAssociationObject is null)
-                return;
-
-            control._selectedObject = control.SelectedAssociationObject.AssociationObject;
-
-            if (control.PropertyGrid != null) {
-                control.PropertyGrid.SelectedObject = control._selectedObject;
-                control.PropertyGrid.SelectedObjectTypeName = control._selectedObject.ToString();
-            }
-
-            if (control.SelectedAssociationObject.AssociationObject != null) {
-                control.SelectedAssociationObject.AssociationObject.PropertyChanged += control.SelectedObject_PropertyChanged;
-            }           
         }
 
         private void SelectedObject_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
             this.PropertyChanged?.Invoke(sender, e);
+        }
+
+        private void SelectedObject_InformationBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+            this.InformationBindingCollectionChanged?.Invoke(sender, e);
+        }
+
+        private void SelectedObject_FeatureBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+            this.FeatureBindingCollectionChanged?.Invoke(sender, e);
         }
 
         #endregion
@@ -528,11 +518,8 @@ namespace S100Framework.WPF
         private async void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
             var eventArgs = (QueryFeatureTypesEventArgs)e.Parameter;
 
-            var control = (ItemsControl)eventArgs.source;
-
-            control.Items.Clear();
             foreach (var id in await Host.QueryFeatureTypes(eventArgs)) {
-                control.Items.Add(id);
+                eventArgs.items.Add(id);
             }
         }
 

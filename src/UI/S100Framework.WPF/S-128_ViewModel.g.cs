@@ -2213,7 +2213,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class PriceOfNauticalProductViewModel : S100Framework.WPF.ViewModel.S128.PriceOfNauticalProductViewModel, IInformationBindings {
+		public class PriceOfNauticalProductViewModel : informationBindingViewModel<S128.PriceOfNauticalProductViewModel>, IInformationBindings {
 			public PriceOfNauticalProductViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2230,9 +2230,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["PriceInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class ProductionDetailsViewModel : S100Framework.WPF.ViewModel.S128.ProductionDetailsViewModel, IInformationBindings {
+		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
 			public ProductionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2249,9 +2252,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ProducerInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class DistributionDetailsViewModel : S100Framework.WPF.ViewModel.S128.DistributionDetailsViewModel, IInformationBindings {
+		public class DistributionDetailsViewModel : informationBindingViewModel<S128.DistributionDetailsViewModel>, IInformationBindings {
 			public DistributionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2268,6 +2274,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["DistributorInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2315,6 +2324,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		public override string? ToString() => $"Catalogue Section Header";
+
+		public CatalogueSectionHeaderViewModel() : base() {
+			PriceOfNauticalProducts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(PriceOfNauticalProducts));
+			};
+			ProductionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProductionDetails));
+			};
+			DistributionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributionDetails));
+			};
+		}
 	}
 
 
@@ -2363,7 +2384,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class ProducerContactViewModel : S100Framework.WPF.ViewModel.S128.ProducerContactViewModel, IInformationBindings {
+		public class ProducerContactViewModel : informationBindingViewModel<S128.ProducerContactViewModel>, IInformationBindings {
 			public ProducerContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2380,9 +2401,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ProducerInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class DistributorContactViewModel : S100Framework.WPF.ViewModel.S128.DistributorContactViewModel, IInformationBindings {
+		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
 			public DistributorContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2399,6 +2423,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["DistributorInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2485,6 +2512,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sourceIndication));
+			};
+			ProducerContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProducerContacts));
+			};
+			DistributorContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributorContacts));
 			};
 		}
 	}
@@ -2602,7 +2635,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class PriceOfNauticalProductViewModel : S100Framework.WPF.ViewModel.S128.PriceOfNauticalProductViewModel, IInformationBindings {
+		public class PriceOfNauticalProductViewModel : informationBindingViewModel<S128.PriceOfNauticalProductViewModel>, IInformationBindings {
 			public PriceOfNauticalProductViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2619,6 +2652,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2690,6 +2726,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sourceIndication));
 			};
+			PriceOfNauticalProducts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(PriceOfNauticalProducts));
+			};
 		}
 	}
 
@@ -2733,7 +2772,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class ProducerContactViewModel : S100Framework.WPF.ViewModel.S128.ProducerContactViewModel, IInformationBindings {
+		public class ProducerContactViewModel : informationBindingViewModel<S128.ProducerContactViewModel>, IInformationBindings {
 			public ProducerContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2750,9 +2789,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class ProductionDetailsViewModel : S100Framework.WPF.ViewModel.S128.ProductionDetailsViewModel, IInformationBindings {
+		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
 			public ProductionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2769,6 +2811,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2807,6 +2852,15 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		public override string? ToString() => $"Producer Information";
+
+		public ProducerInformationViewModel() : base() {
+			ProducerContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProducerContacts));
+			};
+			ProductionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProductionDetails));
+			};
+		}
 	}
 
 
@@ -2835,7 +2889,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class DistributionDetailsViewModel : S100Framework.WPF.ViewModel.S128.DistributionDetailsViewModel, IInformationBindings {
+		public class DistributionDetailsViewModel : informationBindingViewModel<S128.DistributionDetailsViewModel>, IInformationBindings {
 			public DistributionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2852,9 +2906,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class DistributorContactViewModel : S100Framework.WPF.ViewModel.S128.DistributorContactViewModel, IInformationBindings {
+		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
 			public DistributorContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2871,6 +2928,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2906,6 +2966,15 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		}
 
 		public override string? ToString() => $"Distributor Information";
+
+		public DistributorInformationViewModel() : base() {
+			DistributionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributionDetails));
+			};
+			DistributorContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributorContacts));
+			};
+		}
 	}
 
 
@@ -4543,18 +4612,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new CatalogueSectionHeaderViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
+						informationType = priceOfNauticalProduct.informationType,
 						role = priceOfNauticalProduct.role,
 					});
 				}
 				if(informationBinding is informationBinding<ProductionDetails> productionDetails) {
 					instance.ProductionDetails.Add(new CatalogueSectionHeaderViewModel.ProductionDetailsViewModel {
 						informationId = productionDetails.referenceId,
+						informationType = productionDetails.informationType,
 						role = productionDetails.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributionDetails> distributionDetails) {
 					instance.DistributionDetails.Add(new CatalogueSectionHeaderViewModel.DistributionDetailsViewModel {
 						informationId = distributionDetails.referenceId,
+						informationType = distributionDetails.informationType,
 						role = distributionDetails.role,
 					});
 				}
@@ -4567,12 +4639,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ContactDetailsViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
+						informationType = producerContact.informationType,
 						role = producerContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributorContact> distributorContact) {
 					instance.DistributorContacts.Add(new ContactDetailsViewModel.DistributorContactViewModel {
 						informationId = distributorContact.referenceId,
+						informationType = distributorContact.informationType,
 						role = distributorContact.role,
 					});
 				}
@@ -4591,6 +4665,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new PriceInformationViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
+						informationType = priceOfNauticalProduct.informationType,
 						role = priceOfNauticalProduct.role,
 					});
 				}
@@ -4603,12 +4678,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ProducerInformationViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
+						informationType = producerContact.informationType,
 						role = producerContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<ProductionDetails> productionDetails) {
 					instance.ProductionDetails.Add(new ProducerInformationViewModel.ProductionDetailsViewModel {
 						informationId = productionDetails.referenceId,
+						informationType = productionDetails.informationType,
 						role = productionDetails.role,
 					});
 				}
@@ -4621,12 +4698,14 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				if(informationBinding is informationBinding<DistributionDetails> distributionDetails) {
 					instance.DistributionDetails.Add(new DistributorInformationViewModel.DistributionDetailsViewModel {
 						informationId = distributionDetails.referenceId,
+						informationType = distributionDetails.informationType,
 						role = distributionDetails.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributorContact> distributorContact) {
 					instance.DistributorContacts.Add(new DistributorInformationViewModel.DistributorContactViewModel {
 						informationId = distributorContact.referenceId,
+						informationType = distributorContact.informationType,
 						role = distributorContact.role,
 					});
 				}

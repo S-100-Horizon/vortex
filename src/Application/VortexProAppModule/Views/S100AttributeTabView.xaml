@@ -77,7 +77,6 @@
                                          IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                          SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
                                          SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" 
-                                         SelectedAssociationObject="{Binding SelectedAssociationProperty, Mode=OneWay}"
                                          Loaded="S100AttributeEditor_Loaded"/>
 
         </ScrollViewer>

@@ -2114,7 +2114,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S125.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S125.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -2131,6 +2131,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["StructureObject"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -2222,6 +2225,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
 			};
 		}
 	}
@@ -2476,7 +2482,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class BuoyTopmarkViewModel : S100Framework.WPF.ViewModel.S125.BuoyTopmarkViewModel, IFeatureBindings {
+		public class BuoyTopmarkViewModel : featureBindingViewModel<S125.BuoyTopmarkViewModel>, IFeatureBindings {
 			public BuoyTopmarkViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -2493,6 +2499,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["Topmark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -2639,6 +2648,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			BuoyTopmarks.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BuoyTopmarks));
 			};
 		}
 	}
@@ -7886,7 +7898,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : S100Framework.WPF.ViewModel.S125.RangeSystemViewModel, IFeatureBindings {
+		public class RangeSystemViewModel : featureBindingViewModel<S125.RangeSystemViewModel>, IFeatureBindings {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7903,6 +7915,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["RecommendedTrack"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8013,6 +8028,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			RangeSystems.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystems));
 			};
 		}
 	}
@@ -8288,7 +8306,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class RangeSystemViewModel : S100Framework.WPF.ViewModel.S125.RangeSystemViewModel, IFeatureBindings {
+		public class RangeSystemViewModel : featureBindingViewModel<S125.RangeSystemViewModel>, IFeatureBindings {
 			public RangeSystemViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8305,6 +8323,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["NavigationLine"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8453,6 +8474,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			techniqueOfVerticalMeasurement.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(techniqueOfVerticalMeasurement));
+			};
+			RangeSystems.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystems));
 			};
 		}
 	}
@@ -8655,7 +8679,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class VirtualAISViewModel : S100Framework.WPF.ViewModel.S125.VirtualAISViewModel, IFeatureBindings {
+		public class VirtualAISViewModel : featureBindingViewModel<S125.VirtualAISViewModel>, IFeatureBindings {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8672,6 +8696,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8782,6 +8809,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			VirtualAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(VirtualAIS));
 			};
 		}
 	}
@@ -9324,7 +9354,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S125.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S125.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9341,6 +9371,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["Equipment"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9435,6 +9468,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
 			};
 		}
 	}
@@ -10993,7 +11029,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : S100Framework.WPF.ViewModel.S125.PhysicalAISViewModel, IFeatureBindings {
+		public class PhysicalAISViewModel : featureBindingViewModel<S125.PhysicalAISViewModel>, IFeatureBindings {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11010,9 +11046,12 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["PhysicalAISAidToNavigation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class SyntheticAISViewModel : S100Framework.WPF.ViewModel.S125.SyntheticAISViewModel, IFeatureBindings {
+		public class SyntheticAISViewModel : featureBindingViewModel<S125.SyntheticAISViewModel>, IFeatureBindings {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11029,9 +11068,12 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["SyntheticAISAidToNavigation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class VirtualAISViewModel : S100Framework.WPF.ViewModel.S125.VirtualAISViewModel, IFeatureBindings {
+		public class VirtualAISViewModel : featureBindingViewModel<S125.VirtualAISViewModel>, IFeatureBindings {
 			public VirtualAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11048,6 +11090,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["VirtualAISAidToNavigation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11161,6 +11206,15 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			PhysicalAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PhysicalAIS));
+			};
+			SyntheticAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(SyntheticAIS));
+			};
+			VirtualAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(VirtualAIS));
 			};
 		}
 	}
@@ -16345,7 +16399,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : S100Framework.WPF.ViewModel.S125.DangerousFeatureAssociationViewModel, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : featureBindingViewModel<S125.DangerousFeatureAssociationViewModel>, IFeatureBindings {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16362,6 +16416,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["AtonAssociation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -16414,6 +16471,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			DangerousFeatureAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(DangerousFeatureAssociations));
+			};
 		}
 	}
 
@@ -16446,7 +16506,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class DangerousFeatureAssociationViewModel : S100Framework.WPF.ViewModel.S125.DangerousFeatureAssociationViewModel, IFeatureBindings {
+		public class DangerousFeatureAssociationViewModel : featureBindingViewModel<S125.DangerousFeatureAssociationViewModel>, IFeatureBindings {
 			public DangerousFeatureAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16463,9 +16523,12 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["DangerousFeature"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AtonAssociationsViewModel : S100Framework.WPF.ViewModel.S125.AtonAssociationsViewModel, IFeatureBindings {
+		public class AtonAssociationsViewModel : featureBindingViewModel<S125.AtonAssociationsViewModel>, IFeatureBindings {
 			public AtonAssociationsViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16482,6 +16545,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["AidsToNavigation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -16525,6 +16591,15 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 		public override string? ToString() => $"Aton Association";
+
+		public AtonAssociationViewModel() : base() {
+			DangerousFeatureAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(DangerousFeatureAssociations));
+			};
+			AtonAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AtonAssociations));
+			};
+		}
 	}
 
 
@@ -16556,7 +16631,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class AtonAggregationsViewModel : S100Framework.WPF.ViewModel.S125.AtonAggregationsViewModel, IFeatureBindings {
+		public class AtonAggregationsViewModel : featureBindingViewModel<S125.AtonAggregationsViewModel>, IFeatureBindings {
 			public AtonAggregationsViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16573,6 +16648,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["AidsToNavigation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -16613,6 +16691,12 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 		public override string? ToString() => $"Aton Aggregation";
+
+		public AtonAggregationViewModel() : base() {
+			AtonAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AtonAggregations));
+			};
+		}
 	}
 
 
@@ -16799,7 +16883,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class BuoyTopmarkViewModel : S100Framework.WPF.ViewModel.S125.BuoyTopmarkViewModel, IFeatureBindings {
+		public class BuoyTopmarkViewModel : featureBindingViewModel<S125.BuoyTopmarkViewModel>, IFeatureBindings {
 			public BuoyTopmarkViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16816,6 +16900,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["GenericBuoy"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -16940,6 +17027,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			BuoyTopmarks.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BuoyTopmarks));
 			};
 		}
 	}
@@ -17142,7 +17232,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class PhysicalAISViewModel : S100Framework.WPF.ViewModel.S125.PhysicalAISViewModel, IFeatureBindings {
+		public class PhysicalAISViewModel : featureBindingViewModel<S125.PhysicalAISViewModel>, IFeatureBindings {
 			public PhysicalAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17159,6 +17249,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -17269,6 +17362,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			PhysicalAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PhysicalAIS));
 			};
 		}
 	}
@@ -17488,7 +17584,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		#region FeatureBindings
 
-		public class SyntheticAISViewModel : S100Framework.WPF.ViewModel.S125.SyntheticAISViewModel, IFeatureBindings {
+		public class SyntheticAISViewModel : featureBindingViewModel<S125.SyntheticAISViewModel>, IFeatureBindings {
 			public SyntheticAISViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17505,6 +17601,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -17618,6 +17717,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			};
 			status.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(status));
+			};
+			SyntheticAIS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(SyntheticAIS));
 			};
 		}
 	}
@@ -17897,6 +17999,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new EquipmentViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
@@ -17909,6 +18012,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<BuoyTopmark> buoyTopmark) {
 					instance.BuoyTopmarks.Add(new GenericBuoyViewModel.BuoyTopmarkViewModel {
 						featureId = buoyTopmark.referenceId,
+						featureType = buoyTopmark.featureType,
 						role = buoyTopmark.role,
 					});
 				}
@@ -17999,6 +18103,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<RangeSystem> rangeSystem) {
 					instance.RangeSystems.Add(new NavigationLineViewModel.RangeSystemViewModel {
 						featureId = rangeSystem.referenceId,
+						featureType = rangeSystem.featureType,
 						role = rangeSystem.role,
 					});
 				}
@@ -18011,6 +18116,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<RangeSystem> rangeSystem) {
 					instance.RangeSystems.Add(new RecommendedTrackViewModel.RangeSystemViewModel {
 						featureId = rangeSystem.referenceId,
+						featureType = rangeSystem.featureType,
 						role = rangeSystem.role,
 					});
 				}
@@ -18023,6 +18129,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<VirtualAIS> virtualAIS) {
 					instance.VirtualAIS.Add(new VirtualAISAidToNavigationViewModel.VirtualAISViewModel {
 						featureId = virtualAIS.referenceId,
+						featureType = virtualAIS.featureType,
 						role = virtualAIS.role,
 					});
 				}
@@ -18041,6 +18148,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new StructureObjectViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
@@ -18077,18 +18185,21 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<PhysicalAIS> physicalAIS) {
 					instance.PhysicalAIS.Add(new RadioStationViewModel.PhysicalAISViewModel {
 						featureId = physicalAIS.referenceId,
+						featureType = physicalAIS.featureType,
 						role = physicalAIS.role,
 					});
 				}
 				if(featureBinding is featureBinding<SyntheticAIS> syntheticAIS) {
 					instance.SyntheticAIS.Add(new RadioStationViewModel.SyntheticAISViewModel {
 						featureId = syntheticAIS.referenceId,
+						featureType = syntheticAIS.featureType,
 						role = syntheticAIS.role,
 					});
 				}
 				if(featureBinding is featureBinding<VirtualAIS> virtualAIS) {
 					instance.VirtualAIS.Add(new RadioStationViewModel.VirtualAISViewModel {
 						featureId = virtualAIS.referenceId,
+						featureType = virtualAIS.featureType,
 						role = virtualAIS.role,
 					});
 				}
@@ -18173,6 +18284,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<DangerousFeatureAssociation> dangerousFeatureAssociation) {
 					instance.DangerousFeatureAssociations.Add(new DangerousFeatureViewModel.DangerousFeatureAssociationViewModel {
 						featureId = dangerousFeatureAssociation.referenceId,
+						featureType = dangerousFeatureAssociation.featureType,
 						role = dangerousFeatureAssociation.role,
 					});
 				}
@@ -18185,12 +18297,14 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<DangerousFeatureAssociation> dangerousFeatureAssociation) {
 					instance.DangerousFeatureAssociations.Add(new AtonAssociationViewModel.DangerousFeatureAssociationViewModel {
 						featureId = dangerousFeatureAssociation.referenceId,
+						featureType = dangerousFeatureAssociation.featureType,
 						role = dangerousFeatureAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<AtonAssociations> atonAssociations) {
 					instance.AtonAssociations.Add(new AtonAssociationViewModel.AtonAssociationsViewModel {
 						featureId = atonAssociations.referenceId,
+						featureType = atonAssociations.featureType,
 						role = atonAssociations.role,
 					});
 				}
@@ -18203,6 +18317,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<AtonAggregations> atonAggregations) {
 					instance.AtonAggregations.Add(new AtonAggregationViewModel.AtonAggregationsViewModel {
 						featureId = atonAggregations.referenceId,
+						featureType = atonAggregations.featureType,
 						role = atonAggregations.role,
 					});
 				}
@@ -18215,6 +18330,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<BuoyTopmark> buoyTopmark) {
 					instance.BuoyTopmarks.Add(new TopmarkViewModel.BuoyTopmarkViewModel {
 						featureId = buoyTopmark.referenceId,
+						featureType = buoyTopmark.featureType,
 						role = buoyTopmark.role,
 					});
 				}
@@ -18227,6 +18343,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<PhysicalAIS> physicalAIS) {
 					instance.PhysicalAIS.Add(new PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel {
 						featureId = physicalAIS.referenceId,
+						featureType = physicalAIS.featureType,
 						role = physicalAIS.role,
 					});
 				}
@@ -18239,6 +18356,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				if(featureBinding is featureBinding<SyntheticAIS> syntheticAIS) {
 					instance.SyntheticAIS.Add(new SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel {
 						featureId = syntheticAIS.referenceId,
+						featureType = syntheticAIS.featureType,
 						role = syntheticAIS.role,
 					});
 				}

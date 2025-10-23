@@ -3334,7 +3334,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class InclusionTypeViewModel : S100Framework.WPF.ViewModel.S131.InclusionTypeViewModel, IInformationBindings {
+		public class InclusionTypeViewModel : informationBindingViewModel<S131.InclusionTypeViewModel>, IInformationBindings {
 			public InclusionTypeViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3351,9 +3351,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AbstractRxN"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class PermissionTypeViewModel : S100Framework.WPF.ViewModel.S131.PermissionTypeViewModel, IInformationBindings {
+		public class PermissionTypeViewModel : informationBindingViewModel<S131.PermissionTypeViewModel>, IInformationBindings {
 			public PermissionTypeViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3370,6 +3373,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["InformationType"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -3507,6 +3513,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			vesselsMeasurements.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(vesselsMeasurements));
 			};
+			InclusionTypes.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(InclusionTypes));
+			};
+			PermissionTypes.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(PermissionTypes));
+			};
 		}
 	}
 
@@ -3624,7 +3636,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S131.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S131.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3641,9 +3653,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RelatedOrganisationViewModel : S100Framework.WPF.ViewModel.S131.RelatedOrganisationViewModel, IInformationBindings {
+		public class RelatedOrganisationViewModel : informationBindingViewModel<S131.RelatedOrganisationViewModel>, IInformationBindings {
 			public RelatedOrganisationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3660,9 +3675,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AbstractRxN"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S131.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3679,6 +3697,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -3769,6 +3790,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			graphic.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(graphic));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
+			};
+			RelatedOrganisations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RelatedOrganisations));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
 			};
 		}
 	}
@@ -4328,7 +4358,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S131.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S131.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4345,6 +4375,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -4505,6 +4538,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			telecommunications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(telecommunications));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
 			};
 		}
 	}
@@ -4920,7 +4956,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S131.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S131.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4937,6 +4973,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["InformationType"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -5035,6 +5074,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
 			};
 		}
 	}
@@ -5931,7 +5973,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ExceptionalWorkdayViewModel : S100Framework.WPF.ViewModel.S131.ExceptionalWorkdayViewModel, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S131.ExceptionalWorkdayViewModel>, IInformationBindings {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5948,9 +5990,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["NonStandardWorkingDay"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S131.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5967,6 +6012,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6065,6 +6113,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			ExceptionalWorkdays.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ExceptionalWorkdays));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
 			};
 		}
 	}
@@ -6263,7 +6317,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6280,9 +6334,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6299,6 +6356,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6311,7 +6371,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : S100Framework.WPF.ViewModel.S131.PrimaryAuxiliaryFacilityViewModel, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6328,6 +6388,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["MooringWarpingFacility"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6437,6 +6500,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			PrimaryAuxiliaryFacilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PrimaryAuxiliaryFacilities));
 			};
 		}
 	}
@@ -6622,7 +6694,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6639,6 +6711,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6648,7 +6723,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6665,6 +6740,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6792,6 +6870,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -7132,7 +7216,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7149,9 +7233,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7168,6 +7255,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7180,7 +7270,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : S100Framework.WPF.ViewModel.S131.DemarcationViewModel, IFeatureBindings {
+		public class DemarcationViewModel : featureBindingViewModel<S131.DemarcationViewModel>, IFeatureBindings {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7197,9 +7287,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["BerthPosition"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7216,6 +7309,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection","Terminal"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7400,6 +7496,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			manifoldNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(manifoldNumber));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			Demarcations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(Demarcations));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -7622,7 +7730,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class DemarcationViewModel : S100Framework.WPF.ViewModel.S131.DemarcationViewModel, IFeatureBindings {
+		public class DemarcationViewModel : featureBindingViewModel<S131.DemarcationViewModel>, IFeatureBindings {
 			public DemarcationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7639,9 +7747,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["Berth"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class PrimaryAuxiliaryFacilityViewModel : S100Framework.WPF.ViewModel.S131.PrimaryAuxiliaryFacilityViewModel, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7658,6 +7769,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["MooringWarpingFacility"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7818,6 +7932,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			manifoldNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(manifoldNumber));
+			};
+			Demarcations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(Demarcations));
+			};
+			PrimaryAuxiliaryFacilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PrimaryAuxiliaryFacilities));
 			};
 		}
 	}
@@ -8003,7 +8123,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8020,9 +8140,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8039,6 +8162,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8051,7 +8177,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8068,6 +8194,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8195,6 +8324,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -8348,7 +8486,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8365,6 +8503,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8480,6 +8621,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
 			};
 		}
 	}
@@ -8665,7 +8809,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8682,6 +8826,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8691,7 +8838,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8708,6 +8855,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8835,6 +8985,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -8988,7 +9144,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9005,6 +9161,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9120,6 +9279,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
 			};
 		}
 	}
@@ -9273,7 +9435,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9290,6 +9452,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9405,6 +9570,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
 			};
 		}
 	}
@@ -9611,7 +9779,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9628,9 +9796,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9647,6 +9818,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9659,7 +9833,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : S100Framework.WPF.ViewModel.S131.JurisdictionalLimitViewModel, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : featureBindingViewModel<S131.JurisdictionalLimitViewModel>, IFeatureBindings {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9676,9 +9850,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["OuterLimit"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9695,6 +9872,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9835,6 +10015,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfHarbourFacility));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			JurisdictionalLimits.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(JurisdictionalLimits));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -10016,7 +10208,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10033,9 +10225,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10052,6 +10247,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10064,7 +10262,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10089,9 +10287,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["AnchorageArea","Berth","DockArea","DumpingGround","HarbourBasin","PilotBoardingPlace","SeaplaneLandingArea","Terminal","TurningBasin","WaterwayArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class SubsectionViewModel : S100Framework.WPF.ViewModel.S131.SubsectionViewModel, IFeatureBindings {
+		public class SubsectionViewModel : featureBindingViewModel<S131.SubsectionViewModel>, IFeatureBindings {
 			public SubsectionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10116,9 +10317,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class InfrastructureViewModel : S100Framework.WPF.ViewModel.S131.InfrastructureViewModel, IFeatureBindings {
+		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10135,6 +10339,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourPhysicalInfrastructure"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -10272,6 +10479,21 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfHarbourFacility));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
+			};
+			Subsections.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(Subsections));
+			};
+			Infrastructures.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(Infrastructures));
 			};
 		}
 	}
@@ -10457,7 +10679,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10474,6 +10696,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10483,7 +10708,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10500,6 +10725,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -10627,6 +10855,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -10773,7 +11007,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10790,6 +11024,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10912,6 +11149,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			categoryOfHarbourFacility.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(categoryOfHarbourFacility));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
 			};
 		}
 	}
@@ -11111,7 +11351,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11128,9 +11368,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11147,6 +11390,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11159,7 +11405,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class PrimaryAuxiliaryFacilityViewModel : S100Framework.WPF.ViewModel.S131.PrimaryAuxiliaryFacilityViewModel, IFeatureBindings {
+		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
 			public PrimaryAuxiliaryFacilityViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11176,6 +11422,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["AnchorBerth","BerthPosition"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11300,6 +11549,15 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			PrimaryAuxiliaryFacilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PrimaryAuxiliaryFacilities));
 			};
 		}
 	}
@@ -11460,7 +11718,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LimitEntranceViewModel : S100Framework.WPF.ViewModel.S131.LimitEntranceViewModel, IInformationBindings {
+		public class LimitEntranceViewModel : informationBindingViewModel<S131.LimitEntranceViewModel>, IInformationBindings {
 			public LimitEntranceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11477,6 +11735,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["Entrance"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11486,7 +11747,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class JurisdictionalLimitViewModel : S100Framework.WPF.ViewModel.S131.JurisdictionalLimitViewModel, IFeatureBindings {
+		public class JurisdictionalLimitViewModel : featureBindingViewModel<S131.JurisdictionalLimitViewModel>, IFeatureBindings {
 			public JurisdictionalLimitViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11503,6 +11764,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaAdministrative"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11668,6 +11932,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			usefulMarkDescription.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(usefulMarkDescription));
+			};
+			LimitEntrances.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LimitEntrances));
+			};
+			JurisdictionalLimits.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(JurisdictionalLimits));
 			};
 		}
 	}
@@ -11853,7 +12123,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11870,6 +12140,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11879,7 +12152,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11896,6 +12169,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12023,6 +12299,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -12208,7 +12490,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -12225,6 +12507,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -12234,7 +12519,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12251,6 +12536,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12378,6 +12666,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -12591,7 +12885,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class ServiceAvailabilityViewModel : S100Framework.WPF.ViewModel.S131.ServiceAvailabilityViewModel, IInformationBindings {
+		public class ServiceAvailabilityViewModel : informationBindingViewModel<S131.ServiceAvailabilityViewModel>, IInformationBindings {
 			public ServiceAvailabilityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -12608,9 +12902,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["AvailablePortServices"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -12627,6 +12924,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -12639,7 +12939,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12664,9 +12964,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["Berth"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class InfrastructureViewModel : S100Framework.WPF.ViewModel.S131.InfrastructureViewModel, IFeatureBindings {
+		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
 			public InfrastructureViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12683,6 +12986,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourPhysicalInfrastructure"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12830,6 +13136,18 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			product.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(product));
+			};
+			ServiceAvailabilities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceAvailabilities));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
+			};
+			Infrastructures.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(Infrastructures));
 			};
 		}
 	}
@@ -13015,7 +13333,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -13032,6 +13350,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -13041,7 +13362,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13058,6 +13379,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -13185,6 +13509,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -13370,7 +13700,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region InformationBindings
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S131.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -13387,6 +13717,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -13396,7 +13729,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class LayoutDivisionViewModel : S100Framework.WPF.ViewModel.S131.LayoutDivisionViewModel, IFeatureBindings {
+		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
 			public LayoutDivisionViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13413,6 +13746,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["HarbourAreaSection"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -13540,6 +13876,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			LayoutDivisions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(LayoutDivisions));
 			};
 		}
 	}
@@ -14036,7 +14378,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S131.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S131.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14053,6 +14395,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 					featureTypes = ["FeatureType"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -14105,6 +14450,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		}
 
 		public override string? ToString() => $"Text Placement";
+
+		public TextPlacementViewModel() : base() {
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+		}
 	}
 
 
@@ -14115,12 +14466,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<InclusionType> inclusionType) {
 					instance.InclusionTypes.Add(new ApplicabilityViewModel.InclusionTypeViewModel {
 						informationId = inclusionType.referenceId,
+						informationType = inclusionType.informationType,
 						role = inclusionType.role,
 					});
 				}
 				if(informationBinding is informationBinding<PermissionType> permissionType) {
 					instance.PermissionTypes.Add(new ApplicabilityViewModel.PermissionTypeViewModel {
 						informationId = permissionType.referenceId,
+						informationType = permissionType.informationType,
 						role = permissionType.role,
 					});
 				}
@@ -14133,18 +14486,21 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new AuthorityViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new AuthorityViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
+						informationType = relatedOrganisation.informationType,
 						role = relatedOrganisation.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new AuthorityViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
@@ -14163,6 +14519,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new ContactDetailsViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
@@ -14181,6 +14538,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new NauticalInformationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -14217,12 +14575,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new ServiceHoursViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
+						informationType = exceptionalWorkday.informationType,
 						role = exceptionalWorkday.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new ServiceHoursViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
@@ -14241,12 +14601,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new AnchorBerthViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new AnchorBerthViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14259,6 +14621,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new AnchorageAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14271,12 +14634,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new BerthViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new BerthViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14295,12 +14660,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new DockAreaViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new DockAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14313,6 +14680,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new DryDockViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14325,6 +14693,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new DumpingGroundViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14337,6 +14706,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new FloatingDockViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14349,6 +14719,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new GridironViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14361,12 +14732,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new HarbourAreaAdministrativeViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new HarbourAreaAdministrativeViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14379,12 +14752,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new HarbourAreaSectionViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new HarbourAreaSectionViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14397,6 +14772,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new HarbourBasinViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14409,6 +14785,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new HarbourFacilityViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14421,12 +14798,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new MooringWarpingFacilityViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new MooringWarpingFacilityViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14439,6 +14818,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LimitEntrance> limitEntrance) {
 					instance.LimitEntrances.Add(new OuterLimitViewModel.LimitEntranceViewModel {
 						informationId = limitEntrance.referenceId,
+						informationType = limitEntrance.informationType,
 						role = limitEntrance.role,
 					});
 				}
@@ -14451,6 +14831,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new PilotBoardingPlaceViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14463,6 +14844,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new SeaplaneLandingAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14475,12 +14857,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<ServiceAvailability> serviceAvailability) {
 					instance.ServiceAvailabilities.Add(new TerminalViewModel.ServiceAvailabilityViewModel {
 						informationId = serviceAvailability.referenceId,
+						informationType = serviceAvailability.informationType,
 						role = serviceAvailability.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new TerminalViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14493,6 +14877,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new TurningBasinViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14505,6 +14890,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new WaterwayAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -14550,6 +14936,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<PrimaryAuxiliaryFacility> primaryAuxiliaryFacility) {
 					instance.PrimaryAuxiliaryFacilities.Add(new AnchorBerthViewModel.PrimaryAuxiliaryFacilityViewModel {
 						featureId = primaryAuxiliaryFacility.referenceId,
+						featureType = primaryAuxiliaryFacility.featureType,
 						role = primaryAuxiliaryFacility.role,
 					});
 				}
@@ -14562,6 +14949,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new AnchorageAreaViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14574,12 +14962,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<Demarcation> demarcation) {
 					instance.Demarcations.Add(new BerthViewModel.DemarcationViewModel {
 						featureId = demarcation.referenceId,
+						featureType = demarcation.featureType,
 						role = demarcation.role,
 					});
 				}
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new BerthViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14592,12 +14982,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<Demarcation> demarcation) {
 					instance.Demarcations.Add(new BerthPositionViewModel.DemarcationViewModel {
 						featureId = demarcation.referenceId,
+						featureType = demarcation.featureType,
 						role = demarcation.role,
 					});
 				}
 				if(featureBinding is featureBinding<PrimaryAuxiliaryFacility> primaryAuxiliaryFacility) {
 					instance.PrimaryAuxiliaryFacilities.Add(new BerthPositionViewModel.PrimaryAuxiliaryFacilityViewModel {
 						featureId = primaryAuxiliaryFacility.referenceId,
+						featureType = primaryAuxiliaryFacility.featureType,
 						role = primaryAuxiliaryFacility.role,
 					});
 				}
@@ -14610,6 +15002,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new DockAreaViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14628,6 +15021,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new DumpingGroundViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14652,12 +15046,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<JurisdictionalLimit> jurisdictionalLimit) {
 					instance.JurisdictionalLimits.Add(new HarbourAreaAdministrativeViewModel.JurisdictionalLimitViewModel {
 						featureId = jurisdictionalLimit.referenceId,
+						featureType = jurisdictionalLimit.featureType,
 						role = jurisdictionalLimit.role,
 					});
 				}
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new HarbourAreaAdministrativeViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14670,18 +15066,21 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new HarbourAreaSectionViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
 				if(featureBinding is featureBinding<Subsection> subsection) {
 					instance.Subsections.Add(new HarbourAreaSectionViewModel.SubsectionViewModel {
 						featureId = subsection.referenceId,
+						featureType = subsection.featureType,
 						role = subsection.role,
 					});
 				}
 				if(featureBinding is featureBinding<Infrastructure> infrastructure) {
 					instance.Infrastructures.Add(new HarbourAreaSectionViewModel.InfrastructureViewModel {
 						featureId = infrastructure.referenceId,
+						featureType = infrastructure.featureType,
 						role = infrastructure.role,
 					});
 				}
@@ -14694,6 +15093,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new HarbourBasinViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14712,6 +15112,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<PrimaryAuxiliaryFacility> primaryAuxiliaryFacility) {
 					instance.PrimaryAuxiliaryFacilities.Add(new MooringWarpingFacilityViewModel.PrimaryAuxiliaryFacilityViewModel {
 						featureId = primaryAuxiliaryFacility.referenceId,
+						featureType = primaryAuxiliaryFacility.featureType,
 						role = primaryAuxiliaryFacility.role,
 					});
 				}
@@ -14724,6 +15125,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<JurisdictionalLimit> jurisdictionalLimit) {
 					instance.JurisdictionalLimits.Add(new OuterLimitViewModel.JurisdictionalLimitViewModel {
 						featureId = jurisdictionalLimit.referenceId,
+						featureType = jurisdictionalLimit.featureType,
 						role = jurisdictionalLimit.role,
 					});
 				}
@@ -14736,6 +15138,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new PilotBoardingPlaceViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14748,6 +15151,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new SeaplaneLandingAreaViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14760,12 +15164,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new TerminalViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
 				if(featureBinding is featureBinding<Infrastructure> infrastructure) {
 					instance.Infrastructures.Add(new TerminalViewModel.InfrastructureViewModel {
 						featureId = infrastructure.referenceId,
+						featureType = infrastructure.featureType,
 						role = infrastructure.role,
 					});
 				}
@@ -14778,6 +15184,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new TurningBasinViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14790,6 +15197,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<LayoutDivision> layoutDivision) {
 					instance.LayoutDivisions.Add(new WaterwayAreaViewModel.LayoutDivisionViewModel {
 						featureId = layoutDivision.referenceId,
+						featureType = layoutDivision.featureType,
 						role = layoutDivision.role,
 					});
 				}
@@ -14826,6 +15234,7 @@ namespace S100Framework.WPF.ViewModel.S131 {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}

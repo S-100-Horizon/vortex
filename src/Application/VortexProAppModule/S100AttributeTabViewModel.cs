@@ -591,6 +591,8 @@ namespace VortexProAppModule
                         selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
                         selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
                         selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
+                        selectedObjectViewModel.InformationBindingCollectionChanged += this.OnInformationBindingCollectionChanged;
+                        selectedObjectViewModel.FeatureBindingCollectionChanged += this.OnFeatureBindingCollectionChanged;
                     }
                     return viewmodel;
                 }), TaskCreationOptions.None);
@@ -678,6 +680,46 @@ namespace VortexProAppModule
                     //}
                 }
                 
+                //  featureBindings
+                {
+                    //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
+                    //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
+                    //if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                    //    Inspector["featurebindings"] = json;
+                    //    updated |= true;
+                    //}
+                    //else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                    //    Inspector["featurebindings"] = json;
+                    //    updated |= true;
+                    //}
+                }
+            }, TaskCreationOptions.None);
+        }
+
+        private async void OnInformationBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(async () => {
+                var updated = false;
+
+                //  informationBindings
+                {
+                    //var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
+                    //var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
+                    //if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
+                    //    Inspector["informationbindings"] = json;
+                    //    updated |= true;
+                    //}
+                    //else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
+                    //    Inspector["informationbindings"] = json;
+                    //    updated |= true;
+                    //}
+                }
+            }, TaskCreationOptions.None);
+        }
+
+        private async void OnFeatureBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(async () => {
+                var updated = false;
+
                 //  featureBindings
                 {
                     //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));

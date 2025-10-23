@@ -120,12 +120,12 @@ namespace S100Framework.Applications
                 builderDomainModel.AppendLine("\t\t};");
 
                 builderDomainModel.AppendLine("\t\tpublic static Type FeatureBindings(string code) => code switch {");
-                foreach(var e in productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager)) {
+                foreach (var e in productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager)) {
                     var code = e.Element(XName.Get("code", scope_S100))!.Value;
                     builderDomainModel.AppendLine($"\t\t\t\"{code}\" => typeof(featureBinding<FeatureAssociations.{code}>),");
                 }
                 builderDomainModel.AppendLine("\t\t\t_ or \"\" => throw new InvalidOperationException(),");
-                builderDomainModel.AppendLine("\t\t};");                
+                builderDomainModel.AppendLine("\t\t};");
             }
 
             var indexBindings = builderDomainModel.Length;
@@ -172,7 +172,7 @@ namespace S100Framework.Applications
             };
 
             var objectConstructors = new Dictionary<string, StringBuilder>();
-            
+
 
             //  --- S100_FC_SimpleAttributes ----------------------------------------------------
             {
@@ -743,7 +743,7 @@ namespace S100Framework.Applications
 
             var informationBindingBuilder = new StringBuilder();
             //  --- S100_FC_InformationAssociations ---------------------------------------------
-            {                
+            {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
                 if (elements.Any())
@@ -822,7 +822,7 @@ namespace S100Framework.Applications
 
             var featureBindingBuilder = new StringBuilder();
             //  --- S100_FC_FeatureAssociations -------------------------------------------------
-            {                
+            {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
 
                 if (elements.Any())
@@ -1523,12 +1523,12 @@ namespace S100Framework.Applications
                         InformationBindingExtension = (extension) => {
                             informationBindingExtension.AppendLine(extension.ToString());
                         },
-                        FeatureBindingExtension = (extension) => { 
+                        FeatureBindingExtension = (extension) => {
                         },
                     }, (b) => {
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitions => {code}._informationBindingDefinitions;");
-                        
+
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
                         b.AppendLine("\t\t\tthis.LoadInformationBinding(bindings);");
@@ -1588,7 +1588,7 @@ namespace S100Framework.Applications
                         b.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingDefinitionsByPrimitive(Primitives primitive) => [.. {code}._informationBindingDefinitions.Where(e => !e.primitives.Any() || e.primitives.Contains(primitive))];");
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingDefinitions => {code}._featureBindingDefinitions;");
-                        
+
                         b.AppendLine();
                         b.AppendLine($"\t\tpublic {code}ViewModel ParseInformationBindings(informationBinding[] bindings) {{");
                         b.AppendLine("\t\t\tthis.LoadInformationBinding(bindings);");
@@ -2123,6 +2123,7 @@ namespace S100Framework.Applications
                         informationBindingExtension.AppendLine($"\t\t\t\tif(informationBinding is informationBinding<{association}> {CamelCase(association)}) {{");
                         informationBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationId = {CamelCase(association)}.referenceId,");
+                        informationBindingExtension.AppendLine($"\t\t\t\t\t\tinformationType = {CamelCase(association)}.informationType,");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
                         informationBindingExtension.AppendLine($"\t\t\t\t\t}});");
                         informationBindingExtension.AppendLine($"\t\t\t\t}}");
@@ -2135,7 +2136,7 @@ namespace S100Framework.Applications
 
                 foreach (var association in associations) {
                     builder.AppendLine();
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : S100Framework.WPF.ViewModel.{productId}.{association}ViewModel, IInformationBindings {{");
+                    builder.AppendLine($"\t\tpublic class {association}ViewModel : informationBindingViewModel<{productId}.{association}ViewModel>, IInformationBindings {{");
                     builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
                     builder.AppendLine("\t\t\t\tif (informationBindings.Length == 1)");
                     builder.AppendLine("\t\t\t\t\tbase.role = informationBindings[0].role;");
@@ -2169,6 +2170,9 @@ namespace S100Framework.Applications
                     }
                     builder.AppendLine("\t\t\t];");
 
+                    builder.AppendLine("\t\t\tpublic override string Serialize() {");
+                    builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
+                    builder.AppendLine("\t\t\t}");
                     builder.AppendLine("\t\t}");
                 }
 
@@ -2176,13 +2180,17 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                     builder.AppendLine("\t\t[Category(\"InformationBindings\")]");
                     builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
+
+                    constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    constructorBuilder.AppendLine($"\t\t\t\tOnInformationBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
+                    constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
                 if (associations.Any())
                     builder.AppendLine("\t\t#endregion");
 
                 if (associations.Any())
-                    builder.AppendLine();               
+                    builder.AppendLine();
             }
 
             informationBindingExtension.AppendLine("\t\t\t}");
@@ -2211,6 +2219,7 @@ namespace S100Framework.Applications
                         featureBindingExtension.AppendLine($"\t\t\t\tif(featureBinding is featureBinding<{association}> {CamelCase(association)}) {{");
                         featureBindingExtension.AppendLine($"\t\t\t\t\tinstance.{pluralizer.Pluralize(association)}.Add(new {client.LoadPrefix}.{association}ViewModel {{");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureId = {CamelCase(association)}.referenceId,");
+                        featureBindingExtension.AppendLine($"\t\t\t\t\t\tfeatureType = {CamelCase(association)}.featureType,");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t\trole = {CamelCase(association)}.role,");
                         featureBindingExtension.AppendLine($"\t\t\t\t\t}});");
                         featureBindingExtension.AppendLine($"\t\t\t\t}}");
@@ -2223,7 +2232,7 @@ namespace S100Framework.Applications
 
                 foreach (var association in associations) {
                     builder.AppendLine();
-                    builder.AppendLine($"\t\tpublic class {association}ViewModel : S100Framework.WPF.ViewModel.{productId}.{association}ViewModel, IFeatureBindings {{");
+                    builder.AppendLine($"\t\tpublic class {association}ViewModel : featureBindingViewModel<{productId}.{association}ViewModel>, IFeatureBindings {{");
                     builder.AppendLine($"\t\t\tpublic {association}ViewModel() {{");
                     builder.AppendLine("\t\t\t\tif (featureBindings.Length == 1)");
                     builder.AppendLine("\t\t\t\t\tbase.role = featureBindings[0].role;");
@@ -2257,6 +2266,9 @@ namespace S100Framework.Applications
                     }
                     builder.AppendLine("\t\t\t];");
 
+                    builder.AppendLine("\t\t\tpublic override string Serialize() {");
+                    builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
+                    builder.AppendLine("\t\t\t}");
                     builder.AppendLine("\t\t}");
                 }
 
@@ -2264,6 +2276,10 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                     builder.AppendLine("\t\t[Category(\"FeatureBindings\")]");
                     builder.AppendLine($"\t\tpublic ObservableCollection<{code}ViewModel.{association}ViewModel> {pluralizer.Pluralize(association)} {{ get; set; }} = new();");
+
+                    constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                    constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
+                    constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
                 if (associations.Any())

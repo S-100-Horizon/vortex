@@ -5,6 +5,7 @@ using S100Framework.DomainModel.S124;
 using S100Framework.WPF;
 using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -179,7 +180,7 @@ namespace VortexConceptApplication
 
 
             //  Associations
-            var json = "[{\"$type\":\"featureBinding::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":null,\"referenceId\":\"1352378633\"}]";
+            var json = "[{\"$type\":\"featureBinding::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
 
             var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, new System.Text.Json.JsonSerializerOptions {
                 TypeInfoResolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver(),
@@ -189,7 +190,7 @@ namespace VortexConceptApplication
                 Name = "xyz",
             }.Load(new S100Framework.DomainModel.S101.FeatureTypes.LightAllAround() {
             }).ParseFeatureBindings(featureBindings);
-            
+
 
 
 
@@ -205,14 +206,30 @@ namespace VortexConceptApplication
             var selectedFeature = new SelectedFeatureTypeObjectViewModel(viewModel);
 
 
-            selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
-                //System.Diagnostics.Debugger.Break();
+            //selectedFeature.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+            //    System.Diagnostics.Debugger.Break();
+            //};
+
+            //selectedFeature.CollectionChanged += (object? sender, NotifyCollectionChangedEventArgs e) => {
+            //    System.Diagnostics.Debugger.Break();
+            //};
+
+            S100AttributeEditor.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
+            };
+
+            S100AttributeEditor.InformationBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
+            };
+
+            S100AttributeEditor.FeatureBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
             };
 
             S100AttributeEditor.SelectedFeatureObject = selectedFeature;
 
             Task.Run(() => {
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     S100AttributeEditor.IsEditingEnabled = true;
                 });

@@ -2298,7 +2298,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class RelatedOrganisationViewModel : S100Framework.WPF.ViewModel.S122.RelatedOrganisationViewModel, IInformationBindings {
+		public class RelatedOrganisationViewModel : informationBindingViewModel<S122.RelatedOrganisationViewModel>, IInformationBindings {
 			public RelatedOrganisationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2315,6 +2315,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2409,6 +2412,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
+			};
+			RelatedOrganisations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RelatedOrganisations));
 			};
 		}
 	}
@@ -2532,7 +2538,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class RelatedOrganisationViewModel : S100Framework.WPF.ViewModel.S122.RelatedOrganisationViewModel, IInformationBindings {
+		public class RelatedOrganisationViewModel : informationBindingViewModel<S122.RelatedOrganisationViewModel>, IInformationBindings {
 			public RelatedOrganisationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2549,6 +2555,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -2643,6 +2652,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 			rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(rxNCode));
+			};
+			RelatedOrganisations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RelatedOrganisations));
 			};
 		}
 	}
@@ -3375,7 +3387,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class RelatedOrganisationViewModel : S100Framework.WPF.ViewModel.S122.RelatedOrganisationViewModel, IInformationBindings {
+		public class RelatedOrganisationViewModel : informationBindingViewModel<S122.RelatedOrganisationViewModel>, IInformationBindings {
 			public RelatedOrganisationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3392,9 +3404,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["AbstractRxN"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S122.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S122.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3411,9 +3426,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S122.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S122.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3430,6 +3448,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -3524,6 +3545,15 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			RelatedOrganisations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RelatedOrganisations));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
 			};
 		}
 	}
@@ -3747,7 +3777,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S122.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S122.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3764,6 +3794,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -3944,6 +3977,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
+			};
 		}
 	}
 
@@ -4042,7 +4078,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class ExceptionalWorkdayViewModel : S100Framework.WPF.ViewModel.S122.ExceptionalWorkdayViewModel, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S122.ExceptionalWorkdayViewModel>, IInformationBindings {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4059,6 +4095,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -4165,6 +4204,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			ExceptionalWorkdays.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ExceptionalWorkdays));
+			};
 		}
 	}
 
@@ -4269,7 +4311,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S122.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S122.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4286,9 +4328,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class ExceptionalWorkdayViewModel : S100Framework.WPF.ViewModel.S122.ExceptionalWorkdayViewModel, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S122.ExceptionalWorkdayViewModel>, IInformationBindings {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4305,6 +4350,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["NonStandardWorkingDay"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -4399,6 +4447,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 			scheduleByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(scheduleByDayOfWeek));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
+			};
+			ExceptionalWorkdays.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ExceptionalWorkdays));
 			};
 		}
 	}
@@ -5114,7 +5168,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class ProtectedAreaAuthorityViewModel : S100Framework.WPF.ViewModel.S122.ProtectedAreaAuthorityViewModel, IInformationBindings {
+		public class ProtectedAreaAuthorityViewModel : informationBindingViewModel<S122.ProtectedAreaAuthorityViewModel>, IInformationBindings {
 			public ProtectedAreaAuthorityViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5131,6 +5185,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -5264,6 +5321,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			designation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(designation));
 			};
+			ProtectedAreaAuthorities.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProtectedAreaAuthorities));
+			};
 		}
 	}
 
@@ -5381,7 +5441,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		#region InformationBindings
 
-		public class ServiceControlViewModel : S100Framework.WPF.ViewModel.S122.ServiceControlViewModel, IInformationBindings {
+		public class ServiceControlViewModel : informationBindingViewModel<S122.ServiceControlViewModel>, IInformationBindings {
 			public ServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5398,6 +5458,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -5487,6 +5550,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			};
 			textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textContent));
+			};
+			ServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceControls));
 			};
 		}
 	}
@@ -5595,6 +5661,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new AbstractRxNViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
+						informationType = relatedOrganisation.informationType,
 						role = relatedOrganisation.role,
 					});
 				}
@@ -5607,6 +5674,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new NauticalInformationViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
+						informationType = relatedOrganisation.informationType,
 						role = relatedOrganisation.role,
 					});
 				}
@@ -5637,18 +5705,21 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<RelatedOrganisation> relatedOrganisation) {
 					instance.RelatedOrganisations.Add(new AuthorityViewModel.RelatedOrganisationViewModel {
 						informationId = relatedOrganisation.referenceId,
+						informationType = relatedOrganisation.informationType,
 						role = relatedOrganisation.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new AuthorityViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new AuthorityViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
@@ -5661,6 +5732,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new ContactDetailsViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
@@ -5673,6 +5745,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
+						informationType = exceptionalWorkday.informationType,
 						role = exceptionalWorkday.role,
 					});
 				}
@@ -5685,12 +5758,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new ServiceHoursViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new ServiceHoursViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
+						informationType = exceptionalWorkday.informationType,
 						role = exceptionalWorkday.role,
 					});
 				}
@@ -5715,6 +5790,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<ProtectedAreaAuthority> protectedAreaAuthority) {
 					instance.ProtectedAreaAuthorities.Add(new MarineProtectedAreaViewModel.ProtectedAreaAuthorityViewModel {
 						informationId = protectedAreaAuthority.referenceId,
+						informationType = protectedAreaAuthority.informationType,
 						role = protectedAreaAuthority.role,
 					});
 				}
@@ -5727,6 +5803,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 				if(informationBinding is informationBinding<ServiceControl> serviceControl) {
 					instance.ServiceControls.Add(new VesselTrafficServiceAreaViewModel.ServiceControlViewModel {
 						informationId = serviceControl.referenceId,
+						informationType = serviceControl.informationType,
 						role = serviceControl.role,
 					});
 				}

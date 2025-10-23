@@ -4433,7 +4433,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -4450,6 +4450,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -4528,6 +4531,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public QualityOfNonBathymetricDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -4723,7 +4729,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -4740,6 +4746,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -4794,6 +4803,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public NavigationalSystemOfMarksViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -4873,7 +4885,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -4890,6 +4902,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -4950,6 +4965,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public LocalDirectionOfBuoyageViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -5092,7 +5110,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class QualityOfBathymetricDataCompositionViewModel : S100Framework.WPF.ViewModel.S101.QualityOfBathymetricDataCompositionViewModel, IInformationBindings {
+		public class QualityOfBathymetricDataCompositionViewModel : informationBindingViewModel<S101.QualityOfBathymetricDataCompositionViewModel>, IInformationBindings {
 			public QualityOfBathymetricDataCompositionViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5109,6 +5127,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["SpatialQuality"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -5118,7 +5139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -5135,6 +5156,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -5224,6 +5248,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			QualityOfBathymetricDataCompositions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(QualityOfBathymetricDataCompositions));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -5274,7 +5304,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -5291,6 +5321,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -5346,6 +5379,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -5396,7 +5432,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -5413,6 +5449,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -5467,6 +5506,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public VerticalDatumOfDataViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -5707,7 +5749,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -5724,6 +5766,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -5851,6 +5896,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -5957,7 +6005,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdateAggregationViewModel : S100Framework.WPF.ViewModel.S101.UpdateAggregationViewModel, IFeatureBindings {
+		public class UpdateAggregationViewModel : featureBindingViewModel<S101.UpdateAggregationViewModel>, IFeatureBindings {
 			public UpdateAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -5982,9 +6030,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6009,6 +6060,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6081,6 +6135,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public UpdateInformationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			UpdateAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdateAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -6171,7 +6231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6188,6 +6248,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6197,7 +6260,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6214,6 +6277,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6277,6 +6343,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public MagneticVariationViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -6347,7 +6419,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6364,6 +6436,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6373,7 +6448,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6390,9 +6465,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6409,6 +6487,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6489,6 +6570,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -6617,7 +6707,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6634,6 +6724,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6643,7 +6736,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6660,9 +6753,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6679,6 +6775,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -6779,6 +6878,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -6878,7 +6986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6895,6 +7003,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -6904,7 +7015,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : S100Framework.WPF.ViewModel.S101.IslandAggregationViewModel, IFeatureBindings {
+		public class IslandAggregationViewModel : featureBindingViewModel<S101.IslandAggregationViewModel>, IFeatureBindings {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6921,9 +7032,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["IslandGroup"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6940,9 +7054,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6959,6 +7076,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7039,6 +7159,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			IslandAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(IslandAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -7090,7 +7222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7107,6 +7239,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7116,7 +7251,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class IslandAggregationViewModel : S100Framework.WPF.ViewModel.S101.IslandAggregationViewModel, IFeatureBindings {
+		public class IslandAggregationViewModel : featureBindingViewModel<S101.IslandAggregationViewModel>, IFeatureBindings {
 			public IslandAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7141,9 +7276,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["IslandGroup"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7160,9 +7298,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7179,6 +7320,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7249,6 +7393,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			IslandAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(IslandAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -7332,7 +7488,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7349,6 +7505,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7358,7 +7517,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7375,9 +7534,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7394,6 +7556,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7468,6 +7633,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -7536,7 +7710,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7553,6 +7727,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7562,7 +7739,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7579,9 +7756,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7598,6 +7778,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7669,6 +7852,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -7734,7 +7926,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7751,6 +7943,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7760,7 +7955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7777,9 +7972,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7796,6 +7994,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -7866,6 +8067,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -7949,7 +8159,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7966,6 +8176,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -7975,7 +8188,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7992,9 +8205,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8011,6 +8227,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8084,6 +8303,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -8167,7 +8395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8184,6 +8412,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8193,7 +8424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8210,9 +8441,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8229,6 +8463,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8302,6 +8539,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -8385,7 +8631,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8402,6 +8648,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8411,7 +8660,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8428,9 +8677,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8447,6 +8699,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8537,6 +8792,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -8665,7 +8929,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8682,6 +8946,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8691,7 +8958,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8708,9 +8975,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8727,6 +8997,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -8809,6 +9082,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -8962,7 +9244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8979,6 +9261,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -8988,7 +9273,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9005,9 +9290,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9024,6 +9312,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9129,6 +9420,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -9243,7 +9543,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9260,6 +9560,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9269,7 +9572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9286,9 +9589,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9305,6 +9611,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9401,6 +9710,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -9529,7 +9847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9546,6 +9864,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9555,7 +9876,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9572,9 +9893,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9591,6 +9915,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9691,6 +10018,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -9742,7 +10078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9759,6 +10095,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -9768,7 +10107,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9785,9 +10124,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9804,6 +10146,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -9871,6 +10216,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -10044,7 +10398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10061,6 +10415,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10070,7 +10427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10087,9 +10444,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10106,6 +10466,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -10197,6 +10560,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -10457,7 +10829,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10474,6 +10846,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10483,7 +10858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10500,9 +10875,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10519,9 +10897,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10538,9 +10919,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10557,9 +10941,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10576,6 +10963,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -10732,6 +11122,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -10842,7 +11250,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -10859,6 +11267,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -10868,7 +11279,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10885,9 +11296,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -10904,6 +11318,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11000,6 +11417,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -11101,7 +11527,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11118,6 +11544,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11127,7 +11556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11144,9 +11573,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11163,6 +11595,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11267,6 +11702,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -11367,7 +11811,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11384,6 +11828,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11393,7 +11840,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11410,9 +11857,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Building","Landmark","OffshorePlatform"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11429,9 +11879,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11448,6 +11901,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -11554,6 +12010,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -11803,7 +12271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -11820,6 +12288,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -11829,7 +12300,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11846,9 +12317,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["SpanFixed","SpanOpening","Pontoon","PylonBridgeSupport"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11865,9 +12339,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11884,9 +12361,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11903,9 +12383,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -11922,6 +12405,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12075,6 +12561,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			BridgeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BridgeAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -12195,7 +12699,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -12212,6 +12716,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -12221,7 +12728,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12238,9 +12745,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12257,9 +12767,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12276,9 +12789,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12295,9 +12811,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12314,6 +12833,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12404,6 +12926,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public SpanFixedViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			BridgeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BridgeAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -12539,7 +13079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -12556,6 +13096,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -12565,7 +13108,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12582,9 +13125,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12601,9 +13147,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12620,9 +13169,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12639,9 +13191,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -12658,6 +13213,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -12754,6 +13312,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public SpanOpeningViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			BridgeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BridgeAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -13038,7 +13614,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -13055,6 +13631,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -13064,7 +13643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13081,9 +13660,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13100,9 +13682,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13119,9 +13704,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13138,6 +13726,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -13292,6 +13883,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -13517,7 +14123,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -13534,6 +14140,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -13543,7 +14152,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13560,9 +14169,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RadarReflector"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13579,9 +14191,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13598,6 +14213,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -13723,6 +14341,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -13927,7 +14557,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -13944,6 +14574,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -13953,7 +14586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13970,9 +14603,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","RadarReflector"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -13989,9 +14625,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14008,9 +14647,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14027,6 +14669,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -14156,6 +14801,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -14412,7 +15072,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -14429,6 +15089,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -14438,7 +15101,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14455,9 +15118,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RoofedStructureAggregationViewModel : S100Framework.WPF.ViewModel.S101.RoofedStructureAggregationViewModel, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : featureBindingViewModel<S101.RoofedStructureAggregationViewModel>, IFeatureBindings {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14474,9 +15140,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["StructureOverNavigableWater"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14493,9 +15162,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14512,9 +15184,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14531,9 +15206,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14550,6 +15228,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -14701,6 +15382,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			BridgeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BridgeAggregations));
+			};
+			RoofedStructureAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RoofedStructureAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -14912,7 +15614,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -14929,6 +15631,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -14938,7 +15643,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14955,9 +15660,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -14974,6 +15682,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -15099,6 +15810,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -15202,7 +15922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -15219,6 +15939,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -15228,7 +15951,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15245,9 +15968,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15264,6 +15990,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -15350,6 +16079,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -15464,7 +16202,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -15481,6 +16219,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -15490,7 +16231,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15507,9 +16248,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15526,6 +16270,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -15622,6 +16369,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -15771,7 +16527,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -15788,6 +16544,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -15797,7 +16556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15814,9 +16573,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -15833,6 +16595,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -15934,6 +16699,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -16191,7 +16965,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -16208,6 +16982,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -16217,7 +16994,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16234,9 +17011,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16253,9 +17033,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16272,9 +17055,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16291,9 +17077,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16310,9 +17099,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16329,6 +17121,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -16504,6 +17299,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -16781,7 +17597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -16798,6 +17614,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -16807,7 +17626,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16824,9 +17643,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16843,9 +17665,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16862,9 +17687,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16881,9 +17709,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -16900,6 +17731,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -17058,6 +17892,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -17356,7 +18208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -17373,6 +18225,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -17382,7 +18237,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17399,9 +18254,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17418,9 +18276,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17437,9 +18298,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17456,6 +18320,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -17613,6 +18480,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -17814,7 +18696,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -17831,6 +18713,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -17840,7 +18725,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17857,9 +18742,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17876,9 +18764,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17895,9 +18786,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17914,9 +18808,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -17933,6 +18830,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -18056,6 +18956,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -18271,7 +19189,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -18288,6 +19206,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -18297,7 +19218,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18314,9 +19235,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18333,6 +19257,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -18454,6 +19381,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -18529,7 +19465,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -18546,6 +19482,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -18555,7 +19494,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18572,9 +19511,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18591,6 +19533,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -18671,6 +19616,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -18890,7 +19844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -18907,6 +19861,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -18916,7 +19873,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18933,9 +19890,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","Bollard"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18952,9 +19912,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18971,9 +19934,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -18990,6 +19956,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -19126,6 +20095,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -19344,7 +20328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -19361,6 +20345,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -19370,7 +20357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19387,9 +20374,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19406,9 +20396,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19425,9 +20418,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19444,9 +20440,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19463,9 +20462,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19482,6 +20484,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -19614,6 +20619,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -19777,7 +20803,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -19794,6 +20820,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -19803,7 +20832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19820,9 +20849,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -19839,6 +20871,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -19940,6 +20975,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -20210,7 +21254,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -20227,6 +21271,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -20236,7 +21283,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20253,9 +21300,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20272,9 +21322,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20291,9 +21344,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20310,6 +21366,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -20458,6 +21517,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -20767,7 +21841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -20784,6 +21858,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -20793,7 +21870,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20810,9 +21887,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RoofedStructureAggregationViewModel : S100Framework.WPF.ViewModel.S101.RoofedStructureAggregationViewModel, IFeatureBindings {
+		public class RoofedStructureAggregationViewModel : featureBindingViewModel<S101.RoofedStructureAggregationViewModel>, IFeatureBindings {
 			public RoofedStructureAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20829,9 +21909,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["PylonBridgeSupport"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20848,9 +21931,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20867,9 +21953,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -20886,6 +21975,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -21067,6 +22159,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RoofedStructureAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RoofedStructureAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -21180,7 +22290,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -21197,6 +22307,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -21206,7 +22319,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21223,9 +22336,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21242,6 +22358,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -21338,6 +22457,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -21487,7 +22615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -21504,6 +22632,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -21513,7 +22644,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21530,9 +22661,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21549,6 +22683,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -21651,6 +22788,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -21744,7 +22890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -21761,6 +22907,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -21770,7 +22919,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21787,9 +22936,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21806,9 +22958,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -21825,6 +22980,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -21910,6 +23068,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -22090,7 +23260,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -22107,6 +23277,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -22116,7 +23289,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -22133,9 +23306,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -22152,6 +23328,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -22279,6 +23458,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -22493,7 +23681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -22510,6 +23698,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -22519,7 +23710,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -22536,9 +23727,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -22555,6 +23749,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -22682,6 +23879,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -22959,7 +24165,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -22976,6 +24182,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -22985,7 +24194,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23002,9 +24211,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23021,9 +24233,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23040,9 +24255,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23059,6 +24277,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -23200,6 +24421,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -23361,7 +24597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -23378,6 +24614,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -23387,7 +24626,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23404,9 +24643,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["MooringTrot"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23423,9 +24665,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23442,6 +24687,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -23576,6 +24824,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			MooringTrotAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(MooringTrotAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -23809,7 +25069,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -23826,6 +25086,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -23835,7 +25098,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23852,9 +25115,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23871,9 +25137,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23890,9 +25159,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23909,9 +25181,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -23928,6 +25203,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -24088,6 +25366,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -24209,7 +25505,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -24226,6 +25522,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -24235,7 +25534,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -24252,9 +25551,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Dolphin","FortifiedStructure","Hulk","Landmark","OffshorePlatform","Pile","PylonBridgeSupport","ShorelineConstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -24271,9 +25573,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -24290,6 +25595,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -24395,6 +25703,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -24604,7 +25924,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -24621,6 +25941,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -24630,7 +25953,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -24647,9 +25970,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -24666,6 +25992,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -24789,6 +26118,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -25060,7 +26398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -25077,6 +26415,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -25086,7 +26427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25103,9 +26444,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25122,9 +26466,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25141,9 +26488,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25160,6 +26510,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -25298,6 +26651,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -25451,7 +26819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -25468,6 +26836,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -25477,7 +26848,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class BridgeAggregationViewModel : S100Framework.WPF.ViewModel.S101.BridgeAggregationViewModel, IFeatureBindings {
+		public class BridgeAggregationViewModel : featureBindingViewModel<S101.BridgeAggregationViewModel>, IFeatureBindings {
 			public BridgeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25494,9 +26865,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25513,9 +26887,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25532,9 +26909,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25551,9 +26931,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25570,6 +26953,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -25687,6 +27073,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			BridgeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(BridgeAggregations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -25854,7 +27258,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -25871,6 +27275,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -25880,7 +27287,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25897,9 +27304,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -25916,6 +27326,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -26030,6 +27443,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -26155,7 +27577,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -26172,6 +27594,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -26181,7 +27606,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26198,9 +27623,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26217,6 +27645,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -26316,6 +27747,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -26435,7 +27875,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -26452,6 +27892,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -26461,7 +27904,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26478,9 +27921,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26497,6 +27943,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -26603,6 +28052,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -26668,7 +28126,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -26685,6 +28143,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -26694,7 +28155,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26711,9 +28172,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Berth","CableSubmarine","MooringBuoy","Obstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26730,9 +28194,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26749,6 +28216,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -26826,6 +28296,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			MooringTrotAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(MooringTrotAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -26894,7 +28376,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -26911,6 +28393,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -26920,7 +28405,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26937,9 +28422,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -26956,6 +28444,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -27026,6 +28517,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -27137,7 +28637,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -27154,6 +28654,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -27163,7 +28666,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27180,9 +28683,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27199,6 +28705,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -27287,6 +28796,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -27402,7 +28920,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -27419,6 +28937,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -27428,7 +28949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27445,9 +28966,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27464,6 +28988,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -27563,6 +29090,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -27631,7 +29167,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -27648,6 +29184,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -27657,7 +29196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27674,9 +29213,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27693,6 +29235,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -27763,6 +29308,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -27847,7 +29401,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -27864,6 +29418,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -27873,7 +29430,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27890,9 +29447,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -27909,6 +29469,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -27992,6 +29555,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -28089,7 +29661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -28106,6 +29678,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -28115,7 +29690,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28132,9 +29707,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28151,6 +29729,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -28244,6 +29825,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -28387,7 +29977,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -28404,6 +29994,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -28413,7 +30006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28430,9 +30023,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28449,9 +30045,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28468,6 +30067,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -28587,6 +30189,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -28662,7 +30276,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -28679,6 +30293,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -28688,7 +30305,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28705,9 +30322,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28724,9 +30344,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28743,6 +30366,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -28810,6 +30436,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -28871,7 +30509,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -28888,6 +30526,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -28897,7 +30538,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -28914,6 +30555,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -28971,6 +30615,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public DepthContourViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -29033,7 +30683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29050,6 +30700,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29059,7 +30712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29076,6 +30729,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -29134,6 +30790,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -29188,7 +30850,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29205,6 +30867,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29214,7 +30879,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29231,6 +30896,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -29296,6 +30964,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -29329,7 +31003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29346,6 +31020,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29355,7 +31032,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29372,6 +31049,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -29423,6 +31103,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public UnsurveyedAreaViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -29496,7 +31182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29513,6 +31199,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29522,7 +31211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29539,9 +31228,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29558,6 +31250,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -29639,6 +31334,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -29707,7 +31411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29724,6 +31428,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29733,7 +31440,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29750,9 +31457,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29769,6 +31479,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -29840,6 +31553,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -29891,7 +31613,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -29908,6 +31630,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -29917,7 +31642,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29934,9 +31659,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -29953,6 +31681,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -30021,6 +31752,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -30082,7 +31822,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -30099,6 +31839,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -30108,7 +31851,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -30125,6 +31868,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -30183,6 +31929,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -30234,7 +31986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -30251,6 +32003,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -30260,7 +32015,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -30277,9 +32032,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -30296,6 +32054,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -30363,6 +32124,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -30553,7 +32323,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -30570,6 +32340,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -30579,7 +32352,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -30596,9 +32369,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -30615,6 +32391,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -30726,6 +32505,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -30965,7 +32753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -30982,6 +32770,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -30991,7 +32782,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31008,9 +32799,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31027,9 +32821,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31046,6 +32843,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -31179,6 +32979,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -31432,7 +33244,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -31449,6 +33261,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -31458,7 +33273,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31475,9 +33290,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["MooringTrot"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31494,9 +33312,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31513,6 +33334,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -31667,6 +33491,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			MooringTrotAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(MooringTrotAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -31781,7 +33617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -31798,6 +33634,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -31807,7 +33646,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31824,9 +33663,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -31843,6 +33685,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -31953,6 +33798,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -32014,7 +33868,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -32031,6 +33885,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -32040,7 +33897,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32057,6 +33914,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -32114,6 +33974,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public DiscolouredWaterViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -32239,7 +34105,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -32256,6 +34122,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -32265,7 +34134,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32282,9 +34151,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32301,9 +34173,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32320,9 +34195,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32339,6 +34217,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -32444,6 +34325,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -32646,7 +34542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -32663,6 +34559,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -32672,7 +34571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32689,9 +34588,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -32708,6 +34610,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -32855,6 +34760,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -33094,7 +35008,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -33111,6 +35025,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -33120,7 +35037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33137,9 +35054,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","Helipad","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored","Bollard","LightAirObstruction"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33156,9 +35076,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33175,9 +35098,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33194,6 +35120,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -33334,6 +35263,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -33454,7 +35398,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -33471,6 +35415,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -33480,7 +35427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33497,9 +35444,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["MooringTrot"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33516,9 +35466,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33535,6 +35488,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -33631,6 +35587,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			MooringTrotAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(MooringTrotAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -33721,7 +35689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -33738,6 +35706,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -33747,7 +35718,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33764,9 +35735,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -33783,6 +35757,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -33896,6 +35873,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -34091,7 +36077,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -34108,6 +36094,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -34117,7 +36106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34134,9 +36123,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34153,6 +36145,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -34291,6 +36286,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -34388,7 +36392,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -34405,6 +36409,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -34414,7 +36421,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34431,9 +36438,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34450,6 +36460,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -34573,6 +36586,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -34788,7 +36810,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -34805,6 +36827,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -34814,7 +36839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34831,9 +36856,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -34850,6 +36878,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -34988,6 +37019,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -35105,7 +37145,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -35122,6 +37162,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -35131,7 +37174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35148,9 +37191,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35167,6 +37213,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -35262,6 +37311,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -35440,7 +37498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -35457,6 +37515,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -35466,7 +37527,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35483,9 +37544,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35502,9 +37566,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35521,9 +37588,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35540,6 +37610,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -35681,6 +37754,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
 		}
 	}
 
@@ -35760,7 +37848,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -35777,6 +37865,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -35786,7 +37877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35811,9 +37902,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35830,9 +37924,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35849,9 +37946,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -35868,6 +37968,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -35950,6 +38053,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -36114,7 +38232,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -36131,6 +38249,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -36140,7 +38261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAggregationViewModel : S100Framework.WPF.ViewModel.S101.FairwayAggregationViewModel, IFeatureBindings {
+		public class FairwayAggregationViewModel : featureBindingViewModel<S101.FairwayAggregationViewModel>, IFeatureBindings {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36157,9 +38278,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FairwaySystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36176,9 +38300,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","CautionArea","Daymark","DredgedArea","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Landmark","Pile","RangeSystem","RecommendedRouteCentreline","RecommendedTrack","RestrictedArea","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","SweptArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36195,9 +38322,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36214,6 +38344,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -36352,6 +38485,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			FairwayAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -36435,7 +38583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -36452,6 +38600,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -36461,7 +38612,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36478,9 +38629,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAggregationViewModel : S100Framework.WPF.ViewModel.S101.FairwayAggregationViewModel, IFeatureBindings {
+		public class FairwayAggregationViewModel : featureBindingViewModel<S101.FairwayAggregationViewModel>, IFeatureBindings {
 			public FairwayAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36497,9 +38651,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36516,9 +38673,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36535,6 +38695,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -36627,6 +38790,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -36791,7 +38969,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -36808,6 +38986,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -36817,7 +38998,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36834,9 +39015,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36853,9 +39037,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36872,9 +39059,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -36891,6 +39081,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -37028,6 +39221,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -37184,7 +39392,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -37201,6 +39409,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -37210,7 +39421,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TwoWayRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.TwoWayRouteAggregationViewModel, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : featureBindingViewModel<S101.TwoWayRouteAggregationViewModel>, IFeatureBindings {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37227,9 +39438,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37246,9 +39460,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37265,6 +39482,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -37380,6 +39600,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TwoWayRouteAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TwoWayRouteAggregations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -37459,7 +39691,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -37476,6 +39708,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -37485,7 +39720,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37502,9 +39737,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TwoWayRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.TwoWayRouteAggregationViewModel, IFeatureBindings {
+		public class TwoWayRouteAggregationViewModel : featureBindingViewModel<S101.TwoWayRouteAggregationViewModel>, IFeatureBindings {
 			public TwoWayRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37521,9 +39759,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TwoWayRoutePart"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37540,9 +39781,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37559,9 +39803,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37578,6 +39825,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -37664,6 +39914,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			TwoWayRouteAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TwoWayRouteAggregations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -37746,7 +40014,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -37763,6 +40031,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -37772,7 +40043,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -37789,6 +40060,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -37862,6 +40136,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -38036,7 +40316,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -38053,6 +40333,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -38062,7 +40345,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38079,9 +40362,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38098,9 +40384,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38117,9 +40406,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38136,6 +40428,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -38266,6 +40561,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			DeepWaterRouteAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(DeepWaterRouteAggregations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -38437,7 +40747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -38454,6 +40764,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -38463,7 +40776,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38480,9 +40793,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38499,9 +40815,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38518,9 +40837,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38537,6 +40859,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -38685,6 +41010,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			DeepWaterRouteAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(DeepWaterRouteAggregations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -38764,7 +41104,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -38781,6 +41121,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -38790,7 +41133,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38807,9 +41150,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class DeepWaterRouteAggregationViewModel : S100Framework.WPF.ViewModel.S101.DeepWaterRouteAggregationViewModel, IFeatureBindings {
+		public class DeepWaterRouteAggregationViewModel : featureBindingViewModel<S101.DeepWaterRouteAggregationViewModel>, IFeatureBindings {
 			public DeepWaterRouteAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38826,9 +41172,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRouteCentreline","DeepWaterRoutePart"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38845,9 +41194,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38864,9 +41216,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -38883,6 +41238,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -38969,6 +41327,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			DeepWaterRouteAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(DeepWaterRouteAggregations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -39048,7 +41424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -39065,6 +41441,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -39074,7 +41453,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39091,9 +41470,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39110,6 +41492,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -39203,6 +41588,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -39301,7 +41695,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -39318,6 +41712,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -39327,7 +41724,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39344,9 +41741,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39363,9 +41763,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39382,6 +41785,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -39492,6 +41898,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -39585,7 +42003,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -39602,6 +42020,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -39611,7 +42032,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39628,9 +42049,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39647,6 +42071,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -39744,6 +42171,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -39812,7 +42248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -39829,6 +42265,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -39838,7 +42277,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39855,9 +42294,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -39874,6 +42316,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -39948,6 +42393,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -40016,7 +42470,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -40033,6 +42487,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -40042,7 +42499,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40059,9 +42516,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40078,6 +42538,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -40151,6 +42614,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -40231,7 +42703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -40248,6 +42720,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -40257,7 +42732,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40274,9 +42749,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40293,6 +42771,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -40387,6 +42868,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -40466,7 +42956,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -40483,6 +42973,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -40492,7 +42985,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40509,9 +43002,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40528,6 +43024,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -40622,6 +43121,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -40715,7 +43223,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -40732,6 +43240,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -40741,7 +43252,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40758,9 +43269,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Building","Crane","Dolphin","FishingFacility","FortifiedStructure","Landmark","MooringBuoy","OffshorePlatform","SiloTank","WindTurbine","Bridge","Conveyor","FloatingDock","Hulk","PipelineOverhead","Pontoon","PylonBridgeSupport","ShorelineConstruction","SpanFixed","SpanOpening","StructureOverNavigableWater"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40785,9 +43299,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40804,9 +43321,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CautionArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40823,9 +43343,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -40842,6 +43365,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -40931,6 +43457,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			CautionAreaAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(CautionAreaAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -41010,7 +43554,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -41027,6 +43571,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -41036,7 +43583,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41053,9 +43600,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41072,9 +43622,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41091,6 +43644,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -41171,6 +43727,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			ASLAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ASLAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -41250,7 +43818,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -41267,6 +43835,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -41276,7 +43847,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41293,9 +43864,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41312,9 +43886,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41331,6 +43908,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -41411,6 +43991,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			ASLAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ASLAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -41490,7 +44082,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -41507,6 +44099,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -41516,7 +44111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41533,9 +44128,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CardinalBeacon","CardinalBuoy","Daymark","EmergencyWreckMarkingBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","LateralBeacon","LateralBuoy","LightFloat","LightVessel","Pile","SafeWaterBeacon","SafeWaterBuoy","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class ASLAggregationViewModel : S100Framework.WPF.ViewModel.S101.ASLAggregationViewModel, IFeatureBindings {
+		public class ASLAggregationViewModel : featureBindingViewModel<S101.ASLAggregationViewModel>, IFeatureBindings {
 			public ASLAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41552,9 +44150,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41571,9 +44172,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CautionArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41590,9 +44194,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41609,6 +44216,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -41694,6 +44304,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			ASLAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ASLAggregations));
+			};
+			CautionAreaAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(CautionAreaAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -41796,7 +44424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -41813,6 +44441,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -41822,7 +44453,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41839,9 +44470,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -41858,6 +44492,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -41975,6 +44612,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -42058,7 +44704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -42075,6 +44721,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -42084,7 +44733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42101,9 +44750,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42120,6 +44772,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -42224,6 +44879,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -42296,7 +44960,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -42313,6 +44977,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -42322,7 +44989,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42339,9 +45006,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42358,6 +45028,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -42439,6 +45112,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -42515,7 +45197,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -42532,6 +45214,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -42541,7 +45226,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42558,9 +45243,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42577,6 +45265,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -42670,6 +45361,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -42786,7 +45486,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -42803,6 +45503,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -42812,7 +45515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42829,9 +45532,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -42848,6 +45554,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -42965,6 +45674,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -43066,7 +45784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -43083,6 +45801,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -43092,7 +45813,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43109,9 +45830,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43128,6 +45852,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -43262,6 +45989,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -43384,7 +46120,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -43401,6 +46137,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -43410,7 +46149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43427,9 +46166,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43446,6 +46188,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -43576,6 +46321,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			vesselSpeedLimit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(vesselSpeedLimit));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -43680,7 +46434,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -43697,6 +46451,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -43706,7 +46463,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43723,9 +46480,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43742,6 +46502,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -43859,6 +46622,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -43932,7 +46704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -43949,6 +46721,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -43958,7 +46733,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43975,9 +46750,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -43994,6 +46772,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -44102,6 +46883,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -44192,7 +46982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -44209,6 +46999,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -44218,7 +47011,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44235,9 +47028,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44254,6 +47050,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -44365,6 +47164,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -44473,7 +47281,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -44490,6 +47298,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -44499,7 +47310,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44516,9 +47327,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44535,6 +47349,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -44662,6 +47479,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -44762,7 +47588,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -44779,6 +47605,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -44788,7 +47617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44805,9 +47634,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -44824,6 +47656,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -44910,6 +47745,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -44998,7 +47842,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -45015,6 +47859,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -45024,7 +47871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45041,9 +47888,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45060,6 +47910,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -45173,6 +48026,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -45301,7 +48163,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -45318,6 +48180,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -45327,7 +48192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class CautionAreaAssociationViewModel : S100Framework.WPF.ViewModel.S101.CautionAreaAssociationViewModel, IFeatureBindings {
+		public class CautionAreaAssociationViewModel : featureBindingViewModel<S101.CautionAreaAssociationViewModel>, IFeatureBindings {
 			public CautionAreaAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45344,9 +48209,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45363,9 +48231,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45382,6 +48253,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -45470,6 +48344,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			CautionAreaAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(CautionAreaAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -45568,7 +48454,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -45585,6 +48471,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -45594,7 +48483,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45611,9 +48500,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45630,6 +48522,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -45720,6 +48615,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -45799,7 +48703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -45816,6 +48720,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -45825,7 +48732,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -45842,6 +48749,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -45916,6 +48826,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -45971,7 +48887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -45988,6 +48904,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -45997,7 +48916,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46014,9 +48933,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46033,6 +48955,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -46111,6 +49036,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -46172,7 +49106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -46189,6 +49123,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -46198,7 +49135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46215,6 +49152,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -46272,6 +49212,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public CustomZoneViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -46338,7 +49284,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -46355,6 +49301,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -46364,7 +49313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46381,6 +49330,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -46448,6 +49400,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -46521,7 +49479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -46538,6 +49496,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -46547,7 +49508,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46564,9 +49525,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46583,6 +49547,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -46664,6 +49631,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -46737,7 +49713,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -46754,6 +49730,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -46763,7 +49742,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46780,9 +49759,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -46799,6 +49781,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -46907,6 +49892,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -46965,7 +49959,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -46982,6 +49976,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -46991,7 +49988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47008,9 +50005,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47027,6 +50027,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -47105,6 +50108,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -47163,7 +50175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -47180,6 +50192,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -47189,7 +50204,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47206,9 +50221,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47225,6 +50243,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -47303,6 +50324,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -47365,7 +50395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -47382,6 +50412,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -47391,7 +50424,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47408,9 +50441,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47427,6 +50463,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -47514,6 +50553,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -47635,7 +50683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -47652,6 +50700,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -47661,7 +50712,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47678,9 +50729,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47697,6 +50751,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -47790,6 +50847,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -47851,7 +50917,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -47868,6 +50934,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -47877,7 +50946,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -47894,6 +50963,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -47951,6 +51023,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		public StraightTerritorialSeaBaselineViewModel() : base() {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -48028,7 +51106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -48045,6 +51123,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -48054,7 +51135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48071,6 +51152,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -48159,6 +51243,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -48235,7 +51325,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -48252,6 +51342,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -48261,7 +51354,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48278,9 +51371,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48297,6 +51393,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -48388,6 +51487,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -48443,7 +51551,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -48460,6 +51568,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -48469,7 +51580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : S100Framework.WPF.ViewModel.S101.PilotageDistrictAssociationViewModel, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : featureBindingViewModel<S101.PilotageDistrictAssociationViewModel>, IFeatureBindings {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48486,9 +51597,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["PilotBoardingPlace"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48505,9 +51619,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48524,6 +51641,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -48604,6 +51724,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			PilotageDistrictAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PilotageDistrictAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -48688,7 +51820,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -48705,6 +51837,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -48714,7 +51849,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48731,9 +51866,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48750,6 +51888,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -48837,6 +51978,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -48902,7 +52052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -48919,6 +52069,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -48928,7 +52081,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48945,9 +52098,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -48964,6 +52120,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -49034,6 +52193,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -49129,7 +52297,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -49146,6 +52314,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -49155,7 +52326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49172,9 +52343,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TrafficSeparationSchemeAggregationViewModel : S100Framework.WPF.ViewModel.S101.TrafficSeparationSchemeAggregationViewModel, IFeatureBindings {
+		public class TrafficSeparationSchemeAggregationViewModel : featureBindingViewModel<S101.TrafficSeparationSchemeAggregationViewModel>, IFeatureBindings {
 			public TrafficSeparationSchemeAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49191,9 +52365,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TrafficSeparationScheme"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49210,9 +52387,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49229,6 +52409,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -49358,6 +52541,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			TrafficSeparationSchemeAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TrafficSeparationSchemeAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -49632,7 +52830,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -49649,6 +52847,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -49658,7 +52859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49683,9 +52884,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["FogSignal","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","RadarTransponderBeacon","Retroreflector"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49702,9 +52906,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49721,9 +52928,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -49740,6 +52950,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -49901,6 +53114,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -50085,7 +53313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -50102,6 +53330,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -50111,7 +53342,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50136,9 +53367,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","Conveyor","Dolphin","FishingFacility","FortifiedStructure","IsolatedDangerBeacon","Landmark","LateralBeacon","OffshorePlatform","Pile","PipelineOverhead","PylonBridgeSupport","SafeWaterBeacon","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50155,9 +53389,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50174,9 +53411,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50193,6 +53433,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -50333,6 +53576,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -50507,7 +53765,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -50524,6 +53782,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -50533,7 +53794,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50550,9 +53811,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50569,9 +53833,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50588,6 +53855,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -50715,6 +53985,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -50910,7 +54192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -50927,6 +54209,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -50936,7 +54221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50953,9 +54238,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","Conveyor","Landmark","OffshorePlatform","PylonBridgeSupport","SpanFixed","SpanOpening","WindTurbine","LightAllAround","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50972,9 +54260,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -50991,6 +54282,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -51134,6 +54428,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -51349,7 +54655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -51366,6 +54672,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -51375,7 +54684,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51392,9 +54701,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51411,9 +54723,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51430,9 +54745,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51449,9 +54767,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51468,6 +54789,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -51617,6 +54941,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -51832,7 +55174,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -51849,6 +55191,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -51858,7 +55203,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51875,9 +55220,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51894,9 +55242,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51913,9 +55264,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51932,9 +55286,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -51951,6 +55308,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -52100,6 +55460,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -52298,7 +55676,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -52315,6 +55693,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -52324,7 +55705,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52341,9 +55722,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52360,9 +55744,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52379,9 +55766,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52398,9 +55788,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52417,6 +55810,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -52563,6 +55959,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -52761,7 +56175,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -52778,6 +56192,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -52787,7 +56204,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52804,9 +56221,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52823,9 +56243,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52842,9 +56265,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52861,9 +56287,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -52880,6 +56309,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -53026,6 +56458,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -53231,7 +56681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -53248,6 +56698,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -53257,7 +56710,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53274,9 +56727,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53293,9 +56749,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53312,9 +56771,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53331,9 +56793,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53350,6 +56815,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -53506,6 +56974,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -53693,7 +57179,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -53710,6 +57196,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -53719,7 +57208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53736,9 +57225,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53755,9 +57247,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53774,9 +57269,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -53793,6 +57291,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -53916,6 +57417,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -54110,7 +57626,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -54127,6 +57643,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -54136,7 +57655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54153,9 +57672,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54172,9 +57694,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54191,6 +57716,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -54335,6 +57863,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -54530,7 +58070,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -54547,6 +58087,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -54556,7 +58099,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54573,9 +58116,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54592,9 +58138,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class MooringTrotAggregationViewModel : S100Framework.WPF.ViewModel.S101.MooringTrotAggregationViewModel, IFeatureBindings {
+		public class MooringTrotAggregationViewModel : featureBindingViewModel<S101.MooringTrotAggregationViewModel>, IFeatureBindings {
 			public MooringTrotAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54611,9 +58160,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["MooringTrot"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54630,9 +58182,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -54649,6 +58204,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -54792,6 +58350,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			MooringTrotAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(MooringTrotAggregations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -55083,7 +58659,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -55100,6 +58676,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -55109,7 +58688,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55126,9 +58705,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55145,9 +58727,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55164,9 +58749,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55183,9 +58771,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55202,9 +58793,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55221,6 +58815,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -55388,6 +58985,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -55679,7 +59297,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -55696,6 +59314,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -55705,7 +59326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55722,9 +59343,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55741,9 +59365,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55760,9 +59387,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55779,9 +59409,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55798,9 +59431,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -55817,6 +59453,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -55984,6 +59623,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -56258,7 +59918,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -56275,6 +59935,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -56284,7 +59947,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56301,9 +59964,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56320,9 +59986,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56339,9 +60008,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56358,9 +60030,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56377,9 +60052,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56396,6 +60074,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -56560,6 +60241,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -56834,7 +60536,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -56851,6 +60553,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -56860,7 +60565,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56877,9 +60582,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56896,9 +60604,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56915,9 +60626,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56934,9 +60648,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56953,9 +60670,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -56972,6 +60692,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -57136,6 +60859,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -57417,7 +61161,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -57434,6 +61178,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -57443,7 +61190,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57460,9 +61207,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning","LightSectored"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57479,9 +61229,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57498,9 +61251,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57517,9 +61273,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57536,9 +61295,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57555,6 +61317,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -57729,6 +61494,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -57935,7 +61721,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -57952,6 +61738,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -57961,7 +61750,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -57986,9 +61775,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58005,9 +61797,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58024,9 +61819,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58043,9 +61841,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58062,9 +61863,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58081,6 +61885,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -58247,6 +62054,27 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -58456,7 +62284,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -58473,6 +62301,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -58482,7 +62313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58499,9 +62330,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58518,9 +62352,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58537,9 +62374,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58556,9 +62396,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58575,6 +62418,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -58724,6 +62570,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -58919,7 +62783,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -58936,6 +62800,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -58945,7 +62812,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58962,9 +62829,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Daymark","DistanceMark","FogSignal","LightAllAround","LightFogDetector","PhysicalAISAidToNavigation","RadarTransponderBeacon","Retroreflector","SignalStationTraffic","SignalStationWarning"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class AidsToNavigationAssociationViewModel : S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel, IFeatureBindings {
+		public class AidsToNavigationAssociationViewModel : featureBindingViewModel<S101.AidsToNavigationAssociationViewModel>, IFeatureBindings {
 			public AidsToNavigationAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -58981,9 +62851,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["ArchipelagicSeaLane","DeepWaterRoute","FairwaySystem","TrafficSeparationScheme","TwoWayRoute"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class FairwayAuxiliaryViewModel : S100Framework.WPF.ViewModel.S101.FairwayAuxiliaryViewModel, IFeatureBindings {
+		public class FairwayAuxiliaryViewModel : featureBindingViewModel<S101.FairwayAuxiliaryViewModel>, IFeatureBindings {
 			public FairwayAuxiliaryViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59000,9 +62873,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Fairway"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59019,9 +62895,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59038,6 +62917,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -59182,6 +63064,24 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			AidsToNavigationAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(AidsToNavigationAssociations));
+			};
+			FairwayAuxiliaries.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(FairwayAuxiliaries));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -59292,7 +63192,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -59309,6 +63209,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -59318,7 +63221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59335,9 +63238,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59354,6 +63260,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -59454,6 +63363,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
 		}
 	}
 
@@ -59540,7 +63458,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -59557,6 +63475,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -59566,7 +63487,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59583,9 +63504,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["CableOverhead","PipelineOverhead"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59602,6 +63526,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -59688,6 +63615,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
 			};
 		}
 	}
@@ -59859,7 +63795,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -59876,6 +63812,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -59885,7 +63824,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59902,9 +63841,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59921,9 +63863,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -59940,6 +63885,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -60065,6 +64013,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -60179,7 +64139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -60196,6 +64156,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -60205,7 +64168,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60222,9 +64185,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60241,9 +64207,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60260,6 +64229,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -60355,6 +64327,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -60487,7 +64471,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -60504,6 +64488,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -60513,7 +64500,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60530,9 +64517,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60549,6 +64539,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -60644,6 +64637,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -60774,7 +64776,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -60791,6 +64793,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -60800,7 +64805,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60817,9 +64822,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -60836,6 +64844,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -60961,6 +64972,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -61105,7 +65125,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -61122,6 +65142,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -61131,7 +65154,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61148,9 +65171,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","LightAllAround","LightSectored","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61167,9 +65193,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61186,9 +65215,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class RangeSystemAggregationViewModel : S100Framework.WPF.ViewModel.S101.RangeSystemAggregationViewModel, IFeatureBindings {
+		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
 			public RangeSystemAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61205,6 +65237,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["RangeSystem"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -61340,6 +65375,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+			RangeSystemAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(RangeSystemAggregations));
+			};
 		}
 	}
 
@@ -61465,7 +65515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -61482,6 +65532,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -61491,7 +65544,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class PilotageDistrictAssociationViewModel : S100Framework.WPF.ViewModel.S101.PilotageDistrictAssociationViewModel, IFeatureBindings {
+		public class PilotageDistrictAssociationViewModel : featureBindingViewModel<S101.PilotageDistrictAssociationViewModel>, IFeatureBindings {
 			public PilotageDistrictAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61508,9 +65561,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["PilotageDistrict"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61527,9 +65583,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61546,6 +65605,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -61679,6 +65741,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			PilotageDistrictAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(PilotageDistrictAssociations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -61730,7 +65804,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -61747,6 +65821,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -61756,7 +65833,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61773,9 +65850,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61792,6 +65872,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -61859,6 +65942,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -61954,7 +66046,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -61971,6 +66063,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation","NonStandardWorkingDay","ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -61980,7 +66075,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -61997,9 +66092,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62016,6 +66114,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -62123,6 +66224,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -62210,7 +66320,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -62227,6 +66337,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -62236,7 +66349,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62253,9 +66366,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62272,9 +66388,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62291,6 +66410,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -62408,6 +66530,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -62495,7 +66629,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -62512,6 +66646,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -62521,7 +66658,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class StructureEquipmentViewModel : S100Framework.WPF.ViewModel.S101.StructureEquipmentViewModel, IFeatureBindings {
+		public class StructureEquipmentViewModel : featureBindingViewModel<S101.StructureEquipmentViewModel>, IFeatureBindings {
 			public StructureEquipmentViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62538,9 +66675,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["Bridge","Building","Crane","CardinalBeacon","CardinalBuoy","Conveyor","Dolphin","EmergencyWreckMarkingBuoy","FishingFacility","FloatingDock","FortifiedStructure","Hulk","InstallationBuoy","IsolatedDangerBeacon","IsolatedDangerBuoy","Landmark","LateralBeacon","LateralBuoy","LightFloat","LightVessel","MooringBuoy","OffshorePlatform","Pile","PipelineOverhead","Pontoon","PylonBridgeSupport","SafeWaterBeacon","SafeWaterBuoy","ShorelineConstruction","SiloTank","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","StructureOverNavigableWater","WindTurbine","Wreck","Daymark"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62557,9 +66697,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62576,6 +66719,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -62693,6 +66839,18 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			StructureEquipments.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(StructureEquipments));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -62780,7 +66938,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -62797,6 +66955,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -62806,7 +66967,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62823,9 +66984,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -62842,6 +67006,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -62955,6 +67122,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -63123,7 +67299,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -63140,6 +67316,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -63149,7 +67328,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63166,9 +67345,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63185,6 +67367,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -63341,6 +67526,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -63424,7 +67618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region InformationBindings
 
-		public class AdditionalInformationViewModel : S100Framework.WPF.ViewModel.S101.AdditionalInformationViewModel, IInformationBindings {
+		public class AdditionalInformationViewModel : informationBindingViewModel<S101.AdditionalInformationViewModel>, IInformationBindings {
 			public AdditionalInformationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -63441,6 +67635,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					informationTypes = ["ContactDetails","NauticalInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("InformationBindings")]
@@ -63450,7 +67647,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel, IFeatureBindings {
+		public class UpdatedInformationViewModel : featureBindingViewModel<S101.UpdatedInformationViewModel>, IFeatureBindings {
 			public UpdatedInformationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63467,9 +67664,12 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["UpdateInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63486,6 +67686,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -63587,6 +67790,15 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
 			};
+			AdditionalInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AdditionalInformations));
+			};
+			UpdatedInformations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(UpdatedInformations));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -63665,7 +67877,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63682,6 +67894,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["AdministrationArea","AirportAirfield","AnchorBerth","AnchorageArea","ArchipelagicSeaLane","ArchipelagicSeaLaneArea","ArchipelagicSeaLaneAxis","Berth","Bollard","Bridge","Building","BuiltUpArea","CableArea","CableOverhead","CableSubmarine","Canal","CardinalBuoy","CardinalBeacon","CargoTranshipmentArea","Causeway","Chart1Feature","Checkpoint","CoastGuardStation","Coastline","CollisionRegulationsLimit","ContinentalShelfArea","Conveyor","Crane","CurrentNonGravitational","Dam","Daymark","DeepWaterRoute","DeepWaterRouteCentreline","DeepWaterRoutePart","DistanceMark","DockArea","Dolphin","DredgedArea","DryDock","DumpingGround","Dyke","EmergencyWreckMarkingBuoy","Fairway","FairwaySystem","FenceWall","FerryRoute","FisheryZone","FishingFacility","FishingGround","FloatingDock","FogSignal","FortifiedStructure","FoulGround","FreePortArea","Gate","Gridiron","HarbourAreaAdministrative","HarbourFacility","Helipad","Hulk","IceArea","InformationArea","InstallationBuoy","IslandGroup","IsolatedDangerBeacon","IsolatedDangerBuoy","Lake","LandArea","LandElevation","LandRegion","Landmark","LateralBeacon","LateralBuoy","LightAirObstruction","LightAllAround","LightFloat","LightFogDetector","LightSectored","LightVessel","LocalMagneticAnomaly","LockBasin","LogPond","MarineFarmCulture","MarinePollutionRegulationsArea","MilitaryPracticeArea","MooringArea","MooringBuoy","MooringTrot","Obstruction","OffshorePlatform","OffshoreProductionArea","OilBarrier","PhysicalAISAidToNavigation","Pile","PilotBoardingPlace","PilotageDistrict","PipelineOverhead","PipelineSubmarineOnLand","Pontoon","PrecautionaryArea","ProductionStorageArea","PylonBridgeSupport","RadarLine","RadarRange","RadarStation","RadarTransponderBeacon","RadioCallingInPoint","RadioStation","Railway","RangeSystem","Rapids","RecommendedRouteCentreline","RecommendedTrack","RescueStation","RestrictedArea","River","Road","Runway","SafeWaterBeacon","SafeWaterBuoy","SeaAreaNamedWaterArea","SeabedArea","Seagrass","SeaplaneLandingArea","ShorelineConstruction","SignalStationTraffic","SignalStationWarning","SiloTank","SlopeTopline","SlopingGround","SmallCraftFacility","Sounding","SpanFixed","SpanOpening","SpecialPurposeGeneralBeacon","SpecialPurposeGeneralBuoy","Spring","StructureOverNavigableWater","SubmarinePipelineArea","SubmarineTransitLane","SweptArea","TidalStreamFloodEbb","TidalStreamPanelData","Tideway","TrafficSeparationScheme","Tunnel","TwoWayRoute","UnderwaterAwashRock","Vegetation","VesselTrafficServiceArea","VirtualAISAidToNavigation","WaterTurbulence","Waterfall","WeedKelp","WindTurbine","Wreck"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -63743,6 +67958,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			textType.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(textType));
 			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -63766,7 +67984,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S101.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S101.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -63783,6 +68001,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
 		}
 
 		[Category("FeatureBindings")]
@@ -63841,6 +68062,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
 			};
 		}
 	}
@@ -63907,6 +68131,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<QualityOfBathymetricDataComposition> qualityOfBathymetricDataComposition) {
 					instance.QualityOfBathymetricDataCompositions.Add(new QualityOfBathymetricDataViewModel.QualityOfBathymetricDataCompositionViewModel {
 						informationId = qualityOfBathymetricDataComposition.referenceId,
+						informationType = qualityOfBathymetricDataComposition.informationType,
 						role = qualityOfBathymetricDataComposition.role,
 					});
 				}
@@ -63943,6 +68168,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MagneticVariationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -63955,6 +68181,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LocalMagneticAnomalyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -63967,6 +68194,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CoastlineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -63979,6 +68207,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LandAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -63991,6 +68220,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new IslandGroupViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64003,6 +68233,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LandElevationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64015,6 +68246,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RiverViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64027,6 +68259,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RapidsViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64039,6 +68272,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new WaterfallViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64051,6 +68285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LakeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64063,6 +68298,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LandRegionViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64075,6 +68311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new VegetationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64087,6 +68324,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new IceAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64099,6 +68337,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SlopingGroundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64111,6 +68350,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SlopeToplineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64123,6 +68363,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TidewayViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64135,6 +68376,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new BuiltUpAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64147,6 +68389,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new BuildingViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64159,6 +68402,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new AirportAirfieldViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64171,6 +68415,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RunwayViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64183,6 +68428,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new HelipadViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64195,6 +68441,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new BridgeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64207,6 +68454,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SpanFixedViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64219,6 +68467,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SpanOpeningViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64231,6 +68480,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ConveyorViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64243,6 +68493,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CableOverheadViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64255,6 +68506,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PipelineOverheadViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64267,6 +68519,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PylonBridgeSupportViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64279,6 +68532,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FenceWallViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64291,6 +68545,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RailwayViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64303,6 +68558,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RoadViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64315,6 +68571,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TunnelViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64327,6 +68584,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LandmarkViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64339,6 +68597,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SiloTankViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64351,6 +68610,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new WindTurbineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64363,6 +68623,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FortifiedStructureViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64375,6 +68636,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ProductionStorageAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64387,6 +68649,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CheckpointViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64399,6 +68662,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new HulkViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64411,6 +68675,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PileViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64423,6 +68688,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DykeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64435,6 +68701,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ShorelineConstructionViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64447,6 +68714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new StructureOverNavigableWaterViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64459,6 +68727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CausewayViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64471,6 +68740,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CanalViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64483,6 +68753,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DistanceMarkViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64495,6 +68766,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new GateViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64507,6 +68779,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DamViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64519,6 +68792,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CraneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64531,6 +68805,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new BerthViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64543,6 +68818,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DolphinViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64555,6 +68831,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new BollardViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64567,6 +68844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DryDockViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64579,6 +68857,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FloatingDockViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64591,6 +68870,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PontoonViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64603,6 +68883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DockAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64615,6 +68896,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new GridironViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64627,6 +68909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LockBasinViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64639,6 +68922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MooringTrotViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64651,6 +68935,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SeaAreaNamedWaterAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64663,6 +68948,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TidalStreamFloodEbbViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64675,6 +68961,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CurrentNonGravitationalViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64687,6 +68974,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new WaterTurbulenceViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64699,6 +68987,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TidalStreamPanelDataViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64711,6 +69000,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SoundingViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64723,6 +69013,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DredgedAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64735,6 +69026,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SweptAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64747,6 +69039,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DepthContourViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64759,6 +69052,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DepthAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64771,6 +69065,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DepthNoBottomFoundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64783,6 +69078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new UnsurveyedAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64795,6 +69091,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SeabedAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64807,6 +69104,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new WeedKelpViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64819,6 +69117,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SeagrassViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64831,6 +69130,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SandwaveViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64843,6 +69143,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SpringViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64855,6 +69156,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new UnderwaterAwashRockViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64867,6 +69169,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new WreckViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64879,6 +69182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ObstructionViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64891,6 +69195,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FoulGroundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64903,6 +69208,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DiscolouredWaterViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64915,6 +69221,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FishingFacilityViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64927,6 +69234,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MarineFarmCultureViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64939,6 +69247,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new OffshorePlatformViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64951,6 +69260,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CableSubmarineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64963,6 +69273,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CableAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64975,6 +69286,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PipelineSubmarineOnLandViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64987,6 +69299,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SubmarinePipelineAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -64999,6 +69312,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new OffshoreProductionAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65011,6 +69325,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new NavigationLineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65023,6 +69338,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RecommendedTrackViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65035,6 +69351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RangeSystemViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65047,6 +69364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FairwayViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65059,6 +69377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FairwaySystemViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65071,6 +69390,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RecommendedRouteCentrelineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65083,6 +69403,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TwoWayRoutePartViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65095,6 +69416,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TwoWayRouteViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65107,6 +69429,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RecommendedTrafficLanePartViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65119,6 +69442,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DeepWaterRouteCentrelineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65131,6 +69455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DeepWaterRoutePartViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65143,6 +69468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DeepWaterRouteViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65155,6 +69481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new InshoreTrafficZoneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65167,6 +69494,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PrecautionaryAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65179,6 +69507,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TrafficSeparationSchemeLanePartViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65191,6 +69520,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SeparationZoneOrLineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65203,6 +69533,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TrafficSeparationSchemeBoundaryViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65215,6 +69546,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TrafficSeparationSchemeCrossingViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65227,6 +69559,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TrafficSeparationSchemeRoundaboutViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65239,6 +69572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TrafficSeparationSchemeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65251,6 +69585,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ArchipelagicSeaLaneAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65263,6 +69598,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ArchipelagicSeaLaneAxisViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65275,6 +69611,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ArchipelagicSeaLaneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65287,6 +69624,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadioCallingInPointViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65299,6 +69637,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FerryRouteViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65311,6 +69650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadarLineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65323,6 +69663,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadarRangeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65335,6 +69676,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadarStationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65347,6 +69689,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new AnchorageAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65359,6 +69702,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MooringAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65371,6 +69715,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new AnchorBerthViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65383,6 +69728,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SeaplaneLandingAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65395,6 +69741,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DumpingGroundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65407,6 +69754,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MilitaryPracticeAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65419,6 +69767,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new AdministrationAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65431,6 +69780,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CargoTranshipmentAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65443,6 +69793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CautionAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65455,6 +69806,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new InformationAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65467,6 +69819,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ContiguousZoneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65479,6 +69832,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ContinentalShelfAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65491,6 +69845,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CustomZoneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65503,6 +69858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new ExclusiveEconomicZoneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65515,6 +69871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FisheryZoneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65527,6 +69884,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FishingGroundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65539,6 +69897,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FreePortAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65551,6 +69910,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new HarbourAreaAdministrativeViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65563,6 +69923,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LogPondViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65575,6 +69936,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new OilBarrierViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65587,6 +69949,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new StraightTerritorialSeaBaselineViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65599,6 +69962,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new TerritorialSeaAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65611,6 +69975,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SubmarineTransitLaneViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65623,6 +69988,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PilotageDistrictViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65635,6 +70001,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CollisionRegulationsLimitViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65647,6 +70014,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MarinePollutionRegulationsAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65659,6 +70027,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RestrictedAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65671,6 +70040,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightAllAroundViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65683,6 +70053,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightSectoredViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65695,6 +70066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightFogDetectorViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65707,6 +70079,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightAirObstructionViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65719,6 +70092,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LateralBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65731,6 +70105,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CardinalBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65743,6 +70118,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new IsolatedDangerBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65755,6 +70131,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SafeWaterBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65767,6 +70144,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SpecialPurposeGeneralBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65779,6 +70157,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new EmergencyWreckMarkingBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65791,6 +70170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new InstallationBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65803,6 +70183,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new MooringBuoyViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65815,6 +70196,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LateralBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65827,6 +70209,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CardinalBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65839,6 +70222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new IsolatedDangerBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65851,6 +70235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SafeWaterBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65863,6 +70248,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SpecialPurposeGeneralBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65875,6 +70261,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new DaymarkViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65887,6 +70274,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightFloatViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65899,6 +70287,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new LightVesselViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65911,6 +70300,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RetroreflectorViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65923,6 +70313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadarReflectorViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65935,6 +70326,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new FogSignalViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65947,6 +70339,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PhysicalAISAidToNavigationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65959,6 +70352,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new VirtualAISAidToNavigationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65971,6 +70365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadioStationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65983,6 +70378,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RadarTransponderBeaconViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -65995,6 +70391,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new PilotBoardingPlaceViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66007,6 +70404,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new VesselTrafficServiceAreaViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66019,6 +70417,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new CoastGuardStationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66031,6 +70430,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SignalStationWarningViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66043,6 +70443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SignalStationTrafficViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66055,6 +70456,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new RescueStationViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66067,6 +70469,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new HarbourFacilityViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66079,6 +70482,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(informationBinding is informationBinding<AdditionalInformation> additionalInformation) {
 					instance.AdditionalInformations.Add(new SmallCraftFacilityViewModel.AdditionalInformationViewModel {
 						informationId = additionalInformation.referenceId,
+						informationType = additionalInformation.informationType,
 						role = additionalInformation.role,
 					});
 				}
@@ -66106,6 +70510,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new QualityOfNonBathymetricDataViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66124,6 +70529,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new NavigationalSystemOfMarksViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66136,6 +70542,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LocalDirectionOfBuoyageViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66148,6 +70555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new QualityOfBathymetricDataViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66160,6 +70568,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SoundingDatumViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66172,6 +70581,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new VerticalDatumOfDataViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66184,6 +70594,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new QualityOfSurveyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66196,12 +70607,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdateAggregation> updateAggregation) {
 					instance.UpdateAggregations.Add(new UpdateInformationViewModel.UpdateAggregationViewModel {
 						featureId = updateAggregation.referenceId,
+						featureType = updateAggregation.featureType,
 						role = updateAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new UpdateInformationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66214,6 +70627,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MagneticVariationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66226,12 +70640,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LocalMagneticAnomalyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LocalMagneticAnomalyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66244,12 +70660,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CoastlineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CoastlineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66262,18 +70680,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<IslandAggregation> islandAggregation) {
 					instance.IslandAggregations.Add(new LandAreaViewModel.IslandAggregationViewModel {
 						featureId = islandAggregation.referenceId,
+						featureType = islandAggregation.featureType,
 						role = islandAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LandAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LandAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66286,18 +70707,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<IslandAggregation> islandAggregation) {
 					instance.IslandAggregations.Add(new IslandGroupViewModel.IslandAggregationViewModel {
 						featureId = islandAggregation.referenceId,
+						featureType = islandAggregation.featureType,
 						role = islandAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new IslandGroupViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new IslandGroupViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66310,12 +70734,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LandElevationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LandElevationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66328,12 +70754,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RiverViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RiverViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66346,12 +70774,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RapidsViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RapidsViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66364,12 +70794,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new WaterfallViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new WaterfallViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66382,12 +70814,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LakeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LakeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66400,12 +70834,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LandRegionViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LandRegionViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66418,12 +70854,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new VegetationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new VegetationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66436,12 +70874,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new IceAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new IceAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66454,12 +70894,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SlopingGroundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SlopingGroundViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66472,12 +70914,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SlopeToplineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SlopeToplineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66490,12 +70934,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TidewayViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TidewayViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66508,12 +70954,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new BuiltUpAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new BuiltUpAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66526,30 +70974,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new BuildingViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new BuildingViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new BuildingViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new BuildingViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new BuildingViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66562,12 +71015,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new AirportAirfieldViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new AirportAirfieldViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66580,12 +71035,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RunwayViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RunwayViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66598,18 +71055,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new HelipadViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new HelipadViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new HelipadViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66622,30 +71082,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
 					instance.BridgeAggregations.Add(new BridgeViewModel.BridgeAggregationViewModel {
 						featureId = bridgeAggregation.referenceId,
+						featureType = bridgeAggregation.featureType,
 						role = bridgeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new BridgeViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new BridgeViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new BridgeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new BridgeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66658,30 +71123,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
 					instance.BridgeAggregations.Add(new SpanFixedViewModel.BridgeAggregationViewModel {
 						featureId = bridgeAggregation.referenceId,
+						featureType = bridgeAggregation.featureType,
 						role = bridgeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SpanFixedViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SpanFixedViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SpanFixedViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SpanFixedViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66694,30 +71164,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
 					instance.BridgeAggregations.Add(new SpanOpeningViewModel.BridgeAggregationViewModel {
 						featureId = bridgeAggregation.referenceId,
+						featureType = bridgeAggregation.featureType,
 						role = bridgeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SpanOpeningViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SpanOpeningViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SpanOpeningViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SpanOpeningViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66730,24 +71205,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new ConveyorViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new ConveyorViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ConveyorViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ConveyorViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66760,18 +71239,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new CableOverheadViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CableOverheadViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CableOverheadViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66784,24 +71266,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new PipelineOverheadViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new PipelineOverheadViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PipelineOverheadViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PipelineOverheadViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66814,36 +71300,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
 					instance.BridgeAggregations.Add(new PylonBridgeSupportViewModel.BridgeAggregationViewModel {
 						featureId = bridgeAggregation.referenceId,
+						featureType = bridgeAggregation.featureType,
 						role = bridgeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RoofedStructureAggregation> roofedStructureAggregation) {
 					instance.RoofedStructureAggregations.Add(new PylonBridgeSupportViewModel.RoofedStructureAggregationViewModel {
 						featureId = roofedStructureAggregation.referenceId,
+						featureType = roofedStructureAggregation.featureType,
 						role = roofedStructureAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new PylonBridgeSupportViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new PylonBridgeSupportViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PylonBridgeSupportViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PylonBridgeSupportViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -66856,12 +71348,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FenceWallViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FenceWallViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66874,12 +71368,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RailwayViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RailwayViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66892,12 +71388,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RoadViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RoadViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66910,12 +71408,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TunnelViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TunnelViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66928,36 +71428,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LandmarkViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new LandmarkViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new LandmarkViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new LandmarkViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LandmarkViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LandmarkViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -66970,30 +71476,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SiloTankViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SiloTankViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new SiloTankViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SiloTankViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SiloTankViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67006,24 +71517,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new WindTurbineViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new WindTurbineViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new WindTurbineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new WindTurbineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67036,30 +71551,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new FortifiedStructureViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new FortifiedStructureViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new FortifiedStructureViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FortifiedStructureViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FortifiedStructureViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67072,12 +71592,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ProductionStorageAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ProductionStorageAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67090,12 +71612,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CheckpointViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CheckpointViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67108,24 +71632,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new HulkViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new HulkViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new HulkViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new HulkViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67138,36 +71666,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new PileViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new PileViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new PileViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new PileViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PileViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PileViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67180,12 +71714,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DykeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DykeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67198,24 +71734,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new ShorelineConstructionViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new ShorelineConstructionViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ShorelineConstructionViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ShorelineConstructionViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67228,30 +71768,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new StructureOverNavigableWaterViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RoofedStructureAggregation> roofedStructureAggregation) {
 					instance.RoofedStructureAggregations.Add(new StructureOverNavigableWaterViewModel.RoofedStructureAggregationViewModel {
 						featureId = roofedStructureAggregation.referenceId,
+						featureType = roofedStructureAggregation.featureType,
 						role = roofedStructureAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new StructureOverNavigableWaterViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new StructureOverNavigableWaterViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new StructureOverNavigableWaterViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67264,12 +71809,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CausewayViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CausewayViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67282,12 +71829,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CanalViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CanalViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67300,18 +71849,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new DistanceMarkViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DistanceMarkViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DistanceMarkViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67324,12 +71876,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new GateViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new GateViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67342,12 +71896,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DamViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DamViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67360,24 +71916,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new CraneViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new CraneViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CraneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CraneViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67390,18 +71950,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<MooringTrotAggregation> mooringTrotAggregation) {
 					instance.MooringTrotAggregations.Add(new BerthViewModel.MooringTrotAggregationViewModel {
 						featureId = mooringTrotAggregation.referenceId,
+						featureType = mooringTrotAggregation.featureType,
 						role = mooringTrotAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new BerthViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new BerthViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67414,30 +71977,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new DolphinViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new DolphinViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new DolphinViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DolphinViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DolphinViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67450,18 +72018,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new BollardViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new BollardViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new BollardViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67474,12 +72045,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DryDockViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DryDockViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67492,24 +72065,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new FloatingDockViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new FloatingDockViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FloatingDockViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FloatingDockViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67522,30 +72099,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<BridgeAggregation> bridgeAggregation) {
 					instance.BridgeAggregations.Add(new PontoonViewModel.BridgeAggregationViewModel {
 						featureId = bridgeAggregation.referenceId,
+						featureType = bridgeAggregation.featureType,
 						role = bridgeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new PontoonViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new PontoonViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PontoonViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PontoonViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67558,12 +72140,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DockAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DockAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67576,12 +72160,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new GridironViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new GridironViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67594,12 +72180,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LockBasinViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LockBasinViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67612,18 +72200,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<MooringTrotAggregation> mooringTrotAggregation) {
 					instance.MooringTrotAggregations.Add(new MooringTrotViewModel.MooringTrotAggregationViewModel {
 						featureId = mooringTrotAggregation.referenceId,
+						featureType = mooringTrotAggregation.featureType,
 						role = mooringTrotAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MooringTrotViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MooringTrotViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67636,12 +72227,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SeaAreaNamedWaterAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SeaAreaNamedWaterAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67654,12 +72247,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TidalStreamFloodEbbViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TidalStreamFloodEbbViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67672,12 +72267,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CurrentNonGravitationalViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CurrentNonGravitationalViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67690,12 +72287,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new WaterTurbulenceViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new WaterTurbulenceViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67708,12 +72307,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TidalStreamPanelDataViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TidalStreamPanelDataViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67726,12 +72327,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SoundingViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SoundingViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67744,18 +72347,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new DredgedAreaViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DredgedAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DredgedAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67768,18 +72374,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new SweptAreaViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SweptAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SweptAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67792,6 +72401,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DepthContourViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67804,6 +72414,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DepthAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67816,6 +72427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DepthNoBottomFoundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67828,6 +72440,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new UnsurveyedAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67840,12 +72453,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SeabedAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SeabedAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67858,12 +72473,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new WeedKelpViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new WeedKelpViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67876,12 +72493,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SeagrassViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SeagrassViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67894,6 +72513,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SandwaveViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -67906,12 +72526,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SpringViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SpringViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67924,12 +72546,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new UnderwaterAwashRockViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new UnderwaterAwashRockViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67942,18 +72566,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new WreckViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new WreckViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new WreckViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67966,18 +72593,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<MooringTrotAggregation> mooringTrotAggregation) {
 					instance.MooringTrotAggregations.Add(new ObstructionViewModel.MooringTrotAggregationViewModel {
 						featureId = mooringTrotAggregation.referenceId,
+						featureType = mooringTrotAggregation.featureType,
 						role = mooringTrotAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ObstructionViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ObstructionViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -67990,12 +72620,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FoulGroundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FoulGroundViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68008,6 +72640,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DiscolouredWaterViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68020,24 +72653,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new FishingFacilityViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new FishingFacilityViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FishingFacilityViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FishingFacilityViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68050,12 +72687,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MarineFarmCultureViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MarineFarmCultureViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68068,24 +72707,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new OffshorePlatformViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new OffshorePlatformViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new OffshorePlatformViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new OffshorePlatformViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68098,18 +72741,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<MooringTrotAggregation> mooringTrotAggregation) {
 					instance.MooringTrotAggregations.Add(new CableSubmarineViewModel.MooringTrotAggregationViewModel {
 						featureId = mooringTrotAggregation.referenceId,
+						featureType = mooringTrotAggregation.featureType,
 						role = mooringTrotAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CableSubmarineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CableSubmarineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68122,12 +72768,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CableAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CableAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68140,12 +72788,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PipelineSubmarineOnLandViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PipelineSubmarineOnLandViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68158,12 +72808,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SubmarinePipelineAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SubmarinePipelineAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68176,12 +72828,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new OffshoreProductionAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new OffshoreProductionAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68194,12 +72848,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new NavigationLineViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new NavigationLineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68212,24 +72868,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new RecommendedTrackViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RecommendedTrackViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RecommendedTrackViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new RecommendedTrackViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
@@ -68242,24 +72902,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new RangeSystemViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new RangeSystemViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RangeSystemViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RangeSystemViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68272,24 +72936,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<FairwayAggregation> fairwayAggregation) {
 					instance.FairwayAggregations.Add(new FairwayViewModel.FairwayAggregationViewModel {
 						featureId = fairwayAggregation.referenceId,
+						featureType = fairwayAggregation.featureType,
 						role = fairwayAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new FairwayViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FairwayViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FairwayViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68302,24 +72970,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new FairwaySystemViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAggregation> fairwayAggregation) {
 					instance.FairwayAggregations.Add(new FairwaySystemViewModel.FairwayAggregationViewModel {
 						featureId = fairwayAggregation.referenceId,
+						featureType = fairwayAggregation.featureType,
 						role = fairwayAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FairwaySystemViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FairwaySystemViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68332,24 +73004,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new RecommendedRouteCentrelineViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new RecommendedRouteCentrelineViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RecommendedRouteCentrelineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RecommendedRouteCentrelineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68362,18 +73038,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TwoWayRouteAggregation> twoWayRouteAggregation) {
 					instance.TwoWayRouteAggregations.Add(new TwoWayRoutePartViewModel.TwoWayRouteAggregationViewModel {
 						featureId = twoWayRouteAggregation.referenceId,
+						featureType = twoWayRouteAggregation.featureType,
 						role = twoWayRouteAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TwoWayRoutePartViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TwoWayRoutePartViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68386,30 +73065,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new TwoWayRouteViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TwoWayRouteAggregation> twoWayRouteAggregation) {
 					instance.TwoWayRouteAggregations.Add(new TwoWayRouteViewModel.TwoWayRouteAggregationViewModel {
 						featureId = twoWayRouteAggregation.referenceId,
+						featureType = twoWayRouteAggregation.featureType,
 						role = twoWayRouteAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TwoWayRouteViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TwoWayRouteViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TwoWayRouteViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68422,6 +73106,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RecommendedTrafficLanePartViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68434,24 +73119,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<DeepWaterRouteAggregation> deepWaterRouteAggregation) {
 					instance.DeepWaterRouteAggregations.Add(new DeepWaterRouteCentrelineViewModel.DeepWaterRouteAggregationViewModel {
 						featureId = deepWaterRouteAggregation.referenceId,
+						featureType = deepWaterRouteAggregation.featureType,
 						role = deepWaterRouteAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new DeepWaterRouteCentrelineViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DeepWaterRouteCentrelineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DeepWaterRouteCentrelineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68464,24 +73153,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<DeepWaterRouteAggregation> deepWaterRouteAggregation) {
 					instance.DeepWaterRouteAggregations.Add(new DeepWaterRoutePartViewModel.DeepWaterRouteAggregationViewModel {
 						featureId = deepWaterRouteAggregation.referenceId,
+						featureType = deepWaterRouteAggregation.featureType,
 						role = deepWaterRouteAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new DeepWaterRoutePartViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DeepWaterRoutePartViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DeepWaterRoutePartViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68494,30 +73187,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new DeepWaterRouteViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<DeepWaterRouteAggregation> deepWaterRouteAggregation) {
 					instance.DeepWaterRouteAggregations.Add(new DeepWaterRouteViewModel.DeepWaterRouteAggregationViewModel {
 						featureId = deepWaterRouteAggregation.referenceId,
+						featureType = deepWaterRouteAggregation.featureType,
 						role = deepWaterRouteAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new DeepWaterRouteViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DeepWaterRouteViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DeepWaterRouteViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68530,12 +73228,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new InshoreTrafficZoneViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new InshoreTrafficZoneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68548,18 +73248,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new PrecautionaryAreaViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PrecautionaryAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PrecautionaryAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68572,12 +73275,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TrafficSeparationSchemeLanePartViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68590,12 +73295,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new SeparationZoneOrLineViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SeparationZoneOrLineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68608,12 +73315,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TrafficSeparationSchemeBoundaryViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68626,12 +73335,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TrafficSeparationSchemeCrossingViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68644,12 +73355,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TrafficSeparationSchemeRoundaboutViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -68662,30 +73375,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new TrafficSeparationSchemeViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new TrafficSeparationSchemeViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<CautionAreaAssociation> cautionAreaAssociation) {
 					instance.CautionAreaAssociations.Add(new TrafficSeparationSchemeViewModel.CautionAreaAssociationViewModel {
 						featureId = cautionAreaAssociation.referenceId,
+						featureType = cautionAreaAssociation.featureType,
 						role = cautionAreaAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TrafficSeparationSchemeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TrafficSeparationSchemeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68698,18 +73416,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<ASLAggregation> aSLAggregation) {
 					instance.ASLAggregations.Add(new ArchipelagicSeaLaneAreaViewModel.ASLAggregationViewModel {
 						featureId = aSLAggregation.referenceId,
+						featureType = aSLAggregation.featureType,
 						role = aSLAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ArchipelagicSeaLaneAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ArchipelagicSeaLaneAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68722,18 +73443,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<ASLAggregation> aSLAggregation) {
 					instance.ASLAggregations.Add(new ArchipelagicSeaLaneAxisViewModel.ASLAggregationViewModel {
 						featureId = aSLAggregation.referenceId,
+						featureType = aSLAggregation.featureType,
 						role = aSLAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ArchipelagicSeaLaneAxisViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ArchipelagicSeaLaneAxisViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68746,30 +73470,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new ArchipelagicSeaLaneViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<ASLAggregation> aSLAggregation) {
 					instance.ASLAggregations.Add(new ArchipelagicSeaLaneViewModel.ASLAggregationViewModel {
 						featureId = aSLAggregation.referenceId,
+						featureType = aSLAggregation.featureType,
 						role = aSLAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<CautionAreaAssociation> cautionAreaAssociation) {
 					instance.CautionAreaAssociations.Add(new ArchipelagicSeaLaneViewModel.CautionAreaAssociationViewModel {
 						featureId = cautionAreaAssociation.referenceId,
+						featureType = cautionAreaAssociation.featureType,
 						role = cautionAreaAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ArchipelagicSeaLaneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ArchipelagicSeaLaneViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68782,12 +73511,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadioCallingInPointViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadioCallingInPointViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68800,12 +73531,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FerryRouteViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FerryRouteViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68818,12 +73551,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadarLineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadarLineViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68836,12 +73571,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadarRangeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadarRangeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68854,12 +73591,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadarStationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadarStationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68872,12 +73611,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new AnchorageAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new AnchorageAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68890,12 +73631,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MooringAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MooringAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68908,12 +73651,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new AnchorBerthViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new AnchorBerthViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68926,12 +73671,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SeaplaneLandingAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SeaplaneLandingAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68944,12 +73691,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DumpingGroundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DumpingGroundViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68962,12 +73711,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MilitaryPracticeAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MilitaryPracticeAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68980,12 +73731,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new AdministrationAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new AdministrationAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -68998,12 +73751,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CargoTranshipmentAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CargoTranshipmentAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69016,18 +73771,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<CautionAreaAssociation> cautionAreaAssociation) {
 					instance.CautionAreaAssociations.Add(new CautionAreaViewModel.CautionAreaAssociationViewModel {
 						featureId = cautionAreaAssociation.referenceId,
+						featureType = cautionAreaAssociation.featureType,
 						role = cautionAreaAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new CautionAreaViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CautionAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69040,12 +73798,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new InformationAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new InformationAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69058,6 +73818,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ContiguousZoneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69070,12 +73831,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ContinentalShelfAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new ContinentalShelfAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69088,6 +73851,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CustomZoneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69100,6 +73864,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new ExclusiveEconomicZoneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69112,12 +73877,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FisheryZoneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FisheryZoneViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69130,12 +73897,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FishingGroundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FishingGroundViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69148,12 +73917,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FreePortAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FreePortAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69166,12 +73937,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new HarbourAreaAdministrativeViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new HarbourAreaAdministrativeViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69184,12 +73957,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LogPondViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LogPondViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69202,12 +73977,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new OilBarrierViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new OilBarrierViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69220,6 +73997,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new StraightTerritorialSeaBaselineViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69232,6 +74010,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new TerritorialSeaAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -69244,12 +74023,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SubmarineTransitLaneViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SubmarineTransitLaneViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69262,18 +74043,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<PilotageDistrictAssociation> pilotageDistrictAssociation) {
 					instance.PilotageDistrictAssociations.Add(new PilotageDistrictViewModel.PilotageDistrictAssociationViewModel {
 						featureId = pilotageDistrictAssociation.referenceId,
+						featureType = pilotageDistrictAssociation.featureType,
 						role = pilotageDistrictAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PilotageDistrictViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PilotageDistrictViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69286,12 +74070,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CollisionRegulationsLimitViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CollisionRegulationsLimitViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69304,12 +74090,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MarinePollutionRegulationsAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MarinePollutionRegulationsAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69322,24 +74110,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new RestrictedAreaViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<TrafficSeparationSchemeAggregation> trafficSeparationSchemeAggregation) {
 					instance.TrafficSeparationSchemeAggregations.Add(new RestrictedAreaViewModel.TrafficSeparationSchemeAggregationViewModel {
 						featureId = trafficSeparationSchemeAggregation.referenceId,
+						featureType = trafficSeparationSchemeAggregation.featureType,
 						role = trafficSeparationSchemeAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RestrictedAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RestrictedAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69352,24 +74144,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightAllAroundViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new LightAllAroundViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightAllAroundViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightAllAroundViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69382,24 +74178,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightSectoredViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new LightSectoredViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightSectoredViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightSectoredViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69412,18 +74212,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightFogDetectorViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightFogDetectorViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightFogDetectorViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69436,18 +74239,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightAirObstructionViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightAirObstructionViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightAirObstructionViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69460,30 +74266,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LateralBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new LateralBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new LateralBuoyViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LateralBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LateralBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69496,30 +74307,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new CardinalBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new CardinalBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new CardinalBuoyViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CardinalBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CardinalBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69532,30 +74348,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new IsolatedDangerBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new IsolatedDangerBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new IsolatedDangerBuoyViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new IsolatedDangerBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new IsolatedDangerBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69568,30 +74389,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SafeWaterBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SafeWaterBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new SafeWaterBuoyViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SafeWaterBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SafeWaterBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69604,30 +74430,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SpecialPurposeGeneralBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SpecialPurposeGeneralBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new SpecialPurposeGeneralBuoyViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SpecialPurposeGeneralBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SpecialPurposeGeneralBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69640,24 +74471,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new EmergencyWreckMarkingBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new EmergencyWreckMarkingBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new EmergencyWreckMarkingBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new EmergencyWreckMarkingBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69670,18 +74505,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new InstallationBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new InstallationBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new InstallationBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69694,30 +74532,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new MooringBuoyViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new MooringBuoyViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<MooringTrotAggregation> mooringTrotAggregation) {
 					instance.MooringTrotAggregations.Add(new MooringBuoyViewModel.MooringTrotAggregationViewModel {
 						featureId = mooringTrotAggregation.referenceId,
+						featureType = mooringTrotAggregation.featureType,
 						role = mooringTrotAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new MooringBuoyViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new MooringBuoyViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69730,36 +74573,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LateralBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new LateralBeaconViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new LateralBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new LateralBeaconViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LateralBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LateralBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69772,36 +74621,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new CardinalBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new CardinalBeaconViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new CardinalBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new CardinalBeaconViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CardinalBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CardinalBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69814,36 +74669,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new IsolatedDangerBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new IsolatedDangerBeaconViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new IsolatedDangerBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new IsolatedDangerBeaconViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new IsolatedDangerBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new IsolatedDangerBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69856,36 +74717,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SafeWaterBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SafeWaterBeaconViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new SafeWaterBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new SafeWaterBeaconViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SafeWaterBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SafeWaterBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69898,36 +74765,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SpecialPurposeGeneralBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new SpecialPurposeGeneralBeaconViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new SpecialPurposeGeneralBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new SpecialPurposeGeneralBeaconViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SpecialPurposeGeneralBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SpecialPurposeGeneralBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69940,36 +74813,42 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new DaymarkViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new DaymarkViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new DaymarkViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new DaymarkViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new DaymarkViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new DaymarkViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -69982,30 +74861,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightFloatViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new LightFloatViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new LightFloatViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightFloatViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightFloatViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70018,30 +74902,35 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new LightVesselViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<AidsToNavigationAssociation> aidsToNavigationAssociation) {
 					instance.AidsToNavigationAssociations.Add(new LightVesselViewModel.AidsToNavigationAssociationViewModel {
 						featureId = aidsToNavigationAssociation.referenceId,
+						featureType = aidsToNavigationAssociation.featureType,
 						role = aidsToNavigationAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<FairwayAuxiliary> fairwayAuxiliary) {
 					instance.FairwayAuxiliaries.Add(new LightVesselViewModel.FairwayAuxiliaryViewModel {
 						featureId = fairwayAuxiliary.referenceId,
+						featureType = fairwayAuxiliary.featureType,
 						role = fairwayAuxiliary.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new LightVesselViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new LightVesselViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70054,12 +74943,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new RetroreflectorViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RetroreflectorViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -70072,12 +74963,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new RadarReflectorViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadarReflectorViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
@@ -70090,18 +74983,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new FogSignalViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new FogSignalViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new FogSignalViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70114,18 +75010,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new PhysicalAISAidToNavigationViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PhysicalAISAidToNavigationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PhysicalAISAidToNavigationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70138,12 +75037,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new VirtualAISAidToNavigationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new VirtualAISAidToNavigationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70156,12 +75057,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadioStationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadioStationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70174,24 +75077,28 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new RadarTransponderBeaconViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RadarTransponderBeaconViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RadarTransponderBeaconViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<RangeSystemAggregation> rangeSystemAggregation) {
 					instance.RangeSystemAggregations.Add(new RadarTransponderBeaconViewModel.RangeSystemAggregationViewModel {
 						featureId = rangeSystemAggregation.referenceId,
+						featureType = rangeSystemAggregation.featureType,
 						role = rangeSystemAggregation.role,
 					});
 				}
@@ -70204,18 +75111,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<PilotageDistrictAssociation> pilotageDistrictAssociation) {
 					instance.PilotageDistrictAssociations.Add(new PilotBoardingPlaceViewModel.PilotageDistrictAssociationViewModel {
 						featureId = pilotageDistrictAssociation.referenceId,
+						featureType = pilotageDistrictAssociation.featureType,
 						role = pilotageDistrictAssociation.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new PilotBoardingPlaceViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new PilotBoardingPlaceViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70228,12 +75138,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new VesselTrafficServiceAreaViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new VesselTrafficServiceAreaViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70246,12 +75158,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new CoastGuardStationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new CoastGuardStationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70264,18 +75178,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SignalStationWarningViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SignalStationWarningViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SignalStationWarningViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70288,18 +75205,21 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<StructureEquipment> structureEquipment) {
 					instance.StructureEquipments.Add(new SignalStationTrafficViewModel.StructureEquipmentViewModel {
 						featureId = structureEquipment.referenceId,
+						featureType = structureEquipment.featureType,
 						role = structureEquipment.role,
 					});
 				}
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SignalStationTrafficViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SignalStationTrafficViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70312,12 +75232,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new RescueStationViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new RescueStationViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70330,12 +75252,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new HarbourFacilityViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new HarbourFacilityViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70348,12 +75272,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<UpdatedInformation> updatedInformation) {
 					instance.UpdatedInformations.Add(new SmallCraftFacilityViewModel.UpdatedInformationViewModel {
 						featureId = updatedInformation.referenceId,
+						featureType = updatedInformation.featureType,
 						role = updatedInformation.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new SmallCraftFacilityViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70366,6 +75292,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -70378,6 +75305,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new Chart1FeatureViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
