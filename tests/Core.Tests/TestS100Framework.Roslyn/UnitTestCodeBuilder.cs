@@ -281,6 +281,24 @@ namespace TestS100Framework
             }
 
             [Fact]
+            public void Build_S125_GST() {
+                var type1 = typeof(Test.NullableTest);
+                var type2 = typeof(bool?);
+
+                var v = RuntimeHelpers.GetUninitializedObject(typeof(DateTime));
+
+                var s100 = XDocument.Load(this.Path(@"S-125 Marine Aids to Navigation\1.0.0_GST\S125FC - GST.xml"));
+
+                //Assert.True(VerifyProductSpecification(s100));
+
+                var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
+
+                File.WriteAllText(@".\..\..\..\..\S-125_FC.cs", content.DomainModel, Encoding.UTF8);
+                //File.WriteAllText(@".\..\..\..\..\S-125_ViewModel.cs", content.ViewModel, Encoding.UTF8);
+            }
+
+
+            [Fact]
             public void Build_S127() {
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
