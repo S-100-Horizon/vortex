@@ -134,11 +134,19 @@ namespace S100Framework.Applications.Singletons
                                 continue;
                             }
 
+                            // Log if file is found in a subfolder in the notes folder
+                            string fileDirectory = Path.GetDirectoryName(Path.GetFullPath(filePath))!;
+                            string targetFolder = Path.GetFullPath(ImporterNIS._notesPath).TrimEnd(Path.DirectorySeparatorChar);
+                            bool isFileInProductionFolderRoot = string.Equals(fileDirectory, targetFolder, StringComparison.OrdinalIgnoreCase);
+                            if (!isFileInProductionFolderRoot) {
+                                Logger.Current.DataError(-1,"","",$"NauticalInformation fileref: {s57FileName} found in subfolder in notes folder: {fileDirectory}");
+                            }
+
                             rowBuffer["ps"] = "S-100.Horizon";
                             rowBuffer["code"] = "supportfile";
+                            rowBuffer["edition"] = ImporterNIS.s101version;
                             rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
                             rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
-
                             insertCursor.Insert(rowBuffer);
                         }
                     }

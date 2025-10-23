@@ -89,8 +89,6 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.Query)) {
                     QueryFilter.WhereClause = o.Query!.Trim();
-
-
                 }
                 else {
                     throw new NotSupportedException("whereclause must be supplied.");
@@ -159,11 +157,13 @@ namespace S100Framework.Applications
                         using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                         using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                         using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                        using var attachment = destination.OpenDataset<Table>(destination.GetName("attachment"));
 
                         //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
                         //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
                         using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
+                        using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
 
                         Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
                         DeleteAll(featureType);//featureType.DeleteRows(query);
@@ -175,6 +175,10 @@ namespace S100Framework.Applications
                         DeleteAll(curve); // curve.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                         DeleteAll(surface); // surface.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {attachment.GetName()}");
+                        DeleteAll(attachment); // surface.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {messages.GetName()}");
+                        DeleteAll(messages); // surface.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
@@ -339,7 +343,6 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-
                 Logger.Current.Information($"Validating drawing index");
                 status = SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
@@ -358,7 +361,6 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information("Done");
 
-
                 Logger.Current.Information($"!: CHECK LOGS AT: {Logger.LogDir}");
 
                 return true;
@@ -369,10 +371,11 @@ namespace S100Framework.Applications
             QueryFilter queryFilter = new QueryFilter {
                 WhereClause = "1=1" // Gets all rows
             };
+
             table.DeleteRows(queryFilter);
             return;
 
-            //TODO: Doesn't work!
+            
             using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
                 while (rowCursor.MoveNext()) {
                     rowCursor.Current.Delete();
