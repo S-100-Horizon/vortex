@@ -7451,6 +7451,11 @@
 	</S100FC:S100_FC_ComplexAttributes>
 	<S100FC:S100_FC_Roles>
 		<S100FC:S100_FC_Role>
+			<S100FC:name>The Component</S100FC:name>
+			<S100FC:definition>A pointer to a part in a whole-part relationship.</S100FC:definition>
+			<S100FC:code>theComponent</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
 			<S100FC:name>The Collection</S100FC:name>
 			<S100FC:definition>A pointer to the aggregate in a whole-part relationship.</S100FC:definition>
 			<S100FC:code>theCollection</S100FC:code>
@@ -7741,8 +7746,6 @@
 			</S100FC:attributeBinding>
 		</S100FC:S100_FC_InformationType>
 	</S100FC:S100_FC_InformationTypes>
-	<S100FC:S100_FC_InformationTypes>
-	</S100FC:S100_FC_InformationTypes>
 	<S100FC:S100_FC_FeatureTypes>
 		<S100FC:S100_FC_FeatureType isAbstract="true">
 			<S100FC:name>Aids to Navigation</S100FC:name>
@@ -7754,14 +7757,15 @@
 					<S100Base:upper xsi:nil="false"
 					                infinite="false">1</S100Base:upper>
 				</S100FC:multiplicity>
-				<S100FC:attribute ref="changeTypes"/>
 				<S100FC:permittedValues>
 					<S100FC:value>1</S100FC:value>
 					<S100FC:value>2</S100FC:value>
 					<S100FC:value>3</S100FC:value>
 					<S100FC:value>4</S100FC:value>
 				</S100FC:permittedValues>
+				<S100FC:attribute ref="changeTypes"/>
 			</S100FC:attributeBinding>
+			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>noGeometry</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
@@ -7796,7 +7800,6 @@
 					<S100FC:value>20</S100FC:value>
 				</S100FC:permittedValues>
 				<S100FC:attribute ref="categoryOfLight"/>
-				<S100FC:superType>AidsToNavigation</S100FC:superType>
 			</S100FC:attributeBinding>
 			<S100FC:attributeBinding sequential="true">
 				<S100FC:multiplicity>
@@ -8032,6 +8035,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -8078,7 +8082,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Light Sectored</S100FC:name>
@@ -8285,6 +8288,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -8321,7 +8325,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Landmark</S100FC:name>
@@ -8650,6 +8653,7 @@
 				<S100FC:informationType ref="NonStandardWorkingDay"/>
 				<S100FC:informationType ref="ServiceHours"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -8669,19 +8673,9 @@
 				<S100FC:featureType ref="LightSectored"/>
 				<S100FC:featureType ref="LightAirObstruction"/>
 			</S100FC:featureBinding>
-			<S100FC:featureBinding roleType="aggregation">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false"
-					                infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:association ref="AidsToNavigationAssociation"/>
-				<S100FC:role ref="theCollection"/>
-			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
 			<S100FC:permittedPrimitives>curve</S100FC:permittedPrimitives>
 			<S100FC:permittedPrimitives>surface</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Light Air Obstruction</S100FC:name>
@@ -8890,6 +8884,7 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -8904,7 +8899,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Cardinal Buoy</S100FC:name>
@@ -9122,6 +9116,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -9140,7 +9135,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Isolated Danger Buoy</S100FC:name>
@@ -9344,6 +9338,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -9362,7 +9357,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Safe Water Buoy</S100FC:name>
@@ -9566,6 +9560,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -9584,7 +9579,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Special Purpose/General Buoy</S100FC:name>
@@ -9856,6 +9850,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -9874,7 +9869,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Emergency Wreck Marking Buoy</S100FC:name>
@@ -10051,6 +10045,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -10069,7 +10064,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Installation Buoy</S100FC:name>
@@ -10281,6 +10275,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -10299,7 +10294,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Mooring Buoy</S100FC:name>
@@ -10496,16 +10490,8 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
-			<S100FC:featureBinding roleType="aggregation">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="false"
-					                infinite="false">1</S100Base:upper>
-				</S100FC:multiplicity>
-				<S100FC:association ref="AidsToNavigationAssociation"/>
-				<S100FC:role ref="theCollection"/>
-			</S100FC:featureBinding>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
@@ -10523,7 +10509,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Lateral Beacon</S100FC:name>
@@ -10793,6 +10778,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -10812,7 +10798,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Cardinal Beacon</S100FC:name>
@@ -11082,6 +11067,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -11101,7 +11087,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Isolated Danger Beacon</S100FC:name>
@@ -11357,6 +11342,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -11376,7 +11362,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Safe Water Beacon</S100FC:name>
@@ -11632,6 +11617,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -11651,7 +11637,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Special Purpose/General Beacon</S100FC:name>
@@ -11975,6 +11960,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -11994,7 +11980,6 @@
 				<S100FC:featureType ref="LightSectored"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Daymark</S100FC:name>
@@ -12297,6 +12282,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -12340,7 +12326,6 @@
 				<S100FC:featureType ref="SpecialPurposeGeneralBuoy"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Light Float</S100FC:name>
@@ -12543,6 +12528,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -12561,7 +12547,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Light Vessel</S100FC:name>
@@ -12756,6 +12741,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -12774,7 +12760,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Retroreflector</S100FC:name>
@@ -12895,6 +12880,7 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -12925,7 +12911,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Radar Reflector</S100FC:name>
@@ -13008,9 +12993,9 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Fog Signal</S100FC:name>
@@ -13174,6 +13159,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -13204,7 +13190,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Physical AIS Aid to Navigation</S100FC:name>
@@ -13302,6 +13287,7 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -13330,7 +13316,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Radar Transponder Beacon</S100FC:name>
@@ -13471,6 +13456,7 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -13501,7 +13487,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Virtual AIS Aid to Navigation</S100FC:name>
@@ -13622,9 +13607,9 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Lateral Buoy</S100FC:name>
@@ -13842,6 +13827,7 @@
 				<S100FC:informationType ref="ContactDetails"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
@@ -13860,7 +13846,6 @@
 				<S100FC:featureType ref="Retroreflector"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 		<S100FC:S100_FC_FeatureType isAbstract="false">
 			<S100FC:name>Light Fog Detector</S100FC:name>
@@ -14039,6 +14024,7 @@
 				<S100FC:role ref="theInformation"/>
 				<S100FC:informationType ref="NauticalInformation"/>
 			</S100FC:informationBinding>
+			<S100FC:superType>AidsToNavigation</S100FC:superType>
 			<S100FC:featureUseType>geographic</S100FC:featureUseType>
 			<S100FC:featureBinding roleType="composition">
 				<S100FC:multiplicity>
@@ -14069,7 +14055,6 @@
 				<S100FC:featureType ref="Daymark"/>
 			</S100FC:featureBinding>
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
-			<S100FC:superType>AidsToNavigation</S100FC:superType>
 		</S100FC:S100_FC_FeatureType>
 	</S100FC:S100_FC_FeatureTypes>
 </S100FC:S100_FC_FeatureCatalogue>
