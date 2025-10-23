@@ -3,6 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF;
+using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -176,12 +177,28 @@ namespace VortexConceptApplication
                 Name = "S202600",
             }.Load(new S100Framework.DomainModel.S101.FeatureTypes.IslandGroup());
 
+
+            //  Associations
+            var json = "[{\"$type\":\"featureBinding::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":null,\"referenceId\":\"1352378633\"}]";
+
+            var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, new System.Text.Json.JsonSerializerOptions {
+                TypeInfoResolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver(),
+            })!;
+
+            var viewModel5 = new LightAllAroundViewModel() {
+                Name = "xyz",
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.LightAllAround() {
+            }).ParseFeatureBindings(featureBindings);
+            
+
+
+
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
 
 
-            var viewModel = viewModel4;
+            var viewModel = viewModel5;
 
             SelectedProperty = viewModel;
 

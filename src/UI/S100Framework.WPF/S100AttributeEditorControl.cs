@@ -13,7 +13,9 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 namespace S100Framework.WPF
 {
     public record InformationTypeId(string Code, string Id);
-    public record FeatureTypeId(string Code, string Id);
+    public record FeatureTypeId(string Code, string Id) {
+        public override string ToString() => $"{Code}::{Id}";
+    }
 
     #region EventArgs
 

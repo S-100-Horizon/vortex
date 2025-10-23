@@ -341,7 +341,52 @@ namespace S100Framework.WPF.Editors
 
     public abstract class BindingLinkEditor : ITypeEditor
     {
+        public class Fruit
+        {
+            public string Name { get; set; }
+        }
+
+
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var control = new ComboBox {
+                Name = $"_dropDownButton{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsDropDownOpen = false,
+                //DisplayMemberPath = nameof(FeatureTypeId.Id),
+                
+            };
+
+            var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
+
+            control.Items.Add(new FeatureTypeId("code", viewModel!.featureId));
+            control.SelectedIndex = 0;
+            //control.SelectedItem = viewModel;
+
+            control.DropDownOpened += (s, e) => {
+                var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
+
+                var p = new QueryFeatureTypesEventArgs(association.roleType, association.association, viewModel.role, association.featureTypes, control);
+
+                S100AttributeEditorControl.QueryFeaturesCommand.Execute(p, S100AttributeEditorControl.Singleton);
+            };
+
+            //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) {
+            //    Source = propertyItem.Instance,
+            //    Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay
+            //};
+            //BindingOperations.SetBinding(control, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+            if (!string.IsNullOrEmpty(viewModel?.featureId)) {
+                //control.SelectedItem = viewModel;
+                //control.SelectedValue = viewModel?.featureId;
+                //control.SelectedIndex = 0;
+            }
+
+            return control;
+        }
+
+
+        public FrameworkElement ResolveEditor2(PropertyItem propertyItem) {
             var template =
                 @"<ControlTemplate TargetType=""xctk:DropDownButton"">
                         <ListBox>
@@ -355,16 +400,18 @@ namespace S100Framework.WPF.Editors
                 ";
             var control = new ComboBox {
                 Name = $"_dropDownButton{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsDropDownOpen = false,
             };
             //control.Template = (ControlTemplate)System.Windows.Markup.XamlReader.Parse(template);
 
             var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
-            viewModel!.PropertyChanged += (s, e) => {
-                if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals("role"))
-                    return;
+            //viewModel!.PropertyChanged += (s, e) => {
+            //    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals("role"))
+            //        return;
 
-                control.Items.Clear();
-            };
+            //    control.Items.Clear();
+            //};
 
             control.DropDownOpened += (s, e) => {
                 var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
@@ -378,11 +425,15 @@ namespace S100Framework.WPF.Editors
                 Source = propertyItem.Instance,
                 Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay
             };
+            BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             control.ContextMenuOpening += (s, e) => {
                 System.Diagnostics.Debugger.Break();
             };
 
+            if (!string.IsNullOrEmpty(viewModel.featureId)) {
+                control.SelectedValue = viewModel.featureId;
+            }
 
 
             //Interaction.Triggers
