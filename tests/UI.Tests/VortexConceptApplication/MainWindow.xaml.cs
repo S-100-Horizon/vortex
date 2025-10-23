@@ -223,6 +223,11 @@ namespace VortexConceptApplication
             };
 
             S100AttributeEditor.FeatureBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
+
+                var instance = (LightAllAroundViewModel)sender;
+
+                var json = instance!.SerializeFeatureBindings;
+
                 System.Diagnostics.Debugger.Break();
             };
 

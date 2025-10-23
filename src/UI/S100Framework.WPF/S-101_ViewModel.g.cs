@@ -52887,6 +52887,14 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+            public featureBinding Model => new featureBinding<StructureEquipment> {
+                referenceId = this.featureId,
+                featureType = this.featureType,
+                role = this.role,
+                roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+                //association = "StructureEquipment",
+            };
 		}
 
 		public class RangeSystemAggregationViewModel : featureBindingViewModel<S101.RangeSystemAggregationViewModel>, IFeatureBindings {
@@ -53093,6 +53101,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			this.LoadFeatureBinding(bindings);
 			return this;
 		}
+
+        public string SerializeFeatureBindings => System.Text.Json.JsonSerializer.Serialize(
+            this.StructureEquipments.Select(e=>e.Serialize()),
+            new JsonSerializerOptions { TypeInfoResolver = Summary.FeatureBindingResolver(), });
 
 		public override string? ToString() => $"Light All Around";
 
