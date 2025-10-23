@@ -835,6 +835,7 @@ namespace S100Framework.Applications.Singletons
                 featureBindingPrimary.referenceId = relation!.Slave!.Name;
                 featureBindingPrimary.role = bindingDefinitionPrimary.role;
                 featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
+                featureBindingPrimary.featureType = s101SlaveFeature.GetType().ToString();
 
                 primaryBindings.Add(featureBindingPrimary);
             }
@@ -850,6 +851,7 @@ namespace S100Framework.Applications.Singletons
                 featureBindingForeign.referenceId = relation!.Master!.Name;
                 featureBindingForeign.role = bindingDefinitionForeign.role;
                 featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
+                featureBindingForeign.featureType = s101MasterFeature.GetType().ToString();
 
                 foreignBindings.Add(featureBindingForeign);
             }
