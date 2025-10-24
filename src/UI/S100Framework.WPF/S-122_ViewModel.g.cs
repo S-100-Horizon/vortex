@@ -2318,6 +2318,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RelatedOrganisation> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RelatedOrganisation,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2558,6 +2565,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RelatedOrganisation> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RelatedOrganisation,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3407,6 +3421,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RelatedOrganisation> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RelatedOrganisation,
+			};
 		}
 
 		public class AuthorityContactViewModel : informationBindingViewModel<S122.AuthorityContactViewModel>, IInformationBindings {
@@ -3429,6 +3450,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		public class AuthorityHoursViewModel : informationBindingViewModel<S122.AuthorityHoursViewModel>, IInformationBindings {
@@ -3451,6 +3479,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3797,6 +3832,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4098,6 +4140,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4331,6 +4380,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S122.ExceptionalWorkdayViewModel>, IInformationBindings {
@@ -4353,6 +4409,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5188,6 +5251,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ProtectedAreaAuthority> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProtectedAreaAuthority,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5461,6 +5531,13 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceControl,
+			};
 		}
 
 		[Category("InformationBindings")]

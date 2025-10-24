@@ -2172,8 +2172,17 @@ namespace S100Framework.Applications
 
                     builder.AppendLine("\t\t\tpublic override string Serialize() {");
                     builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\t}");                    
+
+                    builder.AppendLine($"\t\t\tpublic informationBinding Model => new informationBinding<{association}> {{");
+                    builder.AppendLine("\t\t\t\treferenceId = this.informationId,");
+                    builder.AppendLine("\t\t\t\tinformationType = this.informationType,");
+                    builder.AppendLine("\t\t\t\trole = this.role,");
+                    builder.AppendLine("\t\t\t\troleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),");
+                    builder.AppendLine($"\t\t\t\t//association = {association},");
+                    builder.AppendLine("\t\t\t};");
                     builder.AppendLine("\t\t}");
+
                 }
 
                 foreach (var association in associations) {
@@ -2268,7 +2277,16 @@ namespace S100Framework.Applications
 
                     builder.AppendLine("\t\t\tpublic override string Serialize() {");
                     builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\t}");                    
+
+                    builder.AppendLine($"\t\t\tpublic featureBinding Model => new featureBinding<{association}> {{");
+                    builder.AppendLine("\t\t\t\treferenceId = this.featureId,");
+                    builder.AppendLine("\t\t\t\tfeatureType = this.featureType,");
+                    builder.AppendLine("\t\t\t\trole = this.role,");
+                    builder.AppendLine("\t\t\t\troleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),");
+                    builder.AppendLine($"\t\t\t\t//association = {association},");
+                    builder.AppendLine("\t\t\t};");
+
                     builder.AppendLine("\t\t}");
                 }
 

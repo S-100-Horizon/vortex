@@ -2233,6 +2233,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PriceOfNauticalProduct,
+			};
 		}
 
 		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
@@ -2255,6 +2262,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ProductionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProductionDetails,
+			};
 		}
 
 		public class DistributionDetailsViewModel : informationBindingViewModel<S128.DistributionDetailsViewModel>, IInformationBindings {
@@ -2277,6 +2291,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<DistributionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributionDetails,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2404,6 +2425,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ProducerContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProducerContact,
+			};
 		}
 
 		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
@@ -2426,6 +2454,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<DistributorContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributorContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2655,6 +2690,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PriceOfNauticalProduct,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2792,6 +2834,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ProducerContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProducerContact,
+			};
 		}
 
 		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
@@ -2814,6 +2863,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ProductionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProductionDetails,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2909,6 +2965,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<DistributionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributionDetails,
+			};
 		}
 
 		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
@@ -2931,6 +2994,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<DistributorContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributorContact,
+			};
 		}
 
 		[Category("InformationBindings")]

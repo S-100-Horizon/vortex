@@ -2134,6 +2134,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<StructureEquipment> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = StructureEquipment,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -2502,6 +2509,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<BuoyTopmark> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BuoyTopmark,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7918,6 +7932,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<RangeSystem> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RangeSystem,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8326,6 +8347,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<RangeSystem> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RangeSystem,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8699,6 +8727,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<VirtualAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = VirtualAIS,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -9374,6 +9409,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<StructureEquipment> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = StructureEquipment,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -11049,6 +11091,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<PhysicalAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PhysicalAIS,
+			};
 		}
 
 		public class SyntheticAISViewModel : featureBindingViewModel<S125.SyntheticAISViewModel>, IFeatureBindings {
@@ -11071,6 +11120,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<SyntheticAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = SyntheticAIS,
+			};
 		}
 
 		public class VirtualAISViewModel : featureBindingViewModel<S125.VirtualAISViewModel>, IFeatureBindings {
@@ -11093,6 +11149,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<VirtualAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = VirtualAIS,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -16419,6 +16482,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DangerousFeatureAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -16526,6 +16596,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DangerousFeatureAssociation,
+			};
 		}
 
 		public class AtonAssociationsViewModel : featureBindingViewModel<S125.AtonAssociationsViewModel>, IFeatureBindings {
@@ -16548,6 +16625,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<AtonAssociations> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AtonAssociations,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -16651,6 +16735,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<AtonAggregations> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AtonAggregations,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -16903,6 +16994,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<BuoyTopmark> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BuoyTopmark,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -17252,6 +17350,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<PhysicalAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PhysicalAIS,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -17604,6 +17709,13 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<SyntheticAIS> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = SyntheticAIS,
+			};
 		}
 
 		[Category("FeatureBindings")]

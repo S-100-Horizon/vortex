@@ -3036,6 +3036,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<InclusionType> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = InclusionType,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3283,6 +3290,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
@@ -3305,6 +3319,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3518,6 +3539,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastTransmission> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastTransmission,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4057,6 +4085,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4485,6 +4520,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4712,6 +4754,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
@@ -4734,6 +4783,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
@@ -4756,6 +4812,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TMAS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TMAS,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5528,6 +5591,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S123.ExceptionalWorkdayViewModel>, IInformationBindings {
@@ -5550,6 +5620,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5851,6 +5928,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6100,6 +6184,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastTransmission> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastTransmission,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6372,6 +6463,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ConnectivityService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ConnectivityService,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -6394,6 +6492,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -6416,6 +6521,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class AvailableQoSViewModel : informationBindingViewModel<S123.AvailableQoSViewModel>, IInformationBindings {
@@ -6438,6 +6550,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AvailableQoS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AvailableQoS,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6476,6 +6595,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -6765,6 +6891,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
@@ -6787,6 +6920,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -6809,6 +6949,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -6831,6 +6978,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6869,6 +7023,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7107,6 +7268,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<fuzzyZoneAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = fuzzyZoneAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7318,6 +7486,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -7340,6 +7515,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -7362,6 +7544,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -7384,6 +7573,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -7406,6 +7602,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -7447,6 +7650,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7683,6 +7893,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -7705,6 +7922,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -7727,6 +7951,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -7749,6 +7980,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -7771,6 +8009,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -7812,6 +8057,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8106,6 +8358,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -8128,6 +8387,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -8150,6 +8416,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -8172,6 +8445,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -8194,6 +8474,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8235,6 +8522,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8528,6 +8822,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
@@ -8550,6 +8851,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -8572,6 +8880,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -8594,6 +8909,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -8616,6 +8938,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -8638,6 +8967,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8682,6 +9018,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		public class coreAggregationViewModel : featureBindingViewModel<S123.coreAggregationViewModel>, IFeatureBindings {
@@ -8704,6 +9047,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<coreAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = coreAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -9041,6 +9391,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
@@ -9063,6 +9420,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -9085,6 +9449,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -9107,6 +9478,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -9129,6 +9507,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -9151,6 +9536,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9195,6 +9587,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -9451,6 +9850,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
@@ -9473,6 +9879,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
@@ -9495,6 +9908,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TMAS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TMAS,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -9517,6 +9937,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9790,6 +10217,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
 		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
@@ -9812,6 +10246,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
@@ -9834,6 +10275,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
@@ -9856,6 +10304,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
 		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
@@ -9878,6 +10333,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9919,6 +10381,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -10138,6 +10607,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<coreAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = coreAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]

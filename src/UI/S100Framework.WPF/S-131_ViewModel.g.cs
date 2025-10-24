@@ -3354,6 +3354,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<InclusionType> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = InclusionType,
+			};
 		}
 
 		public class PermissionTypeViewModel : informationBindingViewModel<S131.PermissionTypeViewModel>, IInformationBindings {
@@ -3376,6 +3383,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<PermissionType> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PermissionType,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3656,6 +3670,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		public class RelatedOrganisationViewModel : informationBindingViewModel<S131.RelatedOrganisationViewModel>, IInformationBindings {
@@ -3678,6 +3699,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<RelatedOrganisation> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RelatedOrganisation,
+			};
 		}
 
 		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
@@ -3700,6 +3728,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4378,6 +4413,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4976,6 +5018,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AdditionalInformation> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AdditionalInformation,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5993,6 +6042,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		public class AuthorityHoursViewModel : informationBindingViewModel<S131.AuthorityHoursViewModel>, IInformationBindings {
@@ -6015,6 +6071,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6337,6 +6400,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -6359,6 +6429,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6391,6 +6468,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PrimaryAuxiliaryFacility,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -6714,6 +6798,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6743,6 +6834,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7236,6 +7334,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -7258,6 +7363,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -7290,6 +7402,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<Demarcation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = Demarcation,
+			};
 		}
 
 		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
@@ -7312,6 +7431,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -7750,6 +7876,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<Demarcation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = Demarcation,
+			};
 		}
 
 		public class PrimaryAuxiliaryFacilityViewModel : featureBindingViewModel<S131.PrimaryAuxiliaryFacilityViewModel>, IFeatureBindings {
@@ -7772,6 +7905,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PrimaryAuxiliaryFacility,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8143,6 +8283,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -8165,6 +8312,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8197,6 +8351,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8506,6 +8667,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8829,6 +8997,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8858,6 +9033,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -9164,6 +9346,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9455,6 +9644,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9799,6 +9995,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -9821,6 +10024,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9853,6 +10063,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<JurisdictionalLimit> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = JurisdictionalLimit,
+			};
 		}
 
 		public class LayoutDivisionViewModel : featureBindingViewModel<S131.LayoutDivisionViewModel>, IFeatureBindings {
@@ -9875,6 +10092,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -10228,6 +10452,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -10250,6 +10481,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -10290,6 +10528,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		public class SubsectionViewModel : featureBindingViewModel<S131.SubsectionViewModel>, IFeatureBindings {
@@ -10320,6 +10565,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<Subsection> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = Subsection,
+			};
 		}
 
 		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
@@ -10342,6 +10594,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<Infrastructure> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = Infrastructure,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -10699,6 +10958,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -10728,6 +10994,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -11027,6 +11300,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -11371,6 +11651,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -11393,6 +11680,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -11425,6 +11719,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PrimaryAuxiliaryFacility,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -11738,6 +12039,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LimitEntrance> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LimitEntrance,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -11767,6 +12075,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<JurisdictionalLimit> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = JurisdictionalLimit,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -12143,6 +12458,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -12172,6 +12494,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -12510,6 +12839,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -12539,6 +12875,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -12905,6 +13248,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<ServiceAvailability> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceAvailability,
+			};
 		}
 
 		public class LocationHoursViewModel : informationBindingViewModel<S131.LocationHoursViewModel>, IInformationBindings {
@@ -12927,6 +13277,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -12967,6 +13324,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		public class InfrastructureViewModel : featureBindingViewModel<S131.InfrastructureViewModel>, IFeatureBindings {
@@ -12989,6 +13353,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<Infrastructure> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = Infrastructure,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -13353,6 +13724,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -13382,6 +13760,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -13720,6 +14105,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -13749,6 +14141,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<LayoutDivision> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LayoutDivision,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -14398,6 +14797,13 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<TextAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TextAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]

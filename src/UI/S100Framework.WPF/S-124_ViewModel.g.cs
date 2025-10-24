@@ -1211,6 +1211,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<navwarnReferences> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnReferences,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -1385,6 +1392,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<navwarnReferences> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnReferences,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -1629,6 +1643,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public informationBinding Model => new informationBinding<navwarnPreambleContent> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnPreambleContent,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -1658,6 +1679,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<areaAffected> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = areaAffected,
+			};
 		}
 
 		public class TextAssociationViewModel : featureBindingViewModel<S124.TextAssociationViewModel>, IFeatureBindings {
@@ -1680,6 +1708,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<TextAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TextAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -1806,6 +1841,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<areaAffected> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = areaAffected,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -1955,6 +1997,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+			public featureBinding Model => new featureBinding<TextAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TextAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]

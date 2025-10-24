@@ -276,10 +276,10 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class informationBindingViewModel : ViewModelBase
     {
-        private string? _role = default;
+        private string _role = string.Empty;
 
         [Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
-        public string? role {
+        public string role {
             get { return _role; }
             set {
                 SetValue(ref _role, value);
@@ -296,10 +296,10 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private string? _referenceId = default;
+        private string _referenceId = string.Empty;
 
         [Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
-        public string? informationId {
+        public string informationId {
             get { return _referenceId; }
             set {
                 SetValue(ref _referenceId, value);
@@ -361,10 +361,10 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class featureBindingViewModel : ViewModelBase
     {
-        private string? _role = default;
+        private string _role = string.Empty;
 
         [Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-        public string? role {
+        public string role {
             get { return _role; }
             set {
                 SetValue(ref _role, value);
@@ -381,10 +381,10 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private string? _referenceId = default;
+        private string _referenceId = string.Empty;
 
         [Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-        public string? featureId {
+        public string featureId {
             get { return _referenceId; }
             set {
                 SetValue(ref _referenceId, value);
