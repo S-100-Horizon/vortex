@@ -87,8 +87,6 @@ namespace VortexProAppModule
 
         private object _selectedProperty = default;
 
-        //private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
-
         private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
 
         private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
@@ -800,11 +798,6 @@ namespace VortexProAppModule
             get => _isEditingEnabled;
             set => SetProperty(ref _isEditingEnabled, value);
         }
-
-        //public SelectedAssociationObjectViewModel SelectedAssociationProperty {
-        //    get => _selectedAssociationProperty;
-        //    set => SetProperty(ref _selectedAssociationProperty, value);
-        //}
 
         public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
             get => _selectedInformationProperty;

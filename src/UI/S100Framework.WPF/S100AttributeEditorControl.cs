@@ -180,15 +180,6 @@ namespace S100Framework.WPF
         public featureBindingDefinition[] featureBindingDefinitions { get; private set; }
     }
 
-    //public class SelectedAssociationObjectViewModel : SelectedObjectViewModel
-    //{
-    //    public SelectedAssociationObjectViewModel(AssociationViewModel associationObject) {
-    //        this.AssociationObject = associationObject;
-    //    }
-
-    //    public AssociationViewModel AssociationObject { get; private set; }
-    //}
-
     public class S100AttributeEditorControlHost
     {
         public required Func<QueryInformationTypesEventArgs, Task<IEnumerable<InformationTypeId>>> QueryInformationTypes { get; set; }
@@ -198,10 +189,6 @@ namespace S100Framework.WPF
         public required Action<SelectInformationBindingEventArgs> SelectInformationBinding { get; set; }
 
         public required Action<SelectFeatureBindingEventArgs> SelectFeatureBinding { get; set; }
-
-        //public required Action<SelectAssociationEventArgs> SelectInformationAssociation { get; set; }
-
-        //public required Action<SelectAssociationEventArgs> SelectFeatureAssociation { get; set; }
     }
 
 
