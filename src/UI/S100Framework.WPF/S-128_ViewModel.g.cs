@@ -2315,7 +2315,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CatalogueSectionHeaderViewModel.DistributionDetailsViewModel> DistributionDetails { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2482,7 +2482,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2614,6 +2614,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public IndicationOfCarriageRequirementViewModel Load(IndicationOfCarriageRequirement instance) {
 			domesticCarriageRequirements = instance.domesticCarriageRequirements;
@@ -2720,7 +2722,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PriceInformationViewModel.PriceOfNauticalProductViewModel> PriceOfNauticalProducts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2903,7 +2905,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ProducerInformationViewModel.ProductionDetailsViewModel> ProductionDetails { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3041,7 +3043,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DistributorInformationViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3507,6 +3509,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _productSpecification, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public ElectronicProductViewModel Load(ElectronicProduct instance) {
@@ -4137,6 +4143,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public PhysicalProductViewModel Load(PhysicalProduct instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -4568,6 +4578,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 				SetValue(ref _productSpecification, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public S100ServiceViewModel Load(S100Service instance) {

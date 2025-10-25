@@ -307,6 +307,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         //public string roleType { get; set; } = string.Empty;
+
+        //public abstract informationBinding[] informationBindings { get; }
     }
 
     public abstract class informationBindingViewModel<TAssociation> : informationBindingViewModel where TAssociation : InformationAssociationViewModel, new()
@@ -392,6 +394,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         //public string roleType { get; set; } = string.Empty;
+
+        //public abstract featureBinding[] featureBindings { get; }
     }
 
     public abstract class featureBindingViewModel<TAssociation> : featureBindingViewModel where TAssociation : FeatureAssociationViewModel, new()
@@ -438,6 +442,8 @@ namespace S100Framework.WPF.ViewModel
             InformationBindingCollectionChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public abstract informationBinding[] informationBindings { get; }
+
         public InformationViewModel() {
         }
     }
@@ -467,6 +473,10 @@ namespace S100Framework.WPF.ViewModel
         protected virtual void OnFeatureBindingCollectionChanged([CallerMemberName] string? propertyName = null) {
             FeatureBindingCollectionChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public abstract informationBinding[] informationBindings { get; }
+
+        public abstract featureBinding[] featureBindings { get; }
 
         public FeatureViewModel() {
         }

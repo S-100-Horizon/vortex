@@ -1933,6 +1933,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public ChangeTypes[] ChangeTypesList => [(ChangeTypes)1,(ChangeTypes)2,(ChangeTypes)3,(ChangeTypes)4];
 
+public override informationBinding[] informationBindings => [];
+
 
 		public AtonStatusInformationViewModel Load(AtonStatusInformation instance) {
 			ChangeDetails = new ();
@@ -2111,6 +2113,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -2148,7 +2152,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<EquipmentViewModel.StructureEquipmentViewModel> StructureEquipments { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2491,6 +2495,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -2528,7 +2534,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<GenericBuoyViewModel.BuoyTopmarkViewModel> BuoyTopmarks { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2897,6 +2903,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _height, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public PileViewModel Load(Pile instance) {
@@ -3282,6 +3292,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _height, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public SiloTankViewModel Load(SiloTank instance) {
@@ -3694,6 +3708,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public CardinalBuoyViewModel Load(CardinalBuoy instance) {
 			iDCode = instance.iDCode;
@@ -4088,6 +4106,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public EmergencyWreckMarkingBuoyViewModel Load(EmergencyWreckMarkingBuoy instance) {
@@ -4497,6 +4519,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public InstallationBuoyViewModel Load(InstallationBuoy instance) {
 			iDCode = instance.iDCode;
@@ -4891,6 +4917,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public IsolatedDangerBuoyViewModel Load(IsolatedDangerBuoy instance) {
@@ -5300,6 +5330,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4,(categoryOfLateralMark)5,(categoryOfLateralMark)6,(categoryOfLateralMark)7,(categoryOfLateralMark)8,(categoryOfLateralMark)9,(categoryOfLateralMark)10,(categoryOfLateralMark)11,(categoryOfLateralMark)12,(categoryOfLateralMark)13,(categoryOfLateralMark)14,(categoryOfLateralMark)15,(categoryOfLateralMark)16,(categoryOfLateralMark)17,(categoryOfLateralMark)18,(categoryOfLateralMark)19,(categoryOfLateralMark)20,(categoryOfLateralMark)21,(categoryOfLateralMark)22,(categoryOfLateralMark)23,(categoryOfLateralMark)24,(categoryOfLateralMark)25,(categoryOfLateralMark)26,(categoryOfLateralMark)27];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public LateralBuoyViewModel Load(LateralBuoy instance) {
 			iDCode = instance.iDCode;
@@ -5663,6 +5697,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public LightFloatViewModel Load(LightFloat instance) {
 			iDCode = instance.iDCode;
@@ -6016,6 +6054,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public LightVesselViewModel Load(LightVessel instance) {
@@ -6403,6 +6445,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public MooringBuoyViewModel Load(MooringBuoy instance) {
 			iDCode = instance.iDCode;
@@ -6786,6 +6832,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public OffshorePlatformViewModel Load(OffshorePlatform instance) {
@@ -7186,6 +7236,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		}
 
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public SafeWaterBuoyViewModel Load(SafeWaterBuoy instance) {
 			iDCode = instance.iDCode;
@@ -7584,6 +7638,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public SpecialPurposeGeneralBuoyViewModel Load(SpecialPurposeGeneralBuoy instance) {
 			iDCode = instance.iDCode;
@@ -7919,6 +7977,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -7956,7 +8016,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavigationLineViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8339,6 +8399,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public verticalDatum[] verticalDatumList => [(verticalDatum)1,(verticalDatum)2,(verticalDatum)3,(verticalDatum)4,(verticalDatum)5,(verticalDatum)6,(verticalDatum)7,(verticalDatum)8,(verticalDatum)9,(verticalDatum)10,(verticalDatum)11,(verticalDatum)12,(verticalDatum)13,(verticalDatum)14,(verticalDatum)15,(verticalDatum)16,(verticalDatum)17,(verticalDatum)18,(verticalDatum)19,(verticalDatum)20,(verticalDatum)21,(verticalDatum)22,(verticalDatum)23,(verticalDatum)24,(verticalDatum)25,(verticalDatum)26,(verticalDatum)27,(verticalDatum)28,(verticalDatum)29,(verticalDatum)30,(verticalDatum)31,(verticalDatum)32,(verticalDatum)33,(verticalDatum)34,(verticalDatum)35,(verticalDatum)36,(verticalDatum)37,(verticalDatum)38,(verticalDatum)39,(verticalDatum)40,(verticalDatum)41,(verticalDatum)43,(verticalDatum)44,(verticalDatum)45,(verticalDatum)46,(verticalDatum)47,(verticalDatum)48,(verticalDatum)49];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -8376,7 +8438,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedTrackViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8724,6 +8786,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -8761,7 +8825,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<VirtualAISAidToNavigationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9110,6 +9174,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public DaymarkViewModel Load(Daymark instance) {
 			iDCode = instance.iDCode;
@@ -9411,6 +9479,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -9448,7 +9518,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<StructureObjectViewModel.StructureEquipmentViewModel> StructureEquipments { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9729,6 +9799,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public FogSignalViewModel Load(FogSignal instance) {
 			iDCode = instance.iDCode;
@@ -10001,6 +10075,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public RadarReflectorViewModel Load(RadarReflector instance) {
@@ -10381,6 +10459,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public GenericBeaconViewModel Load(GenericBeacon instance) {
@@ -10784,6 +10866,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public RadarTransponderBeaconViewModel Load(RadarTransponderBeacon instance) {
 			iDCode = instance.iDCode;
@@ -11098,6 +11184,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -11203,7 +11291,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -11632,6 +11720,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public LightAirObstructionViewModel Load(LightAirObstruction instance) {
 			iDCode = instance.iDCode;
@@ -11968,6 +12060,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public RetroreflectorViewModel Load(Retroreflector instance) {
@@ -12453,6 +12549,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public LightAllAroundViewModel Load(LightAllAround instance) {
 			iDCode = instance.iDCode;
@@ -12871,6 +12971,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Browsable(false)]
 		public signalGeneration[] signalGenerationList => [(signalGeneration)1,(signalGeneration)2,(signalGeneration)3,(signalGeneration)4,(signalGeneration)5,(signalGeneration)6];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public LightFogDetectorViewModel Load(LightFogDetector instance) {
@@ -13301,6 +13405,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _multiplicityOfFeatures, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public LightSectoredViewModel Load(LightSectored instance) {
@@ -13756,6 +13864,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfCardinalMark[] categoryOfCardinalMarkList => [(categoryOfCardinalMark)1,(categoryOfCardinalMark)2,(categoryOfCardinalMark)3,(categoryOfCardinalMark)4];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public CardinalBeaconViewModel Load(CardinalBeacon instance) {
 			iDCode = instance.iDCode;
@@ -14188,6 +14300,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public IsolatedDangerBeaconViewModel Load(IsolatedDangerBeacon instance) {
 			iDCode = instance.iDCode;
@@ -14581,6 +14697,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 				SetValue(ref _height, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public LandmarkViewModel Load(Landmark instance) {
@@ -15038,6 +15158,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfLateralMark[] categoryOfLateralMarkList => [(categoryOfLateralMark)1,(categoryOfLateralMark)2,(categoryOfLateralMark)3,(categoryOfLateralMark)4,(categoryOfLateralMark)5,(categoryOfLateralMark)6,(categoryOfLateralMark)7,(categoryOfLateralMark)8,(categoryOfLateralMark)9,(categoryOfLateralMark)10,(categoryOfLateralMark)11,(categoryOfLateralMark)12,(categoryOfLateralMark)13,(categoryOfLateralMark)14,(categoryOfLateralMark)15,(categoryOfLateralMark)16,(categoryOfLateralMark)17,(categoryOfLateralMark)18,(categoryOfLateralMark)19,(categoryOfLateralMark)20,(categoryOfLateralMark)21,(categoryOfLateralMark)22,(categoryOfLateralMark)23,(categoryOfLateralMark)24,(categoryOfLateralMark)25,(categoryOfLateralMark)26,(categoryOfLateralMark)27];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public LateralBeaconViewModel Load(LateralBeacon instance) {
 			iDCode = instance.iDCode;
@@ -15435,6 +15559,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public LighthouseViewModel Load(Lighthouse instance) {
@@ -15876,6 +16004,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public SafeWaterBeaconViewModel Load(SafeWaterBeacon instance) {
 			iDCode = instance.iDCode;
@@ -16311,6 +16443,10 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMarkList => [(categoryOfSpecialPurposeMark)1,(categoryOfSpecialPurposeMark)2,(categoryOfSpecialPurposeMark)3,(categoryOfSpecialPurposeMark)4,(categoryOfSpecialPurposeMark)5,(categoryOfSpecialPurposeMark)6,(categoryOfSpecialPurposeMark)7,(categoryOfSpecialPurposeMark)8,(categoryOfSpecialPurposeMark)9,(categoryOfSpecialPurposeMark)10,(categoryOfSpecialPurposeMark)11,(categoryOfSpecialPurposeMark)12,(categoryOfSpecialPurposeMark)13,(categoryOfSpecialPurposeMark)14,(categoryOfSpecialPurposeMark)15,(categoryOfSpecialPurposeMark)16,(categoryOfSpecialPurposeMark)17,(categoryOfSpecialPurposeMark)18,(categoryOfSpecialPurposeMark)19,(categoryOfSpecialPurposeMark)20,(categoryOfSpecialPurposeMark)21,(categoryOfSpecialPurposeMark)22,(categoryOfSpecialPurposeMark)23,(categoryOfSpecialPurposeMark)24,(categoryOfSpecialPurposeMark)25,(categoryOfSpecialPurposeMark)26,(categoryOfSpecialPurposeMark)27,(categoryOfSpecialPurposeMark)28,(categoryOfSpecialPurposeMark)29,(categoryOfSpecialPurposeMark)30,(categoryOfSpecialPurposeMark)31,(categoryOfSpecialPurposeMark)32,(categoryOfSpecialPurposeMark)33,(categoryOfSpecialPurposeMark)34,(categoryOfSpecialPurposeMark)35,(categoryOfSpecialPurposeMark)36,(categoryOfSpecialPurposeMark)37,(categoryOfSpecialPurposeMark)39,(categoryOfSpecialPurposeMark)40,(categoryOfSpecialPurposeMark)41,(categoryOfSpecialPurposeMark)42,(categoryOfSpecialPurposeMark)43,(categoryOfSpecialPurposeMark)44,(categoryOfSpecialPurposeMark)45,(categoryOfSpecialPurposeMark)46,(categoryOfSpecialPurposeMark)47,(categoryOfSpecialPurposeMark)48,(categoryOfSpecialPurposeMark)49,(categoryOfSpecialPurposeMark)50,(categoryOfSpecialPurposeMark)51,(categoryOfSpecialPurposeMark)52,(categoryOfSpecialPurposeMark)53,(categoryOfSpecialPurposeMark)54,(categoryOfSpecialPurposeMark)55,(categoryOfSpecialPurposeMark)56,(categoryOfSpecialPurposeMark)57,(categoryOfSpecialPurposeMark)58,(categoryOfSpecialPurposeMark)59,(categoryOfSpecialPurposeMark)60,(categoryOfSpecialPurposeMark)61,(categoryOfSpecialPurposeMark)62,(categoryOfSpecialPurposeMark)63,(categoryOfSpecialPurposeMark)64];
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public SpecialPurposeGeneralBeaconViewModel Load(SpecialPurposeGeneralBeacon instance) {
 			iDCode = instance.iDCode;
@@ -16498,6 +16634,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -16535,7 +16673,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DangerousFeatureViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16617,6 +16755,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public CategoryOfAssociation[] CategoryOfAssociationList =>  CodeList.CategoryOfAssociations.ToArray();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -16688,7 +16828,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAssociationViewModel.AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AtonAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AtonAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16763,6 +16903,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public CategoryOfAggregation[] CategoryOfAggregationList =>  CodeList.CategoryOfAggregations.ToArray();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -16800,7 +16942,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAggregationViewModel.AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AtonAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AtonAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17027,6 +17169,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33,(topmarkDaymarkShape)34];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -17064,7 +17208,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TopmarkViewModel.BuoyTopmarkViewModel> BuoyTopmarks { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17388,6 +17532,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public CategoryOfPhysicalAISAidToNavigation[] CategoryOfPhysicalAISAidToNavigationList => [(CategoryOfPhysicalAISAidToNavigation)1,(CategoryOfPhysicalAISAidToNavigation)2,(CategoryOfPhysicalAISAidToNavigation)3];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -17425,7 +17571,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17752,6 +17898,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public virtualAISAidToNavigationType[] virtualAISAidToNavigationTypeList => [(virtualAISAidToNavigationType)1,(virtualAISAidToNavigationType)2,(virtualAISAidToNavigationType)3,(virtualAISAidToNavigationType)4,(virtualAISAidToNavigationType)5,(virtualAISAidToNavigationType)6,(virtualAISAidToNavigationType)7,(virtualAISAidToNavigationType)8,(virtualAISAidToNavigationType)9,(virtualAISAidToNavigationType)10,(virtualAISAidToNavigationType)11,(virtualAISAidToNavigationType)12];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -17789,7 +17937,7 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 

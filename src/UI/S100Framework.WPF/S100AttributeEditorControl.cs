@@ -127,11 +127,11 @@ namespace S100Framework.WPF
             this.CollectionItemChanged?.Invoke(sender, item, e);
         }
 
-        protected void SelectedObject_InformationBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+        protected void OnInformationBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
             this.InformationBindingCollectionChanged?.Invoke(sender, e);
         }
 
-        protected void SelectedObject_FeatureBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
+        protected void OnFeatureBindingCollectionChanged(object? sender, PropertyChangedEventArgs e) {
             this.FeatureBindingCollectionChanged?.Invoke(sender, e);
         }
     }
@@ -143,6 +143,7 @@ namespace S100Framework.WPF
             this.informationBindingDefinitions = informationObject.informationBindingDefinitions;
 
             this.InformationObject.PropertyChanged += base.OnPropertyChanged;
+            this.InformationObject.InformationBindingCollectionChanged += base.OnInformationBindingCollectionChanged;
         }
 
         public informationBindingDefinition[] informationBindingDefinitions { get; private set; }
@@ -158,6 +159,8 @@ namespace S100Framework.WPF
             this.featureBindingDefinitions = featureObject.featureBindingDefinitions;
 
             this.FeatureObject.PropertyChanged += base.OnPropertyChanged;
+            this.FeatureObject.InformationBindingCollectionChanged += base.OnInformationBindingCollectionChanged;
+            this.FeatureObject.FeatureBindingCollectionChanged += base.OnFeatureBindingCollectionChanged;
         }
 
         public SelectedFeatureTypeObjectViewModel(FeatureViewModel featureObject, Primitives primitive) {
@@ -166,6 +169,8 @@ namespace S100Framework.WPF
             this.featureBindingDefinitions = featureObject.featureBindingDefinitions;
 
             this.FeatureObject.PropertyChanged += base.OnPropertyChanged;
+            this.FeatureObject.InformationBindingCollectionChanged += base.OnInformationBindingCollectionChanged;
+            this.FeatureObject.FeatureBindingCollectionChanged += base.OnFeatureBindingCollectionChanged;
         }
 
         public FeatureViewModel FeatureObject { get; private set; }
@@ -175,14 +180,14 @@ namespace S100Framework.WPF
         public featureBindingDefinition[] featureBindingDefinitions { get; private set; }
     }
 
-    public class SelectedAssociationObjectViewModel : SelectedObjectViewModel
-    {
-        public SelectedAssociationObjectViewModel(AssociationViewModel associationObject) {
-            this.AssociationObject = associationObject;
-        }
+    //public class SelectedAssociationObjectViewModel : SelectedObjectViewModel
+    //{
+    //    public SelectedAssociationObjectViewModel(AssociationViewModel associationObject) {
+    //        this.AssociationObject = associationObject;
+    //    }
 
-        public AssociationViewModel AssociationObject { get; private set; }
-    }
+    //    public AssociationViewModel AssociationObject { get; private set; }
+    //}
 
     public class S100AttributeEditorControlHost
     {

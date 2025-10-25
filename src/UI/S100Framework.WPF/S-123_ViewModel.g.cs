@@ -3050,7 +3050,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ApplicabilityViewModel.InclusionTypeViewModel> InclusionTypes { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. InclusionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. InclusionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3343,7 +3343,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3565,7 +3565,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BroadcastDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3813,6 +3813,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("ConnectivityQualityOfService")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
+public override informationBinding[] informationBindings => [];
 
 
 		public ConnectivityQualityOfServiceViewModel Load(ConnectivityQualityOfService instance) {
@@ -4116,7 +4118,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4363,6 +4365,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public NauticalInformationViewModel Load(NauticalInformation instance) {
 			fixedDateRange = new ();
@@ -4556,7 +4560,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4863,7 +4867,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioControlCentreViewModel.TMASViewModel> TMAS { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5064,6 +5068,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RecommendationsViewModel Load(Recommendations instance) {
 			fixedDateRange = new ();
@@ -5258,6 +5264,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RegulationsViewModel Load(Regulations instance) {
 			fixedDateRange = new ();
@@ -5451,6 +5459,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+
+public override informationBinding[] informationBindings => [];
 
 
 		public RestrictionsViewModel Load(Restrictions instance) {
@@ -5675,7 +5685,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5804,6 +5814,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 				SetValue(ref _spatialAccuracy, value);
 			}
 		}
+
+public override informationBinding[] informationBindings => [];
 
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
@@ -5985,7 +5997,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6246,7 +6258,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TransmissionDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6632,7 +6644,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.AvailableQoSViewModel> AvailableQoS { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ConnectivityServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AvailableQoS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ConnectivityServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AvailableQoS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6673,7 +6685,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7076,7 +7088,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7117,7 +7129,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7330,6 +7342,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public informationConfidence[] informationConfidenceList => [(informationConfidence)1,(informationConfidence)2,(informationConfidence)3,(informationConfidence)4];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -7367,7 +7381,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel> fuzzyZoneAggregations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. fuzzyZoneAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. fuzzyZoneAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7726,7 +7740,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7767,7 +7781,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8151,7 +8165,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8192,7 +8206,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8634,7 +8648,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8675,7 +8689,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9150,7 +9164,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9225,7 +9239,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9741,7 +9755,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioStationViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9782,7 +9796,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10152,9 +10166,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
+
+public override featureBinding[] featureBindings => [];
 
 
 		public SARRegionViewModel Load(SARRegion instance) {
@@ -10564,7 +10580,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10605,7 +10621,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10799,6 +10815,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -10836,7 +10854,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaAggregateViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10978,6 +10996,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("DataCoverage")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
@@ -11133,6 +11155,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Category("QualityOfNonBathymetricData")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public QualityOfNonBathymetricDataViewModel Load(QualityOfNonBathymetricData instance) {

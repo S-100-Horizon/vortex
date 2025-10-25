@@ -87,7 +87,7 @@ namespace VortexProAppModule
 
         private object _selectedProperty = default;
 
-        private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
+        //private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
 
         private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
 
@@ -585,8 +585,9 @@ namespace VortexProAppModule
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
-                    }                    
+                    }
 
+                    //  Hooking up changed events
                     if (selectedObjectViewModel != null) {
                         selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
                         selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
@@ -650,7 +651,7 @@ namespace VortexProAppModule
         }
 
         private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
-            await QueuedTask.Run(async () => {
+            await QueuedTask.Run(() => {
                 var updated = false;
 
                 if (sender is ViewModelBase viewModel) {
@@ -664,74 +665,46 @@ namespace VortexProAppModule
                         Inspector["json"] = json;
                         updated |= true;
                     }
-                }
-                
-                //  informationBindings
-                {
-                    //var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
-                    //if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
-                }
-                
-                //  featureBindings
-                {
-                    //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-                    //if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
-                }
+                } 
             }, TaskCreationOptions.None);
         }
 
         private async void OnInformationBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
-            await QueuedTask.Run(async () => {
+            await QueuedTask.Run(() => {
                 var updated = false;
 
-                //  informationBindings
-                {
-                    //var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
-                    //if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
+                if (sender is FeatureViewModel viewModel) {
+                    var informationBindings = viewModel.informationBindings;
+
+                    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                    if (Inspector.IsNull("informationBindings") && informationBindings.Any()) {
+                        Inspector["informationBindings"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
+                        Inspector["informationBindings"] = json;
+                        updated |= true;
+                    }
                 }
             }, TaskCreationOptions.None);
         }
 
         private async void OnFeatureBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
-            await QueuedTask.Run(async () => {
+            await QueuedTask.Run(() => {
                 var updated = false;
 
-                //  featureBindings
-                {
-                    //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-                    //if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
+                if (sender is FeatureViewModel viewModel) {
+                    var featureBindings = viewModel.featureBindings;
+
+                    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
+                    }
                 }
             }, TaskCreationOptions.None);
         }
@@ -828,10 +801,10 @@ namespace VortexProAppModule
             set => SetProperty(ref _isEditingEnabled, value);
         }
 
-        public SelectedAssociationObjectViewModel SelectedAssociationProperty {
-            get => _selectedAssociationProperty;
-            set => SetProperty(ref _selectedAssociationProperty, value);
-        }
+        //public SelectedAssociationObjectViewModel SelectedAssociationProperty {
+        //    get => _selectedAssociationProperty;
+        //    set => SetProperty(ref _selectedAssociationProperty, value);
+        //}
 
         public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
             get => _selectedInformationProperty;

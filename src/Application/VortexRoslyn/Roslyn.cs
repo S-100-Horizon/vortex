@@ -2200,7 +2200,11 @@ namespace S100Framework.Applications
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    builder.AppendLine($"\t\tpublic informationBinding[] informationBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine($"\t\tpublic override informationBinding[] informationBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine();
+                }
+                else {
+                    builder.AppendLine("public override informationBinding[] informationBindings => [];");
                     builder.AppendLine();
                 }
 
@@ -2314,7 +2318,11 @@ namespace S100Framework.Applications
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
-                    builder.AppendLine($"\t\tpublic featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine($"\t\tpublic override featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine();
+                }
+                else {
+                    builder.AppendLine("public override featureBinding[] featureBindings => [];");
                     builder.AppendLine();
                 }
 

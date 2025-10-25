@@ -2107,6 +2107,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		public InformationTypeViewModel Load(InformationType instance) {
 			featureName.Clear();
@@ -2332,7 +2334,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AbstractRxNViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2584,7 +2586,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NauticalInformationViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -2799,6 +2801,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RegulationsViewModel Load(Regulations instance) {
 			featureName.Clear();
@@ -3007,6 +3011,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RestrictionsViewModel Load(Restrictions instance) {
 			featureName.Clear();
@@ -3214,6 +3220,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Optional]
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
+
+public override informationBinding[] informationBindings => [];
 
 
 		public RecommendationsViewModel Load(Recommendations instance) {
@@ -3513,7 +3521,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -3865,7 +3873,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4178,7 +4186,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4457,7 +4465,7 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4751,6 +4759,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public ApplicabilityViewModel Load(Applicability instance) {
 			featureName.Clear();
@@ -4996,6 +5006,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public RestrictedAreaViewModel Load(RestrictedArea instance) {
@@ -5301,9 +5315,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MarineProtectedAreaViewModel.ProtectedAreaAuthorityViewModel> ProtectedAreaAuthorities { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ProtectedAreaAuthorities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ProtectedAreaAuthorities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
+
+public override featureBinding[] featureBindings => [];
 
 
 		public MarineProtectedAreaViewModel Load(MarineProtectedArea instance) {
@@ -5586,9 +5602,11 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Category("InformationBindings")]
 		public ObservableCollection<VesselTrafficServiceAreaViewModel.ServiceControlViewModel> ServiceControls { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. ServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. ServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
+
+public override featureBinding[] featureBindings => [];
 
 
 		public VesselTrafficServiceAreaViewModel Load(VesselTrafficServiceArea instance) {
@@ -5690,6 +5708,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
 
@@ -5734,6 +5756,10 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
+
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
 
 
 		public TextPlacementViewModel Load(TextPlacement instance) {

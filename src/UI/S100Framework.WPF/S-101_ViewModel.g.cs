@@ -3848,6 +3848,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<telecommunicationsViewModel> telecommunications  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public ContactDetailsViewModel Load(ContactDetails instance) {
 			callSign = instance.callSign;
@@ -3966,6 +3968,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public ServiceHoursViewModel Load(ServiceHours instance) {
 			fixedDateRange = new ();
@@ -4068,6 +4072,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("NonStandardWorkingDay")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
+
+public override informationBinding[] informationBindings => [];
 
 
 		public NonStandardWorkingDayViewModel Load(NonStandardWorkingDay instance) {
@@ -4188,6 +4194,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		public NauticalInformationViewModel Load(NauticalInformation instance) {
 			fixedDateRange = new ();
@@ -4274,6 +4282,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("SpatialQuality")]
 		[Optional]
 		public ObservableCollection<spatialAccuracyViewModel> spatialAccuracy  { get; set; } = new ();
+
+public override informationBinding[] informationBindings => [];
 
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
@@ -4430,6 +4440,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -4467,7 +4479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<QualityOfNonBathymetricDataViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4633,6 +4645,10 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
 			drawingIndex = instance.drawingIndex;
@@ -4738,6 +4754,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -4775,7 +4793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavigationalSystemOfMarksViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -4906,6 +4924,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -4943,7 +4963,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LocalDirectionOfBuoyageViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5180,7 +5200,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataCompositionViewModel> QualityOfBathymetricDataCompositions { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. QualityOfBathymetricDataCompositions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. QualityOfBathymetricDataCompositions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5221,7 +5241,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<QualityOfBathymetricDataViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5361,6 +5381,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -5398,7 +5420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SoundingDatumViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5501,6 +5523,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -5538,7 +5562,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<VerticalDatumOfDataViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -5830,6 +5854,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -5867,7 +5893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<QualityOfSurveyViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6098,6 +6124,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -6185,7 +6213,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<UpdateInformationViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdateAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdateAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6382,7 +6410,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MagneticVariationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6423,7 +6451,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MagneticVariationViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6594,7 +6622,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LocalMagneticAnomalyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6669,7 +6697,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LocalMagneticAnomalyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6915,7 +6943,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CoastlineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -6990,7 +7018,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CoastlineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7227,7 +7255,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LandAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7336,7 +7364,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LandAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. IslandAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. IslandAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7505,7 +7533,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<IslandGroupViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7622,7 +7650,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<IslandGroupViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. IslandAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. IslandAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7813,7 +7841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LandElevationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -7888,7 +7916,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LandElevationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8068,7 +8096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RiverViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8143,7 +8171,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RiverViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8317,7 +8345,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RapidsViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8392,7 +8420,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RapidsViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8583,7 +8611,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WaterfallViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8658,7 +8686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WaterfallViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8852,7 +8880,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LakeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -8927,7 +8955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LakeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9121,7 +9149,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LandRegionViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9196,7 +9224,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LandRegionViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9452,7 +9480,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<VegetationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9527,7 +9555,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<VegetationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9800,7 +9828,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<IceAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -9875,7 +9903,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<IceAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10132,7 +10160,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SlopingGroundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10207,7 +10235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SlopingGroundViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10469,7 +10497,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SlopeToplineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10544,7 +10572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SlopeToplineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10733,7 +10761,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TidewayViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -10808,7 +10836,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TidewayViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -11086,7 +11114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BuiltUpAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -11161,7 +11189,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<BuiltUpAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -11550,7 +11578,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BuildingViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -11727,7 +11755,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<BuildingViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12031,7 +12059,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AirportAirfieldViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12106,7 +12134,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AirportAirfieldViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12341,7 +12369,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RunwayViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12416,7 +12444,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RunwayViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12658,7 +12686,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<HelipadViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -12767,7 +12795,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<HelipadViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -13160,7 +13188,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BridgeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -13337,7 +13365,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<BridgeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -13648,7 +13676,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SpanFixedViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -13825,7 +13853,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SpanFixedViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -14088,7 +14116,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SpanOpeningViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -14265,7 +14293,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SpanOpeningViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -14683,7 +14711,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ConveyorViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -14826,7 +14854,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ConveyorViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -15243,7 +15271,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CableOverheadViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -15352,7 +15380,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CableOverheadViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -15719,7 +15747,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PipelineOverheadViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -15862,7 +15890,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PipelineOverheadViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16285,7 +16313,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PylonBridgeSupportViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16496,7 +16524,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PylonBridgeSupportViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RoofedStructureAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RoofedStructureAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16896,7 +16924,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FenceWallViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -16971,7 +16999,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FenceWallViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17237,7 +17265,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RailwayViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17312,7 +17340,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RailwayViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17550,7 +17578,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RoadViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17625,7 +17653,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RoadViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17908,7 +17936,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TunnelViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -17983,7 +18011,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TunnelViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -18379,7 +18407,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LandmarkViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -18590,7 +18618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LandmarkViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -19080,7 +19108,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SiloTankViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -19257,7 +19285,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SiloTankViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -19751,7 +19779,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WindTurbineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -19894,7 +19922,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WindTurbineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -20290,7 +20318,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FortifiedStructureViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -20467,7 +20495,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FortifiedStructureViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -20843,7 +20871,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ProductionStorageAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -20918,7 +20946,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ProductionStorageAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -21152,7 +21180,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CheckpointViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -21227,7 +21255,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CheckpointViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -21564,7 +21592,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<HulkViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -21707,7 +21735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<HulkViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -22099,7 +22127,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PileViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -22310,7 +22338,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PileViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -22643,7 +22671,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DykeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -22718,7 +22746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DykeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -23127,7 +23155,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ShorelineConstructionViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -23270,7 +23298,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ShorelineConstructionViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -23765,7 +23793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<StructureOverNavigableWaterViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -23942,7 +23970,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<StructureOverNavigableWaterViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RoofedStructureAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RoofedStructureAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -24274,7 +24302,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CausewayViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -24349,7 +24377,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CausewayViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -24632,7 +24660,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CanalViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -24707,7 +24735,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CanalViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -24940,7 +24968,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DistanceMarkViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -25049,7 +25077,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DistanceMarkViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -25352,7 +25380,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<GateViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -25427,7 +25455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<GateViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -25806,7 +25834,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DamViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -25881,7 +25909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DamViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -26323,7 +26351,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CraneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -26466,7 +26494,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CraneViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -26806,7 +26834,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BerthViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -26915,7 +26943,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<BerthViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -27320,7 +27348,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DolphinViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -27497,7 +27525,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DolphinViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -27816,7 +27844,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<BollardViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -27925,7 +27953,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<BollardViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -28277,7 +28305,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DryDockViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -28352,7 +28380,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DryDockViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -28784,7 +28812,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FloatingDockViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -28927,7 +28955,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FloatingDockViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -29256,7 +29284,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PontoonViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -29433,7 +29461,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PontoonViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. BridgeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -29755,7 +29783,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DockAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -29830,7 +29858,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DockAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30107,7 +30135,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<GridironViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30182,7 +30210,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<GridironViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30438,7 +30466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LockBasinViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30513,7 +30541,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LockBasinViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30722,7 +30750,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MooringTrotViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -30831,7 +30859,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MooringTrotViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31014,7 +31042,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SeaAreaNamedWaterAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31089,7 +31117,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeaAreaNamedWaterAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31308,7 +31336,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TidalStreamFloodEbbViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31383,7 +31411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TidalStreamFloodEbbViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31624,7 +31652,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CurrentNonGravitationalViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31699,7 +31727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CurrentNonGravitationalViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31904,7 +31932,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WaterTurbulenceViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -31979,7 +32007,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WaterTurbulenceViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32171,7 +32199,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TidalStreamPanelDataViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32246,7 +32274,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TidalStreamPanelDataViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32464,7 +32492,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SoundingViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32539,7 +32567,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SoundingViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32813,7 +32841,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DredgedAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -32922,7 +32950,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DredgedAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33154,7 +33182,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SweptAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33263,7 +33291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SweptAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33429,7 +33457,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DepthContourViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33470,7 +33498,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DepthContourViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33627,7 +33655,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DepthAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33668,7 +33696,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DepthAreaViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33818,7 +33846,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DepthNoBottomFoundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33859,7 +33887,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DepthNoBottomFoundViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -33995,7 +34023,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<UnsurveyedAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34036,7 +34064,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<UnsurveyedAreaViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34198,7 +34226,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SeabedAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34273,7 +34301,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeabedAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34460,7 +34488,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WeedKelpViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34535,7 +34563,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WeedKelpViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34695,7 +34723,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SeagrassViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34770,7 +34798,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeagrassViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34937,7 +34965,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SandwaveViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -34978,7 +35006,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SandwaveViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -35125,7 +35153,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SpringViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -35200,7 +35228,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SpringViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -35495,7 +35523,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<UnderwaterAwashRockViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -35570,7 +35598,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<UnderwaterAwashRockViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -35958,7 +35986,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<WreckViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -36067,7 +36095,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<WreckViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -36491,7 +36519,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ObstructionViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -36600,7 +36628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ObstructionViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -36906,7 +36934,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FoulGroundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -36981,7 +37009,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FoulGroundViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -37190,7 +37218,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DiscolouredWaterViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -37231,7 +37259,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DiscolouredWaterViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -37451,7 +37479,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FishingFacilityViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -37594,7 +37622,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FishingFacilityViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -37939,7 +37967,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MarineFarmCultureViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -38014,7 +38042,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MarineFarmCultureViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -38438,7 +38466,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<OffshorePlatformViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -38581,7 +38609,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<OffshorePlatformViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -38879,7 +38907,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CableSubmarineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -38988,7 +39016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CableSubmarineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -39212,7 +39240,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CableAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -39287,7 +39315,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CableAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -39633,7 +39661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PipelineSubmarineOnLandViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -39708,7 +39736,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PipelineSubmarineOnLandViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -39981,7 +40009,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SubmarinePipelineAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -40056,7 +40084,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SubmarinePipelineAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -40432,7 +40460,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<OffshoreProductionAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -40507,7 +40535,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<OffshoreProductionAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -40800,7 +40828,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<NavigationLineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -40875,7 +40903,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavigationLineViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -41186,7 +41214,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RecommendedTrackViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -41329,7 +41357,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedTrackViewModel.FairwayAuxiliaryViewModel> FairwayAuxiliaries { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -41587,7 +41615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RangeSystemViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -41738,7 +41766,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RangeSystemViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -42022,7 +42050,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FairwayViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -42165,7 +42193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FairwayViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. FairwayAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. FairwayAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -42424,7 +42452,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FairwaySystemViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -42567,7 +42595,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FairwaySystemViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -42861,7 +42889,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RecommendedRouteCentrelineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -43004,7 +43032,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedRouteCentrelineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -43335,7 +43363,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TwoWayRoutePartViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -43444,7 +43472,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TwoWayRoutePartViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TwoWayRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TwoWayRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -43676,7 +43704,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TwoWayRouteViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -43853,7 +43881,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TwoWayRouteViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TwoWayRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TwoWayRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -44059,7 +44087,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RecommendedTrafficLanePartViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -44100,7 +44128,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedTrafficLanePartViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -44385,7 +44413,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DeepWaterRouteCentrelineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -44528,7 +44556,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DeepWaterRouteCentrelineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -44867,7 +44895,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DeepWaterRoutePartViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45010,7 +45038,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DeepWaterRoutePartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45275,7 +45303,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DeepWaterRouteViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45452,7 +45480,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DeepWaterRouteViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DeepWaterRouteAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45655,7 +45683,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<InshoreTrafficZoneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45730,7 +45758,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<InshoreTrafficZoneViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -45959,7 +45987,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PrecautionaryAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46068,7 +46096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PrecautionaryAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46309,7 +46337,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TrafficSeparationSchemeLanePartViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46384,7 +46412,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TrafficSeparationSchemeLanePartViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46587,7 +46615,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SeparationZoneOrLineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46662,7 +46690,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeparationZoneOrLineViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46842,7 +46870,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TrafficSeparationSchemeBoundaryViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -46917,7 +46945,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TrafficSeparationSchemeBoundaryViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47108,7 +47136,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TrafficSeparationSchemeCrossingViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47183,7 +47211,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TrafficSeparationSchemeCrossingViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47394,7 +47422,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TrafficSeparationSchemeRoundaboutViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47469,7 +47497,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TrafficSeparationSchemeRoundaboutViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47694,7 +47722,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TrafficSeparationSchemeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -47879,7 +47907,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TrafficSeparationSchemeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48085,7 +48113,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48194,7 +48222,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48391,7 +48419,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48500,7 +48528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneAxisViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48697,7 +48725,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -48874,7 +48902,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ArchipelagicSeaLaneViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ASLAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49099,7 +49127,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioCallingInPointViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49174,7 +49202,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioCallingInPointViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49412,7 +49440,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FerryRouteViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49487,7 +49515,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FerryRouteViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49701,7 +49729,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadarLineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49776,7 +49804,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadarLineViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -49971,7 +49999,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadarRangeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50046,7 +50074,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadarRangeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50293,7 +50321,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadarStationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50368,7 +50396,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadarStationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50624,7 +50652,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AnchorageAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50699,7 +50727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AnchorageAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -50993,7 +51021,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MooringAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51068,7 +51096,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MooringAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51340,7 +51368,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AnchorBerthViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51415,7 +51443,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AnchorBerthViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51643,7 +51671,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SeaplaneLandingAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51718,7 +51746,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeaplaneLandingAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -51954,7 +51982,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DumpingGroundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52029,7 +52057,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DumpingGroundViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52286,7 +52314,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MilitaryPracticeAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52361,7 +52389,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MilitaryPracticeAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52626,7 +52654,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<AdministrationAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52701,7 +52729,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<AdministrationAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52913,7 +52941,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CargoTranshipmentAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -52988,7 +53016,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CargoTranshipmentAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53267,7 +53295,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CautionAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53376,7 +53404,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CautionAreaViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. CautionAreaAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53600,7 +53628,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<InformationAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53675,7 +53703,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<InformationAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53882,7 +53910,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ContiguousZoneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -53923,7 +53951,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ContiguousZoneViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54090,7 +54118,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ContinentalShelfAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54165,7 +54193,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ContinentalShelfAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54342,7 +54370,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CustomZoneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54383,7 +54411,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CustomZoneViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54544,7 +54572,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<ExclusiveEconomicZoneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54585,7 +54613,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<ExclusiveEconomicZoneViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54763,7 +54791,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FisheryZoneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -54838,7 +54866,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FisheryZoneViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55030,7 +55058,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FishingGroundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55105,7 +55133,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FishingGroundViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55309,7 +55337,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FreePortAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55384,7 +55412,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FreePortAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55558,7 +55586,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourAreaAdministrativeViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55633,7 +55661,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<HarbourAreaAdministrativeViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55811,7 +55839,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LogPondViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -55886,7 +55914,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LogPondViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56132,7 +56160,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<OilBarrierViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56207,7 +56235,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<OilBarrierViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56399,7 +56427,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<StraightTerritorialSeaBaselineViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56440,7 +56468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<StraightTerritorialSeaBaselineViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56612,7 +56640,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<TerritorialSeaAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56653,7 +56681,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TerritorialSeaAreaViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56855,7 +56883,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SubmarineTransitLaneViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -56930,7 +56958,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SubmarineTransitLaneViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57114,7 +57142,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PilotageDistrictViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57223,7 +57251,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PilotageDistrictViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. PilotageDistrictAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. PilotageDistrictAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57425,7 +57453,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CollisionRegulationsLimitViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57500,7 +57528,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CollisionRegulationsLimitViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57690,7 +57718,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MarinePollutionRegulationsAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57765,7 +57793,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MarinePollutionRegulationsAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -57968,7 +57996,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RestrictedAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -58111,7 +58139,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RestrictedAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TrafficSeparationSchemeAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -58552,7 +58580,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightAllAroundViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -58703,7 +58731,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightAllAroundViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -59086,7 +59114,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightSectoredViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -59237,7 +59265,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightSectoredViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -59589,7 +59617,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightFogDetectorViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -59698,7 +59726,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightFogDetectorViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -60058,7 +60086,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightAirObstructionViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -60167,7 +60195,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightAirObstructionViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -60563,7 +60591,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LateralBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -60740,7 +60768,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LateralBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -61142,7 +61170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CardinalBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -61319,7 +61347,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CardinalBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -61704,7 +61732,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<IsolatedDangerBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -61881,7 +61909,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<IsolatedDangerBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -62263,7 +62291,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SafeWaterBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -62440,7 +62468,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SafeWaterBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -62829,7 +62857,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -63006,7 +63034,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SpecialPurposeGeneralBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -63387,7 +63415,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -63530,7 +63558,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<EmergencyWreckMarkingBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -63885,7 +63913,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<InstallationBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -63994,7 +64022,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<InstallationBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -64371,7 +64399,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<MooringBuoyViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -64548,7 +64576,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<MooringBuoyViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. MooringTrotAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -65020,7 +65048,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LateralBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -65231,7 +65259,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LateralBeaconViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -65727,7 +65755,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CardinalBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -65938,7 +65966,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CardinalBeaconViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -66417,7 +66445,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<IsolatedDangerBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -66628,7 +66656,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<IsolatedDangerBeaconViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -67104,7 +67132,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SafeWaterBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -67315,7 +67343,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SafeWaterBeaconViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -67798,7 +67826,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -68009,7 +68037,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SpecialPurposeGeneralBeaconViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -68427,7 +68455,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<DaymarkViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -68646,7 +68674,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<DaymarkViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -69059,7 +69087,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightFloatViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -69236,7 +69264,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightFloatViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -69618,7 +69646,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<LightVesselViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -69795,7 +69823,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<LightVesselViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AidsToNavigationAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. FairwayAuxiliaries.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70087,7 +70115,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RetroreflectorViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70162,7 +70190,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RetroreflectorViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70386,7 +70414,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadarReflectorViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70461,7 +70489,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadarReflectorViewModel.UpdatedInformationViewModel> UpdatedInformations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70756,7 +70784,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<FogSignalViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -70865,7 +70893,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<FogSignalViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71142,7 +71170,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PhysicalAISAidToNavigationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71251,7 +71279,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PhysicalAISAidToNavigationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71516,7 +71544,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<VirtualAISAidToNavigationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71591,7 +71619,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<VirtualAISAidToNavigationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71854,7 +71882,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioStationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -71929,7 +71957,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -72236,7 +72264,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RadarTransponderBeaconViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -72379,7 +72407,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadarTransponderBeaconViewModel.RangeSystemAggregationViewModel> RangeSystemAggregations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RangeSystemAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -72677,7 +72705,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<PilotBoardingPlaceViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -72786,7 +72814,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<PilotBoardingPlaceViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. PilotageDistrictAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. PilotageDistrictAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73008,7 +73036,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<VesselTrafficServiceAreaViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73083,7 +73111,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<VesselTrafficServiceAreaViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73283,7 +73311,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<CoastGuardStationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73358,7 +73386,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<CoastGuardStationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73590,7 +73618,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SignalStationWarningViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73699,7 +73727,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SignalStationWarningViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -73941,7 +73969,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SignalStationTrafficViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -74050,7 +74078,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SignalStationTrafficViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -74292,7 +74320,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<RescueStationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -74367,7 +74395,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<RescueStationViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -74686,7 +74714,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourFacilityViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -74761,7 +74789,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<HarbourFacilityViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -75038,7 +75066,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("InformationBindings")]
 		public ObservableCollection<SmallCraftFacilityViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
 
-		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -75113,7 +75141,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<SmallCraftFacilityViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. UpdatedInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -75293,6 +75321,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -75330,7 +75360,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
@@ -75412,6 +75442,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
@@ -75449,7 +75481,7 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Category("FeatureBindings")]
 		public ObservableCollection<Chart1FeatureViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
 
-		public featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+		public override featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
