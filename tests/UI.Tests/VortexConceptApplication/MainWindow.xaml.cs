@@ -224,9 +224,18 @@ namespace VortexConceptApplication
 
             S100AttributeEditor.FeatureBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
 
-                var instance = (LightAllAroundViewModel)sender;
+                var instance = (LightAllAroundViewModel)sender!;
 
-                var json = instance!.SerializeFeatureBindings;
+                if (!instance.featureBindings.Any())
+                    return;
+
+                var options = new System.Text.Json.JsonSerializerOptions {
+                    WriteIndented = true,
+                    TypeInfoResolver = S100Framework.DomainModel.S101.Summary.SharedBindingResolver(),
+                };
+
+                var json = System.Text.Json.JsonSerializer.Serialize(instance.featureBindings, options);
+
 
                 System.Diagnostics.Debugger.Break();
             };

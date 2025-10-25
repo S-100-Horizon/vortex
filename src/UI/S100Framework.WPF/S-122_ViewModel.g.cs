@@ -2318,6 +2318,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RelatedOrganisation> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2329,6 +2331,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AbstractRxNViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2565,6 +2570,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RelatedOrganisation> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2576,6 +2583,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NauticalInformationViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3421,6 +3431,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RelatedOrganisation> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3450,6 +3462,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3479,6 +3493,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3496,6 +3512,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3832,6 +3851,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3843,6 +3864,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4140,6 +4164,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4151,6 +4177,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4380,6 +4409,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4409,6 +4440,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4423,6 +4456,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5251,6 +5287,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ProtectedAreaAuthority> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5262,6 +5300,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MarineProtectedAreaViewModel.ProtectedAreaAuthorityViewModel> ProtectedAreaAuthorities { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ProtectedAreaAuthorities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5531,6 +5572,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5542,6 +5585,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<VesselTrafficServiceAreaViewModel.ServiceControlViewModel> ServiceControls { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

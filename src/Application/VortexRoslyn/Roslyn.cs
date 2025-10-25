@@ -2172,8 +2172,10 @@ namespace S100Framework.Applications
 
                     builder.AppendLine("\t\t\tpublic override string Serialize() {");
                     builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");                    
+                    builder.AppendLine("\t\t\t}");
 
+                    builder.AppendLine();
+                    builder.AppendLine("\t\t\t[Browsable(false)]");
                     builder.AppendLine($"\t\t\tpublic informationBinding Model => new informationBinding<{association}> {{");
                     builder.AppendLine("\t\t\t\treferenceId = this.informationId,");
                     builder.AppendLine("\t\t\t\tinformationType = this.informationType,");
@@ -2193,6 +2195,13 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
                     constructorBuilder.AppendLine($"\t\t\t\tOnInformationBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
+                }
+
+                if (associations.Any()) {
+                    builder.AppendLine();
+                    var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
+                    builder.AppendLine($"\t\tpublic informationBinding[] informationBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine();
                 }
 
                 if (associations.Any())
@@ -2277,8 +2286,10 @@ namespace S100Framework.Applications
 
                     builder.AppendLine("\t\t\tpublic override string Serialize() {");
                     builder.AppendLine("\t\t\t\tthrow new NotImplementedException();");
-                    builder.AppendLine("\t\t\t}");                    
+                    builder.AppendLine("\t\t\t}");
 
+                    builder.AppendLine();
+                    builder.AppendLine("\t\t\t[Browsable(false)]");
                     builder.AppendLine($"\t\t\tpublic featureBinding Model => new featureBinding<{association}> {{");
                     builder.AppendLine("\t\t\t\treferenceId = this.featureId,");
                     builder.AppendLine("\t\t\t\tfeatureType = this.featureType,");
@@ -2298,6 +2309,13 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t{pluralizer.Pluralize(association)}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
                     constructorBuilder.AppendLine($"\t\t\t\tOnFeatureBindingCollectionChanged(nameof({pluralizer.Pluralize(association)}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
+                }
+
+                if (associations.Any()) {
+                    builder.AppendLine();
+                    var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
+                    builder.AppendLine($"\t\tpublic featureBinding[] featureBindings => [{string.Join(',', initialize)}];");
+                    builder.AppendLine();
                 }
 
                 if (associations.Any())

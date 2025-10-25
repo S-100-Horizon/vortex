@@ -3354,6 +3354,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<InclusionType> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3383,6 +3385,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<PermissionType> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3397,6 +3401,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ApplicabilityViewModel.PermissionTypeViewModel> PermissionTypes { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. InclusionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. PermissionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3670,6 +3677,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3699,6 +3708,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RelatedOrganisation> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3728,6 +3739,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3745,6 +3758,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4413,6 +4429,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4424,6 +4442,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5018,6 +5039,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AdditionalInformation> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5029,6 +5052,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NauticalInformationViewModel.AdditionalInformationViewModel> AdditionalInformations { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AdditionalInformations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6042,6 +6068,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6071,6 +6099,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6085,6 +6115,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6400,6 +6433,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6429,6 +6464,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6443,6 +6480,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AnchorBerthViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6468,6 +6508,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -6479,6 +6521,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AnchorBerthViewModel.PrimaryAuxiliaryFacilityViewModel> PrimaryAuxiliaryFacilities { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PrimaryAuxiliaryFacilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6798,6 +6843,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6809,6 +6856,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AnchorageAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6834,6 +6884,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -6845,6 +6897,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AnchorageAreaViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7334,6 +7389,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7363,6 +7420,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7377,6 +7436,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<BerthViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7402,6 +7464,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<Demarcation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7431,6 +7495,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7445,6 +7511,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<BerthViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. Demarcations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7876,6 +7945,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<Demarcation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7905,6 +7976,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7919,6 +7992,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<BerthPositionViewModel.PrimaryAuxiliaryFacilityViewModel> PrimaryAuxiliaryFacilities { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. Demarcations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. PrimaryAuxiliaryFacilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8283,6 +8359,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8312,6 +8390,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8326,6 +8406,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<DockAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8351,6 +8434,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -8362,6 +8447,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<DockAreaViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8667,6 +8755,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8678,6 +8768,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<DryDockViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8997,6 +9090,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9008,6 +9103,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<DumpingGroundViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9033,6 +9131,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9044,6 +9144,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<DumpingGroundViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9346,6 +9449,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9357,6 +9462,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<FloatingDockViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9644,6 +9752,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9655,6 +9765,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<GridironViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9995,6 +10108,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10024,6 +10139,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10038,6 +10155,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourAreaAdministrativeViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10063,6 +10183,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<JurisdictionalLimit> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10092,6 +10214,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10106,6 +10230,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<HarbourAreaAdministrativeViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. JurisdictionalLimits.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10452,6 +10579,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10481,6 +10610,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10495,6 +10626,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourAreaSectionViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10528,6 +10662,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10565,6 +10701,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<Subsection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10594,6 +10732,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<Infrastructure> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10611,6 +10751,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<HarbourAreaSectionViewModel.InfrastructureViewModel> Infrastructures { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. Subsections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. Infrastructures.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10958,6 +11101,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10969,6 +11114,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourBasinViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10994,6 +11142,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11005,6 +11155,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<HarbourBasinViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11300,6 +11453,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -11311,6 +11466,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<HarbourFacilityViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11651,6 +11809,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -11680,6 +11840,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -11694,6 +11856,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MooringWarpingFacilityViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11719,6 +11884,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PrimaryAuxiliaryFacility> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11730,6 +11897,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<MooringWarpingFacilityViewModel.PrimaryAuxiliaryFacilityViewModel> PrimaryAuxiliaryFacilities { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PrimaryAuxiliaryFacilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12039,6 +12209,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LimitEntrance> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -12050,6 +12222,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<OuterLimitViewModel.LimitEntranceViewModel> LimitEntrances { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LimitEntrances.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12075,6 +12250,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<JurisdictionalLimit> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -12086,6 +12263,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<OuterLimitViewModel.JurisdictionalLimitViewModel> JurisdictionalLimits { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. JurisdictionalLimits.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12458,6 +12638,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -12469,6 +12651,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<PilotBoardingPlaceViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12494,6 +12679,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -12505,6 +12692,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<PilotBoardingPlaceViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12839,6 +13029,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -12850,6 +13042,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<SeaplaneLandingAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -12875,6 +13070,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -12886,6 +13083,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<SeaplaneLandingAreaViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -13248,6 +13448,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceAvailability> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -13277,6 +13479,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -13291,6 +13495,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TerminalViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceAvailabilities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -13324,6 +13531,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -13353,6 +13562,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<Infrastructure> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -13367,6 +13578,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TerminalViewModel.InfrastructureViewModel> Infrastructures { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. Infrastructures.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -13724,6 +13938,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -13735,6 +13951,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TurningBasinViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -13760,6 +13979,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -13771,6 +13992,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TurningBasinViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -14105,6 +14329,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -14116,6 +14342,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<WaterwayAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -14141,6 +14370,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<LayoutDivision> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -14152,6 +14383,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<WaterwayAreaViewModel.LayoutDivisionViewModel> LayoutDivisions { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. LayoutDivisions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -14797,6 +15031,8 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<TextAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -14808,6 +15044,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

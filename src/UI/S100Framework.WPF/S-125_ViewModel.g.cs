@@ -2134,6 +2134,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<StructureEquipment> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -2145,6 +2147,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<EquipmentViewModel.StructureEquipmentViewModel> StructureEquipments { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2509,6 +2514,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BuoyTopmark> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -2520,6 +2527,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<GenericBuoyViewModel.BuoyTopmarkViewModel> BuoyTopmarks { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7932,6 +7942,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<RangeSystem> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7943,6 +7955,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavigationLineViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8347,6 +8362,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<RangeSystem> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -8358,6 +8375,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedTrackViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8727,6 +8747,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<VirtualAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -8738,6 +8760,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<VirtualAISAidToNavigationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9409,6 +9434,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<StructureEquipment> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9420,6 +9447,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<StructureObjectViewModel.StructureEquipmentViewModel> StructureEquipments { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. StructureEquipments.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11091,6 +11121,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PhysicalAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11120,6 +11152,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SyntheticAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11149,6 +11183,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<VirtualAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11166,6 +11202,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -16482,6 +16521,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -16493,6 +16534,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<DangerousFeatureViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -16596,6 +16640,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -16625,6 +16671,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<AtonAssociations> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -16639,6 +16687,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAssociationViewModel.AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AtonAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -16735,6 +16786,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<AtonAggregations> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -16746,6 +16799,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAggregationViewModel.AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. AtonAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -16994,6 +17050,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BuoyTopmark> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -17005,6 +17063,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TopmarkViewModel.BuoyTopmarkViewModel> BuoyTopmarks { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -17350,6 +17411,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PhysicalAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -17361,6 +17424,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -17709,6 +17775,8 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SyntheticAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -17720,6 +17788,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

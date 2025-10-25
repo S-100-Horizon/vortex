@@ -1211,6 +1211,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<navwarnReferences> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -1222,6 +1224,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ReferencesViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1392,6 +1397,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<navwarnReferences> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -1403,6 +1410,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPreambleViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1643,6 +1653,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<navwarnPreambleContent> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -1654,6 +1666,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContents { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. navwarnPreambleContents.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1679,6 +1694,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<areaAffected> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -1708,6 +1725,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<TextAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -1722,6 +1741,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1841,6 +1863,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<areaAffected> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -1852,6 +1876,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1997,6 +2024,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<TextAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -2008,6 +2037,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

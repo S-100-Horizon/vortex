@@ -3036,6 +3036,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<InclusionType> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3047,6 +3049,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ApplicabilityViewModel.InclusionTypeViewModel> InclusionTypes { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. InclusionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3290,6 +3295,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3319,6 +3326,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3333,6 +3342,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3539,6 +3551,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastTransmission> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3550,6 +3564,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<BroadcastDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4085,6 +4102,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4096,6 +4115,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4520,6 +4542,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4531,6 +4555,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4754,6 +4781,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4783,6 +4812,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4812,6 +4843,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TMAS> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -4829,6 +4862,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioControlCentreViewModel.TMASViewModel> TMAS { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5591,6 +5627,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AuthorityHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5620,6 +5658,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5634,6 +5674,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5928,6 +5971,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RadioServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -5939,6 +5984,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6184,6 +6232,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastTransmission> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6195,6 +6245,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TransmissionDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6463,6 +6516,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ConnectivityService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6492,6 +6547,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6521,6 +6578,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6550,6 +6609,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<AvailableQoS> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6570,6 +6631,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.AvailableQoSViewModel> AvailableQoS { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ConnectivityServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AvailableQoS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6595,6 +6659,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -6606,6 +6672,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6891,6 +6960,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6920,6 +6991,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RadioServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6949,6 +7022,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6978,6 +7053,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -6998,6 +7075,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7023,6 +7103,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7034,6 +7116,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7268,6 +7353,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<fuzzyZoneAggregation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7279,6 +7366,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel> fuzzyZoneAggregations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. fuzzyZoneAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7486,6 +7576,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7515,6 +7607,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7544,6 +7638,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7573,6 +7669,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7602,6 +7700,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7625,6 +7725,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7650,6 +7753,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -7661,6 +7766,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7893,6 +8001,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7922,6 +8032,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7951,6 +8063,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -7980,6 +8094,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8009,6 +8125,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8032,6 +8150,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8057,6 +8178,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -8068,6 +8191,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8358,6 +8484,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8387,6 +8515,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8416,6 +8546,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8445,6 +8577,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8474,6 +8608,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8497,6 +8633,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8522,6 +8661,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -8533,6 +8674,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8822,6 +8966,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8851,6 +8997,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RadioServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8880,6 +9028,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8909,6 +9059,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8938,6 +9090,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8967,6 +9121,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -8993,6 +9149,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9018,6 +9177,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9047,6 +9208,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<coreAggregation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9061,6 +9224,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9391,6 +9557,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9420,6 +9588,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RadioServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9449,6 +9619,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9478,6 +9650,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9507,6 +9681,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9536,6 +9712,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9562,6 +9740,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioStationViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9587,6 +9768,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9598,6 +9781,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9850,6 +10036,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9879,6 +10067,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<RadioServiceControl> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9908,6 +10098,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TMAS> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9937,6 +10129,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -9957,6 +10151,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10217,6 +10414,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceCoordination> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10246,6 +10445,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ServiceContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10275,6 +10476,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<LocationHours> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10304,6 +10507,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<BroadcastService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10333,6 +10538,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<TransmissionService> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -10356,6 +10563,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10381,6 +10591,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10392,6 +10604,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -10607,6 +10822,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<coreAggregation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -10618,6 +10835,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaAggregateViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

@@ -2233,6 +2233,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2262,6 +2264,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ProductionDetails> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2291,6 +2295,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<DistributionDetails> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2308,6 +2314,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<CatalogueSectionHeaderViewModel.DistributionDetailsViewModel> DistributionDetails { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2425,6 +2434,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ProducerContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2454,6 +2465,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<DistributorContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2468,6 +2481,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2690,6 +2706,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2701,6 +2719,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<PriceInformationViewModel.PriceOfNauticalProductViewModel> PriceOfNauticalProducts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2834,6 +2855,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ProducerContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2863,6 +2886,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<ProductionDetails> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2877,6 +2902,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ProducerInformationViewModel.ProductionDetailsViewModel> ProductionDetails { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2965,6 +2993,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<DistributionDetails> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -2994,6 +3024,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public informationBinding Model => new informationBinding<DistributorContact> {
 				referenceId = this.informationId,
 				informationType = this.informationType,
@@ -3008,6 +3040,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<DistributorInformationViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
+
+		public informationBinding[] informationBindings => [.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 

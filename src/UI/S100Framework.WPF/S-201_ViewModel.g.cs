@@ -5005,6 +5005,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<RangeSystem> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -5016,6 +5018,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavigationLineViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5468,6 +5473,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<RangeSystem> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -5479,6 +5486,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RecommendedTrackViewModel.RangeSystemViewModel> RangeSystems { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. RangeSystems.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9195,6 +9205,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PhysicalAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9224,6 +9236,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SyntheticAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9253,6 +9267,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<VirtualAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -9270,6 +9286,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11063,6 +11082,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<VirtualAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11074,6 +11095,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<VirtualAISAidToNavigationViewModel.VirtualAISViewModel> VirtualAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. VirtualAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11453,6 +11477,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<PhysicalAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11464,6 +11490,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<PhysicalAISAidToNavigationViewModel.PhysicalAISViewModel> PhysicalAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. PhysicalAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -11860,6 +11889,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SyntheticAIS> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -11871,6 +11902,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<SyntheticAISAidToNavigationViewModel.SyntheticAISViewModel> SyntheticAIS { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. SyntheticAIS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -20582,6 +20616,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToAnchorConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -20593,6 +20629,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<SinkerAnchorViewModel.ShackleToAnchorConnectionViewModel> ShackleToAnchorConnections { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ShackleToAnchorConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -20964,6 +21003,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -20993,6 +21034,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToBridleConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21022,6 +21065,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BridleCableConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21051,6 +21096,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToSwivelConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21080,6 +21127,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToAnchorConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21103,6 +21152,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<MooringShackleViewModel.ShackleToAnchorConnectionViewModel> ShackleToAnchorConnections { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. ShackleConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleToBridleConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BridleCableConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleToSwivelConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleToAnchorConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -21470,6 +21522,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BridleCableConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21499,6 +21553,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SwivelCableConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21528,6 +21584,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleConnectionFromCable> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21545,6 +21603,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<CableSubmarineViewModel.ShackleConnectionFromCableViewModel> ShackleConnectionFromCables { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BridleCableConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SwivelCableConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleConnectionFromCables.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -21923,6 +21984,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SwivelConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21952,6 +22015,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SwivelCableConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21981,6 +22046,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToSwivelConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -21998,6 +22065,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<SwivelViewModel.ShackleToSwivelConnectionViewModel> ShackleToSwivelConnections { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. SwivelConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SwivelCableConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleToSwivelConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -22349,6 +22419,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BridleConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -22378,6 +22450,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<SwivelConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -22407,6 +22481,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<ShackleToBridleConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -22436,6 +22512,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BridleCableConnection> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -22456,6 +22534,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<BridleViewModel.BridleCableConnectionViewModel> BridleCableConnections { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BridleConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. SwivelConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ShackleToBridleConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BridleCableConnections.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -22824,6 +22905,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BuoyCounterWeight> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -22835,6 +22918,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<CounterWeightViewModel.BuoyCounterWeightViewModel> BuoyCounterWeights { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BuoyCounterWeights.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -23204,6 +23290,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<BuoyTopmark> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -23215,6 +23303,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TopmarkViewModel.BuoyTopmarkViewModel> BuoyTopmarks { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. BuoyTopmarks.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -25639,6 +25730,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -25650,6 +25743,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<DangerousFeatureViewModel.DangerousFeatureAssociationViewModel> DangerousFeatureAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -25750,6 +25846,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<AtonAggregations> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -25761,6 +25859,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAggregationViewModel.AtonAggregationsViewModel> AtonAggregations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. AtonAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -25854,6 +25955,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<DangerousFeatureAssociation> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -25883,6 +25986,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 			public override string Serialize() {
 				throw new NotImplementedException();
 			}
+
+			[Browsable(false)]
 			public featureBinding Model => new featureBinding<AtonAssociations> {
 				referenceId = this.featureId,
 				featureType = this.featureType,
@@ -25897,6 +26002,9 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<AtonAssociationViewModel.AtonAssociationsViewModel> AtonAssociations { get; set; } = new();
+
+		public featureBinding[] featureBindings => [.. DangerousFeatureAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AtonAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
