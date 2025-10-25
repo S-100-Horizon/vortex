@@ -23,10 +23,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
-using IO = System.IO;
 
 namespace VortexProAppModule
 {
@@ -540,8 +538,8 @@ namespace VortexProAppModule
                     methodInfo.Invoke(viewmodel, new object[1] { instance });
 
                     SelectedObjectViewModel selectedObjectViewModel = null;
-                    
-                    if(viewmodel is InformationViewModel informationViewModel) { 
+
+                    if (viewmodel is InformationViewModel informationViewModel) {
                         if (!inspector.IsNull("informationbindings")) {
                             var json = Convert.ToString(inspector["informationbindings"]);
                             var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
@@ -559,7 +557,7 @@ namespace VortexProAppModule
                             ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
                             null => Primitives.noGeometry,
                             _ => throw new InvalidOperationException()
-                        };                        
+                        };
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
@@ -663,7 +661,7 @@ namespace VortexProAppModule
                         Inspector["json"] = json;
                         updated |= true;
                     }
-                } 
+                }
             }, TaskCreationOptions.None);
         }
 

@@ -1,9 +1,6 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureAssociations;
-using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.Topology;
 using System.Globalization;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
@@ -161,7 +158,7 @@ namespace S100Framework.YAML
                              GeometryDiff curves,
                              GeometryDiff compositeCurves,
                              GeometryDiff surfaces,
-                            // SupportFileDiff supportFiles,
+                             // SupportFileDiff supportFiles,
                              FeatureDiff features,
                              InformationTypeDiff informationTypes)
     {
@@ -209,7 +206,7 @@ namespace S100Framework.YAML
         }
 
         //[YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
-       // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
+        // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
         //[YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
         //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
 
@@ -218,8 +215,8 @@ namespace S100Framework.YAML
                             Features.Deleted.Count +
                             InformationTypes.Added.Count +
                             InformationTypes.Deleted.Count +
-                           // SupportFiles.Added.Count +
-                           // SupportFiles.Deleted.Count +
+                            // SupportFiles.Added.Count +
+                            // SupportFiles.Deleted.Count +
                             Points.Added.Count +
                             Points.Deleted.Count +
                             Depths.Added.Count +
@@ -235,7 +232,7 @@ namespace S100Framework.YAML
         internal FeatureDiff Features { get; init; } = features;
         [YamlIgnore]
         internal InformationTypeDiff InformationTypes { get; init; } = informationTypes;
-       // [YamlIgnore]
+        // [YamlIgnore]
         //internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
         [YamlIgnore]
         internal GeometryDiff Points { get; init; } = points;
@@ -261,7 +258,7 @@ namespace S100Framework.YAML
 
 
             // Compare SupportFiles
-           // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
+            // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
 
             // Compare InformationTypes
             var informationTypeDiff = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
@@ -291,7 +288,7 @@ namespace S100Framework.YAML
                 curves: curveDiff,
                 compositeCurves: compositeCurveDiff,
                 surfaces: surfaceDiff,
-              //  supportFiles: supportFileDiff,
+                //  supportFiles: supportFileDiff,
                 features: featureDiff,
                 informationTypes: informationTypeDiff
             );
@@ -759,7 +756,7 @@ namespace S100Framework.YAML
 
         public class DatasetUpdate
         {
-           // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+            // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
             public Dictionary<string, object> Features { get; init; } = [];
             public Dictionary<string, object> InformationTypes { get; init; } = [];
             public Dictionary<string, Point> Points { get; init; } = [];

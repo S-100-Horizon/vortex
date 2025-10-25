@@ -1,6 +1,5 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
@@ -12,11 +11,13 @@ using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace S100Framework.WPF
 {
-    public record InformationTypeId(string Code, string Id) {
+    public record InformationTypeId(string Code, string Id)
+    {
         public override string ToString() => $"{Code}::{Id}";
     }
 
-    public record FeatureTypeId(string Code, string Id) {
+    public record FeatureTypeId(string Code, string Id)
+    {
         public override string ToString() => $"{Code}::{Id}";
     }
 
@@ -192,7 +193,8 @@ namespace S100Framework.WPF
     }
 
 
-    public class S100AttributeEditorFeatureViewModel<T> where T : class {
+    public class S100AttributeEditorFeatureViewModel<T> where T : class
+    {
         public S100AttributeEditorControl Host { get; set; }
     }
 

@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -246,7 +245,7 @@ namespace S100Framework.DomainModel
     }
 
     public class informationBinding<TAssociation> : informationBinding where TAssociation : InformationAssociation, new()
-    {        
+    {
         public TAssociation association { get; set; } = new TAssociation();
 
         public string code => typeof(TAssociation).Name;

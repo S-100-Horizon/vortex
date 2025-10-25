@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using S100Framework.DomainModel;
+﻿using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
 using System.Collections;
 using System.Globalization;
@@ -362,7 +361,7 @@ namespace S100Framework.WPF.Editors
 
             control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
 
-            viewModel.PropertyChanged += (s,e) => {
+            viewModel.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
                     return;
                 control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
@@ -389,12 +388,12 @@ namespace S100Framework.WPF.Editors
                 }
             };
 
-            control.DropDownClosed += (s, e) => {                
+            control.DropDownClosed += (s, e) => {
                 var featureId = (FeatureTypeId)control.SelectedItem;
 
                 viewModel.featureId = featureId.Id;
                 viewModel.featureType = featureId.Code;
-                
+
             };
 
             return control;
