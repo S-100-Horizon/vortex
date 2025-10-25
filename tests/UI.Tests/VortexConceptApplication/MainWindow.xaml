@@ -16,8 +16,30 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <StackPanel Orientation="Vertical">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <xctk:CheckComboBox x:Name="_checkListBox"
+                   IsDropDownOpen="False"
+                   IsEditable="False"
+                   IsSelectAllActive="True"
+                   DisplayMemberPath="label"
+                   ItemsSource="{Binding Items}">
+            </xctk:CheckComboBox>
+            <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
+        </StackPanel>
+        
+        <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" Grid.Row="1" MinHeight="120" />
+    </Grid>
+   
+    
+    <!--<ScrollViewer VerticalScrollBarVisibility="Visible">-->
+        <!--<StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <xctk:CheckComboBox x:Name="_checkListBox"
                                IsDropDownOpen="False"
@@ -29,8 +51,8 @@
                 <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
             </StackPanel>
 
-            <wpf:S100AttributeEditorControl x:Name="S100AttributeEditor" MinHeight="120" />
+            
 
-        </StackPanel>
-    </ScrollViewer>
+        </StackPanel>-->
+    <!--</ScrollViewer>-->
 </Window>

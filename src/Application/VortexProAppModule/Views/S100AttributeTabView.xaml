@@ -19,8 +19,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DockPanel>
-        <Grid DockPanel.Dock="Top" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="4*"/>
@@ -70,16 +75,13 @@
             </Button>
         </Grid>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-
-            <s100:S100AttributeEditorControl x:Name="S100AttributeEditor" Host="{Binding Host, Mode=OneTime}"
+        <s100:S100AttributeEditorControl x:Name="S100AttributeEditor" Grid.Row="1" Host="{Binding Host, Mode=OneTime}"
                                          Visibility="{Binding IsVisible, Mode=OneWay}"
                                          IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                          SelectedFeatureObject="{Binding SelectedFeatureProperty, Mode=OneWay}"
                                          SelectedInformationObject="{Binding SelectedInformationProperty, Mode=OneWay}" 
                                          Loaded="S100AttributeEditor_Loaded"/>
 
-        </ScrollViewer>
 
         <!--<xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}" 
@@ -89,5 +91,5 @@
                UpdateTextBoxSourceOnEnterKey="True"
                PreparePropertyItem="_propertyGrid_PreparePropertyItem" ShowAdvancedOptions="True" ShowSummary="False"/>-->
 
-    </DockPanel>
+    </Grid>
 </UserControl>
