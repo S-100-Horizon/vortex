@@ -89,8 +89,6 @@ namespace S100Framework.Applications
 
                 if (!string.IsNullOrEmpty(o.Query)) {
                     QueryFilter.WhereClause = o.Query!.Trim();
-
-
                 }
                 else {
                     throw new NotSupportedException("whereclause must be supplied.");
@@ -159,11 +157,13 @@ namespace S100Framework.Applications
                         using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
                         using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
                         using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                        using var attachment = destination.OpenDataset<Table>(destination.GetName("attachment"));
 
                         //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
                         //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
                         using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
+                        using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
 
                         Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
                         DeleteAll(featureType);//featureType.DeleteRows(query);
@@ -175,6 +175,10 @@ namespace S100Framework.Applications
                         DeleteAll(curve); // curve.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
                         DeleteAll(surface); // surface.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {attachment.GetName()}");
+                        DeleteAll(attachment); // surface.DeleteRows(query);
+                        Logger.Current.Information($"Deleting data from destination: {messages.GetName()}");
+                        DeleteAll(messages); // surface.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
@@ -195,7 +199,7 @@ namespace S100Framework.Applications
 
                 Logger.Current.Information($"Initializing SpatialAssociations");
                 SpatialAssociations.Initialize(source, QueryFilter);
-                
+
                 Logger.Current.Information($"Initializing NauticalInformations");
                 NauticalInformations.Initialize(destination);
 
@@ -339,25 +343,23 @@ namespace S100Framework.Applications
                 Logger.Current.Information($"Loading sanity checker");
                 SanityChecker.Initialize(destination);
 
-
                 Logger.Current.Information($"Validating drawing index");
                 status = SanityChecker.Instance.Check_GetUsageBandErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No Empty drawing index in S-101: {status}");
 
-                Logger.Current.Information($"Validating ESRI Uknown values"); 
+                Logger.Current.Information($"Validating ESRI Uknown values");
                 status = SanityChecker.Instance.Check_GetEsriUnknown32767ErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No ESRI unknown values (-32767) in S-101: {status}");
 
-                Logger.Current.Information($"Validating edition-info"); 
+                Logger.Current.Information($"Validating edition-info");
                 status = SanityChecker.Instance.Check_GetEditionsErrorCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No missing edition-info in S-101: {status}");
 
-                Logger.Current.Information($"Validating default clearance"); 
+                Logger.Current.Information($"Validating default clearance");
                 status = SanityChecker.Instance.Check_GetDefaultClearanceViolationCount() == 0 ? "PASSED" : "FAILED";
                 Logger.Current.Information($"No defaultClearanceViolation in S-101: {status}");
 
                 Logger.Current.Information("Done");
-
 
                 Logger.Current.Information($"!: CHECK LOGS AT: {Logger.LogDir}");
 
@@ -369,10 +371,11 @@ namespace S100Framework.Applications
             QueryFilter queryFilter = new QueryFilter {
                 WhereClause = "1=1" // Gets all rows
             };
+
             table.DeleteRows(queryFilter);
             return;
 
-            //TODO: Doesn't work!
+
             using (var rowCursor = table.CreateUpdateCursor(queryFilter, true)) {
                 while (rowCursor.MoveNext()) {
                     rowCursor.Current.Delete();
@@ -988,158 +991,6 @@ namespace S100Framework.Applications
             return featureName;
         }
 
-        internal static List<information> CreateInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
-            List<information> information = new List<information>();
-
-            if (!string.IsNullOrEmpty(ntxtds)) {
-
-                // TODO: make information binding -> Nautical Information - binding.
-
-
-                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
-                    }
-                    //var note = new Note(filePath);
-                    string? fileLocator = default;
-                    string fileReference = ntxtds;
-                    string language = "eng";
-
-                    var instance = new information {
-                        fileLocator = fileLocator,
-                        fileReference = FixFilename(fileReference) ?? default,
-                        language = language,
-                    };
-                    information.Add(instance);
-                }
-                else if (!string.IsNullOrEmpty(ntxtds)) {
-                    string language = "eng";
-
-                    var instance = new information {
-                        language = language,
-                        text = ntxtds,
-                    };
-                    information.Add(instance);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(txtdsc)) {
-
-                // TODO: make information binding -> Nautical Information - binding.
-
-                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
-                    if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
-                    }
-                    //var note = new Note(filePath);
-                    string? fileLocator = default;
-                    string fileReference = txtdsc;
-                    string language = "eng";
-
-                    var instance = new information {
-                        fileLocator = fileLocator,
-                        fileReference = FixFilename(fileReference) ?? default,
-                        language = language,
-                    };
-                    information.Add(instance);
-
-                }
-                else if (!string.IsNullOrEmpty(txtdsc)) {
-                    string? fileLocator = default;
-                    string fileReference = txtdsc;
-                    string language = "eng";
-
-                    var instance = new information {
-                        fileLocator = fileLocator,
-                        language = language,
-                        text = txtdsc,
-                    };
-                    information.Add(instance);
-                }
-            }
-
-            if (!string.IsNullOrEmpty(inform)) {
-
-                //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
-                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
-
-                string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
-
-                foreach (var value in informs) {
-                    string? fileLocator = default;
-                    string language = "eng";
-
-                    if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                        var filePath = System.IO.Path.Combine(_notesPath, value);
-                        if (File.Exists(value)) {
-                            var instance = new information {
-                                fileLocator = fileLocator,
-                                fileReference = FixFilename(value) ?? default,
-                                headline = default,
-                                language = language,
-                                text = value,
-                            };
-                            information.Add(instance);
-                        }
-                        else {
-                            Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
-                        }
-                    }
-                    else if (!string.IsNullOrEmpty(value)) {
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            language = language,
-                            text = value,
-                        };
-                        information.Add(instance);
-                    }
-                }
-            }
-
-
-            if (!string.IsNullOrEmpty(ninform)) {
-                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
-                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
-                if (!string.IsNullOrEmpty(ninform)) {
-
-                    string[] ninfoms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
-
-                    foreach (var value in ninfoms) {
-                        string? fileLocator = default;
-                        string language = "dan";
-
-                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                            var filePath = System.IO.Path.Combine(_notesPath, value);
-                            if (File.Exists(value)) {
-                                var instance = new information {
-                                    fileLocator = fileLocator,
-                                    fileReference = FixFilename(value) ?? default,
-                                    headline = default,
-                                    language = language,
-                                    text = value,
-                                };
-                                information.Add(instance);
-                            }
-                            else {
-                                Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
-                            }
-                        }
-                        else if (!string.IsNullOrEmpty(value)) {
-                            var instance = new information {
-                                fileLocator = fileLocator,
-                                language = language,
-                                text = value,
-                            };
-                            information.Add(instance);
-                        }
-                    }
-                }
-            }
-            return information;
-        }
-
         internal static InformationResult BindNauticalInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             InformationResult result = new();
 
@@ -1147,10 +998,6 @@ namespace S100Framework.Applications
                 // TODO: make information binding -> Nautical Information - binding.
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
-                    }
-                    //var note = new Note(filePath);
                     string? fileLocator = default;
                     string fileReference = ntxtds;
                     string language = "eng";
@@ -1163,9 +1010,7 @@ namespace S100Framework.Applications
                             language = language
                         }
                     };
-
                     result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
-
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
@@ -1181,13 +1026,9 @@ namespace S100Framework.Applications
             if (!string.IsNullOrEmpty(txtdsc)) {
 
                 // TODO: make information binding -> Nautical Information - binding.
-
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
-                    if (!File.Exists(filePath)) {
-                        Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {filePath}");
-                    }
-                    //var note = new Note(filePath);
+
                     string? fileLocator = default;
                     string fileReference = txtdsc;
                     string language = "eng";
@@ -1227,28 +1068,30 @@ namespace S100Framework.Applications
                 string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
 
                 foreach (var value in informs) {
-                    string? fileLocator = default;
-                    string language = "eng";
-
                     if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                         var filePath = System.IO.Path.Combine(_notesPath, value);
-                        if (File.Exists(value)) {
-                            var instance = new NauticalInformation();
-                            instance.information = new List<information>() {
-                            new information() {
-                                    fileLocator = fileLocator,
-                                    fileReference = FixFilename(value) ?? default,
-                                    language = language
-                                }
-                            };
 
-                            result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+                        string? fileLocator = default;
+                        string fileReference = txtdsc;
+                        string language = "eng";
+
+                        var instance = new NauticalInformation();
+                        instance.information = new List<information>() {
+                            new information() {
+                            fileLocator = fileLocator,
+                            fileReference = FixFilename(fileReference) ?? default,
+                            language = language
                         }
-                        else {
-                            Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
-                        }
+                    };
+
+                        result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+
                     }
                     else if (!string.IsNullOrEmpty(value)) {
+                        string? fileLocator = default;
+                        string fileReference = value;
+                        string language = "eng";
+
                         var instance = new information {
                             fileLocator = fileLocator,
                             language = language,
@@ -1259,7 +1102,6 @@ namespace S100Framework.Applications
                 }
             }
 
-
             if (!string.IsNullOrEmpty(ninform)) {
                 // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
                 // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
@@ -1268,30 +1110,28 @@ namespace S100Framework.Applications
                     string[] ninfoms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
 
                     foreach (var value in ninfoms) {
-                        string? fileLocator = default;
-                        string language = "dan";
 
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                             var filePath = System.IO.Path.Combine(_notesPath, value);
-                            if (File.Exists(value)) {
-                                var instance = new NauticalInformation();
-                                instance.information = new List<information>() {
-                            new information() {
-                                    fileLocator = fileLocator,
-                                    fileReference = FixFilename(value) ?? default,
-                                    headline = default,
-                                    language = language,
-                                    text = value,
-                                }
-                            };
 
-                                result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+                            string? fileLocator = default;
+                            string fileReference = value;
+                            string language = "dan";
+
+                            var instance = new NauticalInformation();
+                            instance.information = new List<information>() {
+                            new information() {
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(fileReference) ?? default,
+                                language = language
                             }
-                            else {
-                                Logger.Current.DataError(sourceObjectid, sourceTableName!, "", $"AddInformation: Cannot find note {value}");
-                            }
+                            };
                         }
                         else if (!string.IsNullOrEmpty(value)) {
+                            string? fileLocator = default;
+                            string fileReference = value;
+                            string language = "dan";
+
                             var instance = new information {
                                 fileLocator = fileLocator,
                                 language = language,
@@ -1303,163 +1143,6 @@ namespace S100Framework.Applications
                 }
             }
             return result;
-        }
-
-        internal static List<information> CreateInformationFrom(Row current) {
-            List<information> information = new List<information>();
-
-            if (current.FindField("NTXTDS") != -1 && (DBNull.Value != current["NTXTDS"])) {
-                var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
-
-                if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    if (File.Exists(filePath)) {
-                        //var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = ntxtds;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-                    }
-                    else {
-                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
-                    }
-
-                }
-                else if (!string.IsNullOrEmpty(ntxtds)) {
-                    string language = "eng";
-
-                    var instance = new information {
-                        language = language,
-                        text = ntxtds,
-                    };
-                    information.Add(instance);
-                }
-            }
-
-            if (current.FindField("TXTDSC") != -1 && DBNull.Value != current["TXTDSC"]) {
-                var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
-                if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
-                    if (File.Exists(filePath)) {
-                        //var note = new Note(filePath);
-                        string? fileLocator = default;
-                        string fileReference = txtdsc;
-                        string language = "eng";
-
-                        var instance = new information {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language,
-                        };
-                        information.Add(instance);
-
-                    }
-                    else {
-                        Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {filePath}");
-                    }
-                }
-                else if (!string.IsNullOrEmpty(txtdsc)) {
-                    string? fileLocator = default;
-                    string fileReference = txtdsc;
-                    string language = "eng";
-
-                    var instance = new information {
-                        fileLocator = fileLocator,
-                        language = language,
-                        text = txtdsc,
-                    };
-                    information.Add(instance);
-                }
-            }
-
-            if (current.FindField("INFORM") != -1 && DBNull.Value != current["INFORM"]) {
-                var inform = Convert.ToString(current["INFORM"])?.Trim();
-                if (!string.IsNullOrEmpty(inform)) {
-
-                    //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
-                    // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
-
-                    string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
-
-                    foreach (var value in informs) {
-                        string? fileLocator = default;
-                        string language = "eng";
-
-                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                            var filePath = System.IO.Path.Combine(_notesPath, value);
-                            if (File.Exists(value)) {
-                                var instance = new information {
-                                    fileLocator = fileLocator,
-                                    fileReference = FixFilename(value) ?? default,
-                                    headline = default,
-                                    language = language,
-                                    text = value,
-                                };
-                                information.Add(instance);
-                            }
-                            else {
-                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
-                            }
-                        }
-                        else if (!string.IsNullOrEmpty(value)) {
-                            var instance = new information {
-                                fileLocator = fileLocator,
-                                language = language,
-                                text = value,
-                            };
-                            information.Add(instance);
-                        }
-                    }
-                }
-            }
-
-            if (current.FindField("NINFOM") != -1 && DBNull.Value != current["NINFOM"]) {
-                var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
-
-                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
-                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
-                if (!string.IsNullOrEmpty(ninfom)) {
-
-                    string[] ninfoms = ninfom != null ? ninfom.Split(';') : Array.Empty<string>();
-
-                    foreach (var value in ninfoms) {
-                        string? fileLocator = default;
-                        string language = "dan";
-
-                        if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
-                            var filePath = System.IO.Path.Combine(_notesPath, value);
-                            if (File.Exists(value)) {
-                                var instance = new information {
-                                    fileLocator = fileLocator,
-                                    fileReference = FixFilename(value) ?? default,
-                                    headline = default,
-                                    language = language,
-                                    text = value,
-                                };
-                                information.Add(instance);
-                            }
-                            else {
-                                Logger.Current.DataError(current.GetObjectID(), current.GetTable().GetName(), "", $"AddInformation: Cannot find note {value}");
-                            }
-                        }
-                        else if (!string.IsNullOrEmpty(value)) {
-                            var instance = new information {
-                                fileLocator = fileLocator,
-                                language = language,
-                                text = value,
-                            };
-                            information.Add(instance);
-                        }
-                    }
-                }
-            }
-            return information;
         }
 
         internal static List<string> GetCommunicationChannel(string input) {
@@ -1555,7 +1238,7 @@ namespace S100Framework.Applications
             //TODO: Fix binding
             var result = BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
 
-            
+
             instanceInformation.AddRange(result.information);
 
 

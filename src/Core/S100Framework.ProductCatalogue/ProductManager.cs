@@ -331,9 +331,6 @@ namespace S100Framework.ProductCatalogue
         }
 
         async Task<bool> IElectronicProductManager.IsDirtyAsync(string name) {
-            // TODO: return true for now.
-            return true;
-
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
@@ -355,7 +352,7 @@ namespace S100Framework.ProductCatalogue
             var dirty = await this.Dispatch(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}_H"));
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}")); // TODO  _H
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
@@ -714,7 +711,7 @@ namespace S100Framework.ProductCatalogue
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
                                 // throw new NotImplementedException();    //TODO: informationbindings
-                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
 
                                 if (informationBindings != default && informationBindings.Length != 0) {
                                     foreach (var binding in informationBindings) {
@@ -740,6 +737,8 @@ namespace S100Framework.ProductCatalogue
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
+                                // if (prim != Primitive.Point) {
+                                var fb = current["featurebindings"];
                                 //throw new NotImplementedException();    //TODO: featurebindings
                                 var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsSharedBindings);
 
@@ -766,6 +765,12 @@ namespace S100Framework.ProductCatalogue
                                         }
                                     }
                                 }
+                                //}
+                                //else {
+                                //    var f = current["featurebindings"];
+
+                                //    var g = "";
+                                //}
                             }
 
                             dataset?.AddFeature(feature!);
@@ -884,7 +889,7 @@ namespace S100Framework.ProductCatalogue
                 using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                 using var cursor = attachment.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                    WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
                     PostfixClause = "ORDER BY created_date DESC",
                 }, true);
 
@@ -910,7 +915,7 @@ namespace S100Framework.ProductCatalogue
                 if (cursorS128.Current.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(dataset.DatasetName));
 
-                var whereClause = $"upper(ps) = 'S-101' AND (created_data > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR las_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
+                var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
 
                 whereClause += specificUsage switch {
                     DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",

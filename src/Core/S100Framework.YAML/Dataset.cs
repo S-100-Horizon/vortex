@@ -161,7 +161,7 @@ namespace S100Framework.YAML
                              GeometryDiff curves,
                              GeometryDiff compositeCurves,
                              GeometryDiff surfaces,
-                             SupportFileDiff supportFiles,
+                            // SupportFileDiff supportFiles,
                              FeatureDiff features,
                              InformationTypeDiff informationTypes)
     {
@@ -208,17 +208,35 @@ namespace S100Framework.YAML
             }
         }
 
-        [YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
-        public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
-        [YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
-        public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
+        //[YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
+       // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
+        //[YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
+        //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
+
+
+        public bool Any => (Features.Added.Count +
+                            Features.Deleted.Count +
+                            InformationTypes.Added.Count +
+                            InformationTypes.Deleted.Count +
+                           // SupportFiles.Added.Count +
+                           // SupportFiles.Deleted.Count +
+                            Points.Added.Count +
+                            Points.Deleted.Count +
+                            Depths.Added.Count +
+                            Depths.Deleted.Count +
+                            Curves.Added.Count +
+                            Curves.Deleted.Count +
+                            CompositeCurves.Added.Count +
+                            CompositeCurves.Deleted.Count +
+                            Surfaces.Added.Count +
+                            Surfaces.Deleted.Count) == 0;
 
         [YamlIgnore]
         internal FeatureDiff Features { get; init; } = features;
         [YamlIgnore]
         internal InformationTypeDiff InformationTypes { get; init; } = informationTypes;
-        [YamlIgnore]
-        internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
+       // [YamlIgnore]
+        //internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
         [YamlIgnore]
         internal GeometryDiff Points { get; init; } = points;
         [YamlIgnore]
@@ -243,7 +261,7 @@ namespace S100Framework.YAML
 
 
             // Compare SupportFiles
-            var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
+           // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
 
             // Compare InformationTypes
             var informationTypeDiff = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
@@ -273,7 +291,7 @@ namespace S100Framework.YAML
                 curves: curveDiff,
                 compositeCurves: compositeCurveDiff,
                 surfaces: surfaceDiff,
-                supportFiles: supportFileDiff,
+              //  supportFiles: supportFileDiff,
                 features: featureDiff,
                 informationTypes: informationTypeDiff
             );
@@ -304,13 +322,13 @@ namespace S100Framework.YAML
                 );
 
             // Read SupportFiles
-            var supportFiles = ((rawDictionary["Metadata"] as Dictionary<object, object>)?["SupportFiles"] as List<object> ?? [])
-                .OfType<Dictionary<object, object>>()
-                .Select(d => new SupportFile(
-                    d["Name"]?.ToString() ?? string.Empty,
-                    d["Content"]?.ToString() ?? string.Empty
-                ))
-                .ToDictionary(sf => sf.Name);
+            //var supportFiles = ((rawDictionary["Metadata"] as Dictionary<object, object>)?["SupportFiles"] as List<object> ?? [])
+            //    .OfType<Dictionary<object, object>>()
+            //    .Select(d => new SupportFile(
+            //        d["Name"]?.ToString() ?? string.Empty,
+            //        d["Content"]?.ToString() ?? string.Empty
+            //    ))
+            //    .ToDictionary(sf => sf.Name);
 
             // Read Points
             var points = (rawDictionary["Points"] as List<object> ?? [])
@@ -482,7 +500,7 @@ namespace S100Framework.YAML
 
             return new DatasetUpdate() {
                 Features = features,
-                SupportFiles = supportFiles,
+                //SupportFiles = supportFiles,
                 InformationTypes = informationTypes,
                 Points = points,
                 Depths = depths,
@@ -741,7 +759,7 @@ namespace S100Framework.YAML
 
         public class DatasetUpdate
         {
-            public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+           // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
             public Dictionary<string, object> Features { get; init; } = [];
             public Dictionary<string, object> InformationTypes { get; init; } = [];
             public Dictionary<string, Point> Points { get; init; } = [];
@@ -770,47 +788,6 @@ namespace S100Framework.YAML
         private readonly ICollection<SupportFile> _supportFiles = [];
 
         public void AddSupportFile(string name, string content) => _supportFiles.Add(new(name, content));
-
-        public override bool Equals(object? obj) {
-            if (obj is null || GetType() != obj.GetType())
-                return false;
-
-            return Equals((Metadata)obj);
-        }
-
-        public bool Equals(Metadata? other) {
-            if (other is null)
-                return false;
-
-            return OrganisationName == other.OrganisationName &&
-                   City == other.City &&
-                   AdministrativeArea == other.AdministrativeArea &&
-                   ElectronicMailAddress == other.ElectronicMailAddress &&
-                   Country == other.Country &&
-                   PrivateKey == other.PrivateKey &&
-                   Certificate == other.Certificate &&
-                   Producer == other.Producer &&
-                   ProducerCode == other.ProducerCode &&
-                   _supportFiles.SequenceEqual(other._supportFiles);
-        }
-
-        public override int GetHashCode() {
-            var hash = new HashCode();
-            hash.Add(OrganisationName);
-            hash.Add(City);
-            hash.Add(AdministrativeArea);
-            hash.Add(ElectronicMailAddress);
-            hash.Add(Country);
-            hash.Add(PrivateKey);
-            hash.Add(Certificate);
-            hash.Add(Producer);
-            hash.Add(ProducerCode);
-
-            foreach (var file in _supportFiles)
-                hash.Add(file);
-
-            return hash.ToHashCode();
-        }
     }
 
     public class SupportFile(string Name, string Content)
@@ -819,21 +796,6 @@ namespace S100Framework.YAML
         public string Name = Name;
         [YamlMember(Order = 1)]
         public string Content = Content;
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as SupportFile);
-        }
-
-        public bool Equals(SupportFile? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Content == other.Content;
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Content);
-        }
     }
 
 
@@ -855,21 +817,6 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Point);
-        }
-
-        public bool Equals(Point? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Location == other.Location && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Location);
-        }
     }
 
     public class PointSet(Coordinate[] points, double[] depths) : Geometry
@@ -886,21 +833,6 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate[] Points { get; private set; } = points;
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as PointSet);
-        }
-
-        public bool Equals(PointSet? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Location == other.Location && Z == other.Z && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Location, Z);
-        }
     }
 
     public class Curve : Geometry
@@ -932,22 +864,6 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Curve);
-        }
-
-        public bool Equals(Curve? other) {
-            if (other is null)
-                return false;
-
-            //return Name == other.Name && Vertices == other.Vertices;
-            return Vertices == other.Vertices && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Vertices);
-        }
     }
 
     public class CompositeCurve : Geometry
@@ -964,21 +880,6 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public string[] Curves { get; set; } = [];
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as CompositeCurve);
-        }
-
-        public bool Equals(CompositeCurve? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Components == other.Components && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Components);
-        }
     }
 
     public class Surface(string exterior) : Geometry
@@ -991,37 +892,6 @@ namespace S100Framework.YAML
         [YamlMember(Order = 2)]
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Surface);
-        }
-
-        public bool Equals(Surface? other) {
-            if (other is null)
-                return false;
-
-            var nameEquals = string.Equals(Name, other.Name, StringComparison.Ordinal);
-            var exteriorEquals = string.Equals(Exterior, other.Exterior, StringComparison.Ordinal);
-
-            var interiorRingsEquals = (InteriorRings is null && other.InteriorRings is null) ||
-                                      (InteriorRings is not null && other.InteriorRings is not null &&
-                                       Enumerable.SequenceEqual(InteriorRings, other.InteriorRings));
-
-            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
-        }
-
-        public override int GetHashCode() {
-            var hash = new HashCode();
-            hash.Add(Name);
-            hash.Add(Exterior);
-
-            if (InteriorRings != null) {
-                foreach (var ring in InteriorRings) {
-                    hash.Add(ring);
-                }
-            }
-            return hash.ToHashCode();
-        }
     }
 
     public class Coordinate(double x, double y)
@@ -1035,21 +905,6 @@ namespace S100Framework.YAML
         public string? Name { get; set; }
         public string? ID { get; set; }
         public InformationNode? Attributes { get; set; }
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Information);
-        }
-
-        public bool Equals(Information? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && ID == other.ID;
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, ID);
-        }
     }
 
     public class Feature
@@ -1076,22 +931,6 @@ namespace S100Framework.YAML
             _featureAssociations.Add(association);
             return this;
         }
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Feature);
-        }
-
-        public bool Equals(Feature? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && Foid == other.Foid && Geometry == other.Geometry && Masks == other.Masks;
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, Foid, Geometry, Masks);
-        }
-
     }
 
     public class Association
@@ -1099,20 +938,5 @@ namespace S100Framework.YAML
         public string To { get; set; } = default!;
         public string Name { get; set; } = default!;
         public string Role { get; set; } = default!;
-
-        public override bool Equals(object? obj) {
-            return Equals(obj as Association);
-        }
-
-        public bool Equals(Association? other) {
-            if (other is null)
-                return false;
-
-            return Name == other.Name && To == other.To && Role == other.Role;
-        }
-
-        public override int GetHashCode() {
-            return HashCode.Combine(Name, To, Role);
-        }
     }
 }

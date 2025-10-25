@@ -192,6 +192,9 @@ namespace ProductCatalogueService.Controllers
             // Build YAML Delta
             var delta = S100Framework.YAML.DatasetComparer.Compare(latest, incoming);
 
+            //if(!delta.Any)
+             // TODO: Do something
+
             // Populate metadata
             delta.CellName = product.datasetName;
             delta.Comment = "Not for navigation!";
@@ -211,7 +214,7 @@ namespace ProductCatalogueService.Controllers
         /// <summary>
         /// Imports all existing products from a S-57 database
         /// </summary>
-        /// <param createAll="createAll"> Creates a new dataset for each product, may take up to 5 minutes to run</param>
+        /// <param name="createAll"> If true, creates a new dataset for each product, may take 5-10 minutes to complete.</param>
         /// <returns>An collection with all imported productnames.</returns>
         [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
