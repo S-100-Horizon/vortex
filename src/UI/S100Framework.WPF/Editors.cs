@@ -32,8 +32,14 @@ namespace S100Framework.WPF.Editors
         const string ColorCode = "#e9c8ca";
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+
             if (value is null)
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            if (value is string text) {
+                if (string.IsNullOrEmpty(text))
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            }
             return System.Windows.Media.Brushes.Transparent;
         }
 
@@ -143,18 +149,18 @@ namespace S100Framework.WPF.Editors
             }
 
 
-            var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
-            if (dependentUnknownValue is not null) {
-                var propertyName = dependentUnknownValue.PropertyName;
+            //var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
+            //if (dependentUnknownValue is not null) {
+            //    var propertyName = dependentUnknownValue.PropertyName;
 
-                Binding newBinding = new Binding() {
-                    Source = propertyItem.Instance,
-                    Mode = BindingMode.OneWay,
-                    //BindingGroupName
-                };
-                newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
-                panel.SetBinding(Grid.BackgroundProperty, newBinding);
-            }
+            //    Binding newBinding = new Binding() {
+            //        Source = propertyItem.Instance,
+            //        Mode = BindingMode.OneWay,
+            //        //BindingGroupName
+            //    };
+            //    newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
+            //    panel.SetBinding(Grid.BackgroundProperty, newBinding);
+            //}
 
             Control? editor = default;
 
@@ -298,7 +304,9 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
                 var specific = new EnumComboBoxEditor();
-                return specific.ResolveEditor(propertyItem);
+
+
+                return specific.ResolveEditor(propertyItem);          
             }
             else
                 throw new NotImplementedException();
@@ -350,16 +358,31 @@ namespace S100Framework.WPF.Editors
 
 
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var panel = new Grid {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+                Background = System.Windows.Media.Brushes.Red,
+            };
+
             var control = new ComboBox {
                 Name = $"_dropDownButton{Guid.NewGuid():N}",
                 IsEditable = false,
                 IsDropDownOpen = false,
                 DisplayMemberPath = nameof(FeatureTypeId.Id),
+                BorderThickness = new System.Windows.Thickness(0),
+                BorderBrush = System.Windows.Media.Brushes.Transparent,
             };
 
             var viewModel = (featureBindingViewModel)propertyItem.Instance;
 
             control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
+
+            //Binding newBinding = new Binding(propertyItem.DisplayName) {
+            //    Source = propertyItem.Instance,
+            //    Mode = BindingMode.OneWay,
+            //};
+            //newBinding.Converter = new BrushValidatorConvertor();
+            //panel.SetBinding(Border.BorderBrushProperty, newBinding);
 
             viewModel.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
@@ -396,7 +419,9 @@ namespace S100Framework.WPF.Editors
 
             };
 
-            return control;
+            //panel.Child = control;
+
+            return panel;
         }
 
 #if null
