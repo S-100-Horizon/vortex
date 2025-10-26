@@ -29,11 +29,9 @@ namespace S100Framework.WPF.Editors
 
     public class BrushValidatorConvertor : IValueConverter
     {
-        const string ColorCode = "#e9c8ca";
+        const string ColorCode = "#d4000d";
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
-
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {           
             if (value is null)
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
             if (value is string text) {
@@ -50,7 +48,7 @@ namespace S100Framework.WPF.Editors
 
     public class BrushUnknownConvertor : IValueConverter
     {
-        const string ColorCode = "#c8dae9";
+        const string ColorCode = "#0280e8";
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is null)
@@ -65,7 +63,7 @@ namespace S100Framework.WPF.Editors
 
     public class DependentUnknownValueConvertor(string propertyName, string dependentPropertyName) : IValueConverter
     {
-        const string ColorCode = "#e9c8ca";
+        const string ColorCode = "#d4000d";
 
         public string PropertyName { get; } = propertyName;
 
@@ -134,6 +132,11 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
+            var border = new Border {
+                BorderBrush = System.Windows.Media.Brushes.Transparent,
+                BorderThickness = new Thickness(1),
+            };
+
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -145,22 +148,21 @@ namespace S100Framework.WPF.Editors
                     Mode = BindingMode.OneWay,
                 };
                 newBinding.Converter = new BrushUnknownConvertor();
-                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+                border.SetBinding(Border.BorderBrushProperty, newBinding);
             }
 
+            var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
+            if (dependentUnknownValue is not null) {
+                var propertyName = dependentUnknownValue.PropertyName;
 
-            //var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
-            //if (dependentUnknownValue is not null) {
-            //    var propertyName = dependentUnknownValue.PropertyName;
-
-            //    Binding newBinding = new Binding() {
-            //        Source = propertyItem.Instance,
-            //        Mode = BindingMode.OneWay,
-            //        //BindingGroupName
-            //    };
-            //    newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
-            //    panel.SetBinding(Grid.BackgroundProperty, newBinding);
-            //}
+                Binding newBinding = new Binding() {
+                    Source = propertyItem.Instance,
+                    Mode = BindingMode.OneWay,
+                    //BindingGroupName
+                };
+                newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
+                border.SetBinding(Border.BorderBrushProperty, newBinding);
+            }
 
             Control? editor = default;
 
@@ -302,11 +304,29 @@ namespace S100Framework.WPF.Editors
                 BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
+                //var combo = new ComboBox {
+                //    BorderThickness = new Thickness(0),
+                //    BorderBrush = System.Windows.Media.Brushes.Transparent,
+                //};
+
+                //var border2 = new Border {
+                //    BorderBrush = System.Windows.Media.Brushes.Red,
+                //    BorderThickness = new Thickness(2),
+                //};
+
+                //border.Child = combo;
+
+                //return border;
+
                 //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-                var specific = new EnumComboBoxEditor();
-
-
-                return specific.ResolveEditor(propertyItem);          
+                var specific = new EnumComboBoxEditor();                
+                
+                var control = (Control)specific.ResolveEditor(propertyItem);
+                control.BorderBrush= System.Windows.Media.Brushes.Transparent;
+                control.BorderThickness = new Thickness(0);
+                
+                border.Child = control;
+                return border;
             }
             else
                 throw new NotImplementedException();
@@ -316,7 +336,8 @@ namespace S100Framework.WPF.Editors
             Panel.SetZIndex(panel.Children[0], 10);
             Panel.SetZIndex(editor, 0);
 
-            return panel;
+            border.Child = panel;
+            return border;
         }
     }
 
@@ -358,10 +379,9 @@ namespace S100Framework.WPF.Editors
 
 
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var panel = new Grid {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                VerticalAlignment = VerticalAlignment.Center,
-                Background = System.Windows.Media.Brushes.Red,
+            var border = new Border {
+                BorderBrush = System.Windows.Media.Brushes.Red,
+                BorderThickness = new Thickness(2),
             };
 
             var control = new ComboBox {
@@ -377,12 +397,12 @@ namespace S100Framework.WPF.Editors
 
             control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
 
-            //Binding newBinding = new Binding(propertyItem.DisplayName) {
-            //    Source = propertyItem.Instance,
-            //    Mode = BindingMode.OneWay,
-            //};
-            //newBinding.Converter = new BrushValidatorConvertor();
-            //panel.SetBinding(Border.BorderBrushProperty, newBinding);
+            Binding newBinding = new Binding(propertyItem.DisplayName) {
+                Source = propertyItem.Instance,
+                Mode = BindingMode.OneWay,
+            };
+            newBinding.Converter = new BrushValidatorConvertor();
+            border.SetBinding(Border.BorderBrushProperty, newBinding);
 
             viewModel.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
@@ -421,7 +441,8 @@ namespace S100Framework.WPF.Editors
 
             //panel.Child = control;
 
-            return panel;
+            border.Child=control;
+            return border;
         }
 
 #if null
