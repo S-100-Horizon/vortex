@@ -132,6 +132,8 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
+            var optional = (OptionalAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(OptionalAttribute));
+
             var border = new Border {
                 BorderBrush = System.Windows.Media.Brushes.Transparent,
                 BorderThickness = new Thickness(1),
@@ -306,7 +308,7 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 if (multiplicity == default || (multiplicity.Upper.HasValue && multiplicity.Upper.Value == 1)) {
                     var editorEnumCheckBox = new WatermarkComboBox {
-                        Background = System.Windows.Media.Brushes.Transparent,
+                        Background = System.Windows.Media.Brushes.Transparent,                        
                     };
 
                     var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
@@ -325,7 +327,7 @@ namespace S100Framework.WPF.Editors
                             VerticalAlignment = VerticalAlignment.Center,
                             IsChecked = propertyItem.Value is null,
                             Margin = new Thickness(0, 0, 18, 0),
-                            IsTabStop = false,
+                            IsTabStop = false,                            
                         };
                         editorEnumCheckBox.SelectionChanged += (sender, e) => {
                             radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
@@ -338,6 +340,9 @@ namespace S100Framework.WPF.Editors
                         };
 
                         panel.Children.Add(radioButtonUnknown);
+                    }
+                    else if (optional != null) {
+                        ;
                     }
 
                     editor = editorEnumCheckBox;
