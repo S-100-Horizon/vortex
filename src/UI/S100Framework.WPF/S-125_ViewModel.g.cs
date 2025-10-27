@@ -257,7 +257,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		private orientationViewModel _orientation  = default;
 
-		[Category("directionalCharacter")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel orientation {
@@ -577,7 +576,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
-		[Category("lightSector")]
 		[Multiplicity(1, 99)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -586,7 +584,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -598,7 +595,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -607,7 +603,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -632,7 +627,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
@@ -974,7 +968,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)9,(lightCharacteristic)10,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
-		[Category("rhythmOfLight")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -991,7 +984,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Category("rhythmOfLight")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1066,11 +1058,9 @@ namespace S100Framework.WPF.ViewModel.S125 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)9,(lightCharacteristic)10,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)20,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
-		[Category("sectorCharacteristics")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 
-		[Category("sectorCharacteristics")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -1087,7 +1077,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 			}
 		}
 
-		[Category("sectorCharacteristics")]
 		[Multiplicity(0, 10)]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1158,7 +1147,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 	public partial class ObscuredSectorViewModel : ComplexViewModel<ObscuredSector> {
 		private sectorLimitViewModel _sectorLimit  = default;
 
-		[Category("ObscuredSector")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitViewModel sectorLimit {
@@ -1172,7 +1160,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		private sectorInformationViewModel? _sectorInformation  = default;
 
-		[Category("ObscuredSector")]
 		[ExpandableObject]
 		[Optional]
 		public sectorInformationViewModel? sectorInformation {
@@ -1282,7 +1269,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1296,7 +1282,6 @@ namespace S100Framework.WPF.ViewModel.S125 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {

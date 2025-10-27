@@ -72,7 +72,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class affectedChartPublicationsViewModel : ComplexViewModel<affectedChartPublications> {
 		private chartAffectedViewModel? _chartAffected  = default;
 
-		[Category("affectedChartPublications")]
 		[ExpandableObject]
 		[Optional]
 		public chartAffectedViewModel? chartAffected {
@@ -373,7 +372,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Category("generalArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -490,7 +488,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Category("locality")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -793,11 +790,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class warningInformationViewModel : ComplexViewModel<warningInformation> {
-		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
@@ -850,11 +845,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureReferenceViewModel : ComplexViewModel<featureReference> {
-		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 
-		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
@@ -1028,7 +1021,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {

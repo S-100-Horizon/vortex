@@ -179,7 +179,7 @@ namespace VortexConceptApplication
 
 
             //  Associations
-            var json = "[{\"$type\":\"featureBinding::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
+            var json = "[{\"$type\":\"featureBinding::S101::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
 
             var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, new System.Text.Json.JsonSerializerOptions {
                 TypeInfoResolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver(),

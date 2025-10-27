@@ -119,17 +119,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-		[Category("bearingInformation")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 
-		[Category("bearingInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private orientationViewModel? _orientation  = default;
 
-		[Category("bearingInformation")]
 		[ExpandableObject]
 		[Optional]
 		public orientationViewModel? orientation {
@@ -498,7 +495,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
-		[Category("graphic")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 
@@ -543,7 +539,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private bearingInformationViewModel? _bearingInformation  = default;
 
-		[Category("graphic")]
 		[ExpandableObject]
 		[Optional]
 		public bearingInformationViewModel? bearingInformation {
@@ -1062,7 +1057,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1110,7 +1104,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1124,7 +1117,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1363,7 +1355,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek  = default;
 
-		[Category("telecommunications")]
 		[ExpandableObject]
 		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
@@ -1518,7 +1509,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -1538,11 +1528,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 

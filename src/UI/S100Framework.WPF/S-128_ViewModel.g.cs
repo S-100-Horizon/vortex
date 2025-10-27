@@ -127,7 +127,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("contactAddress")]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 
@@ -456,7 +455,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("information")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -513,7 +511,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class issuanceCycleViewModel : ComplexViewModel<issuanceCycle> {
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
-		[Category("issuanceCycle")]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -527,7 +524,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private timeIntervalOfCycleViewModel? _timeIntervalOfCycle  = default;
 
-		[Category("issuanceCycle")]
 		[ExpandableObject]
 		[Optional]
 		public timeIntervalOfCycleViewModel? timeIntervalOfCycle {
@@ -885,7 +881,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private printSizeViewModel _printSize  = default;
 
-		[Category("printInformation")]
 		[ExpandableObject]
 		[Mandatory]
 		public printSizeViewModel printSize {
@@ -959,7 +954,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
-		[Category("printSize")]
 		[ExpandableObject]
 		[Optional]
 		public customPaperSizeViewModel? customPaperSize {
@@ -1240,7 +1234,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private defaultLocaleViewModel _defaultLocale  = default;
 
-		[Category("supportFile")]
 		[ExpandableObject]
 		[Mandatory]
 		public defaultLocaleViewModel defaultLocale {
@@ -1254,7 +1247,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private supportFileSpecificationViewModel _supportFileSpecification  = default;
 
-		[Category("supportFile")]
 		[ExpandableObject]
 		[Mandatory]
 		public supportFileSpecificationViewModel supportFileSpecification {
@@ -1553,7 +1545,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 
-		[Category("sourceIndication")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1637,7 +1628,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("telecommunications")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1717,7 +1707,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private issuanceCycleViewModel? _issuanceCycle  = default;
 
-		[Category("timeIntervalOfProduct")]
 		[ExpandableObject]
 		[Optional]
 		public issuanceCycleViewModel? issuanceCycle {
@@ -1767,7 +1756,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ComplexViewModel<timeIntervalOfCycle> {
-		[Category("timeIntervalOfCycle")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -1844,7 +1832,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private weekOfYearViewModel? _weekOfYear  = default;
 
-		[Category("referenceToNM")]
 		[ExpandableObject]
 		[Optional]
 		public weekOfYearViewModel? weekOfYear {

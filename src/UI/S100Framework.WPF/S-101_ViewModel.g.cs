@@ -322,7 +322,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private orientationViewModel? _orientation  = default;
 
-		[Category("directionalCharacter")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel? orientation {
@@ -916,7 +915,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
-		[Category("lightSector")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -925,7 +923,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -937,7 +934,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -946,7 +942,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private sectorLimitViewModel? _sectorLimit  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -971,7 +966,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
@@ -1464,7 +1458,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
-		[Category("rhythmOfLight")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -1481,7 +1474,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("rhythmOfLight")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1556,7 +1548,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1618,11 +1609,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
-		[Category("sectorCharacteristics")]
 		[Multiplicity(1)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 
-		[Category("sectorCharacteristics")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -1639,7 +1628,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("sectorCharacteristics")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1768,7 +1756,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel? sectorLimitOne {
@@ -1782,7 +1769,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel? sectorLimitTwo {
@@ -2069,7 +2055,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -2083,7 +2068,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -2097,7 +2081,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2227,7 +2210,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public natureOfSurface[] natureOfSurfaceList => [(natureOfSurface)1,(natureOfSurface)2,(natureOfSurface)3,(natureOfSurface)4,(natureOfSurface)5,(natureOfSurface)6,(natureOfSurface)7,(natureOfSurface)8,(natureOfSurface)9,(natureOfSurface)11,(natureOfSurface)14,(natureOfSurface)17,(natureOfSurface)18];
 
-		[Category("surfaceCharacteristics")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -2472,7 +2454,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("tidalStreamPanelValues")]
 		[Multiplicity(1)]
 		public ObservableCollection<tidalStreamValueViewModel> tidalStreamValue  { get; set; } = new ();
 
@@ -2526,7 +2507,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class tidalStreamValueViewModel : ComplexViewModel<tidalStreamValue> {
 		private orientationViewModel? _orientation  = default;
 
-		[Category("tidalStreamValue")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel? orientation {
@@ -2602,7 +2582,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2622,11 +2601,9 @@ namespace S100Framework.WPF.ViewModel.S101 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2692,7 +2669,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class topmarkViewModel : ComplexViewModel<topmark> {
-		[Category("topmark")]
 		[Optional]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -2731,7 +2707,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		[Browsable(false)]
 		public topmarkDaymarkShape[] topmarkDaymarkShapeList => [(topmarkDaymarkShape)1,(topmarkDaymarkShape)2,(topmarkDaymarkShape)3,(topmarkDaymarkShape)4,(topmarkDaymarkShape)5,(topmarkDaymarkShape)6,(topmarkDaymarkShape)7,(topmarkDaymarkShape)8,(topmarkDaymarkShape)9,(topmarkDaymarkShape)10,(topmarkDaymarkShape)11,(topmarkDaymarkShape)12,(topmarkDaymarkShape)13,(topmarkDaymarkShape)14,(topmarkDaymarkShape)15,(topmarkDaymarkShape)16,(topmarkDaymarkShape)17,(topmarkDaymarkShape)18,(topmarkDaymarkShape)19,(topmarkDaymarkShape)20,(topmarkDaymarkShape)21,(topmarkDaymarkShape)22,(topmarkDaymarkShape)23,(topmarkDaymarkShape)24,(topmarkDaymarkShape)25,(topmarkDaymarkShape)26,(topmarkDaymarkShape)27,(topmarkDaymarkShape)28,(topmarkDaymarkShape)29,(topmarkDaymarkShape)30,(topmarkDaymarkShape)31,(topmarkDaymarkShape)32,(topmarkDaymarkShape)33];
 
-		[Category("topmark")]
 		[Optional]
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
@@ -2866,7 +2841,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceClosed")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2928,7 +2902,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceFixed")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3003,7 +2976,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceOpen")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3068,7 +3040,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceSafe")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -3268,7 +3239,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("zoneOfConfidence")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -3282,7 +3252,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
-		[Category("zoneOfConfidence")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -3296,7 +3265,6 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("zoneOfConfidence")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {

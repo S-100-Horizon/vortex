@@ -422,7 +422,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
-		[Category("topmark")]
 		[Optional]
 		public ObservableCollection<shapeInformationViewModel> shapeInformation  { get; set; } = new ();
 
@@ -725,7 +724,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class rythmOfLightViewModel : ComplexViewModel<rythmOfLight> {
-		[Category("rythmOfLight")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -742,7 +740,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 
-		[Category("rythmOfLight")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -819,7 +816,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class verticalClearanceSafeViewModel : ComplexViewModel<verticalClearanceSafe> {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceSafe")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1425,7 +1421,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 
-		[Category("surfaceCharacteristics")]
 		[Multiplicity(0, 3)]
 		public ObservableCollection<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms  { get; set; } = new ();
 
@@ -1633,7 +1628,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class verticalClearanceFixedViewModel : ComplexViewModel<verticalClearanceFixed> {
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("verticalClearanceFixed")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1841,7 +1835,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class sectorCharacteristicsViewModel : ComplexViewModel<sectorCharacteristics> {
-		[Category("sectorCharacteristics")]
 		[Optional]
 		public ObservableCollection<signalSequenceViewModel> signalSequence  { get; set; } = new ();
 
@@ -1858,7 +1851,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 
-		[Category("sectorCharacteristics")]
 		[Multiplicity(1)]
 		public ObservableCollection<lightSectorViewModel> lightSector  { get; set; } = new ();
 
@@ -1878,7 +1870,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Browsable(false)]
 		public lightCharacteristic[] lightCharacteristicList => [(lightCharacteristic)1,(lightCharacteristic)2,(lightCharacteristic)3,(lightCharacteristic)4,(lightCharacteristic)5,(lightCharacteristic)6,(lightCharacteristic)7,(lightCharacteristic)8,(lightCharacteristic)11,(lightCharacteristic)12,(lightCharacteristic)13,(lightCharacteristic)14,(lightCharacteristic)15,(lightCharacteristic)16,(lightCharacteristic)17,(lightCharacteristic)18,(lightCharacteristic)19,(lightCharacteristic)25,(lightCharacteristic)26,(lightCharacteristic)27,(lightCharacteristic)28,(lightCharacteristic)29];
 
-		[Category("sectorCharacteristics")]
 		[Optional]
 		public ObservableCollection<String> signalGroup  { get; set; } = new ();
 
@@ -2348,7 +2339,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class lightSectorViewModel : ComplexViewModel<lightSector> {
 		private sectorLimitViewModel? _sectorLimit  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public sectorLimitViewModel? sectorLimit {
@@ -2360,11 +2350,9 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<sectorInformationViewModel> sectorInformation  { get; set; } = new ();
 
-		[Category("lightSector")]
 		[Optional]
 		public ObservableCollection<lightVisibility> lightVisibility  { get; set; } = new ();
 
@@ -2399,7 +2387,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		private directionalCharacterViewModel? _directionalCharacter  = default;
 
-		[Category("lightSector")]
 		[ExpandableObject]
 		[Optional]
 		public directionalCharacterViewModel? directionalCharacter {
@@ -2411,7 +2398,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 			}
 		}
 
-		[Category("lightSector")]
 		[Multiplicity(1)]
 		public ObservableCollection<colour> colour  { get; set; } = new ();
 
@@ -2616,7 +2602,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class directionalCharacterViewModel : ComplexViewModel<directionalCharacter> {
 		private orientationViewModel? _orientation  = default;
 
-		[Category("directionalCharacter")]
 		[ExpandableObject]
 		[Mandatory]
 		public orientationViewModel? orientation {
@@ -2678,7 +2663,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel? _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel? sectorLimitOne {
@@ -2692,7 +2676,6 @@ namespace S100Framework.WPF.ViewModel.S501 {
 
 		private sectorLimitTwoViewModel? _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel? sectorLimitTwo {

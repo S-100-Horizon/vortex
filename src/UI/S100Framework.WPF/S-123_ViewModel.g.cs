@@ -132,7 +132,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class areaA3ServiceDescriptionViewModel : ComplexViewModel<areaA3ServiceDescription> {
-		[Category("areaA3ServiceDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<servingMobileSatelliteService> servingMobileSatelliteService  { get; set; } = new ();
 
@@ -210,14 +209,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class broadcastContentViewModel : ComplexViewModel<broadcastContent> {
-		[Category("broadcastContent")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfBroadcastContent> typeOfBroadcastContent  { get; set; } = new ();
 
 		[Browsable(false)]
 		public typeOfBroadcastContent[] typeOfBroadcastContentList => [(typeOfBroadcastContent)1,(typeOfBroadcastContent)2,(typeOfBroadcastContent)3,(typeOfBroadcastContent)4,(typeOfBroadcastContent)5,(typeOfBroadcastContent)6,(typeOfBroadcastContent)7,(typeOfBroadcastContent)8];
 
-		[Category("broadcastContent")]
 		[Optional]
 		public ObservableCollection<String> subjectOrMessageTypeCode  { get; set; } = new ();
 
@@ -466,14 +463,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17,(status)24,(status)25,(status)26,(status)27];
 
-		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -1204,15 +1199,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radioChannelDetailsViewModel : ComplexViewModel<radioChannelDetails> {
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<int> dataTransmissionRate  { get; set; } = new ();
 
@@ -1307,19 +1299,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radiocommunicationIdentifierViewModel : ComplexViewModel<radiocommunicationIdentifier> {
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> callSign  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> mMSICode  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<int> selectiveCallNumber  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> coastStationIdentificationCode  { get; set; } = new ();
 
@@ -1482,7 +1470,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1530,7 +1517,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1544,7 +1530,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1712,7 +1697,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1726,7 +1710,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1740,7 +1723,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1947,13 +1929,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 
-		[Category("textContent")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("textContent")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2045,7 +2025,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2065,11 +2044,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2174,7 +2151,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("timesOfTransmission")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> transmissionTime  { get; set; } = new ();
 

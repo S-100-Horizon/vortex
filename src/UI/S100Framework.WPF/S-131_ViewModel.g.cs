@@ -173,17 +173,14 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("bearingInformation")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 
-		[Category("bearingInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private orientationViewModel? _orientation  = default;
 
-		[Category("bearingInformation")]
 		[ExpandableObject]
 		[Optional]
 		public orientationViewModel? orientation {
@@ -256,7 +253,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class cargoServicesDescriptionViewModel : ComplexViewModel<cargoServicesDescription> {
-		[Category("cargoServicesDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -301,7 +297,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class constructionInformationViewModel : ComplexViewModel<constructionInformation> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("constructionInformation")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -355,7 +350,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("constructionInformation")]
 		[Optional]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -413,7 +407,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class contactAddressViewModel : ComplexViewModel<contactAddress> {
-		[Category("contactAddress")]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 
@@ -536,7 +529,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfDepthsDescription[] categoryOfDepthsDescriptionList => [(categoryOfDepthsDescription)1,(categoryOfDepthsDescription)2,(categoryOfDepthsDescription)3];
 
-		[Category("depthsDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -582,7 +574,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class facilitiesLayoutDescriptionViewModel : ComplexViewModel<facilitiesLayoutDescription> {
-		[Category("facilitiesLayoutDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -757,15 +748,12 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class frequencyPairViewModel : ComplexViewModel<frequencyPair> {
-		[Category("frequencyPair")]
 		[Optional]
 		public ObservableCollection<int> frequencyShoreStationTransmits  { get; set; } = new ();
 
-		[Category("frequencyPair")]
 		[Optional]
 		public ObservableCollection<int> frequencyShoreStationReceives  { get; set; } = new ();
 
-		[Category("frequencyPair")]
 		[Optional]
 		public ObservableCollection<String> contactInstructions  { get; set; } = new ();
 
@@ -830,7 +818,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class generalHarbourInformationViewModel : ComplexViewModel<generalHarbourInformation> {
 		private generalPortDescriptionViewModel? _generalPortDescription  = default;
 
-		[Category("generalHarbourInformation")]
 		[ExpandableObject]
 		[Optional]
 		public generalPortDescriptionViewModel? generalPortDescription {
@@ -844,7 +831,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private facilitiesLayoutDescriptionViewModel? _facilitiesLayoutDescription  = default;
 
-		[Category("generalHarbourInformation")]
 		[ExpandableObject]
 		[Optional]
 		public facilitiesLayoutDescriptionViewModel? facilitiesLayoutDescription {
@@ -858,7 +844,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private limitsDescriptionViewModel? _limitsDescription  = default;
 
-		[Category("generalHarbourInformation")]
 		[ExpandableObject]
 		[Optional]
 		public limitsDescriptionViewModel? limitsDescription {
@@ -872,7 +857,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private constructionInformationViewModel? _constructionInformation  = default;
 
-		[Category("generalHarbourInformation")]
 		[ExpandableObject]
 		[Optional]
 		public constructionInformationViewModel? constructionInformation {
@@ -886,7 +870,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private cargoServicesDescriptionViewModel? _cargoServicesDescription  = default;
 
-		[Category("generalHarbourInformation")]
 		[ExpandableObject]
 		[Optional]
 		public cargoServicesDescriptionViewModel? cargoServicesDescription {
@@ -898,7 +881,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("generalHarbourInformation")]
 		[Optional]
 		public ObservableCollection<weatherResourceViewModel> weatherResource  { get; set; } = new ();
 
@@ -971,7 +953,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class generalPortDescriptionViewModel : ComplexViewModel<generalPortDescription> {
-		[Category("generalPortDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1014,7 +995,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
-		[Category("graphic")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 
@@ -1059,7 +1039,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private bearingInformationViewModel? _bearingInformation  = default;
 
-		[Category("graphic")]
 		[ExpandableObject]
 		[Optional]
 		public bearingInformationViewModel? bearingInformation {
@@ -1209,7 +1188,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("information")]
 		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 
@@ -1290,7 +1268,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class landmarkDescriptionViewModel : ComplexViewModel<landmarkDescription> {
-		[Category("landmarkDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1333,7 +1310,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class limitsDescriptionViewModel : ComplexViewModel<limitsDescription> {
-		[Category("limitsDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1376,7 +1352,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class majorLightDescriptionViewModel : ComplexViewModel<majorLightDescription> {
-		[Category("majorLightDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1419,7 +1394,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class markedByViewModel : ComplexViewModel<markedBy> {
-		[Category("markedBy")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1462,7 +1436,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class offshoreMarkDescriptionViewModel : ComplexViewModel<offshoreMarkDescription> {
-		[Category("offshoreMarkDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -1794,7 +1767,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public actionOrActivity[] actionOrActivityList =>  CodeList.actionOrActivities.ToArray();
 
-		[Category("rxNCode")]
 		[Optional]
 		public ObservableCollection<String> headline  { get; set; } = new ();
 
@@ -1859,7 +1831,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1907,7 +1878,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1921,7 +1891,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1935,7 +1904,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -2104,7 +2072,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("telecommunications")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -2113,7 +2080,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek  = default;
 
-		[Category("telecommunications")]
 		[ExpandableObject]
 		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
@@ -2198,13 +2164,11 @@ namespace S100Framework.WPF.ViewModel.S131 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 
-		[Category("textContent")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("textContent")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2315,7 +2279,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2335,11 +2298,9 @@ namespace S100Framework.WPF.ViewModel.S131 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2405,7 +2366,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class usefulMarkDescriptionViewModel : ComplexViewModel<usefulMarkDescription> {
-		[Category("usefulMarkDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<textContentViewModel> textContent  { get; set; } = new ();
 
@@ -2607,7 +2567,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 	public partial class weatherResourceViewModel : ComplexViewModel<weatherResource> {
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("weatherResource")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2637,7 +2596,6 @@ namespace S100Framework.WPF.ViewModel.S131 {
 
 		private textContentViewModel? _textContent  = default;
 
-		[Category("weatherResource")]
 		[ExpandableObject]
 		[Optional]
 		public textContentViewModel? textContent {
