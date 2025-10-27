@@ -304,29 +304,58 @@ namespace S100Framework.WPF.Editors
                 BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
-                //var combo = new ComboBox {
-                //    BorderThickness = new Thickness(0),
-                //    BorderBrush = System.Windows.Media.Brushes.Transparent,
-                //};
 
-                //var border2 = new Border {
-                //    BorderBrush = System.Windows.Media.Brushes.Red,
-                //    BorderThickness = new Thickness(2),
-                //};
+                var editorEnumCheckBox = new ComboBox {
+                    Background = System.Windows.Media.Brushes.Transparent,          
+                };
 
-                //border.Child = combo;
+                var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                if (supportsUnknown) {
+                    //editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                    var radioButtonUnknown = new RadioButton {
+                        ToolTip = "[Unknown]",
+                        GroupName = propertyItem.DisplayName,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        IsChecked = propertyItem.Value is null,
+                        Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = false,
+                    };
+                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                        radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue==default;
+                    };
+                    radioButtonUnknown.Click += (sender, e) => {
+                        if (editorEnumCheckBox.SelectedValue!=default)
+                            editorEnumCheckBox.SelectedValue = default;
+                        else
+                            radioButtonUnknown.IsChecked = true;
+                    };
+
+                    panel.Children.Add(radioButtonUnknown);
+                }
+
+                editor = editorEnumCheckBox;
+
+                //var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                //var specific = new EnumComboBoxEditor();
+
+                //var control = (Control)specific.ResolveEditor(propertyItem);
+                //control.BorderBrush= System.Windows.Media.Brushes.Transparent;
+                //control.BorderThickness = new Thickness(0);
+
+                //border.Child = control;
                 //return border;
-
-                //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-                var specific = new EnumComboBoxEditor();                
-                
-                var control = (Control)specific.ResolveEditor(propertyItem);
-                control.BorderBrush= System.Windows.Media.Brushes.Transparent;
-                control.BorderThickness = new Thickness(0);
-                
-                border.Child = control;
-                return border;
             }
             else
                 throw new NotImplementedException();

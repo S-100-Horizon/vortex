@@ -214,7 +214,7 @@ namespace VortexConceptApplication
             //};
 
             S100AttributeEditor.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
-                System.Diagnostics.Debugger.Break();
+                //System.Diagnostics.Debugger.Break();
             };
 
             S100AttributeEditor.InformationBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
