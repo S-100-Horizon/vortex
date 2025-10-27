@@ -39,7 +39,7 @@
                     <xctk:PropertyGrid x:Name="PART_PropertyGrid"
                                                    AutoGenerateProperties="True"                           
                                                    UpdateTextBoxSourceOnEnterKey="True"
-                                                   ShowAdvancedOptions="True"
+                                                   ShowAdvancedOptions="False"
                                                    ShowSummary="False"
                                                    AdvancedOptionsMenu="{StaticResource AdvancedOptionsMenu}">
                     </xctk:PropertyGrid>
