@@ -31,7 +31,7 @@ namespace S100Framework.WPF.Editors
     {
         const string ColorCode = "#d4000d";
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {           
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is null)
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
             if (value is string text) {
@@ -304,43 +304,82 @@ namespace S100Framework.WPF.Editors
                 BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
-
-                var editorEnumCheckBox = new ComboBox {
-                    Background = System.Windows.Media.Brushes.Transparent,          
-                };
-
-                var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
-
-                if (supportsUnknown) {
-                    //editorEnumCheckBox.Watermark = "[UNKNOWN]";
-
-                    var radioButtonUnknown = new RadioButton {
-                        ToolTip = "[Unknown]",
-                        GroupName = propertyItem.DisplayName,
-                        HorizontalAlignment = HorizontalAlignment.Right,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
-                    };
-                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
-                        radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue==default;
-                    };
-                    radioButtonUnknown.Click += (sender, e) => {
-                        if (editorEnumCheckBox.SelectedValue!=default)
-                            editorEnumCheckBox.SelectedValue = default;
-                        else
-                            radioButtonUnknown.IsChecked = true;
+                if (multiplicity == default || (multiplicity.Upper.HasValue && multiplicity.Upper.Value == 1)) {
+                    var editorEnumCheckBox = new WatermarkComboBox {
+                        Background = System.Windows.Media.Brushes.Transparent,
                     };
 
-                    panel.Children.Add(radioButtonUnknown);
+                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                    if (supportsUnknown) {
+                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                        var radioButtonUnknown = new RadioButton {
+                            ToolTip = "[Unknown]",
+                            GroupName = propertyItem.DisplayName,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            IsChecked = propertyItem.Value is null,
+                            Margin = new Thickness(0, 0, 18, 0),
+                            IsTabStop = false,
+                        };
+                        editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                        };
+                        radioButtonUnknown.Click += (sender, e) => {
+                            if (editorEnumCheckBox.SelectedValue != default)
+                                editorEnumCheckBox.SelectedValue = default;
+                            else
+                                radioButtonUnknown.IsChecked = true;
+                        };
+
+                        panel.Children.Add(radioButtonUnknown);
+                    }
+
+                    editor = editorEnumCheckBox;
                 }
+                else if (!multiplicity.Upper.HasValue && multiplicity.Upper > 1) {
+                    var editorEnumCheckBox = new CheckComboBox {
+                        Background = System.Windows.Media.Brushes.Transparent,
+                    };
 
-                editor = editorEnumCheckBox;
+                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                    if (supportsUnknown) {
+                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                        var radioButtonUnknown = new RadioButton {
+                            ToolTip = "[Unknown]",
+                            GroupName = propertyItem.DisplayName,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            IsChecked = propertyItem.Value is null,
+                            Margin = new Thickness(0, 0, 18, 0),
+                            IsTabStop = false,
+                        };
+                        editorEnumCheckBox.ItemSelectionChanged += (sender, e) => {
+                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                        };
+                        radioButtonUnknown.Click += (sender, e) => {
+                            if (editorEnumCheckBox.SelectedValue != default)
+                                editorEnumCheckBox.SelectedValue = default;
+                            else
+                                radioButtonUnknown.IsChecked = true;
+                        };
+
+                        panel.Children.Add(radioButtonUnknown);
+                    }
+
+                    editor = editorEnumCheckBox;
+                }
 
                 //var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
                 //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
@@ -470,7 +509,7 @@ namespace S100Framework.WPF.Editors
 
             //panel.Child = control;
 
-            border.Child=control;
+            border.Child = control;
             return border;
         }
 
