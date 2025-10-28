@@ -158,13 +158,36 @@ namespace S100Framework.YAML
         Dictionary<string, Geometry> Deleted
     );
 
+    public class MetadataUpdate() {
+        public string OrganisationName { get; set; } 
+        public string? City { get; set; } 
+        public string? AdministrativeArea { get; set; } 
+        public string? ElectronicMailAddress { get; set; } 
+
+        public string? Country { get; set; } 
+
+        public string? PrivateKey { get; set; } 
+        public string? Certificate { get; set; } 
+
+        public string Producer { get; set; } 
+        public string ProducerCode { get; set; } 
+        public ICollection<SupportFileUpdate>? SupportFiles { get; set; }
+    }
+    public class SupportFileUpdate()
+    {
+        [YamlMember(Order = 0)]
+        public string Name { get; set; }
+        [YamlMember(Order = 1)]
+        public string Content { get; set; }
+    }
+
     public class DatasetDelta(GeometryDiff points,
                              GeometryDiff depths,
                              GeometryDiff curves,
                              GeometryDiff compositeCurves,
                              GeometryDiff surfaces,
                              //SupportFileDiff supportFiles,
-                             MetadataDiff metadata,
+                             MetadataUpdate metadata,
                              FeatureDiff features,
                              InformationTypeDiff informationTypes)
     {
@@ -177,7 +200,7 @@ namespace S100Framework.YAML
         [YamlMember(Alias = "FCVer", ApplyNamingConventions = false)]
         public string? FCVer { get; set; }
 
-        public Metadata? Metadata => metadata.Casted!;
+        public MetadataUpdate Metadata => metadata;
 
         [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false)]
         public ICollection<object>? InformationTypesAdded => InformationTypes.Added.Count != 0 ? InformationTypes?.Added.Values : null;
@@ -217,7 +240,7 @@ namespace S100Framework.YAML
         //[YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
         //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
 
-
+        [YamlIgnore]
         public bool Any => (Features.Added.Count +
                             Features.Deleted.Count +
                             InformationTypes.Added.Count +
@@ -274,7 +297,7 @@ namespace S100Framework.YAML
             var featureDiff = FeatureEquals(rootDataset.Features, updateDataset.Features);
 
             // Compare Metadata
-            var metadataDiff = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
+            var metadataUpdate = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
 
             // Compare Points
             var pointDiff = GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
@@ -299,7 +322,7 @@ namespace S100Framework.YAML
                 compositeCurves: compositeCurveDiff,
                 surfaces: surfaceDiff,
                 //  supportFiles: supportFileDiff,
-                metadata: metadataDiff,
+                metadata: metadataUpdate,
                 features: featureDiff,
                 informationTypes: informationTypeDiff
             );
@@ -328,6 +351,16 @@ namespace S100Framework.YAML
                     dict => dict["Foid"]!.ToString()!,
                     dict => dict as object
                 );
+
+
+            // Read Metadata
+            //var metadata = rawDictionary["Metadata"] as Dictionary<string, object>;
+            var metadataDict = rawDictionary["Metadata"] as Dictionary<object, object>;
+            var metadata = metadataDict?.ToDictionary(
+                kvp => kvp.Key.ToString()!,
+                kvp => kvp.Value
+            );
+
 
             // Read SupportFiles
             //var supportFiles = ((rawDictionary["Metadata"] as Dictionary<object, object>)?["SupportFiles"] as List<object> ?? [])
@@ -510,6 +543,7 @@ namespace S100Framework.YAML
                 Features = features,
                 //SupportFiles = supportFiles,
                 InformationTypes = informationTypes,
+                Metadata = metadata,
                 Points = points,
                 Depths = depths,
                 Curves = curves,
@@ -700,7 +734,7 @@ namespace S100Framework.YAML
             return featureDiff;
         }
 
-        private static MetadataDiff MetadataEquals(Dictionary<string, object> rootFeatures, Dictionary<string, object> updateFeatures) {
+        private static MetadataUpdate MetadataEquals(Dictionary<string, object> rootFeatures, Dictionary<string, object> updateFeatures) {
             //// Updated
             //var updatedKeys = rootFeatures.Keys
             //    .Intersect(updateFeatures.Keys)
@@ -720,9 +754,11 @@ namespace S100Framework.YAML
             //        .ToDictionary(k => k!, k => rootFeatures[k])
             //);
 
+            // Only take the newest for now. TODO Detect specific updates in supportfiles?
+
             var stringed = Converter.Serialize(updateFeatures);
 
-            var metadataDiff = new MetadataDiff(updateFeatures, Converter.Deserialize<Metadata>(stringed));
+            var metadataDiff = Converter.Deserialize<MetadataUpdate>(stringed);
 
             return metadataDiff;
         }
@@ -854,6 +890,21 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as Point);
+        }
+
+        public bool Equals(Point? other) {
+            if (other is null)
+                return false;
+
+            return Name == other.Name && Location == other.Location && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, Location);
+        }
     }
 
     public class PointSet(Coordinate[] points, double[] depths) : Geometry
@@ -870,6 +921,21 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate[] Points { get; private set; } = points;
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as PointSet);
+        }
+
+        public bool Equals(PointSet? other) {
+            if (other is null)
+                return false;
+
+            return Name == other.Name && Location == other.Location && Z == other.Z && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, Location, Z);
+        }
     }
 
     public class Curve : Geometry
@@ -901,6 +967,22 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as Curve);
+        }
+
+        public bool Equals(Curve? other) {
+            if (other is null)
+                return false;
+
+            //return Name == other.Name && Vertices == other.Vertices;
+            return Vertices == other.Vertices && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, Vertices);
+        }
     }
 
     public class CompositeCurve : Geometry
@@ -917,6 +999,21 @@ namespace S100Framework.YAML
 
         [YamlIgnore]
         public string[] Curves { get; set; } = [];
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as CompositeCurve);
+        }
+
+        public bool Equals(CompositeCurve? other) {
+            if (other is null)
+                return false;
+
+            return Name == other.Name && Components == other.Components && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+        }
+
+        public override int GetHashCode() {
+            return HashCode.Combine(Name, Components);
+        }
     }
 
     public class Surface(string exterior) : Geometry
@@ -929,6 +1026,37 @@ namespace S100Framework.YAML
         [YamlMember(Order = 2)]
 
         public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
+
+        public override bool Equals(object? obj) {
+            return Equals(obj as Surface);
+        }
+
+        public bool Equals(Surface? other) {
+            if (other is null)
+                return false;
+
+            var nameEquals = string.Equals(Name, other.Name, StringComparison.Ordinal);
+            var exteriorEquals = string.Equals(Exterior, other.Exterior, StringComparison.Ordinal);
+
+            var interiorRingsEquals = (InteriorRings is null && other.InteriorRings is null) ||
+                                      (InteriorRings is not null && other.InteriorRings is not null &&
+                                       Enumerable.SequenceEqual(InteriorRings, other.InteriorRings));
+
+            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+        }
+
+        public override int GetHashCode() {
+            var hash = new HashCode();
+            hash.Add(Name);
+            hash.Add(Exterior);
+
+            if (InteriorRings != null) {
+                foreach (var ring in InteriorRings) {
+                    hash.Add(ring);
+                }
+            }
+            return hash.ToHashCode();
+        }
     }
 
     public class Coordinate(double x, double y)
