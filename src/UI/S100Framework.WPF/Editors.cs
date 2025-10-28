@@ -132,7 +132,7 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
-            var optional = (OptionalAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(OptionalAttribute));
+            var optional = attributes.SingleOrDefault(attr => attr.GetType() == typeof(OptionalAttribute)) != null;
 
             var border = new Border {
                 BorderBrush = System.Windows.Media.Brushes.Transparent,
@@ -205,6 +205,9 @@ namespace S100Framework.WPF.Editors
                     };
 
                     panel.Children.Add(radioButtonUnknown);
+                }
+                if (optional) {
+
                 }
                 editor = editorTextBox;
 
@@ -306,85 +309,106 @@ namespace S100Framework.WPF.Editors
                 BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
-                if (multiplicity == default || (multiplicity.Upper.HasValue && multiplicity.Upper.Value == 1)) {
-                    var editorEnumCheckBox = new WatermarkComboBox {
-                        Background = System.Windows.Media.Brushes.Transparent,
+                var editorEnumCheckBox = new WatermarkComboBox {
+                    Background = System.Windows.Media.Brushes.Transparent,
+                };
+
+                var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                if (supportsUnknown) {
+                    editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                    var radioButtonUnknown = new RadioButton {
+                        ToolTip = "[Unknown]",
+                        GroupName = propertyItem.DisplayName,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        IsChecked = propertyItem.Value is null,
+                        Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = false,
+                    };
+                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                        radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                    };
+                    radioButtonUnknown.Click += (sender, e) => {
+                        if (editorEnumCheckBox.SelectedValue != default)
+                            editorEnumCheckBox.SelectedValue = default;
+                        else
+                            radioButtonUnknown.IsChecked = true;
                     };
 
-                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
-
-                    if (supportsUnknown) {
-                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
-
-                        var radioButtonUnknown = new RadioButton {
-                            ToolTip = "[Unknown]",
-                            GroupName = propertyItem.DisplayName,
-                            HorizontalAlignment = HorizontalAlignment.Right,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            IsChecked = propertyItem.Value is null,
-                            Margin = new Thickness(0, 0, 18, 0),
-                            IsTabStop = false,
-                        };
-                        editorEnumCheckBox.SelectionChanged += (sender, e) => {
-                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
-                        };
-                        radioButtonUnknown.Click += (sender, e) => {
-                            if (editorEnumCheckBox.SelectedValue != default)
-                                editorEnumCheckBox.SelectedValue = default;
-                            else
-                                radioButtonUnknown.IsChecked = true;
-                        };
-
-                        panel.Children.Add(radioButtonUnknown);
-                    }
-                    else if (optional != null) {
-                        ;
-                    }
-
-                    editor = editorEnumCheckBox;
+                    panel.Children.Add(radioButtonUnknown);
                 }
-                else if (!multiplicity.Upper.HasValue && multiplicity.Upper > 1) {
-                    var editorEnumCheckBox = new CheckComboBox {
-                        Background = System.Windows.Media.Brushes.Transparent,
+                else if (optional) {
+                    editorEnumCheckBox.Watermark = "[Null]";
+
+                    var radioButtonNull = new RadioButton {
+                        ToolTip = "[Nullalbe]",
+                        GroupName = propertyItem.DisplayName,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        IsChecked = propertyItem.Value is null,
+                        Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = false,
+                    };
+                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                        radioButtonNull.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                    };
+                    radioButtonNull.Click += (sender, e) => {
+                        if (editorEnumCheckBox.SelectedValue != default)
+                            editorEnumCheckBox.SelectedValue = default;
+                        else
+                            radioButtonNull.IsChecked = true;
                     };
 
-                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
-                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
-                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
-
-                    if (supportsUnknown) {
-                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
-
-                        var radioButtonUnknown = new RadioButton {
-                            ToolTip = "[Unknown]",
-                            GroupName = propertyItem.DisplayName,
-                            HorizontalAlignment = HorizontalAlignment.Right,
-                            VerticalAlignment = VerticalAlignment.Center,
-                            IsChecked = propertyItem.Value is null,
-                            Margin = new Thickness(0, 0, 18, 0),
-                            IsTabStop = false,
-                        };
-                        editorEnumCheckBox.ItemSelectionChanged += (sender, e) => {
-                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
-                        };
-                        radioButtonUnknown.Click += (sender, e) => {
-                            if (editorEnumCheckBox.SelectedValue != default)
-                                editorEnumCheckBox.SelectedValue = default;
-                            else
-                                radioButtonUnknown.IsChecked = true;
-                        };
-
-                        panel.Children.Add(radioButtonUnknown);
-                    }
-
-                    editor = editorEnumCheckBox;
+                    panel.Children.Add(radioButtonNull);
                 }
+
+
+                editor = editorEnumCheckBox;
+
+                //else if (!multiplicity.Upper.HasValue && multiplicity.Upper > 1) {
+                //    var editorEnumCheckBox = new CheckComboBox {
+                //        Background = System.Windows.Media.Brushes.Transparent,
+                //    };
+
+                //    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                //    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                //    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                //    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                //    if (supportsUnknown) {
+                //        editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                //        var radioButtonUnknown = new RadioButton {
+                //            ToolTip = "[Unknown]",
+                //            GroupName = propertyItem.DisplayName,
+                //            HorizontalAlignment = HorizontalAlignment.Right,
+                //            VerticalAlignment = VerticalAlignment.Center,
+                //            IsChecked = propertyItem.Value is null,
+                //            Margin = new Thickness(0, 0, 18, 0),
+                //            IsTabStop = false,
+                //        };
+                //        editorEnumCheckBox.ItemSelectionChanged += (sender, e) => {
+                //            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                //        };
+                //        radioButtonUnknown.Click += (sender, e) => {
+                //            if (editorEnumCheckBox.SelectedValue != default)
+                //                editorEnumCheckBox.SelectedValue = default;
+                //            else
+                //                radioButtonUnknown.IsChecked = true;
+                //        };
+
+                //        panel.Children.Add(radioButtonUnknown);
+                //    }
+
+                //    editor = editorEnumCheckBox;
+                //}
 
                 //var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
                 //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
@@ -435,11 +459,6 @@ namespace S100Framework.WPF.Editors
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {
             var bindings = propertyItem.Instance as IFeatureBindings;
             return bindings!.featureBindings.Select(e => e.role);
-
-            //var type = propertyItem.Value.GetType().GenericTypeArguments[0];
-            //var informationBindingDefinitions = (informationBindingDefinition[])type.GetMethod("get__informationBindingDefinitions")!.Invoke(null, null)!;
-            //var associations = informationBindingDefinitions.Where(e => e.association.Equals(propertyItem.DisplayName));
-            //return associations.Select(e => e.role);
         }
     }
 
