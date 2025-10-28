@@ -141,6 +141,11 @@ namespace S100Framework.YAML
         Dictionary<string, object> Deleted
     );
 
+    public record MetadataDiff(
+        Dictionary<string, object> Value,
+        Metadata Casted
+    );
+
     public record SupportFileDiff(
         Dictionary<string, string> Added,
         Dictionary<string, string> Deleted
@@ -161,7 +166,8 @@ namespace S100Framework.YAML
                              GeometryDiff curves,
                              GeometryDiff compositeCurves,
                              GeometryDiff surfaces,
-                            // SupportFileDiff supportFiles,
+                             //SupportFileDiff supportFiles,
+                             MetadataDiff metadata,
                              FeatureDiff features,
                              InformationTypeDiff informationTypes)
     {
@@ -174,6 +180,7 @@ namespace S100Framework.YAML
         [YamlMember(Alias = "FCVer", ApplyNamingConventions = false)]
         public string? FCVer { get; set; }
 
+        public Metadata? Metadata => metadata.Casted!;
 
         [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false)]
         public ICollection<object>? InformationTypesAdded => InformationTypes.Added.Count != 0 ? InformationTypes?.Added.Values : null;
@@ -209,7 +216,7 @@ namespace S100Framework.YAML
         }
 
         //[YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
-       // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
+        // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
         //[YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
         //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
 
@@ -218,8 +225,8 @@ namespace S100Framework.YAML
                             Features.Deleted.Count +
                             InformationTypes.Added.Count +
                             InformationTypes.Deleted.Count +
-                           // SupportFiles.Added.Count +
-                           // SupportFiles.Deleted.Count +
+                            // SupportFiles.Added.Count +
+                            // SupportFiles.Deleted.Count +
                             Points.Added.Count +
                             Points.Deleted.Count +
                             Depths.Added.Count +
@@ -235,7 +242,7 @@ namespace S100Framework.YAML
         internal FeatureDiff Features { get; init; } = features;
         [YamlIgnore]
         internal InformationTypeDiff InformationTypes { get; init; } = informationTypes;
-       // [YamlIgnore]
+        // [YamlIgnore]
         //internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
         [YamlIgnore]
         internal GeometryDiff Points { get; init; } = points;
@@ -261,13 +268,16 @@ namespace S100Framework.YAML
 
 
             // Compare SupportFiles
-           // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
+            // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
 
             // Compare InformationTypes
             var informationTypeDiff = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
 
             // Compare Features
             var featureDiff = FeatureEquals(rootDataset.Features, updateDataset.Features);
+
+            // Compare Metadata
+            var metadataDiff = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
 
             // Compare Points
             var pointDiff = GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
@@ -291,7 +301,8 @@ namespace S100Framework.YAML
                 curves: curveDiff,
                 compositeCurves: compositeCurveDiff,
                 surfaces: surfaceDiff,
-              //  supportFiles: supportFileDiff,
+                //  supportFiles: supportFileDiff,
+                metadata: metadataDiff,
                 features: featureDiff,
                 informationTypes: informationTypeDiff
             );
@@ -691,6 +702,34 @@ namespace S100Framework.YAML
 
             return featureDiff;
         }
+
+        private static MetadataDiff MetadataEquals(Dictionary<string, object> rootFeatures, Dictionary<string, object> updateFeatures) {
+            //// Updated
+            //var updatedKeys = rootFeatures.Keys
+            //    .Intersect(updateFeatures.Keys)
+            //    .Where(k => !Converter.Serialize(rootFeatures[k]).Equals(Converter.Serialize(updateFeatures[k])));
+
+            //var metadataDiff = new MetadataDiff(
+            //    // Added
+            //    updateFeatures.Keys
+            //        .Except(rootFeatures.Keys)
+            //        .Concat(updatedKeys)
+            //        .ToDictionary(k => k!, k => updateFeatures[k]),
+
+            //    // Deleted
+            //    rootFeatures.Keys
+            //        .Except(updateFeatures.Keys)
+            //        .Concat(updatedKeys)
+            //        .ToDictionary(k => k!, k => rootFeatures[k])
+            //);
+
+            var stringed = Converter.Serialize(updateFeatures);
+
+            var metadataDiff = new MetadataDiff(updateFeatures, Converter.Deserialize<Metadata>(stringed));
+
+            return metadataDiff;
+        }
+
         private static SupportFileDiff SupportFileEquals(Dictionary<string, SupportFile> rootcasted, Dictionary<string, SupportFile> updatecasted) {
             // Updated
             var updatedKeys = rootcasted.Keys
@@ -759,7 +798,8 @@ namespace S100Framework.YAML
 
         public class DatasetUpdate
         {
-           // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+            // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+            public Dictionary<string, object> Metadata { get; init; } = [];
             public Dictionary<string, object> Features { get; init; } = [];
             public Dictionary<string, object> InformationTypes { get; init; } = [];
             public Dictionary<string, Point> Points { get; init; } = [];
