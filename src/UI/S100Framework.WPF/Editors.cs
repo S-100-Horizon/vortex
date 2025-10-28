@@ -308,7 +308,7 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 if (multiplicity == default || (multiplicity.Upper.HasValue && multiplicity.Upper.Value == 1)) {
                     var editorEnumCheckBox = new WatermarkComboBox {
-                        Background = System.Windows.Media.Brushes.Transparent,                        
+                        Background = System.Windows.Media.Brushes.Transparent,
                     };
 
                     var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
@@ -327,7 +327,7 @@ namespace S100Framework.WPF.Editors
                             VerticalAlignment = VerticalAlignment.Center,
                             IsChecked = propertyItem.Value is null,
                             Margin = new Thickness(0, 0, 18, 0),
-                            IsTabStop = false,                            
+                            IsTabStop = false,
                         };
                         editorEnumCheckBox.SelectionChanged += (sender, e) => {
                             radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
@@ -460,7 +460,7 @@ namespace S100Framework.WPF.Editors
                 BorderBrush = System.Windows.Media.Brushes.Transparent,
             };
 
-            var viewModel = (ViewModelBase)propertyItem.Instance;            
+            var viewModel = (ViewModelBase)propertyItem.Instance;
 
             Binding newBinding = new Binding(propertyItem.DisplayName) {
                 Source = propertyItem.Instance,
@@ -478,32 +478,41 @@ namespace S100Framework.WPF.Editors
                     control.IsEnabled = !string.IsNullOrEmpty(informationBindingViewModel.role);
                 };
 
-                var informationId = new FeatureTypeId(informationBindingViewModel.informationType!, informationBindingViewModel.informationId!);
-                control.Items.Add(informationId);
-                control.SelectedItem = informationId;
+                if (!string.IsNullOrEmpty(informationBindingViewModel.informationId)) {
+                    var informationId = new InformationTypeId(informationBindingViewModel.informationType!, informationBindingViewModel.informationId);
+                    control.Items.Add(informationId);
+                    control.SelectedItem = informationId;
+                }
 
                 control.DropDownOpened += (s, e) => {
                     var association = (viewModel as IInformationBindings)!.informationBindings.SingleOrDefault(f => f.role == informationBindingViewModel.role)!;
 
-                    var parameter = new QueryInformationTypesEventArgs(association.roleType, association.association, informationBindingViewModel.role, association.informationTypes);
+                    var parameter = new QueryInformationTypesEventArgs(association.roleType, association.association, informationBindingViewModel.role, association.informationTypes, (items) => {
+                        if (!string.IsNullOrEmpty(informationBindingViewModel.informationId)) {
+                            if (control.Items.Count > 1)
+                                control.Items.RemoveAt(1);
+
+                            foreach (var item in items) {
+                                if (item.Code.Equals(informationBindingViewModel.informationType) && item.Id.Equals(informationBindingViewModel.informationId))
+                                    continue;
+                                control.Items.Add(item);
+                            }
+                        }
+                        else {
+                            control.Items.Clear();
+                            foreach (var item in items) {
+                                control.Items.Add(item);
+                            }
+                        }
+                    });
 
                     S100AttributeEditorControl.QueryInformationsCommand.Execute(parameter, S100AttributeEditorControl.Singleton);
-
-                    if (control.Items.Count > 1)
-                        control.Items.RemoveAt(1);
-
-                    foreach (var item in parameter.items) {
-                        if (item.Code.Equals(informationId.Code) && item.Id.Equals(informationId.Id))
-                            continue;
-                        control.Items.Add(item);
-                    }
                 };
                 control.DropDownClosed += (s, e) => {
-                    var featureId = (FeatureTypeId)control.SelectedItem;
-
-                    informationBindingViewModel.informationId = featureId.Id;
-                    informationBindingViewModel.informationType = featureId.Code;
-
+                    if (control.SelectedItem is InformationTypeId informationTypeId) {
+                        informationBindingViewModel.informationId = informationTypeId.Id;
+                        informationBindingViewModel.informationType = informationTypeId.Code;
+                    }
                 };
             }
             else if (propertyItem.Instance is featureBindingViewModel featureBindingViewModel) {
@@ -515,32 +524,41 @@ namespace S100Framework.WPF.Editors
                     control.IsEnabled = !string.IsNullOrEmpty(featureBindingViewModel.role);
                 };
 
-                var featureId = new FeatureTypeId(featureBindingViewModel.featureType!, featureBindingViewModel.featureId!);
-                control.Items.Add(featureId);
-                control.SelectedItem = featureId;
+                if (!string.IsNullOrEmpty(featureBindingViewModel.featureId)) {
+                    var featureId = new FeatureTypeId(featureBindingViewModel.featureType!, featureBindingViewModel.featureId!);
+                    control.Items.Add(featureId);
+                    control.SelectedItem = featureId;
+                }
 
                 control.DropDownOpened += (s, e) => {
                     var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == featureBindingViewModel.role)!;
 
-                    var parameter = new QueryFeatureTypesEventArgs(association.roleType, association.association, featureBindingViewModel.role, association.featureTypes);
+                    var parameter = new QueryFeatureTypesEventArgs(association.roleType, association.association, featureBindingViewModel.role, association.featureTypes, (items) => {
+                        if (!string.IsNullOrEmpty(featureBindingViewModel.featureId)) {
+                            if (control.Items.Count > 1)
+                                control.Items.RemoveAt(1);
+
+                            foreach (var item in items) {
+                                if (item.Code.Equals(featureBindingViewModel.featureType) && item.Id.Equals(featureBindingViewModel.featureId))
+                                    continue;
+                                control.Items.Add(item);
+                            }
+                        }
+                        else {
+                            control.Items.Clear();
+                            foreach (var item in items) {
+                                control.Items.Add(item);
+                            }
+                        }
+                    });
 
                     S100AttributeEditorControl.QueryFeaturesCommand.Execute(parameter, S100AttributeEditorControl.Singleton);
-
-                    if (control.Items.Count > 1)
-                        control.Items.RemoveAt(1);
-
-                    foreach (var item in parameter.items) {
-                        if (item.Code.Equals(featureId.Code) && item.Id.Equals(featureId.Id))
-                            continue;
-                        control.Items.Add(item);
-                    }
                 };
                 control.DropDownClosed += (s, e) => {
-                    var featureId = (FeatureTypeId)control.SelectedItem;
-
-                    featureBindingViewModel.featureId = featureId.Id;
-                    featureBindingViewModel.featureType = featureId.Code;
-
+                    if (control.SelectedItem is FeatureTypeId featureTypeId) {
+                        featureBindingViewModel.featureId = featureTypeId.Id;
+                        featureBindingViewModel.featureType = featureTypeId.Code;
+                    }
                 };
             }
 

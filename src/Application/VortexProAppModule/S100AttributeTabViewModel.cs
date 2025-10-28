@@ -198,6 +198,8 @@ namespace VortexProAppModule
                         return ids;
                     }, TaskCreationOptions.RunContinuationsAsynchronously);
 
+                    e.callback?.Invoke([.. ids]);
+
                     return ids;
                 },
 
