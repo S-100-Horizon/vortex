@@ -25,19 +25,18 @@ namespace S100Framework.WPF
 
     public class QueryInformationTypesEventArgs
     {
-        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, string[] informationTypes, object source) {
+        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, string[] informationTypes) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
             this.informationTypes = informationTypes;
-            this.source = source;
         }
 
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
         public string[] informationTypes { get; }
-        public object source { get; }
+        public ICollection<InformationTypeId> items { get; } = new HashSet<InformationTypeId>();
     }
 
     public class QueryFeatureTypesEventArgs
@@ -489,11 +488,12 @@ namespace S100Framework.WPF
         private async void QueryInformationsContent(object sender, ExecutedRoutedEventArgs e) {
             var eventArgs = (QueryInformationTypesEventArgs)e.Parameter;
 
-            var control = (ItemsControl)eventArgs.source;
+            var items = await Host.QueryInformationTypes(eventArgs);
+            //eventArgs.items.Add(new InformationTypeId("hello", "world"));
+            //return;
 
-            control.Items.Clear();
-            foreach (var id in await Host.QueryInformationTypes(eventArgs)) {
-                control.Items.Add(id);
+            foreach (var id in items) {
+                eventArgs.items.Add(new InformationTypeId(id.Code, id.Id));
             }
         }
 

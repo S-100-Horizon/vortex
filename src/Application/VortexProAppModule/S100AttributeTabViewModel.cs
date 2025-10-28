@@ -141,7 +141,7 @@ namespace VortexProAppModule
                     if (!informationtypes.Any())
                         return Enumerable.Empty<InformationTypeId>();
 
-                    return await QueuedTask.Run(() => {
+                    var ids = await QueuedTask.Run(() => {
                         var inspector = base.Inspector;
 
                         var ids = new List<InformationTypeId>();
@@ -196,7 +196,9 @@ namespace VortexProAppModule
                             }
                         }
                         return ids;
-                    }, TaskCreationOptions.None);
+                    }, TaskCreationOptions.RunContinuationsAsynchronously);
+
+                    return ids;
                 },
 
                 QueryFeatureTypes = async (QueryFeatureTypesEventArgs e) => {
@@ -205,7 +207,7 @@ namespace VortexProAppModule
                     if (!features.Any())
                         return Enumerable.Empty<FeatureTypeId>();
 
-                    return await QueuedTask.Run(() => {
+                    var ids = await QueuedTask.Run(() => {
                         var inspector = base.Inspector;
 
                         var ids = new List<FeatureTypeId>();
@@ -261,6 +263,8 @@ namespace VortexProAppModule
                         }
                         return ids;
                     }, TaskCreationOptions.None);
+
+                    return ids;
                 },
 
                 SelectInformationBinding = async (SelectInformationBindingEventArgs e) => {
