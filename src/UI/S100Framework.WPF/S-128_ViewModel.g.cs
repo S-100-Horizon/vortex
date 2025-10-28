@@ -127,7 +127,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("contactAddress")]
 		[Optional]
 		public ObservableCollection<String> deliveryPoint  { get; set; } = new ();
 
@@ -456,7 +455,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("information")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -513,7 +511,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class issuanceCycleViewModel : ComplexViewModel<issuanceCycle> {
 		private periodicDateRangeViewModel? _periodicDateRange  = default;
 
-		[Category("issuanceCycle")]
 		[ExpandableObject]
 		[Optional]
 		public periodicDateRangeViewModel? periodicDateRange {
@@ -527,7 +524,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private timeIntervalOfCycleViewModel? _timeIntervalOfCycle  = default;
 
-		[Category("issuanceCycle")]
 		[ExpandableObject]
 		[Optional]
 		public timeIntervalOfCycleViewModel? timeIntervalOfCycle {
@@ -885,7 +881,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private printSizeViewModel _printSize  = default;
 
-		[Category("printInformation")]
 		[ExpandableObject]
 		[Mandatory]
 		public printSizeViewModel printSize {
@@ -959,7 +954,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private customPaperSizeViewModel? _customPaperSize  = default;
 
-		[Category("printSize")]
 		[ExpandableObject]
 		[Optional]
 		public customPaperSizeViewModel? customPaperSize {
@@ -1240,7 +1234,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private defaultLocaleViewModel _defaultLocale  = default;
 
-		[Category("supportFile")]
 		[ExpandableObject]
 		[Mandatory]
 		public defaultLocaleViewModel defaultLocale {
@@ -1254,7 +1247,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private supportFileSpecificationViewModel _supportFileSpecification  = default;
 
-		[Category("supportFile")]
 		[ExpandableObject]
 		[Mandatory]
 		public supportFileSpecificationViewModel supportFileSpecification {
@@ -1553,7 +1545,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Browsable(false)]
 		public sourceType[] sourceTypeList => [(sourceType)1,(sourceType)2,(sourceType)7,(sourceType)8,(sourceType)9,(sourceType)10,(sourceType)11,(sourceType)12,(sourceType)13,(sourceType)14,(sourceType)15];
 
-		[Category("sourceIndication")]
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
@@ -1637,7 +1628,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
-		[Category("telecommunications")]
 		[Optional]
 		public ObservableCollection<telecommunicationService> telecommunicationService  { get; set; } = new ();
 
@@ -1717,7 +1707,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private issuanceCycleViewModel? _issuanceCycle  = default;
 
-		[Category("timeIntervalOfProduct")]
 		[ExpandableObject]
 		[Optional]
 		public issuanceCycleViewModel? issuanceCycle {
@@ -1767,7 +1756,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalOfCycleViewModel : ComplexViewModel<timeIntervalOfCycle> {
-		[Category("timeIntervalOfCycle")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit  { get; set; } = new ();
 
@@ -1844,7 +1832,6 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private weekOfYearViewModel? _weekOfYear  = default;
 
-		[Category("referenceToNM")]
 		[ExpandableObject]
 		[Optional]
 		public weekOfYearViewModel? weekOfYear {
@@ -2213,7 +2200,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class PriceOfNauticalProductViewModel : S100Framework.WPF.ViewModel.S128.PriceOfNauticalProductViewModel, IInformationBindings {
+		public class PriceOfNauticalProductViewModel : informationBindingViewModel<S128.PriceOfNauticalProductViewModel>, IInformationBindings {
 			public PriceOfNauticalProductViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2230,9 +2217,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["PriceInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PriceOfNauticalProduct,
+			};
 		}
 
-		public class ProductionDetailsViewModel : S100Framework.WPF.ViewModel.S128.ProductionDetailsViewModel, IInformationBindings {
+		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
 			public ProductionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2249,9 +2248,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ProducerInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ProductionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProductionDetails,
+			};
 		}
 
-		public class DistributionDetailsViewModel : S100Framework.WPF.ViewModel.S128.DistributionDetailsViewModel, IInformationBindings {
+		public class DistributionDetailsViewModel : informationBindingViewModel<S128.DistributionDetailsViewModel>, IInformationBindings {
 			public DistributionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2268,6 +2279,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["DistributorInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<DistributionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributionDetails,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2278,6 +2301,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<CatalogueSectionHeaderViewModel.DistributionDetailsViewModel> DistributionDetails { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2309,14 +2335,24 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => CatalogueSectionHeader._informationBindingDefinitions;
 
-		public CatalogueSectionHeaderViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public CatalogueSectionHeaderViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"Catalogue Section Header";
+
+		public CatalogueSectionHeaderViewModel() : base() {
+			PriceOfNauticalProducts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(PriceOfNauticalProducts));
+			};
+			ProductionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProductionDetails));
+			};
+			DistributionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributionDetails));
+			};
+		}
 	}
 
 
@@ -2365,7 +2401,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class ProducerContactViewModel : S100Framework.WPF.ViewModel.S128.ProducerContactViewModel, IInformationBindings {
+		public class ProducerContactViewModel : informationBindingViewModel<S128.ProducerContactViewModel>, IInformationBindings {
 			public ProducerContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2382,9 +2418,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ProducerInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ProducerContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProducerContact,
+			};
 		}
 
-		public class DistributorContactViewModel : S100Framework.WPF.ViewModel.S128.DistributorContactViewModel, IInformationBindings {
+		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
 			public DistributorContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2401,6 +2449,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["DistributorInformation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<DistributorContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributorContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2408,6 +2468,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2465,10 +2528,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-		public ContactDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2489,6 +2550,12 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sourceIndication));
+			};
+			ProducerContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProducerContacts));
+			};
+			DistributorContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributorContacts));
 			};
 		}
 	}
@@ -2534,6 +2601,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public IndicationOfCarriageRequirementViewModel Load(IndicationOfCarriageRequirement instance) {
 			domesticCarriageRequirements = instance.domesticCarriageRequirements;
@@ -2564,10 +2633,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => IndicationOfCarriageRequirement._informationBindingDefinitions;
 
-		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public IndicationOfCarriageRequirementViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2608,7 +2675,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class PriceOfNauticalProductViewModel : S100Framework.WPF.ViewModel.S128.PriceOfNauticalProductViewModel, IInformationBindings {
+		public class PriceOfNauticalProductViewModel : informationBindingViewModel<S128.PriceOfNauticalProductViewModel>, IInformationBindings {
 			public PriceOfNauticalProductViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2625,10 +2692,25 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<PriceOfNauticalProduct> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = PriceOfNauticalProduct,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<PriceInformationViewModel.PriceOfNauticalProductViewModel> PriceOfNauticalProducts { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. PriceOfNauticalProducts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2676,10 +2758,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => PriceInformation._informationBindingDefinitions;
 
-		public PriceInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public PriceInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -2697,6 +2777,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			};
 			sourceIndication.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sourceIndication));
+			};
+			PriceOfNauticalProducts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(PriceOfNauticalProducts));
 			};
 		}
 	}
@@ -2741,7 +2824,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class ProducerContactViewModel : S100Framework.WPF.ViewModel.S128.ProducerContactViewModel, IInformationBindings {
+		public class ProducerContactViewModel : informationBindingViewModel<S128.ProducerContactViewModel>, IInformationBindings {
 			public ProducerContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2758,9 +2841,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ProducerContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProducerContact,
+			};
 		}
 
-		public class ProductionDetailsViewModel : S100Framework.WPF.ViewModel.S128.ProductionDetailsViewModel, IInformationBindings {
+		public class ProductionDetailsViewModel : informationBindingViewModel<S128.ProductionDetailsViewModel>, IInformationBindings {
 			public ProductionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2777,6 +2872,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ProductionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ProductionDetails,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2784,6 +2891,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ProducerInformationViewModel.ProductionDetailsViewModel> ProductionDetails { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ProducerContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ProductionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2809,14 +2919,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ProducerInformation._informationBindingDefinitions;
 
-		public ProducerInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ProducerInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"Producer Information";
+
+		public ProducerInformationViewModel() : base() {
+			ProducerContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProducerContacts));
+			};
+			ProductionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ProductionDetails));
+			};
+		}
 	}
 
 
@@ -2845,7 +2962,7 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		#region InformationBindings
 
-		public class DistributionDetailsViewModel : S100Framework.WPF.ViewModel.S128.DistributionDetailsViewModel, IInformationBindings {
+		public class DistributionDetailsViewModel : informationBindingViewModel<S128.DistributionDetailsViewModel>, IInformationBindings {
 			public DistributionDetailsViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2862,9 +2979,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["CatalogueSectionHeader"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<DistributionDetails> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributionDetails,
+			};
 		}
 
-		public class DistributorContactViewModel : S100Framework.WPF.ViewModel.S128.DistributorContactViewModel, IInformationBindings {
+		public class DistributorContactViewModel : informationBindingViewModel<S128.DistributorContactViewModel>, IInformationBindings {
 			public DistributorContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -2881,6 +3010,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<DistributorContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = DistributorContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -2888,6 +3029,9 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<DistributorInformationViewModel.DistributorContactViewModel> DistributorContacts { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. DistributionDetails.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. DistributorContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -2910,14 +3054,21 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => DistributorInformation._informationBindingDefinitions;
 
-		public DistributorInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public DistributorInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"Distributor Information";
+
+		public DistributorInformationViewModel() : base() {
+			DistributionDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributionDetails));
+			};
+			DistributorContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(DistributorContacts));
+			};
+		}
 	}
 
 
@@ -3346,6 +3497,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public ElectronicProductViewModel Load(ElectronicProduct instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -3512,17 +3667,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ElectronicProduct._featureBindingDefinitions;
 
-		public ElectronicProductViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ElectronicProductViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public ElectronicProductViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public ElectronicProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -3979,6 +4130,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public PhysicalProductViewModel Load(PhysicalProduct instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -4148,17 +4303,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => PhysicalProduct._featureBindingDefinitions;
 
-		public PhysicalProductViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public PhysicalProductViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public PhysicalProductViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public PhysicalProductViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4415,6 +4566,10 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public S100ServiceViewModel Load(S100Service instance) {
 			agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -4524,17 +4679,13 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => S100Service._featureBindingDefinitions;
 
-		public S100ServiceViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public S100ServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public S100ServiceViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public S100ServiceViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -4562,26 +4713,26 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 
 	public static class InformationBindingExtension {
-		public static CatalogueSectionHeaderViewModel LoadInformationBinding(this CatalogueSectionHeaderViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static CatalogueSectionHeaderViewModel LoadInformationBinding(this CatalogueSectionHeaderViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new CatalogueSectionHeaderViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
+						informationType = priceOfNauticalProduct.informationType,
 						role = priceOfNauticalProduct.role,
 					});
 				}
 				if(informationBinding is informationBinding<ProductionDetails> productionDetails) {
 					instance.ProductionDetails.Add(new CatalogueSectionHeaderViewModel.ProductionDetailsViewModel {
 						informationId = productionDetails.referenceId,
+						informationType = productionDetails.informationType,
 						role = productionDetails.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributionDetails> distributionDetails) {
 					instance.DistributionDetails.Add(new CatalogueSectionHeaderViewModel.DistributionDetailsViewModel {
 						informationId = distributionDetails.referenceId,
+						informationType = distributionDetails.informationType,
 						role = distributionDetails.role,
 					});
 				}
@@ -4589,20 +4740,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ContactDetailsViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
+						informationType = producerContact.informationType,
 						role = producerContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributorContact> distributorContact) {
 					instance.DistributorContacts.Add(new ContactDetailsViewModel.DistributorContactViewModel {
 						informationId = distributorContact.referenceId,
+						informationType = distributorContact.informationType,
 						role = distributorContact.role,
 					});
 				}
@@ -4610,23 +4760,18 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static IndicationOfCarriageRequirementViewModel LoadInformationBinding(this IndicationOfCarriageRequirementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static IndicationOfCarriageRequirementViewModel LoadInformationBinding(this IndicationOfCarriageRequirementViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PriceInformationViewModel LoadInformationBinding(this PriceInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static PriceInformationViewModel LoadInformationBinding(this PriceInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<PriceOfNauticalProduct> priceOfNauticalProduct) {
 					instance.PriceOfNauticalProducts.Add(new PriceInformationViewModel.PriceOfNauticalProductViewModel {
 						informationId = priceOfNauticalProduct.referenceId,
+						informationType = priceOfNauticalProduct.informationType,
 						role = priceOfNauticalProduct.role,
 					});
 				}
@@ -4634,20 +4779,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ProducerInformationViewModel LoadInformationBinding(this ProducerInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ProducerInformationViewModel LoadInformationBinding(this ProducerInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ProducerContact> producerContact) {
 					instance.ProducerContacts.Add(new ProducerInformationViewModel.ProducerContactViewModel {
 						informationId = producerContact.referenceId,
+						informationType = producerContact.informationType,
 						role = producerContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<ProductionDetails> productionDetails) {
 					instance.ProductionDetails.Add(new ProducerInformationViewModel.ProductionDetailsViewModel {
 						informationId = productionDetails.referenceId,
+						informationType = productionDetails.informationType,
 						role = productionDetails.role,
 					});
 				}
@@ -4655,20 +4799,19 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static DistributorInformationViewModel LoadInformationBinding(this DistributorInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DistributorInformationViewModel LoadInformationBinding(this DistributorInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<DistributionDetails> distributionDetails) {
 					instance.DistributionDetails.Add(new DistributorInformationViewModel.DistributionDetailsViewModel {
 						informationId = distributionDetails.referenceId,
+						informationType = distributionDetails.informationType,
 						role = distributionDetails.role,
 					});
 				}
 				if(informationBinding is informationBinding<DistributorContact> distributorContact) {
 					instance.DistributorContacts.Add(new DistributorInformationViewModel.DistributorContactViewModel {
 						informationId = distributorContact.referenceId,
+						informationType = distributorContact.informationType,
 						role = distributorContact.role,
 					});
 				}
@@ -4676,29 +4819,20 @@ namespace S100Framework.WPF.ViewModel.S128 {
 			return instance;
 		}
 
-		public static ElectronicProductViewModel LoadInformationBinding(this ElectronicProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ElectronicProductViewModel LoadInformationBinding(this ElectronicProductViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PhysicalProductViewModel LoadInformationBinding(this PhysicalProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static PhysicalProductViewModel LoadInformationBinding(this PhysicalProductViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static S100ServiceViewModel LoadInformationBinding(this S100ServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static S100ServiceViewModel LoadInformationBinding(this S100ServiceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -4706,29 +4840,20 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static ElectronicProductViewModel LoadFeatureBinding(this ElectronicProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ElectronicProductViewModel LoadFeatureBinding(this ElectronicProductViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static PhysicalProductViewModel LoadFeatureBinding(this PhysicalProductViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static PhysicalProductViewModel LoadFeatureBinding(this PhysicalProductViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static S100ServiceViewModel LoadFeatureBinding(this S100ServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static S100ServiceViewModel LoadFeatureBinding(this S100ServiceViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

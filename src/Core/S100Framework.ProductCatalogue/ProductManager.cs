@@ -1,23 +1,16 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using ArcGIS.Core.Geometry;
-using Microsoft.AspNetCore.Components.Forms;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.S100;
 using S100Framework.DomainModel.S128.ComplexAttributes;
 using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.YAML;
-using S100Horizon.Settings;
 using Serilog;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
 namespace S100Framework.ProductCatalogue

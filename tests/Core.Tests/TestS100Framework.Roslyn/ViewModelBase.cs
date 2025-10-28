@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -248,29 +249,86 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
     {
-        private String _role = string.Empty;
+        //private String _role = string.Empty;
+
+        //[Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
+        //public String role {
+        //    get { return _role; }
+        //    set {
+        //        SetValue(ref _role, value);
+        //    }
+        //}
+
+        //private String _informationId = string.Empty;
+
+        //[Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+        //public String informationId {
+        //    get {
+        //        return _informationId;
+        //    }
+
+        //    set {
+        //        SetValue(ref _informationId, value);
+        //    }
+        //}
+    }
+
+
+    public abstract class informationBindingViewModel : ViewModelBase
+    {
+        private string _role = string.Empty;
 
         [Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
-        public String role {
+        public string role {
             get { return _role; }
             set {
                 SetValue(ref _role, value);
             }
         }
 
-        private String _informationId = string.Empty;
+        private string? _informationType = default;
 
-        [Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
-        public String informationId {
-            get {
-                return _informationId;
-            }
-
+        [ReadOnly(true)]
+        public string? informationType {
+            get { return _informationType; }
             set {
-                SetValue(ref _informationId, value);
+                SetValue(ref _informationType, value);
             }
         }
+
+        private string _referenceId = string.Empty;
+
+        [Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
+        public string informationId {
+            get { return _referenceId; }
+            set {
+                SetValue(ref _referenceId, value);
+            }
+        }
+
+        //public string roleType { get; set; } = string.Empty;
+
+        //public abstract informationBinding[] informationBindings { get; }
     }
+
+    public abstract class informationBindingViewModel<TAssociation> : informationBindingViewModel where TAssociation : InformationAssociationViewModel, new()
+    {
+        private TAssociation _association = new();
+
+        [ExpandableObject]
+        public TAssociation association {
+            get { return _association; }
+            set {
+                SetValue(ref _association, value);
+            }
+        }
+
+        protected override void Validate() {
+            //TODO: Validate role and referenceId
+        }
+    }
+
+
 
     public interface IFeatureBindings
     {
@@ -279,27 +337,81 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class FeatureAssociationViewModel : AssociationViewModel
     {
-        private String _role = string.Empty;
+        //private String _role = string.Empty;
+
+        //[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
+        //public String role {
+        //    get { return _role; }
+        //    set {
+        //        SetValue(ref _role, value);
+        //    }
+        //}
+
+        //private String _featureId = string.Empty;
+
+        //[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
+        //public String featureId {
+        //    get {
+        //        return _featureId;
+        //    }
+
+        //    set {
+        //        SetValue(ref _featureId, value);
+        //    }
+        //}
+    }
+
+    public abstract class featureBindingViewModel : ViewModelBase
+    {
+        private string _role = string.Empty;
 
         [Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
-        public String role {
+        public string role {
             get { return _role; }
             set {
                 SetValue(ref _role, value);
             }
         }
 
-        private String _featureId = string.Empty;
+        private string? _featureType = default;
+
+        [ReadOnly(true)]
+        public string? featureType {
+            get { return _featureType; }
+            set {
+                SetValue(ref _featureType, value);
+            }
+        }
+
+        private string _referenceId = string.Empty;
 
         [Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
-        public String featureId {
-            get {
-                return _featureId;
-            }
-
+        public string featureId {
+            get { return _referenceId; }
             set {
-                SetValue(ref _featureId, value);
+                SetValue(ref _referenceId, value);
             }
+        }
+
+        //public string roleType { get; set; } = string.Empty;
+
+        //public abstract featureBinding[] featureBindings { get; }
+    }
+
+    public abstract class featureBindingViewModel<TAssociation> : featureBindingViewModel where TAssociation : FeatureAssociationViewModel, new()
+    {
+        private TAssociation _association = new();
+
+        [ExpandableObject]
+        public TAssociation association {
+            get { return _association; }
+            set {
+                SetValue(ref _association, value);
+            }
+        }
+
+        protected override void Validate() {
+            //TODO: Validate role and referenceId
         }
     }
 
@@ -325,6 +437,13 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public abstract informationBindingDefinition[] informationBindingDefinitions { get; }
 
+        public event PropertyChangedEventHandler? InformationBindingCollectionChanged;
+        protected virtual void OnInformationBindingCollectionChanged([CallerMemberName] string? propertyName = null) {
+            InformationBindingCollectionChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public abstract informationBinding[] informationBindings { get; }
+
         public InformationViewModel() {
         }
     }
@@ -342,6 +461,22 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public abstract featureBindingDefinition[] featureBindingDefinitions { get; }
+
+        public event PropertyChangedEventHandler? InformationBindingCollectionChanged;
+
+        protected virtual void OnInformationBindingCollectionChanged([CallerMemberName] string? propertyName = null) {
+            InformationBindingCollectionChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler? FeatureBindingCollectionChanged;
+
+        protected virtual void OnFeatureBindingCollectionChanged([CallerMemberName] string? propertyName = null) {
+            FeatureBindingCollectionChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public abstract informationBinding[] informationBindings { get; }
+
+        public abstract featureBinding[] featureBindings { get; }
 
         public FeatureViewModel() {
         }

@@ -72,7 +72,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class affectedChartPublicationsViewModel : ComplexViewModel<affectedChartPublications> {
 		private chartAffectedViewModel? _chartAffected  = default;
 
-		[Category("affectedChartPublications")]
 		[ExpandableObject]
 		[Optional]
 		public chartAffectedViewModel? chartAffected {
@@ -373,7 +372,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Category("generalArea")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -490,7 +488,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-		[Category("locality")]
 		[Multiplicity(1)]
 		public ObservableCollection<locationNameViewModel> locationName  { get; set; } = new ();
 
@@ -793,11 +790,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class warningInformationViewModel : ComplexViewModel<warningInformation> {
-		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-		[Category("warningInformation")]
 		[Optional]
 		public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails  { get; set; } = new ();
 
@@ -850,11 +845,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class featureReferenceViewModel : ComplexViewModel<featureReference> {
-		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> atoNNumber  { get; set; } = new ();
 
-		[Category("featureReference")]
 		[Optional]
 		public ObservableCollection<String> interoperabilityIdentifier  { get; set; } = new ();
 
@@ -1028,7 +1021,6 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private horizontalPositionUncertaintyViewModel _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Mandatory]
 		public horizontalPositionUncertaintyViewModel horizontalPositionUncertainty {
@@ -1191,7 +1183,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : S100Framework.WPF.ViewModel.S124.navwarnReferencesViewModel, IInformationBindings {
+		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -1208,10 +1200,25 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					informationTypes = ["NavwarnPreamble"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<navwarnReferences> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnReferences,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ReferencesViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1244,10 +1251,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => References._informationBindingDefinitions;
 
-		public ReferencesViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ReferencesViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1256,6 +1261,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 		public ReferencesViewModel() : base() {
 			messageSeriesIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(messageSeriesIdentifier));
+			};
+			navwarnReferences.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(navwarnReferences));
 			};
 		}
 	}
@@ -1361,7 +1369,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnReferencesViewModel : S100Framework.WPF.ViewModel.S124.navwarnReferencesViewModel, IInformationBindings {
+		public class navwarnReferencesViewModel : informationBindingViewModel<S124.navwarnReferencesViewModel>, IInformationBindings {
 			public navwarnReferencesViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -1378,10 +1386,25 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					informationTypes = ["References"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<navwarnReferences> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnReferences,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPreambleViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1447,10 +1470,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NavwarnPreamble._informationBindingDefinitions;
 
-		public NavwarnPreambleViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavwarnPreambleViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1468,6 +1489,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			};
 			navwarnTitle.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(navwarnTitle));
+			};
+			navwarnReferences.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(navwarnReferences));
 			};
 		}
 	}
@@ -1512,6 +1536,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
@@ -1538,10 +1564,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
-		public SpatialQualityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public SpatialQualityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -1603,7 +1627,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		#region InformationBindings
 
-		public class navwarnPreambleContentViewModel : S100Framework.WPF.ViewModel.S124.navwarnPreambleContentViewModel, IInformationBindings {
+		public class navwarnPreambleContentViewModel : informationBindingViewModel<S124.navwarnPreambleContentViewModel>, IInformationBindings {
 			public navwarnPreambleContentViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -1620,16 +1644,31 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					informationTypes = ["NavwarnPreamble"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<navwarnPreambleContent> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = navwarnPreambleContent,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContents { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. navwarnPreambleContents.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : S100Framework.WPF.ViewModel.S124.areaAffectedViewModel, IFeatureBindings {
+		public class areaAffectedViewModel : featureBindingViewModel<S124.areaAffectedViewModel>, IFeatureBindings {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -1646,9 +1685,21 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					featureTypes = ["NavwarnAreaAffected"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<areaAffected> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = areaAffected,
+			};
 		}
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S124.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S124.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -1665,6 +1716,18 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					featureTypes = ["TextPlacement"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<TextAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TextAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -1672,6 +1735,9 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1724,17 +1790,13 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnPart._featureBindingDefinitions;
 
-		public NavwarnPartViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavwarnPartViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavwarnPartViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public NavwarnPartViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -1750,6 +1812,15 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			featureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureReference));
 			};
+			navwarnPreambleContents.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(navwarnPreambleContents));
+			};
+			areaAffecteds.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(areaAffecteds));
+			};
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
 		}
 	}
 
@@ -1763,10 +1834,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
-		public class areaAffectedViewModel : S100Framework.WPF.ViewModel.S124.areaAffectedViewModel, IFeatureBindings {
+		public class areaAffectedViewModel : featureBindingViewModel<S124.areaAffectedViewModel>, IFeatureBindings {
 			public areaAffectedViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -1783,10 +1856,25 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					featureTypes = ["NavwarnPart"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<areaAffected> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = areaAffected,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1811,21 +1899,23 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavwarnAreaAffected._featureBindingDefinitions;
 
-		public NavwarnAreaAffectedViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavwarnAreaAffectedViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavwarnAreaAffectedViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public NavwarnAreaAffectedViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"NAVWARN Area Affected";
+
+		public NavwarnAreaAffectedViewModel() : base() {
+			areaAffecteds.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(areaAffecteds));
+			};
+		}
 	}
 
 
@@ -1907,10 +1997,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
-		public class TextAssociationViewModel : S100Framework.WPF.ViewModel.S124.TextAssociationViewModel, IFeatureBindings {
+		public class TextAssociationViewModel : featureBindingViewModel<S124.TextAssociationViewModel>, IFeatureBindings {
 			public TextAssociationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -1927,10 +2019,25 @@ namespace S100Framework.WPF.ViewModel.S124 {
 					featureTypes = ["NavwarnPart"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<TextAssociation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TextAssociation,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -1968,34 +2075,34 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => TextPlacement._featureBindingDefinitions;
 
-		public TextPlacementViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public TextPlacementViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public TextPlacementViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public TextPlacementViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
 		public override string? ToString() => $"Text Placement";
+
+		public TextPlacementViewModel() : base() {
+			TextAssociations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(TextAssociations));
+			};
+		}
 	}
 
 
 
 	public static class InformationBindingExtension {
-		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ReferencesViewModel LoadInformationBinding(this ReferencesViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
 					instance.navwarnReferences.Add(new ReferencesViewModel.navwarnReferencesViewModel {
 						informationId = navwarnReferences.referenceId,
+						informationType = navwarnReferences.informationType,
 						role = navwarnReferences.role,
 					});
 				}
@@ -2003,14 +2110,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnPreambleViewModel LoadInformationBinding(this NavwarnPreambleViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnReferences> navwarnReferences) {
 					instance.navwarnReferences.Add(new NavwarnPreambleViewModel.navwarnReferencesViewModel {
 						informationId = navwarnReferences.referenceId,
+						informationType = navwarnReferences.informationType,
 						role = navwarnReferences.role,
 					});
 				}
@@ -2018,23 +2123,18 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnPartViewModel LoadInformationBinding(this NavwarnPartViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<navwarnPreambleContent> navwarnPreambleContent) {
 					instance.navwarnPreambleContents.Add(new NavwarnPartViewModel.navwarnPreambleContentViewModel {
 						informationId = navwarnPreambleContent.referenceId,
+						informationType = navwarnPreambleContent.informationType,
 						role = navwarnPreambleContent.role,
 					});
 				}
@@ -2042,20 +2142,14 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnAreaAffectedViewModel LoadInformationBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavwarnAreaAffectedViewModel LoadInformationBinding(this NavwarnAreaAffectedViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TextPlacementViewModel LoadInformationBinding(this TextPlacementViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -2063,20 +2157,19 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavwarnPartViewModel LoadFeatureBinding(this NavwarnPartViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
 					instance.areaAffecteds.Add(new NavwarnPartViewModel.areaAffectedViewModel {
 						featureId = areaAffected.referenceId,
+						featureType = areaAffected.featureType,
 						role = areaAffected.role,
 					});
 				}
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new NavwarnPartViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}
@@ -2084,14 +2177,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavwarnAreaAffectedViewModel LoadFeatureBinding(this NavwarnAreaAffectedViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<areaAffected> areaAffected) {
 					instance.areaAffecteds.Add(new NavwarnAreaAffectedViewModel.areaAffectedViewModel {
 						featureId = areaAffected.referenceId,
+						featureType = areaAffected.featureType,
 						role = areaAffected.role,
 					});
 				}
@@ -2099,14 +2190,12 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			return instance;
 		}
 
-		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static TextPlacementViewModel LoadFeatureBinding(this TextPlacementViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<TextAssociation> textAssociation) {
 					instance.TextAssociations.Add(new TextPlacementViewModel.TextAssociationViewModel {
 						featureId = textAssociation.referenceId,
+						featureType = textAssociation.featureType,
 						role = textAssociation.role,
 					});
 				}

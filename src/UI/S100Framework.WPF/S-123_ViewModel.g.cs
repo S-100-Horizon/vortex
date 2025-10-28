@@ -132,7 +132,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class areaA3ServiceDescriptionViewModel : ComplexViewModel<areaA3ServiceDescription> {
-		[Category("areaA3ServiceDescription")]
 		[Multiplicity(1)]
 		public ObservableCollection<servingMobileSatelliteService> servingMobileSatelliteService  { get; set; } = new ();
 
@@ -210,14 +209,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class broadcastContentViewModel : ComplexViewModel<broadcastContent> {
-		[Category("broadcastContent")]
 		[Multiplicity(1)]
 		public ObservableCollection<typeOfBroadcastContent> typeOfBroadcastContent  { get; set; } = new ();
 
 		[Browsable(false)]
 		public typeOfBroadcastContent[] typeOfBroadcastContentList => [(typeOfBroadcastContent)1,(typeOfBroadcastContent)2,(typeOfBroadcastContent)3,(typeOfBroadcastContent)4,(typeOfBroadcastContent)5,(typeOfBroadcastContent)6,(typeOfBroadcastContent)7,(typeOfBroadcastContent)8];
 
-		[Category("broadcastContent")]
 		[Optional]
 		public ObservableCollection<String> subjectOrMessageTypeCode  { get; set; } = new ();
 
@@ -466,14 +463,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<status> status  { get; set; } = new ();
 
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)5,(status)7,(status)8,(status)14,(status)16,(status)17,(status)24,(status)25,(status)26,(status)27];
 
-		[Category("coverageIndication")]
 		[Optional]
 		public ObservableCollection<String> text  { get; set; } = new ();
 
@@ -1204,15 +1199,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radioChannelDetailsViewModel : ComplexViewModel<radioChannelDetails> {
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<String> communicationChannel  { get; set; } = new ();
 
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<frequencyPairViewModel> frequencyPair  { get; set; } = new ();
 
-		[Category("radioChannelDetails")]
 		[Optional]
 		public ObservableCollection<int> dataTransmissionRate  { get; set; } = new ();
 
@@ -1307,19 +1299,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class radiocommunicationIdentifierViewModel : ComplexViewModel<radiocommunicationIdentifier> {
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> callSign  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> mMSICode  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<int> selectiveCallNumber  { get; set; } = new ();
 
-		[Category("radiocommunicationIdentifier")]
 		[Optional]
 		public ObservableCollection<String> coastStationIdentificationCode  { get; set; } = new ();
 
@@ -1482,7 +1470,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1530,7 +1517,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1544,7 +1530,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1712,7 +1697,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	public partial class spatialAccuracyViewModel : ComplexViewModel<spatialAccuracy> {
 		private fixedDateRangeViewModel? _fixedDateRange  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public fixedDateRangeViewModel? fixedDateRange {
@@ -1726,7 +1710,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private horizontalPositionUncertaintyViewModel? _horizontalPositionUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public horizontalPositionUncertaintyViewModel? horizontalPositionUncertainty {
@@ -1740,7 +1723,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		private verticalUncertaintyViewModel? _verticalUncertainty  = default;
 
-		[Category("spatialAccuracy")]
 		[ExpandableObject]
 		[Optional]
 		public verticalUncertaintyViewModel? verticalUncertainty {
@@ -1947,13 +1929,11 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public categoryOfText[] categoryOfTextList => [(categoryOfText)1,(categoryOfText)2,(categoryOfText)3];
 
-		[Category("textContent")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private onlineResourceViewModel? _onlineResource  = default;
 
-		[Category("textContent")]
 		[ExpandableObject]
 		[Optional]
 		public onlineResourceViewModel? onlineResource {
@@ -2045,7 +2025,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -2065,11 +2044,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
@@ -2174,7 +2151,6 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
-		[Category("timesOfTransmission")]
 		[Optional]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> transmissionTime  { get; set; } = new ();
 
@@ -3016,7 +2992,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class InclusionTypeViewModel : S100Framework.WPF.ViewModel.S123.InclusionTypeViewModel, IInformationBindings {
+		public class InclusionTypeViewModel : informationBindingViewModel<S123.InclusionTypeViewModel>, IInformationBindings {
 			public InclusionTypeViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3033,10 +3009,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["AbstractRxN"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<InclusionType> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = InclusionType,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ApplicabilityViewModel.InclusionTypeViewModel> InclusionTypes { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. InclusionTypes.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3132,10 +3123,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Applicability._informationBindingDefinitions;
 
-		public ApplicabilityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ApplicabilityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3162,6 +3151,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			InclusionTypes.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(InclusionTypes));
 			};
 		}
 	}
@@ -3259,7 +3251,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S123.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3276,9 +3268,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S123.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3295,6 +3299,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -3302,6 +3318,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3356,10 +3375,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Authority._informationBindingDefinitions;
 
-		public AuthorityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public AuthorityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3371,6 +3388,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(featureName));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
 			};
 		}
 	}
@@ -3484,7 +3507,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class BroadcastTransmissionViewModel : S100Framework.WPF.ViewModel.S123.BroadcastTransmissionViewModel, IInformationBindings {
+		public class BroadcastTransmissionViewModel : informationBindingViewModel<S123.BroadcastTransmissionViewModel>, IInformationBindings {
 			public BroadcastTransmissionViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -3501,10 +3524,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastTransmission> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastTransmission,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<BroadcastDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -3587,10 +3625,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => BroadcastDetails._informationBindingDefinitions;
 
-		public BroadcastDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public BroadcastDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -3614,6 +3650,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
+			};
+			BroadcastTransmissions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastTransmissions));
 			};
 		}
 	}
@@ -3751,6 +3790,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
 
 		public ConnectivityQualityOfServiceViewModel Load(ConnectivityQualityOfService instance) {
 			fixedDateRange = new ();
@@ -3827,10 +3868,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ConnectivityQualityOfService._informationBindingDefinitions;
 
-		public ConnectivityQualityOfServiceViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ConnectivityQualityOfServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4021,7 +4060,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S123.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4038,10 +4077,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority","RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4143,10 +4197,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ContactDetails._informationBindingDefinitions;
 
-		public ContactDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ContactDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4173,6 +4225,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(communicationChannel));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
 			};
 		}
 	}
@@ -4286,6 +4341,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public NauticalInformationViewModel Load(NauticalInformation instance) {
 			fixedDateRange = new ();
@@ -4351,10 +4408,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NauticalInformation._informationBindingDefinitions;
 
-		public NauticalInformationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NauticalInformationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4447,7 +4502,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ExceptionalWorkdayViewModel : S100Framework.WPF.ViewModel.S123.ExceptionalWorkdayViewModel, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S123.ExceptionalWorkdayViewModel>, IInformationBindings {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4464,10 +4519,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4534,10 +4604,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => NonStandardWorkingDay._informationBindingDefinitions;
 
-		public NonStandardWorkingDayViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NonStandardWorkingDayViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4558,6 +4626,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			dateVariable.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(dateVariable));
+			};
+			ExceptionalWorkdays.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ExceptionalWorkdays));
 			};
 		}
 	}
@@ -4670,7 +4741,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityContactViewModel : S100Framework.WPF.ViewModel.S123.AuthorityContactViewModel, IInformationBindings {
+		public class AuthorityContactViewModel : informationBindingViewModel<S123.AuthorityContactViewModel>, IInformationBindings {
 			public AuthorityContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4687,9 +4758,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityContact,
+			};
 		}
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S123.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4706,9 +4789,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
-		public class TMASViewModel : S100Framework.WPF.ViewModel.S123.TMASViewModel, IInformationBindings {
+		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
 			public TMASViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -4725,6 +4820,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TelemedicalAssistanceService"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TMAS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TMAS,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -4735,6 +4842,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioControlCentreViewModel.TMASViewModel> TMAS { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -4796,10 +4906,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => RadioControlCentre._informationBindingDefinitions;
 
-		public RadioControlCentreViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RadioControlCentreViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -4814,6 +4922,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AuthorityContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityContacts));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
+			};
+			TMAS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TMAS));
 			};
 		}
 	}
@@ -4927,6 +5044,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RecommendationsViewModel Load(Recommendations instance) {
 			fixedDateRange = new ();
@@ -4992,10 +5111,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Recommendations._informationBindingDefinitions;
 
-		public RecommendationsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RecommendationsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5123,6 +5240,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RegulationsViewModel Load(Regulations instance) {
 			fixedDateRange = new ();
@@ -5188,10 +5307,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Regulations._informationBindingDefinitions;
 
-		public RegulationsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RegulationsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5319,6 +5436,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		public RestrictionsViewModel Load(Restrictions instance) {
 			fixedDateRange = new ();
@@ -5384,10 +5503,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => Restrictions._informationBindingDefinitions;
 
-		public RestrictionsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RestrictionsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5476,7 +5593,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class AuthorityHoursViewModel : S100Framework.WPF.ViewModel.S123.AuthorityHoursViewModel, IInformationBindings {
+		public class AuthorityHoursViewModel : informationBindingViewModel<S123.AuthorityHoursViewModel>, IInformationBindings {
 			public AuthorityHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5493,9 +5610,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority","RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AuthorityHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AuthorityHours,
+			};
 		}
 
-		public class ExceptionalWorkdayViewModel : S100Framework.WPF.ViewModel.S123.ExceptionalWorkdayViewModel, IInformationBindings {
+		public class ExceptionalWorkdayViewModel : informationBindingViewModel<S123.ExceptionalWorkdayViewModel>, IInformationBindings {
 			public ExceptionalWorkdayViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5512,6 +5641,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["NonStandardWorkingDay"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ExceptionalWorkday> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ExceptionalWorkday,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -5519,6 +5660,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5578,10 +5722,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => ServiceHours._informationBindingDefinitions;
 
-		public ServiceHoursViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ServiceHoursViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5599,6 +5741,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(information));
+			};
+			AuthorityHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AuthorityHours));
+			};
+			ExceptionalWorkdays.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ExceptionalWorkdays));
 			};
 		}
 	}
@@ -5643,6 +5791,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			}
 		}
 
+public override informationBinding[] informationBindings => [];
+
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
 			qualityOfHorizontalMeasurement = instance.qualityOfHorizontalMeasurement;
@@ -5669,10 +5819,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => SpatialQuality._informationBindingDefinitions;
 
-		public SpatialQualityViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public SpatialQualityViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5791,7 +5939,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class RadioServiceControlViewModel : S100Framework.WPF.ViewModel.S123.RadioServiceControlViewModel, IInformationBindings {
+		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -5808,10 +5956,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel> RadioServiceControls { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -5883,10 +6046,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => TelemedicalAssistanceService._informationBindingDefinitions;
 
-		public TelemedicalAssistanceServiceViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public TelemedicalAssistanceServiceViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -5904,6 +6065,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			telecommunications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(telecommunications));
+			};
+			RadioServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RadioServiceControls));
 			};
 		}
 	}
@@ -6036,7 +6200,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class BroadcastTransmissionViewModel : S100Framework.WPF.ViewModel.S123.BroadcastTransmissionViewModel, IInformationBindings {
+		public class BroadcastTransmissionViewModel : informationBindingViewModel<S123.BroadcastTransmissionViewModel>, IInformationBindings {
 			public BroadcastTransmissionViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6053,10 +6217,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastTransmission> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastTransmission,
+			};
 		}
 
 		[Category("InformationBindings")]
 		public ObservableCollection<TransmissionDetailsViewModel.BroadcastTransmissionViewModel> BroadcastTransmissions { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. BroadcastTransmissions.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6121,10 +6300,8 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override informationBindingDefinition[] informationBindingDefinitions => TransmissionDetails._informationBindingDefinitions;
 
-		public TransmissionDetailsViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public TransmissionDetailsViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
@@ -6139,6 +6316,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			radioChannelDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(radioChannelDetails));
+			};
+			BroadcastTransmissions.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastTransmissions));
 			};
 		}
 	}
@@ -6304,7 +6484,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ConnectivityServiceViewModel : S100Framework.WPF.ViewModel.S123.ConnectivityServiceViewModel, IInformationBindings {
+		public class ConnectivityServiceViewModel : informationBindingViewModel<S123.ConnectivityServiceViewModel>, IInformationBindings {
 			public ConnectivityServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6321,9 +6501,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ConnectivityService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ConnectivityService,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6340,9 +6532,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6359,9 +6563,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class AvailableQoSViewModel : S100Framework.WPF.ViewModel.S123.AvailableQoSViewModel, IInformationBindings {
+		public class AvailableQoSViewModel : informationBindingViewModel<S123.AvailableQoSViewModel>, IInformationBindings {
 			public AvailableQoSViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6378,6 +6594,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ConnectivityQualityOfService"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<AvailableQoS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = AvailableQoS,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6391,12 +6619,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.AvailableQoSViewModel> AvailableQoS { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ConnectivityServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AvailableQoS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6413,10 +6644,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6507,17 +6753,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => ConnectivitySubscriptionArea._featureBindingDefinitions;
 
-		public ConnectivitySubscriptionAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public ConnectivitySubscriptionAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public ConnectivitySubscriptionAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public ConnectivitySubscriptionAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6538,6 +6780,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			sectorLimit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sectorLimit));
+			};
+			ConnectivityServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ConnectivityServices));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			AvailableQoS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(AvailableQoS));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -6671,7 +6928,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6688,9 +6945,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class RadioServiceControlViewModel : S100Framework.WPF.ViewModel.S123.RadioServiceControlViewModel, IInformationBindings {
+		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6707,9 +6976,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6726,9 +7007,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -6745,6 +7038,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -6758,12 +7063,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.LocationHoursViewModel> LocationHours { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -6780,10 +7088,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<GMDSSAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -6858,17 +7181,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => GMDSSArea._featureBindingDefinitions;
 
-		public GMDSSAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public GMDSSAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public GMDSSAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public GMDSSAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -6886,6 +7205,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			areaA3ServiceDescription.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(areaA3ServiceDescription));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			RadioServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RadioServiceControls));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -6984,10 +7318,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Browsable(false)]
 		public informationConfidence[] informationConfidenceList => [(informationConfidence)1,(informationConfidence)2,(informationConfidence)3,(informationConfidence)4];
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
-		public class fuzzyZoneAggregationViewModel : S100Framework.WPF.ViewModel.S123.fuzzyZoneAggregationViewModel, IFeatureBindings {
+		public class fuzzyZoneAggregationViewModel : featureBindingViewModel<S123.fuzzyZoneAggregationViewModel>, IFeatureBindings {
 			public fuzzyZoneAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7004,10 +7340,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["FuzzyAreaAggregate"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<fuzzyZoneAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = fuzzyZoneAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel> fuzzyZoneAggregations { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. fuzzyZoneAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7069,17 +7420,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => IndeterminateZone._featureBindingDefinitions;
 
-		public IndeterminateZoneViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public IndeterminateZoneViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public IndeterminateZoneViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public IndeterminateZoneViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7094,6 +7441,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			fuzzyZoneAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(fuzzyZoneAggregations));
 			};
 		}
 	}
@@ -7196,7 +7546,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7213,9 +7563,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7232,9 +7594,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7251,9 +7625,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7270,9 +7656,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7289,6 +7687,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -7305,12 +7715,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MetAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7327,10 +7740,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<MetAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7399,17 +7827,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => MetArea._featureBindingDefinitions;
 
-		public MetAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public MetAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public MetAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public MetAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7427,6 +7851,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			onlineResource.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(onlineResource));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -7529,7 +7971,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7546,9 +7988,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7565,9 +8019,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7584,9 +8050,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7603,9 +8081,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7622,6 +8112,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -7638,12 +8140,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -7660,10 +8165,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -7732,17 +8252,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavArea._featureBindingDefinitions;
 
-		public NavAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public NavAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -7760,6 +8276,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			onlineResource.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(onlineResource));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -7920,7 +8454,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7937,9 +8471,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7956,9 +8502,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7975,9 +8533,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -7994,9 +8564,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8013,6 +8595,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8029,12 +8623,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8051,10 +8648,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8128,17 +8740,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => NavtexServiceArea._featureBindingDefinitions;
 
-		public NavtexServiceAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public NavtexServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public NavtexServiceAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public NavtexServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -8153,6 +8761,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -8310,7 +8936,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8327,9 +8953,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class RadioServiceControlViewModel : S100Framework.WPF.ViewModel.S123.RadioServiceControlViewModel, IInformationBindings {
+		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8346,9 +8984,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8365,9 +9015,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8384,9 +9046,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8403,9 +9077,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8422,6 +9108,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8441,12 +9139,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8463,9 +9164,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
-		public class coreAggregationViewModel : S100Framework.WPF.ViewModel.S123.coreAggregationViewModel, IFeatureBindings {
+		public class coreAggregationViewModel : featureBindingViewModel<S123.coreAggregationViewModel>, IFeatureBindings {
 			public coreAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8482,6 +9195,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioServiceAreaAggregate"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<coreAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = coreAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]
@@ -8489,6 +9214,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -8562,17 +9290,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioServiceArea._featureBindingDefinitions;
 
-		public RadioServiceAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RadioServiceAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public RadioServiceAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public RadioServiceAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -8587,6 +9311,30 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			RadioServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RadioServiceControls));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
+			};
+			coreAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(coreAggregations));
 			};
 		}
 	}
@@ -8779,7 +9527,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8796,9 +9544,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class RadioServiceControlViewModel : S100Framework.WPF.ViewModel.S123.RadioServiceControlViewModel, IInformationBindings {
+		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8815,9 +9575,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8834,9 +9606,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8853,9 +9637,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8872,9 +9668,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -8891,6 +9699,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -8910,12 +9730,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<RadioStationViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -8932,10 +9755,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["ConnectivitySubscriptionArea","GMDSSArea","MetArea","NavArea","NavtexServiceArea","RadioServiceArea","WeatherForecastAndWarningArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioStationViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9025,17 +9863,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioStation._featureBindingDefinitions;
 
-		public RadioStationViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RadioStationViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public RadioStationViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public RadioStationViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9053,6 +9887,27 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			sectorLimit.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(sectorLimit));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			RadioServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RadioServiceControls));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -9151,7 +10006,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9168,9 +10023,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class RadioServiceControlViewModel : S100Framework.WPF.ViewModel.S123.RadioServiceControlViewModel, IInformationBindings {
+		public class RadioServiceControlViewModel : informationBindingViewModel<S123.RadioServiceControlViewModel>, IInformationBindings {
 			public RadioServiceControlViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9187,9 +10054,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["RadioControlCentre"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<RadioServiceControl> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = RadioServiceControl,
+			};
 		}
 
-		public class TMASViewModel : S100Framework.WPF.ViewModel.S123.TMASViewModel, IInformationBindings {
+		public class TMASViewModel : informationBindingViewModel<S123.TMASViewModel>, IInformationBindings {
 			public TMASViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9206,9 +10085,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TelemedicalAssistanceService"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TMAS> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TMAS,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9225,6 +10116,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9238,7 +10141,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<SARRegionViewModel.ServiceContactViewModel> ServiceContacts { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. RadioServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TMAS.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
+
+public override featureBinding[] featureBindings => [];
 
 
 		public SARRegionViewModel Load(SARRegion instance) {
@@ -9299,17 +10207,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => SARRegion._featureBindingDefinitions;
 
-		public SARRegionViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public SARRegionViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public SARRegionViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public SARRegionViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9324,6 +10228,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			RadioServiceControls.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(RadioServiceControls));
+			};
+			TMAS.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TMAS));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
 			};
 		}
 	}
@@ -9470,7 +10386,7 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		#region InformationBindings
 
-		public class ServiceCoordinationViewModel : S100Framework.WPF.ViewModel.S123.ServiceCoordinationViewModel, IInformationBindings {
+		public class ServiceCoordinationViewModel : informationBindingViewModel<S123.ServiceCoordinationViewModel>, IInformationBindings {
 			public ServiceCoordinationViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9487,9 +10403,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["Authority"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceCoordination> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceCoordination,
+			};
 		}
 
-		public class ServiceContactViewModel : S100Framework.WPF.ViewModel.S123.ServiceContactViewModel, IInformationBindings {
+		public class ServiceContactViewModel : informationBindingViewModel<S123.ServiceContactViewModel>, IInformationBindings {
 			public ServiceContactViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9506,9 +10434,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ContactDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<ServiceContact> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceContact,
+			};
 		}
 
-		public class LocationHoursViewModel : S100Framework.WPF.ViewModel.S123.LocationHoursViewModel, IInformationBindings {
+		public class LocationHoursViewModel : informationBindingViewModel<S123.LocationHoursViewModel>, IInformationBindings {
 			public LocationHoursViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9525,9 +10465,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["ServiceHours"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<LocationHours> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = LocationHours,
+			};
 		}
 
-		public class BroadcastServiceViewModel : S100Framework.WPF.ViewModel.S123.BroadcastServiceViewModel, IInformationBindings {
+		public class BroadcastServiceViewModel : informationBindingViewModel<S123.BroadcastServiceViewModel>, IInformationBindings {
 			public BroadcastServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9544,9 +10496,21 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["BroadcastDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<BroadcastService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = BroadcastService,
+			};
 		}
 
-		public class TransmissionServiceViewModel : S100Framework.WPF.ViewModel.S123.TransmissionServiceViewModel, IInformationBindings {
+		public class TransmissionServiceViewModel : informationBindingViewModel<S123.TransmissionServiceViewModel>, IInformationBindings {
 			public TransmissionServiceViewModel() {
 				if (informationBindings.Length == 1)
 					base.role = informationBindings[0].role;
@@ -9563,6 +10527,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					informationTypes = ["TransmissionDetails"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public informationBinding Model => new informationBinding<TransmissionService> {
+				referenceId = this.informationId,
+				informationType = this.informationType,
+				role = this.role,
+				roleType = informationBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = TransmissionService,
+			};
 		}
 
 		[Category("InformationBindings")]
@@ -9579,12 +10555,15 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel> TransmissionServices { get; set; } = new();
+
+		public override informationBinding[] informationBindings => [.. ServiceCoordinations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ServiceContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. LocationHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. BroadcastServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TransmissionServices.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
 		#region FeatureBindings
 
-		public class ServiceProvisionAreaViewModel : S100Framework.WPF.ViewModel.S123.ServiceProvisionAreaViewModel, IFeatureBindings {
+		public class ServiceProvisionAreaViewModel : featureBindingViewModel<S123.ServiceProvisionAreaViewModel>, IFeatureBindings {
 			public ServiceProvisionAreaViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9601,10 +10580,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioStation"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<ServiceProvisionArea> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = ServiceProvisionArea,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel> ServiceProvisionAreas { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. ServiceProvisionAreas.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9675,17 +10669,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => WeatherForecastAndWarningArea._featureBindingDefinitions;
 
-		public WeatherForecastAndWarningAreaViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public WeatherForecastAndWarningAreaViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public WeatherForecastAndWarningAreaViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public WeatherForecastAndWarningAreaViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9700,6 +10690,24 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			ServiceCoordinations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceCoordinations));
+			};
+			ServiceContacts.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(ServiceContacts));
+			};
+			LocationHours.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(LocationHours));
+			};
+			BroadcastServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(BroadcastServices));
+			};
+			TransmissionServices.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnInformationBindingCollectionChanged(nameof(TransmissionServices));
+			};
+			ServiceProvisionAreas.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(ServiceProvisionAreas));
 			};
 		}
 	}
@@ -9783,10 +10791,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 
+public override informationBinding[] informationBindings => [];
+
 
 		#region FeatureBindings
 
-		public class coreAggregationViewModel : S100Framework.WPF.ViewModel.S123.coreAggregationViewModel, IFeatureBindings {
+		public class coreAggregationViewModel : featureBindingViewModel<S123.coreAggregationViewModel>, IFeatureBindings {
 			public coreAggregationViewModel() {
 				if (featureBindings.Length == 1)
 					base.role = featureBindings[0].role;
@@ -9803,10 +10813,25 @@ namespace S100Framework.WPF.ViewModel.S123 {
 					featureTypes = ["RadioServiceArea"],
 				},
 			];
+			public override string Serialize() {
+				throw new NotImplementedException();
+			}
+
+			[Browsable(false)]
+			public featureBinding Model => new featureBinding<coreAggregation> {
+				referenceId = this.featureId,
+				featureType = this.featureType,
+				role = this.role,
+				roleType = featureBindings.Single(e=>e.role.Equals(this.role)).roleType.ToString(),
+				//association = coreAggregation,
+			};
 		}
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<RadioServiceAreaAggregateViewModel.coreAggregationViewModel> coreAggregations { get; set; } = new();
+
+		public override featureBinding[] featureBindings => [.. coreAggregations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
+
 		#endregion
 
 
@@ -9865,17 +10890,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => RadioServiceAreaAggregate._featureBindingDefinitions;
 
-		public RadioServiceAreaAggregateViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public RadioServiceAreaAggregateViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public RadioServiceAreaAggregateViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public RadioServiceAreaAggregateViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -9890,6 +10911,9 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			};
 			periodicDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
 				OnPropertyChanged(nameof(periodicDateRange));
+			};
+			coreAggregations.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnFeatureBindingCollectionChanged(nameof(coreAggregations));
 			};
 		}
 	}
@@ -9949,6 +10973,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
 			maximumDisplayScale = instance.maximumDisplayScale;
@@ -9985,17 +11013,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => DataCoverage._featureBindingDefinitions;
 
-		public DataCoverageViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public DataCoverageViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public DataCoverageViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public DataCoverageViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10108,6 +11132,10 @@ namespace S100Framework.WPF.ViewModel.S123 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
+public override informationBinding[] informationBindings => [];
+
+public override featureBinding[] featureBindings => [];
+
 
 		public QualityOfNonBathymetricDataViewModel Load(QualityOfNonBathymetricData instance) {
 			categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -10162,17 +11190,13 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 		public override featureBindingDefinition[] featureBindingDefinitions => QualityOfNonBathymetricData._featureBindingDefinitions;
 
-		public QualityOfNonBathymetricDataViewModel ParseInformationBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadInformationBinding(document);
-			}
+		public QualityOfNonBathymetricDataViewModel ParseInformationBindings(informationBinding[] bindings) {
+			this.LoadInformationBinding(bindings);
 			return this;
 		}
 
-		public QualityOfNonBathymetricDataViewModel ParseFeatureBindings(string json) {
-			using (var document = JsonDocument.Parse(json)) {
-				this.LoadFeatureBinding(document);
-			}
+		public QualityOfNonBathymetricDataViewModel ParseFeatureBindings(featureBinding[] bindings) {
+			this.LoadFeatureBinding(bindings);
 			return this;
 		}
 
@@ -10188,14 +11212,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 
 
 	public static class InformationBindingExtension {
-		public static ApplicabilityViewModel LoadInformationBinding(this ApplicabilityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ApplicabilityViewModel LoadInformationBinding(this ApplicabilityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<InclusionType> inclusionType) {
 					instance.InclusionTypes.Add(new ApplicabilityViewModel.InclusionTypeViewModel {
 						informationId = inclusionType.referenceId,
+						informationType = inclusionType.informationType,
 						role = inclusionType.role,
 					});
 				}
@@ -10203,20 +11225,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static AuthorityViewModel LoadInformationBinding(this AuthorityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static AuthorityViewModel LoadInformationBinding(this AuthorityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new AuthorityViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new AuthorityViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
@@ -10224,14 +11245,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static BroadcastDetailsViewModel LoadInformationBinding(this BroadcastDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static BroadcastDetailsViewModel LoadInformationBinding(this BroadcastDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<BroadcastTransmission> broadcastTransmission) {
 					instance.BroadcastTransmissions.Add(new BroadcastDetailsViewModel.BroadcastTransmissionViewModel {
 						informationId = broadcastTransmission.referenceId,
+						informationType = broadcastTransmission.informationType,
 						role = broadcastTransmission.role,
 					});
 				}
@@ -10239,23 +11258,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static ConnectivityQualityOfServiceViewModel LoadInformationBinding(this ConnectivityQualityOfServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ConnectivityQualityOfServiceViewModel LoadInformationBinding(this ConnectivityQualityOfServiceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ContactDetailsViewModel LoadInformationBinding(this ContactDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new ContactDetailsViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
@@ -10263,23 +11277,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NauticalInformationViewModel LoadInformationBinding(this NauticalInformationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NauticalInformationViewModel LoadInformationBinding(this NauticalInformationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static NonStandardWorkingDayViewModel LoadInformationBinding(this NonStandardWorkingDayViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NonStandardWorkingDayViewModel LoadInformationBinding(this NonStandardWorkingDayViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
+						informationType = exceptionalWorkday.informationType,
 						role = exceptionalWorkday.role,
 					});
 				}
@@ -10287,26 +11296,26 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioControlCentreViewModel LoadInformationBinding(this RadioControlCentreViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadioControlCentreViewModel LoadInformationBinding(this RadioControlCentreViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityContact> authorityContact) {
 					instance.AuthorityContacts.Add(new RadioControlCentreViewModel.AuthorityContactViewModel {
 						informationId = authorityContact.referenceId,
+						informationType = authorityContact.informationType,
 						role = authorityContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new RadioControlCentreViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<TMAS> tMAS) {
 					instance.TMAS.Add(new RadioControlCentreViewModel.TMASViewModel {
 						informationId = tMAS.referenceId,
+						informationType = tMAS.informationType,
 						role = tMAS.role,
 					});
 				}
@@ -10314,47 +11323,37 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RecommendationsViewModel LoadInformationBinding(this RecommendationsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RecommendationsViewModel LoadInformationBinding(this RecommendationsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RegulationsViewModel LoadInformationBinding(this RegulationsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RegulationsViewModel LoadInformationBinding(this RegulationsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static RestrictionsViewModel LoadInformationBinding(this RestrictionsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RestrictionsViewModel LoadInformationBinding(this RestrictionsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static ServiceHoursViewModel LoadInformationBinding(this ServiceHoursViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ServiceHoursViewModel LoadInformationBinding(this ServiceHoursViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<AuthorityHours> authorityHours) {
 					instance.AuthorityHours.Add(new ServiceHoursViewModel.AuthorityHoursViewModel {
 						informationId = authorityHours.referenceId,
+						informationType = authorityHours.informationType,
 						role = authorityHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<ExceptionalWorkday> exceptionalWorkday) {
 					instance.ExceptionalWorkdays.Add(new ServiceHoursViewModel.ExceptionalWorkdayViewModel {
 						informationId = exceptionalWorkday.referenceId,
+						informationType = exceptionalWorkday.informationType,
 						role = exceptionalWorkday.role,
 					});
 				}
@@ -10362,23 +11361,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SpatialQualityViewModel LoadInformationBinding(this SpatialQualityViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static TelemedicalAssistanceServiceViewModel LoadInformationBinding(this TelemedicalAssistanceServiceViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TelemedicalAssistanceServiceViewModel LoadInformationBinding(this TelemedicalAssistanceServiceViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
 					instance.RadioServiceControls.Add(new TelemedicalAssistanceServiceViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
+						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
@@ -10386,14 +11380,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static TransmissionDetailsViewModel LoadInformationBinding(this TransmissionDetailsViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static TransmissionDetailsViewModel LoadInformationBinding(this TransmissionDetailsViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<BroadcastTransmission> broadcastTransmission) {
 					instance.BroadcastTransmissions.Add(new TransmissionDetailsViewModel.BroadcastTransmissionViewModel {
 						informationId = broadcastTransmission.referenceId,
+						informationType = broadcastTransmission.informationType,
 						role = broadcastTransmission.role,
 					});
 				}
@@ -10401,32 +11393,33 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static ConnectivitySubscriptionAreaViewModel LoadInformationBinding(this ConnectivitySubscriptionAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static ConnectivitySubscriptionAreaViewModel LoadInformationBinding(this ConnectivitySubscriptionAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ConnectivityService> connectivityService) {
 					instance.ConnectivityServices.Add(new ConnectivitySubscriptionAreaViewModel.ConnectivityServiceViewModel {
 						informationId = connectivityService.referenceId,
+						informationType = connectivityService.informationType,
 						role = connectivityService.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new ConnectivitySubscriptionAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new ConnectivitySubscriptionAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<AvailableQoS> availableQoS) {
 					instance.AvailableQoS.Add(new ConnectivitySubscriptionAreaViewModel.AvailableQoSViewModel {
 						informationId = availableQoS.referenceId,
+						informationType = availableQoS.informationType,
 						role = availableQoS.role,
 					});
 				}
@@ -10434,32 +11427,33 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static GMDSSAreaViewModel LoadInformationBinding(this GMDSSAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static GMDSSAreaViewModel LoadInformationBinding(this GMDSSAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new GMDSSAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
 					instance.RadioServiceControls.Add(new GMDSSAreaViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
+						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new GMDSSAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new GMDSSAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
@@ -10467,47 +11461,46 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static IndeterminateZoneViewModel LoadInformationBinding(this IndeterminateZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static IndeterminateZoneViewModel LoadInformationBinding(this IndeterminateZoneViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static MetAreaViewModel LoadInformationBinding(this MetAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static MetAreaViewModel LoadInformationBinding(this MetAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new MetAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new MetAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new MetAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new MetAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new MetAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10515,38 +11508,40 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavAreaViewModel LoadInformationBinding(this NavAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavAreaViewModel LoadInformationBinding(this NavAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new NavAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new NavAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new NavAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new NavAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new NavAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10554,38 +11549,40 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavtexServiceAreaViewModel LoadInformationBinding(this NavtexServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static NavtexServiceAreaViewModel LoadInformationBinding(this NavtexServiceAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new NavtexServiceAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new NavtexServiceAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new NavtexServiceAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new NavtexServiceAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new NavtexServiceAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10593,44 +11590,47 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioServiceAreaViewModel LoadInformationBinding(this RadioServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadioServiceAreaViewModel LoadInformationBinding(this RadioServiceAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new RadioServiceAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
 					instance.RadioServiceControls.Add(new RadioServiceAreaViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
+						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new RadioServiceAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new RadioServiceAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new RadioServiceAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new RadioServiceAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10638,44 +11638,47 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadioStationViewModel LoadInformationBinding(this RadioStationViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new RadioStationViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
 					instance.RadioServiceControls.Add(new RadioStationViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
+						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new RadioStationViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new RadioStationViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new RadioStationViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new RadioStationViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10683,32 +11686,33 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static SARRegionViewModel LoadInformationBinding(this SARRegionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static SARRegionViewModel LoadInformationBinding(this SARRegionViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new SARRegionViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<RadioServiceControl> radioServiceControl) {
 					instance.RadioServiceControls.Add(new SARRegionViewModel.RadioServiceControlViewModel {
 						informationId = radioServiceControl.referenceId,
+						informationType = radioServiceControl.informationType,
 						role = radioServiceControl.role,
 					});
 				}
 				if(informationBinding is informationBinding<TMAS> tMAS) {
 					instance.TMAS.Add(new SARRegionViewModel.TMASViewModel {
 						informationId = tMAS.referenceId,
+						informationType = tMAS.informationType,
 						role = tMAS.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new SARRegionViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
@@ -10716,38 +11720,40 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static WeatherForecastAndWarningAreaViewModel LoadInformationBinding(this WeatherForecastAndWarningAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static WeatherForecastAndWarningAreaViewModel LoadInformationBinding(this WeatherForecastAndWarningAreaViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 				if(informationBinding is informationBinding<ServiceCoordination> serviceCoordination) {
 					instance.ServiceCoordinations.Add(new WeatherForecastAndWarningAreaViewModel.ServiceCoordinationViewModel {
 						informationId = serviceCoordination.referenceId,
+						informationType = serviceCoordination.informationType,
 						role = serviceCoordination.role,
 					});
 				}
 				if(informationBinding is informationBinding<ServiceContact> serviceContact) {
 					instance.ServiceContacts.Add(new WeatherForecastAndWarningAreaViewModel.ServiceContactViewModel {
 						informationId = serviceContact.referenceId,
+						informationType = serviceContact.informationType,
 						role = serviceContact.role,
 					});
 				}
 				if(informationBinding is informationBinding<LocationHours> locationHours) {
 					instance.LocationHours.Add(new WeatherForecastAndWarningAreaViewModel.LocationHoursViewModel {
 						informationId = locationHours.referenceId,
+						informationType = locationHours.informationType,
 						role = locationHours.role,
 					});
 				}
 				if(informationBinding is informationBinding<BroadcastService> broadcastService) {
 					instance.BroadcastServices.Add(new WeatherForecastAndWarningAreaViewModel.BroadcastServiceViewModel {
 						informationId = broadcastService.referenceId,
+						informationType = broadcastService.informationType,
 						role = broadcastService.role,
 					});
 				}
 				if(informationBinding is informationBinding<TransmissionService> transmissionService) {
 					instance.TransmissionServices.Add(new WeatherForecastAndWarningAreaViewModel.TransmissionServiceViewModel {
 						informationId = transmissionService.referenceId,
+						informationType = transmissionService.informationType,
 						role = transmissionService.role,
 					});
 				}
@@ -10755,29 +11761,20 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioServiceAreaAggregateViewModel LoadInformationBinding(this RadioServiceAreaAggregateViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static RadioServiceAreaAggregateViewModel LoadInformationBinding(this RadioServiceAreaAggregateViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static DataCoverageViewModel LoadInformationBinding(this DataCoverageViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static QualityOfNonBathymetricDataViewModel LoadInformationBinding(this QualityOfNonBathymetricDataViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var informationBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.InformationBindings(code));
-
+		public static QualityOfNonBathymetricDataViewModel LoadInformationBinding(this QualityOfNonBathymetricDataViewModel instance, informationBinding[] bindings) {
+			foreach (var informationBinding in bindings) {
 			}
 			return instance;
 		}
@@ -10785,14 +11782,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 	}
 
 	public static class FeatureBindingExtension {
-		public static ConnectivitySubscriptionAreaViewModel LoadFeatureBinding(this ConnectivitySubscriptionAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static ConnectivitySubscriptionAreaViewModel LoadFeatureBinding(this ConnectivitySubscriptionAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new ConnectivitySubscriptionAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10800,14 +11795,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static GMDSSAreaViewModel LoadFeatureBinding(this GMDSSAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static GMDSSAreaViewModel LoadFeatureBinding(this GMDSSAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new GMDSSAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10815,14 +11808,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static IndeterminateZoneViewModel LoadFeatureBinding(this IndeterminateZoneViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static IndeterminateZoneViewModel LoadFeatureBinding(this IndeterminateZoneViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<fuzzyZoneAggregation> fuzzyZoneAggregation) {
 					instance.fuzzyZoneAggregations.Add(new IndeterminateZoneViewModel.fuzzyZoneAggregationViewModel {
 						featureId = fuzzyZoneAggregation.referenceId,
+						featureType = fuzzyZoneAggregation.featureType,
 						role = fuzzyZoneAggregation.role,
 					});
 				}
@@ -10830,14 +11821,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static MetAreaViewModel LoadFeatureBinding(this MetAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static MetAreaViewModel LoadFeatureBinding(this MetAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new MetAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10845,14 +11834,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavAreaViewModel LoadFeatureBinding(this NavAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavAreaViewModel LoadFeatureBinding(this NavAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new NavAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10860,14 +11847,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static NavtexServiceAreaViewModel LoadFeatureBinding(this NavtexServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static NavtexServiceAreaViewModel LoadFeatureBinding(this NavtexServiceAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new NavtexServiceAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10875,20 +11860,19 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioServiceAreaViewModel LoadFeatureBinding(this RadioServiceAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadioServiceAreaViewModel LoadFeatureBinding(this RadioServiceAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new RadioServiceAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
 				if(featureBinding is featureBinding<coreAggregation> coreAggregation) {
 					instance.coreAggregations.Add(new RadioServiceAreaViewModel.coreAggregationViewModel {
 						featureId = coreAggregation.referenceId,
+						featureType = coreAggregation.featureType,
 						role = coreAggregation.role,
 					});
 				}
@@ -10896,14 +11880,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadioStationViewModel LoadFeatureBinding(this RadioStationViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new RadioStationViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10911,23 +11893,18 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static SARRegionViewModel LoadFeatureBinding(this SARRegionViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static SARRegionViewModel LoadFeatureBinding(this SARRegionViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static WeatherForecastAndWarningAreaViewModel LoadFeatureBinding(this WeatherForecastAndWarningAreaViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static WeatherForecastAndWarningAreaViewModel LoadFeatureBinding(this WeatherForecastAndWarningAreaViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<ServiceProvisionArea> serviceProvisionArea) {
 					instance.ServiceProvisionAreas.Add(new WeatherForecastAndWarningAreaViewModel.ServiceProvisionAreaViewModel {
 						featureId = serviceProvisionArea.referenceId,
+						featureType = serviceProvisionArea.featureType,
 						role = serviceProvisionArea.role,
 					});
 				}
@@ -10935,14 +11912,12 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static RadioServiceAreaAggregateViewModel LoadFeatureBinding(this RadioServiceAreaAggregateViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static RadioServiceAreaAggregateViewModel LoadFeatureBinding(this RadioServiceAreaAggregateViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 				if(featureBinding is featureBinding<coreAggregation> coreAggregation) {
 					instance.coreAggregations.Add(new RadioServiceAreaAggregateViewModel.coreAggregationViewModel {
 						featureId = coreAggregation.referenceId,
+						featureType = coreAggregation.featureType,
 						role = coreAggregation.role,
 					});
 				}
@@ -10950,20 +11925,14 @@ namespace S100Framework.WPF.ViewModel.S123 {
 			return instance;
 		}
 
-		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static DataCoverageViewModel LoadFeatureBinding(this DataCoverageViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}
 
-		public static QualityOfNonBathymetricDataViewModel LoadFeatureBinding(this QualityOfNonBathymetricDataViewModel instance, JsonDocument document) {
-			foreach (var element in document.RootElement.EnumerateArray()) {
-				var code = element.GetProperty("code").GetString()!;
-				var featureBinding = System.Text.Json.JsonSerializer.Deserialize(element!, Summary.FeatureBindings(code));
-
+		public static QualityOfNonBathymetricDataViewModel LoadFeatureBinding(this QualityOfNonBathymetricDataViewModel instance, featureBinding[] bindings) {
+			foreach (var featureBinding in bindings) {
 			}
 			return instance;
 		}

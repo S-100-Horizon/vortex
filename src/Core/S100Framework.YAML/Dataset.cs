@@ -1,9 +1,6 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureAssociations;
-using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.Topology;
 using System.Globalization;
-using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML

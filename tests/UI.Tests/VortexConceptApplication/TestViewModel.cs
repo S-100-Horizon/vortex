@@ -1,19 +1,9 @@
-﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureAssociations;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.WPF.Converters;
-using S100Framework.WPF.Editors;
-using S100Framework.WPF.ViewModel;
+﻿using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.ViewModel.S101;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace VortexConceptApplication
 {
@@ -25,7 +15,8 @@ namespace VortexConceptApplication
     {
     }
 
-    public class TestIslandGroupViewModel : IslandGroupViewModel {
+    public class TestIslandGroupViewModel : IslandGroupViewModel
+    {
     }
 
 
@@ -47,7 +38,7 @@ namespace VortexConceptApplication
 
         private String _interoperabilityIdentifier2;
 
-        [Category("Test")]               
+        [Category("Test")]
         public bool? Bool {
             get {
                 return _bool;

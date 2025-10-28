@@ -15,7 +15,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
     </ControlTemplate>
-    
+
     <Style TargetType="{x:Type local:S100AttributeEditorControl}">
         <Setter Property="Background"
             Value="#BCC7D8" />
@@ -30,26 +30,20 @@
                         <!--<converters:TristateConverter x:Key="TristateConverter" />-->
                         <ResourceDictionary>
                             <xctk:PropertyGridContextMenu x:Key="AdvancedOptionsMenu">
-                                <MenuItem Header="unknown" Command="local:S100AttributeEditorControl.UnknownCommand" />
-                                <MenuItem Header="reset" Command="local:S100AttributeEditorControl.ResetCommand" />
+                                <!--<MenuItem Header="unknown" Command="local:S100AttributeEditorControl.UnknownCommand" />-->
+                                <MenuItem Header="Reset Value" Command="local:S100AttributeEditorControl.ResetCommand" />
                             </xctk:PropertyGridContextMenu>
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <xctk:PropertyGrid x:Name="PART_PropertyGrid" Grid.Row="0"
+                    
+                    <xctk:PropertyGrid x:Name="PART_PropertyGrid"
                                                    AutoGenerateProperties="True"                           
                                                    UpdateTextBoxSourceOnEnterKey="True"
                                                    ShowAdvancedOptions="False"
                                                    ShowSummary="False"
                                                    AdvancedOptionsMenu="{StaticResource AdvancedOptionsMenu}">
-                        </xctk:PropertyGrid>
+                    </xctk:PropertyGrid>
 
-                    </Grid>
 
                     <ControlTemplate.Triggers>
                         <!--<EventTrigger RoutedEvent="xctk:DropDownButton.ContextMenuOpening" SourceName="associationId"> 

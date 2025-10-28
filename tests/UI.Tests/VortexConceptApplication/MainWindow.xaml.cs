@@ -3,6 +3,7 @@
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF;
+using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -142,10 +143,6 @@ namespace VortexConceptApplication
                 },
                 SelectFeatureBinding = (SelectFeatureBindingEventArgs e) => {
                 },
-                SelectInformationAssociation = (SelectAssociationEventArgs e) => {
-                },
-                SelectFeatureAssociation = (SelectAssociationEventArgs e) => {
-                },
             };
 
             var model = new TestQualityOfBathymetricData() {
@@ -180,26 +177,72 @@ namespace VortexConceptApplication
                 Name = "S202600",
             }.Load(new S100Framework.DomainModel.S101.FeatureTypes.IslandGroup());
 
+
+            //  Associations
+            var json = "[{\"$type\":\"featureBinding::S101::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
+
+            var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, new System.Text.Json.JsonSerializerOptions {
+                TypeInfoResolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver(),
+            })!;
+
+            var viewModel5 = new LightAllAroundViewModel() {
+                Name = "xyz",
+            }.Load(new S100Framework.DomainModel.S101.FeatureTypes.LightAllAround() {
+            }).ParseFeatureBindings(featureBindings);
+
+
+
+
             //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
             //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
             //};
 
 
-            var viewModel = viewModel4;
+            var viewModel = viewModel5;
 
             SelectedProperty = viewModel;
 
             var selectedFeature = new SelectedFeatureTypeObjectViewModel(viewModel);
 
 
-            selectedFeature!.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+            //selectedFeature.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
+            //    System.Diagnostics.Debugger.Break();
+            //};
+
+            //selectedFeature.CollectionChanged += (object? sender, NotifyCollectionChangedEventArgs e) => {
+            //    System.Diagnostics.Debugger.Break();
+            //};
+
+            S100AttributeEditor.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
                 //System.Diagnostics.Debugger.Break();
+            };
+
+            S100AttributeEditor.InformationBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
+                System.Diagnostics.Debugger.Break();
+            };
+
+            S100AttributeEditor.FeatureBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {
+
+                var instance = (LightAllAroundViewModel)sender!;
+
+                if (!instance.featureBindings.Any())
+                    return;
+
+                var options = new System.Text.Json.JsonSerializerOptions {
+                    WriteIndented = true,
+                    TypeInfoResolver = S100Framework.DomainModel.S101.Summary.SharedBindingResolver(),
+                };
+
+                var json = System.Text.Json.JsonSerializer.Serialize(instance.featureBindings, options);
+
+
+                System.Diagnostics.Debugger.Break();
             };
 
             S100AttributeEditor.SelectedFeatureObject = selectedFeature;
 
             Task.Run(() => {
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
                     S100AttributeEditor.IsEditingEnabled = true;
                 });

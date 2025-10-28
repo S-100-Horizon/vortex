@@ -1,5 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
-using S100Framework.DomainModel;
+﻿using S100Framework.DomainModel;
 using S100Framework.WPF.ViewModel;
 using System.Collections;
 using System.Globalization;
@@ -30,11 +29,15 @@ namespace S100Framework.WPF.Editors
 
     public class BrushValidatorConvertor : IValueConverter
     {
-        const string ColorCode = "#e9c8ca";
+        const string ColorCode = "#d4000d";
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is null)
                 return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            if (value is string text) {
+                if (string.IsNullOrEmpty(text))
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString(ColorCode));
+            }
             return System.Windows.Media.Brushes.Transparent;
         }
 
@@ -45,7 +48,7 @@ namespace S100Framework.WPF.Editors
 
     public class BrushUnknownConvertor : IValueConverter
     {
-        const string ColorCode = "#c8dae9";
+        const string ColorCode = "#0280e8";
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is null)
@@ -60,7 +63,7 @@ namespace S100Framework.WPF.Editors
 
     public class DependentUnknownValueConvertor(string propertyName, string dependentPropertyName) : IValueConverter
     {
-        const string ColorCode = "#e9c8ca";
+        const string ColorCode = "#d4000d";
 
         public string PropertyName { get; } = propertyName;
 
@@ -129,6 +132,13 @@ namespace S100Framework.WPF.Editors
 
             var multiplicity = (MultiplicityAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(MultiplicityAttribute));
 
+            var optional = (OptionalAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(OptionalAttribute));
+
+            var border = new Border {
+                BorderBrush = System.Windows.Media.Brushes.Transparent,
+                BorderThickness = new Thickness(1),
+            };
+
             var panel = new Grid {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -140,9 +150,8 @@ namespace S100Framework.WPF.Editors
                     Mode = BindingMode.OneWay,
                 };
                 newBinding.Converter = new BrushUnknownConvertor();
-                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+                border.SetBinding(Border.BorderBrushProperty, newBinding);
             }
-
 
             var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
             if (dependentUnknownValue is not null) {
@@ -154,7 +163,7 @@ namespace S100Framework.WPF.Editors
                     //BindingGroupName
                 };
                 newBinding.Converter = new DependentUnknownValueConvertor(propertyItem.DisplayName, propertyName);
-                panel.SetBinding(Grid.BackgroundProperty, newBinding);
+                border.SetBinding(Border.BorderBrushProperty, newBinding);
             }
 
             Control? editor = default;
@@ -292,11 +301,105 @@ namespace S100Framework.WPF.Editors
                     IsThreeState = propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>),
                 };
                 editor = editorCheckbox;
+
+                var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                BindingOperations.SetBinding(editor, PropertyGridEditorCheckBox.IsCheckedProperty, bindingSelectedItemProperty);
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
-                //  [Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]
-                var specific = new EnumComboBoxEditor();
-                return specific.ResolveEditor(propertyItem);
+                if (multiplicity == default || (multiplicity.Upper.HasValue && multiplicity.Upper.Value == 1)) {
+                    var editorEnumCheckBox = new WatermarkComboBox {
+                        Background = System.Windows.Media.Brushes.Transparent,                        
+                    };
+
+                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                    if (supportsUnknown) {
+                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                        var radioButtonUnknown = new RadioButton {
+                            ToolTip = "[Unknown]",
+                            GroupName = propertyItem.DisplayName,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            IsChecked = propertyItem.Value is null,
+                            Margin = new Thickness(0, 0, 18, 0),
+                            IsTabStop = false,                            
+                        };
+                        editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                        };
+                        radioButtonUnknown.Click += (sender, e) => {
+                            if (editorEnumCheckBox.SelectedValue != default)
+                                editorEnumCheckBox.SelectedValue = default;
+                            else
+                                radioButtonUnknown.IsChecked = true;
+                        };
+
+                        panel.Children.Add(radioButtonUnknown);
+                    }
+                    else if (optional != null) {
+                        ;
+                    }
+
+                    editor = editorEnumCheckBox;
+                }
+                else if (!multiplicity.Upper.HasValue && multiplicity.Upper > 1) {
+                    var editorEnumCheckBox = new CheckComboBox {
+                        Background = System.Windows.Media.Brushes.Transparent,
+                    };
+
+                    var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                    BindingOperations.SetBinding(editorEnumCheckBox, ComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                    if (supportsUnknown) {
+                        editorEnumCheckBox.Watermark = "[UNKNOWN]";
+
+                        var radioButtonUnknown = new RadioButton {
+                            ToolTip = "[Unknown]",
+                            GroupName = propertyItem.DisplayName,
+                            HorizontalAlignment = HorizontalAlignment.Right,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            IsChecked = propertyItem.Value is null,
+                            Margin = new Thickness(0, 0, 18, 0),
+                            IsTabStop = false,
+                        };
+                        editorEnumCheckBox.ItemSelectionChanged += (sender, e) => {
+                            radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                        };
+                        radioButtonUnknown.Click += (sender, e) => {
+                            if (editorEnumCheckBox.SelectedValue != default)
+                                editorEnumCheckBox.SelectedValue = default;
+                            else
+                                radioButtonUnknown.IsChecked = true;
+                        };
+
+                        panel.Children.Add(radioButtonUnknown);
+                    }
+
+                    editor = editorEnumCheckBox;
+                }
+
+                //var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
+                //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+                //BindingOperations.SetBinding(editor, PropertyGridEditorEnumCheckComboBox.SelectedValueProperty, bindingSelectedItemProperty);
+
+                //var specific = new EnumComboBoxEditor();
+
+                //var control = (Control)specific.ResolveEditor(propertyItem);
+                //control.BorderBrush= System.Windows.Media.Brushes.Transparent;
+                //control.BorderThickness = new Thickness(0);
+
+                //border.Child = control;
+                //return border;
             }
             else
                 throw new NotImplementedException();
@@ -306,7 +409,8 @@ namespace S100Framework.WPF.Editors
             Panel.SetZIndex(panel.Children[0], 10);
             Panel.SetZIndex(editor, 0);
 
-            return panel;
+            border.Child = panel;
+            return border;
         }
     }
 
@@ -341,7 +445,81 @@ namespace S100Framework.WPF.Editors
 
     public abstract class BindingLinkEditor : ITypeEditor
     {
+        public class Fruit
+        {
+            public string Name { get; set; }
+        }
+
+
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var border = new Border {
+                BorderBrush = System.Windows.Media.Brushes.Red,
+                BorderThickness = new Thickness(2),
+            };
+
+            var control = new ComboBox {
+                Name = $"_dropDownButton{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsDropDownOpen = false,
+                DisplayMemberPath = nameof(FeatureTypeId.Id),
+                BorderThickness = new System.Windows.Thickness(0),
+                BorderBrush = System.Windows.Media.Brushes.Transparent,
+            };
+
+            var viewModel = (featureBindingViewModel)propertyItem.Instance;
+
+            control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
+
+            Binding newBinding = new Binding(propertyItem.DisplayName) {
+                Source = propertyItem.Instance,
+                Mode = BindingMode.OneWay,
+            };
+            newBinding.Converter = new BrushValidatorConvertor();
+            border.SetBinding(Border.BorderBrushProperty, newBinding);
+
+            viewModel.PropertyChanged += (s, e) => {
+                if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals(nameof(featureBindingViewModel.role)))
+                    return;
+                control.IsEnabled = !string.IsNullOrEmpty(viewModel.role);
+            };
+
+            var featureId = new FeatureTypeId(viewModel.featureType!, viewModel.featureId!);
+            control.Items.Add(featureId);
+            control.SelectedItem = featureId;
+
+            control.DropDownOpened += (s, e) => {
+                var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
+
+                var parameter = new QueryFeatureTypesEventArgs(association.roleType, association.association, viewModel.role, association.featureTypes);
+
+                S100AttributeEditorControl.QueryFeaturesCommand.Execute(parameter, S100AttributeEditorControl.Singleton);
+
+                if (control.Items.Count > 1)
+                    control.Items.RemoveAt(1);
+
+                foreach (var item in parameter.items) {
+                    if (item.Code.Equals(featureId.Code) && item.Id.Equals(featureId.Id))
+                        continue;
+                    control.Items.Add(item);
+                }
+            };
+
+            control.DropDownClosed += (s, e) => {
+                var featureId = (FeatureTypeId)control.SelectedItem;
+
+                viewModel.featureId = featureId.Id;
+                viewModel.featureType = featureId.Code;
+
+            };
+
+            //panel.Child = control;
+
+            border.Child = control;
+            return border;
+        }
+
+#if null
+        public FrameworkElement ResolveEditor2(PropertyItem propertyItem) {
             var template =
                 @"<ControlTemplate TargetType=""xctk:DropDownButton"">
                         <ListBox>
@@ -355,16 +533,18 @@ namespace S100Framework.WPF.Editors
                 ";
             var control = new ComboBox {
                 Name = $"_dropDownButton{Guid.NewGuid():N}",
+                IsEditable = false,
+                IsDropDownOpen = false,
             };
             //control.Template = (ControlTemplate)System.Windows.Markup.XamlReader.Parse(template);
 
             var viewModel = propertyItem.Instance as FeatureAssociationViewModel;
-            viewModel!.PropertyChanged += (s, e) => {
-                if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals("role"))
-                    return;
+            //viewModel!.PropertyChanged += (s, e) => {
+            //    if (string.IsNullOrEmpty(e.PropertyName) && !e.PropertyName!.Equals("role"))
+            //        return;
 
-                control.Items.Clear();
-            };
+            //    control.Items.Clear();
+            //};
 
             control.DropDownOpened += (s, e) => {
                 var association = (viewModel as IFeatureBindings)!.featureBindings.SingleOrDefault(f => f.role == viewModel.role)!;
@@ -378,11 +558,15 @@ namespace S100Framework.WPF.Editors
                 Source = propertyItem.Instance,
                 Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay
             };
+            BindingOperations.SetBinding(control, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             control.ContextMenuOpening += (s, e) => {
                 System.Diagnostics.Debugger.Break();
             };
 
+            if (!string.IsNullOrEmpty(viewModel.featureId)) {
+                control.SelectedValue = viewModel.featureId;
+            }
 
 
             //Interaction.Triggers
@@ -407,7 +591,7 @@ namespace S100Framework.WPF.Editors
 
             return control;
         }
-
+#endif
         private void Control_ContextMenuOpening(object sender, ContextMenuEventArgs e) {
             throw new NotImplementedException();
         }

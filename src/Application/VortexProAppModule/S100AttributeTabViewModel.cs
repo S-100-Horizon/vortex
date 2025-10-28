@@ -25,7 +25,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
-using IO = System.IO;
 
 namespace VortexProAppModule
 {
@@ -85,8 +84,6 @@ namespace VortexProAppModule
         private string _selectedSchema = default;
 
         private object _selectedProperty = default;
-
-        private SelectedAssociationObjectViewModel _selectedAssociationProperty = default;
 
         private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
 
@@ -305,37 +302,37 @@ namespace VortexProAppModule
                     }, TaskCreationOptions.None);
                 },
 
-                SelectInformationAssociation = async (SelectAssociationEventArgs e) => {
-                    if (MapView.Active is null)
-                        return;
-                    await QueuedTask.Run(() => {
-                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
-                            if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.OrdinalIgnoreCase)) {
-                                    table.Select(new QueryFilter {
-                                        WhereClause = $"upper(name) = '{e.associationId}'"
-                                    }, SelectionCombinationMethod.Add);
-                                }
-                            }
-                        }
-                    }, TaskCreationOptions.None);
-                },
+                //SelectInformationAssociation = async (SelectAssociationEventArgs e) => {
+                //    if (MapView.Active is null)
+                //        return;
+                //    await QueuedTask.Run(() => {
+                //        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                //            if (layer is StandaloneTable table) {
+                //                if (table.GetTable().GetName().EndsWith("informationassociation", StringComparison.OrdinalIgnoreCase)) {
+                //                    table.Select(new QueryFilter {
+                //                        WhereClause = $"upper(name) = '{e.associationId}'"
+                //                    }, SelectionCombinationMethod.Add);
+                //                }
+                //            }
+                //        }
+                //    }, TaskCreationOptions.None);
+                //},
 
-                SelectFeatureAssociation = async (SelectAssociationEventArgs e) => {
-                    if (MapView.Active is null)
-                        return;
-                    await QueuedTask.Run(() => {
-                        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
-                            if (layer is StandaloneTable table) {
-                                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.OrdinalIgnoreCase)) {
-                                    table.Select(new QueryFilter {
-                                        WhereClause = $"upper(name) = '{e.associationId}'"
-                                    }, SelectionCombinationMethod.Add);
-                                }
-                            }
-                        }
-                    }, TaskCreationOptions.None);
-                },
+                //SelectFeatureAssociation = async (SelectAssociationEventArgs e) => {
+                //    if (MapView.Active is null)
+                //        return;
+                //    await QueuedTask.Run(() => {
+                //        foreach (var layer in MapView.Active.Map.GetStandaloneTablesAsFlattenedList()) {
+                //            if (layer is StandaloneTable table) {
+                //                if (table.GetTable().GetName().EndsWith("featureassociation", StringComparison.OrdinalIgnoreCase)) {
+                //                    table.Select(new QueryFilter {
+                //                        WhereClause = $"upper(name) = '{e.associationId}'"
+                //                    }, SelectionCombinationMethod.Add);
+                //                }
+                //            }
+                //        }
+                //    }, TaskCreationOptions.None);
+                //},
             };
         }
 
@@ -514,6 +511,8 @@ namespace VortexProAppModule
                         return default;
                     }
 
+                    var featureCatalogue = _module.GetFeatureCatalogue(schema);
+
                     var code = Convert.ToString(inspector["code"]);
 
                     var name = $"{inspector.Crc32()}";
@@ -539,8 +538,8 @@ namespace VortexProAppModule
                     methodInfo.Invoke(viewmodel, new object[1] { instance });
 
                     SelectedObjectViewModel selectedObjectViewModel = null;
-                    
-                    if(viewmodel is InformationViewModel informationViewModel) { 
+
+                    if (viewmodel is InformationViewModel informationViewModel) {
                         if (!inspector.IsNull("informationbindings")) {
                             var json = Convert.ToString(inspector["informationbindings"]);
                             var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
@@ -558,30 +557,39 @@ namespace VortexProAppModule
                             ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
                             null => Primitives.noGeometry,
                             _ => throw new InvalidOperationException()
-                        };                        
+                        };
 
                         //  informationBinding
                         if (!inspector.IsNull("informationbindings")) {
                             var json = Convert.ToString(inspector["informationbindings"]);
-                            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
-                            parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
+                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                                var bindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                                var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                                parseInformationBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                            }
                         }
 
                         //  featureBinding                        
                         if (!inspector.IsNull("featurebindings")) {
                             var json = Convert.ToString(inspector["featurebindings"]);
-                            var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
-                            parseFeatureBindingsInfo.Invoke(viewmodel, new object[1] { json });
+                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                                var bindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                                var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
+                                parseFeatureBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                            }
                         }
 
                         this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
                         selectedObjectViewModel = this.SelectedFeatureProperty;
-                    }                    
+                    }
 
+                    //  Hooking up changed events
                     if (selectedObjectViewModel != null) {
                         selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
                         selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
                         selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
+                        selectedObjectViewModel.InformationBindingCollectionChanged += this.OnInformationBindingCollectionChanged;
+                        selectedObjectViewModel.FeatureBindingCollectionChanged += this.OnFeatureBindingCollectionChanged;
                     }
                     return viewmodel;
                 }), TaskCreationOptions.None);
@@ -639,7 +647,7 @@ namespace VortexProAppModule
         }
 
         private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
-            await QueuedTask.Run(async () => {
+            await QueuedTask.Run(() => {
                 var updated = false;
 
                 if (sender is ViewModelBase viewModel) {
@@ -654,33 +662,45 @@ namespace VortexProAppModule
                         updated |= true;
                     }
                 }
-                
-                //  informationBindings
-                {
-                    //var informationBindings = Inspector.IsNull("informationbindings") ? new List<informationBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<informationBinding>>(Convert.ToString(Inspector["informationbindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(informationBindings);
-                    //if (Inspector.IsNull("informationbindings") && informationBindings.Any()) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["informationbindings"]), true) != 0) {
-                    //    Inspector["informationbindings"] = json;
-                    //    updated |= true;
-                    //}
+            }, TaskCreationOptions.None);
+        }
+
+        private async void OnInformationBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(() => {
+                var updated = false;
+
+                if (sender is FeatureViewModel viewModel) {
+                    var informationBindings = viewModel.informationBindings;
+
+                    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                    if (Inspector.IsNull("informationBindings") && informationBindings.Any()) {
+                        Inspector["informationBindings"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
+                        Inspector["informationBindings"] = json;
+                        updated |= true;
+                    }
                 }
-                
-                //  featureBindings
-                {
-                    //var featureBindings = Inspector.IsNull("featurebindings") ? new List<featureBinding>() : System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(Inspector["featurebindings"]));
-                    //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings);
-                    //if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
-                    //else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
-                    //    Inspector["featurebindings"] = json;
-                    //    updated |= true;
-                    //}
+            }, TaskCreationOptions.None);
+        }
+
+        private async void OnFeatureBindingCollectionChanged(object sender, PropertyChangedEventArgs e) {
+            await QueuedTask.Run(() => {
+                var updated = false;
+
+                if (sender is FeatureViewModel viewModel) {
+                    var featureBindings = viewModel.featureBindings;
+
+                    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                        Inspector["featurebindings"] = json;
+                        updated |= true;
+                    }
                 }
             }, TaskCreationOptions.None);
         }
@@ -775,11 +795,6 @@ namespace VortexProAppModule
         public Boolean IsEditingEnabled {
             get => _isEditingEnabled;
             set => SetProperty(ref _isEditingEnabled, value);
-        }
-
-        public SelectedAssociationObjectViewModel SelectedAssociationProperty {
-            get => _selectedAssociationProperty;
-            set => SetProperty(ref _selectedAssociationProperty, value);
         }
 
         public SelectedInformationTypeObjectViewModel SelectedInformationProperty {

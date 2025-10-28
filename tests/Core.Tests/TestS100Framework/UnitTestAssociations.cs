@@ -24,10 +24,14 @@ namespace TestS100Framework
     {
         public readonly ITestOutputHelper _output;
 
+        private readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions {
+            TypeInfoResolver = Summary.SharedBindingResolver(),
+        };
+
         public UnitTestAssociations(ITestOutputHelper output) {
             this._output = output;
 
-            ArcGIS.Core.Hosting.Host.Initialize();
+            ArcGIS.Core.Hosting.Host.Initialize();            
         }
 
 
@@ -58,7 +62,7 @@ namespace TestS100Framework
 
             object[] array = [association1, association2];
 
-            var json = System.Text.Json.JsonSerializer.Serialize(array);
+            var json = System.Text.Json.JsonSerializer.Serialize(array, jsonSerializerOptions);
 
             using var document = JsonDocument.Parse(json);
 
@@ -70,7 +74,7 @@ namespace TestS100Framework
 
             var bridge = new BridgeViewModel {
             }.Load(new Bridge {
-            }).ParseFeatureBindings(json);
+            }).ParseFeatureBindings(System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, jsonSerializerOptions)!);
 
             System.Diagnostics.Debugger.Break();
         }
