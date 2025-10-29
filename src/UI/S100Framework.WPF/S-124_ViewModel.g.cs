@@ -1216,6 +1216,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ReferencesViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -1402,6 +1403,7 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPreambleViewModel.navwarnReferencesViewModel> navwarnReferences { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. navwarnReferences.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -1536,7 +1538,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public SpatialQualityViewModel Load(SpatialQuality instance) {
@@ -1660,6 +1663,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NavwarnPartViewModel.navwarnPreambleContentViewModel> navwarnPreambleContents { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. navwarnPreambleContents.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -1735,6 +1739,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnPartViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -1834,7 +1839,8 @@ public override informationBinding[] informationBindings => [];
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class NavwarnAreaAffectedViewModel : FeatureViewModel<NavwarnAreaAffected> {
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		#region FeatureBindings
@@ -1872,6 +1878,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<NavwarnAreaAffectedViewModel.areaAffectedViewModel> areaAffecteds { get; set; } = new();
+		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. areaAffecteds.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -1997,7 +2004,8 @@ public override informationBinding[] informationBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		#region FeatureBindings
@@ -2035,6 +2043,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("FeatureBindings")]
 		public ObservableCollection<TextPlacementViewModel.TextAssociationViewModel> TextAssociations { get; set; } = new();
+		[Browsable(false)]
 
 		public override featureBinding[] featureBindings => [.. TextAssociations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 

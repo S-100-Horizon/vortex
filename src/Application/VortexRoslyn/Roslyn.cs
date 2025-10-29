@@ -2198,6 +2198,7 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
+                builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
@@ -2205,7 +2206,7 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("public override informationBinding[] informationBindings => [];");
+                    builder.AppendLine("\t\tpublic override informationBinding[] informationBindings => [];");
                     builder.AppendLine();
                 }
 
@@ -2316,6 +2317,7 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
+                builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
@@ -2323,7 +2325,7 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("public override featureBinding[] featureBindings => [];");
+                    builder.AppendLine("\t\tpublic override featureBinding[] featureBindings => [];");
                     builder.AppendLine();
                 }
 

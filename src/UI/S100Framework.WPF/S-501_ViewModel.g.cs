@@ -2880,7 +2880,8 @@ namespace S100Framework.WPF.ViewModel.S501 {
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public ReferenceToAPublicationViewModel Load(ReferenceToAPublication instance) {
@@ -3123,9 +3124,11 @@ public override informationBinding[] informationBindings => [];
 		[Browsable(false)]
 		public categoryOfInstallationBuoy[] categoryOfInstallationBuoyList => [(categoryOfInstallationBuoy)1,(categoryOfInstallationBuoy)2];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public InstallationBuoyViewModel Load(InstallationBuoy instance) {
@@ -3332,9 +3335,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DepthAreaViewModel Load(DepthArea instance) {
@@ -3509,9 +3514,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public trafficFlow[] trafficFlowList => [(trafficFlow)1,(trafficFlow)2,(trafficFlow)3,(trafficFlow)4];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RadioCallingInPointViewModel Load(RadioCallingInPoint instance) {
@@ -3738,9 +3745,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)501];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public PatrolAreaViewModel Load(PatrolArea instance) {
@@ -3926,9 +3935,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public categoryOfCheckpoint[] categoryOfCheckpointList => [(categoryOfCheckpoint)1,(categoryOfCheckpoint)501];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CheckpointViewModel Load(Checkpoint instance) {
@@ -4188,9 +4199,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<String> species  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MarineManagementAreaViewModel Load(MarineManagementArea instance) {
@@ -4415,9 +4428,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DepthContourViewModel Load(DepthContour instance) {
@@ -4520,9 +4535,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public EnvironmentallySensitiveSeaAreaViewModel Load(EnvironmentallySensitiveSeaArea instance) {
@@ -4704,9 +4721,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RoadViewModel Load(Road instance) {
@@ -4854,9 +4873,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RiverViewModel Load(River instance) {
@@ -5212,9 +5233,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MilitaryPracticeAreaViewModel Load(MilitaryPracticeArea instance) {
@@ -5420,9 +5443,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DiscolouredWaterViewModel Load(DiscolouredWater instance) {
@@ -5712,9 +5737,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CardinalBuoyViewModel Load(CardinalBuoy instance) {
@@ -6079,9 +6106,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SafeWaterBuoyViewModel Load(SafeWaterBuoy instance) {
@@ -6385,9 +6414,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RadioStationViewModel Load(RadioStation instance) {
@@ -6612,9 +6643,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MilitaryExerciseAirspaceViewModel Load(MilitaryExerciseAirspace instance) {
@@ -6808,9 +6841,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ContiguousZoneViewModel Load(ContiguousZone instance) {
@@ -7012,9 +7047,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public NormalBaselineViewModel Load(NormalBaseline instance) {
@@ -7195,9 +7232,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public categoryOfCable[] categoryOfCableList => [(categoryOfCable)1,(categoryOfCable)7,(categoryOfCable)10];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CableAreaViewModel Load(CableArea instance) {
@@ -7414,9 +7453,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ContinentalShelfAreaViewModel Load(ContinentalShelfArea instance) {
@@ -7620,9 +7661,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)502,(status)504,(status)520];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public InternalWatersViewModel Load(InternalWaters instance) {
@@ -7791,9 +7834,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public AdministrationAreaViewModel Load(AdministrationArea instance) {
@@ -7974,9 +8019,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)3,(status)4,(status)6,(status)7,(status)8,(status)12,(status)14,(status)18];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public BollardViewModel Load(Bollard instance) {
@@ -8294,9 +8341,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public natureOfConstruction[] natureOfConstructionList => [(natureOfConstruction)1,(natureOfConstruction)2,(natureOfConstruction)6,(natureOfConstruction)7];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DolphinViewModel Load(Dolphin instance) {
@@ -8503,9 +8552,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)4,(status)7];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RadarRangeViewModel Load(RadarRange instance) {
@@ -8890,9 +8941,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public colourPattern[] colourPatternList => [(colourPattern)1,(colourPattern)2,(colourPattern)3,(colourPattern)4,(colourPattern)5,(colourPattern)6];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public IsolatedDangerBeaconViewModel Load(IsolatedDangerBeacon instance) {
@@ -9241,9 +9294,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)5,(status)7,(status)8,(status)18];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public IsolatedDangerBuoyViewModel Load(IsolatedDangerBuoy instance) {
@@ -9503,9 +9558,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SubmarineTransitLaneViewModel Load(SubmarineTransitLane instance) {
@@ -9663,9 +9720,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MaritimeSafetyInformationAreaViewModel Load(MaritimeSafetyInformationArea instance) {
@@ -9887,9 +9946,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public catagoryOfAirspaceRestriction[] catagoryOfAirspaceRestrictionList => [(catagoryOfAirspaceRestriction)501,(catagoryOfAirspaceRestriction)502,(catagoryOfAirspaceRestriction)503];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public AirspaceRestrictionViewModel Load(AirspaceRestriction instance) {
@@ -10087,9 +10148,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SoundingViewModel Load(Sounding instance) {
@@ -10275,9 +10338,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TrafficSeparationSchemeBoundaryViewModel Load(TrafficSeparationSchemeBoundary instance) {
@@ -10422,9 +10487,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DumpingGroundViewModel Load(DumpingGround instance) {
@@ -10744,9 +10811,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public AirportAirfieldViewModel Load(AirportAirfield instance) {
@@ -10970,9 +11039,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public FoulGroundViewModel Load(FoulGround instance) {
@@ -11350,9 +11421,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)3,(colour)4,(colour)5,(colour)6,(colour)9,(colour)10,(colour)11];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LightAirObstructionViewModel Load(LightAirObstruction instance) {
@@ -11698,9 +11771,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MooringBuoyViewModel Load(MooringBuoy instance) {
@@ -12112,9 +12187,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7,(qualityOfVerticalMeasurement)8,(qualityOfVerticalMeasurement)9];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public UnderwaterAwashRockViewModel Load(UnderwaterAwashRock instance) {
@@ -12459,9 +12536,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CableOverheadViewModel Load(CableOverhead instance) {
@@ -12746,9 +12825,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ControlledAirspaceViewModel Load(ControlledAirspace instance) {
@@ -13463,9 +13544,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ObstructionViewModel Load(Obstruction instance) {
@@ -13813,9 +13896,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public FishingGroundViewModel Load(FishingGround instance) {
@@ -14046,9 +14131,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public FishingFacilityViewModel Load(FishingFacility instance) {
@@ -14262,9 +14349,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public NavigationSystemViewModel Load(NavigationSystem instance) {
@@ -14447,9 +14536,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TrafficSeparationSchemeCrossingViewModel Load(TrafficSeparationSchemeCrossing instance) {
@@ -14663,9 +14754,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TrafficSeparationSchemeLanePartViewModel Load(TrafficSeparationSchemeLanePart instance) {
@@ -14890,9 +14983,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TerritorialSeaAreaViewModel Load(TerritorialSeaArea instance) {
@@ -15309,9 +15404,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public colour[] colourList => [(colour)1,(colour)2,(colour)3,(colour)4,(colour)5,(colour)6,(colour)7,(colour)8,(colour)9,(colour)10,(colour)11,(colour)12,(colour)13];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LateralBeaconViewModel Load(LateralBeacon instance) {
@@ -15543,9 +15640,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<String> communicationsChannel  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CoastGuardStationViewModel Load(CoastGuardStation instance) {
@@ -15735,9 +15834,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SeparationZoneOrLineViewModel Load(SeparationZoneOrLine instance) {
@@ -15906,9 +16007,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public BottomFeatureViewModel Load(BottomFeature instance) {
@@ -16095,9 +16198,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ArchipelagicBaselineViewModel Load(ArchipelagicBaseline instance) {
@@ -16231,9 +16336,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SmallBottomObjectViewModel Load(SmallBottomObject instance) {
@@ -16395,9 +16502,11 @@ public override featureBinding[] featureBindings => [];
 		[Multiplicity(1)]
 		public ObservableCollection<String> nationality  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ExclusiveEconomicZoneViewModel Load(ExclusiveEconomicZone instance) {
@@ -16612,9 +16721,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RadarStationViewModel Load(RadarStation instance) {
@@ -16764,9 +16875,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public divingActivity[] divingActivityList => [(divingActivity)501,(divingActivity)502,(divingActivity)503];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DivingLocationViewModel Load(DivingLocation instance) {
@@ -16936,9 +17049,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)7,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)14,(restriction)15,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)26,(restriction)27,(restriction)39,(restriction)42];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RestrictedAreaViewModel Load(RestrictedArea instance) {
@@ -17234,9 +17349,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CableSubmarineViewModel Load(CableSubmarine instance) {
@@ -17882,9 +17999,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public WreckViewModel Load(Wreck instance) {
@@ -18196,9 +18315,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public QRouteViewModel Load(QRoute instance) {
@@ -18370,9 +18491,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CompletenessOfProductSpecificationViewModel Load(CompletenessOfProductSpecification instance) {
@@ -18519,9 +18642,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RescueStationViewModel Load(RescueStation instance) {
@@ -18915,9 +19040,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CardinalBeaconViewModel Load(CardinalBeacon instance) {
@@ -19257,9 +19384,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LightVesselViewModel Load(LightVessel instance) {
@@ -19488,9 +19617,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)5,(status)6,(status)7,(status)501,(status)502,(status)504,(status)519,(status)521];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public FisheryZoneViewModel Load(FisheryZone instance) {
@@ -19704,9 +19835,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DredgedAreaViewModel Load(DredgedArea instance) {
@@ -19938,9 +20071,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public FerryRouteViewModel Load(FerryRoute instance) {
@@ -20335,9 +20470,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ShorelineConstructionViewModel Load(ShorelineConstruction instance) {
@@ -20586,9 +20723,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CautionAreaViewModel Load(CautionArea instance) {
@@ -20831,9 +20970,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public qualityOfVerticalMeasurement[] qualityOfVerticalMeasurementList => [(qualityOfVerticalMeasurement)1,(qualityOfVerticalMeasurement)2,(qualityOfVerticalMeasurement)3,(qualityOfVerticalMeasurement)4,(qualityOfVerticalMeasurement)6,(qualityOfVerticalMeasurement)7];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DeepWaterRoutePartViewModel Load(DeepWaterRoutePart instance) {
@@ -21065,9 +21206,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)5];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CurrentNonGravitationalViewModel Load(CurrentNonGravitational instance) {
@@ -21259,9 +21402,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
@@ -21407,9 +21552,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SeabedAreaViewModel Load(SeabedArea instance) {
@@ -21691,9 +21838,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SpecialPurposeGeneralBuoyViewModel Load(SpecialPurposeGeneralBuoy instance) {
@@ -22097,9 +22246,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LightSectoredViewModel Load(LightSectored instance) {
@@ -22262,9 +22413,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public IceLineViewModel Load(IceLine instance) {
@@ -22409,9 +22562,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public categoryOfCargo[] categoryOfCargoList => [(categoryOfCargo)1,(categoryOfCargo)2,(categoryOfCargo)3,(categoryOfCargo)4,(categoryOfCargo)5,(categoryOfCargo)6,(categoryOfCargo)7,(categoryOfCargo)8,(categoryOfCargo)9,(categoryOfCargo)10,(categoryOfCargo)11,(categoryOfCargo)12,(categoryOfCargo)13,(categoryOfCargo)14,(categoryOfCargo)15];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public AnchorageAreaViewModel Load(AnchorageArea instance) {
@@ -22746,9 +22901,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LateralBuoyViewModel Load(LateralBuoy instance) {
@@ -22992,9 +23149,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public restriction[] restrictionList => [(restriction)1,(restriction)2,(restriction)3,(restriction)4,(restriction)5,(restriction)6,(restriction)8,(restriction)9,(restriction)10,(restriction)11,(restriction)12,(restriction)13,(restriction)16,(restriction)17,(restriction)18,(restriction)19,(restriction)20,(restriction)21,(restriction)22,(restriction)23,(restriction)24,(restriction)25,(restriction)27];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TrafficSeparationSchemeRoundaboutViewModel Load(TrafficSeparationSchemeRoundabout instance) {
@@ -23260,9 +23419,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public techniqueOfVerticalMeasurement[] techniqueOfVerticalMeasurementList => [(techniqueOfVerticalMeasurement)1,(techniqueOfVerticalMeasurement)3,(techniqueOfVerticalMeasurement)5,(techniqueOfVerticalMeasurement)8,(techniqueOfVerticalMeasurement)9,(techniqueOfVerticalMeasurement)13,(techniqueOfVerticalMeasurement)15,(techniqueOfVerticalMeasurement)16,(techniqueOfVerticalMeasurement)17,(techniqueOfVerticalMeasurement)18];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DeepWaterRouteCentrelineViewModel Load(DeepWaterRouteCentreline instance) {
@@ -23585,9 +23746,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LightFloatViewModel Load(LightFloat instance) {
@@ -24022,9 +24185,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<featureNameViewModel> featureName  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LightAllAroundViewModel Load(LightAllAround instance) {
@@ -24331,9 +24496,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public CoastlineViewModel Load(Coastline instance) {
@@ -24534,9 +24701,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public qualityOfHorizontalMeasurement[] qualityOfHorizontalMeasurementList => [(qualityOfHorizontalMeasurement)4];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SeaAreaNamedWaterAreaViewModel Load(SeaAreaNamedWaterArea instance) {
@@ -24622,9 +24791,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DropZoneViewModel Load(DropZone instance) {
@@ -24935,9 +25106,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public ConveyorViewModel Load(Conveyor instance) {
@@ -25189,9 +25362,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public LineOfDelimitationViewModel Load(LineOfDelimitation instance) {
@@ -25384,9 +25559,11 @@ public override featureBinding[] featureBindings => [];
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public StraightTerritorialSeaBaselineViewModel Load(StraightTerritorialSeaBaseline instance) {
@@ -25739,9 +25916,11 @@ public override featureBinding[] featureBindings => [];
 		[Browsable(false)]
 		public visualProminence[] visualProminenceList => [(visualProminence)1,(visualProminence)2,(visualProminence)3];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SafeWaterBeaconViewModel Load(SafeWaterBeacon instance) {
@@ -26184,9 +26363,11 @@ public override featureBinding[] featureBindings => [];
 		[Optional]
 		public ObservableCollection<periodicDateRangeViewModel> periodicDateRange  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public SpecialPurposeGeneralBeaconViewModel Load(SpecialPurposeGeneralBeacon instance) {
