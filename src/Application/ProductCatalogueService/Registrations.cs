@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ICSharpCode.SharpZipLib.Zip;
+using Serilog;
 
 namespace ProductCatalogueService
 {
@@ -7,8 +8,8 @@ namespace ProductCatalogueService
     {
         public static async Task AddS100(this IServiceCollection services) {
             // Setup ArcGIS and ProductManager
-            ArcGIS.Core.Hosting.Host.Initialize();
-
+            ArcGIS.Core.Hosting.Host.Initialize(ArcGIS.Core.Hosting.Host.LicenseProductCode.ArcGISPro);
+            Log.Logger.Information("ArcGIS Core Host Initialized");
             // Use the attached .zip gdb when developing
             if (System.Diagnostics.Debugger.IsAttached) {
                 // If no .gdb exist in bin, extract the .zip from project root
