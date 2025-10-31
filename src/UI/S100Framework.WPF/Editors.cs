@@ -310,7 +310,7 @@ namespace S100Framework.WPF.Editors
             }
             else if (propertyItem.PropertyType.IsEnum || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0].IsEnum)) {
                 var editorEnumCheckBox = new WatermarkComboBox {
-                    Background = System.Windows.Media.Brushes.Transparent,
+                    //Background = System.Windows.Media.Brushes.Transparent,
                 };
 
                 var bindingItemsSourceProperty = new Binding($"{propertyItem.DisplayName}List") { Source = propertyItem.Instance, Mode = BindingMode.OneWay };
@@ -346,26 +346,49 @@ namespace S100Framework.WPF.Editors
                 else if (optional) {
                     editorEnumCheckBox.Watermark = "[Null]";
 
-                    var radioButtonNull = new RadioButton {
-                        ToolTip = "[Nullalbe]",
-                        GroupName = propertyItem.DisplayName,
+                    var crossButton = new CrossButton {
+                        ToolTip = "[Nullalbe]",                        
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        IsChecked = propertyItem.Value is null,
                         Margin = new Thickness(0, 0, 18, 0),
                         IsTabStop = false,
-                    };
-                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
-                        radioButtonNull.IsChecked = editorEnumCheckBox.SelectedValue == default;
-                    };
-                    radioButtonNull.Click += (sender, e) => {
-                        if (editorEnumCheckBox.SelectedValue != default)
-                            editorEnumCheckBox.SelectedValue = default;
-                        else
-                            radioButtonNull.IsChecked = true;
+                        Width = 14,
+                        MaxWidth = 14,
+                        Height = 14,
+                        MaxHeight = 14,
                     };
 
-                    panel.Children.Add(radioButtonNull);
+                    editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                        //crossButton.IsEnabled = editorEnumCheckBox.SelectedValue != default;
+                    };
+                    crossButton.Click += (sender, e) => {
+                        if (editorEnumCheckBox.SelectedItem != null)
+                            editorEnumCheckBox.SelectedItem = null;
+                        editorEnumCheckBox.InvalidateVisual();
+                    };
+
+                    panel.Children.Add(crossButton);
+
+                    //var radioButtonNull = new RadioButton {
+                    //    ToolTip = "[Nullalbe]",
+                    //    GroupName = propertyItem.DisplayName,
+                    //    HorizontalAlignment = HorizontalAlignment.Right,
+                    //    VerticalAlignment = VerticalAlignment.Center,
+                    //    IsChecked = propertyItem.Value is null,
+                    //    Margin = new Thickness(0, 0, 18, 0),
+                    //    IsTabStop = false,
+                    //};
+                    //editorEnumCheckBox.SelectionChanged += (sender, e) => {
+                    //    radioButtonNull.IsChecked = editorEnumCheckBox.SelectedValue == default;
+                    //};
+                    //radioButtonNull.Click += (sender, e) => {
+                    //    if (editorEnumCheckBox.SelectedValue != default)
+                    //        editorEnumCheckBox.SelectedValue = default;
+                    //    else
+                    //        radioButtonNull.IsChecked = true;
+                    //};
+
+                    //panel.Children.Add(radioButtonNull);
                 }
 
 
