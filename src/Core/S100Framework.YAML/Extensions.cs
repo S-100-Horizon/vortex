@@ -12,7 +12,7 @@
             // Curves
             CurveFeature? curveFeature = default;
             try {
-                Log.Information("Adding curve #{count}", theMatrix.Curves.Count());
+                Log.Verbose("Adding curve #{count}", theMatrix.Curves.Count());
 
                 var concurrent = new ConcurrentBag<Curve>();
 
@@ -38,7 +38,7 @@
             //  Composite Curves
             CompositeCurveFeature? compositeCurveFeature = default;
             try {
-                Log.Information("Adding compositecurve #{count}", theMatrix.CompositeCurves.Count());
+                Log.Verbose("Adding compositecurve #{count}", theMatrix.CompositeCurves.Count());
 
                 foreach (var c in theMatrix.CompositeCurves) {
                     compositeCurveFeature = c;
@@ -64,7 +64,7 @@
             //  Surface
             SurfaceFeature? surfaceFeature = default;
             try {
-                Log.Information("Adding surface #{count}", theMatrix.Surfaces.Count());
+                Log.Verbose("Adding surface #{count}", theMatrix.Surfaces.Count());
 
                 foreach (var s in theMatrix.Surfaces) {
                     surfaceFeature = s;
