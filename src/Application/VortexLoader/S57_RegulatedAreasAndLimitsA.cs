@@ -57,7 +57,11 @@ namespace S100Framework.Applications
                                 throw new NotSupportedException("Anchorage area category 8 not implemented. Create mooring area.");
                             }
 
-                            if (current.CATACH != default) {
+                            if (current.CATACH == "4") {
+                                //  Attribute CATACH = 4 (explosives anchorage) will convert to new S-101 attribute category of cargo value 7 (dangerous or hazardous).
+                                instance.categoryOfCargo = [categoryOfCargo.DangerousOrHazardous];
+                            }
+                            else if (current.CATACH != default) {
                                 instance.categoryOfAnchorage = EnumHelper.GetEnumValues<AnchorageArea, categoryOfAnchorage>(current.CATACH);
                             }
 
