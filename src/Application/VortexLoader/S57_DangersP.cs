@@ -57,8 +57,44 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // CTNARE
-                            throw new NotImplementedException($"No CTNARE in DK or GL. {tableName}");
+                            var instance = new CautionArea();
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = EnumHelper.GetEnumValue<CautionArea, condition>(current.CONDTN);
+                            }
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRangeDAT);
+                            if (dateRangeDAT != default) {
+                                instance.fixedDateRange = dateRangeDAT;
+                            }
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var dateRangePER);
+                            if (dateRangePER != default) {
+                                instance.periodicDateRange = dateRangePER;
+                            }
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var nameN = featureN.Crc32();
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, nameN);
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
+                        break;
                     case 10: { // FSHFAC Fishing facilities
                             throw new NotImplementedException($"No FSHFAC in DK or GL. {tableName}");
                         }
