@@ -299,7 +299,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != null) {
-                                instance.restriction = [EnumHelper.GetEnumValue<SeaplaneLandingArea, restriction>(current.RESTRN)!.Value];
+                                instance.restriction = EnumHelper.GetEnumValues<SeaplaneLandingArea, restriction>(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
