@@ -139,10 +139,24 @@ namespace S100Framework.WPF.Editors
                 BorderThickness = new Thickness(1),
             };
 
-            var panel = new Grid {
-                HorizontalAlignment = HorizontalAlignment.Stretch,
+            var grid = new Grid { 
+                //HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Center,
             };
+            grid.ColumnDefinitions.Add(new ColumnDefinition {
+                Width = new GridLength(1, GridUnitType.Star),
+            });
+            grid.ColumnDefinitions.Add(new ColumnDefinition {
+                Width = new GridLength(18),
+            });
+
+
+
+
+            //var panel = new Grid {
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    VerticalAlignment = VerticalAlignment.Center,
+            //};
 
             if (supportsUnknown) {
                 Binding newBinding = new Binding(propertyItem.DisplayName) {
@@ -191,8 +205,8 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                     };
                     editorTextBox.TextChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editorTextBox.Text);
@@ -204,7 +218,8 @@ namespace S100Framework.WPF.Editors
                             radioButtonUnknown.IsChecked = true;
                     };
 
-                    panel.Children.Add(radioButtonUnknown);
+                    Grid.SetColumn(radioButtonUnknown, 1);                    
+                    grid.Children.Add(radioButtonUnknown);
                 }
                 else if (optional) {
                     editorTextBox.Watermark = "[Null]";
@@ -213,8 +228,8 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -229,7 +244,8 @@ namespace S100Framework.WPF.Editors
                             editorTextBox.Text = null;
                     };
 
-                    panel.Children.Add(crossButton);
+                    Grid.SetColumn(crossButton, 1);
+                    grid.Children.Add(crossButton);
                 }
                 editor = editorTextBox;
 
@@ -258,8 +274,8 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                     };
 
                     editorDecimalUpDown.ValueChanged += (sender, e) => {
@@ -272,7 +288,8 @@ namespace S100Framework.WPF.Editors
                             radioButtonUnknown.IsChecked = true;
                     };
 
-                    panel.Children.Add(radioButtonUnknown);
+                    Grid.SetColumn(radioButtonUnknown, 1);
+                    grid.Children.Add(radioButtonUnknown);
                 }
                 else if (optional) {
                     //editorDecimalUpDown.Watermark = "[Null]";
@@ -281,8 +298,8 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -297,7 +314,9 @@ namespace S100Framework.WPF.Editors
                             editorDecimalUpDown.Value = null;
                     };
 
-                    panel.Children.Add(crossButton);
+                    Grid.SetColumn(crossButton, 1);
+                    grid.Children.Add(crossButton);
+
                 }
                 editor = editorDecimalUpDown;
 
@@ -326,8 +345,8 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                     };
                     editorIntegerUpDown.ValueChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = !editorIntegerUpDown.Value.HasValue;
@@ -339,7 +358,8 @@ namespace S100Framework.WPF.Editors
                             radioButtonUnknown.IsChecked = true;
                     };
 
-                    panel.Children.Add(radioButtonUnknown);
+                    Grid.SetColumn(radioButtonUnknown, 1);
+                    grid.Children.Add(radioButtonUnknown);
                 }
                 else if (optional) {
                     //editorIntegerUpDown.Watermark = "[Null]";
@@ -348,8 +368,8 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -364,7 +384,8 @@ namespace S100Framework.WPF.Editors
                             editorIntegerUpDown.Value = null;
                     };
 
-                    panel.Children.Add(crossButton);
+                    Grid.SetColumn(crossButton, 1);
+                    grid.Children.Add(crossButton);
                 }
                 editor = editorIntegerUpDown;
 
@@ -400,8 +421,8 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                     };
                     editorEnumCheckBox.SelectionChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
@@ -413,7 +434,8 @@ namespace S100Framework.WPF.Editors
                             radioButtonUnknown.IsChecked = true;
                     };
 
-                    panel.Children.Add(radioButtonUnknown);
+                    Grid.SetColumn(radioButtonUnknown, 1);
+                    grid.Children.Add(radioButtonUnknown);
                 }
                 else if (optional) {
                     editorEnumCheckBox.Watermark = "[Null]";
@@ -422,8 +444,8 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",                        
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = false,
+                        //Margin = new Thickness(0, 0, 18, 0),
+                        IsTabStop = true,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -438,7 +460,8 @@ namespace S100Framework.WPF.Editors
                             editorEnumCheckBox.SelectedItem = null;
                     };
 
-                    panel.Children.Add(crossButton);
+                    Grid.SetColumn(crossButton, 1);
+                    grid.Children.Add(crossButton);
                 }
 
 
@@ -501,12 +524,13 @@ namespace S100Framework.WPF.Editors
             else
                 throw new NotImplementedException();
 
-            panel.Children.Add(editor);
+            Grid.SetColumn(editor, 0);
+            grid.Children.Add(editor);
 
-            Panel.SetZIndex(panel.Children[0], 10);
-            Panel.SetZIndex(editor, 0);
+            //Panel.SetZIndex(panel.Children[0], 10);
+            //Panel.SetZIndex(editor, 0);
 
-            border.Child = panel;
+            border.Child = grid;
             return border;
         }
     }

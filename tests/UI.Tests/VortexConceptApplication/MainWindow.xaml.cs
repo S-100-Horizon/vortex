@@ -70,6 +70,10 @@ namespace VortexConceptApplication
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+
+            var mygrid = this.MyGrid;
+
+
             var editorTemplateDefinition = new EditorTemplateDefinition() {
             };
             //var propertyDefinition = new PropertyDefinition();
