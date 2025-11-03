@@ -13,6 +13,9 @@ namespace S100Framework.Applications
             _informationBindingList = informationBinding;
         }
         internal static List<informationBinding> GetInformationBindings(this FeatureNode featureNode) {
+            if (_informationBindingList.Count == 0)
+                return null!;
+            
             return _informationBindingList;
         }
 

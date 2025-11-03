@@ -207,7 +207,7 @@ namespace S100Framework.Applications
                                     bufferPointset["ps"] = ps101;
                                     bufferPointset["code"] = instance.GetType().Name;
                                     bufferPointset["edition"] = ImporterNIS.s101version;
-                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                    bufferPointset["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
 
                                     var oid = insertCursor.Insert(bufferPointset);
 
