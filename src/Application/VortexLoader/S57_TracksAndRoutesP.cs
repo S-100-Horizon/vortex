@@ -92,7 +92,9 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.Crc32();
 
-                            // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
@@ -156,12 +158,13 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.Crc32();
 
-                            // TODO: Create relations
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-
                         }
                         break;
                     default:
