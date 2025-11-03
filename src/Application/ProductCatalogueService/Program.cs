@@ -11,17 +11,22 @@ namespace ProductCatalogueService
 {
     public class Program
     {
-        private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] [{SourceContext}] {Message:lj} {NewLine}{Exception}";
+        private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 
             // logging 
             builder.Host.UseSerilog((context, loggerConfiguration) => {
-                loggerConfiguration.MinimumLevel.Verbose()
+                loggerConfiguration.MinimumLevel.Information()
                      .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
                      .Enrich.FromLogContext()
                      .Enrich.WithProperty("MachineName", Environment.MachineName)
-                     .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose);
+                     .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose)
+                     .WriteTo.File("ProductCatalogue.log",
+                            rollingInterval: RollingInterval.Month,
+                            retainedFileCountLimit: 1,
+                            shared: true,
+                            outputTemplate: outputTemplate);
 
                 if (System.Diagnostics.Debugger.IsAttached) {
                     loggerConfiguration = loggerConfiguration

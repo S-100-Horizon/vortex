@@ -462,13 +462,6 @@ namespace S100Framework.ProductCatalogue
             var featureTypesAdded = new List<string>();
 
             return await this.Dispatch(() => {
-                // TEMP
-                var directoryNotesEnv = Environment.GetEnvironmentVariable("ENC_NotesAndPictures");
-                if (string.IsNullOrEmpty(directoryNotesEnv))
-                    throw new ArgumentNullException("Empty environment variable for ENC NotesAndPictures");
-
-                var directoryNotes = new IO.DirectoryInfo(directoryNotesEnv);
-
                 var topology = connection.BuildTopology(filter)!;
 
                 //  InformationTypes
@@ -506,10 +499,6 @@ namespace S100Framework.ProductCatalogue
 
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
-                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
                         }
@@ -520,10 +509,6 @@ namespace S100Framework.ProductCatalogue
 
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
-                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
                         }
@@ -566,10 +551,6 @@ namespace S100Framework.ProductCatalogue
 
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
-                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
                         }
@@ -580,10 +561,6 @@ namespace S100Framework.ProductCatalogue
 
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
-                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
                         }
@@ -592,7 +569,6 @@ namespace S100Framework.ProductCatalogue
                 catch (Exception ex) {
                     Log.Information("Table: featuretype: {message} ", ex.Message);
                 }
-
 
                 //  Features
                 foreach (var def in connection.GetDefinitions<FeatureClassDefinition>()) {
@@ -657,10 +633,6 @@ namespace S100Framework.ProductCatalogue
 
                                     if (!supportFiles.Contains(filename)) {
                                         supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
                                     }
                                 }
                             }
@@ -671,10 +643,6 @@ namespace S100Framework.ProductCatalogue
 
                                     if (!supportFiles.Contains(filename)) {
                                         supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
                                     }
                                 }
                             }
@@ -730,9 +698,6 @@ namespace S100Framework.ProductCatalogue
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
-                                // if (prim != Primitive.Point) {
-                                var fb = current["featurebindings"];
-                                //throw new NotImplementedException();    //TODO: featurebindings
                                 var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsSharedBindings);
 
                                 if (featureBindings != default && featureBindings.Length != 0) {
@@ -758,12 +723,6 @@ namespace S100Framework.ProductCatalogue
                                         }
                                     }
                                 }
-                                //}
-                                //else {
-                                //    var f = current["featurebindings"];
-
-                                //    var g = "";
-                                //}
                             }
 
                             dataset?.AddFeature(feature!);
@@ -774,6 +733,38 @@ namespace S100Framework.ProductCatalogue
                             Log.Error(ex, ex.Message);
                             throw;
                         }
+                    }
+                }
+
+                // SupportFiles
+                if (supportFiles.Any()) {
+                    using var attachmentTable = connection.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                    using var attachmentCursor = attachmentTable.Search(new QueryFilter {
+                        WhereClause = "code = 'supportfile'"
+                    });
+                    while (attachmentCursor.MoveNext()) {
+                        var current = attachmentCursor.Current;
+
+                        var json = current["json"].ToString();
+
+                        if (string.IsNullOrEmpty(json))
+                            continue;
+
+                        var file = System.Text.Json.JsonSerializer.Deserialize<S100Horizon.Settings.SupportFile>(json);
+
+                        if (!supportFiles.Contains(file!.FileName))
+                            continue;
+
+
+                        if (current["data"] is not MemoryStream stream)
+                            throw new ArgumentNullException("Column 'data' is not a memory stream");
+
+                        stream.Position = 0;
+                        using var reader = new StreamReader(stream);
+
+                        var base64 = Convert.ToBase64String(stream.ToArray());
+                        dataset?.Metadata.AddSupportFile(file.FileName, base64);
                     }
                 }
 
@@ -865,10 +856,13 @@ namespace S100Framework.ProductCatalogue
 
             var path = connectionFile.LocalPath;
 
-            if (IO.File.Exists(path) && ".sde".Equals(IO.Path.GetExtension(path), StringComparison.InvariantCultureIgnoreCase)) {
+            if (!IO.File.Exists(path))
+                throw new ArgumentNullException($"Could not find or authorize to path: {path}");
+
+            if (".sde".Equals(IO.Path.GetExtension(path), StringComparison.InvariantCultureIgnoreCase)) {
                 createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
             }
-            else if (IO.Directory.Exists(path) && ".gdb".Equals(IO.Path.GetExtension(path), StringComparison.InvariantCultureIgnoreCase)) {
+            else if (".gdb".Equals(IO.Path.GetExtension(path), StringComparison.InvariantCultureIgnoreCase)) {
                 createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
             }
             else

@@ -20,10 +20,21 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <Grid Grid.Row="0" x:Name="MyGrid" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="18"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Column="0">
+            </ComboBox>
+            <Button Width="18" Grid.Column="1"/>
+        </Grid>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
             <xctk:CheckComboBox x:Name="_checkListBox"
                    IsDropDownOpen="False"
                    IsEditable="False"

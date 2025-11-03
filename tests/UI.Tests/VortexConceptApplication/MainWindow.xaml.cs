@@ -70,6 +70,10 @@ namespace VortexConceptApplication
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+
+            var mygrid = this.MyGrid;
+
+
             var editorTemplateDefinition = new EditorTemplateDefinition() {
             };
             //var propertyDefinition = new PropertyDefinition();
@@ -179,7 +183,7 @@ namespace VortexConceptApplication
 
 
             //  Associations
-            var json = "[{\"$type\":\"featureBinding::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
+            var json = "[{\"$type\":\"featureBinding::S101::StructureEquipment\",\"association\":{},\"code\":\"StructureEquipment\",\"roleType\":\"composition\",\"role\":\"theStructure\",\"featureType\":\"SpanOpen\",\"referenceId\":\"1352378633\"}]";
 
             var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, new System.Text.Json.JsonSerializerOptions {
                 TypeInfoResolver = S100Framework.DomainModel.S101.Summary.FeatureBindingResolver(),
@@ -214,7 +218,7 @@ namespace VortexConceptApplication
             //};
 
             S100AttributeEditor.PropertyChanged += (object? sender, PropertyChangedEventArgs e) => {
-                System.Diagnostics.Debugger.Break();
+                //System.Diagnostics.Debugger.Break();
             };
 
             S100AttributeEditor.InformationBindingCollectionChanged += (object? sender, PropertyChangedEventArgs e) => {

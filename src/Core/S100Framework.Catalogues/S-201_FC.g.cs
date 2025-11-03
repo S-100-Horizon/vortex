@@ -132,9 +132,9 @@ namespace S100Framework.DomainModel.S201 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.Atonstatus>), typeDiscriminator: "informationBinding::Atonstatus"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonFixingMethodAssociation>), typeDiscriminator: "informationBinding::AtonFixingMethodAssociation"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonPositioningInformationAssociation>), typeDiscriminator: "informationBinding::AtonPositioningInformationAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.Atonstatus>), typeDiscriminator: "informationBinding::S201::Atonstatus"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonFixingMethodAssociation>), typeDiscriminator: "informationBinding::S201::AtonFixingMethodAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonPositioningInformationAssociation>), typeDiscriminator: "informationBinding::S201::AtonPositioningInformationAssociation"));
 				}
 			});
 			return resolver;
@@ -149,25 +149,25 @@ namespace S100Framework.DomainModel.S201 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::BuoyTopmark"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::StructureEquipment"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::PhysicalAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::SyntheticAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::VirtualAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyCounterWeight>), typeDiscriminator: "featureBinding::BuoyCounterWeight"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleConnection>), typeDiscriminator: "featureBinding::BridleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnection>), typeDiscriminator: "featureBinding::ShackleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnectionFromCable>), typeDiscriminator: "featureBinding::ShackleConnectionFromCable"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelCableConnection>), typeDiscriminator: "featureBinding::SwivelCableConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleCableConnection>), typeDiscriminator: "featureBinding::BridleCableConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToBridleConnection>), typeDiscriminator: "featureBinding::ShackleToBridleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToSwivelConnection>), typeDiscriminator: "featureBinding::ShackleToSwivelConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToAnchorConnection>), typeDiscriminator: "featureBinding::ShackleToAnchorConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelConnection>), typeDiscriminator: "featureBinding::SwivelConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::AtonAggregations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::AtonAssociations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::RangeSystem"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::DangerousFeatureAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::S201::BuoyTopmark"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::S201::StructureEquipment"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::S201::PhysicalAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::S201::SyntheticAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::S201::VirtualAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyCounterWeight>), typeDiscriminator: "featureBinding::S201::BuoyCounterWeight"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleConnection>), typeDiscriminator: "featureBinding::S201::BridleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnection>), typeDiscriminator: "featureBinding::S201::ShackleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnectionFromCable>), typeDiscriminator: "featureBinding::S201::ShackleConnectionFromCable"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelCableConnection>), typeDiscriminator: "featureBinding::S201::SwivelCableConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleCableConnection>), typeDiscriminator: "featureBinding::S201::BridleCableConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToBridleConnection>), typeDiscriminator: "featureBinding::S201::ShackleToBridleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToSwivelConnection>), typeDiscriminator: "featureBinding::S201::ShackleToSwivelConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToAnchorConnection>), typeDiscriminator: "featureBinding::S201::ShackleToAnchorConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelConnection>), typeDiscriminator: "featureBinding::S201::SwivelConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S201::AtonAggregations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S201::AtonAssociations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S201::RangeSystem"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S201::DangerousFeatureAssociation"));
 				}
 			});
 			return resolver;
@@ -182,34 +182,34 @@ namespace S100Framework.DomainModel.S201 {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.Atonstatus>), typeDiscriminator: "informationBinding::Atonstatus"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonFixingMethodAssociation>), typeDiscriminator: "informationBinding::AtonFixingMethodAssociation"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonPositioningInformationAssociation>), typeDiscriminator: "informationBinding::AtonPositioningInformationAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.Atonstatus>), typeDiscriminator: "informationBinding::S201::Atonstatus"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonFixingMethodAssociation>), typeDiscriminator: "informationBinding::S201::AtonFixingMethodAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.AtonPositioningInformationAssociation>), typeDiscriminator: "informationBinding::S201::AtonPositioningInformationAssociation"));
 				}
 				if (typeInfo.Type == typeof(featureBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
 						TypeDiscriminatorPropertyName = "$type",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::BuoyTopmark"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::StructureEquipment"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::PhysicalAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::SyntheticAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::VirtualAIS"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyCounterWeight>), typeDiscriminator: "featureBinding::BuoyCounterWeight"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleConnection>), typeDiscriminator: "featureBinding::BridleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnection>), typeDiscriminator: "featureBinding::ShackleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnectionFromCable>), typeDiscriminator: "featureBinding::ShackleConnectionFromCable"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelCableConnection>), typeDiscriminator: "featureBinding::SwivelCableConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleCableConnection>), typeDiscriminator: "featureBinding::BridleCableConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToBridleConnection>), typeDiscriminator: "featureBinding::ShackleToBridleConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToSwivelConnection>), typeDiscriminator: "featureBinding::ShackleToSwivelConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToAnchorConnection>), typeDiscriminator: "featureBinding::ShackleToAnchorConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelConnection>), typeDiscriminator: "featureBinding::SwivelConnection"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::AtonAggregations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::AtonAssociations"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::RangeSystem"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::DangerousFeatureAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyTopmark>), typeDiscriminator: "featureBinding::S201::BuoyTopmark"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.StructureEquipment>), typeDiscriminator: "featureBinding::S201::StructureEquipment"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.PhysicalAIS>), typeDiscriminator: "featureBinding::S201::PhysicalAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SyntheticAIS>), typeDiscriminator: "featureBinding::S201::SyntheticAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.VirtualAIS>), typeDiscriminator: "featureBinding::S201::VirtualAIS"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BuoyCounterWeight>), typeDiscriminator: "featureBinding::S201::BuoyCounterWeight"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleConnection>), typeDiscriminator: "featureBinding::S201::BridleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnection>), typeDiscriminator: "featureBinding::S201::ShackleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleConnectionFromCable>), typeDiscriminator: "featureBinding::S201::ShackleConnectionFromCable"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelCableConnection>), typeDiscriminator: "featureBinding::S201::SwivelCableConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.BridleCableConnection>), typeDiscriminator: "featureBinding::S201::BridleCableConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToBridleConnection>), typeDiscriminator: "featureBinding::S201::ShackleToBridleConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToSwivelConnection>), typeDiscriminator: "featureBinding::S201::ShackleToSwivelConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.ShackleToAnchorConnection>), typeDiscriminator: "featureBinding::S201::ShackleToAnchorConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.SwivelConnection>), typeDiscriminator: "featureBinding::S201::SwivelConnection"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAggregations>), typeDiscriminator: "featureBinding::S201::AtonAggregations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.AtonAssociations>), typeDiscriminator: "featureBinding::S201::AtonAssociations"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.RangeSystem>), typeDiscriminator: "featureBinding::S201::RangeSystem"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.DangerousFeatureAssociation>), typeDiscriminator: "featureBinding::S201::DangerousFeatureAssociation"));
 				}
 			});
 			return resolver;

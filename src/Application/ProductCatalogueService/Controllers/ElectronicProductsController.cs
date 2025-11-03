@@ -165,14 +165,14 @@ namespace ProductCatalogueService.Controllers
             }
 
             // Check if product has any updates before creating new update
-            var dirty = await _electronicProductManager.IsDirtyAsync(name);
+            //var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            if (!dirty) {
-                response.Success = false;
-                response.Message = $"Product has no updates.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return BadRequest(response);
-            }
+            //if (!dirty) {
+            //    response.Success = false;
+            //    response.Message = $"Product has no updates.";
+            //    response.DurationMs = sw.ElapsedMilliseconds;
+            //    return BadRequest(response);
+            //}
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 

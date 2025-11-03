@@ -119,17 +119,14 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-		[Category("bearingInformation")]
 		[Multiplicity(0, 2)]
 		public ObservableCollection<double> sectorBearing  { get; set; } = new ();
 
-		[Category("bearingInformation")]
 		[Optional]
 		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		private orientationViewModel? _orientation  = default;
 
-		[Category("bearingInformation")]
 		[ExpandableObject]
 		[Optional]
 		public orientationViewModel? orientation {
@@ -498,7 +495,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class graphicViewModel : ComplexViewModel<graphic> {
-		[Category("graphic")]
 		[Multiplicity(1)]
 		public ObservableCollection<String> pictorialRepresentation  { get; set; } = new ();
 
@@ -543,7 +539,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private bearingInformationViewModel? _bearingInformation  = default;
 
-		[Category("graphic")]
 		[ExpandableObject]
 		[Optional]
 		public bearingInformationViewModel? bearingInformation {
@@ -1062,7 +1057,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		[Browsable(false)]
 		public categoryOfSchedule[] categoryOfScheduleList => [(categoryOfSchedule)1,(categoryOfSchedule)2,(categoryOfSchedule)3];
 
-		[Category("scheduleByDayOfWeek")]
 		[Multiplicity(1, 10)]
 		public ObservableCollection<timeIntervalsByDayOfWeekViewModel> timeIntervalsByDayOfWeek  { get; set; } = new ();
 
@@ -1110,7 +1104,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	public partial class sectorLimitViewModel : ComplexViewModel<sectorLimit> {
 		private sectorLimitOneViewModel _sectorLimitOne  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitOneViewModel sectorLimitOne {
@@ -1124,7 +1117,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private sectorLimitTwoViewModel _sectorLimitTwo  = default;
 
-		[Category("sectorLimit")]
 		[ExpandableObject]
 		[Mandatory]
 		public sectorLimitTwoViewModel sectorLimitTwo {
@@ -1363,7 +1355,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 		private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek  = default;
 
-		[Category("telecommunications")]
 		[ExpandableObject]
 		[Optional]
 		public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek {
@@ -1518,7 +1509,6 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class timeIntervalsByDayOfWeekViewModel : ComplexViewModel<timeIntervalsByDayOfWeek> {
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 7)]
 		public ObservableCollection<dayOfWeek> dayOfWeek  { get; set; } = new ();
 
@@ -1538,11 +1528,9 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayEnd  { get; set; } = new ();
 
-		[Category("timeIntervalsByDayOfWeek")]
 		[Multiplicity(0, 99)]
 		public ObservableCollection<S100Framework.DomainModel.S100.Time> timeOfDayStart  { get; set; } = new ();
 
@@ -2107,7 +2095,8 @@ namespace S100Framework.WPF.ViewModel.S122 {
 			}
 		}
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public InformationTypeViewModel Load(InformationType instance) {
@@ -2333,6 +2322,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AbstractRxNViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -2585,6 +2575,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NauticalInformationViewModel.RelatedOrganisationViewModel> RelatedOrganisations { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -2801,7 +2792,8 @@ public override informationBinding[] informationBindings => [];
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public RegulationsViewModel Load(Regulations instance) {
@@ -3011,7 +3003,8 @@ public override informationBinding[] informationBindings => [];
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public RestrictionsViewModel Load(Restrictions instance) {
@@ -3221,7 +3214,8 @@ public override informationBinding[] informationBindings => [];
 		public ObservableCollection<rxNCodeViewModel> rxNCode  { get; set; } = new ();
 
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public RecommendationsViewModel Load(Recommendations instance) {
@@ -3520,6 +3514,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<AuthorityViewModel.AuthorityHoursViewModel> AuthorityHours { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. RelatedOrganisations.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -3872,6 +3867,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ContactDetailsViewModel.AuthorityContactViewModel> AuthorityContacts { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. AuthorityContacts.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -4185,6 +4181,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<NonStandardWorkingDayViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -4464,6 +4461,7 @@ public override informationBinding[] informationBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<ServiceHoursViewModel.ExceptionalWorkdayViewModel> ExceptionalWorkdays { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. AuthorityHours.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model),.. ExceptionalWorkdays.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
@@ -4759,7 +4757,8 @@ public override informationBinding[] informationBindings => [];
 		[Optional]
 		public ObservableCollection<vesselsMeasurementsViewModel> vesselsMeasurements  { get; set; } = new ();
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
 
 		public ApplicabilityViewModel Load(Applicability instance) {
@@ -5007,9 +5006,11 @@ public override informationBinding[] informationBindings => [];
 		[Browsable(false)]
 		public status[] statusList => [(status)1,(status)2,(status)3,(status)4,(status)5,(status)6,(status)7,(status)8,(status)9,(status)11,(status)12,(status)13,(status)14,(status)15,(status)16,(status)17,(status)18,(status)19,(status)20,(status)21,(status)22,(status)23,(status)24,(status)25,(status)26,(status)27,(status)28,(status)29,(status)30,(status)31,(status)32,(status)33,(status)34,(status)35,(status)36,(status)37,(status)38,(status)39,(status)41,(status)42,(status)43];
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public RestrictedAreaViewModel Load(RestrictedArea instance) {
@@ -5314,12 +5315,14 @@ public override featureBinding[] featureBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<MarineProtectedAreaViewModel.ProtectedAreaAuthorityViewModel> ProtectedAreaAuthorities { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ProtectedAreaAuthorities.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public MarineProtectedAreaViewModel Load(MarineProtectedArea instance) {
@@ -5601,12 +5604,14 @@ public override featureBinding[] featureBindings => [];
 
 		[Category("InformationBindings")]
 		public ObservableCollection<VesselTrafficServiceAreaViewModel.ServiceControlViewModel> ServiceControls { get; set; } = new();
+		[Browsable(false)]
 
 		public override informationBinding[] informationBindings => [.. ServiceControls.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)];
 
 		#endregion
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public VesselTrafficServiceAreaViewModel Load(VesselTrafficServiceArea instance) {
@@ -5708,9 +5713,11 @@ public override featureBinding[] featureBindings => [];
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
@@ -5757,9 +5764,11 @@ public override featureBinding[] featureBindings => [];
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class TextPlacementViewModel : FeatureViewModel<TextPlacement> {
 
-public override informationBinding[] informationBindings => [];
+		[Browsable(false)]
+		public override informationBinding[] informationBindings => [];
 
-public override featureBinding[] featureBindings => [];
+		[Browsable(false)]
+		public override featureBinding[] featureBindings => [];
 
 
 		public TextPlacementViewModel Load(TextPlacement instance) {

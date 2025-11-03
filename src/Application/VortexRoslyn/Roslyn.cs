@@ -797,8 +797,8 @@ namespace S100Framework.Applications
 
                     builderDomainModel.AppendLine(s);
 
-                    informationBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
-                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{code}\"));");
+                    informationBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{productId}::{code}\"));");
+                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociations.{code}>), typeDiscriminator: \"informationBinding::{productId}::{code}\"));");
                 }
 
                 sharedBindingBuilder.AppendLine("\t\t\t\t}");
@@ -876,8 +876,8 @@ namespace S100Framework.Applications
                         builderDomainModel.AppendLine(s);
                     }
 
-                    featureBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
-                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{code}\"));");
+                    featureBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{productId}::{code}\"));");
+                    sharedBindingBuilder.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociations.{code}>), typeDiscriminator: \"featureBinding::{productId}::{code}\"));");
                 }
 
                 featureBindingBuilder.AppendLine("\t\t\t\t}");
@@ -2063,6 +2063,7 @@ namespace S100Framework.Applications
             builder.AppendLine($"\t/// {definition}");
             builder.AppendLine($"\t/// </summary>");
 
+
             builder.AppendLine($"\t[CategoryOrder(\"{code}\",0)]");
             builder.AppendLine($"\t[CategoryOrder(\"InformationBindings\",100)]");
             builder.AppendLine($"\t[CategoryOrder(\"FeatureBindings\",200)]");
@@ -2197,6 +2198,7 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
+                builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
@@ -2204,7 +2206,7 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("public override informationBinding[] informationBindings => [];");
+                    builder.AppendLine("\t\tpublic override informationBinding[] informationBindings => [];");
                     builder.AppendLine();
                 }
 
@@ -2315,6 +2317,7 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t}};");
                 }
 
+                builder.AppendLine("\t\t[Browsable(false)]");
                 if (associations.Any()) {
                     builder.AppendLine();
                     var initialize = associations.Select(e => $".. {pluralizer.Pluralize(e)}.Where(e => !string.IsNullOrEmpty(e.role)).Select(e=>e.Model)");
@@ -2322,7 +2325,7 @@ namespace S100Framework.Applications
                     builder.AppendLine();
                 }
                 else {
-                    builder.AppendLine("public override featureBinding[] featureBindings => [];");
+                    builder.AppendLine("\t\tpublic override featureBinding[] featureBindings => [];");
                     builder.AppendLine();
                 }
 
@@ -2460,7 +2463,10 @@ namespace S100Framework.Applications
                     builder.AppendLine($"\t\tprivate {prefix} _{referenceCode} {postfix}");
                     builder.AppendLine();
 
-                    if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
+                    //if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
+                    //    builder.AppendLine($"\t\t[Category(\"{code}\")]");
+
+                    if(!client.BuildViewModelClassClient.ComplexTypes.Contains(code))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
                     if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
@@ -2519,7 +2525,10 @@ namespace S100Framework.Applications
                     constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({referenceCode}));");
                     constructorBuilder.AppendLine($"\t\t\t}};");
 
-                    builder.AppendLine($"\t\t[Category(\"{code}\")]");
+                    //builder.AppendLine($"\t\t[Category(\"{code}\")]");
+
+                    if (!client.BuildViewModelClassClient.ComplexTypes.Contains(code))
+                        builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
                     //builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {

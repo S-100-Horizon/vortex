@@ -25,34 +25,35 @@ namespace S100Framework.WPF
 
     public class QueryInformationTypesEventArgs
     {
-        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, string[] informationTypes, object source) {
+        public QueryInformationTypesEventArgs(roleType? roleType, string? association, string? role, string[] informationTypes, Action<InformationTypeId[]>? callback) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
             this.informationTypes = informationTypes;
-            this.source = source;
+            this.callback = callback;
         }
 
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
         public string[] informationTypes { get; }
-        public object source { get; }
+        public Action<InformationTypeId[]>? callback { get; } = default;
     }
 
     public class QueryFeatureTypesEventArgs
     {
-        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, string[] featureTypes) {
+        public QueryFeatureTypesEventArgs(roleType? roleType, string? association, string? role, string[] featureTypes, Action<FeatureTypeId[]>? callback) {
             this.roleType = roleType ?? S100Framework.DomainModel.roleType.association;
             this.association = association ?? string.Empty;
             this.role = role ?? string.Empty;
             this.featureTypes = featureTypes;
+            this.callback = callback;
         }
         public roleType? roleType { get; }
         public string? association { get; }
         public string? role { get; }
         public string[] featureTypes { get; }
-        public ICollection<FeatureTypeId> items { get; } = new HashSet<FeatureTypeId>();
+        public Action<FeatureTypeId[]>? callback { get; } = default;
     }
 
     public class SelectInformationBindingEventArgs
@@ -489,12 +490,7 @@ namespace S100Framework.WPF
         private async void QueryInformationsContent(object sender, ExecutedRoutedEventArgs e) {
             var eventArgs = (QueryInformationTypesEventArgs)e.Parameter;
 
-            var control = (ItemsControl)eventArgs.source;
-
-            control.Items.Clear();
-            foreach (var id in await Host.QueryInformationTypes(eventArgs)) {
-                control.Items.Add(id);
-            }
+            var items = await Host.QueryInformationTypes(eventArgs);
         }
 
         #endregion
@@ -512,9 +508,7 @@ namespace S100Framework.WPF
         private async void QueryFeaturesContent(object sender, ExecutedRoutedEventArgs e) {
             var eventArgs = (QueryFeatureTypesEventArgs)e.Parameter;
 
-            foreach (var id in await Host.QueryFeatureTypes(eventArgs)) {
-                eventArgs.items.Add(id);
-            }
+            var items = await Host.QueryFeatureTypes(eventArgs);
         }
 
         #endregion

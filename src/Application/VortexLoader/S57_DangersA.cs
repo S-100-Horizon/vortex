@@ -389,8 +389,37 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // WATTUR_WaterTurbulence
-                            throw new NotImplementedException($"No WATTUR_WaterTurbulence in DK or GL. {tableName}");
+                            var instance = new WaterTurbulence {
+                            };
+
+                            // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
+                            if (current.CATWAT.HasValue) {
+                                instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue<WaterTurbulence, categoryOfWaterTurbulence>(current.CATWAT.Value);
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
+                        break;
                     case 25: { // WRECKS_Wreck
                             var instance = new Wreck {
                                 surroundingDepth = default,
