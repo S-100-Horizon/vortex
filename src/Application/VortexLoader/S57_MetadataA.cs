@@ -388,7 +388,7 @@ namespace S100Framework.Applications
                         break;
                     case 45: { // M_SDAT_SoundingDatum
                                // Handled by S101_SoundingDatum
-                               //var verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
+                               //var verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
                                //VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.Value);
 
                         }
@@ -497,7 +497,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
+                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;

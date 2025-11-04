@@ -65,7 +65,7 @@ namespace S100Framework.Applications
                 instance.valueOfNominalRange = current.VALNMR.Value;
             }
 
-            instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
+            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                 if (elm.Item2 == instance.verticalDatum) {
                     instance.verticalDatum = null;

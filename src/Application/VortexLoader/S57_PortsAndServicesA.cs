@@ -277,7 +277,7 @@ namespace S100Framework.Applications
                                 // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(double?),
                             };
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
+                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
 
                             // Clear vdat if covered by a metadata object with same vdat
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -754,7 +754,7 @@ namespace S100Framework.Applications
                             };
 
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Gate>(current.VERDAT ?? 3);
+                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Gate>(current.VERDAT ?? 3);
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
