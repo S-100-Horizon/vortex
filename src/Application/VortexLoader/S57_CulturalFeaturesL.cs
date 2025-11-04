@@ -372,8 +372,99 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // FNCLNE_FenceWall
-                            throw new NotImplementedException($"No FNCLNE_FenceWall in DK | GL. {tableName}");
+                            var instance = new FenceWall();
+
+                            if (current.CATFNC.HasValue) {
+                                instance.categoryOfFence = EnumHelper.GetEnumValue<FenceWall, categoryOfFence>(current.CATFNC.Value);
+                            }
+
+                            if (current.COLOUR != default) {
+                                instance.colour = ImporterNIS.GetColours<FenceWall>(current.COLOUR);
+                            }
+                            if (current.COLPAT != default) {
+                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                            }
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value);
+                            }
+
+                            if (current.ELEVAT.HasValue) {
+                                instance.elevation = current.ELEVAT.Value;
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
+                                instance.height = current.HEIGHT.Value;
+                            }
+                            else {
+                                instance.height = default(double?);
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues<FenceWall, natureOfConstruction>(current.NATCON);
+                            }
+
+                            if (current.CONRAD.HasValue) {
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                            }
+
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                    instance.reportedDate = result;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+
+                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                instance.visualProminence = EnumHelper.GetEnumValue<FenceWall, visualProminence>(current.CONVIS.Value);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
+                        break;
                     case 25: { // FORSTC_FortifiedStructure
                             var instance = new FortifiedStructure();
 
