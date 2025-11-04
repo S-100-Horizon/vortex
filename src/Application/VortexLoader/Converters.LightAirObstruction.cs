@@ -72,9 +72,10 @@ namespace S100Framework.Applications
                 }
             }
 
-            if (System.Diagnostics.Debugger.IsAttached && instance.verticalDatum != null) {
-                System.Diagnostics.Debugger.Break();
-            }
+            //Just to catch a lightairobstruction outside a VerticalDatum area
+            //if (System.Diagnostics.Debugger.IsAttached && instance.verticalDatum != null) {
+            //    System.Diagnostics.Debugger.Break();
+            //}
                 
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
