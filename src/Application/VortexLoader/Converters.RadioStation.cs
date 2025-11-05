@@ -36,6 +36,7 @@ namespace S100Framework.Applications
                     "14" => "14",
                     "19" => "19",
                     "20" => "20",
+                    "-32767" => null,
                     _ => throw new NotSupportedException($"Cannot convert radiostation category {current.CATROS} aton: globalid:{current.GLOBALID}")
                 };
 
