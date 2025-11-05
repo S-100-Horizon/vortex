@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                             // Spatial Quality
                             if (spatialQualityHits.Count > 0) {
 
-                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(informationBinding);
+                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
                                 featureN.Store();
 
 

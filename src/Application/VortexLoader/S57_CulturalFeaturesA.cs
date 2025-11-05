@@ -296,7 +296,7 @@ namespace S100Framework.Applications
                                     instance.fixedDateRange = dateRange;
                                 }
 
-                                instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
+                                instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
 
                                 // Clear vdat if covered by a metadata object with same vdat
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -390,7 +390,7 @@ namespace S100Framework.Applications
                                     instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
 
-                                instance.verticalDatum = ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
+                                instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<SpanOpening>(current.VERDAT ?? 3);
                                 // Clear vdat if covered by a metadata object with same vdat
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                     if (elm.Item2 == instance.verticalDatum) {
@@ -714,7 +714,7 @@ namespace S100Framework.Applications
 
                             };
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3);
+                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3);
 
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
@@ -1520,7 +1520,7 @@ namespace S100Framework.Applications
                             };
 
 
-                            instance.verticalDatum = ImporterNIS.GetVerticalDatum<Tunnel>(current.VERDAT ?? 3);
+                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Tunnel>(current.VERDAT ?? 3);
 
                             // Clear vdat if covered by a metadata object with same vdat
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {

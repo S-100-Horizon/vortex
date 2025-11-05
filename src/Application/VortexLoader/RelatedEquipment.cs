@@ -170,7 +170,7 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
-                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = lightSectored.GetInformationBindings() == null ? DBNull.Value : lightSectored.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
 
                     ImporterNIS.SetShape(buffer, shape);
                     ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
@@ -214,12 +214,12 @@ namespace S100Framework.Applications
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         if (instance is FeatureNode) {
-                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                         } else {
                             ;
                         }
 
-                            ImporterNIS.SetShape(buffer, shape);
+                        ImporterNIS.SetShape(buffer, shape);
                         ImporterNIS.SetUsageBand(buffer, relatedObject.S57Object!.PLTS_COMP_SCALE!.Value);
 
                         var featureN = featureClass.CreateRow(buffer);
@@ -282,7 +282,7 @@ namespace S100Framework.Applications
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 if (instance is FeatureNode) {
-                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                 }
                 else {
                     ;
@@ -335,7 +335,7 @@ namespace S100Framework.Applications
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
 
                     if (instance is FeatureNode) {
-                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                        buffer["informationbindings"] = (instance as FeatureNode)!.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                     }
                     else {
                         ;

@@ -99,7 +99,7 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength = current.VERLEN.Value;
-                instance.verticalDatum = ImporterNIS.GetVerticalDatum<LightAllAround>(current.VERDAT ?? 3);
+                instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<LightAllAround>(current.VERDAT ?? 3);
             }
 
 

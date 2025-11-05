@@ -529,7 +529,6 @@ namespace S100Framework.Applications
                     case 65: { // TSSRON_TrafficSeparationSchemeRoundabout
                             var instance = new TrafficSeparationSchemeRoundabout();
 
-
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
                                 instance.fixedDateRange = dateRange;
