@@ -62,6 +62,8 @@ namespace S100Framework.Applications
 
         public static QueryFilter QueryFilter { get; internal set; } = new();
 
+        public static IDictionary<int, int> VerticalDatumConverter = new Dictionary<int,int>();
+
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
 
@@ -76,6 +78,10 @@ namespace S100Framework.Applications
             var append = false;
             string status = null!;
             arguments.WithParsed<Options>(o => {
+                if (!string.IsNullOrEmpty(o.VerticalDatumConverter)) {
+                    VerticalDatumConverter = o.VerticalDatumConverter.Split(',').Select(e => e.Split('=')).ToDictionary(e => int.Parse(e[0]), e => int.Parse(e[1]));
+                }
+
                 var source = o.Source!;
 
                 if (IO.File.Exists(source) && ".sde".Equals(IO.Path.GetExtension(source), StringComparison.OrdinalIgnoreCase)) {
@@ -735,11 +741,17 @@ namespace S100Framework.Applications
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
-            if (value != 3) {
-                return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
-            }
 
-            return verticalDatum.BalticSeaChartDatum2000;
+            if (VerticalDatumConverter.ContainsKey(value)) {
+                return EnumHelper.GetEnumValue<TType, verticalDatum>(VerticalDatumConverter[value]);
+            }
+            return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+
+            //if (value != 3) {
+            //    return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+            //}
+
+            //return verticalDatum.BalticSeaChartDatum2000;
         }
         internal static verticalDatum? GetSoundingDatum<TType>(int value) where TType : DomainModel.FeatureNode {
             return EnumHelper.GetEnumValue<TType, verticalDatum>(value);

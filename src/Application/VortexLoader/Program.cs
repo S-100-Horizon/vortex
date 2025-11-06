@@ -63,6 +63,9 @@ namespace S100Framework.Applications
             [Option('f', "scaminfiles", Required = false, HelpText = "Path to folder with scamin files. Supports only Grønland and Denmark scamin files.")]
             public string? ScaminFilesPath { get; set; }
 
+            [Option("vdat", Required = false, Default = "3=44")]
+            public string? VerticalDatumConverter { get; set; } //  --vdat 3=44            
+
         }
 
         static void Main(string[] args) {
@@ -90,6 +93,10 @@ namespace S100Framework.Applications
 
             arguments.WithParsed<Options>(o => {
                 var target = o.Target!;
+
+                if (!string.IsNullOrEmpty(o.VerticalDatumConverter)) {
+                    var dictionary = o.VerticalDatumConverter.Split(',').Select(e=>e.Split('=')).ToDictionary(e=>int.Parse(e[0]), e=>int.Parse(e[1]));
+                }
 
                 if (IO.File.Exists(target) && ".sde".Equals(IO.Path.GetExtension(target), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => {
