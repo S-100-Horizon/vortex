@@ -1589,8 +1589,20 @@ namespace S100Framework.Applications
 
                             // TODO: CategoryOfPrecense - new S-101 att.
 
+                            /*
+                                The S-57 attribute COMCHA will convert to an instance of the S-101 Information type Contact
+                                Details (see S-101 DCEG clause 24.1), attribute communication channel, associated to the Pilot
+                                Boarding Place feature using the association Additional Information. Because of the capability to
+                                encode these relationships in a “one to many” manner in S-101, Data Producers are advised to
+                                check identical instances of Additional Information within a converted dataset and rationalise these
+                                instances accordingly
+                            */
+
                             if (current.COMCHA != default) {
                                 instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+
+
+
                             }
 
                             // TODO: Destination - new S-101 att.
@@ -1623,6 +1635,9 @@ namespace S100Framework.Applications
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            //TODO: append MRCC as informationtype and create it as a 1-m relationship
+                            //instance.AppendInformationBindings();
+
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
