@@ -67,7 +67,7 @@ namespace TestS100Framework
 
             var mooringWarpingFacility = new MooringWarpingFacility {
                 iDCode = string.Empty,
-                categoryOfMooringWarpingFacility = S100Framework.DomainModel.S131.categoryOfMooringWarpingFacility.Dolphin,
+                categoryOfMooringWarpingFacility = S100Framework.DomainModel.S131.categoryOfMooringWarpingFacility.MooringCable,
             };
 
             var gml = XDocument.Load(@".\Samples\S131\131DK00_DKAAL.GML");

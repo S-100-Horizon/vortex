@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -19,8 +18,12 @@ namespace S100Framework.DomainModel
         public static string[] InformationTypes => [];
         public static string[] FeatureTypes => [];
         public static string[] PrimitiveFeatures(Primitives primitive) => throw new NotImplementedException();
-
         public static Primitives[] FeaturePrimitives(string featureType) => throw new NotImplementedException();
+        public static Type InformationBindings(string code) => throw new NotImplementedException();
+        public static Type FeatureBindings(string code) => throw new NotImplementedException();
+        public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver InformationBindingResolver() => new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+        public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver FeatureBindingResolver() => new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
+        public static System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver SharedBindingResolver() => new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
     }
 
     #region Attribute
@@ -161,6 +164,11 @@ namespace S100Framework.DomainModel
     public class StringLengthConstraintAttribute(int stringLength) : ConstraintAttribute
     {
         public int StringLength = stringLength;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class TextPatternConstraint(string textPattern) : ConstraintAttribute {
+        public string TextPattern = textPattern;
     }
 
     #endregion

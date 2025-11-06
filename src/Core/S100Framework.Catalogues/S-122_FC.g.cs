@@ -4315,9 +4315,25 @@ namespace S100Framework.DomainModel.S122 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class DataCoverage : FeatureNode, IFeatureBindingDefinition {
+			[XmlElement("maximumDisplayScale")]
+			[Mandatory]
+			public int maximumDisplayScale {get;set;} = default;
+
+			[XmlElement("minimumDisplayScale")]
+			[Mandatory]
+			public int minimumDisplayScale {get;set;} = default;
+
+			[XmlElement("optimumDisplayScale")]
+			[Mandatory]
+			public int optimumDisplayScale {get;set;} = default;
+
+			[XmlElement("information")]
+			[Optional]
+			public List<information> information {get;set;} = [];
+
 
 			#region ShouldSerialize
-
+			public bool ShouldSerializeinformation() { return information.Any(); }
 			#endregion
 
 			#region SerializableEnumeration

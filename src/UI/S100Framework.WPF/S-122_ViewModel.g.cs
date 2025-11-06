@@ -5712,6 +5712,51 @@ namespace S100Framework.WPF.ViewModel.S122 {
 	[CategoryOrder("InformationBindings",100)]
 	[CategoryOrder("FeatureBindings",200)]
 	public partial class DataCoverageViewModel : FeatureViewModel<DataCoverage> {
+		private int _maximumDisplayScale  = default;
+
+		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
+		[Mandatory]
+		public int maximumDisplayScale {
+			get {
+				return _maximumDisplayScale;
+			}
+			set {
+				SetValue(ref _maximumDisplayScale, value);
+			}
+		}
+
+		private int _minimumDisplayScale  = default;
+
+		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
+		[Mandatory]
+		public int minimumDisplayScale {
+			get {
+				return _minimumDisplayScale;
+			}
+			set {
+				SetValue(ref _minimumDisplayScale, value);
+			}
+		}
+
+		private int _optimumDisplayScale  = default;
+
+		[Category("DataCoverage")]
+		[Editor(typeof(Editors.HorizonEditor<DataCoverage>), typeof(Editors.HorizonEditor))]
+		[Mandatory]
+		public int optimumDisplayScale {
+			get {
+				return _optimumDisplayScale;
+			}
+			set {
+				SetValue(ref _optimumDisplayScale, value);
+			}
+		}
+
+		[Category("DataCoverage")]
+		[Optional]
+		public ObservableCollection<informationViewModel> information  { get; set; } = new ();
 
 		[Browsable(false)]
 		public override informationBinding[] informationBindings => [];
@@ -5721,19 +5766,33 @@ namespace S100Framework.WPF.ViewModel.S122 {
 
 
 		public DataCoverageViewModel Load(DataCoverage instance) {
-
+			maximumDisplayScale = instance.maximumDisplayScale;
+			minimumDisplayScale = instance.minimumDisplayScale;
+			optimumDisplayScale = instance.optimumDisplayScale;
+			information.Clear();
+			if (instance.information is not null) {
+				foreach(var e in instance.information)
+					information.Add(new informationViewModel().Load(e));
+			}
 			return this;
 		}
 
 		public override string Serialize() {
 			var instance = new DataCoverage {
+				maximumDisplayScale = this.maximumDisplayScale,
+				minimumDisplayScale = this.minimumDisplayScale,
+				optimumDisplayScale = this.optimumDisplayScale,
+				information = this.information.Select(e => e.Model).ToList(),
 			};
 			return System.Text.Json.JsonSerializer.Serialize(instance);
 		}
 
 		[Browsable(false)]
 		public DataCoverage Model => new () {
-
+			maximumDisplayScale = this._maximumDisplayScale,
+			minimumDisplayScale = this._minimumDisplayScale,
+			optimumDisplayScale = this._optimumDisplayScale,
+			information = this.information.Select(e => e.Model).ToList(),
 		};
 
 		public override informationBindingDefinition[] informationBindingDefinitions => DataCoverage._informationBindingDefinitions;
@@ -5752,6 +5811,12 @@ namespace S100Framework.WPF.ViewModel.S122 {
 		}
 
 		public override string? ToString() => $"Data Coverage";
+
+		public DataCoverageViewModel() : base() {
+			information.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
+				OnPropertyChanged(nameof(information));
+			};
+		}
 	}
 
 

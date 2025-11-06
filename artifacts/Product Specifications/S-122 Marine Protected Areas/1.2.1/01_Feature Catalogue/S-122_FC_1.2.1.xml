@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.0" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.0 https://schemas.s100dev.net/schemas/S100/5.0.0/S100FC/20220610/S100FC.xsd">
+<S100FC:S100_FC_FeatureCatalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.iho.int/S100FC/5.2 ../../../../../../../../cygwin64/home/kusal/xgml/33-S100-2024/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd"
+ xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0"
+ xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
 	<S100FC:name>Marine Protected Area</S100FC:name>
 	<S100FC:scope></S100FC:scope>
 	<S100FC:versionNumber>1.2.1</S100FC:versionNumber>
 	<S100FC:versionDate>2024-09-16</S100FC:versionDate>
-	<S100FC:productId>s-122</S100FC:productId>
+	<S100FC:productId>S-122</S100FC:productId>
 	<S100FC:producer>
 		<S100CI:role>pointOfContact</S100CI:role>
 		<S100CI:party>
@@ -173,6 +177,38 @@
 			<S100FC:definition>Request used to access the resource. Structure and content depend on the protocol and standard used by the online resource, such as Web Feature Service standard. (ISO 19115, adapted)</S100FC:definition>
 			<S100FC:code>protocolRequest</S100FC:code>
 			<S100FC:valueType>text</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Optimum Display Scale</S100FC:name>
+			<S100FC:definition>The largest intended viewing scale for the data.</S100FC:definition>
+			<S100FC:code>optimumDisplayScale</S100FC:code>
+			<S100FC:alias>CSCALE</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1223</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:valueType>integer</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+			<S100FC:name>Minimum Display Scale</S100FC:name>
+			<S100FC:definition>The smallest intended viewing scale for the data.</S100FC:definition>
+			<S100FC:code>minimumDisplayScale</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>1222</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:valueType>integer</S100FC:valueType>
+		</S100FC:S100_FC_SimpleAttribute>
+		<S100FC:S100_FC_SimpleAttribute>
+		<S100FC:name>Maximum Display Scale</S100FC:name>
+		<S100FC:definition>The value considered by the Data Producer to be the maximum (largest) scale at which the data is to be displayed before it can be considered to be "grossly overscaled".</S100FC:definition>
+		<S100FC:code>maximumDisplayScale</S100FC:code>
+		<S100FC:alias>CSCALE</S100FC:alias>
+		<S100FC:definitionReference>
+			<S100FC:sourceIdentifier>1237</S100FC:sourceIdentifier>
+			<S100FC:definitionSource ref="IHOREG" />
+		</S100FC:definitionReference>
+		<S100FC:valueType>integer</S100FC:valueType>
 		</S100FC:S100_FC_SimpleAttribute>
 		<S100FC:S100_FC_SimpleAttribute>
 			<S100FC:name>Online Function</S100FC:name>
@@ -4489,58 +4525,6 @@ Both the long and short ton are defined as 20 hundredweights, but a hundredweigh
 			</S100FC:attributeBinding>
 		</S100FC:S100_FC_InformationType>
 		<S100FC:S100_FC_InformationType isAbstract="false">
-			<S100FC:name>Nautical Information</S100FC:name>
-			<S100FC:definition>Nautical information about a related area or facility.</S100FC:definition>
-			<S100FC:code>NauticalInformation</S100FC:code>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>30</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
-			<S100FC:informationBinding roleType="association">
-				<S100FC:multiplicity>
-					<S100Base:lower>0</S100Base:lower>
-					<S100Base:upper xsi:nil="true" infinite="true" />
-				</S100FC:multiplicity>
-				<S100FC:association ref="RelatedOrganisation" />
-				<S100FC:role ref="theOrganisation" />
-				<S100FC:informationType ref="Authority" />
-			</S100FC:informationBinding>
-			<S100FC:superType>AbstractRxN</S100FC:superType>
-		</S100FC:S100_FC_InformationType>
-		<S100FC:S100_FC_InformationType isAbstract="false">
-			<S100FC:name>Regulations</S100FC:name>
-			<S100FC:definition>Regulations for a related area or facility.</S100FC:definition>
-			<S100FC:code>Regulations</S100FC:code>
-			<S100FC:alias>REGLTS</S100FC:alias>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>45</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
-			<S100FC:superType>AbstractRxN</S100FC:superType>
-		</S100FC:S100_FC_InformationType>
-		<S100FC:S100_FC_InformationType isAbstract="false">
-			<S100FC:name>Restrictions</S100FC:name>
-			<S100FC:definition>Restrictions for a related area or facility.</S100FC:definition>
-			<S100FC:code>Restrictions</S100FC:code>
-			<S100FC:alias>RESDES</S100FC:alias>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>47</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
-			<S100FC:superType>AbstractRxN</S100FC:superType>
-		</S100FC:S100_FC_InformationType>
-		<S100FC:S100_FC_InformationType isAbstract="false">
-			<S100FC:name>Recommendations</S100FC:name>
-			<S100FC:definition>Recommendations for a related area or facility.</S100FC:definition>
-			<S100FC:code>Recommendations</S100FC:code>
-			<S100FC:alias>RCMDTS</S100FC:alias>
-			<S100FC:definitionReference>
-				<S100FC:sourceIdentifier>44</S100FC:sourceIdentifier>
-				<S100FC:definitionSource ref="IHOREG" />
-			</S100FC:definitionReference>
-			<S100FC:superType>AbstractRxN</S100FC:superType>
-		</S100FC:S100_FC_InformationType>
-		<S100FC:S100_FC_InformationType isAbstract="false">
 			<S100FC:name>AbstractRxN</S100FC:name>
 			<S100FC:definition>An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.</S100FC:definition>
 			<S100FC:code>AbstractRxN</S100FC:code>
@@ -4596,6 +4580,58 @@ Both the long and short ton are defined as 20 hundredweights, but a hundredweigh
 				<S100FC:informationType ref="Authority" />
 			</S100FC:informationBinding>
 			<S100FC:superType>InformationType</S100FC:superType>
+		</S100FC:S100_FC_InformationType>
+		<S100FC:S100_FC_InformationType isAbstract="false">
+			<S100FC:name>Nautical Information</S100FC:name>
+			<S100FC:definition>Nautical information about a related area or facility.</S100FC:definition>
+			<S100FC:code>NauticalInformation</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>30</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:informationBinding roleType="association">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="true" infinite="true" />
+				</S100FC:multiplicity>
+				<S100FC:association ref="RelatedOrganisation" />
+				<S100FC:role ref="theOrganisation" />
+				<S100FC:informationType ref="Authority" />
+			</S100FC:informationBinding>
+			<S100FC:superType>AbstractRxN</S100FC:superType>
+		</S100FC:S100_FC_InformationType>
+		<S100FC:S100_FC_InformationType isAbstract="false">
+			<S100FC:name>Regulations</S100FC:name>
+			<S100FC:definition>Regulations for a related area or facility.</S100FC:definition>
+			<S100FC:code>Regulations</S100FC:code>
+			<S100FC:alias>REGLTS</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>45</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:superType>AbstractRxN</S100FC:superType>
+		</S100FC:S100_FC_InformationType>
+		<S100FC:S100_FC_InformationType isAbstract="false">
+			<S100FC:name>Restrictions</S100FC:name>
+			<S100FC:definition>Restrictions for a related area or facility.</S100FC:definition>
+			<S100FC:code>Restrictions</S100FC:code>
+			<S100FC:alias>RESDES</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>47</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:superType>AbstractRxN</S100FC:superType>
+		</S100FC:S100_FC_InformationType>
+		<S100FC:S100_FC_InformationType isAbstract="false">
+			<S100FC:name>Recommendations</S100FC:name>
+			<S100FC:definition>Recommendations for a related area or facility.</S100FC:definition>
+			<S100FC:code>Recommendations</S100FC:code>
+			<S100FC:alias>RCMDTS</S100FC:alias>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>44</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:superType>AbstractRxN</S100FC:superType>
 		</S100FC:S100_FC_InformationType>
 		<S100FC:S100_FC_InformationType isAbstract="false">
 			<S100FC:name>Authority</S100FC:name>
@@ -5483,6 +5519,34 @@ Both the long and short ton are defined as 20 hundredweights, but a hundredweigh
 				<S100FC:sourceIdentifier>187</S100FC:sourceIdentifier>
 				<S100FC:definitionSource ref="IHOREG" />
 			</S100FC:definitionReference>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="maximumDisplayScale" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="minimumDisplayScale" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding>
+				<S100FC:multiplicity>
+					<S100Base:lower>1</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="optimumDisplayScale" />
+			</S100FC:attributeBinding>
+			<S100FC:attributeBinding sequential="false">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="true" infinite="true" />
+				</S100FC:multiplicity>
+				<S100FC:attribute ref="information" />
+			</S100FC:attributeBinding>
 			<S100FC:featureUseType>meta</S100FC:featureUseType>
 			<S100FC:permittedPrimitives>surface</S100FC:permittedPrimitives>
 		</S100FC:S100_FC_FeatureType>

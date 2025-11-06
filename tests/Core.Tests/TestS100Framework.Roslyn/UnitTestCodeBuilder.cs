@@ -3,11 +3,13 @@
 
 using S100Framework.DomainModel;
 using System.IO;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Windows.System;
 using Xunit.Abstractions;
 
 
@@ -199,7 +201,7 @@ namespace TestS100Framework
             [Fact]
             public void Build_S122() {
 
-                var s100 = XDocument.Load(this.Path(@"S-122 Marine Protected Areas\1.2.1\jpS-122_FC_1.2.1.xml"));
+                var s100 = XDocument.Load(this.Path(@"S-122 Marine Protected Areas\1.2.1\01_Feature Catalogue\S-122_FC_1.2.1.xml"));
 
                 Assert.True(VerifyProductSpecification(s100));
 
@@ -333,9 +335,9 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S131() {
-                //var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
+            //var s100 = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC - LOCAL.xml");
 
-                var s100 = XDocument.Load(this.Path(@"S-131 Marine Harbour Infrastructure\1.0.0\131FC.xml"));
+                var s100 = XDocument.Load(this.Path(@"S-131 Marine Harbour Infrastructure\2.0.0\131_2.0.0.20251025.xml"));
 
                 //Assert.True(VerifyProductSpecification(s100));
 

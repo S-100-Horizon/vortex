@@ -456,6 +456,11 @@ namespace S100Framework.Applications
                             var precision = c.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
                             constraints[code] = [.. constraints[code], $"[PrecisionConstraint({int.Parse(precision)})]"];
                         }
+                        else if (c.Element(XName.Get("textPattern", scopes["S100CD"])) != default) {
+                            constraints.Add(code, []);
+                            var textPattern = c.Element(XName.Get("textPattern", scopes["S100CD"]))!.Value;
+                            constraints[code] = [.. constraints[code], $"[TextPatternConstraint(\"{textPattern}\")]"];
+                        }
                         else
                             System.Diagnostics.Debugger.Break();
                     }
