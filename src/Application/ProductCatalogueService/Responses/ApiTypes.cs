@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Text.Json;
 
 namespace ProductCatalogueService
 {
@@ -17,10 +17,8 @@ namespace ProductCatalogueService
         {
             public T? Data { get; set; }
         }
-
-
     }
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+
     public static class RequestTypes
     {
         public enum ExportType : int
@@ -29,5 +27,21 @@ namespace ProductCatalogueService
             Update = 2,
             Reissue = 3
         };
+
+        public enum SpecificUsage : int
+        {
+            NavigationalPurposeOverview = 1,
+            NavigationalPurposeGeneral = 2,
+            NavigationalPurposeCoastal = 3,
+            NavigationalPurposeApproach = 4,
+            NavigationalPurposeHarbour = 5,
+            NavigationalPurposeBerthing = 6,
+        };
+
+        public class CreateProductRequest
+        {
+            public JsonElement Aoi { get; set; }
+            public SpecificUsage UsageBand { get; set; }
+        }
     }
 }

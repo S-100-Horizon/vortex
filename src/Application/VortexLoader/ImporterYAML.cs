@@ -38,12 +38,14 @@ namespace S100Framework.Applications
 
             geodatabase.ApplyEdits(() => {
                 using var tableInformationType = geodatabase.OpenDataset<Table>(geodatabase.GetName("informationtype"));
+                using var tableFeatureType = geodatabase.OpenDataset<Table>(geodatabase.GetName("featuretype"));
 
                 using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
                 using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
                 using var fcCurve = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("curve"));
                 using var fcSurface = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("surface"));
 
+                using var bufferFeatureType = tableFeatureType.CreateRowBuffer();
                 using var bufferInformationType = tableInformationType.CreateRowBuffer();
                 using var bufferPoint = fcPoint.CreateRowBuffer();
                 using var bufferPointSet = fcPointSet.CreateRowBuffer();
@@ -55,6 +57,7 @@ namespace S100Framework.Applications
                         WhereClause = $"ps = '{productSpecification}'",
                     };
                     tableInformationType.DeleteRows(filter);
+                    tableFeatureType.DeleteRows(filter);
                     fcPoint.DeleteRows(filter);
                     fcPointSet.DeleteRows(filter);
                     fcCurve.DeleteRows(filter);
@@ -84,6 +87,7 @@ namespace S100Framework.Applications
                         Multipoint => bufferPointSet,
                         Polyline => bufferCurve,
                         Polygon => bufferSurface,
+                        null => bufferFeatureType,
                         _ => throw new NotImplementedException(),
                     };
 
@@ -104,9 +108,9 @@ namespace S100Framework.Applications
                             var theType = Summary.FeatureBindings(fa.Name);
                             var fb = Activator.CreateInstance(theType) as featureBinding;
 
-                            fb!.featureType = featureType; 
+                            fb!.featureType = featureType;
                             fb.role = fa.Role;
-                            fb.roleType = featurebindingdefinition.roleType.ToString(); 
+                            fb.roleType = featurebindingdefinition.roleType.ToString();
                             fb.referenceId = fa.To;
 
                             featureAssociations.Add(fb);
@@ -133,7 +137,7 @@ namespace S100Framework.Applications
                             var theType = Summary.InformationBindings(ia.Name);
                             var ib = Activator.CreateInstance(theType) as informationBinding;
 
-                            ib!.informationType = informationType;    
+                            ib!.informationType = informationType;
                             ib.role = ia.Role;
                             ib.roleType = informationBindingDefinitions.roleType.ToString();
                             ib.referenceId = ia.To;
@@ -179,22 +183,22 @@ namespace S100Framework.Applications
 
                 foreach (var informationType in dataset.InformationTypes!) {
                     // 1) Cast feature.Attributes to S101 Model
-                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.Code}", true) ?? default;
-                    if (type == default) {
-                        Log.Error("Could not get type: {type} for informationType: {name}", informationType.Attributes.Code, informationType.Name);
-                        continue;
+                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.Code}", true) ?? default;
+                        if (type == default) {
+                            Log.Error("Could not get type: {type} for informationType: {name}", informationType.Attributes.Code, informationType.Name);
+                            continue;
+                        }
+
+                        // 2) Serialize to JSON
+                        var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
+
+                        // Write to table
+                        var rowbuffer = bufferInformationType;
+                        rowbuffer["ps"] = productSpecification;
+                        rowbuffer["code"] = informationType.Name;
+                        rowbuffer["json"] = json;
+                        tableInformationType.CreateRow(bufferInformationType);
                     }
-
-                    // 2) Serialize to JSON
-                    var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
-
-                    // Write to table
-                    var rowbuffer = bufferInformationType;
-                    rowbuffer["ps"] = productSpecification;
-                    rowbuffer["code"] = informationType.Name;
-                    rowbuffer["json"] = json;
-                    tableInformationType.CreateRow(bufferInformationType);
-                }
             });
             return true;
         }
