@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -54,14 +55,270 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 15: { // SBDARE_SeabedArea
-                            throw new NotImplementedException($"No SBDARE_SeabedArea in DK or GL. {tableName}");
+                            var instance = new SeabedArea();
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            // TODO: interoperabilityIdentifier
+
+                            var natureOfSurfaceQualifyingTermsCount = 0;
+                            var naturOfSurfaceCount = 0;
+
+                            string[] natsurValues = null!;
+                            string[] natquaValues = null!;
+
+                            List<natureOfSurfaceQualifyingTerms>? natureOfSurfaceQualifyingTermsList = null;
+
+                            if (current.NATSUR != default && current.NATSUR.Trim().Length > 0) {
+                                natsurValues = current.NATSUR.Trim().Trim(',').Split(',');
+                                naturOfSurfaceCount = natsurValues.Count();
+                            }
+                            if (current.NATQUA != default && current.NATQUA.Trim().Length > 0) {
+                                natquaValues = current.NATQUA.Trim().Trim(',').Split(',');
+                                natureOfSurfaceQualifyingTermsCount = natquaValues.Count();
+                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<surfaceCharacteristics, natureOfSurfaceQualifyingTerms>(current.NATQUA);
+                            }
+
+                            // TODO: Verify this against action point 48
+
+                            surfaceCharacteristics surfaceChars = new();
+
+                            instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics>();
+
+                            var list1 = string.IsNullOrWhiteSpace(current.NATSUR) || string.IsNullOrEmpty(current.NATSUR.Trim().Trim(',')) ? new List<string> { "" } : current.NATSUR.Trim().Trim(',').Split(',').ToList();
+                            var list2 = string.IsNullOrWhiteSpace(current.NATQUA) || string.IsNullOrEmpty(current.NATQUA.Trim().Trim(',')) ? new List<string> { "" } : current.NATQUA.Trim().Trim(',').Split(',').ToList();
+
+                            var result = new List<(string, string)>();
+
+                            if (naturOfSurfaceCount > 0) {
+                                for (int i = 0; i < list1.Count(); i++) {
+                                    var natureOfSurface = EnumHelper.GetEnumValue<SeabedArea, natureOfSurface>(list1[i]);
+
+                                    if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
+                                        instance.surfaceCharacteristics.Add(new() {
+                                            natureOfSurface = natureOfSurface,
+                                            natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
+
+                                        });
+                                    }
+                                    else {
+                                        instance.surfaceCharacteristics.Add(new() {
+                                            natureOfSurface = natureOfSurface
+                                        });
+                                    }
+                                }
+                            }
+                            else {
+                                // S-57 Appendix B.1 Annex A_Ed 4.4.0_FINAL.pdf
+                                // p.74 - (d) Hard bottom: The attribute NATQUA = 10 (hard) should be encoded, without being associated with NATSUR.
+
+                                if (natureOfSurfaceQualifyingTermsCount > 0) {
+                                    for (int i = 0; i < list2.Count(); i++) {
+                                        if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
+                                            if (list2[i] != "10") {
+                                                Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, "NatureOfSurface is empty but natureOfSurfaceQualifyingTerms are not. This is not permitted.");
+                                            }
+                                            else {
+                                                instance.surfaceCharacteristics.Add(new() {
+                                                    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
+                                                });
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+
+                            //foreach (var natsur in list1) {
+                            //    foreach (var natqua in list2) {
+                            //        if (natureOfSurfaceQualifyingTermsList != null && !string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                            //                natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                            //            });
+                            //        }
+
+                            //        if (natureOfSurfaceQualifyingTermsList != null && string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurfaceQualifyingTerms = natureOfSurfaceQualifyingTermsList
+                            //            });
+                            //        }
+
+                            //        if (natureOfSurfaceQualifyingTermsList == null && !string.IsNullOrEmpty(natsur)) {
+                            //            instance.surfaceCharacteristics.Add(new() {
+                            //                natureOfSurface = EnumHelper.GetEnumValue<natureOfSurface>(natsur),
+                            //            });
+                            //        }
+
+                            //        if (natureOfSurfaceQualifyingTermsList == null && string.IsNullOrEmpty(natsur)) {
+
+                            //        }
+                            //    }
+                            //}
+
+                            if (current.WATLEV.HasValue) {
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue<SeabedArea, waterLevelEffect>(current.WATLEV);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                            }
+
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
+                        break;
                     case 30: { // SNDWAV_SandWaves
-                            throw new NotImplementedException($"No SNDWAV_SandWaves in DK or GL. {tableName}");
+                            var instance = new Sandwave();
+
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value;
+                            }
+                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
+                                instance.verticalLength = default(double?);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
+
                         }
+                        break;
                     case 40: { // WEDKLP_WeedKelp
-                            throw new NotImplementedException($"No WEDKLP_WeedKelp in DK or GL. {tableName}");
+
+                            if (current.CATWED.HasValue && current.CATWED.Value == 3) {
+                                var seagrass = new Seagrass();
+
+                                seagrass.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    seagrass.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+                                seagrass.SetInformationBindings(AddInformation(seagrass.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = seagrass.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(seagrass, jsonSerializerOptions);
+                                buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(seagrass.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = featureN.Crc32();
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, seagrass, featureN, seagrass.scaleMinimum);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(seagrass));
+
+                            }
+                            else {
+
+                                var instance = new WeedKelp();
+                                if (current.CATWED.HasValue) {
+                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue<WeedKelp, categoryOfWeedKelp>(current.CATWED.Value);
+                                }
+
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                                // TODO: interoperabilityIdentifier
+
+                                if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                    string subtype = "";
+
+                                    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                }
+
+                                instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                                buffer["ps"] = ps101;
+                                buffer["code"] = instance.GetType().Name;
+                                buffer["edition"] = ImporterNIS.s101version;
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                                SetShape(buffer, current.SHAPE);
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                                var featureN = featureClass.CreateRow(buffer);
+                                var name = featureN.Crc32();
+
+                                if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
+                                }
+
+                                ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
+                            }
                         }
+                        break;
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();
