@@ -521,7 +521,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -534,7 +535,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -1328,7 +1330,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String? dateEnd {
 			get {
@@ -1341,7 +1344,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String? dateStart {
 			get {
@@ -2276,7 +2280,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 	public partial class surveyDateRangeViewModel : ComplexViewModel<surveyDateRange> {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<surveyDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String? dateEnd {
 			get {
@@ -2289,7 +2294,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<surveyDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -6307,7 +6313,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _referenceYearForMagneticVariation  = default;
 
 		[Category("MagneticVariation")]
-		[Editor(typeof(Editors.HorizonEditor<MagneticVariation>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String? referenceYearForMagneticVariation {
 			get {
@@ -6545,7 +6552,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LocalMagneticAnomaly")]
-		[Editor(typeof(Editors.HorizonEditor<LocalMagneticAnomaly>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -7169,7 +7177,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LandArea")]
-		[Editor(typeof(Editors.HorizonEditor<LandArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -9739,7 +9748,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IceArea")]
-		[Editor(typeof(Editors.HorizonEditor<IceArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -11026,7 +11036,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("BuiltUpArea")]
-		[Editor(typeof(Editors.HorizonEditor<BuiltUpArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -11471,7 +11482,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Building")]
-		[Editor(typeof(Editors.HorizonEditor<Building>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -11999,7 +12011,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("AirportAirfield")]
-		[Editor(typeof(Editors.HorizonEditor<AirportAirfield>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -12325,7 +12338,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Runway")]
-		[Editor(typeof(Editors.HorizonEditor<Runway>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -12644,7 +12658,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Helipad")]
-		[Editor(typeof(Editors.HorizonEditor<Helipad>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -13117,7 +13132,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bridge")]
-		[Editor(typeof(Editors.HorizonEditor<Bridge>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -14601,7 +14617,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Conveyor")]
-		[Editor(typeof(Editors.HorizonEditor<Conveyor>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -15177,7 +15194,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CableOverhead")]
-		[Editor(typeof(Editors.HorizonEditor<CableOverhead>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -15669,7 +15687,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineOverhead")]
-		[Editor(typeof(Editors.HorizonEditor<PipelineOverhead>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -16223,7 +16242,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PylonBridgeSupport")]
-		[Editor(typeof(Editors.HorizonEditor<PylonBridgeSupport>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -16867,7 +16887,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FenceWall")]
-		[Editor(typeof(Editors.HorizonEditor<FenceWall>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -17241,7 +17262,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Railway")]
-		[Editor(typeof(Editors.HorizonEditor<Railway>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -17556,7 +17578,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Road")]
-		[Editor(typeof(Editors.HorizonEditor<Road>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -17871,7 +17894,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Tunnel")]
-		[Editor(typeof(Editors.HorizonEditor<Tunnel>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -18330,7 +18354,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Landmark")]
-		[Editor(typeof(Editors.HorizonEditor<Landmark>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -19033,7 +19058,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SiloTank")]
-		[Editor(typeof(Editors.HorizonEditor<SiloTank>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -19658,7 +19684,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("WindTurbine")]
-		[Editor(typeof(Editors.HorizonEditor<WindTurbine>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -20247,7 +20274,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FortifiedStructure")]
-		[Editor(typeof(Editors.HorizonEditor<FortifiedStructure>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -20816,7 +20844,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ProductionStorageArea")]
-		[Editor(typeof(Editors.HorizonEditor<ProductionStorageArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -21548,7 +21577,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Hulk")]
-		[Editor(typeof(Editors.HorizonEditor<Hulk>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -22078,7 +22108,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Pile")]
-		[Editor(typeof(Editors.HorizonEditor<Pile>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -22645,7 +22676,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dyke")]
-		[Editor(typeof(Editors.HorizonEditor<Dyke>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -23107,7 +23139,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("ShorelineConstruction")]
-		[Editor(typeof(Editors.HorizonEditor<ShorelineConstruction>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -23719,7 +23752,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("StructureOverNavigableWater")]
-		[Editor(typeof(Editors.HorizonEditor<StructureOverNavigableWater>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -24289,7 +24323,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Causeway")]
-		[Editor(typeof(Editors.HorizonEditor<Causeway>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -24666,7 +24701,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Canal")]
-		[Editor(typeof(Editors.HorizonEditor<Canal>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -27321,7 +27357,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Dolphin")]
-		[Editor(typeof(Editors.HorizonEditor<Dolphin>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -27850,7 +27887,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Bollard")]
-		[Editor(typeof(Editors.HorizonEditor<Bollard>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -32521,7 +32559,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Sounding")]
-		[Editor(typeof(Editors.HorizonEditor<Sounding>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -32829,7 +32868,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dredgedDate  = default;
 
 		[Category("DredgedArea")]
-		[Editor(typeof(Editors.HorizonEditor<DredgedArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dredgedDate {
 			get {
@@ -33239,7 +33279,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _sweptDate  = default;
 
 		[Category("SweptArea")]
-		[Editor(typeof(Editors.HorizonEditor<SweptArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? sweptDate {
 			get {
@@ -35517,7 +35558,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("UnderwaterAwashRock")]
-		[Editor(typeof(Editors.HorizonEditor<UnderwaterAwashRock>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -35961,7 +36003,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Wreck")]
-		[Editor(typeof(Editors.HorizonEditor<Wreck>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -36513,7 +36556,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("Obstruction")]
-		[Editor(typeof(Editors.HorizonEditor<Obstruction>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -36975,7 +37019,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FoulGround")]
-		[Editor(typeof(Editors.HorizonEditor<FoulGround>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -37303,7 +37348,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("DiscolouredWater")]
-		[Editor(typeof(Editors.HorizonEditor<DiscolouredWater>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -37545,7 +37591,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("FishingFacility")]
-		[Editor(typeof(Editors.HorizonEditor<FishingFacility>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -38505,7 +38552,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshorePlatform")]
-		[Editor(typeof(Editors.HorizonEditor<OffshorePlatform>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -39730,7 +39778,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("PipelineSubmarineOnLand")]
-		[Editor(typeof(Editors.HorizonEditor<PipelineSubmarineOnLand>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -40495,7 +40544,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OffshoreProductionArea")]
-		[Editor(typeof(Editors.HorizonEditor<OffshoreProductionArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -52113,7 +52163,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _dateDisused  = default;
 
 		[Category("DumpingGround")]
-		[Editor(typeof(Editors.HorizonEditor<DumpingGround>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateDisused {
 			get {
@@ -53439,7 +53490,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CautionArea")]
-		[Editor(typeof(Editors.HorizonEditor<CautionArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -53791,7 +53843,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("InformationArea")]
-		[Editor(typeof(Editors.HorizonEditor<InformationArea>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -56350,7 +56403,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("OilBarrier")]
-		[Editor(typeof(Editors.HorizonEditor<OilBarrier>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -65219,7 +65273,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("LateralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<LateralBeacon>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -65928,7 +65983,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("CardinalBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<CardinalBeacon>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -66620,7 +66676,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("IsolatedDangerBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<IsolatedDangerBeacon>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -67309,7 +67366,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SafeWaterBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SafeWaterBeacon>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -68005,7 +68063,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("SpecialPurposeGeneralBeacon")]
-		[Editor(typeof(Editors.HorizonEditor<SpecialPurposeGeneralBeacon>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {
@@ -74961,7 +75020,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
 		private String? _reportedDate  = default;
 
 		[Category("HarbourFacility")]
-		[Editor(typeof(Editors.HorizonEditor<HarbourFacility>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? reportedDate {
 			get {

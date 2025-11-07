@@ -239,17 +239,18 @@ namespace S100Framework.Applications
                     builderDomainModel.AppendLine("\t}");
                     builderDomainModel.AppendLine();
 
-                    editorBuilders.Add(code, (b, lower, upper) => {
-                        if (lower > 1 || (upper.HasValue && upper.Value > 1)) {
-                            b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
-                        }
-                        else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                            System.Diagnostics.Debug.Assert(lower == 1 && upper.HasValue && upper.Value == 1);     //  b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
-                        }
-                        else
-                            b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
-                        b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
-                    });
+                    //editorBuilders.Add(code, (b, lower, upper) => {
+                    //    //if (lower > 1 || (upper.HasValue && upper.Value > 1)) {
+                    //    //    b.AppendLine($"\t\t[Editor(typeof(Editors.EnumCollectionEditor), typeof(Editors.EnumCollectionEditor))]");
+                    //    //}
+                    //    //else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                    //    //    System.Diagnostics.Debug.Assert(lower == 1 && upper.HasValue && upper.Value == 1);     //  b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownEditor<{code}?>), typeof(Editors.UnknownEditor<{code}?>))]");
+                    //    //}
+                    //    //else
+                    //    //    b.AppendLine($"\t\t[Editor(typeof(Editors.EnumComboBoxEditor), typeof(Editors.EnumComboBoxEditor))]");
+                                                
+                    //    b.AppendLine($"\t\t[DomainModel.EnumerationAttribute(nameof({code}List), typeof({code}))]");
+                    //});
                 }
 
                 //  CodeLists
@@ -356,42 +357,51 @@ namespace S100Framework.Applications
                     if (e.Element(XName.Get("valueType", scope_S100))!.Value.Equals("s100_truncateddate", StringComparison.OrdinalIgnoreCase)) {
                         editorBuilders.Add(code, (b, lower, upper) => {
                             b.AppendLine("\t\t[S100TruncatedDateAttribute]");
-                            if (lower > 1 || (upper.HasValue && upper.Value > 1))
+                            if(!(upper.HasValue && upper.Value > 1)) {
                                 b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
-                            else if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                                if (productFormat == ProductFormat.ISO8211) {
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
-                                }
-                                else {
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
-                                }
                             }
+                            //if (lower > 1 || (upper.HasValue && upper.Value > 1))
+                            //    b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                            //else if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                            //    if (productFormat == ProductFormat.ISO8211) {
+                            //        b.AppendLine($"\t\t[Editor(typeof(Editors.UnknownS100TruncatedDateEditor), typeof(Editors.UnknownS100TruncatedDateEditor))]");
+                            //    }
+                            //    else {
+                            //        b.AppendLine($"\t\t[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]");
+                            //    }
+                            //}
                         });
                     }
                     else {
-                        if (productFormat == ProductFormat.ISO8211) {
-                            var editor = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
-                                "boolean" => "UnknownBooleanEditor",
-                                "real" => "UnknownDoubleEditor",
-                                "text" => "UnknownStringEditor",
-                                "date" => "UnknownDateOnlyEditor",
-                                "dateonly" => "UnknownDateOnlyEditor",
-                                "datetime" => "UnknownDateTimeEditor",
-                                "time" => "UnknownTimeEditor",
-                                "integer" => "UnknownIntegerEditor",
-                                "urn" => "UnknownUrnEditor",
-                                "url" => "UnknownUrlEditor",
-                                "uri" => "UnknownUriEditor",
-                                "s100_codelist" => "UnknownCodeListEditor",
-                                _ => throw new InvalidDataException(),
-                            };
+                        //editorBuilders.Add(code, (b, lower, upper) => {
+                        //    //if (!(upper.HasValue && upper.Value > 1)) {
+                        //    //    b.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
+                        //    //}
+                        //});
 
-                            editorBuilders.Add(code, (b, lower, upper) => {
-                                if (lower == 1 && upper.HasValue && upper.Value == 1) {
-                                    b.AppendLine($"\t\t[Editor(typeof(Editors.{editor}), typeof(Editors.{editor}))]");
-                                }
-                            });
-                        }
+                        //if (productFormat == ProductFormat.ISO8211) {
+                        //    var editor = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
+                        //        "boolean" => "UnknownBooleanEditor",
+                        //        "real" => "UnknownDoubleEditor",
+                        //        "text" => "UnknownStringEditor",
+                        //        "date" => "UnknownDateOnlyEditor",
+                        //        "dateonly" => "UnknownDateOnlyEditor",
+                        //        "datetime" => "UnknownDateTimeEditor",
+                        //        "time" => "UnknownTimeEditor",
+                        //        "integer" => "UnknownIntegerEditor",
+                        //        "urn" => "UnknownUrnEditor",
+                        //        "url" => "UnknownUrlEditor",
+                        //        "uri" => "UnknownUriEditor",
+                        //        "s100_codelist" => "UnknownCodeListEditor",
+                        //        _ => throw new InvalidDataException(),
+                        //    };
+
+                        //    editorBuilders.Add(code, (b, lower, upper) => {
+                        //        if (lower == 1 && upper.HasValue && upper.Value == 1) {
+                        //            b.AppendLine($"\t\t[Editor(typeof(Editors.{editor}), typeof(Editors.{editor}))]");
+                        //        }
+                        //    });
+                        //}
                     }
 
                     var postfix = e.Element(XName.Get("valueType", scope_S100))!.Value.ToLowerInvariant() switch {
@@ -2471,14 +2481,15 @@ namespace S100Framework.Applications
                     //if (!(client.BuildViewModelClassClient.ComplexTypes.Contains(code) && !client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode)))
                     //    builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
-                    if(!client.BuildViewModelClassClient.ComplexTypes.Contains(code))
+                    if (!client.BuildViewModelClassClient.ComplexTypes.Contains(code))
                         builder.AppendLine($"\t\t[Category(\"{code}\")]");
 
-                    if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
-                        builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
                     if (client.BuildViewModelClassClient.Editors.ContainsKey(referenceCode)) {
-                        //client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
+                        client.BuildViewModelClassClient.Editors[referenceCode](builder, lower, upper);
                     }
+                    else if (!client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
+                        builder.AppendLine($"\t\t[Editor(typeof(Editors.HorizonEditor<{code}>), typeof(Editors.HorizonEditor))]");
+
 
                     if (client.BuildViewModelClassClient.ComplexTypes.Contains(referenceCode))
                         builder.AppendLine("\t\t[ExpandableObject]");
