@@ -184,5 +184,90 @@ namespace TestS100
                 _output.WriteLine($"{e.Type};{e.RoleType};{e.Association};{e.Role};{e.Reference};{e.Multiplicity}");
             }
         }
+
+        [Fact]
+        public void Test_Multiplicity() {
+            var documentS101 = XDocument.Load(@".\101_Feature_Catalogue_2.0.0.xml");
+
+            var navigator = documentS101.CreateNavigator();
+            navigator.MoveToFollowing(XPathNodeType.Element);
+            var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            var scope_S100 = scopes["S100FC"];
+
+            var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+            foreach (var e in scopes)
+                xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+
+            var dictionary = new Dictionary<string, string[]>();
+
+            foreach (var e in documentS101.XPathSelectElements("//S100FC:S100_FC_ComplexAttribute", xmlNamespaceManager)) {
+                var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                foreach (var attributeBinding in e.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
+
+                    if (upper.HasValue && upper.Value <= 1)
+                        continue;
+
+                    var u = upper.HasValue ? $"{upper.Value}" : "*";
+                    var text = $"{referenceCode} [{lower}..{u}]";
+                    if (!dictionary.ContainsKey(referenceCode))
+                        dictionary[referenceCode] = [text];
+                    else if (!dictionary[referenceCode].Contains(text))
+                        dictionary[referenceCode] = [.. dictionary[referenceCode], text];
+                }
+            }
+
+            foreach (var e in documentS101.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager)) {
+                var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
+
+                    if (upper.HasValue && upper.Value <= 1)
+                        continue;
+
+                    var u = upper.HasValue ? $"{upper.Value}" : "*";
+                    var text = $"{referenceCode} [{lower}..{u}]";
+                    if (!dictionary.ContainsKey(referenceCode))
+                        dictionary[referenceCode] = [text];
+                    else if (!dictionary[referenceCode].Contains(text))
+                        dictionary[referenceCode] = [.. dictionary[referenceCode], text];
+                }
+            }
+
+            foreach (var e in documentS101.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
+                var code = e.Element(XName.Get("code", scope_S100))!.Value;
+                foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int? upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? null : int.Parse(_.Value!);
+
+                    if (upper.HasValue && upper.Value <= 1)
+                        continue;
+
+                    var u = upper.HasValue ? $"{upper.Value}" : "*";
+                    var text = $"{referenceCode} [{lower}..{u}]";
+                    if (!dictionary.ContainsKey(referenceCode))
+                        dictionary[referenceCode] = [text];
+                    else if (!dictionary[referenceCode].Contains(text))
+                        dictionary[referenceCode] = [.. dictionary[referenceCode], text];
+                }
+            }
+
+            foreach(var e in dictionary.OrderBy(e=>e.Key)) {
+                _output.WriteLine($"\t{e.Key} => {string.Join(',', e.Value.Order())}");
+            }
+        }
     }
 }

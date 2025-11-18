@@ -123,14 +123,18 @@ namespace S100Framework.Applications.Singletons
                 using (var rowBuffer = attachment.CreateRowBuffer())
                 using (var insertCursor = attachment.CreateInsertCursor()) {
                     foreach (var nauticalInformation in NauticalInformations.Instance._nauticalInformations.Values) {
-                        
+
                         foreach (var info in nauticalInformation.information) {
                             var supportFile = new S100Horizon.Settings.SupportFile();
                             supportFile.FileName = info.fileReference!;
 
                             var s57FileName = info.fileReference!.Clone().ToString()!.Replace("101DK00", "DK");
 
-                            string? filePath = Directory.EnumerateFiles(ImporterNIS._notesPath, s57FileName, SearchOption.AllDirectories).FirstOrDefault();
+                            string? filePath = default;
+
+                            if (!string.IsNullOrEmpty(ImporterNIS._notesPath)) { 
+                                filePath = Directory.EnumerateFiles(ImporterNIS._notesPath, s57FileName,  SearchOption.AllDirectories).FirstOrDefault();
+                            }   
 
                             if (filePath == default) {
                                 Logger.Current.Error($"Cannot find NauticalInformation fileref: {s57FileName} in {ImporterNIS._notesPath}");

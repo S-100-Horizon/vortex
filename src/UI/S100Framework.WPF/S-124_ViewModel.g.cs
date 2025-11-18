@@ -271,7 +271,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -284,7 +285,8 @@ namespace S100Framework.WPF.ViewModel.S124 {
 
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {

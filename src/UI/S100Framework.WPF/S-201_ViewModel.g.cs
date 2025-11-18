@@ -417,7 +417,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class fixedDateRangeViewModel : ComplexViewModel<fixedDateRange> {
 		private String? _dateEnd  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateEnd {
 			get {
@@ -430,7 +431,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String? _dateStart  = default;
 
-		[Editor(typeof(Editors.HorizonEditor<fixedDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Optional]
 		public String? dateStart {
 			get {
@@ -735,7 +737,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -748,7 +751,8 @@ namespace S100Framework.WPF.ViewModel.S201 {
 
 		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {

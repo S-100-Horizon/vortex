@@ -1,6 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-//using ArcGIS.Desktop.Internal.Mapping;
-using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel.S101;
@@ -151,8 +149,73 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // CGUSTA_CoastguardStation
-                            throw new NotImplementedException($"No CGUSTA_CoastguardStation in DK or GL. {tableName}");
+
+                            var instance = new CoastGuardStation();
+
+                            if (current.COMCHA != default) {
+                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                            }
+
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            /*
+                                The S-101 Boolean attribute is MRCC has been introduced in S - 101 to indicate that a coast guard
+                                station also performs the function of a Maritime Rescue and Coordination Centres(MRCC). This
+                                information is encoded in S - 57 on CGUSTA using the attribute INFORM(see clause 2.3).In order
+                                for this information to be converted across to S - 101, the text string encoded in INFORM on the
+                                CGUSTA should be in a standardised format, such as Maritime Rescue and Coordination Centre.
+                            */
+                            
+                            //TODO: MRCC from INFORM
+
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current.SHAPE, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+
+                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["informationbindings"] = instance.GetInformationBindings() == null ? DBNull.Value : System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.Crc32();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+
                         }
+                        break;
                     case 10: { // CHKPNT_CheckPoint
                             throw new NotImplementedException($"No CHKPNT_CheckPoint in DK or GL. {tableName}");
                         }

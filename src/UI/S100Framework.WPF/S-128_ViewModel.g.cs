@@ -697,7 +697,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 	public partial class periodicDateRangeViewModel : ComplexViewModel<periodicDateRange> {
 		private String _dateEnd  = string.Empty;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateEnd {
 			get {
@@ -710,7 +711,8 @@ namespace S100Framework.WPF.ViewModel.S128 {
 
 		private String _dateStart  = string.Empty;
 
-		[Editor(typeof(Editors.HorizonEditor<periodicDateRange>), typeof(Editors.HorizonEditor))]
+		[S100TruncatedDateAttribute]
+		[Editor(typeof(Editors.S100TruncatedDateEditor), typeof(Editors.S100TruncatedDateEditor))]
 		[Mandatory]
 		public String dateStart {
 			get {

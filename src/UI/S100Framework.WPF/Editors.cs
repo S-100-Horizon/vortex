@@ -2,6 +2,7 @@
 using S100Framework.WPF.ViewModel;
 using System.Collections;
 using System.Globalization;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -150,21 +151,13 @@ namespace S100Framework.WPF.Editors
                 Width = new GridLength(18),
             });
 
-
-
-
-            //var panel = new Grid {
-            //    HorizontalAlignment = HorizontalAlignment.Stretch,
-            //    VerticalAlignment = VerticalAlignment.Center,
-            //};
-
             if (supportsUnknown) {
-                Binding newBinding = new Binding(propertyItem.DisplayName) {
-                    Source = propertyItem.Instance,
-                    Mode = BindingMode.OneWay,
-                };
-                newBinding.Converter = new BrushUnknownConvertor();
-                border.SetBinding(Border.BorderBrushProperty, newBinding);
+                //Binding newBinding = new Binding(propertyItem.DisplayName) {
+                //    Source = propertyItem.Instance,
+                //    Mode = BindingMode.OneWay,
+                //};
+                //newBinding.Converter = new BrushUnknownConvertor();
+                //border.SetBinding(Border.BorderBrushProperty, newBinding);
             }
 
             var dependentUnknownValue = (DependentUnknownValueAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(DependentUnknownValueAttribute));
@@ -185,6 +178,7 @@ namespace S100Framework.WPF.Editors
             if (propertyItem.PropertyType == typeof(string) || (propertyItem.PropertyType.IsGenericType && propertyItem.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) && propertyItem.PropertyType.GenericTypeArguments[0] == typeof(string))) {
                 var editorTextBox = new PropertyGridEditorTextBox {
                     Background = System.Windows.Media.Brushes.Transparent,
+                    KeepWatermarkOnGotFocus = false,
                 };
 
                 var stringLengthConstraint = (StringLengthConstraintAttribute?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(StringLengthConstraintAttribute));
@@ -195,18 +189,13 @@ namespace S100Framework.WPF.Editors
                 if (supportsUnknown) {
                     editorTextBox.Watermark = "[UNKNOWN]";
 
-                    //var layer = AdornerLayer.GetAdornerLayer(editorTextBox);
-
-                    //layer.Add(new RadioButtonAdorner(editorTextBox));
-
                     var radioButtonUnknown = new RadioButton {
                         ToolTip = "[Unknown]",
                         GroupName = propertyItem.DisplayName,
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                     };
                     editorTextBox.TextChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editorTextBox.Text);
@@ -220,6 +209,13 @@ namespace S100Framework.WPF.Editors
 
                     Grid.SetColumn(radioButtonUnknown, 1);                    
                     grid.Children.Add(radioButtonUnknown);
+
+                    Binding newBinding = new Binding(propertyItem.DisplayName) {
+                        Source = propertyItem.Instance,
+                        Mode = BindingMode.OneWay,
+                    };
+                    newBinding.Converter = new BrushUnknownConvertor();
+                    radioButtonUnknown.SetBinding(RadioButton.BackgroundProperty, newBinding);
                 }
                 else if (optional) {
                     editorTextBox.Watermark = "[Null]";
@@ -228,8 +224,7 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -255,7 +250,8 @@ namespace S100Framework.WPF.Editors
             else if (propertyItem.PropertyType == typeof(double) || propertyItem.PropertyType == typeof(double?)) {
                 var editorDecimalUpDown = new PropertyGridEditorDecimalUpDown {
                     Background = System.Windows.Media.Brushes.Transparent,
-                    ShowButtonSpinner = false,
+                    ShowButtonSpinner = false,   
+                    ParsingNumberStyle = NumberStyles.Float | NumberStyles.AllowDecimalPoint
                 };
 
                 var rangeConstraint = (RangeConstraintAttribute<double>?)attributes.SingleOrDefault(attr => attr.GetType() == typeof(RangeConstraintAttribute<double>));
@@ -274,8 +270,7 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                     };
 
                     editorDecimalUpDown.ValueChanged += (sender, e) => {
@@ -290,16 +285,22 @@ namespace S100Framework.WPF.Editors
 
                     Grid.SetColumn(radioButtonUnknown, 1);
                     grid.Children.Add(radioButtonUnknown);
+
+                    Binding newBinding = new Binding(propertyItem.DisplayName) {
+                        Source = propertyItem.Instance,
+                        Mode = BindingMode.OneWay,
+                    };
+                    newBinding.Converter = new BrushUnknownConvertor();
+                    radioButtonUnknown.SetBinding(RadioButton.BackgroundProperty, newBinding);
                 }
                 else if (optional) {
-                    //editorDecimalUpDown.Watermark = "[Null]";
+                    editorDecimalUpDown.Watermark = "[Null]";
 
                     var crossButton = new CrossButton {
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -345,8 +346,7 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                     };
                     editorIntegerUpDown.ValueChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = !editorIntegerUpDown.Value.HasValue;
@@ -360,16 +360,22 @@ namespace S100Framework.WPF.Editors
 
                     Grid.SetColumn(radioButtonUnknown, 1);
                     grid.Children.Add(radioButtonUnknown);
+
+                    Binding newBinding = new Binding(propertyItem.DisplayName) {
+                        Source = propertyItem.Instance,
+                        Mode = BindingMode.OneWay,
+                    };
+                    newBinding.Converter = new BrushUnknownConvertor();
+                    radioButtonUnknown.SetBinding(RadioButton.BackgroundProperty, newBinding);
                 }
                 else if (optional) {
-                    //editorIntegerUpDown.Watermark = "[Null]";
+                    editorIntegerUpDown.Watermark = "[Null]";
 
                     var crossButton = new CrossButton {
                         ToolTip = "[Nullalbe]",
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -421,8 +427,7 @@ namespace S100Framework.WPF.Editors
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
                         IsChecked = propertyItem.Value is null,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                     };
                     editorEnumCheckBox.SelectionChanged += (sender, e) => {
                         radioButtonUnknown.IsChecked = editorEnumCheckBox.SelectedValue == default;
@@ -436,6 +441,13 @@ namespace S100Framework.WPF.Editors
 
                     Grid.SetColumn(radioButtonUnknown, 1);
                     grid.Children.Add(radioButtonUnknown);
+
+                    Binding newBinding = new Binding(propertyItem.DisplayName) {
+                        Source = propertyItem.Instance,
+                        Mode = BindingMode.OneWay,
+                    };
+                    newBinding.Converter = new BrushUnknownConvertor();
+                    radioButtonUnknown.SetBinding(RadioButton.BackgroundProperty, newBinding);
                 }
                 else if (optional) {
                     editorEnumCheckBox.Watermark = "[Null]";
@@ -444,8 +456,7 @@ namespace S100Framework.WPF.Editors
                         ToolTip = "[Nullalbe]",                        
                         HorizontalAlignment = HorizontalAlignment.Right,
                         VerticalAlignment = VerticalAlignment.Center,
-                        //Margin = new Thickness(0, 0, 18, 0),
-                        IsTabStop = true,
+                        IsTabStop = false,
                         Width = 14,
                         MaxWidth = 14,
                         Height = 14,
@@ -781,24 +792,66 @@ namespace S100Framework.WPF.Editors
         //public string? Value { get; set; } = default;
 
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var control = new WatermarkTextBox {
-                Name = $"_textBox{Guid.NewGuid():N}",
+            var attributes = ((PropertyItem)propertyItem.ParentElement).PropertyType.GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(true);
+
+            var grid = new Grid {
+                //HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            grid.ColumnDefinitions.Add(new ColumnDefinition {
+                Width = new GridLength(1, GridUnitType.Star),
+            });
+            grid.ColumnDefinitions.Add(new ColumnDefinition {
+                Width = new GridLength(18),
+            });
+
+            var optional = attributes.SingleOrDefault(attr => attr.GetType() == typeof(OptionalAttribute)) != null;
+
+            var editorTextBox = new PropertyGridEditorTextBox {
+                Background = System.Windows.Media.Brushes.Transparent,
                 MaxLength = 8,
                 KeepWatermarkOnGotFocus = false,
                 Watermark = "yyyyMMdd",
             };
-            control.PreviewTextInput += this.Control_PreviewTextInput;
 
-            //Value = $"{propertyItem.Value:yyyMMdd}";
+            if (optional) {
+                //editorTextBox.Watermark = "[Null]";
 
-            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            //BindingOperations.SetBinding(control, CheckComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+                var crossButton = new CrossButton {
+                    ToolTip = "[Nullalbe]",
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    IsTabStop = false,
+                    Width = 14,
+                    MaxWidth = 14,
+                    Height = 14,
+                    MaxHeight = 14,
+                };
 
-            //var bindingSelectedItemProperty = new Binding(nameof(Value)) { Source = this, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+                editorTextBox.TextChanged += (sender, e) => {
+                    //crossButton.IsEnabled = editorEnumCheckBox.SelectedValue != default;
+                };
+                crossButton.Click += (sender, e) => {
+                    if (!string.IsNullOrEmpty(editorTextBox.Text))
+                        editorTextBox.Text = null;
+                };
+
+                Grid.SetColumn(crossButton, 1);
+                grid.Children.Add(crossButton);
+            }
+
+            editorTextBox.PreviewTextInput += this.Control_PreviewTextInput;
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = BindingMode.TwoWay };
+            BindingOperations.SetBinding(editorTextBox, PropertyGridEditorTextBox.TextProperty, bindingSelectedItemProperty);
+
             bindingSelectedItemProperty.ValidationRules.Add(new PartialDateRule());
-            BindingOperations.SetBinding(control, TextBox.TextProperty, bindingSelectedItemProperty);
+            BindingOperations.SetBinding(editorTextBox, PropertyGridEditorTextBox.TextProperty, bindingSelectedItemProperty);
 
-            return control;
+
+            Grid.SetColumn(editorTextBox, 0);
+            grid.Children.Add(editorTextBox);
+            return grid;
         }
 
         private void Control_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e) {
@@ -1439,8 +1492,8 @@ namespace S100Framework.WPF.Editors
             };
 
             var editor = new PropertyGridEditorTextBox {
-
                 Watermark = "[unknown]",
+                KeepWatermarkOnGotFocus = false,
             };
             editor.SelectionChanged += (s, e) => {
                 radioButtonUnknown.IsChecked = string.IsNullOrEmpty(editor.Text);

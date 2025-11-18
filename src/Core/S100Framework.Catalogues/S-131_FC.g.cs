@@ -16,18 +16,18 @@ namespace S100Framework.DomainModel.S131 {
 		public static string Name => "Feature Catalogue for S-131";
 		public static string Scope => "Global coverage of maritime areas";
 		public static string ProductId => "S-131";
-		public static Version Version => new Version("1.0.0");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2023-03-15", "yyyy-MM-dd");
-		public static string[] ComplexTypes => ["bearingInformation","cargoServicesDescription","constructionInformation","contactAddress","depthsDescription","facilitiesLayoutDescription","featureName","fixedDateRange","frequencyPair","generalHarbourInformation","generalPortDescription","graphic","horizontalPositionUncertainty","information","landmarkDescription","limitsDescription","majorLightDescription","markedBy","offshoreMarkDescription","onlineResource","orientation","periodicDateRange","rxNCode","scheduleByDayOfWeek","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","usefulMarkDescription","verticalUncertainty","vesselsMeasurements","weatherResource"];
+		public static Version Version => new Version("2.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2025-10-25", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["bearingInformation","cargoServicesDescription","constructionInformation","contactAddress","depthsDescription","facilitiesLayoutDescription","featureName","fixedDateRange","frequencyPair","generalHarbourInformation","generalPortDescription","graphic","horizontalPositionUncertainty","information","landmarkDescription","limitsDescription","majorLightDescription","markedBy","offshoreMarkDescription","onlineResource","orientation","periodicDateRange","rxNCode","scheduleByDayOfWeek","sourceIndication","spatialAccuracy","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","usefulMarkDescription","verticalUncertainty","vesselMeasurementsSpecification","weatherResource"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ServiceControl","ServiceContact","LocationHours","RelatedOrganisation","InclusionType","PermissionType","SpatialAssociation","LimitEntrance","ServiceAvailability"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","Subsection","Infrastructure","PrimaryAuxiliaryFacility","Demarcation","JurisdictionalLimit","LayoutDivision"];
 		public static string[] InformationTypes => ["Applicability","Authority","AvailablePortServices","ContactDetails","Entrance","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
-		public static string[] FeatureTypes => ["AnchorBerth","AnchorageArea","Berth","BerthPosition","DockArea","DryDock","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","MooringWarpingFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
+		public static string[] FeatureTypes => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DockArea","DryDock","Dolphin","DumpingGround","FenderLine","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["FeatureType","OrganizationContactArea","SupervisedArea","Layout"],
-			Primitives.point => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","Berth","BerthPosition","DryDock","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourFacility","MooringWarpingFacility","PilotBoardingPlace","SeaplaneLandingArea","Terminal","TextPlacement"],
-			Primitives.surface => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","Berth","DockArea","DryDock","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData"],
-			Primitives.curve => ["Berth","OuterLimit"],
+			Primitives.point => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TextPlacement"],
+			Primitives.surface => ["HarbourPhysicalInfrastructure","AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","DockArea","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","LockBasin","LockBasinPart","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData"],
+			Primitives.curve => ["AutomatedGuidedVehicle","Berth","FenderLine","OuterLimit"],
 			_ => throw new InvalidOperationException(),
 		};
 		public static Primitives[] FeaturePrimitives(string featureType) => featureType switch {
@@ -38,21 +38,30 @@ namespace S100Framework.DomainModel.S131 {
 			"Layout" => [Primitives.noGeometry],
 			"AnchorBerth" => [Primitives.point,Primitives.surface],
 			"AnchorageArea" => [Primitives.point,Primitives.surface],
+			"AutomatedGuidedVehicle" => [Primitives.point,Primitives.curve,Primitives.surface],
 			"Berth" => [Primitives.point,Primitives.curve,Primitives.surface],
 			"BerthPosition" => [Primitives.point],
+			"Bollard" => [Primitives.point],
 			"DockArea" => [Primitives.surface],
 			"DryDock" => [Primitives.point,Primitives.surface],
+			"Dolphin" => [Primitives.point,Primitives.surface],
 			"DumpingGround" => [Primitives.surface,Primitives.point],
+			"FenderLine" => [Primitives.curve],
 			"FloatingDock" => [Primitives.point,Primitives.surface],
 			"Gridiron" => [Primitives.point,Primitives.surface],
 			"HarbourAreaAdministrative" => [Primitives.point,Primitives.surface],
 			"HarbourAreaSection" => [Primitives.point,Primitives.surface],
 			"HarbourBasin" => [Primitives.surface],
-			"HarbourFacility" => [Primitives.point,Primitives.surface],
+			"LockBasin" => [Primitives.point,Primitives.surface],
+			"LockBasinPart" => [Primitives.point,Primitives.surface],
+			"MooringBuoy" => [Primitives.point],
 			"MooringWarpingFacility" => [Primitives.point],
+			"OnshorePowerFacility" => [Primitives.point],
 			"OuterLimit" => [Primitives.curve,Primitives.surface],
 			"PilotBoardingPlace" => [Primitives.surface,Primitives.point],
 			"SeaplaneLandingArea" => [Primitives.surface,Primitives.point],
+			"ShipLift" => [Primitives.point,Primitives.surface],
+			"StraddleCarrier" => [Primitives.point,Primitives.surface],
 			"Terminal" => [Primitives.point,Primitives.surface],
 			"TurningBasin" => [Primitives.surface],
 			"WaterwayArea" => [Primitives.surface],
@@ -336,6 +345,63 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	/// <summary>
+	/// Classification of an area where different use types of vessel can remain static.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfAnchorage : int {
+		[System.ComponentModel.Description("An area in which vessels anchor or may anchor.")]
+		[EnumMember(Value = "Unrestricted Anchorage")] 
+		[XmlEnum("1")] 
+		UnrestrictedAnchorage = 1,
+
+		[System.ComponentModel.Description("An area in which vessels of deep draught anchor or may anchor.")]
+		[EnumMember(Value = "Deep Water Anchorage")] 
+		[XmlEnum("2")] 
+		DeepWaterAnchorage = 2,
+
+		[System.ComponentModel.Description("An area in which tankers anchor or may anchor.")]
+		[EnumMember(Value = "Tanker Anchorage")] 
+		[XmlEnum("3")] 
+		TankerAnchorage = 3,
+
+		[System.ComponentModel.Description("An area where a vessel anchors when satisfying quarantine regulations.")]
+		[EnumMember(Value = "Quarantine Anchorage")] 
+		[XmlEnum("5")] 
+		QuarantineAnchorage = 5,
+
+		[System.ComponentModel.Description("An area in which seaplanes anchor or may anchor.")]
+		[EnumMember(Value = "Seaplane Anchorage")] 
+		[XmlEnum("6")] 
+		SeaplaneAnchorage = 6,
+
+		[System.ComponentModel.Description("An area in which yachts and small boats anchor or may anchor.")]
+		[EnumMember(Value = "Small Craft Anchorage")] 
+		[XmlEnum("7")] 
+		SmallCraftAnchorage = 7,
+
+		[System.ComponentModel.Description("An area in which vessels anchor or may anchor for periods of up to 24 hours.")]
+		[EnumMember(Value = "Anchorage for Periods Up To 24 Hours")] 
+		[XmlEnum("9")] 
+		AnchorageForPeriodsUpTo24Hours = 9,
+
+		[System.ComponentModel.Description("An area in which vessels may anchor for a period of time not to exceed a specific limit.")]
+		[EnumMember(Value = "Anchorage for a Limited Period of Time")] 
+		[XmlEnum("10")] 
+		AnchorageForALimitedPeriodOfTime = 10,
+
+		[System.ComponentModel.Description("An area in which vessels anchor or may anchor while waiting, for example, for access to a port or berth.")]
+		[EnumMember(Value = "Waiting Anchorage")] 
+		[XmlEnum("14")] 
+		WaitingAnchorage = 14,
+
+		[System.ComponentModel.Description("A location not defined by a regulatory authority that has been reported to be suitable and safe for anchoring.")]
+		[EnumMember(Value = "Reported Anchorage")] 
+		[XmlEnum("15")] 
+		ReportedAnchorage = 15,
+	}
+
+	/// <summary>
 	/// The type of person, government agency or organisation granted powers of managing or controlling access to and/or activity in an area.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -438,10 +504,10 @@ namespace S100Framework.DomainModel.S131 {
 		[XmlEnum("3")] 
 		PierJetty = 3,
 
-		[System.ComponentModel.Description("Mooring using the vessel's anchors and buoys to secure the vessel at multiple points.")]
-		[EnumMember(Value = "Conventional Mooring")] 
+		[System.ComponentModel.Description("A designated facility where a vessel may moor, usually by a combination of the mooring buoys and the ship’s anchors.")]
+		[EnumMember(Value = "Multi-Buoy Mooring Berth")] 
 		[XmlEnum("4")] 
-		ConventionalMooring = 4,
+		MultiBuoyMooringBerth = 4,
 	}
 
 	/// <summary>
@@ -453,10 +519,25 @@ namespace S100Framework.DomainModel.S131 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfCargo : int {
+		[System.ComponentModel.Description("Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.")]
+		[EnumMember(Value = "Bulk")] 
+		[XmlEnum("1")] 
+		Bulk = 1,
+
 		[System.ComponentModel.Description("One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.")]
 		[EnumMember(Value = "Container")] 
 		[XmlEnum("2")] 
 		Container = 2,
+
+		[System.ComponentModel.Description("Break bulk cargo normally loaded by crane.")]
+		[EnumMember(Value = "General")] 
+		[XmlEnum("3")] 
+		General = 3,
+
+		[System.ComponentModel.Description("Any cargo loaded by pipeline.")]
+		[EnumMember(Value = "Liquid")] 
+		[XmlEnum("4")] 
+		Liquid = 4,
 
 		[System.ComponentModel.Description("A fee paying traveller.")]
 		[EnumMember(Value = "Passenger")] 
@@ -477,6 +558,11 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Heavy Lift")] 
 		[XmlEnum("8")] 
 		HeavyLift = 8,
+
+		[System.ComponentModel.Description("Material carried by a ship to ensure its stability.")]
+		[EnumMember(Value = "Ballast")] 
+		[XmlEnum("9")] 
+		Ballast = 9,
 
 		[System.ComponentModel.Description("Commodity cargo that is transported unpackaged in large quantities. These types of goods usually need to be kept dry during the whole transportation period.")]
 		[EnumMember(Value = "Dry Bulk Cargo")] 
@@ -671,6 +757,50 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	/// <summary>
+	/// Classification of a post or group of posts, used for mooring or warping a vessel.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfDolphin : int {
+		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used as a mooring point for vessels.")]
+		[EnumMember(Value = "Mooring Dolphin")] 
+		[XmlEnum("1")] 
+		MooringDolphin = 1,
+
+		[System.ComponentModel.Description("A post or group of posts, which a vessel may swing around for compass adjustment.")]
+		[EnumMember(Value = "Deviation Dolphin")] 
+		[XmlEnum("2")] 
+		DeviationDolphin = 2,
+
+		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used to extend the berth of a vessel by providing extra mooring points.")]
+		[EnumMember(Value = "Berthing Dolphin")] 
+		[XmlEnum("3")] 
+		BerthingDolphin = 3,
+
+		[System.ComponentModel.Description("A post or group of posts driven into the seabed or riverbed, used to assist in berthing of vessels by taking up some berthing loads; keep vessels from pressing against the pier structure; or to protect structures from possible impact by ships.")]
+		[EnumMember(Value = "Fender or Breasting Dolphin")] 
+		[XmlEnum("4")] 
+		FenderOrBreastingDolphin = 4,
+	}
+
+	/// <summary>
+	/// The electrical frequency provided by the power supply station.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfFrequency : int {
+		[System.ComponentModel.Description("50 Hertz")]
+		[EnumMember(Value = "50Hz")] 
+		[XmlEnum("1")] 
+		five0hz = 1,
+
+		[System.ComponentModel.Description("60 Hertz")]
+		[EnumMember(Value = "60Hz")] 
+		[XmlEnum("2")] 
+		six0hz = 2,
+	}
+
+	/// <summary>
 	/// Classification of harbour use.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -763,21 +893,6 @@ namespace S100Framework.DomainModel.S131 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum categoryOfMooringWarpingFacility : int {
-		[System.ComponentModel.Description("A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.")]
-		[EnumMember(Value = "Dolphin")] 
-		[XmlEnum("1")] 
-		Dolphin = 1,
-
-		[System.ComponentModel.Description("A post or group of posts, which a vessel may swing around for compass adjustment.")]
-		[EnumMember(Value = "Deviation Dolphin")] 
-		[XmlEnum("2")] 
-		DeviationDolphin = 2,
-
-		[System.ComponentModel.Description("Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.")]
-		[EnumMember(Value = "Bollard")] 
-		[XmlEnum("3")] 
-		Bollard = 3,
-
 		[System.ComponentModel.Description("A section of wall designated for tying-up vessels awaiting transit. Bollards and mooring devices are available for both large and small ships.")]
 		[EnumMember(Value = "Tie-Up Wall")] 
 		[XmlEnum("4")] 
@@ -792,11 +907,6 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Mooring Cable")] 
 		[XmlEnum("6")] 
 		MooringCable = 6,
-
-		[System.ComponentModel.Description("A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.")]
-		[EnumMember(Value = "Mooring Buoy")] 
-		[XmlEnum("7")] 
-		MooringBuoy = 7,
 	}
 
 	/// <summary>
@@ -871,6 +981,11 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Not Required")] 
 		[XmlEnum("6")] 
 		NotRequired = 6,
+
+		[System.ComponentModel.Description("Only vessels of the specified characteristics may use the facility, waterway, or service.")]
+		[EnumMember(Value = "Exclusively Permitted")] 
+		[XmlEnum("7")] 
+		ExclusivelyPermitted = 7,
 	}
 
 	/// <summary>
@@ -893,6 +1008,28 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Unmanned Operation")] 
 		[XmlEnum("3")] 
 		UnmannedOperation = 3,
+	}
+
+	/// <summary>
+	/// Classification of equipment or installations that are used for providing shoreside electrical power to a vessel at berth.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfShorePowerFacility : int {
+		[System.ComponentModel.Description("Delivers power to vessels using higher voltage (for example, 10 kV or above), suitable for large ports and large vessels. such as tankers, cargo ships, etc.")]
+		[EnumMember(Value = "High-Voltage Shore Power System")] 
+		[XmlEnum("1")] 
+		HighVoltageShorePowerSystem = 1,
+
+		[System.ComponentModel.Description("Delivers power to vessels using lower voltage, designed for small to medium-sized coastal or riverine terminals and smaller vessels.")]
+		[EnumMember(Value = "Low-Voltage Shore Power System")] 
+		[XmlEnum("2")] 
+		LowVoltageShorePowerSystem = 2,
+
+		[System.ComponentModel.Description("Delivers power to vessels using high-voltage (for example, 10kV and above) and low-voltage outputs or simultaneous provision of dual-voltage power.")]
+		[EnumMember(Value = "Hybrid Shore Power System")] 
+		[XmlEnum("3")] 
+		HybridShorePowerSystem = 3,
 	}
 
 	/// <summary>
@@ -933,6 +1070,43 @@ namespace S100Framework.DomainModel.S131 {
 	}
 
 	/// <summary>
+	/// Classification of terminals according to type of use, purpose, or type of cargo loaded or unloaded.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfTerminal : int {
+		[System.ComponentModel.Description("A terminal for roll-on roll-off ferries.")]
+		[EnumMember(Value = "RoRo Terminal")] 
+		[XmlEnum("1")] 
+		RoroTerminal = 1,
+
+		[System.ComponentModel.Description("A terminal for passenger and vehicle ferries.")]
+		[EnumMember(Value = "Ferry Terminal")] 
+		[XmlEnum("3")] 
+		FerryTerminal = 3,
+
+		[System.ComponentModel.Description("A terminal for the bulk handling of liquid cargoes.")]
+		[EnumMember(Value = "Tanker Terminal")] 
+		[XmlEnum("7")] 
+		TankerTerminal = 7,
+
+		[System.ComponentModel.Description("A terminal for the loading and unloading of passengers.")]
+		[EnumMember(Value = "Passenger Terminal")] 
+		[XmlEnum("8")] 
+		PassengerTerminal = 8,
+
+		[System.ComponentModel.Description("A terminal with facilities to load/unload or store shipping containers.")]
+		[EnumMember(Value = "Container Terminal")] 
+		[XmlEnum("10")] 
+		ContainerTerminal = 10,
+
+		[System.ComponentModel.Description("A terminal for the handling of bulk materials such as iron ore, coal, etc.")]
+		[EnumMember(Value = "Bulk Terminal")] 
+		[XmlEnum("11")] 
+		BulkTerminal = 11,
+	}
+
+	/// <summary>
 	/// Classification of completeness of textual information in relation to the source material from which it is derived.
 	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -969,6 +1143,83 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Foreign")] 
 		[XmlEnum("2")] 
 		Foreign = 2,
+	}
+
+	/// <summary>
+	/// The electrical voltage provided by the power supply station.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum categoryOfVoltage : int {
+		[System.ComponentModel.Description("230 Volts")]
+		[EnumMember(Value = "230V")] 
+		[XmlEnum("1")] 
+		two30v = 1,
+
+		[System.ComponentModel.Description("400 Volts.")]
+		[EnumMember(Value = "400V")] 
+		[XmlEnum("2")] 
+		four00v = 2,
+
+		[System.ComponentModel.Description("120 Volts")]
+		[EnumMember(Value = "120V")] 
+		[XmlEnum("3")] 
+		one20v = 3,
+
+		[System.ComponentModel.Description("120/240 Volts")]
+		[EnumMember(Value = "120V or 240V")] 
+		[XmlEnum("4")] 
+		one20vOr240v = 4,
+
+		[System.ComponentModel.Description("208 Volts")]
+		[EnumMember(Value = "208V")] 
+		[XmlEnum("5")] 
+		two08v = 5,
+
+		[System.ComponentModel.Description("440 Volts")]
+		[EnumMember(Value = "440V")] 
+		[XmlEnum("6")] 
+		fourfour0v = 6,
+
+		[System.ComponentModel.Description("440/690 Volts")]
+		[EnumMember(Value = "440V or 690V")] 
+		[XmlEnum("7")] 
+		fourfour0vOr690v = 7,
+
+		[System.ComponentModel.Description("480 Volts")]
+		[EnumMember(Value = "480V")] 
+		[XmlEnum("8")] 
+		four80v = 8,
+
+		[System.ComponentModel.Description("690 Volts")]
+		[EnumMember(Value = "690V")] 
+		[XmlEnum("9")] 
+		six90v = 9,
+
+		[System.ComponentModel.Description("6.6 kiloVolts")]
+		[EnumMember(Value = "6600V")] 
+		[XmlEnum("10")] 
+		sixsix00v = 10,
+
+		[System.ComponentModel.Description("6.6/11 kiloVolts")]
+		[EnumMember(Value = "6600V or 11000V")] 
+		[XmlEnum("11")] 
+		sixsix00vOr11000v = 11,
+
+		[System.ComponentModel.Description("11 kiloVolts")]
+		[EnumMember(Value = "11000V")] 
+		[XmlEnum("12")] 
+		oneone000v = 12,
+
+		[System.ComponentModel.Description("22 kiloVolts")]
+		[EnumMember(Value = "22000V")] 
+		[XmlEnum("13")] 
+		twotwo000v = 13,
+
+		[System.ComponentModel.Description("380 Volts")]
+		[EnumMember(Value = "380V")] 
+		[XmlEnum("14")] 
+		three80v = 14,
 	}
 
 	/// <summary>
@@ -1047,37 +1298,37 @@ namespace S100Framework.DomainModel.S131 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 	[System.Serializable()]
 	public enum dayOfWeek : int {
-		[System.ComponentModel.Description("The first day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Saturday and preceding Monday.")]
 		[EnumMember(Value = "Sunday")] 
 		[XmlEnum("1")] 
 		Sunday = 1,
 
-		[System.ComponentModel.Description("The second day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Sunday and preceding Tuesday.")]
 		[EnumMember(Value = "Monday")] 
 		[XmlEnum("2")] 
 		Monday = 2,
 
-		[System.ComponentModel.Description("The third day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Monday and preceding Wednesday.")]
 		[EnumMember(Value = "Tuesday")] 
 		[XmlEnum("3")] 
 		Tuesday = 3,
 
-		[System.ComponentModel.Description("The fourth day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Tuesday and preceding Thursday.")]
 		[EnumMember(Value = "Wednesday")] 
 		[XmlEnum("4")] 
 		Wednesday = 4,
 
-		[System.ComponentModel.Description("The fifth day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Wednesday and preceding Friday.")]
 		[EnumMember(Value = "Thursday")] 
 		[XmlEnum("5")] 
 		Thursday = 5,
 
-		[System.ComponentModel.Description("The sixth day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Thursday and preceding Saturday.")]
 		[EnumMember(Value = "Friday")] 
 		[XmlEnum("6")] 
 		Friday = 6,
 
-		[System.ComponentModel.Description("The seventh day of the week.")]
+		[System.ComponentModel.Description("The day of the week following Friday and preceding Sunday.")]
 		[EnumMember(Value = "Saturday")] 
 		[XmlEnum("7")] 
 		Saturday = 7,
@@ -1264,10 +1515,10 @@ namespace S100Framework.DomainModel.S131 {
 		[XmlEnum("7")] 
 		SinglePointMooring = 7,
 
-		[System.ComponentModel.Description("Mooring using the vessel's anchors and buoys to secure the vessel at multiple points.")]
-		[EnumMember(Value = "Conventional Mooring")] 
+		[System.ComponentModel.Description("A facility where a vessel is usually moored by a combination of the ship’s anchors forward and mooring buoys aft and held on a fixed heading. Also called Conventional Buoy Mooring (CBM).")]
+		[EnumMember(Value = "Multi-Buoy Mooring")] 
 		[XmlEnum("8")] 
-		ConventionalMooring = 8,
+		MultiBuoyMooring = 8,
 
 		[System.ComponentModel.Description("Mooring alongside another vessel.")]
 		[EnumMember(Value = "Ship-to-Ship Mooring")] 
@@ -1278,6 +1529,28 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "Spider Buoy Mooring")] 
 		[XmlEnum("10")] 
 		SpiderBuoyMooring = 10,
+	}
+
+	/// <summary>
+	/// Classification of the type and display level of the name of a feature in an end-user system.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum nameUsage : int {
+		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to the default name/text display setting.")]
+		[EnumMember(Value = "Default Name Display")] 
+		[XmlEnum("1")] 
+		DefaultNameDisplay = 1,
+
+		[System.ComponentModel.Description("The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.")]
+		[EnumMember(Value = "Alternate Name Display")] 
+		[XmlEnum("2")] 
+		AlternateNameDisplay = 2,
+
+		[System.ComponentModel.Description("The name or text is not intended to be displayed.")]
+		[EnumMember(Value = "No Chart Display")] 
+		[XmlEnum("3")] 
+		NoChartDisplay = 3,
 	}
 
 	/// <summary>
@@ -1335,6 +1608,28 @@ namespace S100Framework.DomainModel.S131 {
 		[EnumMember(Value = "File Access")] 
 		[XmlEnum("11")] 
 		FileAccess = 11,
+	}
+
+	/// <summary>
+	/// Classification of pilot activity by arrival, departure, or change of pilot. It may also describe the place where the pilot's advice begins, ends, or is transferred to a different pilot.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+	[System.Serializable()]
+	public enum pilotMovement : int {
+		[System.ComponentModel.Description("The place where vessels not being navigated according to a pilot's instructions pick up a pilot while in transit from sea to a port or constricted waters for future navigation under pilot instructions.")]
+		[EnumMember(Value = "Embarkation")] 
+		[XmlEnum("1")] 
+		Embarkation = 1,
+
+		[System.ComponentModel.Description("The place where vessels being navigated under a pilot's instructions in transit from sea to a port or constricted waters drop the pilot and proceed without being subject to pilot instructions.")]
+		[EnumMember(Value = "Disembarkation")] 
+		[XmlEnum("2")] 
+		Disembarkation = 2,
+
+		[System.ComponentModel.Description("The place where vessels being navigated under a pilot's instructions drop off the pilot and pick up a different pilot for future navigation under pilot's instructions.")]
+		[EnumMember(Value = "Pilot Change")] 
+		[XmlEnum("3")] 
+		PilotChange = 3,
 	}
 
 	/// <summary>
@@ -2339,6 +2634,16 @@ namespace S100Framework.DomainModel.S131 {
 				definition = "Navigating a vessel past another travelling broadly in the opposite direction.",
 				label = "Passing",
 			},
+			new() {
+				code = 17,
+				definition = "Discharge and uptake of ballast water.",
+				label = "Ballast Water Exchange",
+			},
+			new() {
+				code = 18,
+				definition = "The removal or treatment of biofouling (accumulation of aquatic organisms including microfouling and macrofouling) from a ship's submerged surfaces, including hull and niche areas, conducted either in-water or during dry-docking. The process includes both proactive cleaning (periodic removal of microfouling) and reactive cleaning (removal of micro- and macrofouling as corrective action).",
+				label = "Hull Cleaning",
+			},
 		});
 
 		public static ImmutableArray<categoryOfRxN> categoryOfRxNS => ImmutableArray.Create<categoryOfRxN>(new categoryOfRxN[]{
@@ -2654,26 +2959,27 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class featureName : ComplexType {
-			[XmlElement("displayName")]
-			[Optional]
-			public Boolean? displayName {get;set;} = default;
-
 			[XmlElement("language")]
-			[Optional]
-			public String? language {get;set;} = default;
+			[Mandatory]
+			public String language {get;set;} = string.Empty;
 
 			[XmlElement("name")]
 			[Mandatory]
 			public String name {get;set;} = string.Empty;
 
-			#region ShouldSerialize
-			public bool ShouldSerializedisplayName() { return displayName.HasValue; }
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Optional]
+			public nameUsage? nameUsage {get;set;} = default;
 
-			public bool ShouldSerializelanguage() { return !string.IsNullOrEmpty(language); }
+			#region ShouldSerialize
+			public bool ShouldSerializenameUsage() { return nameUsage.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
-
+			[JsonIgnore]
+			[XmlElement("nameUsage")]
+			public SerializableEnumeration<nameUsage>? nameUsageElement { get { return nameUsage; } set { } }
 			#endregion
 
 			#region Validation
@@ -2741,16 +3047,10 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public List<int> frequencyShoreStationReceives {get;set;} = [];
 
-			[XmlElement("contactInstructions")]
-			[Optional]
-			public List<String> contactInstructions {get;set;} = [];
-
 			#region ShouldSerialize
 			public bool ShouldSerializefrequencyShoreStationTransmits() { return frequencyShoreStationTransmits.Any(); }
 
 			public bool ShouldSerializefrequencyShoreStationReceives() { return frequencyShoreStationReceives.Any(); }
-
-			public bool ShouldSerializecontactInstructions() { return contactInstructions.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -2867,9 +3167,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class onlineResource : ComplexType {
-			[XmlElement("onlineResourceLinkageURL")]
+			[XmlElement("linkage")]
 			[Mandatory]
-			public String onlineResourceLinkageURL {get;set;} = string.Empty;
+			public String linkage {get;set;} = string.Empty;
 
 			[XmlElement("protocol")]
 			[Optional]
@@ -2934,6 +3234,8 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 		public class orientation : ComplexType {
 			[XmlElement("orientationUncertainty")]
+			[RangeConstraint<double>(0.000, 360.000, Closure.geLtInterval)]
+			[PrecisionConstraint(3)]
 			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
@@ -3007,7 +3309,7 @@ namespace S100Framework.DomainModel.S131 {
 			public categoryOfRxN? categoryOfRxN {get;set;} = default;
 
 			[XmlElement("actionOrActivity")]
-			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18])]
 			[Optional]
 			public actionOrActivity? actionOrActivity {get;set;} = default;
 
@@ -3031,6 +3333,68 @@ namespace S100Framework.DomainModel.S131 {
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<rxNCode, bool>> _conditionalUnknown = new Dictionary<string,Func<rxNCode, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class sourceIndication : ComplexType {
+			[XmlIgnore]
+			[Optional]
+			public categoryOfAuthority? categoryOfAuthority {get;set;} = default;
+
+			[XmlElement("countryName")]
+			[Optional]
+			public String? countryName {get;set;} = default;
+
+			[XmlElement("source")]
+			[StringLengthConstraint(150)]
+			[Optional]
+			public String? source {get;set;} = default;
+
+			[XmlElement("text")]
+			[Optional]
+			public String? text {get;set;} = default;
+
+			[XmlElement("reportedDate")]
+			[Optional]
+			public String? reportedDate {get;set;} = default;
+
+			[XmlElement("featureName")]
+			[Optional]
+			public List<featureName> featureName {get;set;} = [];
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfAuthority() { return categoryOfAuthority.HasValue; }
+
+			public bool ShouldSerializecountryName() { return !string.IsNullOrEmpty(countryName); }
+
+			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
+
+			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+
+			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
+
+			public bool ShouldSerializefeatureName() { return featureName.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfAuthority")]
+			public SerializableEnumeration<categoryOfAuthority>? categoryOfAuthorityElement { get { return categoryOfAuthority; } set { } }
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<sourceIndication, bool>> _conditionalUnknown = new Dictionary<string,Func<sourceIndication, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -3072,6 +3436,68 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
+		/// </summary>
+		/// <remarks>
+		/// If no value is populated for the sub-attribute telecommunication service, this means the service is by voice communication. If no value is populated for the sub-attribute telecommunication carrier, this means the service is by land line communication.
+		/// </remarks>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+		public class telecommunications : ComplexType {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4])]
+			[Optional]
+			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
+
+			[XmlElement("telecommunicationIdentifier")]
+			[Mandatory]
+			public String telecommunicationIdentifier {get;set;} = string.Empty;
+
+			[XmlElement("telecommunicationCarrier")]
+			[Optional]
+			public String? telecommunicationCarrier {get;set;} = default;
+
+			[XmlElement("contactInstructions")]
+			[Optional]
+			public String? contactInstructions {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8])]
+			[Optional]
+			public List<telecommunicationService> telecommunicationService {get;set;} = [];
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
+
+			public bool ShouldSerializetelecommunicationCarrier() { return !string.IsNullOrEmpty(telecommunicationCarrier); }
+
+			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
+
+			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfCommunicationPreference")]
+			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("telecommunicationService")]
+			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
+			#endregion
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalUnknown = new Dictionary<string,Func<telecommunications, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// Textual material, or a pointer to a resource providing textual material. May be accompanied by basic information about its source and relationship to the source.
 		/// </summary>
 		/// <remarks>
@@ -3093,19 +3519,9 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public onlineResource? onlineResource {get;set;} = default;
 
-			[XmlElement("source")]
-			[StringLengthConstraint(150)]
+			[XmlElement("sourceIndication")]
 			[Optional]
-			public String? source {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public sourceType? sourceType {get;set;} = default;
-
-			[XmlElement("reportedDate")]
-			[Optional]
-			public String? reportedDate {get;set;} = default;
+			public List<sourceIndication> sourceIndication {get;set;} = [];
 
 			#region ShouldSerialize
 			public bool ShouldSerializecategoryOfText() { return categoryOfText.HasValue; }
@@ -3114,21 +3530,13 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializeonlineResource() { return onlineResource!=default; }
 
-			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
-
-			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
-
-			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializesourceIndication() { return sourceIndication.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("categoryOfText")]
 			public SerializableEnumeration<categoryOfText>? categoryOfTextElement { get { return categoryOfText; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("sourceType")]
-			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
 			#endregion
 
 			#region Validation
@@ -3259,14 +3667,14 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
-		/// Values, discovered by measuring, that correspond to vessels characteristics.
+		/// Combinations of values of measurable characteristics or dimensions of vessels, used to specify size and tonnage ranges.
 		/// </summary>
 		/// <remarks>
 		/// Combines (i) specifications of vessels' measurable characteristics (length, beam, tonnages, etc.), (ii) limit values for the specified characteristics (with units), (iii) arithmetical comparison operators (greater than, etc.), and (iv) logical operators (AND/OR) to define a subset of vessels characterized by the specified ranges. For example, the combination (draught, 10.5, metres, greaterThan) describes "vessels with draught greater than 10.5 metres".
 		/// </remarks>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class vesselsMeasurements : ComplexType {
+		public class vesselMeasurementsSpecification : ComplexType {
 			[XmlIgnore]
 			[EnumerationValue([1,2,3,4,5,6])]
 			[Mandatory]
@@ -3307,7 +3715,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<vesselsMeasurements, bool>> _conditionalUnknown = new Dictionary<string,Func<vesselsMeasurements, bool>> {
+			private IReadOnlyDictionary<string, Func<vesselMeasurementsSpecification, bool>> _conditionalUnknown = new Dictionary<string,Func<vesselMeasurementsSpecification, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -3375,11 +3783,6 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public double? distance {get;set;} = default;
 
-			[XmlElement("sectorBearing")]
-			[RangeConstraint<double>(0, 360, Closure.closedInterval)]
-			[Multiplicity(0, 2)]
-			public List<double> sectorBearing {get;set;} = [];
-
 			[XmlElement("information")]
 			[Optional]
 			public List<information> information {get;set;} = [];
@@ -3392,8 +3795,6 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecardinalDirection() { return cardinalDirection.HasValue; }
 
 			public bool ShouldSerializedistance() { return distance.HasValue; }
-
-			public bool ShouldSerializesectorBearing() { return sectorBearing.Any(); }
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
@@ -3878,74 +4279,6 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
-		/// A means or channel of communicating at a distance by electrical or electromagnetic means such as telegraphy, telephony, or broadcasting.
-		/// </summary>
-		/// <remarks>
-		/// If no value is populated for the sub-attribute telecommunication service, this means the service is by voice communication. If no value is populated for the sub-attribute telecommunication carrier, this means the service is by land line communication.
-		/// </remarks>
-		[System.Serializable()]
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-		public class telecommunications : ComplexType {
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4])]
-			[Optional]
-			public categoryOfCommunicationPreference? categoryOfCommunicationPreference {get;set;} = default;
-
-			[XmlElement("telecommunicationIdentifier")]
-			[Mandatory]
-			public String telecommunicationIdentifier {get;set;} = string.Empty;
-
-			[XmlElement("telecommunicationCarrier")]
-			[Optional]
-			public String? telecommunicationCarrier {get;set;} = default;
-
-			[XmlElement("contactInstructions")]
-			[Optional]
-			public String? contactInstructions {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7,8])]
-			[Optional]
-			public List<telecommunicationService> telecommunicationService {get;set;} = [];
-
-			[XmlElement("scheduleByDayOfWeek")]
-			[Optional]
-			public scheduleByDayOfWeek? scheduleByDayOfWeek {get;set;} = default;
-
-			#region ShouldSerialize
-			public bool ShouldSerializecategoryOfCommunicationPreference() { return categoryOfCommunicationPreference.HasValue; }
-
-			public bool ShouldSerializetelecommunicationCarrier() { return !string.IsNullOrEmpty(telecommunicationCarrier); }
-
-			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
-
-			public bool ShouldSerializetelecommunicationService() { return telecommunicationService.Any(); }
-
-			public bool ShouldSerializescheduleByDayOfWeek() { return scheduleByDayOfWeek!=default; }
-			#endregion
-
-			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfCommunicationPreference")]
-			public SerializableEnumeration<categoryOfCommunicationPreference>? categoryOfCommunicationPreferenceElement { get { return categoryOfCommunicationPreference; } set { } }
-
-			[JsonIgnore]
-			[XmlElement("telecommunicationService")]
-			public SerializableEnumeration<telecommunicationService>[] telecommunicationServiceElement { get { return [.. telecommunicationService]; } set { } }
-			#endregion
-
-			#region Validation
-			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
-
-			private IReadOnlyDictionary<string, Func<telecommunications, bool>> _conditionalUnknown = new Dictionary<string,Func<telecommunications, bool>> {
-			};
-
-			public override void RunValidationChecks() {
-			}
-			#endregion
-		}
-
-		/// <summary>
 		/// General information about the port or harbour area.
 		/// </summary>
 		/// <remarks>
@@ -4009,88 +4342,70 @@ namespace S100Framework.DomainModel.S131 {
 
 	}
 	public enum Role {
-		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
-		positions,
-		[System.ComponentModel.Description("A pointer to the aggregate in a whole-part relationship.")]
-		componentOf,
-		[System.ComponentModel.Description("A pointer to a specific feature(s) for which further information is required.")]
-		informationProvidedFor,
-		[System.ComponentModel.Description("A pointer to an object that provides more information about the referencing feature or information type.")]
-		providesInformation,
-		[System.ComponentModel.Description("The applicable regulation, restriction, recommendation or nautical information")]
-		theApplicableRxN,
-		[System.ComponentModel.Description("The location in which the information item applies")]
-		appliesInLocation,
 		[System.ComponentModel.Description("A pointer to an Authority object")]
 		theAuthority,
 		[System.ComponentModel.Description("The authority for which service hours are given")]
 		theAuthority_srvHrs,
+		[System.ComponentModel.Description("A reference to a feature that supplements or supports the use of the primary feature in an AuxiliaryFacility relationship.")]
+		auxiliaryFacility,
+		[System.ComponentModel.Description("A pointer to the aggregate in a whole-part relationship.")]
+		componentOf,
+		[System.ComponentModel.Description("Reference to a whole of the same type as the part feature in the relationship.")]
+		constitute,
 		[System.ComponentModel.Description("A pointer to an Contact Details object")]
 		theContactDetails,
 		[System.ComponentModel.Description("The controlling organization or authority for a geographically located service")]
 		controlAuthority,
-		[System.ComponentModel.Description("The service controlled by an organisation or authority")]
-		controlledService,
-		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
-		identifies,
-		[System.ComponentModel.Description("The object or class of objects to which the regulation, restriction, recommendation, or nautical information applies")]
-		isApplicableTo,
-		[System.ComponentModel.Description("Service hours for an authority or service provider")]
-		theServiceHours,
-		[System.ComponentModel.Description("The regulation, restriction, recommendation, or nautical information")]
-		theRxN,
-		[System.ComponentModel.Description("The usual service hours to which an exception applies")]
-		theServiceHours_nsdy,
-		[System.ComponentModel.Description("The location to which the permission statement applies")]
-		vslLocation,
-		[System.ComponentModel.Description("The work hours for a non-standard workday")]
-		partialWorkingDay,
-		[System.ComponentModel.Description("Pointer to service or facility")]
-		servicePlace,
-		[System.ComponentModel.Description("The location for which service hours are given")]
-		location_srvHrs,
-		[System.ComponentModel.Description("The organisation to which information relates")]
-		theOrganisation,
-		[System.ComponentModel.Description("Information related to an organisation")]
-		theInformation,
-		[System.ComponentModel.Description("Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit, enter, or use a feature.")]
-		permission,
-		[System.ComponentModel.Description("Reference to a whole of the same type as the part feature in the relationship.")]
-		constitute,
-		[System.ComponentModel.Description("A reference to a feature that supplements or supports the use of the primary feature in an AuxiliaryFacility relationship.")]
-		auxiliaryFacility,
 		[System.ComponentModel.Description("Reference to the feature within which locations are demarcated.")]
 		demarcatedFeature,
 		[System.ComponentModel.Description("Reference to a feature demarcating a location within another feature.")]
 		demarcationIndicator,
 		[System.ComponentModel.Description("Reference to an information type describing the entrance to a limit area.")]
 		entranceReference,
-		[System.ComponentModel.Description("A reference to the feature to which entrance information pertains.")]
-		entranceTo,
+		[System.ComponentModel.Description("Reference to information about the days and times during which a facility operates or may be used.")]
+		facilityOperatingHours,
 		[System.ComponentModel.Description("Reference to the feature describing a particular instance of physical infrastructure.")]
 		hasInfrastructure,
 		[System.ComponentModel.Description("Reference to the feature within which the infrastructure is located.")]
 		infrastructureLocation,
+		[System.ComponentModel.Description("The object or class of objects to which the regulation, restriction, recommendation, or nautical information applies")]
+		isApplicableTo,
+		[System.ComponentModel.Description("A reference to the diverse units comprising a feature of a different type.")]
+		layoutUnit,
 		[System.ComponentModel.Description("Reference to a feature demarcating the extent to which a coastal State claims or may claim a specific jurisdiction.")]
 		limitExtent,
 		[System.ComponentModel.Description("Reference to the feature for which a coastal State claims a specific jurisdiction different from the feature's geographic boundary.")]
 		limitReference,
-		[System.ComponentModel.Description("A reference to the diverse units comprising a feature of a different type.")]
-		layoutUnit,
-		[System.ComponentModel.Description("Reference to the location (feature) where specified services are available.")]
-		locationServed,
-		[System.ComponentModel.Description("Reference to information about the days and times during which a facility operates or may be used.")]
-		facilityOperatingHours,
+		[System.ComponentModel.Description("Reference to regulation, recommendation, restriction or general information related to an organisation")]
+		organisationRelatedRxN,
+		[System.ComponentModel.Description("Association class for associations describing whether the subsets of vessels determined by the ship characteristics specified in APPLIC may (or must, etc.) transit, enter, or use a feature.")]
+		permission,
 		[System.ComponentModel.Description("A reference to the primary feature in an Auxiliaryfacility relationship.")]
 		primaryFacility,
+		[System.ComponentModel.Description("The work hours for a non-standard workday")]
+		partialWorkingDay,
 		[System.ComponentModel.Description("Reference to an information object describing services.")]
 		serviceDescriptionReference,
+		[System.ComponentModel.Description("Service hours for an authority or service provider")]
+		theServiceHours,
 		[System.ComponentModel.Description("Reference to a part of the same type as the whole feature in the relationship.")]
 		subUnit,
-		[System.ComponentModel.Description("A pointer to a specific spatial type(s).")]
-		definedFor,
+		[System.ComponentModel.Description("A pointer to an object that provides more information about the referencing feature or information type.")]
+		theInformation,
+		[System.ComponentModel.Description("The organisation to which information relates")]
+		theOrganisation,
 		[System.ComponentModel.Description("A pointer to an information type providing spatial quality information.")]
-		defines,
+		theQualityInformation,
+		[System.ComponentModel.Description("The regulation, restriction, recommendation, or nautical information")]
+		theRxN,
+		[System.ComponentModel.Description("The applicable regulation, restriction, recommendation or nautical information")]
+		theApplicableRxN,
+		[System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
+		theCartographicText,
+		[System.ComponentModel.Description("A pointer to a specific feature(s).")]
+		thePositionProvider,
+		[System.ComponentModel.Description("The usual service hours to which an exception applies")]
+		theServiceHours_nsdy,
 	}
 
 	namespace InformationAssociations {
@@ -4308,7 +4623,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class PermissionType : InformationAssociation {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6])]
+			[EnumerationValue([1,2,3,4,5,6,7])]
 			[Mandatory]
 			public categoryOfRelationship categoryOfRelationship {get;set;}
 
@@ -4329,7 +4644,7 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
-		/// Association for linking spatial quality to spatial objects.
+		/// An association for the binding between a spatial type and its spatial quality information.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
@@ -4561,19 +4876,9 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public List<graphic> graphic {get;set;} = [];
 
-			[XmlElement("source")]
-			[StringLengthConstraint(150)]
+			[XmlElement("sourceIndication")]
 			[Optional]
-			public String? source {get;set;} = default;
-
-			[XmlIgnore]
-			[EnumerationValue([1,2,7,8,9,10,11,12,13,14])]
-			[Optional]
-			public sourceType? sourceType {get;set;} = default;
-
-			[XmlElement("reportedDate")]
-			[Optional]
-			public String? reportedDate {get;set;} = default;
+			public List<sourceIndication> sourceIndication {get;set;} = [];
 
 
 			#region ShouldSerialize
@@ -4585,17 +4890,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializegraphic() { return graphic.Any(); }
 
-			public bool ShouldSerializesource() { return !string.IsNullOrEmpty(source); }
-
-			public bool ShouldSerializesourceType() { return sourceType.HasValue; }
-
-			public bool ShouldSerializereportedDate() { return !string.IsNullOrEmpty(reportedDate); }
+			public bool ShouldSerializesourceIndication() { return sourceIndication.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("sourceType")]
-			public SerializableEnumeration<sourceType>? sourceTypeElement { get { return sourceType; } set { } }
+
 			#endregion
 
 			[JsonIgnore]
@@ -4607,15 +4906,6 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => InformationType._informationBindingDefinitions;
 			public static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.providesInformation)!,
-					informationTypes = [nameof(NauticalInformation)],
-					primitives = [],
-				},
 			];
 			#endregion
 
@@ -4724,7 +5014,6 @@ namespace S100Framework.DomainModel.S131 {
 
 			[XmlElement("thicknessOfIceCapability")]
 			[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
-			[PrecisionConstraint(0)]
 			[Optional]
 			public int? thicknessOfIceCapability {get;set;} = default;
 
@@ -4732,13 +5021,18 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? vesselPerformance {get;set;} = default;
 
+			[XmlElement("destination")]
+			[StringLengthConstraint(100)]
+			[Optional]
+			public String? destination {get;set;} = default;
+
 			[XmlElement("information")]
 			[Optional]
 			public List<information> information {get;set;} = [];
 
-			[XmlElement("vesselsMeasurements")]
+			[XmlElement("vesselMeasurementsSpecification")]
 			[Optional]
-			public List<vesselsMeasurements> vesselsMeasurements {get;set;} = [];
+			public List<vesselMeasurementsSpecification> vesselMeasurementsSpecification {get;set;} = [];
 
 
 			#region ShouldSerialize
@@ -4758,9 +5052,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializevesselPerformance() { return !string.IsNullOrEmpty(vesselPerformance); }
 
+			public bool ShouldSerializedestination() { return !string.IsNullOrEmpty(destination); }
+
 			public bool ShouldSerializeinformation() { return information.Any(); }
 
-			public bool ShouldSerializevesselsMeasurements() { return vesselsMeasurements.Any(); }
+			public bool ShouldSerializevesselMeasurementsSpecification() { return vesselMeasurementsSpecification.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -4797,15 +5093,6 @@ namespace S100Framework.DomainModel.S131 {
 					association = nameof(InclusionType),
 					role = Enum.GetName<Role>(Role.theApplicableRxN)!,
 					informationTypes = [nameof(AbstractRxN)],
-					primitives = [],
-				},
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(PermissionType),
-					role = Enum.GetName<Role>(Role.vslLocation)!,
-					informationTypes = [nameof(InformationType)],
 					primitives = [],
 				},
 			];
@@ -4875,7 +5162,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  default,
 					association = nameof(RelatedOrganisation),
-					role = Enum.GetName<Role>(Role.theInformation)!,
+					role = Enum.GetName<Role>(Role.organisationRelatedRxN)!,
 					informationTypes = [nameof(AbstractRxN)],
 					primitives = [],
 				},
@@ -5092,18 +5379,21 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public List<String> communicationChannel {get;set;} = [];
 
-			[XmlElement("contactAddress")]
-			[Optional]
-			public List<contactAddress> contactAddress {get;set;} = [];
-
 			[XmlElement("contactInstructions")]
 			[Optional]
 			public String? contactInstructions {get;set;} = default;
 
-			[XmlElement("signalFrequency")]
-			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+			[XmlElement("language")]
 			[Optional]
-			public List<int> signalFrequency {get;set;} = [];
+			public List<String> language {get;set;} = [];
+
+			[XmlElement("mMSICode")]
+			[Optional]
+			public String? mMSICode {get;set;} = default;
+
+			[XmlElement("contactAddress")]
+			[Optional]
+			public List<contactAddress> contactAddress {get;set;} = [];
 
 			[XmlElement("frequencyPair")]
 			[Optional]
@@ -5112,10 +5402,6 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlElement("information")]
 			[Optional]
 			public List<information> information {get;set;} = [];
-
-			[XmlElement("mMSICode")]
-			[Optional]
-			public String? mMSICode {get;set;} = default;
 
 			[XmlElement("onlineResource")]
 			[Optional]
@@ -5135,17 +5421,17 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializecommunicationChannel() { return communicationChannel.Any(); }
 
-			public bool ShouldSerializecontactAddress() { return contactAddress.Any(); }
-
 			public bool ShouldSerializecontactInstructions() { return !string.IsNullOrEmpty(contactInstructions); }
 
-			public bool ShouldSerializesignalFrequency() { return signalFrequency.Any(); }
+			public bool ShouldSerializelanguage() { return language.Any(); }
+
+			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
+
+			public bool ShouldSerializecontactAddress() { return contactAddress.Any(); }
 
 			public bool ShouldSerializefrequencyPair() { return frequencyPair.Any(); }
 
 			public bool ShouldSerializeinformation() { return information.Any(); }
-
-			public bool ShouldSerializemMSICode() { return !string.IsNullOrEmpty(mMSICode); }
 
 			public bool ShouldSerializeonlineResource() { return onlineResource.Any(); }
 
@@ -5318,15 +5604,6 @@ namespace S100Framework.DomainModel.S131 {
 			[XmlIgnore]
 			public override informationBindingDefinition[] informationBindingDefinitions => [..AbstractRxN._informationBindingDefinitions, ..NauticalInformation._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
-				new informationBindingDefinition {
-					roleType = roleType.association,
-					lower = 0,
-					upper =  default,
-					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.informationProvidedFor)!,
-					informationTypes = [nameof(InformationType)],
-					primitives = [],
-				},
 			];
 			#endregion
 
@@ -5675,6 +5952,11 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? globalLocationNumber {get;set;} = default;
 
+			[XmlElement("interoperabilityIdentifier")]
+			[TextPatternConstraint("urn:mrn:.+")]
+			[Optional]
+			public List<String> interoperabilityIdentifier {get;set;} = [];
+
 			[XmlElement("featureName")]
 			[Optional]
 			public List<featureName> featureName {get;set;} = [];
@@ -5718,6 +6000,8 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializelocationMRN() { return !string.IsNullOrEmpty(locationMRN); }
 
 			public bool ShouldSerializeglobalLocationNumber() { return !string.IsNullOrEmpty(globalLocationNumber); }
+
+			public bool ShouldSerializeinteroperabilityIdentifier() { return interoperabilityIdentifier.Any(); }
 
 			public bool ShouldSerializefeatureName() { return featureName.Any(); }
 
@@ -5776,7 +6060,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  default,
 					association = nameof(AdditionalInformation),
-					role = Enum.GetName<Role>(Role.providesInformation)!,
+					role = Enum.GetName<Role>(Role.theInformation)!,
 					informationTypes = [nameof(NauticalInformation)],
 					primitives = [],
 				},
@@ -5800,7 +6084,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.positions)!,
+					role = Enum.GetName<Role>(Role.theCartographicText)!,
 					featureTypes = [nameof(TextPlacement)],
 				},
 			];
@@ -5917,14 +6201,9 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public abstract class HarbourPhysicalInfrastructure : SupervisedArea {
-			[XmlElement("verticalClearanceValue")]
-			[RangeConstraint<double>(0.1, 100.0, Closure.closedInterval)]
-			[Optional]
-			public double? verticalClearanceValue {get;set;} = default;
-
 
 			#region ShouldSerialize
-			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
+
 			#endregion
 
 			#region SerializableEnumeration
@@ -6016,13 +6295,39 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorBerth : Layout {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,5,6,7,9,10,14])]
+			[Optional]
+			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[Optional]
+			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
+
+			[XmlElement("radius")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(1)]
+			[Optional]
+			public double? radius {get;set;} = default;
+
 
 			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfAnchorage() { return categoryOfAnchorage.Any(); }
 
+			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
+
+			public bool ShouldSerializeradius() { return radius.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfAnchorage")]
+			public SerializableEnumeration<categoryOfAnchorage>[] categoryOfAnchorageElement { get { return [.. categoryOfAnchorage]; } set { } }
 
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
 			#endregion
 
 			[JsonIgnore]
@@ -6048,7 +6353,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6103,38 +6408,60 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class AnchorageArea : Layout {
-			[XmlElement("depthsDescription")]
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,5,6,7,9,10,14,15])]
 			[Optional]
-			public depthsDescription? depthsDescription {get;set;} = default;
-
-			[XmlElement("locationByText")]
-			[Optional]
-			public String? locationByText {get;set;} = default;
-
-			[XmlElement("markedBy")]
-			[Optional]
-			public markedBy? markedBy {get;set;} = default;
+			public List<categoryOfAnchorage> categoryOfAnchorage {get;set;} = [];
 
 			[XmlIgnore]
 			[EnumerationValue([1,2,3])]
 			[Optional]
 			public iSPSLevel? iSPSLevel {get;set;} = default;
 
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[Optional]
+			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
+
+			[XmlElement("locationByText")]
+			[Optional]
+			public String? locationByText {get;set;} = default;
+
+			[XmlElement("depthsDescription")]
+			[Optional]
+			public depthsDescription? depthsDescription {get;set;} = default;
+
+			[XmlElement("markedBy")]
+			[Optional]
+			public markedBy? markedBy {get;set;} = default;
+
 
 			#region ShouldSerialize
-			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
+			public bool ShouldSerializecategoryOfAnchorage() { return categoryOfAnchorage.Any(); }
+
+			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
+
+			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
-			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
+			public bool ShouldSerializedepthsDescription() { return depthsDescription!=default; }
 
-			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
+			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 			#endregion
 
 			#region SerializableEnumeration
 			[JsonIgnore]
+			[XmlElement("categoryOfAnchorage")]
+			public SerializableEnumeration<categoryOfAnchorage>[] categoryOfAnchorageElement { get { return [.. categoryOfAnchorage]; } set { } }
+
+			[JsonIgnore]
 			[XmlElement("iSPSLevel")]
 			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
 			#endregion
 
 			[JsonIgnore]
@@ -6151,7 +6478,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6201,6 +6528,76 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// Equipment with material handling or operational capabilities, characterised by wheeled (including tracked) mobility, and which autonomously moves along a preset route based on environmental markers or external guidance signals.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class AutomatedGuidedVehicle : HarbourPhysicalInfrastructure {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(AutomatedGuidedVehicle);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..AutomatedGuidedVehicle._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..AutomatedGuidedVehicle._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..AutomatedGuidedVehicle._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.curve, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<AutomatedGuidedVehicle, bool>> _conditionalUnknown = new Dictionary<string,Func<AutomatedGuidedVehicle, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// A place, generally named or numbered, where a vessel may moor or anchor.
 		/// </summary>
 		[System.Serializable()]
@@ -6215,10 +6612,10 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? bollardDescription {get;set;} = default;
 
-			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
+			[XmlElement("safeWorkingLoad")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
 			[Optional]
-			public double? bollardPull {get;set;} = default;
+			public double? safeWorkingLoad {get;set;} = default;
 
 			[XmlElement("minimumBerthDepth")]
 			[RangeConstraint<double>(0.00, default, Closure.gtSemiInterval)]
@@ -6281,13 +6678,36 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? terminalIdentifier {get;set;} = default;
 
+			[XmlElement("shorePowerDescription")]
+			[Optional]
+			public String? shorePowerDescription {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2])]
+			[Optional]
+			public List<categoryOfFrequency> categoryOfFrequency {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<categoryOfVoltage> categoryOfVoltage {get;set;} = [];
+
+			[XmlElement("categoryOfPlug")]
+			[Optional]
+			public List<String> categoryOfPlug {get;set;} = [];
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])]
+			[Optional]
+			public List<categoryOfCargo> categoryOfCargo {get;set;} = [];
+
 
 			#region ShouldSerialize
 			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
 
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
-			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
+			public bool ShouldSerializesafeWorkingLoad() { return safeWorkingLoad.HasValue; }
 
 			public bool ShouldSerializeminimumBerthDepth() { return minimumBerthDepth.HasValue; }
 
@@ -6314,6 +6734,16 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializemethodOfSecuring() { return methodOfSecuring.HasValue; }
 
 			public bool ShouldSerializeterminalIdentifier() { return !string.IsNullOrEmpty(terminalIdentifier); }
+
+			public bool ShouldSerializeshorePowerDescription() { return !string.IsNullOrEmpty(shorePowerDescription); }
+
+			public bool ShouldSerializecategoryOfFrequency() { return categoryOfFrequency.Any(); }
+
+			public bool ShouldSerializecategoryOfVoltage() { return categoryOfVoltage.Any(); }
+
+			public bool ShouldSerializecategoryOfPlug() { return categoryOfPlug.Any(); }
+
+			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6324,6 +6754,18 @@ namespace S100Framework.DomainModel.S131 {
 			[JsonIgnore]
 			[XmlElement("methodOfSecuring")]
 			public SerializableEnumeration<methodOfSecuring>? methodOfSecuringElement { get { return methodOfSecuring; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfFrequency")]
+			public SerializableEnumeration<categoryOfFrequency>[] categoryOfFrequencyElement { get { return [.. categoryOfFrequency]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfVoltage")]
+			public SerializableEnumeration<categoryOfVoltage>[] categoryOfVoltageElement { get { return [.. categoryOfVoltage]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfCargo")]
+			public SerializableEnumeration<categoryOfCargo>[] categoryOfCargoElement { get { return [.. categoryOfCargo]; } set { } }
 			#endregion
 
 			[JsonIgnore]
@@ -6349,7 +6791,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6412,35 +6854,21 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class BerthPosition : Layout {
-			[XmlElement("availableBerthingLength")]
-			[RangeConstraint<double>(0.0, 10000.0, Closure.closedInterval)]
-			[Optional]
-			public double? availableBerthingLength {get;set;} = default;
-
-			[XmlElement("bollardDescription")]
-			[Optional]
-			public String? bollardDescription {get;set;} = default;
-
-			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
-			[Optional]
-			public double? bollardPull {get;set;} = default;
-
 			[XmlElement("bollardNumber")]
-			[Multiplicity(0, 2)]
-			public List<String> bollardNumber {get;set;} = [];
+			[Optional]
+			public String? bollardNumber {get;set;} = default;
 
 			[XmlElement("gLNExtension")]
 			[Optional]
 			public String? gLNExtension {get;set;} = default;
 
 			[XmlElement("metreMarkNumber")]
-			[Multiplicity(0, 2)]
-			public List<String> metreMarkNumber {get;set;} = [];
+			[Optional]
+			public String? metreMarkNumber {get;set;} = default;
 
 			[XmlElement("manifoldNumber")]
-			[Multiplicity(0, 2)]
-			public List<String> manifoldNumber {get;set;} = [];
+			[Optional]
+			public String? manifoldNumber {get;set;} = default;
 
 			[XmlElement("rampNumber")]
 			[Optional]
@@ -6452,19 +6880,13 @@ namespace S100Framework.DomainModel.S131 {
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializeavailableBerthingLength() { return availableBerthingLength.HasValue; }
-
-			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
-
-			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
-
-			public bool ShouldSerializebollardNumber() { return bollardNumber.Any(); }
+			public bool ShouldSerializebollardNumber() { return !string.IsNullOrEmpty(bollardNumber); }
 
 			public bool ShouldSerializegLNExtension() { return !string.IsNullOrEmpty(gLNExtension); }
 
-			public bool ShouldSerializemetreMarkNumber() { return metreMarkNumber.Any(); }
+			public bool ShouldSerializemetreMarkNumber() { return !string.IsNullOrEmpty(metreMarkNumber); }
 
-			public bool ShouldSerializemanifoldNumber() { return manifoldNumber.Any(); }
+			public bool ShouldSerializemanifoldNumber() { return !string.IsNullOrEmpty(manifoldNumber); }
 
 			public bool ShouldSerializerampNumber() { return !string.IsNullOrEmpty(rampNumber); }
 
@@ -6538,6 +6960,79 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Bollard : HarbourPhysicalInfrastructure {
+			[XmlElement("height")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
+			[Optional]
+			public double? height {get;set;} = default;
+
+			[XmlElement("verticalLength")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
+			[Optional]
+			public double? verticalLength {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeheight() { return height.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(Bollard);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Bollard._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Bollard._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Bollard._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<Bollard, bool>> _conditionalUnknown = new Dictionary<string,Func<Bollard, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 		/// </summary>
 		[System.Serializable()]
@@ -6600,7 +7095,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6660,9 +7155,16 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public double? sillDepth {get;set;} = default;
 
+			[XmlElement("verticalClearanceValue")]
+			[RangeConstraint<double>(0.1, 100.0, Closure.closedInterval)]
+			[Optional]
+			public double? verticalClearanceValue {get;set;} = default;
+
 
 			#region ShouldSerialize
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
+
+			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6683,7 +7185,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6717,6 +7219,74 @@ namespace S100Framework.DomainModel.S131 {
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<DryDock, bool>> _conditionalUnknown = new Dictionary<string,Func<DryDock, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class Dolphin : HarbourPhysicalInfrastructure {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4])]
+			[Multiplicity(1)]
+			public List<categoryOfDolphin> categoryOfDolphin {get;set;} = [];
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfDolphin() { return categoryOfDolphin.Any(); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfDolphin")]
+			public SerializableEnumeration<categoryOfDolphin>[] categoryOfDolphinElement { get { return [.. categoryOfDolphin]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(Dolphin);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..Dolphin._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..Dolphin._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..Dolphin._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<Dolphin, bool>> _conditionalUnknown = new Dictionary<string,Func<Dolphin, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -6778,7 +7348,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6828,6 +7398,79 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// An imaginary line parallel to a face of a berth or quay which touches the seaward face of the fenders.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class FenderLine : Layout {
+			[XmlElement("orientation")]
+			[Optional]
+			public orientation? orientation {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeorientation() { return orientation!=default; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(FenderLine);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..Layout._informationBindingDefinitions, ..FenderLine._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..Layout._featureBindingDefinitions, ..FenderLine._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..Layout._primitives, ..FenderLine._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.curve
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+				new featureBindingDefinition {
+					roleType = roleType.aggregation,
+					lower = 1,
+					upper =  1,
+					association = nameof(LayoutDivision),
+					role = Enum.GetName<Role>(Role.componentOf)!,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<FenderLine, bool>> _conditionalUnknown = new Dictionary<string,Func<FenderLine, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 		/// </summary>
 		[System.Serializable()]
@@ -6861,7 +7504,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -6913,9 +7556,16 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public double? sillDepth {get;set;} = default;
 
+			[XmlElement("verticalClearanceValue")]
+			[RangeConstraint<double>(0.1, 100.0, Closure.closedInterval)]
+			[Optional]
+			public double? verticalClearanceValue {get;set;} = default;
+
 
 			#region ShouldSerialize
 			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
+
+			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -6936,7 +7586,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7058,7 +7708,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7188,7 +7838,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7245,7 +7895,7 @@ namespace S100Framework.DomainModel.S131 {
 					upper =  default,
 					association = nameof(LayoutDivision),
 					role = Enum.GetName<Role>(Role.layoutUnit)!,
-					featureTypes = [nameof(AnchorageArea),nameof(Berth),nameof(DockArea),nameof(DumpingGround),nameof(HarbourBasin),nameof(PilotBoardingPlace),nameof(SeaplaneLandingArea),nameof(Terminal),nameof(TurningBasin),nameof(WaterwayArea)],
+					featureTypes = [nameof(AnchorageArea),nameof(Berth),nameof(DockArea),nameof(DumpingGround),nameof(FenderLine),nameof(HarbourBasin),nameof(PilotBoardingPlace),nameof(SeaplaneLandingArea),nameof(Terminal),nameof(TurningBasin),nameof(WaterwayArea)],
 				},
 			];
 			#endregion
@@ -7323,7 +7973,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7373,42 +8023,40 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
-		/// A harbour installation with a service or commercial operation of public interest.
+		/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 		/// </summary>
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-		public partial class HarbourFacility : HarbourPhysicalInfrastructure {
-			[XmlIgnore]
-			[EnumerationValue([12,13])]
-			[Multiplicity(1)]
-			public List<categoryOfHarbourFacility> categoryOfHarbourFacility {get;set;} = [];
+		public partial class LockBasin : HarbourPhysicalInfrastructure {
+			[XmlElement("sillDepth")]
+			[RangeConstraint<double>(0.0, 100.0, Closure.closedInterval)]
+			[Optional]
+			public double? sillDepth {get;set;} = default;
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.Any(); }
+			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
-			[JsonIgnore]
-			[XmlElement("categoryOfHarbourFacility")]
-			public SerializableEnumeration<categoryOfHarbourFacility>[] categoryOfHarbourFacilityElement { get { return [.. categoryOfHarbourFacility]; } set { } }
+
 			#endregion
 
 			[JsonIgnore]
 			[XmlIgnore]
-			public override string Code => nameof(HarbourFacility);
+			public override string Code => nameof(LockBasin);
 
 			#region InformationBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..HarbourFacility._informationBindingDefinitions];
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..LockBasin._informationBindingDefinitions];
 			public new static informationBindingDefinition[] _informationBindingDefinitions => [
 				new informationBindingDefinition {
 					roleType = roleType.association,
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7418,10 +8066,10 @@ namespace S100Framework.DomainModel.S131 {
 			#region IFeatureBindings
 			[JsonIgnore]
 			[XmlIgnore]
-			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..HarbourFacility._featureBindingDefinitions];
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..LockBasin._featureBindingDefinitions];
 
 			[JsonIgnore]
-			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..HarbourFacility._primitives];
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasin._primitives];
 			public new static Primitives[] _primitives => [
 				Primitives.point, Primitives.surface
 			];
@@ -7441,7 +8089,170 @@ namespace S100Framework.DomainModel.S131 {
 			#region Validation
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
-			private IReadOnlyDictionary<string, Func<HarbourFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<HarbourFacility, bool>> {
+			private IReadOnlyDictionary<string, Func<LockBasin, bool>> _conditionalUnknown = new Dictionary<string,Func<LockBasin, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A lock basin is divided into several lock basin parts, if this lock basin has one ground level but several gates.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class LockBasinPart : HarbourPhysicalInfrastructure {
+			[XmlElement("sillDepth")]
+			[RangeConstraint<double>(0.0, 100.0, Closure.closedInterval)]
+			[Optional]
+			public double? sillDepth {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializesillDepth() { return sillDepth.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(LockBasinPart);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..LockBasinPart._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..LockBasinPart._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..LockBasinPart._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<LockBasinPart, bool>> _conditionalUnknown = new Dictionary<string,Func<LockBasinPart, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class MooringBuoy : HarbourPhysicalInfrastructure {
+			[XmlElement("maximumPermittedDraught")]
+			[RangeConstraint<double>(0.0, 30.0, Closure.gtLeInterval)]
+			[PrecisionConstraint(1)]
+			[Optional]
+			public double? maximumPermittedDraught {get;set;} = default;
+
+			[XmlElement("maximumPermittedVesselLength")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
+			[PrecisionConstraint(1)]
+			[Optional]
+			public double? maximumPermittedVesselLength {get;set;} = default;
+
+			[XmlElement("verticalLength")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
+			[Optional]
+			public double? verticalLength {get;set;} = default;
+
+			[XmlElement("visitorsMooring")]
+			[Optional]
+			public Boolean? visitorsMooring {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializemaximumPermittedDraught() { return maximumPermittedDraught.HasValue; }
+
+			public bool ShouldSerializemaximumPermittedVesselLength() { return maximumPermittedVesselLength.HasValue; }
+
+			public bool ShouldSerializeverticalLength() { return verticalLength.HasValue; }
+
+			public bool ShouldSerializevisitorsMooring() { return visitorsMooring.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(MooringBuoy);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..MooringBuoy._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..MooringBuoy._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..MooringBuoy._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<MooringBuoy, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringBuoy, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -7456,7 +8267,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class MooringWarpingFacility : Layout {
 			[XmlIgnore]
-			[EnumerationValue([1,2,3,4,5,6,7])]
+			[EnumerationValue([4,5,6])]
 			[Mandatory]
 			public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {get;set;}
 
@@ -7468,10 +8279,10 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? bollardDescription {get;set;} = default;
 
-			[XmlElement("bollardPull")]
-			[RangeConstraint<double>(0.0, 1000.0, Closure.closedInterval)]
+			[XmlElement("safeWorkingLoad")]
+			[RangeConstraint<double>(0.0, default, Closure.gtSemiInterval)]
 			[Optional]
-			public double? bollardPull {get;set;} = default;
+			public double? safeWorkingLoad {get;set;} = default;
 
 			[XmlElement("heavingLinesFromShore")]
 			[Optional]
@@ -7481,7 +8292,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region ShouldSerialize
 			public bool ShouldSerializebollardDescription() { return !string.IsNullOrEmpty(bollardDescription); }
 
-			public bool ShouldSerializebollardPull() { return bollardPull.HasValue; }
+			public bool ShouldSerializesafeWorkingLoad() { return safeWorkingLoad.HasValue; }
 
 			public bool ShouldSerializeheavingLinesFromShore() { return heavingLinesFromShore.HasValue; }
 			#endregion
@@ -7515,7 +8326,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7557,6 +8368,126 @@ namespace S100Framework.DomainModel.S131 {
 			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
 
 			private IReadOnlyDictionary<string, Func<MooringWarpingFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<MooringWarpingFacility, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// Facilities or infrastructure providing shore power to berthed vessels.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class OnshorePowerFacility : HarbourPhysicalInfrastructure {
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Optional]
+			public categoryOfShorePowerFacility? categoryOfShorePowerFacility {get;set;} = default;
+
+			[XmlElement("iDCode")]
+			[Mandatory]
+			public String iDCode {get;set;} = string.Empty;
+
+			[XmlElement("shorePowerDescription")]
+			[Optional]
+			public String? shorePowerDescription {get;set;} = default;
+
+			[XmlIgnore]
+			[EnumerationValue([1,2,3,4,5,6,7,8,9,10,11,12,13,14])]
+			[Optional]
+			public List<categoryOfVoltage> categoryOfVoltage {get;set;} = [];
+
+			[XmlIgnore]
+			[Optional]
+			public List<categoryOfFrequency> categoryOfFrequency {get;set;} = [];
+
+			[XmlElement("categoryOfPlug")]
+			[Optional]
+			public List<String> categoryOfPlug {get;set;} = [];
+
+			[XmlElement("shorePowerServiceProvider")]
+			[Optional]
+			public String? shorePowerServiceProvider {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializecategoryOfShorePowerFacility() { return categoryOfShorePowerFacility.HasValue; }
+
+			public bool ShouldSerializeshorePowerDescription() { return !string.IsNullOrEmpty(shorePowerDescription); }
+
+			public bool ShouldSerializecategoryOfVoltage() { return categoryOfVoltage.Any(); }
+
+			public bool ShouldSerializecategoryOfFrequency() { return categoryOfFrequency.Any(); }
+
+			public bool ShouldSerializecategoryOfPlug() { return categoryOfPlug.Any(); }
+
+			public bool ShouldSerializeshorePowerServiceProvider() { return !string.IsNullOrEmpty(shorePowerServiceProvider); }
+			#endregion
+
+			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("categoryOfShorePowerFacility")]
+			public SerializableEnumeration<categoryOfShorePowerFacility>? categoryOfShorePowerFacilityElement { get { return categoryOfShorePowerFacility; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfVoltage")]
+			public SerializableEnumeration<categoryOfVoltage>[] categoryOfVoltageElement { get { return [.. categoryOfVoltage]; } set { } }
+
+			[JsonIgnore]
+			[XmlElement("categoryOfFrequency")]
+			public SerializableEnumeration<categoryOfFrequency>[] categoryOfFrequencyElement { get { return [.. categoryOfFrequency]; } set { } }
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(OnshorePowerFacility);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..OnshorePowerFacility._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..OnshorePowerFacility._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..OnshorePowerFacility._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<OnshorePowerFacility, bool>> _conditionalUnknown = new Dictionary<string,Func<OnshorePowerFacility, bool>> {
 			};
 
 			public override void RunValidationChecks() {
@@ -7690,6 +8621,11 @@ namespace S100Framework.DomainModel.S131 {
 			[Optional]
 			public String? locationByText {get;set;} = default;
 
+			[XmlIgnore]
+			[EnumerationValue([1,2,3])]
+			[Multiplicity(0, 3)]
+			public List<pilotMovement> pilotMovement {get;set;} = [];
+
 			[XmlElement("markedBy")]
 			[Optional]
 			public markedBy? markedBy {get;set;} = default;
@@ -7705,12 +8641,18 @@ namespace S100Framework.DomainModel.S131 {
 
 			public bool ShouldSerializelocationByText() { return !string.IsNullOrEmpty(locationByText); }
 
+			public bool ShouldSerializepilotMovement() { return pilotMovement.Any(); }
+
 			public bool ShouldSerializemarkedBy() { return markedBy!=default; }
 
 			public bool ShouldSerializeiSPSLevel() { return iSPSLevel.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
+			[JsonIgnore]
+			[XmlElement("pilotMovement")]
+			public SerializableEnumeration<pilotMovement>[] pilotMovementElement { get { return [.. pilotMovement]; } set { } }
+
 			[JsonIgnore]
 			[XmlElement("iSPSLevel")]
 			public SerializableEnumeration<iSPSLevel>? iSPSLevelElement { get { return iSPSLevel; } set { } }
@@ -7730,7 +8672,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7833,7 +8775,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -7883,6 +8825,151 @@ namespace S100Framework.DomainModel.S131 {
 		}
 
 		/// <summary>
+		/// A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class ShipLift : HarbourPhysicalInfrastructure {
+			[XmlElement("verticalClearanceValue")]
+			[RangeConstraint<double>(0.1, 100.0, Closure.closedInterval)]
+			[Optional]
+			public double? verticalClearanceValue {get;set;} = default;
+
+
+			#region ShouldSerialize
+			public bool ShouldSerializeverticalClearanceValue() { return verticalClearanceValue.HasValue; }
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(ShipLift);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..ShipLift._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..ShipLift._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..ShipLift._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<ShipLift, bool>> _conditionalUnknown = new Dictionary<string,Func<ShipLift, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
+		/// A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.
+		/// </summary>
+		[System.Serializable()]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
+		public partial class StraddleCarrier : HarbourPhysicalInfrastructure {
+
+			#region ShouldSerialize
+
+			#endregion
+
+			#region SerializableEnumeration
+
+			#endregion
+
+			[JsonIgnore]
+			[XmlIgnore]
+			public override string Code => nameof(StraddleCarrier);
+
+			#region InformationBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override informationBindingDefinition[] informationBindingDefinitions => [..HarbourPhysicalInfrastructure._informationBindingDefinitions, ..StraddleCarrier._informationBindingDefinitions];
+			public new static informationBindingDefinition[] _informationBindingDefinitions => [
+				new informationBindingDefinition {
+					roleType = roleType.association,
+					lower = 0,
+					upper =  1,
+					association = nameof(LocationHours),
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
+					informationTypes = [nameof(ServiceHours)],
+					primitives = [],
+				},
+			];
+			#endregion
+
+			#region IFeatureBindings
+			[JsonIgnore]
+			[XmlIgnore]
+			public override featureBindingDefinition[] featureBindingDefinitions => [..HarbourPhysicalInfrastructure._featureBindingDefinitions, ..StraddleCarrier._featureBindingDefinitions];
+
+			[JsonIgnore]
+			public override Primitives[] primitives => [..HarbourPhysicalInfrastructure._primitives, ..StraddleCarrier._primitives];
+			public new static Primitives[] _primitives => [
+				Primitives.point, Primitives.surface
+			];
+
+			public new static featureBindingDefinition[] _featureBindingDefinitions => [
+			];
+			#endregion
+
+			[JsonIgnore]
+			[XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
+			public string? gmlId { get; set; }
+
+			[JsonIgnore]
+			[XmlAnyElement]
+			public XElement[]? Geometry { get; set; } = default;
+
+			#region Validation
+			public override bool ConditionalUnknown(string name) => _conditionalUnknown[name](this);
+
+			private IReadOnlyDictionary<string, Func<StraddleCarrier, bool>> _conditionalUnknown = new Dictionary<string,Func<StraddleCarrier, bool>> {
+			};
+
+			public override void RunValidationChecks() {
+			}
+			#endregion
+		}
+
+		/// <summary>
 		/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
 		/// </summary>
 		[System.Serializable()]
@@ -7893,9 +8980,9 @@ namespace S100Framework.DomainModel.S131 {
 			public String? portFacilityNumber {get;set;} = default;
 
 			[XmlIgnore]
-			[EnumerationValue([1,3,5,7,8,10,11])]
+			[EnumerationValue([1,3,7,8,10,11])]
 			[Optional]
-			public categoryOfHarbourFacility? categoryOfHarbourFacility {get;set;} = default;
+			public categoryOfTerminal? categoryOfTerminal {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([2,5,6,7,8,10,11,12,13,14,15])]
@@ -7924,7 +9011,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region ShouldSerialize
 			public bool ShouldSerializeportFacilityNumber() { return !string.IsNullOrEmpty(portFacilityNumber); }
 
-			public bool ShouldSerializecategoryOfHarbourFacility() { return categoryOfHarbourFacility.HasValue; }
+			public bool ShouldSerializecategoryOfTerminal() { return categoryOfTerminal.HasValue; }
 
 			public bool ShouldSerializecategoryOfCargo() { return categoryOfCargo.Any(); }
 
@@ -7939,8 +9026,8 @@ namespace S100Framework.DomainModel.S131 {
 
 			#region SerializableEnumeration
 			[JsonIgnore]
-			[XmlElement("categoryOfHarbourFacility")]
-			public SerializableEnumeration<categoryOfHarbourFacility>? categoryOfHarbourFacilityElement { get { return categoryOfHarbourFacility; } set { } }
+			[XmlElement("categoryOfTerminal")]
+			public SerializableEnumeration<categoryOfTerminal>? categoryOfTerminalElement { get { return categoryOfTerminal; } set { } }
 
 			[JsonIgnore]
 			[XmlElement("categoryOfCargo")]
@@ -7974,7 +9061,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -8093,7 +9180,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -8194,7 +9281,7 @@ namespace S100Framework.DomainModel.S131 {
 					lower = 0,
 					upper =  1,
 					association = nameof(LocationHours),
-					role = Enum.GetName<Role>(Role.location_srvHrs)!,
+					role = Enum.GetName<Role>(Role.facilityOperatingHours)!,
 					informationTypes = [nameof(ServiceHours)],
 					primitives = [],
 				},
@@ -8259,9 +9346,14 @@ namespace S100Framework.DomainModel.S131 {
 			[Mandatory]
 			public int minimumDisplayScale {get;set;} = default;
 
+			[XmlElement("optimumDisplayScale")]
+			[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+			[Optional]
+			public int? optimumDisplayScale {get;set;} = default;
+
 
 			#region ShouldSerialize
-
+			public bool ShouldSerializeoptimumDisplayScale() { return optimumDisplayScale.HasValue; }
 			#endregion
 
 			#region SerializableEnumeration
@@ -8332,12 +9424,12 @@ namespace S100Framework.DomainModel.S131 {
 			public double? horizontalDistanceUncertainty {get;set;} = default;
 
 			[XmlElement("horizontalPositionUncertainty")]
-			[Mandatory]
-			public horizontalPositionUncertainty horizontalPositionUncertainty {get;set;} = new horizontalPositionUncertainty {
-				uncertaintyFixed = default,
-			};
+			[Optional]
+			public horizontalPositionUncertainty? horizontalPositionUncertainty {get;set;} = default;
 
 			[XmlElement("orientationUncertainty")]
+			[RangeConstraint<double>(0.000, 360.000, Closure.geLtInterval)]
+			[PrecisionConstraint(3)]
 			[Optional]
 			public double? orientationUncertainty {get;set;} = default;
 
@@ -8358,6 +9450,8 @@ namespace S100Framework.DomainModel.S131 {
 			public bool ShouldSerializecategoryOfTemporalVariation() { return categoryOfTemporalVariation.HasValue; }
 
 			public bool ShouldSerializehorizontalDistanceUncertainty() { return horizontalDistanceUncertainty.HasValue; }
+
+			public bool ShouldSerializehorizontalPositionUncertainty() { return horizontalPositionUncertainty!=default; }
 
 			public bool ShouldSerializeorientationUncertainty() { return orientationUncertainty.HasValue; }
 
@@ -8499,7 +9593,7 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class VerticalDatumOfData : FeatureNode, IFeatureBindingDefinition {
 			[XmlIgnore]
-			[EnumerationValue([3,16,17,18,19,20,21,24,25,26,28,29,30,44])]
+			[EnumerationValue([3,13,16,17,18,19,20,21,24,25,26,28,29,30,44])]
 			[Mandatory]
 			public verticalDatum verticalDatum {get;set;}
 
@@ -8570,24 +9664,24 @@ namespace S100Framework.DomainModel.S131 {
 		[System.Serializable()]
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
 		public partial class TextPlacement : FeatureNode, IFeatureBindingDefinition {
-			[XmlElement("orientationValue")]
-			[RangeConstraint<double>(0.0, 360.0, Closure.closedInterval)]
-			[PrecisionConstraint(1)]
+			[XmlElement("textOffsetBearing")]
+			[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 			[Mandatory]
-			public double orientationValue {get;set;} = default;
+			public int textOffsetBearing {get;set;} = default;
 
-			[XmlElement("text")]
+			[XmlElement("textOffsetDistance")]
+			[RangeConstraint<int>(0, 50, Closure.gtLeInterval)]
+			[Mandatory]
+			public int textOffsetDistance {get;set;} = default;
+
+			[XmlElement("textRotation")]
 			[Optional]
-			public String? text {get;set;} = default;
-
-			[XmlElement("textOffsetMm")]
-			[Mandatory]
-			public int textOffsetMm {get;set;} = default;
+			public Boolean? textRotation {get;set;} = default;
 
 			[XmlIgnore]
 			[EnumerationValue([1])]
-			[Optional]
-			public textType? textType {get;set;} = default;
+			[Multiplicity(1, 2)]
+			public List<textType> textType {get;set;} = [];
 
 			[XmlElement("scaleMinimum")]
 			[Optional]
@@ -8595,9 +9689,9 @@ namespace S100Framework.DomainModel.S131 {
 
 
 			#region ShouldSerialize
-			public bool ShouldSerializetext() { return !string.IsNullOrEmpty(text); }
+			public bool ShouldSerializetextRotation() { return textRotation.HasValue; }
 
-			public bool ShouldSerializetextType() { return textType.HasValue; }
+			public bool ShouldSerializetextType() { return textType.Any(); }
 
 			public bool ShouldSerializescaleMinimum() { return scaleMinimum.HasValue; }
 			#endregion
@@ -8605,7 +9699,7 @@ namespace S100Framework.DomainModel.S131 {
 			#region SerializableEnumeration
 			[JsonIgnore]
 			[XmlElement("textType")]
-			public SerializableEnumeration<textType>? textTypeElement { get { return textType; } set { } }
+			public SerializableEnumeration<textType>[] textTypeElement { get { return [.. textType]; } set { } }
 			#endregion
 
 			[JsonIgnore]
@@ -8633,11 +9727,11 @@ namespace S100Framework.DomainModel.S131 {
 
 			public static featureBindingDefinition[] _featureBindingDefinitions => [
 				new featureBindingDefinition {
-					roleType = roleType.association,
+					roleType = roleType.composition,
 					lower = 1,
 					upper =  1,
 					association = nameof(TextAssociation),
-					role = Enum.GetName<Role>(Role.identifies)!,
+					role = Enum.GetName<Role>(Role.thePositionProvider)!,
 					featureTypes = [nameof(FeatureType)],
 				},
 			];
@@ -8663,8 +9757,8 @@ namespace S100Framework.DomainModel.S131 {
 		}
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S131/1.0")]
-	[XmlRoot(Namespace = "http://www.iho.int/S131/1.0")]
+	[XmlType(Namespace = "http://www.iho.int/S131/2.0")]
+	[XmlRoot(Namespace = "http://www.iho.int/S131/2.0")]
 	public class Dataset : S100Framework.DomainModel.S100.DatasetBase
 	{
 		[XmlElement(Order = 1)]
@@ -8672,10 +9766,10 @@ namespace S100Framework.DomainModel.S131 {
 
 		[JsonIgnore]
 		[XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-		public override string SchemaLocation { get; set; } = "http://www.iho.int/S131/1.0 131_1.0.0.xsd";
+		public override string SchemaLocation { get; set; } = "http://www.iho.int/S131/2.0 131_2.0.0.xsd";
 	}
 
-	[XmlType(Namespace = "http://www.iho.int/S131/1.0", TypeName = "members")]
+	[XmlType(Namespace = "http://www.iho.int/S131/2.0", TypeName = "members")]
 	public class Members
 	{
 		[XmlElement("InformationTypes.Applicability", typeof(InformationTypes.Applicability), Order = 1, ElementName = "Applicability")]
@@ -8692,21 +9786,30 @@ namespace S100Framework.DomainModel.S131 {
 		[XmlElement("InformationTypes.SpatialQuality", typeof(InformationTypes.SpatialQuality), Order = 1, ElementName = "SpatialQuality")]
 		[XmlElement("FeatureTypes.AnchorBerth", typeof(FeatureTypes.AnchorBerth), Order = 1, ElementName = "AnchorBerth")]
 		[XmlElement("FeatureTypes.AnchorageArea", typeof(FeatureTypes.AnchorageArea), Order = 1, ElementName = "AnchorageArea")]
+		[XmlElement("FeatureTypes.AutomatedGuidedVehicle", typeof(FeatureTypes.AutomatedGuidedVehicle), Order = 1, ElementName = "AutomatedGuidedVehicle")]
 		[XmlElement("FeatureTypes.Berth", typeof(FeatureTypes.Berth), Order = 1, ElementName = "Berth")]
 		[XmlElement("FeatureTypes.BerthPosition", typeof(FeatureTypes.BerthPosition), Order = 1, ElementName = "BerthPosition")]
+		[XmlElement("FeatureTypes.Bollard", typeof(FeatureTypes.Bollard), Order = 1, ElementName = "Bollard")]
 		[XmlElement("FeatureTypes.DockArea", typeof(FeatureTypes.DockArea), Order = 1, ElementName = "DockArea")]
 		[XmlElement("FeatureTypes.DryDock", typeof(FeatureTypes.DryDock), Order = 1, ElementName = "DryDock")]
+		[XmlElement("FeatureTypes.Dolphin", typeof(FeatureTypes.Dolphin), Order = 1, ElementName = "Dolphin")]
 		[XmlElement("FeatureTypes.DumpingGround", typeof(FeatureTypes.DumpingGround), Order = 1, ElementName = "DumpingGround")]
+		[XmlElement("FeatureTypes.FenderLine", typeof(FeatureTypes.FenderLine), Order = 1, ElementName = "FenderLine")]
 		[XmlElement("FeatureTypes.FloatingDock", typeof(FeatureTypes.FloatingDock), Order = 1, ElementName = "FloatingDock")]
 		[XmlElement("FeatureTypes.Gridiron", typeof(FeatureTypes.Gridiron), Order = 1, ElementName = "Gridiron")]
 		[XmlElement("FeatureTypes.HarbourAreaAdministrative", typeof(FeatureTypes.HarbourAreaAdministrative), Order = 1, ElementName = "HarbourAreaAdministrative")]
 		[XmlElement("FeatureTypes.HarbourAreaSection", typeof(FeatureTypes.HarbourAreaSection), Order = 1, ElementName = "HarbourAreaSection")]
 		[XmlElement("FeatureTypes.HarbourBasin", typeof(FeatureTypes.HarbourBasin), Order = 1, ElementName = "HarbourBasin")]
-		[XmlElement("FeatureTypes.HarbourFacility", typeof(FeatureTypes.HarbourFacility), Order = 1, ElementName = "HarbourFacility")]
+		[XmlElement("FeatureTypes.LockBasin", typeof(FeatureTypes.LockBasin), Order = 1, ElementName = "LockBasin")]
+		[XmlElement("FeatureTypes.LockBasinPart", typeof(FeatureTypes.LockBasinPart), Order = 1, ElementName = "LockBasinPart")]
+		[XmlElement("FeatureTypes.MooringBuoy", typeof(FeatureTypes.MooringBuoy), Order = 1, ElementName = "MooringBuoy")]
 		[XmlElement("FeatureTypes.MooringWarpingFacility", typeof(FeatureTypes.MooringWarpingFacility), Order = 1, ElementName = "MooringWarpingFacility")]
+		[XmlElement("FeatureTypes.OnshorePowerFacility", typeof(FeatureTypes.OnshorePowerFacility), Order = 1, ElementName = "OnshorePowerFacility")]
 		[XmlElement("FeatureTypes.OuterLimit", typeof(FeatureTypes.OuterLimit), Order = 1, ElementName = "OuterLimit")]
 		[XmlElement("FeatureTypes.PilotBoardingPlace", typeof(FeatureTypes.PilotBoardingPlace), Order = 1, ElementName = "PilotBoardingPlace")]
 		[XmlElement("FeatureTypes.SeaplaneLandingArea", typeof(FeatureTypes.SeaplaneLandingArea), Order = 1, ElementName = "SeaplaneLandingArea")]
+		[XmlElement("FeatureTypes.ShipLift", typeof(FeatureTypes.ShipLift), Order = 1, ElementName = "ShipLift")]
+		[XmlElement("FeatureTypes.StraddleCarrier", typeof(FeatureTypes.StraddleCarrier), Order = 1, ElementName = "StraddleCarrier")]
 		[XmlElement("FeatureTypes.Terminal", typeof(FeatureTypes.Terminal), Order = 1, ElementName = "Terminal")]
 		[XmlElement("FeatureTypes.TurningBasin", typeof(FeatureTypes.TurningBasin), Order = 1, ElementName = "TurningBasin")]
 		[XmlElement("FeatureTypes.WaterwayArea", typeof(FeatureTypes.WaterwayArea), Order = 1, ElementName = "WaterwayArea")]

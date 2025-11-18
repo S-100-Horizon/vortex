@@ -166,6 +166,12 @@ namespace S100Framework.DomainModel
         public int StringLength = stringLength;
     }
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class TextPatternConstraint(string textPattern) : ConstraintAttribute
+    {
+        public string TextPattern = textPattern;
+    }
+
     #endregion
 
     public interface IInformationBindingDefinition
