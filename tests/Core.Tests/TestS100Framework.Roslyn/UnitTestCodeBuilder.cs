@@ -363,7 +363,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_S501() {
-                var s100 = XDocument.Load(this.Path(@"S-501 Additional Military Layers\0.0.5\S-501_FC_0_0_5_2024-08-09 - LOCAL.xml"));
+                var s100 = XDocument.Load(this.Path(@"S-501 Additional Military Layers\0.9.3\S-501_FC.xml"));
                 //var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_9_2025-02-14.xml");
 
                 Assert.True(VerifyProductSpecification(s100));
