@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VortexConceptApplication", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.WPF.PropertyGrid", "src\UI\S100Framework.WPF.PropertyGrid\S100Framework.WPF.PropertyGrid.csproj", "{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyGridApplication", "tests\UI.Tests\PropertyGridApplication\PropertyGridApplication.csproj", "{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -69,6 +71,10 @@ Global
 		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Debug|x64.Build.0 = Debug|Any CPU
 		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Release|x64.ActiveCfg = Release|Any CPU
 		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Release|x64.Build.0 = Release|Any CPU
+		{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3}.Debug|x64.Build.0 = Debug|Any CPU
+		{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3}.Release|x64.ActiveCfg = Release|Any CPU
+		{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{0B8281A7-4B6D-C1EC-CAFF-6C9B8824D157} = {83D42794-241F-4EED-99E4-C6309BA88041}
 		{E57AB64B-D84E-627F-9FA5-474F3C6DB12B} = {83D42794-241F-4EED-99E4-C6309BA88041}
 		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
+		{CF8F17D1-566C-46B9-8B2F-23BEAF4238F3} = {83D42794-241F-4EED-99E4-C6309BA88041}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E973A0E9-A7CE-469B-A225-A426A3E0FAAF}

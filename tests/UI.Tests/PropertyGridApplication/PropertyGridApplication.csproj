@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.20348.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj" />
+    <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF.PropertyGrid\S100Framework.WPF.PropertyGrid.csproj" />
+    <ProjectReference Include="..\..\..\src\UI\S100Framework.WPF\S100Framework.WPF.csproj" />
+  </ItemGroup>
+
+</Project>
