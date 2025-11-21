@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VortexProAppModule", "src\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VortexConceptApplication", "tests\UI.Tests\VortexConceptApplication\VortexConceptApplication.csproj", "{E57AB64B-D84E-627F-9FA5-474F3C6DB12B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S100Framework.WPF.PropertyGrid", "src\UI\S100Framework.WPF.PropertyGrid\S100Framework.WPF.PropertyGrid.csproj", "{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -63,6 +65,10 @@ Global
 		{E57AB64B-D84E-627F-9FA5-474F3C6DB12B}.Debug|x64.Build.0 = Debug|x64
 		{E57AB64B-D84E-627F-9FA5-474F3C6DB12B}.Release|x64.ActiveCfg = Release|x64
 		{E57AB64B-D84E-627F-9FA5-474F3C6DB12B}.Release|x64.Build.0 = Release|x64
+		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{2B3783EE-ABDB-4A6E-9677-C826CD253FAD} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 		{0B8281A7-4B6D-C1EC-CAFF-6C9B8824D157} = {83D42794-241F-4EED-99E4-C6309BA88041}
 		{E57AB64B-D84E-627F-9FA5-474F3C6DB12B} = {83D42794-241F-4EED-99E4-C6309BA88041}
+		{0D34C0DB-2BFA-FC19-3CDB-1D4601B443E4} = {50685D39-00FF-4EDD-B55F-B37D1B24A5DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E973A0E9-A7CE-469B-A225-A426A3E0FAAF}
