@@ -1025,28 +1025,28 @@ namespace S100Framework.YAML
                             }
 
                         case Type t when t == typeof(bool): {
-                                if (attr.Value == null) continue;
-                                var booleanValue = Convert.ToInt32(attr.Value) == 1;
+                                if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
+                                var booleanValue = bool.Parse(attr.Value);  // Convert.ToInt32(attr.Value) == 1;
                                 prop.SetValue(parentInstance, booleanValue);
                                 break;
                             }
 
                         case Type t when t == typeof(decimal): {
-                                if (attr.Value == null) continue;
+                                if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
                                 var decimalValue = decimal.Parse(attr.Value, CultureInfo.InvariantCulture);
                                 prop.SetValue(parentInstance, decimalValue);
                                 break;
                             }
 
                         case Type t when t == typeof(double): {
-                                if (attr.Value == null) continue;
+                                if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
                                 var doubleValue = double.Parse(attr.Value, CultureInfo.InvariantCulture);
                                 prop.SetValue(parentInstance, doubleValue);
                                 break;
                             }
 
                         case Type t when t.IsEnum: {
-                                if (attr.Value == null) continue;
+                                if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
                                 var enumValue = Enum.Parse(typed, attr.Value);
                                 prop.SetValue(parentInstance, enumValue);
                                 break;
@@ -1064,7 +1064,7 @@ namespace S100Framework.YAML
                                 var elementType = typed.GetGenericArguments()[0];
 
                                 if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
-                                    if (attr.Value == null) continue;
+                                    if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
 
                                     var convertedItem = elementType.IsEnum
                                         ? Enum.Parse(elementType, attr.Value)
