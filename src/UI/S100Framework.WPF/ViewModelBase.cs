@@ -390,10 +390,6 @@ namespace S100Framework.WPF.ViewModel
                 SetValue(ref _referenceId, value);
             }
         }
-
-        //public string roleType { get; set; } = string.Empty;
-
-        //public abstract featureBinding[] featureBindings { get; }
     }
 
     public abstract class featureBindingViewModel<TAssociation> : featureBindingViewModel where TAssociation : FeatureAssociationViewModel, new()
@@ -410,7 +406,7 @@ namespace S100Framework.WPF.ViewModel
 
         protected override void Validate() {
             //TODO: Validate role and referenceId
-        }
+        }      
     }
 
     public abstract class ComplexViewModel : ViewModelBase
